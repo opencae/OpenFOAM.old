@@ -6,7 +6,13 @@
 \index{キーワード!layers@\OFkeyword{layers}}%
  \OFkeyword{layers} &
      レイヤのディクショナリ &
-         \OFkeyword{} \\
+          \\
+\index{relativeSizes@\OFkeyword{relativeSizes}!キーワード}%
+\index{キーワード!relativeSizes@\OFkeyword{relativeSizes}}%
+ \OFkeyword{relativeSizes} &
+     レイヤ厚さを，レイヤ外部の歪んでいないセルの大きさに対する相対値とするか，
+     または絶対値とするか &
+         \OFkeyword{true}/\OFkeyword{false} \\
 \index{expansionRatio@\OFkeyword{expansionRatio}!キーワード}%
 \index{キーワード!expansionRatio@\OFkeyword{expansionRatio}}%
  \OFkeyword{expansionRatio} &
@@ -15,12 +21,14 @@
 \index{finalLayerRatio@\OFkeyword{finalLayerRatio}!キーワード}%
 \index{キーワード!finalLayerRatio@\OFkeyword{finalLayerRatio}}%
  \OFkeyword{finalLayerRatio} &
-     レイヤの外側の歪められていないセルの大きさに比例した壁から最も遠い層の厚さ &
+     壁から最も遠い層の厚さ．
+     \OFkeyword{relativeSizes}エントリにより相対値か絶対値かが決まる &
          \OFkeyword{0.3} \\
 \index{minThickness@\OFkeyword{minThickness}!キーワード}%
 \index{キーワード!minThickness@\OFkeyword{minThickness}}%
  \OFkeyword{minThickness} &
-     レイヤの外側の歪められていないセルの大きさに比例したセルのレイヤの最小の厚さ &
+     セルのレイヤの最小の厚さ．
+     相対値または絶対値（同上） &
          \OFkeyword{0.25} \\
 \index{nGrow@\OFkeyword{nGrow}!キーワード}%
 \index{キーワード!nGrow@\OFkeyword{nGrow}}%
@@ -72,5 +80,16 @@
  \OFkeyword{nBufferCellsNoExtrude} &
      新しいレイヤの末端のためのバッファ領域を作成 &
          \OFkeyword{0} \\
+\index{nLayerIter@\OFkeyword{nLayerIter}!キーワード}%
+\index{キーワード!nLayerIter@\OFkeyword{nLayerIter}}%
+ \OFkeyword{nLayerIter} &
+     レイヤを追加する反復計算全体の最大反復数 &
+         \OFkeyword{50} \\
+\index{nRelaxedIter@\OFkeyword{nRelaxedIter}!キーワード}%
+\index{キーワード!nRelaxedIter@\OFkeyword{nRelaxedIter}}%
+ \OFkeyword{nRelaxedIter} &
+     この反復回数を超えた後は，\OFkeyword{meshQuality}の
+     \OFsubdictionary{relaxed}サブディクショナリにおける制御値が使われる &
+         \OFkeyword{20} \\
  \hline
 \end{tabularx}

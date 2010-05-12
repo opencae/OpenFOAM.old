@@ -10,7 +10,9 @@
   {\usefont{OT1}{phv}{m}{n}FOAM}}
 
 \def\OFdraft#1{\ifdim\overfullrule>\z@ #1\else\relax\fi}
-\def\OFrevision#1{\OFdraft{\marginpar{\rlap{\colorbox{red}{\gtfamily\sffamily#1}}}}}
+\def\OFrevision{\@ifstar{\OF@revision@}{\OF@revision}}
+\def\OF@revision@#1{\OFdraft{\colorbox{red}{\gtfamily\sffamily#1}}}
+\def\OF@revision#1{\OFdraft{\marginpar{\rlap{\colorbox{red}{\gtfamily\sffamily#1}}}}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,12 +144,12 @@
 \def\OFsubdictionary#1{\bgroup\normalfont\sffamily\slshape #1\egroup}
 \def\OFtool#1{\bgroup\normalfont\sffamily #1\egroup}
 
-\def\OFfile{\par\bgroup\small\def\baselinestretch{.8}}
-\def\endOFfile{\egroup}
-\def\OFterminal{\par\bgroup\small}
-\def\endOFterminal{\egroup}
-\def\OFcode{\par\bgroup\small\def\baselinestretch{.8}}
-\def\endOFcode{\egroup}
+% \def\OFfile{\par\bgroup\small\def\baselinestretch{.8}}
+% \def\endOFfile{\egroup}
+% \def\OFterminal{\par\bgroup\small}
+% \def\endOFterminal{\egroup}
+% \def\OFcode{\par\bgroup\small\def\baselinestretch{.8}}
+% \def\endOFcode{\egroup}
 
 
 \def\jdash{\penalty\z@\resizebox{2\Cwd}{\height}{\char\jis"213D\kern-.5zw\char\jis"213D}}
@@ -162,6 +164,7 @@
 
 \def\nCo{\mathord{\mathit{Co}}}
 \def\nPr{\mathord{\mathit{Pr}}}
+\def\nPe{\mathord{\mathit{Pe}}}
 \def\nRe{\mathord{\mathit{Re}}}
 
 %% \unit
@@ -190,5 +193,15 @@
 }
 \def\figcaption{\def\@captype{figure}\caption}
 \def\tblcaption{\def\@captype{table}\caption}
+
+
+
+\def\inProd{\mathbin{\mbox{\usefont{OMS}{cmsy}{b}{n}\char1}}}
+\def\biInProd{\mathbin{\mbox{\usefont{OT1}{cmr}{b}{n}\char58}}}
+\def\triInProd{%
+  \mathbin{%
+    \raisebox{-2.25pt}{\usefont{OMS}{cmsy}{b}{n}\char1}%
+    \llap{\raisebox{2.8pt}{\fontsize{5pt}{0pt}\selectfont\usefont{OT1}{cmr}{m}{n}3}%
+    }}}
 
 

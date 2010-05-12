@@ -2,6 +2,10 @@
 \begin{longtable}{lX}
  \multicolumn{2}{l}{状態方程式 --- equationOfState} \\
  \hline
+\index{icoPolynomial@\OFemph{icoPolynomial}!モデル}%
+\index{モデル!icoPolynomial@\OFemph{icoPolynomial}}%
+ \OFemph{icoPolynomial} &
+ 液体などの非圧縮性流体に対する多項式の状態方程式 \\
 \index{perfectGas@\OFemph{perfectGas}!モデル}%
 \index{モデル!perfectGas@\OFemph{perfectGas}}%
  \OFemph{perfectGas} &
@@ -9,14 +13,22 @@
  \\
  \multicolumn{2}{l}{標準熱特性 --- thermo} \\
  \hline
+\index{eConstThermo@\OFemph{eConstThermo}!モデル}%
+\index{モデル!eConstThermo@\OFemph{eConstThermo}}%
+ \OFemph{eConstThermo} &
+ 内部エネルギ$e$とエントロピ$s$の評価を備えた，比熱$c_{\mathrm{p}}$一定のモデル \\
 \index{hConstThermo@\OFemph{hConstThermo}!モデル}%
 \index{モデル!hConstThermo@\OFemph{hConstThermo}}%
  \OFemph{hConstThermo} &
- エンタルピ$h$とエントロピ$s$の評価を備えた，比熱$c_{p}$一定のモデル \\
+ エンタルピ$h$とエントロピ$s$の評価を備えた，比熱$c_{\mathrm{p}}$一定のモデル \\
+\index{hPolynomialThermo@\OFemph{hPolynomialThermo}!モデル}%
+\index{モデル!hPolynomialThermo@\OFemph{hPolynomialThermo}}%
+ \OFemph{hPolynomialThermo} &
+ $h$と$s$を評価する多項式の係数の関数により$c_{\mathrm{p}}$が評価される \\
 \index{janafThermo@\OFemph{janafThermo}!モデル}%
 \index{モデル!janafThermo@\OFemph{janafThermo}}%
  \OFemph{janafThermo} &
- JANAFの熱物性表の係数から$c_{p}$が評価され，
+ JANAFの熱物性表の係数から$c_{\mathrm{p}}$が評価され，
  それにより$h$，$s$が評価される． \\
  \\
  \multicolumn{2}{l}{派生熱特性 --- specieThermo} \\
@@ -24,7 +36,7 @@
 \index{specieThermo@\OFemph{specieThermo}!モデル}%
 \index{モデル!specieThermo@\OFemph{specieThermo}}%
  \OFemph{specieThermo} &
- $c_{p}$，$h$，そして/または，$s$から得られた特殊な熱特性 \\
+ $c_{\mathrm{p}}$，$h$，そして/または，$s$から得られた特殊な熱特性 \\
  \\
  \multicolumn{2}{l}{輸送特性 --- transport} \\
  \hline
@@ -32,6 +44,10 @@
 \index{モデル!constTransport@\OFemph{constTransport}}%
  \OFemph{constTransport} &
  一定の輸送特性 \\
+\index{polynomialTransport@\OFemph{polynomialTransport}!モデル}%
+\index{モデル!polynomialTransport@\OFemph{polynomialTransport}}%
+ \OFemph{polynomialTransport} &
+ 多項式に基づく温度依存輸送特性 \\
 \index{sutherlandTransport@\OFemph{sutherlandTransport}!モデル}%
 \index{モデル!sutherlandTransport@\OFemph{sutherlandTransport}}%
  \OFemph{sutherlandTransport} &
@@ -59,25 +75,49 @@
 \index{モデル!dieselMixture@\OFemph{dieselMixture}}%
  \OFemph{dieselMixture} &
  $f_{\mathrm{t}}$と$f_{\mathrm{u}}$に基づく混合気燃焼 \\
+\index{basicMultiComponentMixture@\OFemph{basicMultiComponentMixture}!モデル}%
+\index{モデル!basicMultiComponentMixture@\OFemph{basicMultiComponentMixture}}%
+ \OFemph{basicMultiComponentMixture} &
+ 複数の成分に基づく基本的な混合気 \\
 \index{multiComponentMixture@\OFemph{multiComponentMixture}!モデル}%
 \index{モデル!multiComponentMixture@\OFemph{multiComponentMixture}}%
  \OFemph{multiComponentMixture} &
- 複数の成分に基づく混合気燃焼 [**] \\
-\index{chemkinMixture@\OFemph{chemkinMixture}!モデル}%
-\index{モデル!chemkinMixture@\OFemph{chemkinMixture}}%
- \OFemph{chemkinMixture} &
- CHEMKIN熱力学と反応スキームデータベースファイルを用いた混合気燃焼 \\
+ 複数の成分に基づく派生的な混合気 \\
+\index{reactingMixture@\OFemph{reactingMixture}!モデル}%
+\index{モデル!reactingMixture@\OFemph{reactingMixture}}%
+ \OFemph{reactingMixture} &
+ 熱力学と反応スキームを用いた混合気燃焼 \\
+\index{egrMixture@\OFemph{egrMixture}!モデル}%
+\index{モデル!egrMixture@\OFemph{egrMixture}}%
+ \OFemph{egrMixture} &
+ 排気ガス再循環の混合気 \\
+% \index{chemkinMixture@\OFemph{chemkinMixture}!モデル}%
+% \index{モデル!chemkinMixture@\OFemph{chemkinMixture}}%
+%  \OFemph{chemkinMixture} &
+%  CHEMKIN熱力学と反応スキームデータベースファイルを用いた混合気燃焼 \\
  \\
  \multicolumn{2}{l}{熱モデル --- thermoModel} \\
  \hline
-\index{hThermo@\OFemph{hThermo}!モデル}%
-\index{モデル!hThermo@\OFemph{hThermo}}%
- \OFemph{hThermo} &
- エンタルピ$h$に基づく一般熱モデル計算 \\
-\index{hMixtureThermo@\OFemph{hMixtureThermo}!モデル}%
-\index{モデル!hMixtureThermo@\OFemph{hMixtureThermo}}%
- \OFemph{hMixtureThermo} &
- 混合気燃焼のエンタルピ計算 \\
+\index{hPsiThermo@\OFemph{hPsiThermo}!モデル}%
+\index{モデル!hPsiThermo@\OFemph{hPsiThermo}}%
+ \OFemph{hPsiThermo} &
+     エンタルピ$h$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
+\index{ePsiThermo@\OFemph{ePsiThermo}!モデル}%
+\index{モデル!ePsiThermo@\OFemph{ePsiThermo}}%
+ \OFemph{ePsiThermo} &
+     内部エネルギ$e$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
+\index{hRhoThermo@\OFemph{hRhoThermo}!モデル}%
+\index{モデル!hRhoThermo@\OFemph{hRhoThermo}}%
+ \OFemph{hRhoThermo} &
+     エンタルピ$h$に基づく一般熱物理モデル計算 \\
+\index{hPsiMixtureThermo@\OFemph{hPsiMixtureThermo}!モデル}%
+\index{モデル!hPsiMixtureThermo@\OFemph{hPsiMixtureThermo}}%
+ \OFemph{hPsiMixtureThermo} &
+ $\psi$に基づく混合気燃焼のエンタルピ計算 \\
+\index{hRhoMixtureThermo@\OFemph{hRhoMixtureThermo}!モデル}%
+\index{モデル!hRhoMixtureThermo@\OFemph{hRhoMixtureThermo}}%
+ \OFemph{hRhoMixtureThermo} &
+ $\rho$に基づく混合気燃焼のエンタルピ計算 \\
 \index{hhuMixtureThermo@\OFemph{hhuMixtureThermo}!モデル}%
 \index{モデル!hhuMixtureThermo@\OFemph{hhuMixtureThermo}}%
  \OFemph{hhuMixtureThermo} &

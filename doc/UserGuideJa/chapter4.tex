@@ -10,7 +10,7 @@
 収納されているディレクトリの名前になります．
 このケースディレクトリ自体はどこにでも置くことができますが，
 \autoref{chap:2}の冒頭で述べたように，
-\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.5}のように，
+\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.6}のように，
 ユーザのプロジェクトのサブディレクトリ，
 \index{run@\OFpath{run}!ディレクトリ}%
 \index{ディレクトリ!run@\OFpath{run}}%
@@ -19,7 +19,7 @@
 \index{FOAM RUN@\OFenv{FOAM\_RUN}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!FOAM RUN@\OFenv{FOAM\_RUN}}%
 \OFenv{\$FOAM\_RUN}の環境変数がデフォルトで
-\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.5}に設定されることです．
+\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.6}に設定されることです．
 コマンドラインでプリセットエイリアス，\OFpath{run}を実行することにより，
 素早くこのディレクトリに移動することができます．
 OpenFOAMの配布の際に添付されているチュートリアルのケースは，
@@ -164,17 +164,13 @@ OpenFOAMは，データを特定する最も一般的な手段として
 キーワードを用いて，I/Oにより読み出すことができるセットとして
 データエントリを含んでいます．
 キーワードの見出し語は一般的な形式に従います．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 <keyword>  <dataEntry1> ... <dataEntryN>;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ほとんどの入力項目は単一のデータ入力の書式になっています
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 <keyword>  <dataEntry>;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ほとんどのOpenFOAMのデータファイルはそれ自体1セットの
 キーワード入力を含むディクショナリです．
 ディクショナリは論理的なカテゴリにエントリを構成するための手段を提供しており，
@@ -182,14 +178,12 @@ OpenFOAMは，データを特定する最も一般的な手段として
 どんなディクショナリもそれ自体が一つ以上のディクショナリエントリを含んでいます．
 ディクショナリの方式は以下のように波括弧 \verb|{ }| で囲まれた入力に従い，
 ディクショナリ名を指定します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 <dictionaryName>
 {
     ... keyword entries ...
 }
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{データファイルヘッダ}
@@ -228,25 +222,25 @@ OpenFOAMクラスの知識がなくては，
 複数のデータ入力と\OFkeyword{p}と\OFkeyword{U}それぞれのキーワードによって表現される
 圧力方程式と速度方程式それぞれのための許容誤差を含み，
 PISOディクショナリは制御アルゴリズムを含みます．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+\begin{OFverbatim}[file, linenum=17]
 
 solvers
 {
-    p PCG
+    p
     {
+        solver           PCG;
         preconditioner   DIC;
         tolerance        1e-06;
         relTol           0;
-    };
+    }
 
-    U PBiCG
+    U
     {
+        solver           PBiCG;
         preconditioner   DILU;
         tolerance        1e-05;
         relTol           0;
-    };
+    }
 }
 
 PISO
@@ -259,8 +253,7 @@ PISO
 
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{リスト}
@@ -273,39 +266,33 @@ OpenFOAMアプリケーションは，
 \begin{description}
  \item[simple]
             キーワードに続いてすぐに丸括弧がくる．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
     <listName>
     (
         ... entries ...
     );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
  \item[numbered]
             キーワードに続いてリスト内の要素数\verb|<n>|がくる．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
     <listName>
     <n>
     (
         ... entries ...
     );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
  \item[token identifier]
             キーワードに続いてクラス名の識別子ラベル\verb|<Type>|がくる．
             \verb|<Type>|はリストに何が入っているかを記載したもので，
             例えばスカラ要素のリストであれば次のようになる．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
     <listName>
     List<scalar>
     <n>        // optional
     (
         ... entries ...
     );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \end{description}
 ここで留意すべきはリスト\verb|<scalar>|での\verb|<scalar>|は
 一般名ではなく入力された実際の文字列です．
@@ -324,32 +311,26 @@ OpenFOAMアプリケーションは，
 \OFclass{vector}はランク$1$の\OFemph{VectorSpace}で3次元であり，
 要素数はいつも$3$に決まっているので単純なリストフォーマットで使われる．
 それゆえ，ベクトル$(1.0, 1.1, 1.2)$は次のように書かれる．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 (1.0 1.1 1.2)
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 OpenFOAMでは，テンソルはランク$2$のVectorSpaceで3\nobreak 次元であり，
 それゆえデータ入力はいつも九つの実数と決まっている．
 それゆえプログラマズガイドの1.3.7節で説明されている
 同一のテンソルは以下のように書かれる．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 (
     1 0 0
     0 1 0
     0 0 1
 )
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 この例は入力が複数の行に上書きできるように
 OpenFOAMがその行に戻るのを無視する方法を示しています．
 一行に数字を羅列することと扱いは違いません．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 ( 1 0 0 0 1 0 0 0 1 )
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{次元の単位}
@@ -357,7 +338,7 @@ OpenFOAMがその行に戻るのを無視する方法を示しています．
 \index{じげんのたんい@次元の単位}%
 連続体力学では，物理量はある決められた単位で表現されます．
 例えば，質量ならキログラム ($\unit*{kg}$)，体積なら立法メートル ($\unit*{m^{3}}$)，
-圧力ならパスカル ($\unit*{kg.m.s^{-2}}$)というように．
+圧力ならパスカル ($\unit*{kg\,m^{-1}\,s^{-2}}$)というように．
 代数の演算は統一した
 \index{たんい@単位!そくりょう@測量\jdash}%
 測量単位を用いて実行されなければなりません．
@@ -369,21 +350,9 @@ OpenFOAMはフィールドデータと物理的特性に次元を付けて，
 チェックして実行します．
 \OFkeyword{dimensionSet}の入出力形式は角括弧内の七つのスカラ量です．
 例えば，
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 [0 2 -1 0 0 0 0]
-\end{verbatim}
-\end{OFfile}
-
-
-\begin{table}[ht]
- \input{tbl/tbl-4-2}
- \caption{SIとUSCSの基本単位}
- \label{tbl:4.2}
-\end{table}
-\footnotetext{訳注：原文では$\unit*{kgmol}$とされているが，これは誤り．
-SIにおける物質量の基本単位は$\unit*{mol}$である．}
-
+\end{OFverbatim}
 
 \autoref{tbl:4.2}に記載するように
 各値は計測基準単位のそれぞれの物理量に対応しています．
@@ -411,16 +380,23 @@ USCSもしくはその他の単位系を使用したい場合は，
 選択した単位系に合わせてこれらの定数を変更してください．
 
 
+\begin{table}[t]
+ \input{tbl/tbl-4-2}
+ \caption{SIとUSCSの基本単位}
+ \label{tbl:4.2}
+\end{table}
+\footnotetext{訳注：原文では$\unit*{kgmol}$とされているが，これは誤り．
+SIにおける物質量の基本単位は$\unit*{mol}$である．}%
+
+
 \subsection{次元付の型}
 \label{ssec:4.2.7}
 物理量は一般に，それらの関連する次元によって特定されます．
 これらの入力は，\verb|dimensionedScalar|の
 以下の例が示すフォーマットをもっています．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 nu             nu  [0 2 -1 0 0 0 0]  1;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 最初の\OFkeyword{nu}はキーワード，2番目の\OFkeyword{nu}はクラスのwordの名前で，
 通常キーワードと同じものが選ばれる．
 その次の入力は\OFemph{dimensionSet}で最終的な入力はスカラ値です．
@@ -453,20 +429,16 @@ OpenFOAMの入出力データの多くはテンソル場，
  \item[一様フィールド]
             ただひとつの値にそのフィールド内で全ての要素が対応していて，
             以下のようなフォームをとります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 internalField uniform <entry>;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
  \item[非一様フィールド]
             各フィールドの要素は，固有の値を割り当てられ，
             リストの識別子トークンフォームにある
             以下のフォームを取ることが推奨されます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 internalField nonuniform <List>;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \end{description}
 \OFpath{boundaryField}は\OFpath{polyMesh}ディレクトリ内の
 \OFpath{boundary}ファイルにある境界パッチの
@@ -480,11 +452,7 @@ OpenFOAMで使えるパッチのフィールド条件は説明と
 それを分類するデータともに\autoref{tbl:5.2}と
 \autoref{tbl:5.3}に記載してあります．
 速度\OFkeyword{U}のフィールドのディクショナリ入力の例を以下に示します．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-
+\begin{OFverbatim}[file, linenum=17]
 dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
@@ -509,10 +477,8 @@ boundaryField
     }
 }
 
-
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{ディレクティブとマクロ置換}
@@ -537,16 +503,13 @@ OpenFOAMでは現在$2$種類のディレクティブが利用可能できます
 \end{description}
 一度使われた圧力の初期値を，内部フィールドと境界の初期値に設定する例を示します．
 以下の記述を含む\OFpath{initialConditions}というファイルを作成していたとします．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 pressure 1e+05;
 #inputMode merge
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 この圧力をフィールド内部と境界に用いるために，
 以下の代替マクロを圧力場のファイル\OFpath{p}に記述します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 #include "initialConditions"
 internalField $pressure
 boundaryField
@@ -557,8 +520,7 @@ boundaryField
         value $pressure;
     }
 }
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 あくまでもこれはこの機能のはたらきを提示するだけの，
 単純でつまらない例です．
 この機能はケースデータを要求を満たすよう一般化する手段としてなど，
@@ -603,9 +565,9 @@ OpenFOAMのソルバは全て，
 
 
 以下に\OFdictionary{controlDict}ディクショナリの入力例を示します．
-\begin{OFfile}
-\begin{verbatim}
-application icoFoam;
+\begin{OFverbatim}[file, linenum=17]
+
+application     icoFoam;
 
 startFrom       startTime;
 
@@ -635,9 +597,9 @@ timePrecision   6;
 
 runTimeModifiable yes;
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 
@@ -689,8 +651,8 @@ OpenFOAMでは，全ての補間項に対して幅広い補間スキームの中
 \end{table}
 
 
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 ddtSchemes
 {
     default         Euler;
@@ -732,9 +694,9 @@ fluxRequired
     p;
 }
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 この例を見ると\OFdictionary{fvSchemes}ディクショナリは
 以下の要素から成り立っていることがわかります．
 \begin{itemize}
@@ -803,11 +765,9 @@ OpenFOAMでの内挿スキームの選択肢を
 普通のスキームは，単にキーワードとエントリのみを記すことで指定でき，
 例えば\OFkeyword{linear}スキームを\OFkeyword{default}として指定するには
 以下のようにします．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 default linear;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 対流特有のスキームは，流れの速度による流束に基づいて内挿を行います．
 これらのスキームを指定する場合には，
 内挿のベースとなる流束場の名前が必要ですが，
@@ -822,21 +782,17 @@ general convectionとTVDスキームは，
 そのスキーム名と流束場によって指定され，
 例えば流束\OFkeyword{phi}に基づく\OFkeyword{upwind}スキームを
 \OFkeyword{default}として指定するには以下のようにします．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 default upwind phi;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 いくつかのTVD/NVDスキームには，$0 \le \psi \le 1$の範囲の係数$\psi$が必要ですが，
 $\psi = 1$はTVD条件に従うことに対応し，通常最も良い収束性を示すのに対し，
 $\psi = 0$は最も良い精度を与えます．通常$\psi = 1$での実行がお勧めです．
 流束\OFkeyword{phi}に基づく$\psi = 1.0$での\OFkeyword{limitedLinear}スキームを，
 \OFkeyword{default}として指定するには以下のようにします．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 default limitedLinear 1.0 phi;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 \subsubsection{厳密に範囲が限定されるスカラ量に対するスキーム}
 \label{sssec:4.4.1.1}
@@ -847,21 +803,17 @@ default limitedLinear 1.0 phi;
 下限と上限それぞれを続けて指定します．
 例えば，\OFkeyword{vanLeer}スキームを$-2$と$3$の間で
 厳密に制限するためには，次のように指定します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 default limitedVanLeer -2.0 3.0;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 よく使われる$0$と$1$の間で限定されるスカラ場のために
 特化された版もあります．
 それらは，スキームの名前に\OFkeyword{01}を付けることで選択できます．
 例えば，\OFkeyword{vanLeer}スキームを$0$と$1$の間で
 厳密に限定するためには，以下のように指定します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 default vanLeer01;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 厳密に範囲が限定する拡張版は，
 \OFkeyword{limitedLinear}，\OFkeyword{vanLeer}，\OFkeyword{Gamma}，
 \OFkeyword{limitedCubic}，\OFkeyword{MUSCL}，\OFkeyword{SuperBee}の
@@ -914,11 +866,9 @@ default vanLeer01;
 
 よって，$\psi = 0.5$の\OFkeyword{limited}スキームを
 \OFkeyword{default}として指定するには次のようにします．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 default limited 0.5;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{table}[ht]
@@ -945,11 +895,9 @@ default limited 0.5;
 \OFkeyword{leastSquares}と\OFkeyword{fourth}の場合には，
 離散化スキームの指定は次のように
 そのスキーム名を指定するだけで十分です．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 grad(p) leastSqueares;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \OFkeyword{Gauss}キーワードは，
 ガウス積分による標準的な有限体積法の離散化を指定するもので，
 これは，格子の中心から界面の中心への値の内挿を必要とします．
@@ -957,20 +905,16 @@ grad(p) leastSqueares;
 \autoref{tbl:4.6}のような内挿スキームを続けて指定する必要があります．
 一般的な内挿スキーム以外を選択することはほとんどなく，
 ほとんどのケースでは次のように\OFkeyword{linear}スキームを選ぶのが効率的です．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 grad(p) Gauss linear;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 三つの基本的な勾配スキーム (\OFkeyword{Gauss}，\OFkeyword{leastSquares}，
 \OFkeyword{fourth}) の範囲限定版は，
 次の\OFkeyword{limited Gauss}スキームの例のように，
 離散化スキームの前に\OFkeyword{limited}を付けることで選択できます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 grad(p) limited Gauss linear;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{ラプラシアンスキーム}
@@ -983,11 +927,9 @@ grad(p) limited Gauss linear;
 さらに拡散係数（この例では$\nu$）の内挿スキームや，
 $\nabla\bm{U}$に対する表面法線方向勾配スキームの両方を選択する必要があります．
 つまり，このエントリは以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 Gauss <interpolationScheme> <snGradScheme>
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 内挿スキームは\autoref{tbl:4.6}から選択しますが，
 通常は一般的なスキームから選択され，
 ほとんどの場合\OFkeyword{linear}にします．
@@ -995,11 +937,9 @@ Gauss <interpolationScheme> <snGradScheme>
 \autoref{tbl:4.9}に書かれているように
 スキームの選択は数値的性質を決定します．
 先の例でのラプラス項の典型的なエントリは以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 laplacian(nu, U) Gauss linear corrected;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{table}[ht]
@@ -1019,11 +959,9 @@ OpenFOAMのアプリケーションでは通常\OFkeyword{div(phi, U)}という
 離散化手法として選べるのは\OFkeyword{Gauss}スキームだけですが，
 さらに対象の場（この例では$\bm{U}$）の内挿スキームを選択する必要があります．
 つまり，このエントリは以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 Gauss <interpolationScheme>
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 内挿スキームは，一般的なもの以外にも対流特有のものも含め，
 \autoref{tbl:4.6}の中から選択します．
 \autoref{tbl:4.10}に示すように，
@@ -1035,11 +973,9 @@ Gauss <interpolationScheme>
 流束は\OFkeyword{phi}として既知ですので，
 さらにその内挿スキームを指定すると矛盾が生じるだけです．
 よって，先の例での風上型内挿スキームの指定は次のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 div(phi, U) Gauss upwind;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{table}[ht]
@@ -1091,14 +1027,12 @@ $\psi = 0$の場合は純粋な\OFkeyword{Eular}に対応します．
 圧力の方程式を解くと流束が生成するので，
 そのようなケースでは\OFsubdictionary{fluxRequired}サブディクショナリには
 単に圧力のためのword識別子である\OFkeyword{p}を記載します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 fluxRequired
 {
     p;
 }
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 
@@ -1111,23 +1045,25 @@ fluxRequired
 \OFdictionary{fvSolution}ディクショナリから制御されます．
 以下に示すのは，\OFtool{icoFoam}ソルバに必要な
 \OFdictionary{fvSolution}ディクショナリからの入力例です．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 solvers
 {
-    p PCG
+    p
     {
+        solver           PCG;
         preconditioner   DIC;
         tolerance        1e-06;
         relTol           0;
-    };
+    }
 
-    U PBiCG
+    U
     {
+        solver           PBiCG;
         preconditioner   DILU;
         tolerance        1e-05;
         relTol           0;
-    };
+    }
 }
 
 PISO
@@ -1138,9 +1074,10 @@ PISO
     pRefValue       0;
 }
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}%
+\label{p:U-117}%
 \OFdictionary{fvSolution}は実行されるソルバ特有のサブディクショナリを含んでいます．
 しかし，標準のソルバに使われる大部分については
 標準のサブディクショナリの小さなセットがあります．
@@ -1163,15 +1100,18 @@ PISO
 「線形ソルバ」という言葉は以下意味が明確な場合には「ソルバ」と
 省略して使うこともあります．
 用語の文脈においていかなる曖昧さも避けたいと思います．
-ソルバの中の各項目の構文は特定の方程式で解かれる変数に
-関連するキーワードで始まります．
-例えば，\OFtool{icoFoam}は速度Uと圧力pの方程式，
-つまり\OFkeyword{U}と\OFkeyword{p}の項を解きます．
-変数名の後にソルバが使用するパラメータを含むソルバ名とディクショナリが続きます．
-OpenFOAMで使えるソルバを\autoref{tbl:4.12}で記載します．
+
+\OFsubdictionary{solvers}における各エントリの構文で使うキーワードは，
+問題となっている方程式で解かれる変数による\OFclass{word}です．
+例えば\OFtool{icoFoam}は，速度$\bm{U}$と圧力$p$の方程式を解くので，
+エントリは\OFkeyword{U}および\OFkeyword{p}となります．
+このキーワードの後には，ソルバのタイプと
+このソルバが使うパラメータを含むディクショナリが続きます．
+ソルバは，\autoref{tbl:4.12}に示すOpenFOAMでの選択肢から，
+\OFkeyword{solver}キーワードで指定します．
 \index{tolerance@\OFkeyword{tolerance}!キーワード}%
 \index{キーワード!tolerance@\OFkeyword{tolerance}}%
-\OFkeyword{tolerance}を含む
+\OFkeyword{tolerance}，
 \index{relTol@\OFkeyword{relTol}!キーワード}%
 \index{キーワード!relTol@\OFkeyword{relTol}}%
 \OFkeyword{relTol}，
@@ -1185,7 +1125,6 @@ OpenFOAMで使えるソルバを\autoref{tbl:4.12}で記載します．
  \caption{線形ソルバ}
  \label{tbl:4.12}
 \end{table}
-\footnotetext{\OFkeyword{PCG}は対称用，\OFkeyword{PBiCG}は非対称用}
 
 
 ソルバは左右対称のマトリクスと非対称のマトリクスを区別します．
@@ -1194,8 +1133,7 @@ OpenFOAMで使えるソルバを\autoref{tbl:4.12}で記載します．
 例えばOpenFOAMが不適当なソルバが選ばれているかどうかを
 ユーザにアドバイスするためにエラーメッセージを出すので，
 それは必須ではありません．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 --> FOAM FATAL IO ERROR : Unknown asymmetric matrix solver PCG
 Valid asymmetric matrix solvers are :
 
@@ -1204,8 +1142,7 @@ PBiCG
 smoothSolver
 GAMG
 )
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 \subsubsection{解の許容範囲}
 \label{sssec:4.5.1.1}
@@ -1305,11 +1242,9 @@ GAMG
 \index{MGridGen@\OFkeyword{MGridGen}!キーワードエントリ}%
 \index{キーワードエントリ!MGridGen@\OFkeyword{MGridGen}}%
 \OFkeyword{MGridGen}オプションがあることに注意する必要があります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 geometricGamgAgglomerationLibs ("libMGridGenGamgAgglomeration.so");
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 OpenCFDの経験によれば，
 \href{http://www-users.cs.umn.edu/~moulitsa/software.html}{MGridGen}メソッドよりも
 \OFkeyword{faceAreaPair}メソッドの方が優れています．
@@ -1374,46 +1309,57 @@ $0.9$程度の$\alpha$の値であれば多くの場合安定性が確保され�
 最初に指定することによって，特定の領域の緩和係数を指定できます．
 以下で非圧縮定常状態層流の
 \OFtool{simpleFoam}のチュートリアルの例で使われる緩和係数を参照できます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 solvers
 {
-    p PCG
+    p
     {
+        solver           PCG;
         preconditioner   DIC;
         tolerance        1e-06;
         relTol           0.01;
-    };
-    U PBiCG
+    }
+
+    U
     {
+        solver           PBiCG;
         preconditioner   DILU;
         tolerance        1e-05;
         relTol           0.1;
-    };
-    k PBiCG
+    }
+
+    k
     {
+        solver           PBiCG;
         preconditioner   DILU;
         tolerance        1e-05;
         relTol           0.1;
-    };
-    epsilon PBiCG
+    }
+
+    epsilon
     {
+        solver           PBiCG;
         preconditioner   DILU;
         tolerance        1e-05;
         relTol           0.1;
-    };
-    R PBiCG
+    }
+
+    R
     {
+        solver           PBiCG;
         preconditioner   DILU;
         tolerance        1e-05;
         relTol           0.1;
-    };
-    nuTilda PBiCG
+    }
+
+    nuTilda
     {
+        solver           PBiCG;
         preconditioner   DILU;
         tolerance        1e-05;
         relTol           0.1;
-    };
+    }
 }
 
 SIMPLE
@@ -1431,9 +1377,9 @@ relaxationFactors
     nuTilda         0.7;
 }
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{PISOとSIMPLEアルゴリズム}
@@ -1444,17 +1390,19 @@ semi-implicit method for pressure-linked equations
 (SIMPLE) アルゴリズムを使用します．
 これらのアルゴリズムは，速度と圧力の方程式を解くための反復法で，
 PISOは過渡状態の問題に，SIMPLEは定常状態の問題に使います．
+
 両アルゴリズムはいくつかの初期解を求め，
 次に，それらを修正するという方法をとります．
 SIMPLEは1段階の修正しかしませんが，PISOは1段階以上で，大概は4段階以下の修正をします．
-したがって，本節冒頭の入力例に示したように\OFkeyword{nCorrectors}キーワードで
+したがって，\pageref{p:U-117}ページの入力例に示したように\OFkeyword{nCorrectors}キーワードで
 \OFdictionary{PISO}ディクショナリの補正数を定めます．
-非直交性メッシュから成る追加補正は標準のOpenFOAMソルバアプリケーションの
+
+非直交性メッシュからなる追加補正は標準のOpenFOAMソルバアプリケーションの
 SIMPLEとPISOの両方で利用できます．
 例えば面が直行座標系に並べられる6面体のセルのメッシュのように，
 メッシュ内の各面において隣接するセルの中心間のベクトルに面が平行であるなら，
 メッシュは直交しています．
-非直交の補正数は本節中の入力例に示すように
+非直交の補正数は\pageref{p:U-117}ページの入力例に示すように
 \OFkeyword{nNonOrthogonalCorrectors}キーワードによって定めます．
 例えば，直交メッシュを$0$として非直交性の度合いによって
 最大で$20$まで増加するようにするなど

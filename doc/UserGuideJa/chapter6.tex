@@ -8,7 +8,7 @@ ParaViewを用いた後処理のユーティリティである
 \OFtool{paraFoam}が提供されており，
 これについては\autoref{sec:6.1}で述べています．
 後処理の別の方法としては，
-EnSightやAVS/Express等のサードパーティから供給されている製品を
+EnSightやFieldview等のサードパーティから供給されている製品を
 使う方法やFluentの後処理を使う方法があります．
 
 
@@ -28,7 +28,7 @@ OpenFOAMで提供されているメインの後処理用のツールは，
 オープンソースの可視化アプリケーションである
 ParaViewで走る読み込みのモジュールです．
 このモジュールは，OpenFOAMにより提供されているParaViewの
-バージョン3.3を用いている二つのライブラリである
+バージョン3.6.1を用いている二つのライブラリである
 \index{PV3FoamReader@\OFemph{PV3FoamReader}!ライブラリ}%
 \index{ライブラリ!PV3FoamReader@\OFemph{PV3FoamReader}}%
 \OFemph{PV3FoamReader}と
@@ -69,11 +69,9 @@ ParaViewを立ち上げる厳密なスクリプトです．
 他のOpenFoamのユーティリティ同様に，
 ルートディレクトリのパスまたは \texttt{-case}オプションと，
 引数としてのケース名を入力して実行されます
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 paraFoam -case <caseDir>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 ParaViewが立ち上がり，オープンすると\autoref{fig:6.1}のようになります．
 ケースは左側のパネルでコントロールされますが，
 それには次のような項目があります
@@ -474,11 +472,9 @@ OKを押すと，``\verb|<ファイル名>_<画像番号>.<拡張子>|'' とい�
 適当なソフトを使って動画に変換することができます．
 ImageMagickパッケージに含まれる変換ユーティリティは，
 以下のようにコマンドラインから実行できます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 convert animation*jpg movie.mpg
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 mpg動画を作成する際に初期設定の \verb|-quality 90%|から
 動画のクオリティを上げるといいでしょう．
 これによって粒状ノイズを削減することができます．
@@ -518,20 +514,20 @@ Fluentフォーマットに変換します．変換は，二つのファイル�
 \OFpath{foamDataToFluentDict}ディクショナリです．
 このファイルは，\OFpath{constant}ディレクトリに置かれています．
 \OFpath{foamDataToFluentDict}ディクショナリの例を以下に示します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum]
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
-| \\       / F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-| \\      /  O peration     | Version: 1.5                                    |
-|    \\ /    A nd           | Web:      http://www.OpenFOAM.org               |
-|     \\/    M anipulation |                                                  |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
     version    2.0;
     format     ascii;
     class      dictionary;
+    location   "system";
     object     foamDataToFluentDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -550,15 +546,13 @@ epsilon         6;
 
 gamma           150;
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ディクショナリは，次の形式のエントリを含んでいます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 <fieldName> <fluentUnitNumber>
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \verb|<fluentUnitNumber>|は，Fluentポストプロセッサが使うラベルです．
 Fluentは，ある決まったセットのフィールドしか認識しません．
 \verb|<fluentUnitNumber>|の数の基本的なセットは，
@@ -582,11 +576,9 @@ Fluentは，ある決まったセットのフィールドしか認識しませ�
 Fluentでその結果を見るためには，
 ケースのディレクトリの\OFpath{fluentInterface}サブディレクトリに移動して，
 3次元のバージョンのFluentを次のようにして開始します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 fluent 3d
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 メッシュとデータファイルは，ロードされ，その結果が可視化されます．
 メッシュは，FileメニューのRead Caseを選択することで読むことができます．
 あるデータタイプを読むためには，サポートアイテムを選択するべきです．
@@ -751,35 +743,31 @@ Grace/xmgr，gnuplot，jPlotのような様々な形式で書き出すことが�
 \/\OFpath{\$FOAM\_TUTORIALS/\allowbreak solidDisplacementFoam}の
 \OFpath{plateHole}チュートリアルのケースにも
 1D線型データ取得のための記述例があります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 interpolationScheme cellPoint;
 
-setFormat      raw;
+setFormat       raw;
 
 sets
 (
-   leftPatch
-   {
-        type           uniform;
-        axis           y;
-        start          (0 0.5 0.25);
-        end            (0 2 0.25);
-        nPoints        100;
-   }
+    leftPatch
+    {
+        type    uniform;
+        axis    y;
+        start   ( 0 0.5 0.25 );
+        end     ( 0 2 0.25 );
+        nPoints 100;
+    }
 );
 
-surfaces
-();
+surfaces        ();
 
-fields
-(
-   sigmaxx
-);
+fields          ( sigmaxx );
+
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{table}[ht]
@@ -913,9 +901,7 @@ Grace/xmgr，jPlotフォーマットがあります．
 ここから解かれる各々の方程式について，レポート行に，ソルバ名，
 解かれる変数，その初期と最終の残差，
 そして反復回数が書かれていることが読み取れます．
-\begin{OFterminal}
-\scriptsize
-\begin{verbatim}
+\begin{OFverbatim}[baselinestretch=0.8, leftskip=3em, weight=\small]
     Starting time loop
 
 Time = 0.005
@@ -949,8 +935,7 @@ time step continuity errors : sum local = 3.99028e-09, global = -5.69762e-19, cu
 ICCG: Solving for p, Initial residual = 0.0806771, Final residual = 9.47171e-07, No Iterations 31
 time step continuity errors : sum local = 7.92176e-09, global = 1.07533e-19, cumulative = -9.58537e-19
 ExecutionTime = 0.19 s
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 
 \subsection{計算実行用の\OFtool{foamJob}スクリプト}
@@ -966,22 +951,18 @@ ExecutionTime = 0.19 s
 \verb|<solver>|を指定して実行することで，
 計算がバックグラウンドで実行され，
 出力を\OFpath{log}という名前のファイルに記録します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 foamJob <solver>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 その他のオプションは，\verb|foamJob -h|を実行することで見ることができます．
 \OFpath{log}ファイルは，UNIX \texttt{tail}コマンドを用いることで
 見たいときに見ることができます．
 一般的には，followを意味する\verb|-f|オプションを
 一緒に用いることで\OFpath{log}ファイルに新しいデータが
 記録されるのを捉えることができます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 tail -f log
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 
 \subsection{計算モニタ用の\OFtool{foamLog}スクリプト}
@@ -995,11 +976,9 @@ tail -f log
 クーラン数のデータを抽出し，グラフにプロットできるように
 一連のファイルとして出力することができます．
 スクリプトは次のように実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 foamLog <logFile>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 ファイルは，ケースディレクトリの\OFpath{logs}という名前の
 サブディレクトリの中に保存されます．
 各々のファイルは，\OFpath{<var>\_<subIter>}という名前が付けられます．

@@ -20,24 +20,24 @@ OpenFOAMのサポートするサードパーティの後処理ツールでアク
 
 すべてのチュートリアルのコピーは
 OpenFOAMをインストールしたチュートリアルのディレクトリから利用できます．
-チュートリアルはソルバのサブディレクトリに組み込まれています．
+チュートリアルは，流れのタイプによるディレクトリと
+ソルバのサブディレクトリにまとめられています．
 例えば
 \index{icoFoam@\OFtool{icoFoam}!ソルバ}%
 \index{ソルバ!icoFoam@\OFtool{icoFoam}}%
-\OFtool{icoFoam}のすべてのケースはサブディレクトリの
-\OFpath{icoFoam}内にあります．
-ユーザには
+\OFtool{icoFoam}のケースはすべて
+\OFpath{incompressible/icoFoam}サブディレクトリの中に置かれています．
+ここでincompressibleが流れのタイプを表しています．
+ユーザがさまざまな例題を実施するときには，
 \index{tutorials@\OFpath{tutorials}!ディレクトリ}%
 \index{ディレクトリ!tutorials@\OFpath{tutorials}}%
-\OFpath{tutorials}のディレクトリをローカルの実行ディレクトリに
-コピーすることを強く勧めます．
+\OFpath{tutorials}ディレクトリをローカルの実行ディレクトリに
+コピーすることをお勧めします．
 そのためには，次のようにタイプすることで容易にコピーすることができます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 mkdir -p $FOAM_RUN
 cp -r $FOAM_TUTORIALS $FOAM_RUN
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 
 
 
@@ -62,9 +62,9 @@ cp -r $FOAM_TUTORIALS $FOAM_RUN
 これにより流れの
 \index{レイノルズすう@レイノルズ数}%
 レイノルズ数を増加させ，
-\index{turbFoam@\OFtool{turbFoam}!ソルバ}%
-\index{ソルバ!turbFoam@\OFtool{turbFoam}}%
-\OFtool{turbFoam}ソルバを
+\index{pisoFoam@\OFtool{pisoFoam}!ソルバ}%
+\index{ソルバ!pisoFoam@\OFtool{pisoFoam}}%
+\OFtool{pisoFoam}ソルバを
 \index{ながれ@流れ!らんりゅう@乱流}%
 乱流，等温，非圧縮性流れに使用します．
 
@@ -83,9 +83,6 @@ cp -r $FOAM_TUTORIALS $FOAM_RUN
 テキストエディタで作成・編集します．
 それは，入出力が初心者でもわかりやすいキーワードをもつ
 ディクショナリ形式が使われているからです．
-以前のバージョンでは\OFtool{FoamX}というGUIケースエディタがありましたが，
-利用者がエディタによって編集できるファイルを好んでおり，
-メンテナンスをあまりしないためバージョン1.5ではなくなりました．
 
 解析ケースはメッシュ，物理量，物性，制御パラメータなどの要素を
 含んでいますが\autoref{sec:4.1}において示すように，
@@ -94,14 +91,11 @@ OpenFOAMは一連のファイルセットとして解析ケースディレクト
 解析ケースのディレクトリには，
 (最初のチュートリアルの例題が単純にcavityであるように)
 わかりやすい名前を与えます．
-
 解析ケースを編集・実行する前の準備として，
 まず解析対象のディレクトリに移動します．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/icoFoam/cavity
-\end{verbatim}%$
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
+\end{OFverbatim}%$
 
 \subsubsection{メッシュ生成}
 \label{sssec:2.1.1.1}
@@ -136,12 +130,11 @@ OpenFOAMで提供されるメッシュ・ジェネレータ\OFtool{blockMesh}は
 \OFdictionary{blockMeshDict}で指定された
 記述からメッシュを生成します．
 このケースの\OFdictionary{blockMeshDict}は，以下のとおりです．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum]
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  1.5                                   |
+|  \\    /   O peration     | Version:  1.6                                   |
 |   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -201,8 +194,7 @@ mergePatchPairs
 );
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ファイルの最初はバナー（1--7行）形式のヘッダ情報で，
 ファイル情報は，波括弧 (\verb|{|\ldots\verb|}|) で囲まれる
 \OFsubdictionary{FoamFile}サブディクショナリの中で記述されます．
@@ -226,11 +218,9 @@ mergePatchPairs
 メッシュは\OFdictionary{blockMeshDict}ファイル上で
 \OFtool{blockMesh}を実行すると生成されます．
 ケースディレクトリ内から以下をターミナルに入力するだけです．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 blockMesh
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \OFtool{blockMesh}の実行状況はターミナルウインドウに表示されます．
 \index{blockMeshDict@\OFdictionary{blockMeshDict}!ディクショナリ}%
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
@@ -248,8 +238,7 @@ blockMesh
 \OFpath{0}には\OFpath{p}と\OFpath{U}の二つのファイルがあり，
 圧力 ($p$) と速度 ($U$) の初期値と境界条件を設定する必要があります．
 \OFpath{p}のファイルを例に説明します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
 dimensions      [0 2 -2 0 0 0 0];
 
 internalField   uniform 0;
@@ -273,8 +262,7 @@ boundaryField
 }
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 物理的条件のデータファイルには三つの主要な項目があります．
 \begin{description}
  \item[dimensions]
@@ -299,7 +287,7 @@ boundaryField
 (1) キャビティの固定された側面と底面用の\OFkeyword{fixedwall}と，
 (2) キャビティの駆動天井面用の\OFkeyword{movingwall}です．
 どちらも$p$が\OFkeyword{zeroGradient}ですが，
-これは圧力の勾配が$0$であるということです．
+これは圧力の境界に垂直な方向の勾配が$0$であるということです．
 \OFkeyword{frontAndBack}は2次元の問題の場合の表裏の平面を示していて，
 本ケースでは当然\OFkeyword{empty}となっています．
 
@@ -351,13 +339,13 @@ $\nu$は動粘性係数を表します．
 ここで，$d = 0.1\unit{m}$，$|\bm{U}| = 1\unit{m\,s^{-1}}$，
 $\nRe = 10$とすると，$\nu = 0.01\unit{m^{2}s^{-1}}$となります．
 動粘性係数の適切な設定は以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 nu              nu [0 2 -1 0 0 0 0] 0.01;
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 \subsubsection{制御}
 \label{sssec:2.1.1.4}
@@ -463,9 +451,9 @@ OpenFOAMは\autoref{sec:4.1}で議論するデータセットを
 \index{フィールド!p@\OFkeyword{p}}%
 \OFkeyword{p}の各項目ごとに結果を時刻ディレクトリに書き込みます．
 このケースでは，\OFdictionary{controlDict}の記述内容は以下のとおりです．
-\begin{OFfile}
-\begin{verbatim}
-application icoFoam;
+\begin{OFverbatim}[file, linenum=17]
+
+application     icoFoam;
 
 startFrom       startTime;
 
@@ -495,9 +483,9 @@ timePrecision   6;
 
 runTimeModifiable yes;
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 \subsubsection{離散化と線形ソルバの設定}
 \label{sssec:2.1.1.5}
@@ -532,23 +520,19 @@ runTimeModifiable yes;
 \index{paraFoam@\OFtool{paraFoam}}%
 \OFtool{paraFoam}で確認します．
 \OFtool{paraFoam}は解析ケースのディレクトリ上でターミナルから起動します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 paraFoam
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 あるいは，オプションに\texttt{-case}をつけることで
 他のディレクトリからでも起動することができます．
-\begin{OFterminal}
-\begin{verbatim}
-paraFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
-\end{verbatim}%$
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+paraFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
+\end{OFverbatim}%$
 
 \autoref{fig:6.1}に示すように\OFtool{ParaView}のウインドウが開きます．
 \index{Pipeline Browser@\OFemph{Pipeline Browser}!ウィンドウ}%
 \index{ウィンドウ!Pipeline Browser@\OFemph{Pipeline Browser}}%
-\OFemph{Pipeline Browser}を見ると，\OFtool{ParaView}が\OFkeyword{cavity.foam}，
+\OFemph{Pipeline Browser}を見ると，\OFtool{ParaView}が\OFkeyword{cavity.OpenFOAM}，
 つまりキャビティケースのモデュールを開いていることが確認できます．
 \emph{\OFemph{Apply}ボタンをクリックする前に}%
 \index{Region Status@\OFemph{Region Status}!ウィンドウパネル}%
@@ -558,8 +542,11 @@ paraFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
 解析ケースが単純なので\OFemph{Region Status}パネルのチェックボックスで
 全てのデータを選択することが簡単です．
 パネル内の全要素を自動的にチェックすることができます．
-
 \OFtool{ParaView}でジオメトリを読込むためには\OFemph{Apply}ボタンをクリックします．
+
+最初から適用されている一般的な設定については
+\autoref{sssec:6.1.5.1}を参照してください．
+
 \index{Display@\OFemph{Display}!ウィンドウパネル}%
 \index{ウィンドウパネル!Display@\OFemph{Display}}%
 \OFemph{Display}タブを開き選択したモジュールの表示形式を調整します．
@@ -584,7 +571,8 @@ paraFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
 \end{figure}
 
 
-\autoref{ssec:6.1.5}で述べるように視点操作を試してみましょう．
+ParaViewを使うのがはじめてならば，
+\autoref{ssec:6.1.5}で述べるように視点操作を試してみることをお勧めします．
 特に本ケースは2次元なので\OFkeyword{Edit}メニューの
 \index{View Settings@\OFkeyword{View Settings}!メニューエントリ}%
 \index{メニューエントリ!View Settings@\OFkeyword{View Settings}}%
@@ -592,7 +580,7 @@ paraFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
 \index{Use Parallel Projection@\OFemph{Use Parallel Projection}!ボタン}%
 \index{ボタン!Use Parallel Projection@\OFemph{Use Parallel Projection}}%
 \OFemph{Use Parallel Projection}を
-選択するのがよいでしょう．詳しくは\autoref{sssec:6.1.5.1}で述べます．
+選択するのがよいでしょう．
 軸の方向は，
 \index{Annotation@\OFemph{Annotation}!ウィンドウパネル}%
 \index{ウィンドウパネル!Annotation@\OFemph{Annotation}}%
@@ -624,20 +612,16 @@ OpenFOAMアプリケーションは二つの方法で実行することができ
 \OFtool{icoFoam}を動かしましょう．
 \OFtool{icoFoam}ソルバはケースディレクトリ内に入って，
 コマンドプロンプト上で
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 icoFoam
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 と入力することで実行できますが，
 
 あるいはオプションに\texttt{-case}をつけることで
 他のディレクトリからでも起動することができます．
-\begin{OFterminal}
-\begin{verbatim}
-icoFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
-\end{verbatim}%$
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
+\end{OFverbatim}%$
 ジョブの進捗は，ターミナルウインドウに表示されます．
 現在の時刻，最大クーラン数，全てのフィールドの初期値と最終的結果を表示します．
 
@@ -647,15 +631,13 @@ icoFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
 結果が時刻ディレクトリに書かれるとすぐに，
 \OFtool{paraFoam}を使って見ることができます．
 \OFtool{paraFoam}ウインドウに戻って，
-\texttt{cavity.foam}ケースモジュールのために
+\texttt{cavity.OpenFOAM}ケースモジュールの
 \index{Properties@\OFemph{Properties}!ウィンドウパネル}%
 \index{ウィンドウパネル!Properties@\OFemph{Properties}}%
 \OFemph{Properties}パネルを選んでください．
-ケースモジュールのためのパネルが存在していないようならば，
-\texttt{cavity.foam}が黄色でハイライトされているか，
-それと並んだ目のボタンに表示が有効であることを示す
-スイッチは入っているか，
-フォームのViewメニュー中でSourceが選ばれているか，
+ケースモジュールのパネルが存在していないようならば，
+\texttt{cavity.OpenFOAM}が青くハイライトされているか，
+それと並んだ目のボタンは表示が有効であることを示しているか，
 を確認してください．
 
 見たいデータを表示する\OFtool{paraFoam}を準備するには，
@@ -668,7 +650,7 @@ icoFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
 \OFemph{Update GUI}を選択し，
 緑のApplyボタンをクリックします． そうすれば時間データはロードされます．
 
-\subsubsection{コンタプロット}
+\subsubsection{等値面とコンタプロット}
 \label{sssec:2.1.4.1}
 圧力を見るには
 \index{Display@\OFemph{Display}!ウィンドウパネル}%
@@ -676,8 +658,8 @@ icoFoam -case $FOAM_RUN/tutorials/icoFoam/cavity
 \OFemph{Display}パネルを開き，
 選択したモジュールの表示形式を調整します．
 圧力分布を見るには\autoref{fig:2.4}に示すように
-StylePanelのRepresentationメニューをsurfaceにして
-ColorPanelのSet Color byを$\circ$p，
+\OFemph{Style}パネルのRepresentationメニューをsurfaceにして
+ColorPanelのSet Color byを \includegraphics{icon-point-p}，
 そして
 \index{Rescale to Data Range@\OFemph{Rescale to Data Range}!ボタン}%
 \index{ボタン!Rescale to Data Range@\OFemph{Rescale to Data Range}}%
@@ -696,7 +678,7 @@ ColorPanelのSet Color byを$\circ$p，
 
 圧力分布を作成するには\autoref{fig:2.4}に示すように
 StylePanelでRepresentationメニューからSurfaceを選択し，
-Colorパネルで$\circ$p，
+Colorパネルで \includegraphics{icon-point-p}，
 そしてRescale to Data RangeボタンによってColorを選択します．
 メニューバーの下のツールバーにあるVCR Controlsまたは
 Current timeを0.5にして$t = 0.5\unit{s}$における解析結果を表示します．
@@ -718,6 +700,15 @@ Color panelにあるEdit Color Map buttonをクリックすると
 フォントの大きさや種類，スケールの番号付けの形式など，
 カラーバーの設定を変更することができます．
 カラーバーはドラッグアンドドロップによりimageウインドウに置くことも可能です．
+
+最近のバージョンのParaViewでは，
+よく使われる青・緑・赤という（虹色の）カラースケールではなく，
+青から白そして赤へと変化するカラースケールがデフォルトになっています．
+そこで，はじめてParaViewを使うユーザはこのカラースケールを変えたいと思うでしょう．
+これは，\OFemph{Color Scale Editor}で\OFemph{Choose Preset}を選び，
+\OFemph{Blue to Red Rainbow}を選択することで変更できます．
+\OFemph{OK}ボタンで確定したあとに，\OFemph{Make Default}を押せば
+ParaViewはいつもこのタイプのカラーバーを使うようになります．
 
 イメージを回転をさせるとすべての表面に圧力分布で色づけされていることが
 確認できます．正しいコンタ図を得るために断面を作成するか，
@@ -795,23 +786,26 @@ ParaViewで後処理を続ける前に，
 上述のベクトルプロットのモジュールは不要なので削除しましょう．
 そうしたら，\autoref{ssec:6.1.8}の記述のように流速の流線をプロットしましょう．
 
-Pipeline Browserで\texttt{cavity.foam}モジュールをハイライトした状態で，
-FilterメニューからStream Tracerを選択し，Applyをクリックします．
+\OFemph{Pipeline Browser}で\texttt{cavity.OpenFOAM}モジュールをハイライトした状態で，
+\OFemph{Filter}メニューから\OFemph{Stream Tracer}を選択し，\OFemph{Apply}をクリックします．
 そうすると，\autoref{fig:2.8}に示すように
-Propatiesウィンドウが現れます．
-Seed点は，ジオメトリの中心を垂直に通って，
-Line Sourseに沿うように (例えば$(0.05, 0, 0.005)$から$(0.05, 0.1, 0.005)$
-まで) 指定しましょう．このガイドに掲載した図ではPoint Resolutionを21に，
-Max.PropagationをLengthで0.5に，Init.Step LenをCell Lengthで0.01に，
-Integration DirectionをBOTHという設定を行いました．
-また，Runge-Kutta 2 Integrator Typeはデフォルトパラメータを使いました．
+\OFemph{Propaties}ウィンドウが現れます．
+\OFemph{Seed}の点は，ジオメトリの中心を垂直に通って，
+\OFkeyword{Line Sourse}に沿うように (例えば$(0.05, 0, 0.005)$から
+$(0.05, 0.1, 0.005)$まで) 指定しましょう．
+このガイドに掲載した図では\OFemph{Point Resolution}を21に，
+\OFemph{Max Propagation}を\OFkeyword{Length}で0.5に，
+\OFemph{Initial Step Length}を\OFkeyword{Cell Length}で0.01に，
+\OFemph{Integration Direction}を\OFkeyword{BOTH}という設定を行いました．
+また，\OFkeyword{Runge-Kutta 2} \OFemph{Integrator Type}は
+デフォルトパラメータで使いました．
 
-Applyをクリックすると，トレーサが生成されます．そ
-こでFilterメニューからTubesを選択することで，
+\OFemph{Apply}をクリックすると，トレーサが生成されます．
+そこで\OFemph{Filter}メニューから\OFkeyword{Tubes}を選択することで，
 高品質の流線図を作ることができます．
 このレポートでは，次の設定を使いました．
-Num.sidesを20，Radiusを0.003，Radius factorを10にしました．
-Acceptを押すことで，\autoref{fig:2.9}ができます．
+\OFemph{Num.\ sides}を20，\OFemph{Radius}を0.003，\OFemph{Radius factor}を10にしました．
+\OFemph{Accept}を押すことで，\autoref{fig:2.9}ができます．
 
 
 \begin{figure}[ht]
@@ -841,22 +835,18 @@ Acceptを押すことで，\autoref{fig:2.9}ができます．
 \OFcase{cavity}をコピーし，
 修正することで解析ケース\OFcase{cavityFine}を作成します．
 まず\OFpath{cavity}と同じ階層に新しいディレクトリを作成します．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/icoFoam
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/incompressible/icoFoam
 mkdir cavityFine
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 基本となる解析ケース\OFpath{cavity}の内容を
 解析ケース\OFpath{cavityFine}にコピーし，
 \OFpath{cavityFine}に移動します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 cp -r cavity/constant cavityFine
 cp -r cavity/system cavityFine
 cd cavityFine
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 \subsubsection{細かいメッシュの作成}
 \label{sssec:2.1.5.2}
@@ -904,14 +894,11 @@ startFromをstartTimeにセットします．これらの変更を保存しま�
 ディレクトリを指定する必要があることがわかります．
 \texttt{-consistent}オプションを使うので，
 次のようにユーティリティは\OFpath{cavityFine}ディレクトリから実行される．
-\begin{OFterminal}
-n\begin{verbatim}
+\begin{OFverbatim}[terminal]
 mapFields ../cavity -consistent
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \OFtool{mapFields}が実行され次のように出力されるでしょう．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[baselinestretch=0.8, weight=\small]
 Source: ".." "cavity"
 Target: "." "cavityFine"
 
@@ -929,8 +916,7 @@ Consistently creating and mapping fields for time 0.5
     interpolating U
 
 End
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 \subsubsection{設定の調整}
 \label{sssec:2.1.5.4}
@@ -949,7 +935,7 @@ deltaTを\OFdictionary{controlDict}ディクショナリにて$0.0025\unit{s}$�
 \index{キーワードエントリ!runTime@\OFkeyword{runTime}}%
 \OFkeyword{runTime}を使って固定の計算時間を指定して結果を出力することができます．
 
-このケースでは$0.1\unit{s}$ごとの出力を指定します．
+このケースでは0.1ごとの出力を指定します．
 したがって，\OFkeyword{writeControl}を\OFkeyword{runTime}に，
 \index{writeInterval@\OFkeyword{writeInterval}!キーワード}%
 \index{キーワード!writeInterval@\OFkeyword{writeInterval}}%
@@ -964,12 +950,10 @@ deltaTを\OFdictionary{controlDict}ディクショナリにて$0.0025\unit{s}$�
 \OFtool{icoForm}をバックグラウンドプロセスとして動かしてみて，
 最終的な結果を後で見ることができるように\OFpath{log}ファイルに出力しましょう．
 \OFpath{cavitiyFine}ディレクトリにおいて次のコマンドを実行してください．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 icoFoam > log &
 cat log
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 \subsubsection{精密なメッシュによるベクトルプロット}
 \label{sssec:2.1.5.6}
@@ -982,23 +966,21 @@ cat log
 各々のケースは特定のディレクトリ構造の中に拡張子なしで
 複数のファイルに保存されます．
 解決方法として，\OFtool{paraFoam}スクリプトが自動的に拡張子
-`.OpenFOAM' が付いたダミーファイルを作成することになっています．
-それゆえに，cavityケースモジュールは
-cavity.OpenFOAMと呼ばれています．
+\OFpath{.OpenFOAM}が付いたダミーファイルを作成することになっています．
+それゆえに，\OFemph{cavity}ケースモジュールは
+\texttt{cavity.OpenFOAM}と名づけられます．
 
 \OFtool{ParaView}内から他のケースディレクトリを開けたいならば，
 そのようなダミーファイルを作成する必要があります．
 たとえば，\OFcase{cavityFine}ケースを読み込むには，
 コマンドプロンプトで次のようにタイプしてファイルを作成します．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/icoFoam
-touch cavityFine/cavityFine.foam
-\end{verbatim}%$
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/incompressible/icoFoam
+touch cavityFine/cavityFine.OpenFOAM
+\end{OFverbatim}%$
 
 こうしてFileメニューからOpen Dataを選んでディレクトリツリーをたどり，
-\texttt{cavityFine.foam}を選ぶことで，
+\texttt{cavityFine.OpenFOAM}を選ぶことで，
 cavityFineケースをParaViewに読み込めるようになりました．
 さて，\OFtool{ParaView}で精密なメッシュの結果の
 ベクトルプロットを作ることができます．
@@ -1023,33 +1005,32 @@ OpenFOAMは，速度のスカラ値を抽出して2次元のグラフに
 \index{ユーティリティ!foamCalc@\OFtool{foamCalc}}%
 \OFtool{foamCalc}によって組み合わせることができます．
 次のようにユーティリティを指定して実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 foamCalc <calcType> <fieldName1 ... fieldNameN>
-\end{verbatim}
-\end{OFterminal}
-処理を規定する\texttt{<calcType>}には\texttt{div}，
-\texttt{components}，\texttt{mag}，
-\texttt{magGrad}，\texttt{magSqr}を指定することができます．
+\end{OFverbatim}
+処理を規定する\texttt{<calcType>}には\texttt{addSubtract}，
+\texttt{randomise}，\texttt{div}，\texttt{components}，\texttt{mag}，
+\texttt{magGrad}，\texttt{magSqr}，\texttt{interpolate}を指定することができます．
 \texttt{<calcType>}のリストを見るには，
 意図的に無効な処理を要求することでエラーメッセージとともに見ることができます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[baselinestretch=0.8, weight=\small]
 >> foamCalc xxxx
 Selecting calcType xxxx
-    unknown calcType type xxxx, constructor not in hash table
-    Valid calcType selections are:
+unknown calcType type xxxx, constructor not in hash table
+Valid calcType selections are:
 
-
+8
 (
-div
-components
-mag
-magGrad
+randomise
 magSqr
+magGrad
+addSubtract
+div
+mag
+interpolate
+components
 )
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 \OFkeyword{comonents}および\OFkeyword{mag}の\OFkeyword{calcType}はスカラ速度を計測するのに有用です．
 ケースにて ``\texttt{foamCalc components U}'' を動かすと，
@@ -1062,11 +1043,9 @@ magSqr
 \OFtool{foamCalc}は\OFcase{cavity}と
 \OFcase{cavityFine}のどちらに対しても実行することができます．
 例として次のように入力し\OFcase{cavity}に対して実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 foamCalc components U -case $FOAM_RUN/tutorials1.5/icoFoam/cavity
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 それぞれのコンポーネントが\OFtool{ParaView}内でグラフとして描画されます．
 簡単に，早く，しかもラベル付けや形式化の調整ができるので，
 とても高性能な出力を表示ができます．
@@ -1078,18 +1057,18 @@ foamCalc components U -case $FOAM_RUN/tutorials1.5/icoFoam/cavity
 描画をする前に，新しく生成された\OFkeyword{Ux}，\OFkeyword{Uy}，\OFkeyword{Uz}のデータを
 \OFtool{ParaView}に読み込ませる必要があります．
 作業をしている基本のモジュール，
-この場合\texttt{cavity.foam}のPropertiesパネルの上部にある
-Update GUIボタンをチェックしします．
-ApplyをクリックすることでVol Field Statusウインドウに
+この場合\texttt{cavity.OpenFOAM}の\OFemph{Properties}パネルの上部にある
+\OFemph{Update GUI}ボタンをチェックしします．
+\OFemph{Apply}をクリックすることでVol Field Statusウインドウに
 新しいデータが読み込まれます．
 新しいデータの選択と変更の適用を確認し，
-必要ならApplyをもう一度クリックします．
-境界領域がRegion Statusパネルで選択されていると
+必要なら\OFemph{Apply}をもう一度クリックします．
+境界領域が\OFemph{Region Status}パネルで選択されていると
 境界部分のデータ補間が不適切に行われています．
 したがって\OFkeyword{movingwall}や\OFkeyword{fixedwall}，\OFkeyword{frontAndBack}といった
-Region Statusパネルのパッチの選択を解除して変更を適用します．
+\OFemph{Region Status}パネルのパッチの選択を解除して変更を適用します．
 
-さて，\OFtool{ParaView}の図を描画しましょう．
+さて，\OFtool{ParaView}でグラフを表示してみましょう．
 まずは描画したいモジュールを選択し，
 \index{Plot Over Line@\OFkeyword{Plot Over Line}!メニューエントリ}%
 \index{メニューエントリ!Plot Over Line@\OFkeyword{Plot Over Line}}%
@@ -1101,7 +1080,7 @@ Plobelineモジュールが作成されます．
 Point2を$(0.05, 0.1, 0.005)$と指定して線を領域の中心の真上におきます．
 Resolutionは100まで設定できます．
 
-ApplyをクリックするとXY Plotウインドウに図が描画されます．
+ApplyをクリックするとXY Plotウインドウにグラフが描画されます．
 Displayパネルの
 \index{Plot Type@\OFkeyword{Plot Type}!メニュー}%
 \index{メニュー!Plot Type@\OFkeyword{Plot Type}}%
@@ -1130,11 +1109,19 @@ DisplaysウインドウのLine Seriesパネルから
 拡大することができます．
 フォントや色，軸名の位置，軸の値の範囲や線形か対数かといった
 設定が行うことができます．
+
 \autoref{fig:2.11}は\OFtool{ParaView}によって作画された図です．
 望みどおりのグラフが作成できます．
 \autoref{fig:2.11}は軸のオプションとして
 Standard type of Notation，Specify Axis Rangeを選択し，
 フォントはSans Serifの12ポイントです．
+このグラフは点で表示していますが，
+\OFemph{Display}ウィンドウで\OFemph{Enable Line Series}ボタンを
+有効にすれば線で表示できます．
+注：もしこのボタンが，グレー表示で無効の状態になっていたら，
+\OFemph{Line Series}パネルでどれか変数を選択すれば有効になります．
+\OFemph{Enable Line Series}ボタンを選択しておけば，
+\OFemph{Line Style}や\OFemph{Marker Style}もユーザの好で調整できます．
 
 
 \begin{figure}[ht]
@@ -1173,7 +1160,7 @@ $20 \times 20$セルのメッシュを作り，
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
 \OFdictionary{blockMeshDict}ディクショナリの書換えはとても重要であるので，
 チュートリアルのこの部分を使ったケース (\OFpath{cavityGrade}) は
-\OFpath{\$FOAM\_RUN/tutorials/icoFoam}ディレクトリに入れておきました．
+\OFpath{\$FOAM\_RUN/tutorials/incompressible/icoFoam}ディレクトリに入れておきました．
 
 \subsubsection{勾配メッシュの作成}
 \label{sssec:2.1.6.1}
@@ -1194,8 +1181,7 @@ $20 \times 20$セルのメッシュを作り，
 念のため\OFdictionary{blockMeshDict}の重要な要素を以下に述べます．
 それぞれのブロックは$x$方向，$y$方向に10セルを有し，
 もっとも大きなセルともっとも小さなセルとの大きさの比は2です．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
 convertToMeters 0.1;
 
 vertices
@@ -1266,8 +1252,7 @@ mergePatchPairs
 );
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 いったんこのケースの\OFdictionary{blockMeshDict}ファイルを理解しておけば，
 後はコマンドラインから\OFtool{blockMesh}を実行できます．
 \autoref{ssec:2.1.2}に示した\OFtool{paraFoam}を使用することで
@@ -1303,7 +1288,7 @@ mergePatchPairs
  \label{eq:2.7}
   \alpha =
   \begin{cases}
-   R^{n} & \text{for}\ R > 1, \\
+   R & \text{for}\ R > 1, \\
    1 - r^{-1} + r^{-1} & \text{for}\ R < 1.
   \end{cases}
 \end{align}
@@ -1344,12 +1329,10 @@ $3.45\unit{ms}$以下にしなければなりません．
 \OFcase{cavityGrade}ケースのメッシュにマッピングします．
 以下のように\OFpath{cavityGrade}ディレクトリに入り，
 \OFtool{mapFields}を実行してください．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/icoFoam/cavityGrade
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavityGrade
 mapFields ../cavityFine -consistent
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 今度は，ケースディレクトリから\OFtool{icoFoam}を実行します．
 そして，ランタイム情報をモニタリングします．
 そして，このケースの完全に収束した結果を見て，
@@ -1367,12 +1350,10 @@ mapFields ../cavityFine -consistent
 収束解を得るのにより長い時間を要することになります．
 そこで\OFcase{cavity}ケースのメッシュを初期条件として使用することとします．
 \OFpath{cavity}ケースディレクトリを\OFpath{cavityHighRe}という名前でコピーします．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/icoFoam
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/incompressible/icoFoam
 cp -r cavity cavityHighRe
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 
 \subsubsection{後処理}
 \label{sssec:2.1.7.1}
@@ -1413,13 +1394,11 @@ cp -r cavity cavityHighRe
 ログアウトしてジョブを実行し続けることができます．
 一方，\texttt{nice}は優先度を19に設定します．
 試しに，以下のようにコマンドを実行してみましょう．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/icoFoam
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/incompressible/icoFoam
 nohup nice -n 19 icoFoam > log &
 cat log
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 お気づきかもしれませんが，前述の解析方法では\OFtool{icoFoam}は，
 速度\OFkeyword{U}の計算が止まっても，
 それよりもずっと長い間もしくは解析が終わるまで
@@ -1437,8 +1416,7 @@ cat log
 初期の圧力残差は小さくなります．
 \OFpath{log}において\verb|No Iterations 0|は，
 \OFkeyword{U}の計算が止まったことを示しています．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum]
 
 Time = 1.63
 
@@ -1473,8 +1451,7 @@ No Iterations 14
 time step continuity errors : sum local = 3.45666e-09, global = -5.62297e-19,
 cumulative = 1.05929e-17
 ExecutionTime = 1.02 s  ClockTime = 1 s
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{高レイノルズ数流れ}
@@ -1510,12 +1487,12 @@ ExecutionTime = 1.02 s  ClockTime = 1 s
 乱流エネルギ$k$，
 \index{らんりゅう@乱流!しょうさん@消散}%
 乱流消散速度$\varepsilon$です．
-乱流のための追加の方程式およびモデルは\OFtool{turbFoam}と呼ばれる
+乱流のための追加の方程式およびモデルは\OFtool{pisoFoam}と呼ばれる
 OpenFOAMソルバにおいて実行されます．
 
 \subsubsection{前処理}
 \label{sssec:2.1.8.1}
-\OFpath{\$FOAM\_RUN/tutorials/turbFoam}ディレクトリの
+\OFpath{\$FOAM\_RUN/tutorials/incompressible/pisoFoam/ras}ディレクトリの
 \OFpath{cavity}ケースに移動します．
 これまでと同様に，\OFtool{blockMesh}を走らせ，
 メッシュを生成します．
@@ -1523,20 +1500,56 @@ OpenFOAMソルバにおいて実行されます．
 壁近傍のセルにおける流れがモデル化されることにより，
 壁方向へのメッシュ勾配は必ずしも必要ではありません．
 
-$k$と$\varepsilon$のファイル (\OFpath{0/k}と\OFpath{0/epsilon}) を開き，
+バージョン1.6から，
+壁関数は個別のパッチの境界条件として設定するようになり，
+壁関数の範囲を指定することが可能になりました．
+これにより，異なる壁面に異なる壁関数モデルを適用することが可能になります．
+壁関数の選択は，乱流粘性係数$\nu_{\mathrm{t}}$の
+ファイル\OFpath{0/nut}で指定します．
+\begin{OFverbatim}[file, linenum=17]
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    movingWall
+    {
+        type            nutWallFunction;
+        value           uniform 0;
+    }
+    fixedWalls
+    {
+        type            nutWallFunction;
+        value           uniform 0;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //
+\end{OFverbatim}
+このケースでは，\OFkeyword{movingWall}と\OFkeyword{fixedWalls}のパッチに対して
+\OFkeyword{nutWallFunction}キーワードエントリで標準的な壁関数を指定しています．
+これ以外の壁関数モデルとしては，
+粗壁面の壁関数\OFkeyword{nutRoughWallFunction}などがあります．
+
+次に，$k$と$\varepsilon$のファイル (\OFpath{0/k}と\OFpath{0/epsilon}) を開き，
 境界条件を確かめます．
 壁タイプの境界条件の選択には，
-$\varepsilon$については\OFkeyword{zeroGradient}境界条件を，
-$k$については\OFkeyword{fixedValue 0}を指定します．
-いかにして$k$と$\varepsilon$の初期値を決めるでしょうか．
-しかし，$k$，$\varepsilon$については，
-解法アルゴリズムにてゼロ除算を避けるために，非ゼロの値を与えます．
-
-$k$，$\varepsilon$の適当な初期条件は，
+$\varepsilon$については\OFkeyword{epsilonWallFunction}境界条件を，
+$k$については\OFkeyword{kqRWallFunction}を指定します．
+後者は乱流運動エネルギの表現$k$，$q$，
+あるいはレイノルズ応力$R$のいずれにも適用できる一般的な壁関数です．
+$k$，$\varepsilon$の初期条件には，
 速度変動$\bm{U}'$と
 \index{らんりゅう@乱流!ながさスケール@長さスケール}%
-乱流長さスケール$l$を用いて設定することができ，
-次式に示すように表されます．
+乱流長さスケール$l$から推測した値を設定します．
+$k$と$\varepsilon$は，これらのパラメタを用いて次式で表されます．
 \begin{align}
  \label{eq:2.8}
   k &= \frac{1}{2}\overline{\bm{U}' \cdot \bm{U}'} \\
@@ -1568,6 +1581,46 @@ $20\unit{\%}$に等しいとすると，次のように表されます．
 上記のとおり$k$，$\varepsilon$を設定してください．
 $U$と$p$に対する初期条件は前と同じように，
 それぞれ$(0, 0, 0)$と$0$です．
+バージョン1.6より以前のOpenFOAMでは，
+RASやlarge-edy simulation (LES) のような，
+乱流モデルのタイプはソルバによって決まっていました．
+これにより，RAS乱流モデルを採用していたほとんどのソルバに
+LESモデルを採用した同等のソルバが存在し，
+ソルバのコードに多くの重複がみられました．
+しかし，バージョン1.6からは，
+実行時に\OFpath{turbulenceProperties}ディクショナリで
+\OFkeyword{simulationType}キーワードを設定することにより，
+乱流のモデリング手法を選択できるようになりました．
+このファイルは\OFpath{constant}ディレクトリに存在します．
+\begin{OFverbatim}[file, linenum=17]
+
+simulationType  RASModel;
+
+
+// ************************************************************************* //
+\end{OFverbatim}
+\OFkeyword{simulationType}の選択肢は\OFkeyword{laminar}，
+\OFkeyword{RASModel}，そして\OFkeyword{LESModel}です．
+このケースで選択されている\OFkeyword{RASModel}の場合，
+RASモデリングの選択は
+\index{RASProperties@\OFdictionary{RASProperties}!ディクショナリ}%
+\index{ディクショナリ!RASProperties@\OFdictionary{RASProperties}}%
+\OFpath{RASProperties}ファイルに記述します．
+このファイルも同じく\OFpath{constant}ディレクトリにあります．
+\index{らんりゅう@乱流!モデル}%
+乱流モデルは\autoref{tbl:3.9}に示されている多くの使用可能なモデルから，
+\OFkeyword{RASModel}エントリで選択します．
+ここでは，標準$k$--$\varepsilon$モデルである\OFkeyword{kEpsilon}を選択します．
+\OFkeyword{turbulence}のスイッチが\OFkeyword{on}になっていることも確認します．
+乱流モデルに必要な係数には，それぞれのコードの中でデフォルト値が与えられています．
+\OFkeyword{printCoeffs}というオプションのスイッチを\OFkeyword{on}にすると，
+実行時に乱流モデルが呼ばれたときに，これらのデフォルト値が標準出力，
+すなわちターミナルに出力されるようになります．
+これらの係数は，モデル名に\OFkeyword{Coeffs}をつけた名前
+（たとえば\OFkeyword{kEpsilon}モデルなら\OFkeyword{kEpsilonCoeffs}）
+のサブディクショナリとして表示されます．
+モデルの係数は，必要に応じて\OFdictionary{RASProperties}ディクショナリに
+サブディクショナリを追加し，値を適宜調整することで変更することができます．
 
 次いで，
 \index{transportProperties@\OFdictionary{transportProperties}!ディクショナリ}%
@@ -1579,19 +1632,7 @@ $U$と$p$に対する初期条件は前と同じように，
 \autoref{eq:2.1} のレイノルズ数の定義式に示されるように，
 動粘性係数を$10^{-5}\unit{m^{2}s^{-1}}$にする必要があります．
 
-\index{RASProperties@\OFdictionary{RASProperties}!ディクショナリ}%
-\index{ディクショナリ!RASProperties@\OFdictionary{RASProperties}}%
-\OFdictionary{RASProperties}ディクショナリを開き，RAS乱流モデルを選択します．
-\index{らんりゅう@乱流!モデル}%
-乱流モデルは\OFkeyword{RASModel}エントリで選択されます．
-\autoref{tbl:3.9}に示すように
-多くの使用可能なモデルが与えられています．
-ユーザは標準$k$--$\varepsilon$モデルを表す\OFkeyword{kEpsilon}をここでは選択します．
-そして，\OFkeyword{turbulence}のスイッチを\OFkeyword{on}にします．
-乱流モデルに関する係数は標準ディクショナリの\OFkeyword{kEpsilonCoeffs}以下に，
-また，同ディクショナリに\OFkeyword{wallFunctionCoeffs}の設定もあります．
-
-次いで，
+最後に，
 \index{controlDict@\OFdictionary{controlDict}!ディクショナリ}%
 \index{ディクショナリ!controlDict@\OFdictionary{controlDict}}%
 \OFdictionary{controlDict}の\OFkeyword{startTime}，
@@ -1602,8 +1643,8 @@ $U$と$p$に対する初期条件は前と同じように，
 
 \subsubsection{コードの実行}
 \label{sssec:2.1.8.2}
-ケースディレクトリに入り，\texttt{turbFoam}とタイプすることで
-\OFtool{turbFoam}を実行します．
+ケースディレクトリに入り，\texttt{pisoFoam}とタイプすることで
+\OFtool{pisoFoam}を実行します．
 粘性が小さいこの計算ケースでは，
 移動している上面近傍の境界層は極めて薄く，
 そして，上面に面するセルは比較的大きいことから，
@@ -1615,7 +1656,7 @@ $U$と$p$に対する初期条件は前と同じように，
 解析時間を増やすことは理にかなっています．
 したがって，\OFkeyword{deltaT}を$0.02\unit{s}$にセットしなおし，
 これに伴い，\OFkeyword{startFrom}を\OFkeyword{latestTime}にセットします．
-本操作は，\OFtool{turbFoam}が最新のディレクトリ，例えば\OFpath{10.0}，
+本操作は，\OFtool{pisoFoam}が最新のディレクトリ，例えば\OFpath{10.0}，
 からスタートデータを読み込むように指示するものです．
 \OFkeyword{endTime}は層流条件よりも収束に時間を要するため，
 $20\unit{s}$にセットします．
@@ -1646,9 +1687,7 @@ $20\unit{s}$にセットします．
 このケースは，標準的な\OFcase{cavity}ケースからなりますが，
 底部右側，長さ$0.04\unit{m}$の正方形を除いたものであり，
 \OFdictionary{blockMeshDict}は以下のようになっています．
-\begin{OFfile}
-\begin{verbatim}
- // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+\begin{OFverbatim}[file, linenum=17]
  convertToMeters 0.1;
 
  vertices
@@ -1661,6 +1700,7 @@ $20\unit{s}$にセットします．
     (0 1 0)
     (0.6 1 0)
     (1 1 0)
+
     (0 0 0.1)
     (0.6 0 0.1)
     (0 0.4 0.1)
@@ -1712,9 +1752,9 @@ $20\unit{s}$にセットします．
  mergePatchPairs
  (
  );
+
  // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \OFtool{blockMesh}を実行してメッシュを生成します．
 パッチは\OFcase{cavity}ケースと同様に設定されています．
 物理量の適用の過程を明確にするために，
@@ -1731,12 +1771,10 @@ $20\unit{s}$にセットします．
 時刻$0.5\unit{s}$に予定されています．
 したがって初期状態の物理量のデータ，
 たとえば時刻0からをコピーする必要があります．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/icoFoam/cavityClipped
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavityClipped
 cp -r 0 0.5
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 
 データをマッピングする前に$0.5\unit{s}$における形状と
 物理量の状況をみておきましょう．
@@ -1751,14 +1789,12 @@ cp -r 0 0.5
 \OFcase{cavityClipped}において\OFkeyword{lid}の境界値を
 \OFcase{cavity}の\OFkeyword{movingWall}から
 引き継ぎたいので次のように\OFpath{patchMap}に記述します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 patchMap
 (
    lid movingWall
 );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{figure}[ht]
@@ -1779,20 +1815,16 @@ patchMap
 \OFkeyword{cuttingPatches}リストは，対象パッチを削除した，
 元の場の内部の値を写像した対象のパッチを含みます．
 本ケースでは，\OFkeyword{fixedWalls}を内挿プロセスの実例説明に用いることとします．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 cuttingPatches
 (
   fixedWalls
 );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ここで，\OFtool{mapFields}を次のコマンドから実行することができます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 mapFields ../cavity
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \autoref{fig:2.13}に示すような場を確認することができます．
 境界パッチは，期待したように元のケースからの値が引き継がれています．
 この実例において，\OFkeyword{fixedWalls}パッチの速度を$(0, 0, 0)$に
@@ -1898,17 +1930,14 @@ OpenFOAMでは全てのジオメトリが3次元で生成されます．
 \end{figure}
 
 
-\OFpath{\$FOAM\_RUN/tutorials/solidDisplacementFoam}ディレクトリの
+\OFpath{\$FOAM\_RUN/tutorials/stressAnalysis/solidDisplacementFoam}ディレクトリの
 \OFpath{plateHole}ケースに移動し，\OFpath{plateHole}ケースの
 \OFpath{constant/polyMesh/blockMeshDict}をエディタで開きます．
 \OFdictionary{blockMeshDict}ディクショナリのエントリを以下に示します．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+\begin{OFverbatim}[file, linenum=17]
 convertToMeters 1;
 
-vertices
+vertices        
 (
     (0.5 0 0)
     (1 0 0)
@@ -1934,7 +1963,7 @@ vertices
     (0 0.5 0.5)
 );
 
-blocks
+blocks          
 (
     hex (5 4 9 10 16 15 20 21) (10 10 1) simpleGrading (1 1 1)
     hex (0 1 4 5 11 12 15 16) (10 10 1) simpleGrading (1 1 1)
@@ -1943,7 +1972,7 @@ blocks
     hex (9 4 7 8 20 15 18 19) (10 20 1) simpleGrading (1 1 1)
 );
 
-edges
+edges           
 (
     arc 0 5 (0.469846 0.17101 0)
     arc 5 10 (0.17101 0.469846 0)
@@ -1955,34 +1984,34 @@ edges
     arc 15 20 (0.34202 0.939693 0.5)
 );
 
-patches
+patches         
 (
-    symmetryPlane left
+    symmetryPlane left 
     (
         (8 9 20 19)
         (9 10 21 20)
     )
-    patch right
+    patch right 
     (
         (2 3 14 13)
         (3 6 17 14)
     )
-    symmetryPlane down
+    symmetryPlane down 
     (
         (0 1 12 11)
         (1 2 13 12)
     )
-    patch up
+    patch up 
     (
         (7 8 19 18)
         (6 7 18 17)
     )
-    patch hole
+    patch hole 
     (
         (10 5 16 21)
         (5 0 11 16)
     )
-    empty frontAndBack
+    empty frontAndBack 
     (
         (10 9 4 5)
         (5 4 1 0)
@@ -2002,8 +2031,7 @@ mergePatchPairs
 );
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ここまで前のチュートリアルのように
 直線的なエッジの形状を対象としてきましたが，
 本チュートリアルでは曲線のエッジについて定義する必要があります．
@@ -2059,8 +2087,7 @@ mergePatchPairs
 熱抵抗を考慮しない応力解析では，
 変位\OFkeyword{D}のみ設定する必要があります．
 \OFpath{0/D}のファイルは以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
 dimensions      [0 1 0 0 0 0 0];
 
 internalField   uniform (0 0 0);
@@ -2103,8 +2130,7 @@ boundaryField
 }
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 まず，変位の初期条件が$(0, 0, 0)\unit{m}$になっています．
 \OFpath{Constant/polyMesh/boundaries}のメッシュの記述にあるように，
 \OFkeyword{left}と\OFkeyword{down}のパッチは
@@ -2188,8 +2214,8 @@ OpenFOAMが熱方程式を解くべきかどうかを実行時に指定します
 \index{controlDict@\OFdictionary{controlDict}!ディクショナリ}%
 \index{ディクショナリ!controlDict@\OFdictionary{controlDict}}%
 \OFdictionary{controlDict}のエントリは以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 application     solidDisplacementFoam;
 
 startFrom       startTime;
@@ -2222,9 +2248,9 @@ graphFormat     raw;
 
 runTimeModifiable yes;
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 \subsubsection{離散化スキームおよび線形方程式ソルバ制御}
 \label{sssec:2.2.1.5}
@@ -2257,11 +2283,11 @@ runTimeModifiable yes;
 \index{leastSquares@\OFkeyword{leastSquares}!キーワード}%
 \index{キーワード!leastSquares@\OFkeyword{leastSquares}}%
 \OFkeyword{leastSquares}を選択してください．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 d2dt2Schemes
 {
-    default     steadyState;
+    default         steadyState;
 }
 
 gradSchemes
@@ -2301,14 +2327,14 @@ fluxRequired
     T               no;
 }
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
+\OFpath{system}ディレクトリにある
 \OFdictionary{fvSolution}ディクショナリは，
 線形方程式ソルバおよび求解に使用されるアルゴリズムを制御します．
-まず\OFsubdictionary{solvers}サブディクショナリを見て，
-\OFrevision{要再訳}%%
-\OFkeyword{U}のソルバとして\OFkeyword{ICCG}を選択してください．
+まず\OFsubdictionary{solvers}サブディクショナリを見ると，
+\OFkeyword{D}のソルバが\OFkeyword{GAMG}になっていることがわかります．
 \index{tolerance@\OFkeyword{tolerance}!キーワード}%
 \index{キーワード!tolerance@\OFkeyword{tolerance}}%
 \OFkeyword{tolerance}で表される
@@ -2322,40 +2348,35 @@ fluxRequired
 また個別の反復的手順の一部としてアップデートされるため，
 各反復において厳しい相対許容値を設定することは非効率的です．
 したがって相対許容値として合理的な値は$0.01$，
-もしくはさらに高い値の$0.1$等となります．
-\begin{OFfile}
-\begin{verbatim}
+もしくはさらに高めの$0.1$，
+あるいはせいぜいこのケースのように$0.9$程度にしておきます．
+\begin{OFverbatim}[file, linenum=17]
+
 solvers
 {
-    D GAMG
+    D
     {
-        tolerance        1e-06;
-        relTol           0.9;
-
-        smoother         GaussSeidel;
-
+        solver          GAMG;
+        tolerance       1e-06;
+        relTol          0.9;
+        smoother        GaussSeidel;
         cacheAgglomeration true;
-
         nCellsInCoarsestLevel 20;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+    }
 
-        agglomerator     faceAreaPair;
-        mergeLevels      1;
-    };
-
-    T GAMG
+    T
     {
-        tolerance        1e-06;
-        relTol           0.9;
-
-        smoother         GaussSeidel;
-
+        solver          GAMG;
+        tolerance       1e-06;
+        relTol          0.9;
+        smoother        GaussSeidel;
         cacheAgglomeration true;
-
         nCellsInCoarsestLevel 20;
-
-        agglomerator     faceAreaPair;
-        mergeLevels      1;
-    };
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+    }
 }
 
 stressAnalysis
@@ -2365,9 +2386,9 @@ stressAnalysis
     D               1e-06;
 }
 
+
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \OFdictionary{fvSolution}ディクショナリは，
 アプリケーションソルバに特有の制御パラメータを含む
 \OFsubdictionary{stressAnalysis}サブディクショナリを含みます．
@@ -2389,12 +2410,10 @@ stressAnalysis
 以下に示すようなコマンドによって，
 実行後にログファイルに記録された収束状況を見ることができるよう，
 バックグラウンドでコードを実行します．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/solidDisplacementFoam/plateHole
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/stressAnalysis/solidDisplacementFoam/plateHole
 solidDisplacementFoam > log &
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 実行後には生成されたログファイルを見て，
 反復回数および解を求める各方向変位の初期・最終残差などの
 収束状況を確認します．
@@ -2420,11 +2439,9 @@ $\sigma_{xx}$は\OFkeyword{sigmaxx}と名付けられます．
 
 独立したスカラ成分の$\sigma_{xx}$や$\sigma_{xy}$などは，
 \autoref{sssec:2.1.5.7}で述べた\OFtool{foamCalc}を\OFkeyword{sigma}に関して実行して求めます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 foamCalc components sigma
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \OFkeyword{sigmaxx}や\OFkeyword{sigmaxy}などと名づけられた成分の
 ファイルが時間のディレクトリに生成されます．
 \autoref{fig:2.18}のように応力を\OFtool{paraFoam}で見ることができます．
@@ -2448,46 +2465,45 @@ foamCalc components sigma
 データのサンプリングを行う座標区間は，
 \OFkeyword{sets}によって$(0.0, 0.5, 0.25)$から$(0.0, 2.0, 0.25)$に指定されています．
 物理量は\OFkeyword{fields}に指定します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 interpolationScheme cellPoint;
-setFormat raw;
+
+setFormat       raw;
 
 sets
 (
-   leftPatch
-   {
-       type uniform;
-       axis y;
-       start (0 0.5 0.25);
-       end (0 2 0.25);
-       nPoints 100;
-   }
+    leftPatch
+    {
+        type    uniform;
+        axis    y;
+        start   ( 0 0.5 0.25 );
+        end     ( 0 2 0.25 );
+        nPoints 100;
+    }
 );
 
-surfaces
-();
+surfaces        ();
 
-fields
-(
-   sigmaxx
-);
+fields          ( sigmaxx );
+
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 通常通り\OFtool{sample}を実行してください．
 \index{writeFormat@\OFkeyword{writeFormat}!キーワード}%
 \index{キーワード!writeFormat@\OFkeyword{writeFormat}}%
 \OFkeyword{writeFormat}は\OFkeyword{raw}形式で2列のフォーマットとなっています．
+データは\OFpath{sets}ディレクトリの時刻サブディレクトリの中のファイルに書き込まれます．
+たとえば，時刻$t = 100\unit{s}$のデータは
+\OFpath{sets/100/leftPatch\_sigmaxx.xy}に書き込まれます．
 GnuPlotのようなアプリケーションでは，
-コマンドプロンプトで以下を入力することで
+コマンドプロンプトで以下を入力することで，
 数値解および解析解の両方をプロットすることができます．
-\begin{OFterminal}
-\begin{verbatim}
-plot [0.5:2] '<datafile>', 1e4*(1+(0.125/(x**2))+(0.09375/(x**4)))
-\end{verbatim}
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+plot [0.5:2] [0:] 'sets/100/leftPatch_sigmaxx.xy',
+     1e4*(1+(0.125/(x**2))+(0.09375/(x**4)))
+\end{OFverbatim}
 プロット例を\autoref{fig:2.19}に示します．
 
 
@@ -2549,7 +2565,7 @@ $x$，$y$方向それぞれのメッシュ解像度を増やしてみましょ�
 Volume of fluid (VOF) 法によるものであり，
 ここでは特別な輸送方程式を解いて，
 計算格子における2相の体積分率，
-もしくは相比率を決定します．
+もしくは相比率$\alpha_{1}$を決定します．
 各物理量は，この相比率に（各流体の）密度をかけた
 平均的な値として算出されます．
 個々の物質の界面は，VOF法ではその性質上明示的には解かれず，
@@ -2575,18 +2591,16 @@ Volume of fluid (VOF) 法によるものであり，
 
 \subsection{格子の生成}
 \label{ssec:2.3.1}
-\OFpath{\$FOAM\_RUN/tutorials/interFoam}にある
+\OFpath{\$FOAM\_RUN/tutorials/multiphase/interFoam/laminar}にある
 \OFpath{damBreak}のケースディレクトリに移動しましょう．
 前に述べた方法で\OFtool{blockMesh}を走らせて格子を生成してください．
 この\OFtool{damBreak}の格子は五つのブロックで構成されます．
 \OFdictionary{blockMeshDict}の中身を以下に示します．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+\begin{OFverbatim}[file, linenum=17]
 
 convertToMeters 0.146;
 
-vertices
+vertices        
 (
     (0 0 0)
     (2 0 0)
@@ -2614,7 +2628,7 @@ vertices
     (4 4 0.1)
 );
 
-blocks
+blocks          
 (
     hex (0 1 5 4 12 13 17 16) (23 8 1) simpleGrading (1 1 1)
     hex (2 3 7 6 14 15 19 18) (19 8 1) simpleGrading (1 1 1)
@@ -2623,23 +2637,23 @@ blocks
     hex (6 7 11 10 18 19 23 22) (19 42 1) simpleGrading (1 1 1)
 );
 
-edges
+edges           
 (
 );
 
-patches
+patches         
 (
-    wall leftWall
+    wall leftWall 
     (
         (0 12 16 4)
         (4 16 20 8)
     )
-    wall rightWall
+    wall rightWall 
     (
         (7 19 15 3)
         (11 23 19 7)
     )
-    wall lowerWall
+    wall lowerWall 
     (
         (0 1 13 12)
         (1 5 17 13)
@@ -2647,7 +2661,7 @@ patches
         (2 14 18 6)
         (2 3 15 14)
     )
-    patch atmosphere
+    patch atmosphere 
     (
         (8 20 21 9)
         (9 21 22 10)
@@ -2660,8 +2674,7 @@ mergePatchPairs
 );
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{境界条件}
@@ -2688,10 +2701,10 @@ mergePatchPairs
 
 \OFtool{interFoam}のソルバが，界面と壁面との接点における
 表面張力に対するモデルを含んでいる，というのがよい例です．
-このモデルは\OFkeyword{gamma} ($\gamma$) 場の
-\index{gammaContactAngle@\OFboundary{gammaContactAngle}!きょうかいじょうけん@境界条件}%
-\index{きょうかいじょうけん@境界条件!gammaContactAngle@\OFboundary{gammaContactAngle}}%
-\OFboundary{gammaContactAngle}の境界条件と関連付けられています．
+このモデルは\OFkeyword{alpha1} ($\alpha_{1}$) 場の
+\index{alphaContactAngle@\OFboundary{alphaContactAngle}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!alphaContactAngle@\OFboundary{alphaContactAngle}}%
+\OFboundary{alphaContactAngle}の境界条件と関連付けられています．
 その場合，静的な接触角度\OFkeyword{theta0} $\theta_{0}$や，
 前縁や後縁における動的な接触角度である
 \OFkeyword{thetaA} $\theta_{\mathrm{A}}$と\OFkeyword{thetaR} $\theta_{\mathrm{B}}$，
@@ -2704,7 +2717,7 @@ mergePatchPairs
 速度比例係数を$0$と設定することで可能です．
 しかしながら，壁の境界条件として，
 通常の\OFkeyword{wall}タイプの境界条件を指定する別なやり方もあります．
-この場合，\OFkeyword{gamma}に対して\OFkeyword{gammaContact}の境界条件を設定する代わり，
+この場合，\OFkeyword{alpha1}に対して\OFkeyword{alphaContactAngle}の境界条件を設定する代わりに，
 \OFkeyword{zeroGradient}の境界条件を課すことになります．
 
 \OFkeyword{top}の境界は大気に対して開放されていることから，
@@ -2714,11 +2727,11 @@ mergePatchPairs
 
 \subsection{初期条件の設定}
 \label{ssec:2.3.3}
-これまでのケースと異なり，ここでは相比率$\gamma$に対して，
+これまでのケースと異なり，ここでは相比率$\alpha_{1}$に対して，
 以下のような非一様な初期条件を与えます．
 \begin{align}
  \label{eq:2.15}
- \gamma =
+ \alpha_{1} =
  \begin{cases}
   1 & \text{液相} \\
   0 & \text{気相}
@@ -2730,14 +2743,11 @@ mergePatchPairs
 \OFtool{setFields}ユーティリティを実行することによって行います．
 この実行には\OFpath{system}ディレクトリ内の\OFpath{setFieldsDict}を必要とします．
 このケースにおける\OFpath{setFieldsDict}ファイルの内容を以下に示します．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+\begin{OFverbatim}[file, linenum=17]
 
 defaultFieldValues
 (
-    volScalarFieldValue gamma 0
-    volVectorFieldValue U (0 0 0)
+    volScalarFieldValue alpha1 0
 );
 
 regions
@@ -2745,18 +2755,16 @@ regions
     boxToCell
     {
         box (0 0 -1) (0.1461 0.292 1);
-
         fieldValues
         (
-            volScalarFieldValue gamma 1
+            volScalarFieldValue alpha1 1
         );
     }
 );
 
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ここで，
 \index{defaultFieldValues@\OFkeyword{defaultFieldValues}!キーワード}%
 \index{キーワード!defaultFieldValues@\OFkeyword{defaultFieldValues}}%
@@ -2780,20 +2788,20 @@ regions
 \OFkeyword{boxToCell}を使って，大きいほうと小さいほうの
 二つの座標点で定義されるバウンディング・ボックスを生成し，
 液体の領域における格子の集合を定義しています．
-また，この領域における相比率$\gamma$を$1$と指定しています．
+また，この領域における相比率$\alpha_{1}$を$1$と指定しています．
 
 さて，
 \index{setFields@\OFtool{setFields}!ユーティリティ}%
 \index{ユーティリティ!setFields@\OFtool{setFields}}%
 \OFtool{setFields}を他のプログラムと同様に起動してください．
-そうしたら，\OFtool{paraFoam}を用いて，初期の\OFkeyword{gamma}場が
+そうしたら，\OFtool{paraFoam}を用いて，初期の\OFkeyword{alpha1}場が
 \autoref{fig:2.21}のように望むような分布に
 なっているかどうか確かめてください．
 
 
 \begin{figure}[ht]
  \includegraphics{fig-2-21}
- \caption{相比率\OFkeyword{gamma}の初期条件}
+ \caption{相比率\OFkeyword{alpha1}の初期条件}
  \label{fig:2.21}
 \end{figure}
 
@@ -2835,12 +2843,34 @@ regions
 \end{table}
 
 
-\index{environmentalProperties@\OFpath{environmentalProperties}!ファイル}%
-\index{ファイル!environmentalProperties@\OFpath{environmentalProperties}}%
-\OFpath{environmentalProperties}のディクショナリは，
-重力加速度ベクトルを指定していますが，
-このチュートリアルでは，
-この値は$(0, 9.81, 0)\unit{m\,s^{-2}}$としてください．
+重力加速度は全領域にわたって一様で，
+\OFpath{constant}ディレクトリの\OFpath{g}ファイルで指定されます．
+\OFpath{U}や\OFpath{p}のような通常のフィールドのファイルと異なり，
+\OFpath{g}は\OFclass{uniformDimensionedVectorField}であり，
+単に\OFkeyword{dimensions}と\OFkeyword{value}の組だけを含みます．
+このチュートリアルでは$(0, 9.81, 0)\unit{m\,s^{-2}}$です．
+\begin{OFverbatim}[file, linenum=17]
+
+dimensions      [0 1 -2 0 0 0 0];
+value           ( 0 -9.81 0 );
+
+
+// ************************************************************************* //
+\end{OFverbatim}
+
+
+\subsection{乱流モデル}
+\label{ssec:2.3.5@1.6}
+キャビティの例題のように，\OFdictionary{turbulenceProperties}ディクショナリの
+\OFkeyword{simulationType}キーワードで乱流のモデリング手法を選択することができます．
+この例題は乱流モデルを使わずに実行したいので\OFkeyword{laminar}と指定します．
+\begin{OFverbatim}[file, linenum=17]
+
+simulationType  laminar;
+
+
+// ************************************************************************* //
+\end{OFverbatim}
 
 
 \subsection{時間ステップの制御}
@@ -2849,7 +2879,7 @@ regions
 というのも，界面捕捉のアルゴリズムは，通常の流体計算に比べ，
 クーラン数$\nCo$に対してかなり鋭敏だからです．
 理想的には，界面がある領域において，
-およそ$0.2$である$\nCo$の上限値を超えてはいけません．
+およそ$0.5$である$\nCo$の上限値を超えてはいけません．
 伝播速度の予測が容易であるようなケースでは，$\nCo$の制限を守るような
 固定した時間ステップを指定することができますが，
 より複雑なケースの場合時間ステップの指定はずっと困難になります．
@@ -2887,11 +2917,9 @@ OpenFOAMでは決まった時刻に結果を出力するように指定するこ
 \index{controlDict@\OFdictionary{controlDict}!ディクショナリ}%
 \index{ディクショナリ!controlDict@\OFdictionary{controlDict}}%
 \OFdictionary{controlDict}ディクショナリの中身は以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+\begin{OFverbatim}[file, linenum=17]
 
-application interFoam;
+application     interFoam;
 
 startFrom       startTime;
 
@@ -2929,8 +2957,7 @@ maxDeltaT       1;
 
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{離散化スキーム}
@@ -2959,7 +2986,7 @@ Multidimensional Universal Limiter for Explicit Solution (MULES) 法を用いて
 
 風上の設定は，\OFdictionary{fvSchemes}ディクショナリの
 \OFsubdictionary{divSchemes}サブディクショナリ内に作成されており，
-運動量方程式における$\nabla \cdot (\rho\phi\bm{U})$項に対応する
+運動量方程式における$\nabla \cdot (\rho\bm{U}\bm{U})$項に対応する
 \OFkeyword{div(rho*phi,U)}キーワードは，
 \OFkeyword{Gauss upwind}を読みこみます．
 相$\gamma$に対する二つの方程式における対流項にはいくつかの注意を必要とします．
@@ -2971,36 +2998,35 @@ Multidimensional Universal Limiter for Explicit Solution (MULES) 法を用いて
 リミッタ付きの線形なスキームは
 \autoref{ssec:4.4.1}に記述される係数を必要とします．
 ここで安定性を最重視して，
-キーワード\OFkeyword{div(phi,gamma)}に対応する$\nabla \cdot (\phi\gamma)$項，
-キーワード\OFkeyword{div(phirb,gamma)}に対応する$\nabla \cdot (\phi_{\mathrm{rb}}\gamma)$項で
+キーワード\OFkeyword{div(phi,alpha)}に対応する$\nabla \cdot (\bm{U}\alpha_{1})$項，
+キーワード\OFkeyword{div(phirb,alpha)}に対応する$\nabla \cdot (\bm{U}_{\mathrm{rb}}\alpha_{1})$項で
 $\phi = 1.0$の状態を選びます．
+\OFrevision{要再訳}
 
 その他の離散化項は一般に決ったスキームを使用します．
 それゆえ
 \index{fvSchemes@\OFdictionary{fvSchemes}!ディクショナリ}%
 \index{ディクショナリ!fvSchemes@\OFdictionary{fvSchemes}}%
 \OFdictionary{fvSchemes}ディクショナリのエントリは以下のようになるべきです．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+\begin{OFverbatim}[file, linenum=17]
 
 ddtSchemes
 {
-    default Euler;
+    default         Euler;
 }
 
 gradSchemes
 {
     default         Gauss linear;
     grad(U)         Gauss linear;
-    grad(gamma)     Gauss linear;
+    grad(alpha1)    Gauss linear;
 }
 
 divSchemes
 {
-    div(rho*phi,U)  Gauss upwind;
-    div(phi,gamma)  Gauss limitedLinear01 1;
-    div(phirb,gamma) Gauss limitedLinear01 1;
+    div(rho*phi,U)  Gauss limitedLinearV 1;
+    div(phi,alpha)  Gauss vanLeer;
+    div(phirb,alpha) Gauss interfaceCompression;
 }
 
 laplacianSchemes
@@ -3021,15 +3047,14 @@ snGradSchemes
 fluxRequired
 {
     default         no;
-    pd;
+    p;
     pcorr;
-    gamma;
+    alpha1;
 }
 
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{線形ソルバの制御}
@@ -3038,22 +3063,22 @@ fluxRequired
 \OFsubdictionary{PISO}サブディクショナリが
 \OFtool{interFoam}に特化した要素を含んでいます．
 ここには，通常と同じく運動量方程式に対する反復数だけでなく，
-相方程式のPISOループに対する反復数も指定します．
-特に興味深いものは\OFkeyword{nGammaSubCycles}と\OFkeyword{cGamma}キーワードです．
-\index{nGammaSubCycles@\OFkeyword{nGammaSubCycles}!キーワード}%
-\index{キーワード!nGammaSubCycles@\OFkeyword{nGammaSubCycles}}%
-\OFkeyword{nGammaSubCycles}は$\gamma$方程式内の内側反復の数を表してあり，
+$\alpha_{1}$相方程式のPISOループに対する反復数も指定します．
+特に興味深いものは\OFkeyword{nAlphaSubCycles}と\OFkeyword{cAlpha}キーワードです．
+\index{nAlphaSubCycles@\OFkeyword{nAlphaSubCycles}!キーワード}%
+\index{キーワード!nAlphaSubCycles@\OFkeyword{nAlphaSubCycles}}%
+\OFkeyword{nAlphaSubCycles}は$\alpha_{1}$方程式内の内側反復の数を表してあり，
 ここで，内側反復は与えられた時間ステップ内での方程式に対する
 付加的な解の点数です．
 それは，時間ステップや計算時間の莫大な増加なしで
 解を安定させることができるようにするものです．
-ここでは，四つのsub-cycleを指定しており，
-$\gamma$方程式は実際の各時間ステップ内で4分の1の幅の
-時間スッテプで4回解かれていることを意味します．
+ここでは，二つのsub-cycleを指定しており，
+$\alpha_{1}$方程式は実際の各時間ステップ内で2分の1の幅の
+時間スッテプで2回解かれていることを意味します．
 
-\index{cGamma@\OFkeyword{cGamma}!キーワード}%
-\index{キーワード!cGamma@\OFkeyword{cGamma}}%
-\OFkeyword{cGamma}キーワードは界面の圧縮を制御する要素です．
+\index{cAlpha@\OFkeyword{cAlpha}!キーワード}%
+\index{キーワード!cAlpha@\OFkeyword{cAlpha}}%
+\OFkeyword{cAlpha}キーワードは界面の圧縮を制御する要素です．
 つまり，$0$は無圧縮に対応し，$1$は保存的な圧縮に対応し，
 $1$以上は拡張された界面の圧縮を意味します．
 通常はこの例題で用いられている$1.0$の値が推奨されます．
@@ -3066,12 +3091,10 @@ $1$以上は拡張された界面の圧縮を意味します．
 以下を試してください．
 \texttt{tee}によって計算内容をターミナルウインドウに表示しつつ，
 ログファイルに記録します．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/interFoam
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/multiphase/interFoam/laminar/damBreak
 interFoam | tee log
-\end{verbatim}%$
-\end{OFterminal}
+\end{OFverbatim}%$
 コードは，出力のコピーを\OFpath{log}ファイル内に記録しつつ，
 対話形式で実行されます．
 
@@ -3080,7 +3103,7 @@ interFoam | tee log
 \label{ssec:2.3.9}
 結果の後処理は，通常の方法で行えます．
 \autoref{fig:2.22}のように
-参照時間の経過とともに相比率\OFkeyword{gamma}の発達を見ることができます．
+参照時間の経過とともに相比率\OFkeyword{alpha1}の発達を見ることができます．
 
 
 \begin{figure}[ht]
@@ -3089,7 +3112,7 @@ interFoam | tee log
  \medskip
  \includegraphics{fig-2-22-b}\par
  (b) $t = 0.50\unit{s}$のとき
- \caption{$\gamma$相のスナップショット}
+ \caption{$\alpha_{1}$相のスナップショット}
  \label{fig:2.22}
 \end{figure}
 
@@ -3104,60 +3127,54 @@ interFoam | tee log
 OpenFOAMの並列計算という能力を試してみてもよいでしょう．
 
 まず初めに，\OFcase{damBreak}ケースのコピーをしてください．
-\begin{OFterminal}
-\begin{verbatim}
-    cd $FOAM_RUN/tutorials/interFoam
-    mkdir damBreakFine
-    cp -r damBreak/0 damBreakFine
-    cp -r damBreak/system damBreakFine
-    cp -r damBreak/constant damBreakFine
-\end{verbatim}%$
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/interFoam
+mkdir damBreakFine
+cp -r damBreak/0 damBreakFine
+cp -r damBreak/system damBreakFine
+cp -r damBreak/constant damBreakFine
+\end{OFverbatim}%$
 
 新しいケースは\OFcase{damBreakFine}と名づけてください．
 新しいケースディレクトリを開いて
 \OFdictionary{blockMeshDict}ファイル内の
 \OFkeyword{blocks}の記述を以下のように変更してください．
-\begin{OFfile}
-\begin{verbatim}
-    blocks
-    (
-        hex (0 1 5 4 12 13 17 16) (46 10 1) simpleGrading (1 1 1)
-        hex (2 3 7 6 14 15 19 18) (40 10 1) simpleGrading (1 1 1)
-        hex (4 5 9 8 16 17 21 20) (46 76 1) simpleGrading (1 2 1)
-        hex (5 6 10 9 17 18 22 21) (4 76 1) simpleGrading (1 2 1)
-        hex (6 7 11 10 18 19 23 22) (40 76 1) simpleGrading (1 2 1)
-    );
-\end{verbatim}
-\end{OFfile}
+\begin{OFverbatim}[file]
+blocks
+(
+    hex (0 1 5 4 12 13 17 16) (46 10 1) simpleGrading (1 1 1)
+    hex (2 3 7 6 14 15 19 18) (40 10 1) simpleGrading (1 1 1)
+    hex (4 5 9 8 16 17 21 20) (46 76 1) simpleGrading (1 2 1)
+    hex (5 6 10 9 17 18 22 21) (4 76 1) simpleGrading (1 2 1)
+    hex (6 7 11 10 18 19 23 22) (40 76 1) simpleGrading (1 2 1)
+);
+\end{OFverbatim}
 上記で，入力は\OFdictionary{blockMeshDict}ファイルで表示されているように，
 つまりは，格子の密度を変更しなければなりません．
 例えば\texttt{46 10 1}という入力や\texttt{1 2 1}という格子幅の勾配の入力のようにです．
 入力内容が正しければ，格子を生成します．
 
 ここで格子が\OFcase{damBreak}の例から変更されると，
-時刻\OFpath{0}のディレクトリ内の\OFpath{gamma}という相の場を
+時刻\OFpath{0}のディレクトリ内の\OFpath{alpha1}という相の場を
 再初期化しなければなりません．
-というのも\OFkeyword{gamma}は新しい格子とは合致しない
+というのも\OFkeyword{alpha1}は新しい格子とは合致しない
 いくつかの要素を含んでいるからです．
 ここで，\OFkeyword{U}や\OFkeyword{p}という場は
 変更する必要がないことに注意しましょう．
 それらは\OFkeyword{uniform}として明記されており
 フィールド内の要素の数と独立だからです．
 フィールドの初期化はシャープな界面を持つように行いたいものです．
-つまり，その要素が$\gamma = 1$か$\gamma = 0$をもつようにです．
-\OFtool{mapFields}でのフィールドの更新は界面に補間された値$0 < \gamma < 1$が
+つまり，その要素が$\alpha_{1} = 1$か$\alpha_{1} = 0$をもつようにです．
+\OFtool{mapFields}でのフィールドの更新は界面に補間された値$0 < \alpha_{1} < 1$が
 生成されるかもしれないので，
 \OFtool{setFields}ユーティリティを以下のように再実行したほうがよいでしょう．
-その前に初期条件の一様な$\gamma$のバックアップファイル
-\OFpath{0/gamma.org}を\OFpath{0/gamma}にコピーします．
-\begin{OFterminal}
-\begin{verbatim}
-cd $FOAM_RUN/tutorials/interFoam/damBreakFine
-cp -r 0/gamma.org 0/gamma
-setFields $FOAM_RUN/tutorials/interFoam damBreakFine
-\end{verbatim}
-\end{OFterminal}
+その前に初期条件の一様な$\alpha_{1}$のバックアップファイル
+\OFpath{0/alpha1.org}を\OFpath{0/alpha1}にコピーします．
+\begin{OFverbatim}[terminal]
+cd $FOAM_RUN/tutorials/interFoam/laminar/damBreakFine
+cp -r 0/alpha1.org 0/alpha1
+setFields
+\end{OFverbatim}%$
 
 OpenFOAMで用いられる並列計算の手法はいわゆる領域分割であり，
 幾何形状やそれに関連する場が領域ごとに分解されて，
@@ -3199,11 +3216,9 @@ $n_{x}$と$n_{y}$の積で表されるサブ領域の数が\OFkeyword{numberOfSu
 openMPIを用いて標準のメッセージパッシングインターフェース (MPI) を
 実装しています．
 ここでは，テストとしてローカルホストのみの単独ノードで実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 mpirun -np 4 interFoam -parallel > log &
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \autoref{ssec:3.4.2}に後述しますが，
 ケースが実行されるマシンのホストネームを列記したファイルを作っておけば
 ネットワーク上のより多くのノードを使って計算することも可能です．
@@ -3224,7 +3239,7 @@ mpirun -np 4 interFoam -parallel > log &
  \medskip
  \includegraphics{fig-2-24-b}\par
  (b) $t = 0.50\unit{s}$のとき
- \caption{正確なメッシュの$\gamma$相のスナップショット}
+ \caption{正確なメッシュの$\alpha_{1}$相のスナップショット}
  \label{fig:2.24}
 \end{figure}
 
@@ -3243,11 +3258,9 @@ mpirun -np 4 interFoam -parallel > log &
 分解された領域の部分を個々に後処理することもできます．
 
 例えば，\OFtool{paraFoam}を以下のように起動します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 paraFoam -case processor1
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 すると\OFkeyword{processor1}はParaViewのケースモジュールとして表れます．
 \OFkeyword{simple}方式を使った領域分割を行った
 \OFkeyword{processor1}から\autoref{fig:2.23}のような格子が見えます．

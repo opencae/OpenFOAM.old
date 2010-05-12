@@ -14,6 +14,7 @@
 \index{hierarchical@\OFkeyword{hierarchical}!キーワードエントリ}%
 \index{キーワードエントリ!hierarchical@\OFkeyword{hierarchical}}%
          \OFkeyword{hierarchical}/\hfil\break
+         \OFkeyword{scotch}/
 \index{metis@\OFkeyword{metis}!キーワードエントリ}%
 \index{キーワードエントリ!metis@\OFkeyword{metis}}%
          \OFkeyword{metis}/
@@ -39,9 +40,9 @@
  \OFkeyword{order} & 分割の順序 & \OFkeyword{xyz}/\OFkeyword{xzy}/\OFkeyword{yzx}... \\
  \\
  \multicolumn{3}{l}{%
-\index{metisCoeffs@\OFkeyword{metisCoeffs}!キーワード}%
-\index{キーワード!metisCoeffs@\OFkeyword{metisCoeffs}}%
- \OFkeyword{metisCoeffs}エントリ} \\
+\index{scotchCoeffs@\OFkeyword{scotchCoeffs}!キーワード}%
+\index{キーワード!scotchCoeffs@\OFkeyword{scotchCoeffs}}%
+ \OFkeyword{scotchCoeffs}エントリ} \\
  \hline
 \index{processorWeights@\OFkeyword{processorWeights}!キーワード}%
 \index{キーワード!processorWeights@\OFkeyword{processorWeights}}%
@@ -50,6 +51,20 @@
      例：\verb|<wt1>|はプロセッサ1の重み係数．
      重みは規格化され，
      どんな範囲の値も取ることが可能．
+     & (\verb|<wt1>|...\verb|<wtN>|) \\
+ \OFkeyword{strategy}
+ & 分割の戦略．デフォルトは\OFkeyword{"b"}
+     &  \\
+ \\
+ \multicolumn{3}{l}{%
+\index{metisCoeffs@\OFkeyword{metisCoeffs}!キーワード}%
+\index{キーワード!metisCoeffs@\OFkeyword{metisCoeffs}}%
+ \OFkeyword{metisCoeffs}エントリ} \\
+ \hline
+\index{processorWeights@\OFkeyword{processorWeights}!キーワード}%
+\index{キーワード!processorWeights@\OFkeyword{processorWeights}}%
+ \OFkeyword{processorWeights}
+ & 同上
      & (\verb|<wt1>|...\verb|<wtN>|) \\
  \\
  \multicolumn{3}{l}{%

@@ -1,47 +1,91 @@
 %#! platex UserGuideJa
-\begin{tabularx}{\textwidth}{lX}
+\begin{longtable}{lX}
  \multicolumn{2}{l}{基本熱物理モデル ---
 \index{basicThermophysicalModels@\OFemph{basicThermophysicalModels}!ライブラリ}%
 \index{ライブラリ!basicThermophysicalModels@\OFemph{basicThermophysicalModels}}%
  \OFemph{basicThermophysicalModels}} \\
  \hline
-\index{hThermo@\OFemph{hThermo}!モデル}%
-\index{モデル!hThermo@\OFemph{hThermo}}%
- \OFemph{hThermo} & エンタルピに基づく一般熱物理モデル計算 \\
+\index{hPsiThermo@\OFemph{hPsiThermo}!モデル}%
+\index{モデル!hPsiThermo@\OFemph{hPsiThermo}}%
+ \OFemph{hPsiThermo} &
+     エンタルピ$h$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
+\index{ePsiThermo@\OFemph{ePsiThermo}!モデル}%
+\index{モデル!ePsiThermo@\OFemph{ePsiThermo}}%
+ \OFemph{ePsiThermo} &
+     内部エネルギ$e$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
+\index{hRhoThermo@\OFemph{hRhoThermo}!モデル}%
+\index{モデル!hRhoThermo@\OFemph{hRhoThermo}}%
+ \OFemph{hRhoThermo} &
+     エンタルピ$h$に基づく一般熱物理モデル計算 \\
 \index{pureMixture@\OFemph{pureMixture}!モデル}%
 \index{モデル!pureMixture@\OFemph{pureMixture}}%
- \OFemph{pureMixture} & パッシブガス混合物の一般熱物理モデル計算 \\
+ \OFemph{pureMixture} &
+     パッシブガス混合物の一般熱物理モデル計算 \\
  \\
- \multicolumn{2}{l}{燃焼モデル ---
-\index{combustionThermophysicalModels@\OFemph{combustionThermophysicalModels}!ライブラリ}%
-\index{ライブラリ!combustionThermophysicalModels@\OFemph{combustionThermophysicalModels}}%
- \OFemph{combustionThermophysicalModels}} \\
+ \multicolumn{2}{l}{化学反応モデル ---
+\index{reactionThermophysicalModels@\OFemph{reactionThermophysicalModels}!ライブラリ}%
+\index{ライブラリ!reactionThermophysicalModels@\OFemph{reactionThermophysicalModels}}%
+ \OFemph{reactionThermophysicalModels}} \\
  \hline
-\index{hMixtureThermo@\OFemph{hMixtureThermo}!モデル}%
-\index{モデル!hMixtureThermo@\OFemph{hMixtureThermo}}%
- \OFemph{hMixtureThermo} & 混合気燃焼のエンタルピ計算 \\
+\index{hPsiMixtureThermo@\OFemph{hPsiMixtureThermo}!モデル}%
+\index{モデル!hPsiMixtureThermo@\OFemph{hPsiMixtureThermo}}%
+ \OFemph{hPsiMixtureThermo} &
+     $\psi$に基づく混合気燃焼のエンタルピ計算 \\
+\index{hRhoMixtureThermo@\OFemph{hRhoMixtureThermo}!モデル}%
+\index{モデル!hRhoMixtureThermo@\OFemph{hRhoMixtureThermo}}%
+ \OFemph{hRhoMixtureThermo} &
+     $\rho$に基づく混合気燃焼のエンタルピ計算 \\
 \index{hhuMixtureThermo@\OFemph{hhuMixtureThermo}!モデル}%
 \index{モデル!hhuMixtureThermo@\OFemph{hhuMixtureThermo}}%
- \OFemph{hhuMixtureThermo} & 不燃気体と混合気のエンタルピ計算 \\
+ \OFemph{hhuMixtureThermo} &
+     不燃気体と混合気のエンタルピ計算 \\
 \index{homogeneousMixture@\OFemph{homogeneousMixture}!モデル}%
 \index{モデル!homogeneousMixture@\OFemph{homogeneousMixture}}%
- \OFemph{homogeneousMixture} & 標準燃料質量分率$b$に基づく混合気燃焼 \\
+ \OFemph{homogeneousMixture} &
+     標準燃料質量分率$b$に基づく混合気燃焼 \\
 \index{inhomogeneousMixture@\OFemph{inhomogeneousMixture}!モデル}%
 \index{モデル!inhomogeneousMixture@\OFemph{inhomogeneousMixture}}%
- \OFemph{inhomogeneousMixture} & $b$と総燃料質量分率$f_{\mathrm{t}}$に基づく混合気燃焼 \\
+ \OFemph{inhomogeneousMixture} &
+     $b$と総燃料質量分率$f_{\mathrm{t}}$に基づく混合気燃焼 \\
 \index{veryInhomogeneousMixture@\OFemph{veryInhomogeneousMixture}!モデル}%
 \index{モデル!veryInhomogeneousMixture@\OFemph{veryInhomogeneousMixture}}%
- \OFemph{veryInhomogeneousMixture} & $b$，$f_{\mathrm{t}}$と
+ \OFemph{veryInhomogeneousMixture} &
+     $b$，$f_{\mathrm{t}}$と
      不燃燃料質量分率$f_{\mathrm{u}}$に基づく混合気燃焼 \\
 \index{dieselMixture@\OFemph{dieselMixture}!モデル}%
 \index{モデル!dieselMixture@\OFemph{dieselMixture}}%
- \OFemph{dieselMixture} & $f_{\mathrm{t}}$と$f_{\mathrm{u}}$に基づく混合気燃焼 \\
+ \OFemph{dieselMixture} &
+     $f_{\mathrm{t}}$と$f_{\mathrm{u}}$に基づく混合気燃焼 \\
+\index{basicMultiComponentMixture@\OFemph{basicMultiComponentMixture}!モデル}%
+\index{モデル!basicMultiComponentMixture@\OFemph{basicMultiComponentMixture}}%
+ \OFemph{basicMultiComponentMixture} &
+     複数の要素に基づく基本的な混合気 \\
 \index{multiComponentMixture@\OFemph{multiComponentMixture}!モデル}%
 \index{モデル!multiComponentMixture@\OFemph{multiComponentMixture}}%
- \OFemph{multiComponentMixture} & 複数の要素に基づく混合気燃焼[**] \\
-\index{chemkinMixture@\OFemph{chemkinMixture}!モデル}%
-\index{モデル!chemkinMixture@\OFemph{chemkinMixture}}%
- \OFemph{chemkinMixture} & CHEMKIN熱力学と反応スキームデータベースファイルを使った混合気燃焼 \\
+ \OFemph{multiComponentMixture} &
+     複数の要素に基づく派生混合気 \\
+\index{reactingMixture@\OFemph{reactingMixture}!モデル}%
+\index{モデル!reactingMixture@\OFemph{reactingMixture}}%
+ \OFemph{reactingMixture} &
+     熱力学と反応スキームによる燃焼混合気 \\
+\index{dieselMixture@\OFemph{egrMixture}!モデル}%
+\index{モデル!egrMixture@\OFemph{egrMixture}}%
+ \OFemph{egrMixture} &
+     排気再循環の混合気 \\
+ \\
+ \multicolumn{2}{l}{輻射モデル ---
+\index{radiationModels@\OFemph{radiationModels}!ライブラリ}%
+\index{ライブラリ!radiationModels@\OFemph{radiationModels}}%
+ \OFemph{radiationModels}} \\
+ \hline
+\index{P1@\OFemph{P1}!モデル}%
+\index{モデル!P1@\OFemph{P1}}%
+ \OFemph{P1} &
+     P1モデル \\
+\index{fvDOM@\OFemph{fvDOM}!モデル}%
+\index{モデル!fvDOM@\OFemph{fvDOM}}%
+ \OFemph{fvDOM} &
+     有限体積離散座標法 \\
  \\
  \multicolumn{2}{l}{層流火炎速度モデル ---
 \index{laminarFlameSpeedModels@\OFemph{laminarFlameSpeedModels}!ライブラリ}%
@@ -50,64 +94,118 @@
  \hline
 \index{constLaminarFlameSpeed@\OFemph{constLaminarFlameSpeed}!モデル}%
 \index{モデル!constLaminarFlameSpeed@\OFemph{constLaminarFlameSpeed}}%
- \OFemph{constLaminarFlameSpeed} & 一定層流火炎速度 \\
-\index{guldersLaminarFlameSpeed@\OFemph{guldersLaminarFlameSpeed}!モデル}%
-\index{モデル!guldersLaminarFlameSpeed@\OFemph{guldersLaminarFlameSpeed}}%
- \OFemph{guldersLaminarFlameSpeed} & Gulderの層流火炎速度モデル \\
+ \OFemph{constLaminarFlameSpeed} &
+     一定層流火炎速度 \\
+\index{GuldersLaminarFlameSpeed@\OFemph{GuldersLaminarFlameSpeed}!モデル}%
+\index{モデル!GuldersLaminarFlameSpeed@\OFemph{GuldersLaminarFlameSpeed}}%
+ \OFemph{GuldersLaminarFlameSpeed} &
+     G\"ulderの層流火炎速度モデル \\
+\index{GuldersEGRLaminarFlameSpeed@\OFemph{GuldersEGRLaminarFlameSpeed}!モデル}%
+\index{モデル!GuldersEGRLaminarFlameSpeed@\OFemph{GuldersEGRLaminarFlameSpeed}}%
+ \OFemph{GuldersEGRLaminarFlameSpeed} &
+     排気再循環モデルを伴うG\"ulderの層流火炎速度モデル \\
  \\
- \multicolumn{2}{l}{液体の熱物理特性 ---
-\index{liquids@\OFemph{liquids}!ライブラリ}%
-\index{ライブラリ!liquids@\OFemph{liquids}}%
- \OFemph{liquids}} \\
+ \multicolumn{2}{l}{バロトロピック圧縮性モデル ---
+\index{barotropicCompressibilityModels@\OFemph{barotropicCompressibilityModels}!ライブラリ}%
+\index{ライブラリ!barotropicCompressibilityModels@\OFemph{barotropicCompressibilityModels}}%
+ \OFemph{barotropicCompressibilityModels}} \\
  \hline
-\index{nHeptane@\OFemph{nHeptane}!モデル}%
-\index{モデル!nHeptane@\OFemph{nHeptane}}%
- \OFemph{nHeptane} & ノルマルヘプタンの熱物理特性 \\
-\index{nOctane@\OFemph{nOctane}!モデル}%
-\index{モデル!nOctane@\OFemph{nOctane}}%
- \OFemph{nOctane} & ノルマルオクタンの熱物理特性 \\
-\index{nDecane@\OFemph{nDecane}!モデル}%
-\index{モデル!nDecane@\OFemph{nDecane}}%
- \OFemph{nDecane} & ノルマルデカンの熱物理特性 \\
-\index{nDodecane@\OFemph{nDodecane}!モデル}%
-\index{モデル!nDodecane@\OFemph{nDodecane}}%
- \OFemph{nDodecane} & ノルマルドデカンの熱物理特性 \\
-\index{isoOctane@\OFemph{isoOctane}!モデル}%
-\index{モデル!isoOctane@\OFemph{isoOctane}}%
- \OFemph{isoOctane} & イソオクタンの熱物理特性 \\
-\index{diMethylEther@\OFemph{diMethylEther}!モデル}%
-\index{モデル!diMethylEther@\OFemph{diMethylEther}}%
- \OFemph{diMethylEther} & ジメチルエーテルの熱物理特性 \\
-\index{diEthylEther@\OFemph{diEthylEther}!モデル}%
-\index{モデル!diEthylEther@\OFemph{diEthylEther}}%
- \OFemph{diEthylEther} & ジエチルエーテルの熱物理特性 \\
-\index{water@\OFemph{water}!モデル}%
-\index{モデル!water@\OFemph{water}}%
- \OFemph{water} & 水の熱物理特性 \\
+\index{linear@\OFemph{linear}!モデル}%
+\index{モデル!linear@\OFemph{linear}}%
+ \OFemph{linear} &
+     線形圧縮性モデル \\
+\index{Chung@\OFemph{Chung}!モデル}%
+\index{モデル!Chung@\OFemph{Chung}}%
+ \OFemph{Chung} &
+     Chungの圧縮性モデル \\
+\index{Wallis@\OFemph{Wallis}!モデル}%
+\index{モデル!Wallis@\OFemph{Wallis}}%
+ \OFemph{Wallis} &
+     Wallisの圧縮性モデル \\
  \\
+ % \multicolumn{2}{l}{液体の熱物理特性 ---
+ % \index{liquids@\OFemph{liquids}!ライブラリ}%
+ % \index{ライブラリ!liquids@\OFemph{liquids}}%
+ % \OFemph{liquids}} \\
+ % \hline
+ % \index{nHeptane@\OFemph{nHeptane}!モデル}%
+ % \index{モデル!nHeptane@\OFemph{nHeptane}}%
+ % \OFemph{nHeptane} &
+ %     ノルマルヘプタンの熱物理特性 \\
+ % \index{nOctane@\OFemph{nOctane}!モデル}%
+ % \index{モデル!nOctane@\OFemph{nOctane}}%
+ % \OFemph{nOctane} &
+ %     ノルマルオクタンの熱物理特性 \\
+ % \index{nDecane@\OFemph{nDecane}!モデル}%
+ % \index{モデル!nDecane@\OFemph{nDecane}}%
+ % \OFemph{nDecane} &
+ %     ノルマルデカンの熱物理特性 \\
+ % \index{nDodecane@\OFemph{nDodecane}!モデル}%
+ % \index{モデル!nDodecane@\OFemph{nDodecane}}%
+ % \OFemph{nDodecane} &
+ %     ノルマルドデカンの熱物理特性 \\
+ % \index{isoOctane@\OFemph{isoOctane}!モデル}%
+ % \index{モデル!isoOctane@\OFemph{isoOctane}}%
+ % \OFemph{isoOctane} &
+ %     イソオクタンの熱物理特性 \\
+ % \index{diMethylEther@\OFemph{diMethylEther}!モデル}%
+ % \index{モデル!diMethylEther@\OFemph{diMethylEther}}%
+ % \OFemph{diMethylEther} &
+ %     ジメチルエーテルの熱物理特性 \\
+ % \index{diEthylEther@\OFemph{diEthylEther}!モデル}%
+ % \index{モデル!diEthylEther@\OFemph{diEthylEther}}%
+ % \OFemph{diEthylEther} &
+ %     ジエチルエーテルの熱物理特性 \\
+ % \index{water@\OFemph{water}!モデル}%
+ % \index{モデル!water@\OFemph{water}}%
+ % \OFemph{water} &
+ %     水の熱物理特性 \\
+ % \\
  \multicolumn{2}{l}{ガス種の熱物理特性 ---
 \index{specie@\OFemph{specie}!ライブラリ}%
 \index{ライブラリ!specie@\OFemph{specie}}%
  \OFemph{specie}} \\
  \hline
+\index{icoPolynomial@\OFemph{icoPolynomial}!モデル}%
+\index{モデル!icoPolynomial@\OFemph{icoPolynomial}}%
+ \OFemph{icoPolynomial} &
+     液体などの非圧縮性流体に対する多項式の状態方程式 \\
 \index{perfectGas@\OFemph{perfectGas}!モデル}%
 \index{モデル!perfectGas@\OFemph{perfectGas}}%
- \OFemph{perfectGas} & 理想気体に対する状態方程式 \\
+ \OFemph{perfectGas} &
+     理想気体に対する状態方程式 \\
+\index{eConstThermo@\OFemph{eConstThermo}!モデル}%
+\index{モデル!eConstThermo@\OFemph{eConstThermo}}%
+ \OFemph{eConstThermo} &
+     内部エネルギ$e$とエントロピ$s$に関する一定比熱$c_{\mathrm{p}}$モデル \\
 \index{hConstThermo@\OFemph{hConstThermo}!モデル}%
 \index{モデル!hConstThermo@\OFemph{hConstThermo}}%
- \OFemph{hConstThermo} & エンタルピ$h$とエントロピ$s$に関する一定比熱$c_{\mathrm{p}}$モデル \\
+ \OFemph{hConstThermo} &
+     エンタルピ$h$とエントロピ$s$に関する一定比熱$c_{\mathrm{p}}$モデル \\
+\index{hPolynomialThermo@\OFemph{hPolynomialThermo}!モデル}%
+\index{モデル!hPolynomialThermo@\OFemph{hPolynomialThermo}}%
+ \OFemph{hPolynomialThermo} &
+     $h$と$s$を評価する多項式の係数の関数により$c_{\mathrm{p}}$が評価される \\
 \index{janafThermo@\OFemph{janafThermo}!モデル}%
 \index{モデル!janafThermo@\OFemph{janafThermo}}%
- \OFemph{janafThermo} & $h$や$s$のようなJANAF熱力学テーブルの係数をもつ関数によって評価した$c_{\mathrm{p}}$ \\
+ \OFemph{janafThermo} &
+     $h$や$s$のようなJANAF熱力学テーブルの係数をもつ関数によって評価した$c_{\mathrm{p}}$ \\
 \index{specieThermo@\OFemph{specieThermo}!モデル}%
 \index{モデル!specieThermo@\OFemph{specieThermo}}%
- \OFemph{specieThermo} & $c_{\mathrm{p}}$，$h$そして/または$s$から派生するような熱物理特性 \\
+ \OFemph{specieThermo} &
+     $c_{\mathrm{p}}$，$h$そして/または$s$から派生するような熱物理特性 \\
 \index{constTransport@\OFemph{constTransport}!モデル}%
 \index{モデル!constTransport@\OFemph{constTransport}}%
- \OFemph{constTransport} & 一定の輸送特性 \\
+ \OFemph{constTransport} &
+     一定の輸送特性 \\
+\index{polynomialTransport@\OFemph{polynomialTransport}!モデル}%
+\index{モデル!polynomialTransport@\OFemph{polynomialTransport}}%
+ \OFemph{polynomialTransport} &
+     多項式に基づく温度依存輸送特性 \\
 \index{sutherlandTransport@\OFemph{sutherlandTransport}!モデル}%
 \index{モデル!sutherlandTransport@\OFemph{sutherlandTransport}}%
- \OFemph{sutherlandTransport} & 温度依存輸送特性のためのサザーランドの公式 \\
+ \OFemph{sutherlandTransport} &
+     温度依存輸送特性のためのサザーランドの公式 \\
  \\
  \multicolumn{2}{l}{熱物理特性の関数/表 ---
 \index{thermophysicalFunctions@\OFemph{thermophysicalFunctions}!ライブラリ}%
@@ -116,10 +214,12 @@
  \hline
 \index{NSRDSfunctions@\OFemph{NSRDSfunctions}!モデル}%
 \index{モデル!NSRDSfunctions@\OFemph{NSRDSfunctions}}%
- \OFemph{NSRDSfunctions} & 標準参照データシステム (NSRDS) - 米国化学工学会 (AICHE) のデータ編集表 \\
+ \OFemph{NSRDSfunctions} &
+     標準参照データシステム (NSRDS) - 米国化学工学会 (AICHE) のデータ編集表 \\
 \index{APIfunctions@\OFemph{APIfunctions}!モデル}%
 \index{モデル!APIfunctions@\OFemph{APIfunctions}}%
- \OFemph{APIfunctions} & 蒸気拡散のための米国石油協会 (API) の関数 \\
+ \OFemph{APIfunctions} &
+     蒸気拡散のための米国石油協会 (API) の関数 \\
  \\
  \multicolumn{2}{l}{確率密度関数 ---
 \index{pdf@\OFemph{pdf}!ライブラリ}%
@@ -128,27 +228,53 @@
  \hline
 \index{RosinRammler@\OFemph{RosinRammler}!モデル}%
 \index{モデル!RosinRammler@\OFemph{RosinRammler}}%
- \OFemph{RosinRammler} & ロジン・ラムラー分布 \\
+ \OFemph{RosinRammler} &
+     ロジン・ラムラー分布 \\
 \index{normal@\OFemph{normal}!モデル}%
 \index{モデル!normal@\OFemph{normal}}%
- \OFemph{normal} & 正規分布 \\
+ \OFemph{normal} &
+     正規分布 \\
 \index{uniform@\OFemph{uniform}!モデル}%
 \index{モデル!uniform@\OFemph{uniform}}%
- \OFemph{uniform} & 一様分布 \\
+ \OFemph{uniform} &
+     一様分布 \\
 \index{exponential@\OFemph{exponential}!モデル}%
 \index{モデル!exponential@\OFemph{exponential}}%
- \OFemph{exponential} & 指数分布 \\
+ \OFemph{exponential} &
+     指数分布 \\
 \index{general@\OFemph{general}!モデル}%
 \index{モデル!general@\OFemph{general}}%
- \OFemph{general} & 一般化分布 \\
+ \OFemph{general} &
+     一般化分布 \\
+ \\
  \multicolumn{2}{l}{化学モデル ---
 \index{chemistryModel@\OFemph{chemistryModel}!ライブラリ}%
 \index{ライブラリ!chemistryModel@\OFemph{chemistryModel}}%
  \OFemph{chemistryModel}} \\
 \index{chemistryModel@\OFemph{chemistryModel}!モデル}%
 \index{モデル!chemistryModel@\OFemph{chemistryModel}}%
- \OFemph{chemistryModel} & 化学反応モデル \\
+ \OFemph{chemistryModel} &
+     化学反応モデル \\
 \index{chemistrySolver@\OFemph{chemistrySolver}!モデル}%
 \index{モデル!chemistrySolver@\OFemph{chemistrySolver}}%
- \OFemph{chemistrySolver} & 化学反応ソルバ
-\end{tabularx}
+ \OFemph{chemistrySolver} &
+     化学反応ソルバ
+ \\
+ \multicolumn{2}{l}{その他のライブラリ} \\
+\index{liquids@\OFemph{liquids}!モデル}%
+\index{モデル!liquids@\OFemph{liquids}}%
+ \OFemph{liquids} &
+     液体の熱物性 \\
+\index{liquidMixture@\OFemph{liquidMixture}!モデル}%
+\index{モデル!liquidMixture@\OFemph{liquidMixture}}%
+ \OFemph{liquidMixture} &
+     混合液体の熱物性 \\
+\index{solids@\OFemph{solids}!モデル}%
+\index{モデル!solids@\OFemph{solids}}%
+ \OFemph{solids} &
+     固体の熱物性 \\
+\index{solidMixture@\OFemph{solidMixture}!モデル}%
+\index{モデル!solidMixture@\OFemph{solidMixture}}%
+ \OFemph{solidMixture} &
+     混合固体の熱物性 \\
+\end{longtable}

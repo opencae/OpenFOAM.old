@@ -27,7 +27,6 @@ OpenFOAMは一連のプリコンパイル済ライブラリに分けられ，
 ここでは述べませんがプログラマ・ガイドに記載してあります．
 なお，プログラマ・ガイドは現在改訂中ですので，
 もし何か不明な点がありましたら，
-\href{http://tfdpc67.tfd.chalmers.se/foam/discus/index.html}{OpenFOAMの討議グループ}や
 \href{http://www.openfoam.org}{OpenFOAMのウェブサイト}で
 新たな情報が得られるかもしれません．
 
@@ -115,8 +114,7 @@ OpenFOAMのクラスを用いて書かれたソルバのアプリケーション
  - \nabla \cdot \mu\nabla\bm{U} = -\nabla p
 \end{align*}
 はコード
-\begin{OFcode}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 solve
 (
     fvm::ddt(rho, U)
@@ -125,8 +123,7 @@ solve
     ==
   - fvc::grad(p)
 );
-\end{verbatim}
-\end{OFcode}
+\end{OFverbatim}
 で表されます．
 
 これらの必要条件として，
@@ -237,11 +234,9 @@ OpenFOAMのライブラリに依存している
 選択的に必要な部分だけコンパイルできます．
 
 ヘッダファイルは，例えば
-\begin{OFcode}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 # include "otherHeader.H";
-\end{verbatim}
-\end{OFcode}
+\end{OFverbatim}
 のような\ 
 \index{# include@\verb+# include+!C++こうぶん@C++構文}%
 \index{C++こうぶん@C++構文!# include@\verb+# include+}%
@@ -327,15 +322,13 @@ OpenFOAMのアプリケーションは各アプリケーションのソースコ
 \end{enumerate}
 \OFpath{Make/options}ファイルは構文を使っているヘッダファイルを
 配置するためのフルディレクトリパスを含みます．
-\begin{OFcode}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 EXE_INC = \
     -I<directoryPath1> \
     -I<directoryPath2> \
     ...                \
     -I<directoryPathN>
-\end{verbatim}
-\end{OFcode}
+\end{OFverbatim}
 ディレクトリ名は頭に\verb|-I|をつけ，
 各行では\verb|EXE_INC|を続けるために構文は\verb|\|を使い，
 最終記入後は\verb|\|をつけないことに注意してください．
@@ -366,8 +359,7 @@ EXE_INC = \
 \end{enumerate}
 \OFpath{Make/options}ファイルは構文を使っているヘッダファイルを
 おくための全ディレクトリパスを含みます．
-\begin{OFcode}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 EXE_LIBS = \
     -L<libraryPath1> \
     -L<libraryPath2> \
@@ -377,8 +369,7 @@ EXE_LIBS = \
     -l<library2>     \
     ...              \
     -l<libraryN>
-\end{verbatim}
-\end{OFcode}
+\end{OFverbatim}
 繰り返しになりますが，ディレクトリパスは頭に\verb|-L|フラグを付け，
 ライブラリ名は頭に\verb|-l|フラグをつけます．
 
@@ -418,22 +409,18 @@ OpenFOAMのリリースにはパスのために便利な二つの選択肢があ
 \OFpath{Make/files}ファイルが\OFpath{\$FOAM\_USER\_APPBIN}ディレクトリ内に
 書き込まれている実行可能ファイルを指定していることだけです．
 例としての\OFpath{Make/files}を以下に記載します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 newApp.C
 
 EXE = $(FOAM_USER_APPBIN)/newApp
-\end{verbatim}%$
-\end{OFfile}
+\end{OFverbatim}%$
 
 \subsubsection{\OFtool{wmake}の実行}
 \label{sssec:3.2.2.4}
 \OFtool{wmake}のスクリプトは以下のように入力することで実行されます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 wmake <optionalArguments> <optionalDirectory>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \verb|<optionalDirectory>| はコンパイルしようとしているアプリケーションの
 ディレクトリパスです．
 通常，\verb|<optionalDirectory>| が省略可能な場合には
@@ -475,11 +462,9 @@ wmake <optionalArguments> <optionalDirectory>
 \index{wclean@\OFtool{wclean}!スクリプト／エイリアス}%
 \index{スクリプト／エイリアス!wclean@\OFtool{wclean}}%
 \OFtool{wclean}を入力してスクリプトを実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 wclean <optionalArguments> <optionalDirectory>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 さらに，\verb|<optionalDirectory>|はコンパイルされるアプリケーションの
 ディレクトリへのパスです．
 通常，パスが省略できる場合にはwcleanはアプリケーションの
@@ -498,19 +483,18 @@ wclean <optionalArguments> <optionalDirectory>
 これはOpenFOAMのライブラリが更新されたときには有効な方法です．
 
 
-\subsection{コンパイルの例：turbFoamアプリケーション}
+\subsection{コンパイルの例：pisoFoamアプリケーション}
 \label{ssec:3.2.4}
-アプリケーション\OFtool{turbFoam}のソースコードは
-\OFpath{\$FOAM\_APP/solvers/turbFoam}ディレクトリ内にあり，
-最上位ソースファイルは\OFpath{turbFoam.C}という名前です．
-\OFpath{turbFoam.C}ソースコードは
-\begin{OFfile}
-\begin{verbatim}
+アプリケーション\OFtool{pisoFoam}のソースコードは
+\OFpath{\$FOAM\_APP/solvers/incompressible/pisoFoam}ディレクトリ内にあり，
+最上位ソースファイルは\OFpath{pisoFoam.C}という名前です．
+\OFpath{pisoFoam.C}ソースコードは
+\begin{OFverbatim}[file, linenum]
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 1991-2007 OpenCFD Ltd.
+    \\  /    A nd           | Copyright (C) 1991-2009 OpenCFD Ltd.
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -531,39 +515,40 @@ License
     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 Application
-    turbFoam
+    pisoFoam
 
 Description
-    Transient solver for incompressible, turbulent flow.
+    Transient solver for incompressible flow.
+
+    Turbulence modelling is generic, i.e. laminar, RAS or LES may be selected.
 
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
-#include "incompressible/singlePhaseTransportModel/singlePhaseTransportModel.H"
-#include "incompressible/turbulenceModel/turbulenceModel.H"
+#include "singlePhaseTransportModel.H"
+#include "turbulenceModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[])
 {
+    #include "setRootCase.H"
 
-#   include "setRootCase.H"
+    #include "createTime.H"
+    #include "createMesh.H"
+    #include "createFields.H"
+    #include "initContinuityErrs.H"
 
-#   include "createTime.H"
-#   include "createMesh.H"
-#   include "createFields.H"
-#   include "initContinuityErrs.H"
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+    // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
 
-    for (runTime++; !runTime.end(); runTime++)
+    while (runTime.loop())
     {
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-#       include "readPISOControls.H"
-#       include "CourantNo.H"
+        #include "readPISOControls.H"
+        #include "CourantNo.H"
 
         // Pressure-velocity PISO corrector
         {
@@ -573,8 +558,10 @@ int main(int argc, char *argv[])
             (
                 fvm::ddt(U)
               + fvm::div(phi, U)
-              + turbulence->divR(U)
+              + turbulence->divDevReff(U)
             );
+
+            UEqn.relax();
 
             if (momentumPredictor)
             {
@@ -604,7 +591,19 @@ int main(int argc, char *argv[])
                     );
 
                     pEqn.setReference(pRefCell, pRefValue);
-                    pEqn.solve();
+
+                    if
+                    (
+                        corr == nCorr-1
+                     && nonOrth == nNonOrthCorr
+                    )
+                    {
+                        pEqn.solve(mesh.solver("pFinal"));
+                    }
+                    else
+                    {
+                        pEqn.solve();
+                    }
 
                     if (nonOrth == nNonOrthCorr)
                     {
@@ -612,7 +611,7 @@ int main(int argc, char *argv[])
                     }
                 }
 
-#               include "continuityErrs.H"
+                #include "continuityErrs.H"
 
                 U -= rUA*fvc::grad(p);
                 U.correctBoundaryConditions();
@@ -630,13 +629,12 @@ int main(int argc, char *argv[])
 
     Info<< "End\n" << endl;
 
-    return(0);
+    return 0;
 }
 
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 コードはアプリケーションを説明している記述で始まり，
 この中で1行の
 \index{コメント}%
@@ -651,83 +649,72 @@ int main(int argc, char *argv[])
 \index{C++こうぶん@C++構文!/*...*/@\verb+/*...*/+}%
 \verb|/*...*/| で記述されます．それに続き，
 コードはコンパイラに現在のファイルの読み込みを一時停止させ，
-\OFpath{turbFoam.C}に\OFpath{fvCFD.H}を読み込ませるための
+\OFpath{pisoFoam.C}に\OFpath{fvCFD.H}を読み込ませるための
 例えば\verb|#include "fvCFD.H"|のような
 様々な\ 
 \index{# include@\verb+# include+!C++こうぶん@C++構文}%
 \index{C++こうぶん@C++構文!# include@\verb+# include+}%
 \verb|# include|命令文を含んでいます．
 
-\OFtool{turbFoam}は\OFtool{cfdTools}や\OFtool{incompressibleRASModels}や
+\OFtool{pisoFoam}は\OFtool{cfdTools}や\OFtool{incompressibleRASModels}や
 \OFemph{incompressibleTransportModels}ライブラリを提供し，
 それゆえ\verb|EXE_INC = -I...|オプションとライブラリにリンクする
 \verb|EXE_LIBS = -l...|オプションにより
 指定されるヘッダファイルが必要となります．
 \OFpath{Make/options}はそれゆえ以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum]
 EXE_INC = \
-    -I$(LIB_SRC)/finiteVolume/lnInclude \
-    -I$(LIB_SRC)/turbulenceModels \
-    -I$(LIB_SRC)/transportModels
+    -I$(LIB_SRC)/turbulenceModels/incompressible/turbulenceModel \
+    -I$(LIB_SRC)/transportModels \
+    -I$(LIB_SRC)/transportModels/incompressible/singlePhaseTransportModel \
+    -I$(LIB_SRC)/finiteVolume/lnInclude
 
 EXE_LIBS = \
-    -lincompressibleTurbulenceModels \
+    -lincompressibleRASModels \
+    -lincompressibleLESModels \
     -lincompressibleTransportModels \
     -lfiniteVolume \
     -lmeshTools
-
-\end{verbatim}%$
-\end{OFfile}
-\OFpath{turbFoamはturbFoam.C}ソースしか含まず，
+\end{OFverbatim}
+\OFtool{pisoFoam}は\OFpath{pisoFoam.C}ソースしか含まず，
 実行ファイルはすべての標準的なアプリケーションと同様に
 \OFpath{\$FOAM\_APPBIN}に書き込まれます．
 \OFpath{Make/files}はそれゆえ以下のようになります．
-\begin{OFfile}
-\begin{verbatim}
-turbFoam.C
+\begin{OFverbatim}[file, linenum]
+pisoFoam.C
 
-EXE = $(FOAM_APPBIN)/turbFoam
-\end{verbatim}%$
-\end{OFfile}
-\OFpath{\$FOAM\_CFD/turbFoam}ディレクトリで\verb|wmake|とタイプすれば
-\OFtool{turbFoam}をコンパイルできます．
+EXE = $(FOAM_APPBIN)/pisoFoam
+\end{OFverbatim}%$
+\OFpath{\$FOAM\_CFD/pisoFoam}ディレクトリで\verb|wmake|とタイプすれば
+\OFtool{pisoFoam}をコンパイルできます．
 
 コードはコンパイルされ以下のようなメッセージをが作成されます．
-\begin{OFterminal}
-\begin{verbatim}
-Making dependency list for source file turbFoam.C
-
-SOURCE_DIR=.
-SOURCE=turbFoam.C ;
-g++ -DFOAM_EXCEPTION -Dlinux -DlinuxOptMPICH
+\begin{OFverbatim}[file]
+Making dependency list for source file pisoFoam.C
+SOURCE DIR=.
+SOURCE=pisoFoam.C ;
+g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 -DscalarMachine -DoptSolvers -DPARALLEL -DUSEMPI -Wall -O2 -DNoRepository
--ftemplate-depth-17 -I/export/warhol/chris/OpenFOAM/OpenFOAM-1.4/src/OpenFOAM/lnInclude
+-ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-1.6/src/OpenFOAM/lnInclude
 -IlnInclude
 -I.
-……
+......
 -lmpich -L/usr/X11/lib -lm
--o /export/warhol/chris/OpenFOAM/OpenFOAM-1.4/applications/bin/linuxOptMPICH/turbFoam
-\end{verbatim}
-\end{OFterminal}
+-o .../OpenFOAM/OpenFOAM-1.6/applications/bin/linuxOptMPICH/pisoFoam
+\end{OFverbatim}
 再コンパイルすることも可能ですが，
 実行ファイルが最新でコンパイルする必要がないというときには
 以下のようなメッセージが返ってきます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 make: Nothing to be done for `allFiles'.
 make: `Make/linuxOptMPICH/dependencies' is up to date.
-
-make: `/export/warhol/chris/OpenFOAM/OpenFOAM-1.4/applications/bin/linuxOptMPICH/turbFoam'
+make: `.../OpenFOAM/OpenFOAM-1.6/applications/bin/linuxOptMPICH/pisoFoam'
 is up to date.
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 wclean
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 を使って依存リストを削除し，
 \OFtool{wmake}を起動することでゼロからアプリケーションをコンパイルできます．
 
@@ -736,10 +723,10 @@ wclean
 \label{ssec:3.2.5}
 OpenFOAMは，実行時にメッセージを出力するシステムを提供しており，
 これらのメッセージの多くは，OpenFOAMのケースの実行時に遭遇する問題のデバッグに役立ちます．
-そのスイッチは\OFpath{\$WM\_PROJECT\_DIR/.OpenFOAM-1.3/controlDict}ファイルの
+そのスイッチは\OFpath{\$WM\_PROJECT\_DIR/etc/controlDict}ファイルの
 中にあり，設定を変更したい場合には，
 \OFpath{\$HOME}ディレクトリに (例えば
-\OFpath{\$HOME/.OpenFOAM-1.3/controlDict}ファイルのように) コピーを
+\OFpath{\$HOME/.OpenFOAM/1.6/controlDict}ファイルのように) コピーを
 作成します．スイッチが可能なリストは非常に多く，
 \OFtool{foamDebugSwitches}アプリケーションを実行することにより閲覧できます．
 スイッチのほとんどは，クラスまたは機能性のレンジと一致しており，
@@ -776,60 +763,32 @@ OpenFOAMは，ファイルが新しく修正されたかどうか調べるとき
 \subsection{現在のアプリケーションへの新しいユーザ定義ライブラリのリンク}
 \label{ssec:3.2.6}
 タイトルのような状況は，
-新しいライブラリ (例えばnewを) 作成するとき，
+新しいライブラリ (例えば\OFemph{new}) を作成するとき，
 新しい宣言およびアプリケーションのレンジを越えて
 ライブラリの中に入れ込みたい場合に生じることが考えられます．
-例えば，ユーザーが新規の境界条件を作成し，newの中でコンパイルし，
+例えば，ユーザーが新規の境界条件を作成し，\OFemph{new}の中でコンパイルし，
 ソルバのアプリケーションや，
 前および後処理用のユーティリティ，
 メッシュツール等々の範囲で認識させる必要があることがあります．
 通常の環境下では，ユーザはすべてのアプリケーションを，
-リンクさせるためにnewで再コンパイルする必要があります．
-代わりに，OpenFOAMは再コンパイルの必要性を評価するために
-\index{foamUser@\OFemph{foamUser}!ライブラリ}%
-\index{ライブラリ!foamUser@\OFemph{foamUser}}%
-\OFemph{foamUser}とよばれる特別なライブラリを用いています．こ
-れはデフォルトにより，最初に各アプリケーションの中に
-コンパイルされた\OFemph{foamUser}ライブラリをもたせることにより
-有効になります．\OFemph{foamUser}ライブラリは，
-\OFpath{\$FOAM\_SRC/foamUser}のディレクトリの中にあるコードから
-コンパイルされます．ユーザが行うことは，
-\OFtool{foamUser}と再コンパイルされた\OFpath{foamUser}の\OFpath{Make/options}ファイルの中に
-リンクされたライブラリにnewライブラリを追加するだけです．
+リンクさせるために\OFemph{new}で再コンパイルする必要があります．
 
-前述の例の場合であれば，
-ユーザーは\OFpath{foamUser}ディレクトリのローカルコピーを作り，
-例えば以下のようなディレクトリに移してください．
-\begin{OFterminal}
-\begin{verbatim}
-cp -r $WM_PROJECT_DIR/src/foamUser $WM_PROJECT_USER_DIR/applications
-cd $WM_PROJECT_USER_DIR/applications/foamUser
-\end{verbatim}%$
-\end{OFterminal}
-
-この\OFemph{foamUser}ライブラリを，
-\OFpath{\$FOAM\_USER\_LIBBIN}の中にローカルにコンパイルするように，
-以下のように\OFpath{Make/files}ファイルを編集しましょう．
-\begin{OFfile}
-\begin{verbatim}
-libfoamUser.C
-LIB = $(FOAM_USER_LIBBIN)/libfoamUser
-\end{verbatim}%$
-\end{OFfile}
-新しいライブラリを\OFpath{Make/options}内の\verb|LIB_LIBS|に追加しましょう．
-\begin{OFfile}
-\begin{verbatim}
-LIB_LIBS = \
-    -l...  \
-    -lnew
-\end{verbatim}
-\end{OFfile}
-最後に，ライブラリを以下のコマンドで再コンパイルしましょう．
-\begin{OFterminal}
-\begin{verbatim}
-wmake libso
-\end{verbatim}
-\end{OFterminal}
+その代わりにOpenFOAMでは，
+一つもしくは複数の共有オブジェクトライブラリを
+実行時に動的にリンクさせるメカニズムを採用しています．
+そのためには，ただ単に\OFpath{controlDict}に
+オプションのキーワードである\OFkeyword{libs}を追加し，
+ライブラリの完全なファイル名を引用符付き文字列のエントリとして
+リストに入力すればすればよいだけです．
+たとえば\OFemph{new1}と\OFemph{new2}というライブラリを実行時にリンクしたいなら，
+\OFpath{controlDict}に以下を書き加えます．
+\begin{OFverbatim}[file]
+libs
+(
+    "libnew1.so"
+    "libnew2.so"
+);
+\end{OFverbatim}
 
 
 
@@ -849,18 +808,14 @@ wmake libso
 コマンドラインの入力フォームはコマンドラインで
 アプリーション名に\verb|-help|オプションをつけて
 入力するだけで見つけられます．例えば
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 blockMesh -help
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 と入力すると以下を含むデータが返ってきます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 Usage: blockMesh [-region region name] [-case dir] [-blockTopology]
     [-help] [-doc] [-srcDoc]
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 角括弧\texttt{[ ]}内の引数はオプショナルフラグです．
 アプリケーションがケースディレクトリ内で実行されると，
 そのケースを作動します．
@@ -878,11 +833,9 @@ Usage: blockMesh [-region region name] [-case dir] [-blockTopology]
 \OFtool{blockMesh}のサンプルをバックグラウンドのプロセスで実行し，
 ケースの進捗をログファイルに出力したい場合には，
 以下のように入力します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 blockMesh > log &
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 
 
@@ -900,8 +853,6 @@ OpenFOAMによる並列処理の方法はドメインの分割として知られ
 分割したケースの前処理については以降の節で説明します．
 並列処理には，標準のMPI (message passing interface) の実装である
 openMPIというパブリックドメインを使用しています．
-OpenFOAMは\autoref{sec:B.1}で述べているように，
-MPIの実装であるMPICHも使用することもできます．
 
 
 \subsection{メッシュの分解と初期フィールド・データ}
@@ -927,10 +878,7 @@ MPIの実装であるMPICHも使用することもできます．
 \OFpath{interFoam/damBreak}チュートリアルから
 \OFdictionary{decomposeParDict}ディクショナリをコピーすることができます．
 そして，ディクショナリ中のエントリを次のように置き換えます．
-\begin{OFfile}
-\begin{verbatim}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+\begin{OFverbatim}[file, linenum=17]
 
 numberOfSubdomains 4;
 
@@ -938,26 +886,20 @@ method          simple;
 
 simpleCoeffs
 {
-    n               (2 2 1);
+    n               ( 2 2 1 );
     delta           0.001;
 }
 
 hierarchicalCoeffs
 {
-    n               (1 1 1);
+    n               ( 1 1 1 );
     delta           0.001;
     order           xyz;
 }
 
 metisCoeffs
 {
-    processorWeights
-    (
-        1
-        1
-        1
-        1
-    );
+    processorWeights ( 1 1 1 1 );
 }
 
 manualCoeffs
@@ -967,14 +909,11 @@ manualCoeffs
 
 distributed     no;
 
-roots
-(
-);
+roots           ( );
 
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ユーザは，以下に述べる\verb|method|キーワードにより
 指定できる四つの分割方法から選択します．
 \begin{description}
@@ -991,13 +930,24 @@ roots
             基本的には\OFkeyword{simple}と同じですが，
             ユーザが，最初に$y$方向を，次に$x$方向を，
             というように，各方向の分割する順番を指定する点が異なっています．
+ \item[\OFkeyword{scotch}]
+            Scotch分割はユーザからのジオメトリの入力を必要とせず，
+            プロセッサの限界の数値を最小化するよう試みます．
+            ユーザは，任意指定の\OFkeyword{processorWeights}キーワードにより
+            プロセッサ間の重み付けを行うことができるため，
+            パフォーマンスの異なるマシン同士を有効に使うことができます．
+            また，もう一つ\OFkeyword{strategy}という任意のキーワードエントリがあり，
+            複雑な文字列をScotchに渡すことにより分割の戦略を制御できます．
+            さらなる情報を得るには，ソースコードファイル
+            \OFpath{\$FOAM\_SRC/decompositionMethods/%
+            decompositionMethods/scotchDecomp/scotchDecomp.C}を読んでください．
  \item[\OFkeyword{metis}]
 \index{metis@\OFkeyword{metis}!キーワードエントリ}%
 \index{キーワードエントリ!metis@\OFkeyword{metis}}%
-            METIS分割はユーザからのジオメトリの入力を必要とせず，
-            プロセッサの限界の数値を最小化するよう試みます．
-            ユーザは，プロセッサ間の重み付けを行うことができるため，
-            パフォーマンスの異なるマシン同士を有効に使うことができます．
+            METIS分割はScotchと似ていますが，
+            このライブラリは商用利用がフリーではないので，
+            将来リリースするOpenFOAMではScotchを支持し，
+            こちらは廃止していきます．
  \item[\OFkeyword{manual}]
 \index{manual@\OFkeyword{manual}!キーワードエントリ}%
 \index{キーワードエントリ!manual@\OFkeyword{manual}}%
@@ -1023,11 +973,9 @@ roots
 \index{ユーティリティ!decomposePar@\OFtool{decomposePar}}%
 \OFtool{decomposePar}ユーティリティは
 以下のように入力することで正常に実行されます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 decomposePar
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 最終的に，ケースディレクトリ内に各プロセッサに一つずつ
 一連のサブディレクトリが作成されるでしょう．
 そのディレクトリはプロセッサナンバを表す$N = 0, 1, \ldots$を用いて
@@ -1041,7 +989,7 @@ decomposePar
 
 \subsection{分解ケースの実行}
 \label{ssec:3.4.2}
-分解されたOpenFOAMのケースはMPI (\OFemph{openMPI}) の
+分解されたOpenFOAMのケースはMPIの
 \index{openMPI@\OFemph{openMPI}!メッセージパッシングインターフェイス}%
 \index{メッセージパッシングインターフェイス!openMPI@\OFemph{openMPI}}%
 \index{openMPI@\OFemph{openMPI}!MPI}%
@@ -1067,34 +1015,27 @@ decomposePar
 \texttt{ccc}というマシン構成から
 マシン\texttt{aaa}をホストとしてopenMPIを実行させるものとします．
 \OFpath{<machines>}は次のようにします．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[leftskip=3em]
 aaa
 bbb cpu=2
 ccc
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 openMPIはそのとき以下の実行によって起動されます．
 
 あるアプリケーションを\OFtool{mpirun}を使って並列実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 mpirun --hostfile <machines> -np <nProcs>
-    <foamExec> <otherArgs> -parallel > log
-\end{verbatim}
-\end{OFterminal}
+    <foamExec> <otherArgs> -parallel > log &
+\end{OFverbatim}
 ここにあげた\verb|<nProcs>|はプロセッサーの数，
 \verb|<foamExec>|は\OFtool{icoFoam}のような実行可能なファイル名であり，
 アウトプットは\OFpath{log}と名前の付けられたファイルに変更されています．
-例えば，\OFpath{\$FOAM\_RUN/\allowbreak tutorials/icoFoam}ディレクトリの中の
+例えば，\OFpath{\$FOAM\_RUN/\allowbreak tutorials/incompressible/icoFoam}ディレクトリの中の
 \OFpath{cavity}チュートリアルにおいて\OFpath{icoFoam}を四つのノード上で走らせる場合には，
 以下のコマンドを実行させる必要があります
-\begin{OFterminal}
-\begin{verbatim}
-mpirun --hostfile machines -np 4 icoFoam
-    $FOAM_RUN/tutorials/icoFoam  -parallel > log
-\end{verbatim}%$
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+mpirun --hostfile machines -np 4 icoFoam -parallel > log &
+\end{OFverbatim}%$
 
 \subsection{複数のディスクへのデータの分配}
 \label{ssec:3.4.3}
@@ -1109,19 +1050,16 @@ mpirun --hostfile machines -np 4 icoFoam
 \index{distributed@\OFkeyword{distributed}!キーワード}%
 \index{キーワード!distributed@\OFkeyword{distributed}}%
 \OFkeyword{distributed}のエントリが以下のように読み込まれなければなりません．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[leftskip=3em]
 distributed  yes;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 また，
 \index{roots@\OFkeyword{roots}!キーワード}%
 \index{キーワード!roots@\OFkeyword{roots}}%
 \OFkeyword{roots}のエントリは，各々のノードである，
 \verb|<root0>|，\verb|<root1>|，\ldots，
 のルートパスのリストとなっています．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[leftskip=3em]
 roots
 <nRoots>
 (
@@ -1129,8 +1067,7 @@ roots
    "<root1>"
    ...
 );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \verb|<nRoots>|はルートの数です．
 
 各\OFpath{processor}$N$ディレクトリは，
@@ -1163,11 +1100,9 @@ systemディレクトリや\OFpath{constant}ディレクトリ中のファイル
 \index{ユーティリティ!reconstructPar@\OFtool{reconstructPar}}%
 \OFtool{reconstructPar}ユーティティは，次のように，
 コマンドラインから実行することにより機能を発揮します
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 reconstructPar
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 データが異なるディスクに分散されるときには，
 最初に，再構築におけるローカルのケースディレクトリに
 コピーされる必要があります．
@@ -1186,14 +1121,13 @@ reconstructPar
 \section{標準のソルバ}
 \label{sec:3.5}
 OpenFOAMのディストリビューションのソルバは
-\OFpath{\$FOAM\_APP/solvers}ディレクトリの中にあり，
+\OFpath{\$FOAM\_SOLVERS}ディレクトリの中にあり，
 コマンドラインから\texttt{app}と入力すれば素早く到達できます．
 このディレクトリはさらに，非圧縮流体のような連続体力学，
 対流および固体応力解析等のカテゴリにより，
 いくつかのディレクトリに再分割されています．
-各ソルバには，非圧縮性，層流の\OFtool{icoFoam}ソルバ，
-非圧縮性，乱流の\OFtool{turbFoam}ソルバ，
-といったように分かり易い名前が付けられています．
+各ソルバには，非圧縮性・層流の\OFtool{icoFoam}ソルバ
+といったように分かりやすい名前がつけられています．
 このOpenFOAMで提供されているソルバのリストを
 \autoref{tbl:3.5}に示します．
 
@@ -1211,14 +1145,13 @@ OpenFOAMのディストリビューションのソルバは
 \vskip\floatsep
 
 
-\section{標準のアプリケーション}
+\section{標準のユーティリティ}
 \label{sec:3.6}
-OpenFOAMで提供されているユーティティは
-\OFpath{\$FOAM\_APP/utilities}ディレクトリの中にあり，
+OpenFOAMで提供されているユーティリティは
+\OFpath{\$FOAM\_UTILITIES}ディレクトリの中にあり，
 コマンドラインで\texttt{util}と打つことにより簡単にアクセスできます．
 名称は内容を記述するようになっており，
-例えば，\OFtool{magU}は速度場のデータから速度を計算し，
-\OFtool{ideasToFoam}はI-DEASのフォーマットで書かれたデータを
+例えば，\OFtool{ideasToFoam}はI-DEASのフォーマットで書かれたデータを
 OpenFOAMのフォーマットに変換します．
 OpenFOAMで配布されている最新のユーティリティリストを
 \autoref{tbl:3.6}に示しておきます．
@@ -1235,7 +1168,6 @@ OpenFOAMで配布されている最新のユーティリティリストを
 % \end{table}
 \endgroup
 \vskip\floatsep
-
 
 
 \section{標準のライブラリ}
@@ -1257,25 +1189,43 @@ OpenFOAM配布のライブラリは
 \end{description}
 
 
-\begin{table}[ht]
- \input{tbl/tbl-3-7}
- \caption{一般的使用のための共有オブジェクトライブラリ}
+\vskip\floatsep
+\begingroup
+ \small
+% \begin{table}[ht]
+ \LTXtable{\textwidth}{tbl/tbl-3-7}
+ \addtocounter{table}{-1}%
+ \tblcaption{一般的使用のための共有オブジェクトライブラリ}
  \label{tbl:3.7}
-\end{table}
+% \end{table}
+\endgroup
+\vskip\floatsep
 
 
-\begin{table}[ht]
- \input{tbl/tbl-3-8}
- \caption{熱物理モデルのライブラリ}
+\vskip\floatsep
+\begingroup
+ \small
+% \begin{table}[ht]
+ \LTXtable{\textwidth}{tbl/tbl-3-8}
+ \addtocounter{table}{-1}%
+ \tblcaption{熱物理モデルのライブラリ}
  \label{tbl:3.8}
-\end{table}
+% \end{table}
+\endgroup
+\vskip\floatsep
 
 
-\begin{table}[ht]
- \input{tbl/tbl-3-9}
- \caption{乱流モデルとLESモデルのライブラリ}
+\vskip\floatsep
+\begingroup
+ \small
+% \begin{table}[ht]
+ \LTXtable{\textwidth}{tbl/tbl-3-9}
+ \addtocounter{table}{-1}%
+ \tblcaption{乱流モデルとLESモデルのライブラリ}
  \label{tbl:3.9}
-\end{table}
+% \end{table}
+\endgroup
+\vskip\floatsep
 
 
 \begin{table}[ht]

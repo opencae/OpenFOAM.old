@@ -13,6 +13,7 @@
 \NeedsTeXFormat{pLaTeX2e}[2000/11/03]
 \ProvidesClass{OFbook}
   [2009/06/17 v1.00 document class for OpenFOAM User Guide translated into Japanese]
+\RequirePackage{keyval}
 \newif\if@mainmatter \@mainmattertrue
 \hour\time \divide\hour by 60\relax
 \@tempcnta\hour \multiply\@tempcnta 60\relax
@@ -90,6 +91,8 @@
 \DeclareFontShape{OMS}{cmsy}{b}{n}
         {<-6>  cmbsy5 <6-7>  cmbsy6  <7-8> cmbsy7
          <8-9> cmbsy8 <9-10> cmbsy9 <10-> cmbsy10}{}
+\def\textmc#1{\relax\ifmmode\hbox\fi{\mcfamily #1}}
+\def\textgt#1{\relax\ifmmode\hbox\fi{\gtfamily #1}}
 \def\@{\spacefactor3000\space}
 \def\normalsize{%
         \@setfontsize\normalsize\@xipt{17}%
@@ -197,33 +200,43 @@
         \def\@oddhead{\small
                 \underline{\hbox to \textwidth{\autoxspacing
                 \rightmark\hfil\thepage}}}%
-        \def\@oddfoot{\vbox{\hrulefill\vskip.1\baselineskip\small\hfill\OpenFOAM-1.5}}%
+        \def\@oddfoot{\vbox{\hrulefill\vskip.1\baselineskip\small\hfill\OpenFOAM-\@version}}%
         \def\@evenhead{\small
                 \underline{\hbox to \textwidth{\autoxspacing
                 \thepage\hfil\leftmark}}}%
-        \def\@evenfoot{\vbox{\hrulefill\vskip.1\baselineskip\small\OpenFOAM-1.5\hfill}}%
+        \def\@evenfoot{\vbox{\hrulefill\vskip.1\baselineskip\small\OpenFOAM-\@version\hfill}}%
         \def\chaptermark##1{\markboth{%
                 \@chapapp\thechapter\@chappos\hskip1zw##1}{}}%
         \def\sectionmark##1{%
                 \markright{\thesection\hskip1zw##1}}}
-% \def\maketitle{%
-%         \cleardoublepage
-%         \thispagestyle{empty}%
-%         \setcounter{page}{1}%
-%         \null\vskip 60\p@
-%         \begin{center}%
-%          {\HUGE\gtfamily\sffamily \@title \par}%
-%          \vfill
-%         \end{center}%
-%         \global\let\maketitle\relax
-%         \global\let\@author\@empty
-%         \global\let\@date\@empty
-%         \global\let\@title\@empty
-%         \global\let\title\relax
-%         \global\let\author\relax
-%         \global\let\date\relax
-%         \global\let\and\relax
-%         \newpage}
+\def\version#1{\gdef\@version{#1}}
+\def\@version{\@latex@error{No \noexpand\version given}\@ehc}
+\def\maketitle{%
+        \cleardoublepage
+        \thispagestyle{empty}%
+        \setcounter{page}{1}%
+        \null\vfill
+        \begin{center}%
+         {\HUGE\sffamily\OpenFOAM\par}%
+         {\LARGE\gtfamily\sffamily オープンソースCFDツールボックス\par}%
+         \vfill
+         {\LARGE\gtfamily\sffamily \@title\par}%
+         \vfill
+         {\normalfont Version \@version\par}%
+         {\normalfont\@date\par}%
+         \vskip\Cvs
+         {\normalfont\@author\par}%
+         \vfill
+        \end{center}%
+        \global\let\maketitle\relax
+        \global\let\@author\@empty
+        \global\let\@date\@empty
+        \global\let\@title\@empty
+        \global\let\title\relax
+        \global\let\author\relax
+        \global\let\date\relax
+        \global\let\and\relax
+        \newpage}
 \newcounter{part}
 \newcounter{chapter}
 \newcounter{section}[chapter]
@@ -251,7 +264,7 @@
   \clearpage
   \@mainmatterfalse}
 \def\mainmatter{%
-  \cleardoublepage
+    \cleardoublepage
   \@mainmattertrue}
 \def\backmatter{%
   \clearpage
@@ -492,6 +505,91 @@
 \arrayrulewidth.4\p@
 \doublerulesep2\p@
 \tabbingsep\labelsep
+\newif\if@verb@linenum
+\newcount\@verb@linenum
+\define@key{OFv}{linenum}[\@ne]{%
+   \@verb@linenumtrue
+   \@verb@linenum#1
+   \advance\@verb@linenum-\@ne}%
+\def\@verb@linenum@font{\normalfont\tiny}
+\define@key{OFv}{baselinestretch}{\def\baselinestretch{#1}}%
+\define@key{OFv}{leftskip}{\advance\leftskip#1}%
+\define@key{OFv}{weight}{\def\@verb@font@weight{#1}}%
+\def\@verb@font@weight{\normalsize}%
+\newif\if@verb@visiblespace
+\define@key{OFv}{visiblespace}[true]{%
+   \@nameuse{@verb@visiblespace#1}}%
+\define@key{OFv}{terminal}[]{%
+   \@verb@linenumfalse
+   \def\@verb@font@weight{\normalsize}%
+   \def\baselinestretch{0.8}%
+   \advance\leftskip3em}%
+\define@key{OFv}{file}[]{%
+   \def\@verb@font@weight{\small}%
+   \def\baselinestretch{0.8}%
+   \advance\leftskip2em}%
+\def\OFverbatim{%
+   \begingroup
+   \trivlist\item\relax
+   \leftskip\@totalleftmargin \rightskip\z@skip
+   \parindent\z@ \parfillskip\@flushglue
+   \obeylines \verbatim@font
+   \@verb@checkoption}
+\def\endOFverbatim{%
+   \endtrivlist
+   \endgroup
+   \noindent}
+\def\@verb@checkoption{\@testopt\@verb@checkoption@{}}
+\begingroup
+\catcode`\^^M=\active%
+\gdef\@verb@checkoption@[#1]#2^^M{%
+   \setkeys{OFv}{#1}%
+   \@verb@font@weight
+   \def\@verb@space{\if@verb@visiblespace\@xxxii\else\ \fi}%
+   \let\do\@makeother \dospecials
+   \@verb@loop}%
+\endgroup%
+\begingroup
+\catcode`\^^M=\active%
+\catcode`\{=12 \catcode`\}=12 \catcode`\[=1%
+\catcode`\]=2  \catcode`\|=0  \catcode`\\=12%
+|gdef|@verb@loop#1^^M[%
+   |@verb@checkend#1\end{OFverbatim}|@nil%
+   |ifx|@verb@left|@empty%
+      |@verb@put@line%
+      |def|@tempa[|@verb@loop]%
+   |else%
+      |ifx|@verb@currline|@empty|else |@verb@put@line |fi%
+      |def|@tempa[|end[OFverbatim]]%
+   |fi%
+   |@tempa]%
+|gdef|@verb@checkend#1\end{OFverbatim}#2|@nil[%
+   |def|@verb@currline[#1]%
+   |def|@verb@left[#2]]%
+|endgroup%
+\newcount\@verb@currpos
+\def\@verb@put@line{%
+   \noindent \@verb@currpos\z@
+   \if@verb@linenum
+      \advance\@verb@linenum\@ne
+      \expandafter\@verb@put@line@num
+   \fi
+   \expandafter\@verb@put@line@loop\@verb@currline\@nnil
+   \par}
+\def\@verb@put@line@num{%
+   \llap{%
+      \@verb@linenum@font
+      \the\@verb@linenum
+      \hskip\Cwd}}
+\def\@verb@put@line@loop#1{%
+   \ifx#1\@nnil\else
+      \count@=`#1\relax
+      \ifnum `\ =\count@   {\@verb@space}%
+      \else                {#1}%
+      \fi
+      \advance\@verb@currpos\@ne
+      \expandafter\@verb@put@line@loop
+   \fi}
 \def\@pnumwidth{1zw}
 \def\@tocrmarg{3zw}
 \newdimen\@lnumwidth

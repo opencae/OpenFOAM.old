@@ -59,18 +59,14 @@ OpenFOAMは特定のクラスの問題に対し，
 \vskip\floatsep
 
 
-\OFkeyword{thermoType}のエントリは，次の形式をとる．
-\begin{OFfile}
-\begin{verbatim}
+通常\OFkeyword{thermoType}のエントリは次の形式をとります．
+\begin{OFverbatim}[file]
 thermoModel<mixture<transport<specieThermo<thermo<equationOfState>>>>>
-\end{verbatim}
-\end{OFfile}
-それで，次に示すのは，\OFkeyword{thermoType}のエントリの例である．
-\begin{OFfile}
-\begin{verbatim}
+\end{OFverbatim}
+次に示すのは\OFkeyword{thermoType}のエントリの例です．
+\begin{OFverbatim}[file]
 hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{熱物性データ}
@@ -80,11 +76,9 @@ hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
 そのデータは，種のために，
 次に示す形式の複合的なエントリを使って指定される．
 この複合的なエントリは，キーワード\OFkeyword{mixture}が使われる．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 物性係数 \verb|<specieCoeffs>| は，
 \autoref{tbl:7.2}にリストされるエントリを含み，
 その順番は入力で指定される順番となる．
@@ -102,11 +96,15 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
 現在の\OFkeyword{thermo}モデルは，以下に示す通りである．
 \begin{description}
  \item[hConstThermo]
-            一定の$c_{p}$と融解熱$H_{\mathrm{f}}$を仮定する．
+            一定の$c_{\mathrm{p}}$と融解熱$H_{\mathrm{f}}$を仮定する．
             これらは，単純に \verb|<specieCoeffs>| の後に
-            二つの値$c_{p}$と$H_{\mathrm{f}}$を続けて指定する．
+            二つの値$c_{\mathrm{p}}$と$H_{\mathrm{f}}$を続けて指定する．
+ \item[eConstThermo]
+            一定の$c_{\mathrm{v}}$と融解熱$H_{\mathrm{f}}$を仮定する．
+            これらは，単純に \verb|<specieCoeffs>| の後に
+            二つの値$c_{\mathrm{v}}$と$H_{\mathrm{f}}$を続けて指定する．
  \item[janafThermo]
-            $c_{p}$を温度の関数として計算する．
+            $c_{\mathrm{p}}$を温度の関数として計算する．
             このとき，一連の係数は，熱力学のJANA表のものを用いる．
             順序づけられた係数のリストを，
             \autoref{tbl:7.3}に示した．
@@ -115,14 +113,18 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
             最初のセットは常温$T_{\mathrm{c}}$以上の温度についてのものである．
             （そして，$T_{\mathrm{h}}$以下である．
             二つめのセットは$T_{\mathrm{c}}$より低く$T_{\mathrm{l}}$より高い範囲についてのもの）．
-            $c_{p}$を温度の関数として表すと，
+            $c_{\mathrm{p}}$を温度の関数として表すと，
 \begin{align}
  \label{eq:7.1}
- c_{p} = R((((a_{4}T + a_{3})T + a_{2})T + a_{1})T + a_{0})
+ c_{\mathrm{p}} = R((((a_{4}T + a_{3})T + a_{2})T + a_{1})T + a_{0})
 \end{align}
             加えて，$a_{5}$，$a_{6}$という積分定数がある．
             これらは，それぞれ，$h$と$s$を評価するために使われ，
             高温と低温の両方で同じ定数が用いられる．
+ \item[hPolynomialThermo]
+            $c_{\mathrm{p}}$を温度の関数として，任意次数の多項式によって計算する．
+            次のケースがその使用例である：
+            \OFpath{\$FOAM\_TUTORIALS/lagrangian/porousExplicitSourceReactingParcelFoam/filter}
 \end{description}
 
 
@@ -139,7 +141,7 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
 現在のtransportモデルは，以下に説明する通りである．
 \begin{description}
  \item[constTransport]
-            $\mu$とプラントル数$\nPr = c_{p}\mu/\kappa$が一定であると仮定する．
+            $\mu$とプラントル数$\nPr = c_{\mathrm{p}}\mu/\kappa$が一定であると仮定する．
             ここでは，\verb|<thermoCoeffs>| の後に$\mu$と$\nPr$の二つの値を続けて指定する．
  \item[sutherlandTransport]
             $\mu$を温度$T$の関数として計算する．
@@ -150,12 +152,13 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
  \label{eq:7.2}
  \mu = \frac{A_{\mathrm{s}}\sqrt{T}}{1 + T_{\mathrm{s}}/T}
 \end{align}
+ \item[polynomialTransport]
+            $\mu$と$\kappa$を温度$T$の関数として，任意次数の多項式から計算する．
 \end{description}
 次は，\OFkeyword{fuel}という名前の種についてのエントリの例である．
 これは，\OFtool{sutherlandTransport}と\OFtool{janafThermo}を使ってモデルされている．
 また，エントリの説明のためにコメントが入っている．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 fuel                                          // keyword
 fuel 1 44.0962                                // specie
 200 5000 1000                                 // -- janafThermo --
@@ -164,37 +167,44 @@ fuel 1 44.0962                                // specie
 0.933554 0.0264246 6.10597e-06 -2.19775e-08 9.51493e-12
 -13958.5 19.2017                              // -----------------
 1.67212e-06 170.672;                          // sutherlandTransport
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 次に示すのは，\OFkeyword{air}という名前の種についての，エントリの例である．
 これは，\OFtool{constTransport}と\OFtool{hConstThermo}でモデルされている．
 エントリの説明のためにコメントが入っている．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 mixture        // keyword
 air 1 28.9     // specie
 1000 2.544e+06 // hConstThermo
 1.8e-05 0.7;   // constTransport
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 
 \section{乱流モデル}
 \label{sec:7.2}
-\index{RASProperties@\OFdictionary{RASProperties}!ディクショナリ}%
-\index{ディクショナリ!RASProperties@\OFdictionary{RASProperties}}%
-\OFdictionary{RASProperties}ディクショナリは，
-乱流モデルとしてReynolds-averaged stress (RAS) モデルを使っている
-ソルバが読み込みます．
-\index{LESProperties@\OFdictionary{LESProperties}!ディクショナリ}%
-\index{ディクショナリ!LESProperties@\OFdictionary{LESProperties}}%
-\OFdictionary{LESProperties}ディクショナリは，
-乱流モデルとしてlarge-eddy simulation (LES) モデルを使っている
-ソルバが読み込みます．
-\OFkeyword{RASProperties}に必要なエントリは，
-\autoref{tbl:7.4}に示します．
-また，\OFdictionary{LESProperties}ディクショナリのエントリは，
+乱流のモデリングを含むあらゆるソルバは
+\index{turbulenceProperties@\OFdictionary{turbulenceProperties}!ディクショナリ}%
+\index{ディクショナリ!turbulenceProperties@\OFdictionary{turbulenceProperties}}%
+\OFdictionary{turbulenceProperties}ディクショナリを読み込みます．
+このファイルの中では，\OFkeyword{simulationType}キーワードで
+使用する乱流モデルとして次のいずれかを選択します．
+\begin{description}
+ \item[laminar] 乱流モデルを使用しない
+ \item[RASmodel] レイノルズ平均応力 (RAS) モデル
+ \item[LESmodel] ラージ・エディ・シミュレーション (LES) モデル
+\end{description}
+
+\OFkeyword{RASmodel}が選択されているとき，
+RASモデリングの選択は，同じく\OFpath{constant}ディレクトリにある
+\OFdictionary{RASProperties}ファイルで設定します．
+RAS乱流モデルは，\autoref{tbl:3.9}に示した利用可能なモデルの長いリストから，
+\OFkeyword{RASModel}エントリで選択します．
+同様に，\OFkeyword{LESmodel}が選択された場合，
+LESモデリングの詳細は\OFdictionary{LESProperties}ディクショナリで記述し，
+LES乱流モデルは\OFkeyword{LESModel}エントリで選択します．
+\OFdictionary{RASProperties}に必要なエントリは，
+\autoref{tbl:7.4}に，
+また\OFdictionary{LESProperties}ディクショナリについては
 \autoref{tbl:7.5}に示します．
 
 
@@ -214,18 +224,95 @@ air 1 28.9     // specie
 
 非圧縮性および圧縮性のRAS乱流モデル，等容変化および非等容変化LESモデル，
 そしてデルタモデルは，\autoref{tbl:3.9}に示しています．
-関連するケースの\OFdictionary{turbulenceProperties}ディクショナリを見て，
-各々のモデルのために必要とされる
-係数のリストとデフォルト値を参考にしてください．
-必要とされる係数は，RASモデルが非圧縮性か圧縮性かにより，
-あるいはLESモデルが等容変化か非等容変化かによって異なります．
-参考として，それらのモデルはそれぞれ，
-\OFpath{\$FOAM\_TUTORIALS}の中にある以下の例題ケースの
-\OFkeyword{RASProperties}か
-\OFdictionary{LESProperties}ディクショナリに示しています．
-\begin{description}
- \item[\OFpath{turbFoam/cavity}] 非圧縮性RASモデル
- \item[\OFpath{sonicTurbFoam/prism}] 圧縮性RASモデル
- \item[\OFpath{oodles/pitzDaily}] 等容LESモデル
- \item[\OFpath{Xoodles/pitzDaily}] 非等容LESモデル
-\end{description}
+これらの使用例は\OFpath{\$FOAM\_TUTORIALS}以下に見つかります．
+
+% 関連するケースの\OFdictionary{turbulenceProperties}ディクショナリを見て，
+% 各々のモデルのために必要とされる
+% 係数のリストとデフォルト値を参考にしてください．
+% 必要とされる係数は，RASモデルが非圧縮性か圧縮性かにより，
+% あるいはLESモデルが等容変化か非等容変化かによって異なります．
+% 参考として，それらのモデルはそれぞれ，
+% \OFpath{\$FOAM\_TUTORIALS}の中にある以下の例題ケースの
+% \OFkeyword{RASProperties}か
+% \OFdictionary{LESProperties}ディクショナリに示しています．
+% \begin{description}
+%  \item[\OFpath{turbFoam/cavity}] 非圧縮性RASモデル
+%  \item[\OFpath{sonicTurbFoam/prism}] 圧縮性RASモデル
+%  \item[\OFpath{oodles/pitzDaily}] 等容LESモデル
+%  \item[\OFpath{Xoodles/pitzDaily}] 非等容LESモデル
+% \end{description}
+
+
+
+\subsection{モデル係数}
+\label{ssec:7.2.1}
+RASモデルの係数には，それぞれのソースコードの中でデフォルト値が与えられています．
+もしこのデフォルト値を上書きしたければ，
+モデル名に\OFkeyword{Coeffs}を加えたキーワード名
+（たとえば\OFkeyword{kEpsilon}モデルなら\OFkeyword{kEpsilonCoeffs}）
+のサブディクショナリを，
+\OFdictionary{RASProperties}ファイルに追加することで実現できます．
+もし\OFdictionary{RASProperties}ファイルで\OFkeyword{printCoeffs}スイッチが
+\OFkeyword{on}になっていれば，
+計算開始時にモデルが作成されたときに，
+該当する\OFkeyword{\ldots Coeffs}ディクショナリの例が標準出力に表示されます．
+ユーザは，これを\OFdictionary{RASProperties}にコピーして，
+必要に応じて数値を変更すればよいでしょう．
+
+
+\subsection{壁関数}
+\label{ssec:7.2.2}
+OpenFOAMではバージョン1.6から，個別のパッチの境界条件として適用する，
+様々な壁関数が利用可能になっています．
+これにより，異なる壁領域に異なる壁関数モデルを適用することが可能になります．
+壁関数モデルの選択は，
+非圧縮性RASにおいては\OFpath{0/nut}ファイルの$\nu_{\mathrm{t}}$，
+圧縮性RASにおいては\OFpath{0/mut}ファイルの$\mu_{\mathrm{t}}$，
+非圧縮性LESにおいては\OFpath{0/nuSgs}ファイルの$\nu_{\mathrm{sgs}}$，
+圧縮性LESにおいては\OFpath{0/muSgs}ファイルの$\mu_{\mathrm{sgs}}$
+によって指定します．
+たとえば，ある\OFpath{0/nut}ファイルは，
+\begin{OFverbatim}[file, linenum=17]
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    movingWall
+    {
+        type            nutWallFunction;
+        value           uniform 0;
+    }
+    fixedWalls
+    {
+        type            nutWallFunction;
+        value           uniform 0;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //
+\end{OFverbatim}
+本リリースでは様々な壁関数モデルが利用できます．
+たとえば，\OFkeyword{nutWallFunction}，\OFkeyword{nutRoughWallFunction}，
+\OFkeyword{nutSpalartAllmarasStandardRoughWallFunction}，
+\OFkeyword{nutSpalartAllmarasStandardWallFunction}，
+そして\OFkeyword{nutSpalartAllmarasWallFunction}．
+ユーザは，当該ディレクトリから，すべての壁関数モデルのリストを参照できます．
+\begin{OFverbatim}[terminal]
+find $FOAM SRC/turbulenceModels -name wallFunctions
+\end{OFverbatim}%$
+
+それぞれの壁関数境界条件では，\OFkeyword{E}と\OFkeyword{kappa}という
+オプションのキーワードエントリで$E$と$\kappa$のデフォルト値を上書きできます．
+\OFpath{nut}や\OFpath{mut}ファイルのいずれかのパッチで壁関数を選択したならば，
+\OFpath{epsilon}フィールドの対応するパッチでは\OFkeyword{epsilonWallFunction}を，
+乱流場\OFpath{k}，\OFpath{q}，\OFpath{R}の対応するパッチには
+\OFkeyword{kqRwallFunction}を選択する必要があります．
+

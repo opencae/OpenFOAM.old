@@ -194,16 +194,14 @@ OpenFOAMのメッシュのフォーマットである
 \index{ディクショナリ!boundary@\OFdictionary{boundary}}%
             パッチのリストです．以下のように，
             パッチ名の宣言で始まる各パッチに対するディクショナリで構成されます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 movingWall
 {
     type patch;
     nFaces 20;
     startFace 760;
 }
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \index{startFace@\OFkeyword{startFace}!キーワード}%
 \index{キーワード!startFace@\OFkeyword{startFace}}%
             \OFkeyword{startFace}はそのパッチにおける最初の面のラベル番号です．
@@ -245,8 +243,7 @@ OpenFOAMによってサポートされるcellShapeモデルを
 
 セルの記述は，セルモデルの名前と，
 ラベルの順序リストという二つの部分より行います．例えば，以下の点のリストを使うと，
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 8
     (
         (0 0 0)
@@ -258,14 +255,11 @@ OpenFOAMによってサポートされるcellShapeモデルを
         (1 1 0.5)
         (0 1 0.5)
     )
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 六面体セルは以下のように書けます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 (hex 8(0 1 2 3 4 5 6 7))
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 ここで，六面体セルの形状は\OFkeyword{hex}というキーワードで記述しましたが，
 他の形状については，\autoref{tbl:5.1}に示したキーワードを使って記述できます．
 
@@ -325,7 +319,7 @@ OpenFOAMは3次元の空間用に設計されており，
 一つのパッチは一つ以上の境界面に閉じられた領域をもち，
 それらが物理的に接続している必要はありません．
 
-下に階層を示すように，パッチに関する性質は4種類あり，
+下に階層を示すように，パッチに関する性質は3種類あり，
 \autoref{fig:5.2}では各レベルにおけるさまざまな
 パッチの名前を挙げています．
 下で示す階層はOpenFOAMライブラリの階層構造と類似しています．
@@ -365,54 +359,51 @@ OpenFOAMは3次元の空間用に設計されており，
 \end{itemize}
 例として\OFtool{sonicFoam}のケースにおける\OFpath{boundary}ファイルと
 \OFpath{p}ファイル（圧力物理量ファイル）を示します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file, linenum=17]
+
 6
 (
-inlet
-{
-    type patch;
-    nFaces 50;
-    startFace 10325;
-}
-
-outlet
-{
-    type patch;
-    nFaces 40;
-    startFace 10375;
-}
-
-bottom
-{
-    type symmetryPlane;
-    nFaces 25;
-    startFace 10415;
-}
-
-top
-{
-    type symmetryPlane;
-    nFaces 125;
-    startFace 10440;
-}
-
-obstacle
-{
-    type patch;
-    nFaces 110;
-    startFace 10565;
-}
-
-defaultFaces
-{
-    type empty;
-    nFaces 10500;
-    startFace 10675;
-}
+    inlet
+    {
+        type            patch;
+        nFaces          50;
+        startFace       10325;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          40;
+        startFace       10375;
+    }
+    bottom
+    {
+        type            symmetryPlane;
+        nFaces          25;
+        startFace       10415;
+    }
+    top
+    {
+        type            symmetryPlane;
+        nFaces          125;
+        startFace       10440;
+    }
+    obstacle
+    {
+        type            patch;
+        nFaces          110;
+        startFace       10565;
+    }
+    defaultFaces
+    {
+        type            empty;
+        nFaces          10500;
+        startFace       10675;
+    }
 )
 
 // ************************************************************************* //
+\end{OFverbatim}
+\begin{OFverbatim}[file, linenum=17]
 dimensions      [1 -1 -2 0 0 0 0];
 
 internalField   uniform 1;
@@ -460,8 +451,7 @@ boundaryField
 }
 
 // ************************************************************************* //
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \OFpath{boundary}ファイルにおける\OFkeyword{type}には，
 \OFkeyword{symmetryPlane}や\OFkeyword{empty}といった
 形態的制約を受けるパッチを除くすべてのパッチに対し
@@ -576,7 +566,25 @@ boundaryField
 
 \subsection{派生型}
 \label{ssec:5.2.4}
-\autoref{tbl:5.4}に派生型の種類を挙げます．
+OpenFOAMには多数の派生型境界条件があり，ここには掲載しきれません．
+かわりに，ごく一部を\autoref{tbl:5.4}に紹介します．
+利用できる全てのモデルの一覧を得たければ，
+OpenFOAMのソースコードを参照してください．
+派生型境界条件のソースコードは以下のような場所に見つかります．
+\begin{itemize}
+ \item \OFpath{\$FOAM SRC/finiteVolume/fields/fvPatchFields/derived}の中
+ \item 特定のモデルライブラリの中．
+       これはターミナルで以下のようなコマンドを実行することで探せます．
+\begin{OFverbatim}{terminal}
+find $FOAM_SRC -name "*derivedFvPatch*"
+\end{OFverbatim}%$
+ \item 特定のソルバの中．
+       これはターミナルで以下のようなコマンドを実行することで探せます．
+\begin{OFverbatim}{terminal}
+find $FOAM_SOLVERS -name "*fvPatch*"
+\end{OFverbatim}%$
+\end{itemize}
+
 
 
 \begin{table}[p]
@@ -686,11 +694,9 @@ $Ox$軸上の点から$Oy$軸上への円弧が時計回りとなるように定
 \OFkeyword{convertToMeters}キーワードは，
 メッシュ記述におけるすべての頂点の座標にかけられる
 尺度因子を指定します．例えば，
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 convertToMeters 0.001;
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 は，すべての座標に$0.001$をかけることを意味します．
 すなわち，\OFdictionary{blockMeshDict}ファイルで引用された値が$\unit*{mm}$になります．
 
@@ -701,8 +707,7 @@ convertToMeters 0.001;
 標準のリストとして以下のように与えられます．
 例えば\autoref{fig:5.5}での私たちの例のブロックに関しては，
 頂点は以下のとおりです．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 vertices
 (
 ( 0 0 0 ) // vertex number 0
@@ -714,8 +719,7 @@ vertices
 ( 1.4 1.1 1.3) // vertex number 6
 ( 0 1 1.1) // vertex number 7
 );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 \subsubsection{辺}
 \label{sssec:5.3.1.2}
@@ -752,14 +756,12 @@ vertices
 \autoref{fig:5.6}での私たちの例のブロックでは，
 内挿点$(1.1, 0.0, 0.5)$を通して以下のように
 頂点1と5をつなぐ\OFkeyword{arc}辺を指定します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 edges
 (
 arc 1 5 (1.1 0.0 0.5)
 );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 \subsubsection{ブロック}
 \label{sssec:5.3.1.3}
@@ -773,21 +775,19 @@ arc 1 5 (1.1 0.0 0.5)
 および各方向のセル拡大比のリストを与えます．
 
 そして，ブロックは以下のとおり定義されます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 blocks
 (
 hex (0 1 2 3 4 5 6 7) // vertex numbers
 (10 10 10) // numbers of cells in each direction
 simpleGrading (1 2 3) // cell expansion ratios
 );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 それぞれのブロックの定義は以下のとおりです．
 \begin{description}
  \item[Vertex numbering]
 \index{blockMesh@\OFtool{blockMesh}!じっこうかのう@実行可能な頂点の番号付け}%
-            \OFpath{OpenFOAM-1.5/cellModels}ファイルに
+            \OFpath{OpenFOAM-1.6/cellModels}ファイルに
             定義されているように，最初の入力がブロックの
 \index{けいじょう@形状}%
             形状識別子です．
@@ -816,9 +816,9 @@ simpleGrading (1 2 3) // cell expansion ratios
 \index{キーワード!simpleGrading@\OFkeyword{simpleGrading}}%
                         簡単な記述で，局所的な$x_{1}$，$x_{2}$と$x_{3}$方向それぞれに一様な
                         拡大比を，三つの拡大比だけで指定します．例えば
-\begin{verbatim}
+\begin{OFverbatim}[file]
 simpleGrading (1 2 3)
-\end{verbatim}
+\end{OFverbatim}
              \item[edgeGrading]
 \index{edgeGrading@\OFkeyword{edgeGrading}!キーワード}%
 \index{キーワード!edgeGrading@\OFkeyword{edgeGrading}}%
@@ -828,9 +828,9 @@ simpleGrading (1 2 3)
                         スキームに従って番号付けられた
                         ブロックの各辺に比率を与えます．
                         例えば，このようなものです．
-\begin{verbatim}
+\begin{OFverbatim}[file]
 edgeGrading (1 1 1 1 2 2 2 2 3 3 3 3)
-\end{verbatim}
+\end{OFverbatim}
                         これは，辺$0$--$3$に沿ったセル幅の比率が$1$，
                         辺$4$--$7$に沿った比率が$2$であり，
                         辺$8$--$11$に沿った比率が$3$である
@@ -878,8 +878,7 @@ edgeGrading (1 1 1 1 2 2 2 2 3 3 3 3)
 \autoref{fig:5.5}での例のブロックに戻って，
 もし左面に流入があり，右面における流出があり，
 他の四つの表面が壁であるならば，以下のとおりパッチは定義できるでしょう．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 patches // keyword
 (
 patch // patch type for patch 0
@@ -901,8 +900,7 @@ walls
 (4 5 6 7)
 )
 );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 それぞれのブロック面は四つの頂点番号のリストによって定義されます．
 頂点が与えられる順序は，ブロックの中から見て，
 どの頂点からも始めても，他の頂点を定義するために
@@ -937,16 +935,14 @@ face matchingで2ブロックをつなげるためには，
 定義されることを必要とします．面が併合されるパッチのそれぞれの組が，
 \OFkeyword{mergePatchPairs}というオプションリストに含まなければなりません．
 \OFkeyword{mergePatchPairs}の形式は以下のとおりです．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 mergePatchPairs
 (
 ( <masterPatch> <slavePatch> ) // merge patch pair 0
 ( <masterPatch> <slavePatch> ) // merge patch pair 1
 ...
 )
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 パッチの組は，最初のパッチはマスタになり，
 2番目はスレイブになると解釈されます．
 併合するための規則は以下のとおりです
@@ -1009,11 +1005,9 @@ mergePatchPairs
 くさび型ブロックを作成したいということです．
 これは，ブロック番号7を4で，6を5でそれぞれ交換することによって
 簡単にできます．するとブロック番号はこのようになります．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 hex (0 1 2 3 4 5 5 4)
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{figure}[ht]
@@ -1037,13 +1031,12 @@ hex (0 1 2 3 4 5 5 4)
 \subsection{\OFtool{blockMesh}の実行}
 \label{ssec:5.3.4}
 \autoref{sec:3.3}で説明されたように，
+\OFpath{<case>}ディレクトリのケースに対して
 \OFtool{blockMesh}を実行するためには，
 以下のようにすればコマンドラインで実行できます．
-\begin{OFterminal}
-\begin{verbatim}
-blockMesh
-\end{verbatim}
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+blockMesh -case <case>
+\end{OFverbatim}
 \index{blockMeshDict@\OFdictionary{blockMeshDict}!ディクショナリ}%
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
 \OFdictionary{blockMeshDict}ファイルは，
@@ -1124,8 +1117,7 @@ Stereolithography (STL) 形式の
 \OFpath{snappyHexMeshDict}内の\OFkeyword{geometory}の部分に記述します．
 形状はSTL形状またはOpenFOAMにおける幾何実体によって指定されます．
 以下に例を示します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 geometry
   {
       sphere.stl // STL filename
@@ -1154,8 +1146,7 @@ geometry
           radius 1.03;
       }
   };
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{六面体基礎メッシュの作成}
@@ -1216,8 +1207,7 @@ geometry
 
 \OFkeyword{castellatedMeshControls}サブディクショナリの輪郭のリストにおいて
 \OFpath{edgeMesh}ファイルの名前と細分化のレベルを記述します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 features
   (
       {
@@ -1225,8 +1215,7 @@ features
           level 2;               // level of refinement
       }
   );
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 輪郭の細分化に続き，\autoref{fig:5.12}に示すように，
 指定された表面における分割のためにセルが選択されます．
@@ -1253,8 +1242,7 @@ features
 領域の入力は\OFsubdictionary{regions}サブディクショナリに収められています．
 各領域の入力に対するキーワードは領域の名前そのものであり，
 細分化のレベルはさらにサブのディクショナリに含まれます．以下の入力例を参考にしてください．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 refinementSurfaces
   {
       sphere.stl
@@ -1269,8 +1257,7 @@ refinementSurfaces
           }
       }
   }
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{セルの除去}
@@ -1335,8 +1322,7 @@ refinementSurfaces
 \OFkeyword{inside}と\OFkeyword{outside}の細分化の場合，
 \verb|<distance>|は不要で無視されますが，
 指定する必要があります．以下に入力例を示します．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 refinementRegions
 {
     box1x1x1
@@ -1351,8 +1337,7 @@ refinementRegions
         levels ((1.0 5) (2.0 3)); // levels must be ordered nearest first
     }
 }
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{figure}[ht]
@@ -1450,8 +1435,7 @@ refinementRegions
 既存メッシュに関連付けられるので使われ，
 したがって，表面領域ではなく，パッチに適用されます．
 レイヤの入力例は以下のとおりです．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
  layers
   {
       sphere.stl_firstSolid
@@ -1463,8 +1447,7 @@ refinementRegions
           nSurfaceLayers 1;
       }
   }
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \begin{table}[ht]
@@ -1475,9 +1458,9 @@ refinementRegions
 \end{table}
 
 
-\subsection{メッシュの水準}
+\subsection{メッシュの品質制御}
 \label{ssec:5.4.8}
-メッシュの水準は\OFdictionary{snappyHexMeshDict}の
+メッシュの品質は\OFdictionary{snappyHexMeshDict}の
 \OFsubdictionary{meshQualityControls}サブディクショナリへ入力することで
 制御できます．入力は\autoref{tbl:5.11}に示します．
 
@@ -1487,30 +1470,34 @@ refinementRegions
 \label{sec:5.5}
 ユーザは，他のパッケージを使用してメッシュを生成し，
 OpenFOAMが用いる形式にそれらを変換できます．
-メッシュ変換コードは，命名規則に従います．
-利用可能なメッシュコンバータは以下の通りです．
+\autoref{tbl:3.6}に示したような
+様々なメッシュ変換ユーティリティが用意されています．
+
+よく使われるメッシュ変換ユーティリティのいくつかを以下に挙げ，
+使い方を紹介します．
 \begin{description}
  \item[\OFtool{fluentMeshToFoam}]
 \index{fluentMeshToFoam@\OFtool{fluentMeshToFoam}!ユーティリティ}%
 \index{ユーティリティ!fluentMeshToFoam@\OFtool{fluentMeshToFoam}}%
-            は，2次元，3次元両方の場合に動く
-            Fluent \texttt{.msh}メッシュファイルを読みます．
+            \OFemph{Fluent}の\texttt{.msh}メッシュファイルを読み込みます．
+            2次元，3次元両方に使えます．
  \item[\OFtool{starToFoam}]
 \index{starToFoam@\OFtool{starToFoam}!ユーティリティ}%
 \index{ユーティリティ!starToFoam@\OFtool{starToFoam}}%
-            は，STAR-CD PROSTARのメッシュファイルを読みます．
+            \OFemph{STAR-CD}/\OFemph{PROSTAR}のメッシュファイルを読み込みます．
  \item[\OFtool{gambitToFoam}]
 \index{gambitToFoam@\OFtool{gambitToFoam}!ユーティリティ}%
 \index{ユーティリティ!gambitToFoam@\OFtool{gambitToFoam}}%
-            は，GAMBIT \texttt{.neu}のニュートラルファイルを読みます．
+            \OFemph{GAMBIT}の\texttt{.neu}ニュートラルファイルを読み込みます．
  \item[\OFtool{ideasToFoam}]
 \index{ideasToFoam@\OFtool{ideasToFoam}!ユーティリティ}%
 \index{ユーティリティ!ideasToFoam@\OFtool{ideasToFoam}}%
-            は，ANSYS \texttt{.ans}形式で書かれたI-DEASメッシュを読みます．
- \item[\OFtool{cfxToFoam}]
-\index{cfxToFoam@\OFtool{cfxToFoam}!ユーティリティ}%
-\index{ユーティリティ!cfxToFoam@\OFtool{cfxToFoam}}%
-            は，\texttt{.geo}形式で書かれたCFXメッシュを読みます．
+            \OFemph{ANSYS}の\texttt{.ans}形式で書かれた
+            \OFemph{I-DEAS}メッシュを読み込みます．
+ \item[\OFtool{cfx4ToFoam}]
+\index{cfx4ToFoam@\OFtool{cfx4ToFoam}!ユーティリティ}%
+\index{ユーティリティ!cfx4ToFoam@\OFtool{cfx4ToFoam}}%
+            \texttt{.geo}形式で書かれた\OFemph{CFX}メッシュを読み込みます．
 \end{description}
 
 
@@ -1556,11 +1543,9 @@ Fluent \texttt{.msh}ファイルの変換は，
 ケースディレクトリは\OFpath{system}のサブディレクトリに
 \OFdictionary{controlDict}ファイルを含みます．
 そしてコマンド・プロンプトにおいて，ユーザは以下を実行することになります．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 fluentMeshToFoam <meshFile>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 ここで \texttt{<meshFile>} は絶対パスか相対パスによる
 \texttt{.msh}ファイルの名前です．
 
@@ -1632,46 +1617,36 @@ STAR-CDのメッシュをチェックするツールを動かすべきです．
 あらゆる不要な頂点を取り除き，
 セル境界と頂点番号を圧縮してください．
 これは以下の\textsf{PROSTAR}コマンドで実行されます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CSET NEWS FLUID
 CSET INVE
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \texttt{CSET}は空であるべきです．これがそうでないなら，
 \texttt{CSET}でセルを調べて，モデルを調整してください．
 もしセルを本当に必要としていないなら，
 \textsf{PROSTAR}コマンドを使用することでそれらを取り除くことができます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CDEL CSET
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 同様に，頂点も取り除かれる必要があるでしょう．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CSET NEWS FLUID
 VSET NEWS CSET
 VSET INVE
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 これらの必要とされていない頂点を取り除く前に，
 必要とされていない境界面は，除かれる前に，集められなければなりません．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CSET NEWS FLUID
 VSET NEWS CSET
 BSET NEWS VSET ALL
 BSET INVE
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 \texttt{BSET}が空でないなら，必要とされていない境界面は
 以下のコマンドを使用して削除することができます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 BDEL BSET
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 このとき，モデルは定義された境界面と同様に，
 流体セルとそれを支持する頂点だけを含むべきです．
 すべての境界面はセルの頂点によって完全に支えられるべきです．
@@ -1703,33 +1678,27 @@ default境界は，以下で説明された手順を用いることで
        10といった新しい領域に加えてください．
        \textsf{PROSTAR}の以下のコマンドを発行することによって，
        これができます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 RDEF 10 WALL
 BZON 10 ALL
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
  \item 私たちはセットからすべての以前に定義された境界タイプを
        外すことになるでしょう．境界領域に行ってください．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 BSET NEWS REGI 1
 BSET NEWS REGI 2
 ... 3, 4, ...
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
        境界セットに関連している頂点を集め，
        次に頂点に関連している境界面を集めてください．
        それらは元のセットのように$2$倍あるでしょう．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 BSET NEWS REGI 1
 VSET NEWS BSET
 BSET NEWS VSET ALL
 BSET DELE REGI 1
 REPL
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
        これは境界領域1の上で定義された境界領域10の面を与えるはずです．
        \verb|BDEL BSET|と共にそれらを削除してください．
        すべての領域にこれらを繰り返してください．
@@ -1738,8 +1707,7 @@ REPL
 \subsubsection{モデルの再番号付け}
 \label{sssec:5.5.2.4}
 コマンドを使用することでモデルの番号を付け替えて，チェックしてください．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CSET NEW FLUID
 CCOM CSET
 VSET NEWS CSET
@@ -1752,8 +1720,7 @@ BSET INVE
 BCOM BSET
 CHECK ALL
 GEOM
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 内部の\textsf{PROSTAR}の照合は，最後の二つのコマンドで実行されます．
 コマンドはいくつかの予見できない誤りを明らかにするかもしれません．
 また，\textsf{PROSTAR}は幾何学形状にではなく，
@@ -1769,44 +1736,34 @@ OpenFOAMの
 メッシュがいったん完成されたら，
 モデルのすべての統合されたマッチをカップルタイプ1に置いてください．
 他のすべてのタイプが，任意のマッチを示すのに使用されるでしょう．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CPSET NEWS TYPE INTEGRAL
 CPMOD CPSET 1
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 そして，計算格子の構成要素をそれら自身のファイルに書かなければなりません．
 これはコマンドを発行し，境界に対して\textsf{PROSTAR}を用いることで行われます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 BWRITE
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 デフォルトでは，これは\texttt{.23}ファイル（3.0の前のバージョン）か
 \texttt{.bnd}ファイル（バージョン3.0以降）に書きます．
 セルに対しては，以下のコマンド，
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CWRITE
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 がセルを\texttt{.14}か\texttt{.cel}ファイルに出力します．
 頂点に対しては，以下のコマンド，
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 VWRITE
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 が\texttt{.15}か\texttt{.vrt}ファイルに出力します．
 現在の既定の設定では，ASCII書式でファイルを書き出します．
 カップルが存在しているなら，
 拡張子\texttt{.cpl}をもつ追加カップルファイルが
 以下のコマンドをタイプすることによって書きだされる必要があります．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 CPWRITE
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 三つのファイルに出力した後に，\textsf{PROSTAR}を終了するか，
 ファイルを閉じてください．
 パネルに目を通して，すべてのSTAR-CDのサブモデル，
@@ -1828,19 +1785,15 @@ CPWRITE
 指定された幅に関するデータ列で書かれています．
 座標値が続く頂点番号を与えるデータの典型的な行は，
 以下のとおりであるかもしれません．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 19422 -0.105988957 -0.413711881E-02 0.000000000E+00
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 縦座標が科学表記法で書かれていて，
 負であるなら，値の間には，スペースが全くないかもしれません．
 例えば以下のような状況です．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 19423 -0.953953117E-01-0.338810333E-02 0.000000000E+00
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \OFtool{starToFoam}コンバータは，
 縦座標の値を区切るためにスペースを区切り文字としてデータを読むので，
 前の例を読むとき，問題になります．
@@ -1850,29 +1803,23 @@ CPWRITE
 \index{スクリプト／エイリアス!foamCorrectVrt@\OFtool{foamCorrectVrt}}%
 \OFtool{foamCorrectVrt}を含んでいます．
 すると，それが前の例を以下のように変換するでしょう．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[file]
 19423 -0.953953117E-01 -0.338810333E-02 0.000000000E+00
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 したがって，必要ならば\OFtool{starToFoam}コンバータを動かす前に，
 以下のようにタイプすることで\OFtool{foamCorrectVrt}スクリプトを実行するべきです．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 foamCorrectVrt <file>.vrt
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 \subsubsection{OpenFOAMのフォーマットへのメッシュの変換}
 \label{sssec:5.5.2.7}
 ここで，OpenFOAMの実行に必要な境界，セル，
 およびポイントファイルを作成するために，
 変換ユーティリティ\OFtool{starToFoam}を実行できます．
-\begin{OFfile}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 starToFoam <meshFilePrefix>
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 \texttt{<meshFilePrefix>} は，メッシュファイルの絶対か相対パスを
 含んでいる接頭語の名前です．
 ユーティリティの実行後に，OpenFOAM境界タイプは
@@ -1886,11 +1833,9 @@ GAMBITは\texttt{.neu}拡張子をもつ単一のファイルに
 GAMBITの\texttt{.neu}ファイルを変換する手順は，
 最初に新しいOpenFOAMケースを作成し，
 そしてユーザがコマンド・プロンプトで以下のコマンドを実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 gambitToFoam <meshFile>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 ここで \texttt{<meshFile>} は絶対か相対パスによる\texttt{.neu}ファイルの名前です．
 
 GAMBITファイル形式は例えば，壁，対称面，周期境界といったような
@@ -1905,15 +1850,13 @@ OpenFOAMはI-DEASによって生成されたメッシュを変換できますが
 \texttt{.ans}ファイルとしてANSYS形式で書きだされます．
 \texttt{.ans}ファイルを変換する手順は最初に新しいOpenFOAMケースを作成し，
 そしてユーザがコマンド・プロンプトから以下のように実行します．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 ideasToFoam <meshFile>
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 ここで \texttt{<meshFile>} は絶対か相対パスによる\texttt{.ans}ファイルの名前です．
 
 
-\subsection{\OFtool{cfxToFoam}}
+\subsection{\OFtool{cfx4ToFoam}}
 \label{ssec:5.5.5}
 CFXは\texttt{.geo}拡張子をもつ単一のファイルにメッシュ・データを書き出します．
 CFXのメッシュ形式は，ブロック構造です．
@@ -1939,11 +1882,9 @@ CFXでのOpenFOAMの2次元幾何形状は，一つのセルの厚さ [**] の
 CFXの\texttt{.geo}ファイルを変換する手順は
 最初に新しいOpenFOAMケースを作成し，
 そしてユーザがコマンド・プロンプトから以下のように実行します．
-\begin{OFterminal}
-\begin{verbatim}
-cfxToFoam <meshFile>
-\end{verbatim}
-\end{OFterminal}
+\begin{OFverbatim}[terminal]
+cfx4ToFoam <meshFile>
+\end{OFverbatim}
 ここで \texttt{<meshFile>} は絶対か相対パスによる\texttt{.geo}ファイルの名前です．
 
 
@@ -1984,11 +1925,9 @@ cfxToFoam <meshFile>
 \index{ユーティリティ!mapFields@\OFtool{mapFields}}%
 \OFtool{mapFields}を（ターゲット）ケース上で実行することによって，
 簡単に実行されます．
-\begin{OFterminal}
-\begin{verbatim}
+\begin{OFverbatim}[terminal]
 mapFields <source dir> -consistent
-\end{verbatim}
-\end{OFterminal}
+\end{OFverbatim}
 
 \subsection{一貫しないフィールドのマッピング}
 \label{ssec:5.6.2}
@@ -2031,22 +1970,19 @@ mapFields <source dir> -consistent
  \label{fig:5.17}
 \end{figure}
 
-\begin{OFfile}
-\begin{verbatim}
-patchMap
-(
-lid movingWall
-);
+\begin{OFverbatim}[file, linenum=17]
 
-cuttingPatches
-(
-fixedWalls
-);
+patchMap        ( lid movingWall );
+
+cuttingPatches  ( fixedWalls );
+
 
 // ************************************************************************* //
+\end{OFverbatim}
+
+\begin{OFverbatim}[terminal]
 mapFields <source dir>
-\end{verbatim}
-\end{OFfile}
+\end{OFverbatim}
 
 
 \subsection{並列なケースのマッピング}
