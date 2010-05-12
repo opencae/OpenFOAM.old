@@ -1,0 +1,76 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lXl}
+ キーワード & 意味 & 例 \\
+ \hline
+\index{layers@\OFkeyword{layers}!キーワード}%
+\index{キーワード!layers@\OFkeyword{layers}}%
+ \OFkeyword{layers} &
+     レイヤのディクショナリ &
+         \OFkeyword{} \\
+\index{expansionRatio@\OFkeyword{expansionRatio}!キーワード}%
+\index{キーワード!expansionRatio@\OFkeyword{expansionRatio}}%
+ \OFkeyword{expansionRatio} &
+     レイヤメッシュの拡大比率 &
+         \OFkeyword{1.0} \\
+\index{finalLayerRatio@\OFkeyword{finalLayerRatio}!キーワード}%
+\index{キーワード!finalLayerRatio@\OFkeyword{finalLayerRatio}}%
+ \OFkeyword{finalLayerRatio} &
+     レイヤの外側の歪められていないセルの大きさに比例した壁から最も遠い層の厚さ &
+         \OFkeyword{0.3} \\
+\index{minThickness@\OFkeyword{minThickness}!キーワード}%
+\index{キーワード!minThickness@\OFkeyword{minThickness}}%
+ \OFkeyword{minThickness} &
+     レイヤの外側の歪められていないセルの大きさに比例したセルのレイヤの最小の厚さ &
+         \OFkeyword{0.25} \\
+\index{nGrow@\OFkeyword{nGrow}!キーワード}%
+\index{キーワード!nGrow@\OFkeyword{nGrow}}%
+ \OFkeyword{nGrow} &
+     点がなければ生成されない面に結合されたレイヤの数．輪郭に近いレイヤ追加の収束に役立つ． &
+         \OFkeyword{1} \\
+\index{featureAngle@\OFkeyword{featureAngle}!キーワード}%
+\index{キーワード!featureAngle@\OFkeyword{featureAngle}}%
+ \OFkeyword{featureAngle} &
+     この角度以上では表面は押し出されない &
+         \OFkeyword{60} \\
+\index{nRelaxIter@\OFkeyword{nRelaxIter}!キーワード}%
+\index{キーワード!nRelaxIter@\OFkeyword{nRelaxIter}}%
+ \OFkeyword{nRelaxIter} &
+     緩和反復のスナップ最大数 &
+         \OFkeyword{5} \\
+\index{nSmoothSurfaceNormals@\OFkeyword{nSmoothSurfaceNormals}!キーワード}%
+\index{キーワード!nSmoothSurfaceNormals@\OFkeyword{nSmoothSurfaceNormals}}%
+ \OFkeyword{nSmoothSurfaceNormals} &
+     表面法線のスムージング反復数 &
+         \OFkeyword{1} \\
+\index{nSmoothNormals@\OFkeyword{nSmoothNormals}!キーワード}%
+\index{キーワード!nSmoothNormals@\OFkeyword{nSmoothNormals}}%
+ \OFkeyword{nSmoothNormals} &
+     内部メッシュの運動方向のスムージング反復数 &
+         \OFkeyword{3} \\
+\index{nSmoothThickness@\OFkeyword{nSmoothThickness}!キーワード}%
+\index{キーワード!nSmoothThickness@\OFkeyword{nSmoothThickness}}%
+ \OFkeyword{nSmoothThickness} &
+     表面パッチ上の滑らかなレイヤの厚さ &
+         \OFkeyword{10} \\
+\index{maxFaceThicknessRatio@\OFkeyword{maxFaceThicknessRatio}!キーワード}%
+\index{キーワード!maxFaceThicknessRatio@\OFkeyword{maxFaceThicknessRatio}}%
+ \OFkeyword{maxFaceThicknessRatio} &
+     極端にゆがんでいるセルでレイヤの生成を止める &
+         \OFkeyword{0.5} \\
+\index{maxThicknessToMedialRatio@\OFkeyword{maxThicknessToMedialRatio}!キーワード}%
+\index{キーワード!maxThicknessToMedialRatio@\OFkeyword{maxThicknessToMedialRatio}}%
+ \OFkeyword{maxThicknessToMedialRatio} &
+     中間の距離と厚さの比が大きくなるとレイヤの生成を減少する &
+         \OFkeyword{0.3} \\
+\index{minMedianAxisAngle@\OFkeyword{minMedianAxisAngle}!キーワード}%
+\index{キーワード!minMedianAxisAngle@\OFkeyword{minMedianAxisAngle}}%
+ \OFkeyword{minMedianAxisAngle} &
+     中間の軸点選択に使う角度 &
+         \OFkeyword{130} \\
+\index{nBufferCellsNoExtrude@\OFkeyword{nBufferCellsNoExtrude}!キーワード}%
+\index{キーワード!nBufferCellsNoExtrude@\OFkeyword{nBufferCellsNoExtrude}}%
+ \OFkeyword{nBufferCellsNoExtrude} &
+     新しいレイヤの末端のためのバッファ領域を作成 &
+         \OFkeyword{0} \\
+ \hline
+\end{tabularx}

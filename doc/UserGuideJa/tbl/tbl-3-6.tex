@@ -1,0 +1,427 @@
+%#! platex UserGuideJa
+% \index{@\OFtool{}!ユーティリティ}%
+% \\index{\([^!]+\)!\([^!]+\)}%
+% \\index{\1!\2}%
+% \\index{\2!\1}%
+\begin{longtable}{lX}
+ \multicolumn{2}{l}{前処理} \\
+ \hline
+\index{boxTurb@\OFtool{boxTurb}!ユーティリティ}%
+\index{ユーティリティ!boxTurb@\OFtool{boxTurb}}%
+ \OFtool{boxTurb} & 与えられたエネルギスペクトルに適合し，
+ 自由に発散する乱流のboxを生成する \\
+\index{engineSwirl@\OFtool{engineSwirl}!ユーティリティ}%
+\index{ユーティリティ!engineSwirl@\OFtool{engineSwirl}}%
+ \OFtool{engineSwirl} & エンジン計算のために旋回流を発生させる \\
+\index{FoamX@\OFtool{FoamX}!ユーティリティ}%
+\index{ユーティリティ!FoamX@\OFtool{FoamX}}%
+ \OFtool{FoamX} & （不明） \\
+\index{mapFields@\OFtool{mapFields}!ユーティリティ}%
+\index{ユーティリティ!mapFields@\OFtool{mapFields}}%
+ \OFtool{mapFields} & 両ケースの時刻ディレクトリの全ての場を読み込み，
+ 補間し，体積場を一つのメッシュから他のメッシュにマップする．
+ 並列・非並列のどちらのケースでも再構築せずに実行可能 \\
+\index{setFields@\OFtool{setFields}!ユーティリティ}%
+\index{ユーティリティ!setFields@\OFtool{setFields}}%
+ \OFtool{setFields} & ディクショナリでセルのセットを選択する \\
+ \\
+ \multicolumn{2}{l}{メッシュの生成 --- \autoref{sec:5.3}参照} \\
+ \hline
+\index{blockMesh@\OFtool{blockMesh}!ユーティリティ}%
+\index{ユーティリティ!blockMesh@\OFtool{blockMesh}}%
+ \OFtool{blockMesh} & メッシュを生成する \\
+\index{extrudeMesh@\OFtool{extrudeMesh}!ユーティリティ}%
+\index{ユーティリティ!extrudeMesh@\OFtool{extrudeMesh}}%
+ \OFtool{extrudeMesh} & 既存のパッチやファイルから読み込んだパッチを押し出す \\
+ \\
+ \multicolumn{2}{l}{メッシュの変換 --- \autoref{sec:5.5}参照} \\
+ \hline
+\index{ansysToFoam@\OFtool{ansysToFoam}!ユーティリティ}%
+\index{ユーティリティ!ansysToFoam@\OFtool{ansysToFoam}}%
+ \OFtool{ansysToFoam} & I-DEASから出力した
+ ANSYSインプットメッシュファイルをOpenFOAM形式へ変換する \\
+\index{ccm26ToFoam@\OFtool{ccm26ToFoam}!ユーティリティ}%
+\index{ユーティリティ!ccm26ToFoam@\OFtool{ccm26ToFoam}}%
+ \OFtool{ccm26ToFoam} & CCMバージョン2.6のライブラリを利用してCCMをを変換する \\
+\index{cfxToFoam@\OFtool{cfxToFoam}!ユーティリティ}%
+\index{ユーティリティ!cfxToFoam@\OFtool{cfxToFoam}}%
+ \OFtool{cfxToFoam} & CFXメッシュをOpenFOAM形式へ変換する \\
+\index{fluentMeshToFoam@\OFtool{fluentMeshToFoam}!ユーティリティ}%
+\index{ユーティリティ!fluentMeshToFoam@\OFtool{fluentMeshToFoam}}%
+ \OFtool{fluentMeshToFoam} & Fluentのメッシュを
+ 複数の領域と領域の境界の処理を含むOpenFOAM形式に変換する \\
+\index{foamMeshToFluent@\OFtool{foamMeshToFluent}!ユーティリティ}%
+\index{ユーティリティ!foamMeshToFluent@\OFtool{foamMeshToFluent}}%
+ \OFtool{foamMeshToFluent} & OpenFOAMメッシュをFluentメッシュ形式で出力する \\
+\index{gambitToFoam@\OFtool{gambitToFoam}!ユーティリティ}%
+\index{ユーティリティ!gambitToFoam@\OFtool{gambitToFoam}}%
+ \OFtool{gambitToFoam} & GAMBITメッシュをOpenFOAM形式へ変換する \\
+\index{gmshToFoam@\OFtool{gmshToFoam}!ユーティリティ}%
+\index{ユーティリティ!gmshToFoam@\OFtool{gmshToFoam}}%
+ \OFtool{gmshToFoam} & Gmshによって書かれた\OFpath{.msh}ファイルを読み込む \\
+\index{ideasUnvToFoam@\OFtool{ideasUnvToFoam}!ユーティリティ}%
+\index{ユーティリティ!ideasUnvToFoam@\OFtool{ideasUnvToFoam}}%
+ \OFtool{ideasUnvToFoam} & I-DEAS \OFpath{.unv}形式メッシュをOpenFOAM形式へ変換する \\
+\index{kivaToFoam@\OFtool{kivaToFoam}!ユーティリティ}%
+\index{ユーティリティ!kivaToFoam@\OFtool{kivaToFoam}}%
+ \OFtool{kivaToFoam} & KIVA3vfグリッドをOpenFOAM形式へ変換する \\
+\index{mshToFoam@\OFtool{mshToFoam}!ユーティリティ}%
+\index{ユーティリティ!mshToFoam@\OFtool{mshToFoam}}%
+ \OFtool{mshToFoam} & アドベンチャーシステムによって作られた\OFpath{.msh}形式を読み込む \\
+\index{netgenNeutralToFoam@\OFtool{netgenNeutralToFoam}!ユーティリティ}%
+\index{ユーティリティ!netgenNeutralToFoam@\OFtool{netgenNeutralToFoam}}%
+ \OFtool{netgenNeutralToFoam} & Netgen4.4によって書かれたNeutralファイル形式を読み込む \\
+\index{plot3dToFoam@\OFtool{plot3dToFoam}!ユーティリティ}%
+\index{ユーティリティ!plot3dToFoam@\OFtool{plot3dToFoam}}%
+ \OFtool{plot3dToFoam} & Plot3dメッシュ（アスキー形式）をOpenFOAM形式に変換 \\
+\index{polyDualMesh@\OFtool{polyDualMesh}!ユーティリティ}%
+\index{ユーティリティ!polyDualMesh@\OFtool{polyDualMesh}}%
+ \OFtool{polyDualMesh} & （不明） \\
+\index{sammToFoam@\OFtool{sammToFoam}!ユーティリティ}%
+\index{ユーティリティ!sammToFoam@\OFtool{sammToFoam}}%
+ \OFtool{sammToFoam} & STAR-CDSAMMメッシュをOpenFOAM形式へ変換する \\
+\index{starToFoam@\OFtool{starToFoam}!ユーティリティ}%
+\index{ユーティリティ!starToFoam@\OFtool{starToFoam}}%
+ \OFtool{starToFoam} & STAR-CDPROSTARメッシュをOpenFOAM形式へ変換する \\
+\index{tetgenToFoam@\OFtool{tetgenToFoam}!ユーティリティ}%
+\index{ユーティリティ!tetgenToFoam@\OFtool{tetgenToFoam}}%
+ \OFtool{tetgenToFoam} & tetgenにより書かれた\OFpath{.ele}，
+ \OFpath{.node}，\OFpath{.face}ファイルを読み込む \\
+\index{writeMeshObj@\OFtool{writeMeshObj}!ユーティリティ}%
+\index{ユーティリティ!writeMeshObj@\OFtool{writeMeshObj}}%
+ \OFtool{writeMeshObj} & メッシュのデバッグのため：
+ たとえばjavaviewで見れる，三つの別々のOBJファイルとしてメッシュを書く \\
+ \\
+ \multicolumn{2}{l}{メッシュの操作} \\
+ \hline
+\index{attachMesh@\OFtool{attachMesh}!ユーティリティ}%
+\index{ユーティリティ!attachMesh@\OFtool{attachMesh}}%
+ \OFtool{attachMesh} & 指定されたメッシュ修正ユーティリティによって
+ 位相的に独立したメッシュを付加する \\
+\index{autoPatch@\OFtool{autoPatch}!ユーティリティ}%
+\index{ユーティリティ!autoPatch@\OFtool{autoPatch}}%
+ \OFtool{autoPatch} & ユーザが指定した角度に基づいて外部面をパッチに分割する \\
+\index{cellSet@\OFtool{cellSet}!ユーティリティ}%
+\index{ユーティリティ!cellSet@\OFtool{cellSet}}%
+ \OFtool{cellSet} & ディクショナリでセルのセットを選択する \\
+\index{checkMesh@\OFtool{checkMesh}!ユーティリティ}%
+\index{ユーティリティ!checkMesh@\OFtool{checkMesh}}%
+ \OFtool{checkMesh} & メッシュの妥当性をチェックする \\
+\index{couplePatches@\OFtool{couplePatches}!ユーティリティ}%
+\index{ユーティリティ!couplePatches@\OFtool{couplePatches}}%
+ \OFtool{couplePatches} & 周期的なプロセッサのパッチを再編成する \\
+\index{createPatch@\OFtool{createPatch}!ユーティリティ}%
+\index{ユーティリティ!createPatch@\OFtool{createPatch}}%
+ \OFtool{createPatch} & 選択した境界面の外部にパッチを作成する．
+ 面は既存のパッチかfaceSetから選択する \\
+\index{deformedGeom@\OFtool{deformedGeom}!ユーティリティ}%
+\index{ユーティリティ!deformedGeom@\OFtool{deformedGeom}}%
+ \OFtool{deformedGeom} & \OFtool{polyMesh}を変位場\OFkeyword{U}と
+ 引数として与えられた尺度因子により変形させる \\
+\index{faceSet@\OFtool{faceSet}!ユーティリティ}%
+\index{ユーティリティ!faceSet@\OFtool{faceSet}}%
+ \OFtool{faceSet} & ディクショナリで面のセットを選択する \\
+\index{flattenMesh@\OFtool{flattenMesh}!ユーティリティ}%
+\index{ユーティリティ!flattenMesh@\OFtool{flattenMesh}}%
+ \OFtool{flattenMesh} & 2次元デカルトメッシュの前後の面を平らにする \\
+\index{insideCells@\OFtool{insideCells}!ユーティリティ}%
+\index{ユーティリティ!insideCells@\OFtool{insideCells}}%
+ \OFtool{insideCells} & 面の内側に中心があるセルを抽出する．
+ 面は閉じていて，個々に接続している必要がある \\
+\index{mergeMeshes@\OFtool{mergeMeshes}!ユーティリティ}%
+\index{ユーティリティ!mergeMeshes@\OFtool{mergeMeshes}}%
+ \OFtool{mergeMeshes} & 二つのメッシュを合体させる \\
+\index{mirrorMesh@\OFtool{mirrorMesh}!ユーティリティ}%
+\index{ユーティリティ!mirrorMesh@\OFtool{mirrorMesh}}%
+ \OFtool{mirrorMesh} & （不明） \\
+\index{moveDynamicMesh@\OFtool{moveDynamicMesh}!ユーティリティ}%
+\index{ユーティリティ!moveDynamicMesh@\OFtool{moveDynamicMesh}}%
+ \OFtool{moveDynamicMesh} & メッシュの動作と位相変化のユーティリティ \\
+\index{moveEngineMesh@\OFtool{moveEngineMesh}!ユーティリティ}%
+\index{ユーティリティ!moveEngineMesh@\OFtool{moveEngineMesh}}%
+ \OFtool{moveEngineMesh} & エンジンシミュレーションのためにメッシュを動かすソルバ \\
+\index{moveMesh@\OFtool{moveMesh}!ユーティリティ}%
+\index{ユーティリティ!moveMesh@\OFtool{moveMesh}}%
+ \OFtool{moveMesh} & メッシュを動かすソルバ \\
+\index{objToVTK@\OFtool{objToVTK}!ユーティリティ}%
+\index{ユーティリティ!objToVTK@\OFtool{objToVTK}}%
+ \OFtool{objToVTK} & obj線（面ではない）のファイルを読み込み，vtkに変換する \\
+\index{patchTool@\OFtool{patchTool}!ユーティリティ}%
+\index{ユーティリティ!patchTool@\OFtool{patchTool}}%
+ \OFtool{patchTool} & （不明） \\
+\index{pointSet@\OFtool{pointSet}!ユーティリティ}%
+\index{ユーティリティ!pointSet@\OFtool{pointSet}}%
+ \OFtool{pointSet} & ディクショナリで点のセットを選択する \\
+\index{refineMesh@\OFtool{refineMesh}!ユーティリティ}%
+\index{ユーティリティ!refineMesh@\OFtool{refineMesh}}%
+ \OFtool{refineMesh} & 複数の方向にあるセルを細分化する．
+ \texttt{-all}オプションを適用してすべてのセル
+ （3次元には3次元細分化を，2次元には2次元細分化を）を細分化するか，
+ \OFtool{refineMeshDict}の\OFtool{cellSet} to refineを読み込んで
+ いくつかの方向を細分化する． \\
+\index{rernumberMesh@\OFtool{renumberMesh}!ユーティリティ}%
+\index{ユーティリティ!rernumberMesh@\OFtool{renumberMesh}}%
+ \OFtool{renumberMesh} & 行列の帯幅を狭くするためにセルリストに順番を付け直す．
+ 全ての時刻ディレクトリから全ての計算領域を読み込み，順番を付け直すことで行う  \\
+\index{rotateMesh@\OFtool{rotateMesh}!ユーティリティ}%
+\index{ユーティリティ!rotateMesh@\OFtool{rotateMesh}}%
+ \OFtool{rotateMesh} & メッシュおよび場を方向n1から方向n2へと回転させる \\
+\index{splitMesh@\OFtool{splitMesh}!ユーティリティ}%
+\index{ユーティリティ!splitMesh@\OFtool{splitMesh}}%
+ \OFtool{splitMesh} & 内部の面の外面を作ることでメッシュを分割する．\OFtool{attachDetach}を用いる \\
+\index{splitMeshRegions@\OFtool{splitMeshRegions}!ユーティリティ}%
+\index{ユーティリティ!splitMeshRegions@\OFtool{splitMeshRegions}}%
+ \OFtool{splitMeshRegions} & メッシュを複数の領域に分割し，
+ それらを連続した時刻ディレクトリに書く．
+ 各領域は，セル\jhyphen 面\jhyphen セルと辿ることによって届くことができる領域として指定される．
+ \OFtool{meshWave}を使用する．平行して動くことはできるが，テストはされていない \\
+\index{stitchMesh@\OFtool{stitchMesh}!ユーティリティ}%
+\index{ユーティリティ!stitchMesh@\OFtool{stitchMesh}}%
+ \OFtool{stitchMesh} & メッシュを縫う \\
+\index{subsetMesh@\OFtool{subsetMesh}!ユーティリティ}%
+\index{ユーティリティ!subsetMesh@\OFtool{subsetMesh}}%
+ \OFtool{subsetMesh} & \OFtool{cellSet}に基づいたメッシュの区分を選択する \\
+\index{tetDecomposition@\OFtool{tetDecomposition}!ユーティリティ}%
+\index{ユーティリティ!tetDecomposition@\OFtool{tetDecomposition}}%
+ \OFtool{tetDecomposition} & 面とセルの中心の分解を利用してメッシュを4面体に分解する \\
+\index{transformPoints@\OFtool{transformPoints}!ユーティリティ}%
+\index{ユーティリティ!transformPoints@\OFtool{transformPoints}}%
+ \OFtool{transformPoints} & オプションにしたがって，
+ \OFpath{polyMesh}ディレクトリのメッシュの点を変形させる． \\
+\index{zipUpMesh@\OFtool{zipUpMesh}!ユーティリティ}%
+\index{ユーティリティ!zipUpMesh@\OFtool{zipUpMesh}}%
+ \OFtool{zipUpMesh} & 有効な形をもった全ての多面体のセルが閉じていることを確実にするために，
+ ぶら下がった頂点をもつメッシュを読み込み，セルを締め上げる \\
+ \\
+ \multicolumn{2}{l}{画像の後処理 --- \autoref{chap:6}参照} \\
+ \hline
+\index{ensight76FoamExec@\OFtool{ensight76FoamExec}!ユーティリティ}%
+\index{ユーティリティ!ensight76FoamExec@\OFtool{ensight76FoamExec}}%
+ \OFtool{ensight76FoamExec} & 変換せずにOpenFOAMのデータを直接読むための
+ EnSight 7.6のモジュール \\
+\index{paraFoam@\OFtool{paraFoam}!ユーティリティ}%
+\index{ユーティリティ!paraFoam@\OFtool{paraFoam}}%
+ \OFtool{paraFoam} & （不明） \\
+ \\
+ \multicolumn{2}{l}{データ変換の後処理 --- \autoref{chap:6}参照} \\
+ \hline
+\index{foamDataToFluent@\OFtool{foamDataToFluent}!ユーティリティ}%
+\index{ユーティリティ!foamDataToFluent@\OFtool{foamDataToFluent}}%
+ \OFtool{foamDataToFluent} & OpenFOAMデータをFluent形式へ変換する \\
+\index{foamToEnsight@\OFtool{foamToEnsight}!ユーティリティ}%
+\index{ユーティリティ!foamToEnsight@\OFtool{foamToEnsight}}%
+ \OFtool{foamToEnsight} & OpenFOAMデータをEnSight形式へ変換する \\
+\index{foamToFieldview9@\OFtool{foamToFieldview9}!ユーティリティ}%
+\index{ユーティリティ!foamToFieldview9@\OFtool{foamToFieldview9}}%
+ \OFtool{foamToFieldview9} & OpenFOAMのメッシュを
+ バージョン3.0Fieldview-UNS形式（バイナリ）へ変換する．
+ Fieldviewリリース9のレファレンスマニュアルで付録D
+ （体系化されていないデータの形式）を参照してください．
+ Fieldviewリストの\OFpath{uns/write\_binary\_uns.c}から各種借用する \\
+\index{foamToGMV@\OFtool{foamToGMV}!ユーティリティ}%
+\index{ユーティリティ!foamToGMV@\OFtool{foamToGMV}}%
+ \OFtool{foamToGMV} & 形式の出力をGMVで読めるファイルに変換する．
+ \url{http://www-xdiv.lanl.gov/XCM/gmv/}から入手できる
+ バイナリを用いて後処理を行う \\
+\index{foamToVTK@\OFtool{foamToVTK}!ユーティリティ}%
+\index{ユーティリティ!foamToVTK@\OFtool{foamToVTK}}%
+ \OFtool{foamToVTK} & レガシーのVTKファイル形式のライター．
+ volScalar，volVector，pointScalar，
+ pointVector，surfaceScalar場を操作する．
+ メッシュの接続形態が変化する．
+ アスキーとバイナリの両方が用いられる．
+ 一度の操作で書き出す．部分集合だけを書き出す．
+ セルが自動的に分解する．
+ vtkによって操作されたため分解された境界上の多角形である \\
+\index{smapToFoam@\OFtool{smapToFoam}!ユーティリティ}%
+\index{ユーティリティ!smapToFoam@\OFtool{smapToFoam}}%
+ \OFtool{smapToFoam} & STAR-CD SMAPデータファイルを
+ OpenFOAMの計算領域の形式に変換する \\
+ \\
+ \multicolumn{2}{l}{速度場の後処理} \\
+ \hline
+\index{Co@\OFtool{Co}!ユーティリティ}%
+\index{ユーティリティ!Co@\OFtool{Co}}%
+ \OFtool{Co} & プログラムを書く上で設定可能なグラフ \\
+\index{divU@\OFtool{divU}!ユーティリティ}%
+\index{ユーティリティ!divU@\OFtool{divU}}%
+ \OFtool{divU} & 各時間の速度場\OFkeyword{U}の発散を計算し，書き出す \\
+\index{enstrophy@\OFtool{enstrophy}!ユーティリティ}%
+\index{ユーティリティ!enstrophy@\OFtool{enstrophy}}%
+ \OFtool{enstrophy} & 各時間の速度場\OFkeyword{U}のエンストロフィを計算し，書き出す \\
+\index{flowType@\OFtool{flowType}!ユーティリティ}%
+\index{ユーティリティ!flowType@\OFtool{flowType}}%
+ \OFtool{flowType} & 各時間の速度場\OFkeyword{U}のflowTypeを計算し，書き出す \\
+\index{Lambda2@\OFtool{Lambda2}!ユーティリティ}%
+\index{ユーティリティ!Lambda2@\OFtool{Lambda2}}%
+ \OFtool{Lambda2} & 各時間の，速度勾配テンソルの対称，
+ 非対称部分の正方形の合計のうち2番目に大きな固有値を計算し，書き出す \\
+\index{Mach@\OFtool{Mach}!ユーティリティ}%
+\index{ユーティリティ!Mach@\OFtool{Mach}}%
+ \OFtool{Mach} & 各時間の速度場\OFkeyword{U}のローカルマッチ番号を計算し，書き出す \\
+\index{magGradU@\OFtool{magGradU}!ユーティリティ}%
+\index{ユーティリティ!magGradU@\OFtool{magGradU}}%
+ \OFtool{magGradU} & 各時間の速度場\OFkeyword{U}の計数規模を計算し，書き出す \\
+\index{magU@\OFtool{magU}!ユーティリティ}%
+\index{ユーティリティ!magU@\OFtool{magU}}%
+ \OFtool{magU} & 各時間の速度場\OFkeyword{U}の勾配の計数規模を計算し，書き出す \\
+\index{Pe@\OFtool{Pe}!ユーティリティ}%
+\index{ユーティリティ!Pe@\OFtool{Pe}}%
+ \OFtool{Pe} & 各時間のファイの場から得られる
+ \OFtool{surfaceScalarField}としてPe番号を計算し，書き出す \\
+\index{Q@\OFtool{Q}!ユーティリティ}%
+\index{ユーティリティ!Q@\OFtool{Q}}%
+ \OFtool{Q} & 各時間の速度勾配テンソルの2番目の不変条件を計算し，書き出す \\
+\index{streamFunction@\OFtool{streamFunction}!ユーティリティ}%
+\index{ユーティリティ!streamFunction@\OFtool{streamFunction}}%
+ \OFtool{streamFunction} & 各時間の速度場\OFkeyword{U}の流れ機能を計算し，書き出す \\
+\index{Ucomponents@\OFtool{Ucomponents}!ユーティリティ}%
+\index{ユーティリティ!Ucomponents@\OFtool{Ucomponents}}%
+ \OFtool{Ucomponents} & 各時間の速度場\OFkeyword{U}における各要素について，
+ \OFkeyword{Ux}，\OFkeyword{Uy}，\OFkeyword{Uz}の三つのスカラ場を書き出す \\
+\index{uprime@\OFtool{uprime}!ユーティリティ}%
+\index{ユーティリティ!uprime@\OFtool{uprime}}%
+ \OFtool{uprime} & 各時間の\OFkeyword{uprime} ($\sqrt{\frac{2}{3}k}$) のスカラ場を計算し，書き出す \\
+\index{vorticity@\OFtool{vorticity}!ユーティリティ}%
+\index{ユーティリティ!vorticity@\OFtool{vorticity}}%
+ \OFtool{vorticity} & 各時間の速度場\OFkeyword{U}の渦巻き運動を計算し，書き出す \\
+ \\
+ \multicolumn{2}{l}{圧力場の後処理} \\
+ \hline
+\index{R@\OFtool{R}!ユーティリティ}%
+\index{ユーティリティ!R@\OFtool{R}}%
+ \OFtool{R} & 現在のステップについてのレイノルズ圧力\OFkeyword{R}を計算し，書き出す \\
+\index{Rcomponents@\OFtool{Rcomponents}!ユーティリティ}%
+\index{ユーティリティ!Rcomponents@\OFtool{Rcomponents}}%
+ \OFtool{Rcomponents} & 各時間のレイノルズ圧力\OFkeyword{R}の六つの要素の
+ スカラ場を計算し，書き出す \\
+\index{stressComponents@\OFtool{stressComponents}!ユーティリティ}%
+\index{ユーティリティ!stressComponents@\OFtool{stressComponents}}%
+ \OFtool{stressComponents} & 各時間の圧力テンソル\OFkeyword{sigma}の六つの要素の
+ スカラ場を計算し，書き出す \\
+ \\
+ \multicolumn{2}{l}{壁の後処理} \\
+ \hline
+\index{checkYPlus@\OFtool{checkYPlus}!ユーティリティ}%
+\index{ユーティリティ!checkYPlus@\OFtool{checkYPlus}}%
+ \OFtool{checkYPlus} & データベースの各時間について，
+ 全ての壁のパッチに対する\OFkeyword{yPlus}を計算し，リポートする \\
+\index{wallGradU@\OFtool{wallGradU}!ユーティリティ}%
+\index{ユーティリティ!wallGradU@\OFtool{wallGradU}}%
+ \OFtool{wallGradU} & 壁におけるUの勾配を計算し，書き出す \\
+\index{wallHeatFlux@\OFtool{wallHeatFlux}!ユーティリティ}%
+\index{ユーティリティ!wallHeatFlux@\OFtool{wallHeatFlux}}%
+ \OFtool{wallHeatFlux} & \OFkeyword{volScalar}場の境界面として
+ 全てのパッチに対する熱フラックスを計算し，書き出す．
+ そして全ての壁に対する不可欠なフラックスも書き出す \\
+\index{wallShearStress@\OFtool{wallShearStress}!ユーティリティ}%
+\index{ユーティリティ!wallShearStress@\OFtool{wallShearStress}}%
+ \OFtool{wallShearStress} & 現在のタイムステップで壁の受ける応力を計算して書き出す \\
+\index{yPlusLES@\OFtool{yPlusLES}!ユーティリティ}%
+\index{ユーティリティ!yPlusLES@\OFtool{yPlusLES}}%
+ \OFtool{yPlusLES} & LESのために壁近傍のセルの\OFkeyword{yplus}を計算する \\
+ \\
+ \multicolumn{2}{l}{パッチの後処理} \\
+ \hline
+\index{patchAverage@\OFtool{patchAverage}!ユーティリティ}%
+\index{ユーティリティ!patchAverage@\OFtool{patchAverage}}%
+ \OFtool{patchAverage} & すべてのパッチにわたって領域の平均を計算する \\
+\index{patchIntegrate@\OFtool{patchIntegrate}!ユーティリティ}%
+\index{ユーティリティ!patchIntegrate@\OFtool{patchIntegrate}}%
+ \OFtool{patchIntegrate} & すべてのパッチにわたって領域を融合する \\
+ \\
+ \multicolumn{2}{l}{様々な後処理} \\
+ \hline
+\index{engineCompRatio@\OFtool{engineCompRatio}!ユーティリティ}%
+\index{ユーティリティ!engineCompRatio@\OFtool{engineCompRatio}}%
+ \OFtool{engineCompRatio} & 幾何的圧縮の係数を計算する．
+ BDCとTCDで体積を計算するので，
+ バルブと非有効体積があるかどうか注意すること \\
+\index{postChannel@\OFtool{postChannel}!ユーティリティ}%
+\index{ユーティリティ!postChannel@\OFtool{postChannel}}%
+ \OFtool{postChannel} &  チャンネル流計算のポストプロセスデータ \\
+\index{ptot@\OFtool{ptot}!ユーティリティ}%
+\index{ユーティリティ!ptot@\OFtool{ptot}}%
+ \OFtool{ptot} &  毎回，全圧を計算する \\
+\index{sample@\OFtool{sample}!ユーティリティ}%
+\index{ユーティリティ!sample@\OFtool{sample}}%
+ \OFtool{sample} &  展開スキームを選択し，計算領域をサンプリングする．
+ その際，オプションをサンプリングしてフォーマットをかき出す \\
+\index{sampleSurface@\OFtool{sampleSurface}!ユーティリティ}%
+\index{ユーティリティ!sampleSurface@\OFtool{sampleSurface}}%
+ \OFtool{sampleSurface} & 並行処理の際に表面をサンプリングする．（ただし，点は結合しない） \\
+\index{wdot@\OFtool{wdot}!ユーティリティ}%
+\index{ユーティリティ!wdot@\OFtool{wdot}}%
+ \OFtool{wdot} &  wdotを毎回計算し，書き出す \\
+\index{writeCellCentres@\OFtool{writeCellCentres}!ユーティリティ}%
+\index{ユーティリティ!writeCellCentres@\OFtool{writeCellCentres}}%
+ \OFtool{writeCellCentres} &  三つのコンポーネントを，
+ 閾値化してポストプロセスで使えるようにvolScalarFieldsとして書き出す \\
+ \\
+ \multicolumn{2}{l}{並行処理 --- \autoref{sec:3.4}参照} \\
+ \hline
+\index{decomposePar@\OFtool{decomposePar}!ユーティリティ}%
+\index{ユーティリティ!decomposePar@\OFtool{decomposePar}}%
+ \OFtool{decomposePar} & OpenFOAMの平衡計算のために
+ ケースのメッシュと計算領域を自動的に分割する \\
+\index{reconstructPar@\OFtool{reconstructPar}!ユーティリティ}%
+\index{ユーティリティ!reconstructPar@\OFtool{reconstructPar}}%
+ \OFtool{reconstructPar} & OpenFOAMの平衡計算のために
+ 分割したメッシュと計算領域を再構成する \\
+\index{reconstructParMesh@\OFtool{reconstructParMesh}!ユーティリティ}%
+\index{ユーティリティ!reconstructParMesh@\OFtool{reconstructParMesh}}%
+ \OFtool{reconstructParMesh} & 幾何情報のみを使ってメッシュを再結合し，
+ あとで\OFtool{reconstructPar}が計算領域を再構成できるように
+ 点/面/セルprocAddressingに書き込む \\
+ \\
+ \multicolumn{2}{l}{熱物理に関連したユーティリティ} \\
+ \hline
+\index{adiabaticFlameT@\OFtool{adiabaticFlameT}!ユーティリティ}%
+\index{ユーティリティ!adiabaticFlameT@\OFtool{adiabaticFlameT}}%
+ \OFtool{adiabaticFlameT} & 与えられた燃料の種類・燃焼していない気体の
+ 温度と平衡定数に対して断熱状態の炎の温度を計算する \\
+\index{chemkinToFoam@\OFtool{chemkinToFoam}!ユーティリティ}%
+\index{ユーティリティ!chemkinToFoam@\OFtool{chemkinToFoam}}%
+ \OFtool{chemkinToFoam} & CHEMKIN 3の熱運動と反応のデータファイルを
+ OpenFOAMのフォーマットに変換する \\
+\index{equilibriumCO@\OFtool{equilibriumCO}!ユーティリティ}%
+\index{ユーティリティ!equilibriumCO@\OFtool{equilibriumCO}}%
+ \OFtool{equilibriumCO} & 一酸化炭素の平衡状態を計算する \\
+\index{equilibriumFlameT@\OFtool{equilibriumFlameT}!ユーティリティ}%
+\index{ユーティリティ!equilibriumFlameT@\OFtool{equilibriumFlameT}}%
+ \OFtool{equilibriumFlameT} & 与えられた燃料の種類・燃焼していない気体の
+ 温度と平衡定数に対して酸素，水，二酸化炭素の分離の影響を考慮して
+ 平衡状態の炎の温度を計算する \\
+\index{mixtureAdiabaticFlameT@\OFtool{mixtureAdiabaticFlameT}!ユーティリティ}%
+\index{ユーティリティ!mixtureAdiabaticFlameT@\OFtool{mixtureAdiabaticFlameT}}%
+ \OFtool{mixtureAdiabaticFlameT} & 与えられた混合・温度に対して
+ 断熱状態の炎の温度を計算する \\
+ \\
+ \multicolumn{2}{l}{エラーの推量} \\
+ \hline
+\index{estimateScalarError@\OFtool{estimateScalarError}!ユーティリティ}%
+\index{ユーティリティ!estimateScalarError@\OFtool{estimateScalarError}}%
+ \OFtool{estimateScalarError} & 標準フォームによる
+ スカラ輸送方程式の解の誤差を予想する \\
+\index{icoErrorEstimate@\OFtool{icoErrorEstimate}!ユーティリティ}%
+\index{ユーティリティ!icoErrorEstimate@\OFtool{icoErrorEstimate}}%
+ \OFtool{icoErrorEstimate} & 非圧縮性層流CFDアプリケーション
+ icoFoamの解の誤差を予想する \\
+\index{icoMomentError@\OFtool{icoMomentError}!ユーティリティ}%
+\index{ユーティリティ!icoMomentError@\OFtool{icoMomentError}}%
+ \OFtool{icoMomentError} & 非圧縮性層流CFDアプリケーション
+ icoFoamの解の誤差を予想する \\
+\index{momentScalarError@\OFtool{momentScalarError}!ユーティリティ}%
+\index{ユーティリティ!momentScalarError@\OFtool{momentScalarError}}%
+ \OFtool{momentScalarError} & 標準フォームによる
+ スカラ輸送方程式の解の誤差を予想する \\
+ \\
+ \multicolumn{2}{l}{様々なユーティリティ} \\
+ \hline
+\index{foamDebugSwitches@\OFtool{foamDebugSwitches}!ユーティリティ}%
+\index{ユーティリティ!foamDebugSwitches@\OFtool{foamDebugSwitches}}%
+ \OFtool{foamDebugSwitches} & すべてのライブラリのデバッグスイッチを書き出す \\
+\index{foamInfoExec@\OFtool{foamInfoExec}!ユーティリティ}%
+\index{ユーティリティ!foamInfoExec@\OFtool{foamInfoExec}}%
+ \OFtool{foamInfoExec} & ケースを調べ，スクリーンに情報を表示する
+\end{longtable}

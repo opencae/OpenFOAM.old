@@ -1,0 +1,142 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lX}
+ \multicolumn{2}{l}{Library of basic OpenFOAM tools ---
+\index{OpenFOAM@\OFemph{OpenFOAM}!ライブラリ}%
+\index{ライブラリ!OpenFOAM@\OFemph{OpenFOAM}}%
+ \OFemph{OpenFOAM}} \\
+ \hline
+\index{algorithms@\OFtool{algorithms}!ツール}%
+\index{ツール!algorithms@\OFtool{algorithms}}%
+ \OFtool{algorithms} & アルゴリズム \\
+\index{containers@\OFtool{containers}!ツール}%
+\index{ツール!containers@\OFtool{containers}}%
+ \OFtool{containers} & コンテナクラス \\
+\index{db@\OFtool{db}!ツール}%
+\index{ツール!db@\OFtool{db}}%
+ \OFtool{db} & データベースクラス \\
+\index{dimensionSet@\OFtool{dimensionSet}!ツール}%
+\index{ツール!dimensionSet@\OFtool{dimensionSet}}%
+ \OFtool{dimensionSet} & 次元設定クラス \\
+\index{dimensionedTypes@\OFtool{dimensionedTypes}!ツール}%
+\index{ツール!dimensionedTypes@\OFtool{dimensionedTypes}}%
+ \OFtool{dimensionedTypes} & 次元<Type>クラスと導関数 \\
+\index{fields@\OFtool{fields}!ツール}%
+\index{ツール!fields@\OFtool{fields}}%
+ \OFtool{fields} & 領域クラス \\
+\index{finiteVolume@\OFtool{finiteVolume}!ツール}%
+\index{ツール!finiteVolume@\OFtool{finiteVolume}}%
+ \OFtool{finiteVolume} & 有限体積離散化クラス \\
+\index{global@\OFtool{global}!ツール}%
+\index{ツール!global@\OFtool{global}}%
+ \OFtool{global} & 広域設定 \\
+\index{interpolations@\OFtool{interpolations}!ツール}%
+\index{ツール!interpolations@\OFtool{interpolations}}%
+ \OFtool{interpolations} & 補間スキーム \\
+\index{matrices@\OFtool{matrices}!ツール}%
+\index{ツール!matrices@\OFtool{matrices}}%
+ \OFtool{matrices} & 行列クラス \\
+\index{meshes@\OFtool{meshes}!ツール}%
+\index{ツール!meshes@\OFtool{meshes}}%
+ \OFtool{meshes} & メッシュクラス \\
+\index{primitives@\OFtool{primitives}!ツール}%
+\index{ツール!primitives@\OFtool{primitives}}%
+ \OFtool{primitives} & 初期クラス \\
+ \\
+ \multicolumn{2}{l}{CFDツールライブラリ ---
+\index{cfdTools@\OFemph{cfdTools}!ライブラリ}%
+\index{ライブラリ!cfdTools@\OFemph{cfdTools}}%
+ \OFemph{cfdTools}} \\
+ \hline
+\index{adjustPhi@\OFtool{adjustPhi}!ツール}%
+\index{ツール!adjustPhi@\OFtool{adjustPhi}}%
+ \OFtool{adjustPhi} & 境界フラックスの調整 \\
+\index{bound@\OFtool{bound}!ツール}%
+\index{ツール!bound@\OFtool{bound}}%
+ \OFtool{bound} & スカラ領域境界 \\
+\index{compressible@\OFtool{compressible}!ツール}%
+\index{ツール!compressible@\OFtool{compressible}}%
+ \OFtool{compressible} & 圧縮性流れ用CFDツール \\
+\index{incompressible@\OFtool{incompressible}!ツール}%
+\index{ツール!incompressible@\OFtool{incompressible}}%
+ \OFtool{incompressible} & 非圧縮性流れ用CFDツール \\
+\index{wallDist@\OFtool{wallDist}!ツール}%
+\index{ツール!wallDist@\OFtool{wallDist}}%
+ \OFtool{wallDist} & 壁面境界に関する計算 \\
+ \\
+ \multicolumn{2}{l}{後処理ライブラリ} \\
+ \hline
+\index{incompressiblePostProcessing@\OFemph{incompressiblePostProcessing}!ライブラリ}%
+\index{ライブラリ!incompressiblePostProcessing@\OFemph{incompressiblePostProcessing}}%
+ \OFemph{incompressiblePostProcessing} & 比圧縮性流れのデータの後処理用ツール \\
+\index{sampling@\OFemph{sampling}!ライブラリ}%
+\index{ライブラリ!sampling@\OFemph{sampling}}%
+ \OFemph{sampling} & 領域における特定の場所での領域データの抽出用ツール \\
+ \\
+ \multicolumn{2}{l}{解法とメッシュ操作のライブラリ} \\
+ \hline
+\index{cellDecompFiniteElement@\OFemph{cellDecompFiniteElement}!ライブラリ}%
+\index{ライブラリ!cellDecompFiniteElement@\OFemph{cellDecompFiniteElement}}%
+ \OFemph{cellDecompFiniteElement} & 有限要素スキームのセル分割 \\
+\index{dynamicMesh@\OFemph{dynamicMesh}!ライブラリ}%
+\index{ライブラリ!dynamicMesh@\OFemph{dynamicMesh}}%
+ \OFemph{dynamicMesh} & 移動メッシュをもつシステムの解法 \\
+\index{edgeMesh@\OFemph{edgeMesh}!ライブラリ}%
+\index{ライブラリ!edgeMesh@\OFemph{edgeMesh}}%
+ \OFemph{edgeMesh} & Foredge-basedメッシュ記述の操作のため \\
+\index{errorEstimation@\OFemph{errorEstimation}!ライブラリ}%
+\index{ライブラリ!errorEstimation@\OFemph{errorEstimation}}%
+ \OFemph{errorEstimation} & 誤差推定ツール \\
+\index{faceDecompFiniteElement@\OFemph{faceDecompFiniteElement}!ライブラリ}%
+\index{ライブラリ!faceDecompFiniteElement@\OFemph{faceDecompFiniteElement}}%
+ \OFemph{faceDecompFiniteElement} & Face decomposed 有限要素スキームの面分割 \\
+\index{ODE@\OFemph{ODE}!ライブラリ}%
+\index{ライブラリ!ODE@\OFemph{ODE}}%
+ \OFemph{ODE} & 常微分方程式のソルバ \\
+\index{shapeMeshTools@\OFemph{shapeMeshTools}!ライブラリ}%
+\index{ライブラリ!shapeMeshTools@\OFemph{shapeMeshTools}}%
+ \OFemph{shapeMeshTools} & 標準形で定義されたセルをもつメッシュの操作のためのツール \\
+\index{meshTools@\OFemph{meshTools}!ライブラリ}%
+\index{ライブラリ!meshTools@\OFemph{meshTools}}%
+ \OFemph{meshTools} & OpenFOAMメッシュ操作のためのツール \\
+\index{triSurface@\OFemph{triSurface}!ライブラリ}%
+\index{ライブラリ!triSurface@\OFemph{triSurface}}%
+ \OFemph{triSurface} & 標準三角surface-basedメッシュ記述の操作のため \\
+ \\
+ \multicolumn{2}{l}{ラグランジュ粒子追跡ライブラリ} \\
+ \hline
+\index{dieselSpray@\OFemph{dieselSpray}!ライブラリ}%
+\index{ライブラリ!dieselSpray@\OFemph{dieselSpray}}%
+ \OFemph{dieselSpray} & ディーゼル噴霧追跡解スキーム \\
+\index{lagrangian@\OFemph{lagrangian}!ライブラリ}%
+\index{ライブラリ!lagrangian@\OFemph{lagrangian}}%
+ \OFemph{lagrangian} & 基本ラグランジュもしくは粒子追跡解スキーム \\
+ \\
+ \multicolumn{2}{l}{共有ドメインライブラリ} \\
+ \hline
+\index{mico-2.3.13@\OFemph{mico-2.3.13}!ライブラリ}%
+\index{ライブラリ!mico-2.3.13@\OFemph{mico-2.3.13}}%
+ \OFemph{mico-2.3.13} &
+\index{CORBA}%
+     共通オブジェクト・リクエスト・ブローカー・アーキテクチャ (CORBA) の実装 \\
+\index{mpich-1.2.4@\OFemph{mpich-1.2.4}!ライブラリ}%
+\index{ライブラリ!mpich-1.2.4@\OFemph{mpich-1.2.4}}%
+ \OFemph{mpich-1.2.4} & 並列処理のための移植可能なメッセージパッシングインターフェイス \\
+\index{openmpi-1.2.6@\OFemph{openmpi-1.2.6}!ライブラリ}%
+\index{ライブラリ!openmpi-1.2.6@\OFemph{openmpi-1.2.6}}%
+ \OFemph{openmpi-1.2.6} & 並列処理のための移植可能なメッセージパッシングインターフェイス \\
+\index{zlib-1.2.1@\OFemph{zlib-1.2.1}!ライブラリ}%
+\index{ライブラリ!zlib-1.2.1@\OFemph{zlib-1.2.1}}%
+ \OFemph{zlib-1.2.1} & 汎用データの圧縮 \\
+ \\
+ \multicolumn{2}{l}{さまざまなライブラリ} \\
+ \hline
+\index{engine@\OFemph{engine}!ライブラリ}%
+\index{ライブラリ!engine@\OFemph{engine}}%
+ \OFemph{engine} &  計算エンジンのツール \\
+\index{Gstream@\OFemph{Gstream}!ライブラリ}%
+\index{ライブラリ!Gstream@\OFemph{Gstream}}%
+ \OFemph{Gstream} & 2次元グラフィックス流れ \\
+\index{randomProcesses@\OFemph{randomProcesses}!ライブラリ}%
+\index{ライブラリ!randomProcesses@\OFemph{randomProcesses}}%
+ \OFemph{randomProcesses} & 分析と生成のランダムプロセスのツール
+\end{tabularx}

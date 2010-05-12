@@ -1,0 +1,34 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lXl}
+ キーワード & 意味 & 例 \\
+ \hline
+\index{locationInMesh@\OFkeyword{locationInMesh}!キーワード}%
+\index{キーワード!locationInMesh@\OFkeyword{locationInMesh}}%
+ \OFkeyword{locationInMesh} & メッシュが作成される領域内の位置ベクトル & \OFkeyword{(5 0 0)} \\
+ & ベクトルが細分化の前または最中にセルの面と一致してはいけない \\
+\index{maxLocalCells@\OFkeyword{maxLocalCells}!キーワード}%
+\index{キーワード!maxLocalCells@\OFkeyword{maxLocalCells}}%
+ \OFkeyword{maxLocalCells} & 細分化中におけるプロセッサあたりのセルの数の最大値 & \OFkeyword{1e+06} \\
+\index{maxGlobalCells@\OFkeyword{maxGlobalCells}!キーワード}%
+\index{キーワード!maxGlobalCells@\OFkeyword{maxGlobalCells}}%
+ \OFkeyword{maxGlobalCells} & 細分化中におけるセルの数の総数 (i.e. 除去の前) & \OFkeyword{2e+06} \\
+\index{minRefinementCells@\OFkeyword{minRefinementCells}!キーワード}%
+\index{キーワード!minRefinementCells@\OFkeyword{minRefinementCells}}%
+ \OFkeyword{minRefinementCells} & 細分化すべきセルの数の最低値．この値以下だと停止 & \OFkeyword{0} \\
+\index{nCellsBetweenLevels@\OFkeyword{nCellsBetweenLevels}!キーワード}%
+\index{キーワード!nCellsBetweenLevels@\OFkeyword{nCellsBetweenLevels}}%
+ \OFkeyword{nCellsBetweenLevels} & 異なる細分化レベル間のセルの緩衝レイヤーの数 & \OFkeyword{1} \\
+\index{resolveFeatureAngle@\OFkeyword{resolveFeatureAngle}!キーワード}%
+\index{キーワード!resolveFeatureAngle@\OFkeyword{resolveFeatureAngle}}%
+ \OFkeyword{resolveFeatureAngle} & 角度がこの値を超えている交点をもつセルに最高レベルの細分化を行う & \OFkeyword{30} \\
+\index{features@\OFkeyword{features}!キーワード}%
+\index{キーワード!features@\OFkeyword{features}}%
+ \OFkeyword{features} & 細分化に対する機能リスト \\
+\index{refinementSurfaces@\OFkeyword{refinementSurfaces}!キーワード}%
+\index{キーワード!refinementSurfaces@\OFkeyword{refinementSurfaces}}%
+ \OFkeyword{refinementSurfaces} & 細分化に対する表面ディクショナリ \\
+\index{refinementRegions@\OFkeyword{refinementRegions}!キーワード}%
+\index{キーワード!refinementRegions@\OFkeyword{refinementRegions}}%
+ \OFkeyword{refinementRegions} & 細分化に対する領域ディクショナリ \\
+ \hline
+\end{tabularx}

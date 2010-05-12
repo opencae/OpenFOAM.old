@@ -1,0 +1,18 @@
+# mendex -U -g -s OFindex UserGuideJa
+
+
+見出しを表示
+lethead_flag 1
+letter_head 2
+
+見出し語を中央寄せ
+lethead_prefix "\n\\centerline{\\large\\sffamily\\gtfamily "
+lethead_suffix "}"
+
+記号と数字の見出し
+symhead_positive "記号・数字"
+
+ページ数を右寄せ
+delim_0 "\\quad\\hfill "
+delim_1 "\\quad\\hfill "
+delim_2 "\\quad\\hfill "

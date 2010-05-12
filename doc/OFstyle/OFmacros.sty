@@ -1,0 +1,194 @@
+%%
+%% OpenFOAMユーザガイド和訳用マクロ集
+%%
+
+\def\OpenFOAM{%
+  {\usefont{OT1}{phv}{m}{n}Open}%
+  \kern-2\p@
+  \textcolor{blue}{\fontsize{1.5\cwd}{\cvs}\selectfont\usefont{OMS}{cmsy}{m}{n}\char114}%
+  \kern-2\p@
+  {\usefont{OT1}{phv}{m}{n}FOAM}}
+
+\def\OFdraft#1{\ifdim\overfullrule>\z@ #1\else\relax\fi}
+\def\OFrevision#1{\OFdraft{\marginpar{\rlap{\colorbox{red}{\gtfamily\sffamily#1}}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \autoref を再定義
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 接頭語なしの場合のために ~ を挿入しないように変更
+\def\HyRef@testreftype#1.#2\\{%
+  \@ifundefined{#1autorefname}{%
+    \@ifundefined{#1name}{%
+      \HyRef@StripStar#1\\*\\\@nil{#1}%
+      \@ifundefined{\HyRef@name autorefname}{%
+        \@ifundefined{\HyRef@name name}{%
+          \def\HyRef@currentHtag{}%
+          \Hy@Warning{No autoref name for `#1'}%
+        }{%
+          \edef\HyRef@currentHtag{%
+            \expandafter\noexpand\csname\HyRef@name name\endcsname
+            % \noexpand~%
+          }%
+        }%
+      }{%
+        \edef\HyRef@currentHtag{%
+          \expandafter\noexpand\csname\HyRef@name autorefname\endcsname
+          % \noexpand~%
+        }%
+      }%
+    }{%
+      \edef\HyRef@currentHtag{%
+        \expandafter\noexpand\csname#1name\endcsname
+        % \noexpand~%
+      }%
+    }%
+  }{%
+    \edef\HyRef@currentHtag{%
+      \expandafter\noexpand\csname#1autorefname\endcsname
+      % \noexpand~%
+    }%
+  }%
+}
+\def\HyRef@currentHtag{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 接尾語を設定できるように再定義
+%% thanks to
+%% http://unkar.jp/read/science6.2ch.net/math/1192706133#l223
+\def\HyRef@autosetref#1#2#3{% csname, refname, link command
+  \ifcase 0\ifx#1\relax 1\fi\ifx#1\Hy@varioref@undefined 1\fi\relax
+  \edef\HyRef@thisref{\expandafter\@fourthoffive#1\@empty\@empty\@empty}%
+  \expandafter\HyRef@testreftype\HyRef@thisref\\%
+  \Hy@safe@activesfalse
+  #3{\expandafter\@fifthoffive#1}%
+  {\expandafter\@fourthoffive#1\@empty\@empty\@empty}%
+  {\HyRef@currentHtag
+    \expandafter\@firstoffive#1\@empty\@empty\@empty
+    \HyRef@@currentHtag
+    \relax}%
+  \else
+  \protect\G@refundefinedtrue
+  \nfss@text{\reset@font\bfseries ??}%
+  \@latex@warning{Reference `#2' on page \thepage\space undefined}%
+  \fi}
+
+\def\@tempa{\def\HyRef@testreftype##1.##2\\}
+\expandafter\@tempa\expandafter{\HyRef@testreftype#1.#2\\%
+  \@ifundefined{post#1autorefname}%
+  {\@ifundefined{post#1name}%
+    {\def\HyRef@@currentHtag{\empty}}%
+    {\edef\HyRef@@currentHtag{%
+      \expandafter\noexpand\csname post#1name\endcsname}}}%
+  {\edef\HyRef@@currentHtag{%
+    \expandafter\noexpand\csname post#1autorefname\endcsname}}}
+
+\def\HyPsd@@@autoref#1{%
+  \expandafter\ifx\csname r@#1\endcsname\relax
+  ??%
+  \else
+  \expandafter\expandafter\expandafter\HyPsd@autorefname
+  \csname r@#1\endcsname{}{}{}{}\@nil
+  \expandafter\expandafter\expandafter\@car\csname r@#1\endcsname\@nil
+  \expandafter\expandafter\expandafter\HyPsd@autopostrefname
+  \csname r@#1\endcsname{}{}{}{}\@nil
+  \fi}
+
+\def\HyPsd@autopostrefname#1#2#3#4#5\@nil{%
+  \ifx\\#4\\\else \HyPsd@@autopostrefname#4.\@nil \fi}
+
+\def\HyPsd@@autopostrefname#1.#2\@nil{%
+  \@ifundefined{post#1autorefname}%
+  {\@ifundefined{post#1name}{}{\csname post#1name\endcsname}}%
+  {\csname post#1autorefname\endcsname}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 接頭語・接尾語の設定
+\def\chapterautorefname{\prechaptername}
+\def\postchapterautorefname{\nobreak\postchaptername}
+\def\equationautorefname{式~(}
+\def\postequationautorefname{)}
+% \def\footnoteautorefname{脚注}
+% \def\itemautorefname{項目}
+\def\figureautorefname{図\nobreak}
+\def\postfigureautorefname{}
+\def\tableautorefname{表\nobreak}
+\def\posttableautorefname{}
+% \def\partautorefname{部}
+\def\appendixautorefname{付録\nobreak}
+\def\postappendixautorefname{}
+% \def\chapterautorefname{章}
+\def\sectionautorefname{}
+\def\postsectionautorefname{\nobreak 節}
+\def\subsectionautorefname{}
+\def\postsubsectionautorefname{\nobreak 項}
+\def\subsubsectionautorefname{}
+\def\postsubsubsectionautorefname{}
+% \def\paragraphautorefname{パラグラフ}
+% \def\subparagraphautorefname{パラグラフ}
+% \def\FancyVerbLineautorefname{行}
+% \def\theoremautorefname{定理}
+% \def\pageautorefname{ページ}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\OFboundary#1{\bgroup\normalfont\sffamily #1\egroup}
+\def\OFcase#1{\bgroup\normalfont\sffamily #1\egroup}
+\def\OFclass#1{\bgroup\normalfont\sffamily #1\egroup}
+\def\OFdictionary#1{\bgroup\normalfont\sffamily\slshape #1\egroup}
+\def\OFenv#1{\bgroup\normalfont\sffamily #1\egroup}
+\def\OFemph#1{\bgroup\normalfont\sffamily #1\egroup}
+\def\OFkeyword#1{\bgroup\normalfont\ttfamily #1\egroup}
+\def\OFpath#1{\bgroup\normalfont\sffamily\slshape#1\egroup}
+\def\OFsubdictionary#1{\bgroup\normalfont\sffamily\slshape #1\egroup}
+\def\OFtool#1{\bgroup\normalfont\sffamily #1\egroup}
+
+\def\OFfile{\par\bgroup\small\def\baselinestretch{.8}}
+\def\endOFfile{\egroup}
+\def\OFterminal{\par\bgroup\small}
+\def\endOFterminal{\egroup}
+\def\OFcode{\par\bgroup\small\def\baselinestretch{.8}}
+\def\endOFcode{\egroup}
+
+
+\def\jdash{\penalty\z@\resizebox{2\Cwd}{\height}{\char\jis"213D\kern-.5zw\char\jis"213D}}
+\def\jhyphen{\char\jis"213E}%"
+
+\def\degree{^{\circ}}%
+\def\degC{\degree\mkern-1mu\mathrm{C}}%
+\def\degR{\degree\mkern-1mu\mathrm{R}}%
+
+\def\@LapChar{\nabla^{2}}
+\def\Laplacian{\mathop{\@LapChar\null}}
+
+\def\nCo{\mathord{\mathit{Co}}}
+\def\nPr{\mathord{\mathit{Pr}}}
+\def\nRe{\mathord{\mathit{Re}}}
+
+%% \unit
+\newmuskip\skip@unit
+\skip@unit=\thinmuskip
+\DeclareRobustCommand\unit{\@ifstar{\@unit@}{\@unit}}
+{\catcode`\.=13 \gdef.{{\cdot}}}
+\def\@unit@#1{%
+  \begingroup
+  \mathcode`\.="8000%
+  \mathrm{#1}
+  \endgroup}
+\def\@unit#1{%
+  \begingroup
+  \mathcode`\.="8000%
+  \mskip\skip@unit\mathrm{#1}
+  \endgroup}
+
+
+%% float環境
+\def\@floatboxreset{%
+  \centering
+  \reset@font
+  \small
+  \@setminipage
+}
+\def\figcaption{\def\@captype{figure}\caption}
+\def\tblcaption{\def\@captype{table}\caption}
+
+

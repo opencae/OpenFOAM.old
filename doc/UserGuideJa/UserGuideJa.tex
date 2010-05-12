@@ -1,0 +1,94 @@
+\documentclass{OFbook}
+\setcounter{secnumdepth}{4}
+
+\usepackage[dvipdfm]{color}
+\usepackage[dvipdfm]{graphicx}
+\usepackage{mediabb}
+\graphicspath{{./fig/pdf/}}
+\usepackage{ltxtable}
+
+\usepackage[deluxe]{otf}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[dvipdfm,
+ bookmarks=true,
+ bookmarksnumbered=true,
+ pdftitle={User Guide},
+ pdfsubject={Japanese edition},
+ pdfauthor={},
+ pdfkeywords={OpenFOAM},
+ colorlinks=true,
+ linkcolor=red,
+ urlcolor=blue
+ ]{hyperref}[2007/12/08]
+\usepackage{atbegshi}
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+
+\usepackage{OFmacros}
+
+\usepackage{makeidx}
+\makeindex
+
+\makeatletter
+\def\maketitle{%
+        \cleardoublepage
+        \thispagestyle{empty}%
+        \setcounter{page}{1}%
+        \null\vfill
+        \begin{center}%
+         {\HUGE\sffamily\OpenFOAM\par}%
+         {\LARGE\gtfamily\sffamily オープンソースCFDツールボックス\par}%
+         \vfill
+         {\LARGE\gtfamily\sffamily ユーザガイド和訳\par}%
+         \vfill
+         {\normalfont Version 1.5\par}%
+         {\normalfont\@date\par}
+         \bigskip
+         {\normalfont OpenFOAMユーザー会\par}
+         {\normalfont 一般社団法人 オープンCAE学会\par}
+         \vfill
+        \end{center}%
+        \global\let\maketitle\relax
+        \global\let\@author\@empty
+        \global\let\@date\@empty
+        \global\let\@title\@empty
+        \global\let\title\relax
+        \global\let\author\relax
+        \global\let\date\relax
+        \global\let\and\relax
+        \newpage}
+\makeatother
+\author{}
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\begin{OFdeclaration}
+ \include{copyright}
+ \include{GFDL}
+ \include{trademarks}
+\end{OFdeclaration}
+
+\tableofcontents
+
+\mainmatter
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+\include{chapter7}
+\appendix
+\include{appendixA}
+\include{appendixB}
+
+\backmatter
+\printindex
+
+\end{document}

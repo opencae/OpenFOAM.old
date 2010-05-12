@@ -1,0 +1,169 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lX}
+ \multicolumn{2}{l}{非圧縮性流れ用乱流モデル ---
+\index{incompressibleRASModels@\OFemph{incompressibleRASModels}!ライブラリ}%
+\index{ライブラリ!incompressibleRASModels@\OFemph{incompressibleRASModels}}%
+ \OFemph{incompressibleRASModels}} \\
+ \hline
+\index{laminar@\OFemph{laminar}!モデル}%
+\index{モデル!laminar@\OFemph{laminar}}%
+ \OFemph{laminar} & 層流用ダミー乱流モデル \\
+\index{kEpsilon@\OFemph{kEpsilon}!モデル}%
+\index{モデル!kEpsilon@\OFemph{kEpsilon}}%
+ \OFemph{kEpsilon} &
+\index{かべかんすう@壁関数}%
+     壁関数付き標準$k$--$\varepsilon$モデル \\
+\index{RNGkEpsilon@\OFemph{RNGkEpsilon}!モデル}%
+\index{モデル!RNGkEpsilon@\OFemph{RNGkEpsilon}}%
+ \OFemph{RNGkEpsilon} & 壁関数付きRNG $k$--$\varepsilon$モデル \\
+\index{NonlinearKEShih@\OFemph{NonlinearKEShih}!モデル}%
+\index{モデル!NonlinearKEShih@\OFemph{NonlinearKEShih}}%
+ \OFemph{NonlinearKEShih} & 壁関数付き非線形Shih $k$--$\varepsilon$モデル \\
+\index{LienCubicKE@\OFemph{LienCubicKE}!モデル}%
+\index{モデル!LienCubicKE@\OFemph{LienCubicKE}}%
+ \OFemph{LienCubicKE} & 壁関数付きLien cubic $k$--$\varepsilon$モデル \\
+\index{QZeta@\OFemph{QZeta}!モデル}%
+\index{モデル!QZeta@\OFemph{QZeta}}%
+ \OFemph{QZeta} & $q$--$\zeta$モデル \\
+\index{LaunderSharmaKE@\OFemph{LaunderSharmaKE}!モデル}%
+\index{モデル!LaunderSharmaKE@\OFemph{LaunderSharmaKE}}%
+ \OFemph{LaunderSharmaKE} & Launder-Sharma 低$\nRe$ $k$--$\varepsilon$モデル \\
+\index{LamBremhorstKE@\OFemph{LamBremhorstKE}!モデル}%
+\index{モデル!LamBremhorstKE@\OFemph{LamBremhorstKE}}%
+ \OFemph{LamBremhorstKE} & Lam-Bremhorst低$\nRe$ $k$--$\varepsilon$モデル \\
+\index{LienCubicKELowRE@\OFemph{LienCubicKELowRE}!モデル}%
+\index{モデル!LienCubicKELowRE@\OFemph{LienCubicKELowRE}}%
+ \OFemph{LienCubicKELowRE} & Lien cubic低$\nRe$ $k$--$\varepsilon$モデル \\
+\index{LienLeschzinerLowRE@\OFemph{LienLeschzinerLowRE}!モデル}%
+\index{モデル!LienLeschzinerLowRE@\OFemph{LienLeschzinerLowRE}}%
+ \OFemph{LienLeschzinerLowRE} & Lien-Leschziner低$\nRe$ $k$--$\varepsilon$モデル \\
+\index{LRR@\OFemph{LRR}!モデル}%
+\index{モデル!LRR@\OFemph{LRR}}%
+ \OFemph{LRR} & 壁関数付きLaunder-Reece-Rodi RSTM \\
+\index{LaunderGibsonRSTM@\OFemph{LaunderGibsonRSTM}!モデル}%
+\index{モデル!LaunderGibsonRSTM@\OFemph{LaunderGibsonRSTM}}%
+ \OFemph{LaunderGibsonRSTM} & wall-reflection条件と壁関数付きLaunder-Gibson RSTM \\
+\index{SpalartAllmaras@\OFemph{SpalartAllmaras}!モデル}%
+\index{モデル!SpalartAllmaras@\OFemph{SpalartAllmaras}}%
+ \OFemph{SpalartAllmaras} & 外部流のためのSpalart-Allmaras 1-eqn mixing-lengthモデル \\
+ \\
+ \multicolumn{2}{l}{圧縮性流れ用RAS乱流モデル ---
+\index{compressibleRASModels@\OFemph{compressibleRASModels}!ライブラリ}%
+\index{ライブラリ!compressibleRASModels@\OFemph{compressibleRASModels}}%
+ \OFemph{compressibleRASModels}} \\
+ \hline
+\index{laminar@\OFemph{laminar}!モデル}%
+\index{モデル!laminar@\OFemph{laminar}}%
+ \OFemph{laminar} & 層流用のダミー乱流モデル \\
+\index{kEpsilon@\OFemph{kEpsilon}!モデル}%
+\index{モデル!kEpsilon@\OFemph{kEpsilon}}%
+ \OFemph{kEpsilon} & 壁関数付き標準$k$--$\varepsilon$モデル \\
+\index{RNGkEpsilon@\OFemph{RNGkEpsilon}!モデル}%
+\index{モデル!RNGkEpsilon@\OFemph{RNGkEpsilon}}%
+ \OFemph{RNGkEpsilon} & 壁関数付きRNG $k$--$\varepsilon$モデル \\
+\index{LaunderSharmaKE@\OFemph{LaunderSharmaKE}!モデル}%
+\index{モデル!LaunderSharmaKE@\OFemph{LaunderSharmaKE}}%
+ \OFemph{LaunderSharmaKE} & Launder-Sharma低$\nRe$ $k$--$\varepsilon$モデル \\
+\index{LRR@\OFemph{LRR}!モデル}%
+\index{モデル!LRR@\OFemph{LRR}}%
+ \OFemph{LRR} & 壁関数付きLaunder-Reece-Rodi RSTM \\
+\index{LaunderGibsonRSTM@\OFemph{LaunderGibsonRSTM}!モデル}%
+\index{モデル!LaunderGibsonRSTM@\OFemph{LaunderGibsonRSTM}}%
+ \OFemph{LaunderGibsonRSTM} & wall-reflection条件と壁関数付きLaunder-Gibson RSTM \\
+ \\
+ \multicolumn{2}{l}{Large-eddyシミュレーション (LES) フィルタ ---
+\index{LESfilters@\OFemph{LESfilters}!ライブラリ}%
+\index{ライブラリ!LESfilters@\OFemph{LESfilters}}%
+ \OFemph{LESfilters}} \\
+ \hline
+\index{laplaceFilter@\OFemph{laplaceFilter}!モデル}%
+\index{モデル!laplaceFilter@\OFemph{laplaceFilter}}%
+ \OFemph{laplaceFilter} & ラプラスフィルタ \\
+\index{simpleFilter@\OFemph{simpleFilter}!モデル}%
+\index{モデル!simpleFilter@\OFemph{simpleFilter}}%
+ \OFemph{simpleFilter} & 単一フィルタ \\
+\index{anisotropicFilter@\OFemph{anisotropicFilter}!モデル}%
+\index{モデル!anisotropicFilter@\OFemph{anisotropicFilter}}%
+ \OFemph{anisotropicFilter} & 異方性フィルタ \\
+ \\
+ \multicolumn{2}{l}{Large-eddyシミュレーション差分 ---
+\index{LESdeltas@\OFemph{LESdeltas}!ライブラリ}%
+\index{ライブラリ!LESdeltas@\OFemph{LESdeltas}}%
+ \OFemph{LESdeltas}} \\
+ \hline
+\index{PrandtlDelta@\OFemph{PrandtlDelta}!モデル}%
+\index{モデル!PrandtlDelta@\OFemph{PrandtlDelta}}%
+ \OFemph{PrandtlDelta} & プラントルのデルタ \\
+\index{cubeRootVolDelta@\OFemph{cubeRootVolDelta}!モデル}%
+\index{モデル!cubeRootVolDelta@\OFemph{cubeRootVolDelta}}%
+ \OFemph{cubeRootVolDelta} & セル体積の立方根差分 \\
+\index{smoothDelta@\OFemph{smoothDelta}!モデル}%
+\index{モデル!smoothDelta@\OFemph{smoothDelta}}%
+ \OFemph{smoothDelta} & 差分のスムージング \\
+ \\
+ \multicolumn{2}{l}{非圧縮LESモデル ---
+\index{incompressibleLESmodels@\OFemph{incompressibleLESmodels}!ライブラリ}%
+\index{ライブラリ!incompressibleLESmodels@\OFemph{incompressibleLESmodels}}%
+ \OFemph{incompressibleLESmodels}} \\
+ \hline
+\index{Smagorinsky@\OFemph{Smagorinsky}!モデル}%
+\index{モデル!Smagorinsky@\OFemph{Smagorinsky}}%
+ \OFemph{Smagorinsky} & Smagorinskyモデル \\
+\index{Smagorinsky2@\OFemph{Smagorinsky2}!モデル}%
+\index{モデル!Smagorinsky2@\OFemph{Smagorinsky2}}%
+ \OFemph{Smagorinsky2} & 3次元フィルタ付きSmagorinskyモデル \\
+\index{dynSmagorinsky@\OFemph{dynSmagorinsky}!モデル}%
+\index{モデル!dynSmagorinsky@\OFemph{dynSmagorinsky}}%
+ \OFemph{dynSmagorinsky} & 同時Smagorinsky \\
+\index{scaleSimilarity@\OFemph{scaleSimilarity}!モデル}%
+\index{モデル!scaleSimilarity@\OFemph{scaleSimilarity}}%
+ \OFemph{scaleSimilarity} & スケール相似モデル \\
+\index{mixedSmagorinsky@\OFemph{mixedSmagorinsky}!モデル}%
+\index{モデル!mixedSmagorinsky@\OFemph{mixedSmagorinsky}}%
+ \OFemph{mixedSmagorinsky} & Smagorinskyとスケール相似の混合モデル \\
+\index{dynMixedSmagorinsky@\OFemph{dynMixedSmagorinsky}!モデル}%
+\index{モデル!dynMixedSmagorinsky@\OFemph{dynMixedSmagorinsky}}%
+ \OFemph{dynMixedSmagorinsky} & 同時Smagorinskyとスケール相似の混合モデル \\
+\index{oneEqEddy@\OFemph{oneEqEddy}!モデル}%
+\index{モデル!oneEqEddy@\OFemph{oneEqEddy}}%
+ \OFemph{oneEqEddy} & $k$方程式渦粘性モデル \\
+\index{dynOneEqEddy@\OFemph{dynOneEqEddy}!モデル}%
+\index{モデル!dynOneEqEddy@\OFemph{dynOneEqEddy}}%
+ \OFemph{dynOneEqEddy} & 同時$k$方程式渦粘性モデル \\
+\index{locDynOneEqEddy@\OFemph{locDynOneEqEddy}!モデル}%
+\index{モデル!locDynOneEqEddy@\OFemph{locDynOneEqEddy}}%
+ \OFemph{locDynOneEqEddy} & 局部同時$k$方程式渦粘性モデル \\
+\index{spectEddyVisc@\OFemph{spectEddyVisc}!モデル}%
+\index{モデル!spectEddyVisc@\OFemph{spectEddyVisc}}%
+ \OFemph{spectEddyVisc} & スペクトル渦粘性モデル \\
+\index{LRDDiffStress@\OFemph{LRDDiffStress}!モデル}%
+\index{モデル!LRDDiffStress@\OFemph{LRDDiffStress}}%
+ \OFemph{LRDDiffStress} & LRR差応力モデル \\
+\index{DeardorffDiffStress@\OFemph{DeardorffDiffStress}!モデル}%
+\index{モデル!DeardorffDiffStress@\OFemph{DeardorffDiffStress}}%
+ \OFemph{DeardorffDiffStress} & Deardorff差応力モデル \\
+\index{SpalartAllmaras@\OFemph{SpalartAllmaras}!モデル}%
+\index{モデル!SpalartAllmaras@\OFemph{SpalartAllmaras}}%
+ \OFemph{SpalartAllmaras} & Spalart-Allmarasモデル \\
+ \\
+ \multicolumn{2}{l}{圧縮性LESモデル ---
+\index{compressibleLESmodels@\OFemph{compressibleLESmodels}!ライブラリ}%
+\index{ライブラリ!compressibleLESmodels@\OFemph{compressibleLESmodels}}%
+ \OFemph{compressibleLESmodels}} \\
+ \hline
+\index{Smagorinsky@\OFemph{Smagorinsky}!モデル}%
+\index{モデル!Smagorinsky@\OFemph{Smagorinsky}}%
+ \OFemph{Smagorinsky} & Smagorinskyモデル \\
+\index{oneEqEddy@\OFemph{oneEqEddy}!モデル}%
+\index{モデル!oneEqEddy@\OFemph{oneEqEddy}}%
+ \OFemph{oneEqEddy} & $k$方程式渦粘性モデル \\
+\index{dynOneEqEddy@\OFemph{dynOneEqEddy}!モデル}%
+\index{モデル!dynOneEqEddy@\OFemph{dynOneEqEddy}}%
+ \OFemph{dynOneEqEddy} & 同時$k$方程式渦粘性モデル \\
+\index{lowReOneEqEddy@\OFemph{lowReOneEqEddy}!モデル}%
+\index{モデル!lowReOneEqEddy@\OFemph{lowReOneEqEddy}}%
+ \OFemph{lowReOneEqEddy} & 低$\nRe$ $k$方程式渦粘性モデル \\
+\index{DeardorffDiffStress@\OFemph{DeardorffDiffStress}!モデル}%
+\index{モデル!DeardorffDiffStress@\OFemph{DeardorffDiffStress}}%
+ \OFemph{DeardorffDiffStress} & Deardorff差応力モデル
+\end{tabularx}

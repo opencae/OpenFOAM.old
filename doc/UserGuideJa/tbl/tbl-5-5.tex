@@ -1,0 +1,39 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lXX}
+ キーワード & 説明 & 指定するデータ \\
+ \hline
+\index{convertToMeters@\OFkeyword{convertToMeters}!キーワード}%
+\index{キーワード!convertToMeters@\OFkeyword{convertToMeters}}%
+ \OFkeyword{convertToMeters} &
+     頂点座標の倍率 &
+         \OFkeyword{0.001}とすれば$\unit*{mm}$ \\
+\index{vertices@\OFkeyword{vertices}!キーワード}%
+\index{キーワード!vertices@\OFkeyword{vertices}}%
+ \OFkeyword{vertices} &
+     頂点座標のリスト &
+         \OFkeyword{(0 0 0)} \\
+\index{edges@\OFkeyword{edges}!キーワード}%
+\index{キーワード!edges@\OFkeyword{edges}}%
+ \OFkeyword{edges} &
+\index{arc@\OFkeyword{arc}!キーワード}%
+\index{キーワード!arc@\OFkeyword{arc}}%
+     \OFkeyword{arc}もしくは
+\index{spline@\OFkeyword{spline}!キーワード}%
+\index{キーワード!spline@\OFkeyword{spline}}%
+     \OFkeyword{spline}の辺を書くために使用 &
+         arc 1 4 (0.939 0.342 -0.5) \\
+\index{block@\OFkeyword{block}!キーワード}%
+\index{キーワード!block@\OFkeyword{block}}%
+ \OFkeyword{block} &
+     頂点ラベルとメッシュサイズの順序リスト &
+         \OFkeyword{hex (0 1 2 3 4 5 6 7)}\break
+         \OFkeyword{(10 10 1)}\break
+         \mbox{\OFkeyword{simpleGrading (1.0 1.0 1.0)}} \\
+\index{patches@\OFkeyword{patches}!キーワード}%
+\index{キーワード!patches@\OFkeyword{patches}}%
+ \OFkeyword{patches} &
+     パッチのリスト &
+         \OFkeyword{symmetryPlane base}\break
+         \OFkeyword{( (0 1 2 3) )} \\
+ \hline
+\end{tabularx}

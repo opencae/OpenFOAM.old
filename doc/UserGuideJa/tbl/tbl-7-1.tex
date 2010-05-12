@@ -1,0 +1,85 @@
+%#! platex UserGuideJa
+\begin{longtable}{lX}
+ \multicolumn{2}{l}{状態方程式 --- equationOfState} \\
+ \hline
+\index{perfectGas@\OFemph{perfectGas}!モデル}%
+\index{モデル!perfectGas@\OFemph{perfectGas}}%
+ \OFemph{perfectGas} &
+ 理想気体状態方程式 \\
+ \\
+ \multicolumn{2}{l}{標準熱特性 --- thermo} \\
+ \hline
+\index{hConstThermo@\OFemph{hConstThermo}!モデル}%
+\index{モデル!hConstThermo@\OFemph{hConstThermo}}%
+ \OFemph{hConstThermo} &
+ エンタルピ$h$とエントロピ$s$の評価を備えた，比熱$c_{p}$一定のモデル \\
+\index{janafThermo@\OFemph{janafThermo}!モデル}%
+\index{モデル!janafThermo@\OFemph{janafThermo}}%
+ \OFemph{janafThermo} &
+ JANAFの熱物性表の係数から$c_{p}$が評価され，
+ それにより$h$，$s$が評価される． \\
+ \\
+ \multicolumn{2}{l}{派生熱特性 --- specieThermo} \\
+ \hline
+\index{specieThermo@\OFemph{specieThermo}!モデル}%
+\index{モデル!specieThermo@\OFemph{specieThermo}}%
+ \OFemph{specieThermo} &
+ $c_{p}$，$h$，そして/または，$s$から得られた特殊な熱特性 \\
+ \\
+ \multicolumn{2}{l}{輸送特性 --- transport} \\
+ \hline
+\index{constTransport@\OFemph{constTransport}!モデル}%
+\index{モデル!constTransport@\OFemph{constTransport}}%
+ \OFemph{constTransport} &
+ 一定の輸送特性 \\
+\index{sutherlandTransport@\OFemph{sutherlandTransport}!モデル}%
+\index{モデル!sutherlandTransport@\OFemph{sutherlandTransport}}%
+ \OFemph{sutherlandTransport} &
+ 温度依存する輸送輸送のためのサザーランドの公式 \\
+ \\
+ \multicolumn{2}{l}{混合特性 --- mixture} \\
+ \hline
+\index{pureMixture@\OFemph{pureMixture}!モデル}%
+\index{モデル!pureMixture@\OFemph{pureMixture}}%
+ \OFemph{pureMixture} &
+ 不活性ガス混合の一般熱モデル計算 \\
+\index{homogeneousMixture@\OFemph{homogeneousMixture}!モデル}%
+\index{モデル!homogeneousMixture@\OFemph{homogeneousMixture}}%
+ \OFemph{homogeneousMixture} &
+ 正規化燃料質量分率$b$に基づく混合気燃焼 \\
+\index{inhomogeneousMixture@\OFemph{inhomogeneousMixture}!モデル}%
+\index{モデル!inhomogeneousMixture@\OFemph{inhomogeneousMixture}}%
+ \OFemph{inhomogeneousMixture} &
+ $b$と総燃料質量分率$f_{\mathrm{t}}$に基づく混合気燃焼 \\
+\index{veryInhomogeneousMixture@\OFemph{veryInhomogeneousMixture}!モデル}%
+\index{モデル!veryInhomogeneousMixture@\OFemph{veryInhomogeneousMixture}}%
+ \OFemph{veryInhomogeneousMixture} &
+ $b$と$f_{\mathrm{t}}$と未燃燃料質量分率$f_{\mathrm{u}}$に基づく混合気燃焼 \\
+\index{dieselMixture@\OFemph{dieselMixture}!モデル}%
+\index{モデル!dieselMixture@\OFemph{dieselMixture}}%
+ \OFemph{dieselMixture} &
+ $f_{\mathrm{t}}$と$f_{\mathrm{u}}$に基づく混合気燃焼 \\
+\index{multiComponentMixture@\OFemph{multiComponentMixture}!モデル}%
+\index{モデル!multiComponentMixture@\OFemph{multiComponentMixture}}%
+ \OFemph{multiComponentMixture} &
+ 複数の成分に基づく混合気燃焼 [**] \\
+\index{chemkinMixture@\OFemph{chemkinMixture}!モデル}%
+\index{モデル!chemkinMixture@\OFemph{chemkinMixture}}%
+ \OFemph{chemkinMixture} &
+ CHEMKIN熱力学と反応スキームデータベースファイルを用いた混合気燃焼 \\
+ \\
+ \multicolumn{2}{l}{熱モデル --- thermoModel} \\
+ \hline
+\index{hThermo@\OFemph{hThermo}!モデル}%
+\index{モデル!hThermo@\OFemph{hThermo}}%
+ \OFemph{hThermo} &
+ エンタルピ$h$に基づく一般熱モデル計算 \\
+\index{hMixtureThermo@\OFemph{hMixtureThermo}!モデル}%
+\index{モデル!hMixtureThermo@\OFemph{hMixtureThermo}}%
+ \OFemph{hMixtureThermo} &
+ 混合気燃焼のエンタルピ計算 \\
+\index{hhuMixtureThermo@\OFemph{hhuMixtureThermo}!モデル}%
+\index{モデル!hhuMixtureThermo@\OFemph{hhuMixtureThermo}}%
+ \OFemph{hhuMixtureThermo} &
+ 未燃ガスと混合気燃焼のエンタルピ計算
+\end{longtable}

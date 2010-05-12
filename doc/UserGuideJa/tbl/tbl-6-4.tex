@@ -1,0 +1,68 @@
+%#! platex UserGuideJa
+\begin{tabular}{ll*{6}c}
+ & & \multicolumn{6}{c}{必要項目} \\
+ サンプル型 & データ取得位置 &
+         \rotatebox{90}{\OFkeyword{name}} &
+         \rotatebox{90}{\OFkeyword{axis}} &
+         \rotatebox{90}{\OFkeyword{start}} &
+         \rotatebox{90}{\OFkeyword{end}} &
+         \rotatebox{90}{\OFkeyword{nPoints}} &
+         \rotatebox{90}{\OFkeyword{points}} \\
+ \hline
+\index{uniform@\OFkeyword{uniform}!キーワード}%
+\index{キーワード!uniform@\OFkeyword{uniform}}%
+ \OFkeyword{uniform} & 線上に一様配分 &
+         \textbullet & \textbullet & \textbullet & \textbullet & \textbullet \\
+\index{face@\OFkeyword{face}!キーワード}%
+\index{キーワード!face@\OFkeyword{face}}%
+ \OFkeyword{face} & 指定された線とセル表面の交点 &
+         \textbullet & \textbullet & \textbullet & \textbullet \\
+\index{midPoint@\OFkeyword{midPoint}!キーワード}%
+\index{キーワード!midPoint@\OFkeyword{midPoint}}%
+ \OFkeyword{midPoint} & 線・面の交点と交点の中点 &
+         \textbullet & \textbullet & \textbullet & \textbullet \\
+\index{midPointAndFace@\OFkeyword{midPointAndFace}!キーワード}%
+\index{キーワード!midPointAndFace@\OFkeyword{midPointAndFace}}%
+ \OFkeyword{midPointAndFace} & 中点および面 &
+         \textbullet & \textbullet & \textbullet & \textbullet \\
+\index{curve@\OFkeyword{curve}!キーワード}%
+\index{キーワード!curve@\OFkeyword{curve}}%
+ \OFkeyword{curve} & 曲線に沿った指定された点 &
+         \textbullet & \textbullet & & & & \textbullet \\
+\index{cloud@\OFkeyword{cloud}!キーワード}%
+\index{キーワード!cloud@\OFkeyword{cloud}}%
+ \OFkeyword{cloud} & 指定された点 &
+         \textbullet & \textbullet & & & & \textbullet \\
+ \hline
+\end{tabular}
+
+\begin{tabular}{llll} \\
+ 入力項目 & 説明 & \multicolumn{2}{l}{オプション} \\
+ \hline
+ \OFkeyword{type} & データ取得の型 & \multicolumn{2}{l}{上の一覧参照} \\
+ \OFkeyword{axis} & Output of sample location &
+\index{x@\OFkeyword{x}!キーワードエントリ}%
+\index{キーワードエントリ!x@\OFkeyword{x}}%
+         \OFkeyword{x} & $x$軸 \\
+ & &
+\index{y@\OFkeyword{y}!キーワードエントリ}%
+\index{キーワードエントリ!y@\OFkeyword{y}}%
+         \OFkeyword{y} & $y$軸 \\
+ & &
+\index{z@\OFkeyword{z}!キーワードエントリ}%
+\index{キーワードエントリ!z@\OFkeyword{z}}%
+         \OFkeyword{z} & $z$軸 \\
+ & &
+\index{xyz@\OFkeyword{xyz}!キーワードエントリ}%
+\index{キーワードエントリ!xyz@\OFkeyword{xyz}}%
+         \OFkeyword{xyz} & $xyz$軸 \\
+ & &
+\index{distance@\OFkeyword{distance}!キーワードエントリ}%
+\index{キーワードエントリ!distance@\OFkeyword{distance}}%
+         \OFkeyword{distance} & 点0からの距離 \\
+ \OFkeyword{start} & データ取得線の始点 & \multicolumn{2}{l}{e.g. \OFkeyword{(0.0 0.0 0.0)}} \\
+ \OFkeyword{end} & データ取得線の終点 & \multicolumn{2}{l}{e.g. \OFkeyword{(0.0 2.0 0.0)}} \\
+ \OFkeyword{nPoints} & データ取得点の数 & \multicolumn{2}{l}{e.g. \OFkeyword{200}} \\
+ \OFkeyword{points} & データ取得点一覧 \\
+ \hline
+\end{tabular}

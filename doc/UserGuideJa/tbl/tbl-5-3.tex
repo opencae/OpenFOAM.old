@@ -1,0 +1,39 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lXp{8zw}}
+ 種類 & 物理量$\phi$に対して与える条件 & Data to specify \\
+ \hline
+\index{fixedValue@\OFboundary{fixedValue}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!fixedValue@\OFboundary{fixedValue}}%
+ \OFboundary{fixedValue} & $\phi$の値が一定 & \OFkeyword{value} \\
+\index{fixedGradient@\OFboundary{fixedGradient}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!fixedGradient@\OFboundary{fixedGradient}}%
+ \OFboundary{fixedGradient} & $\phi$の勾配が一定 & \OFkeyword{gradient} \\
+\index{zeroGradient@\OFboundary{zeroGradient}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!zeroGradient@\OFboundary{zeroGradient}}%
+ \OFboundary{zeroGradient} & $\phi$の勾配が$0$ & -- \\
+\index{calculated@\OFboundary{calculated}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!calculated@\OFboundary{calculated}}%
+ \OFboundary{calculated} & $\phi$の境界条件が他の物理量から決まる & -- \\
+\index{mixed@\OFboundary{mixed}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!mixed@\OFboundary{mixed}}%
+ \OFboundary{mixed} & \OFboundary{fixedValue}と\OFboundary{fixedGradient}の組み合わせ，
+     \OFkeyword{valueFraction}に依存する条件 &
+         \OFkeyword{refValue}，\hfil\break
+\index{refGradient@\OFkeyword{refGradient}!キーワード}%
+\index{キーワード!refGradient@\OFkeyword{refGradient}}%
+         \OFkeyword{refGradient}，\hfil\break
+\index{valueFraction@\OFkeyword{valueFraction}!キーワード}%
+\index{キーワード!valueFraction@\OFkeyword{valueFraction}}%
+         \OFkeyword{valueFraction}，\hfil\break
+\index{value@\OFkeyword{value}!キーワード}%
+\index{キーワード!value@\OFkeyword{value}}%
+         \OFkeyword{value} \\
+\index{directionMixed@\OFboundary{directionMixed}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!directionMixed@\OFboundary{directionMixed}}%
+ \OFboundary{directionMixed} & パッチの法線方向に対して\OFkeyword{mixed}，
+     接線方向に対して\OFkeyword{fixedGradient} & \OFkeyword{refValue}，\hfil\break
+         \OFkeyword{refGradient}，\hfil\break
+         \OFkeyword{valueFraction}，\hfil\break
+         \OFkeyword{value} \\
+ \hline
+\end{tabularx}

@@ -1,0 +1,103 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{Xll}
+ キーワード & オプション & 説明 \\
+ \hline
+\index{interpolationScheme@\OFkeyword{interpolationScheme}!キーワード}%
+\index{キーワード!interpolationScheme@\OFkeyword{interpolationScheme}}%
+ \OFkeyword{interpolationScheme} &
+\index{cell@\OFkeyword{cell}!キーワードエントリ}%
+\index{キーワードエントリ!cell@\OFkeyword{cell}}%
+     \OFkeyword{cell} &
+         セル中心の値でセル全体が一定とみなす \\
+ &
+\index{cellPoint@\OFkeyword{cellPoint}!キーワードエントリ}%
+\index{キーワードエントリ!cellPoint@\OFkeyword{cellPoint}}%
+     \OFkeyword{cellPoint} &
+         セルの値から線型重み付け補間 \\
+ &
+\index{cellPointFace@\OFkeyword{cellPointFace}!キーワードエントリ}%
+\index{キーワードエントリ!cellPointFace@\OFkeyword{cellPointFace}}%
+     \OFkeyword{cellPointFace} &
+         線型重み付けまたはセル表面から補間 \\
+\index{setFormat@\OFkeyword{setFormat}!キーワード}%
+\index{キーワード!setFormat@\OFkeyword{setFormat}}%
+ \OFkeyword{setFormat} &
+\index{raw@\OFkeyword{raw}!キーワードエントリ}%
+\index{キーワードエントリ!raw@\OFkeyword{raw}}%
+     \OFkeyword{raw} &
+         ASCII生データ \\
+ &
+\index{gnuplot@\OFkeyword{gnuplot}!キーワードエントリ}%
+\index{キーワードエントリ!gnuplot@\OFkeyword{gnuplot}}%
+     \OFkeyword{gnuplot} &
+         gnuplot形式データ \\
+ &
+\index{xmgr@\OFkeyword{xmgr}!キーワードエントリ}%
+\index{キーワードエントリ!xmgr@\OFkeyword{xmgr}}%
+     \OFkeyword{xmgr} &
+         Grace/xmgr形式データ \\
+ &
+\index{jplot@\OFkeyword{jplot}!キーワードエントリ}%
+\index{キーワードエントリ!jplot@\OFkeyword{jplot}}%
+     \OFkeyword{jplot} &
+         jPlot形式データ \\
+\index{surfaceFormat@\OFkeyword{surfaceFormat}!キーワード}%
+\index{キーワード!surfaceFormat@\OFkeyword{surfaceFormat}}%
+ \OFkeyword{surfaceFormat} &
+\index{null@\OFkeyword{null}!キーワードエントリ}%
+\index{キーワードエントリ!null@\OFkeyword{null}}%
+     \OFkeyword{null} &
+         出力しない \\
+ &
+\index{foamFile@\OFkeyword{foamFile}!キーワードエントリ}%
+\index{キーワードエントリ!foamFile@\OFkeyword{foamFile}}%
+     \OFkeyword{foamFile} &
+         点，面，値のファイル \\
+ &
+\index{dx@\OFkeyword{dx}!キーワードエントリ}%
+\index{キーワードエントリ!dx@\OFkeyword{dx}}%
+     \OFkeyword{dx} &
+         DXスカラまたはベクトル形式 \\
+ &
+\index{vtk@\OFkeyword{vtk}!キーワードエントリ}%
+\index{キーワードエントリ!vtk@\OFkeyword{vtk}}%
+     \OFkeyword{vtk} &
+         VTK ASCII形式 \\
+ &
+\index{raw@\OFkeyword{raw}!キーワードエントリ}%
+\index{キーワードエントリ!raw@\OFkeyword{raw}}%
+     \OFkeyword{raw} &
+         $xyz$座標と値．gnuplotの\texttt{splot}などで使われる \\
+ &
+\index{stl@\OFkeyword{stl}!キーワードエントリ}%
+\index{キーワードエントリ!stl@\OFkeyword{stl}}%
+     \OFkeyword{stl} &
+         ASCII STL．表面のみ，値なし \\
+\index{fields@\OFkeyword{fields}!キーワード}%
+\index{キーワード!fields@\OFkeyword{fields}}%
+ \OFkeyword{fields} &
+     \multicolumn{2}{l}{サンプルするフィールドのリスト，
+     たとえば速度\OFkeyword{U}の場合，} \\
+ &
+     \OFkeyword{U} &
+         $\bm{U}$の全成分を出力 \\
+ &
+     \OFkeyword{U.component(0)} &
+         成分0を出力．つまり$U_{x}$ \\
+ &
+     \OFkeyword{U.component(1)} &
+         成分1を出力．つまり$U_{y}$ \\
+ &
+     \OFkeyword{mag(U)} &
+         ベクトル，テンソルの大きさを出力．つまり$|\bm{U}|$ \\
+\index{sets@\OFkeyword{sets}!キーワード}%
+\index{キーワード!sets@\OFkeyword{sets}}%
+ \OFkeyword{sets} &
+     \multicolumn{2}{l}{1次元のsetsサブディクショナリのリスト．\autoref{tbl:6.4}を参照} \\
+\index{surfaces@\OFkeyword{surfaces}!キーワード}%
+\index{キーワード!surfaces@\OFkeyword{surfaces}}%
+ \OFkeyword{surfaces} &
+     \multicolumn{2}{l}{2次元のsurfacesサブディクショナリリスト．
+     \autoref{tbl:6.5}および\autoref{tbl:6.6}を参照} \\
+ \hline
+\end{tabularx}

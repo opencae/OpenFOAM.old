@@ -1,0 +1,144 @@
+%#! platex UserGuideJa
+\begin{longtable}{lX}
+ \multicolumn{2}{l}{時間制御} \\
+ \hline
+\index{startFrom@\OFkeyword{startFrom}!キーワード}%
+\index{キーワード!startFrom@\OFkeyword{startFrom}}%
+ \OFkeyword{startFrom} & 解析の開始時刻の制御 \\
+\index{firstTime@\OFkeyword{firstTime}!キーワードエントリ}%
+\index{キーワードエントリ!firstTime@\OFkeyword{firstTime}}%
+ \hskip1em- \OFkeyword{firstTime} & 存在する時刻ディレクトリのうちで最初の時刻 \\
+\index{startTime@\OFkeyword{startTime}!キーワードエントリ}%
+\index{キーワードエントリ!startTime@\OFkeyword{startTime}}%
+ \hskip1em- \OFkeyword{startTime} & \OFkeyword{startTime}の項目の入力により定める時刻 \\
+\index{latestTime@\OFkeyword{latestTime}!キーワードエントリ}%
+\index{キーワードエントリ!latestTime@\OFkeyword{latestTime}}%
+ \hskip1em- \OFkeyword{latestTime} & 存在する時刻ディレクトリのうちで最近の時刻 \\
+\index{startTime@\OFkeyword{startTime}!キーワード}%
+\index{キーワード!startTime@\OFkeyword{startTime}}%
+ \OFkeyword{startTime} & \OFkeyword{startFrom}の\OFkeyword{startTime}を用いた解析の開始時刻 \\
+\index{stopAt@\OFkeyword{stopAt}!キーワード}%
+\index{キーワード!stopAt@\OFkeyword{stopAt}}%
+ \OFkeyword{stopAt} & 解析の終了時刻の制御 \\
+\index{endTime@\OFkeyword{endTime}!キーワードエントリ}%
+\index{キーワードエントリ!endTime@\OFkeyword{endTime}}%
+ \hskip1em- \OFkeyword{endTime} & \OFkeyword{endTime}の項目の入力により定める時刻 \\
+\index{writeNow@\OFkeyword{writeNow}!キーワードエントリ}%
+\index{キーワードエントリ!writeNow@\OFkeyword{writeNow}}%
+ \hskip1em- \OFkeyword{writeNow} & 現在の時間ステップで解析を止めデータを書き出す \\
+\index{noWriteNow@\OFkeyword{noWriteNow}!キーワードエントリ}%
+\index{キーワードエントリ!noWriteNow@\OFkeyword{noWriteNow}}%
+ \hskip1em- \OFkeyword{noWriteNow} & 現在の時間ステップで解析を止めデータは書き出さない \\
+\index{nextWrite@\OFkeyword{nextWrite}!キーワードエントリ}%
+\index{キーワードエントリ!nextWrite@\OFkeyword{nextWrite}}%
+ \hskip1em- \OFkeyword{nextWrite} & \OFkeyword{writeControl}で指定した次のデータ書き出しの時間ステップで解析を止める \\
+\index{endTime@\OFkeyword{endTime}!キーワード}%
+\index{キーワード!endTime@\OFkeyword{endTime}}%
+ \OFkeyword{endTime} & \OFkeyword{stopAt}の\OFkeyword{endTime}で指定した解析の終了時刻 \\
+\index{deltaT@\OFkeyword{deltaT}!キーワード}%
+\index{キーワード!deltaT@\OFkeyword{deltaT}}%
+ \OFkeyword{deltaT} & 解析の時間ステップ \\
+ \\
+ \multicolumn{2}{l}{データの書き出し} \\
+ \hline
+\index{writeControl@\OFkeyword{writeControl}!キーワード}%
+\index{キーワード!writeControl@\OFkeyword{writeControl}}%
+ \OFkeyword{writeControl} & ファイルへのデータの書き出しのタイミングの制御 \\
+\index{timeStep@\OFkeyword{timeStep}!キーワードエントリ}%
+\index{キーワードエントリ!timeStep@\OFkeyword{timeStep}}%
+ \hskip1em- \OFkeyword{timeStep}\dag &  タイムステップの\OFkeyword{writeInterval}ごとにデータを書き出す \\
+\index{runTime@\OFkeyword{runTime}!キーワードエントリ}%
+\index{キーワードエントリ!runTime@\OFkeyword{runTime}}%
+ \hskip1em- \OFkeyword{runTime} & 解析時間\OFkeyword{writeInterval}秒ごとにデータを書き出す \\
+\index{adjustableRunTime@\OFkeyword{adjustableRunTime}!キーワードエントリ}%
+\index{キーワードエントリ!adjustableRunTime@\OFkeyword{adjustableRunTime}}%
+ \hskip1em- \OFkeyword{adjustableRunTime} & 解析時間\OFkeyword{writeInterval}秒ごとにデータを書き出す，必要なら時間ステップを\OFkeyword{writeInterval}と一致するように調整する（自動時間ステップ調整を行う場合に使用する）． \\
+\index{cpuTime@\OFkeyword{cpuTime}!キーワードエントリ}%
+\index{キーワードエントリ!cpuTime@\OFkeyword{cpuTime}}%
+ \hskip1em- \OFkeyword{cpuTime} & CPU時間\OFkeyword{writeInterval}秒ごとにデータを書き出す \\
+\index{clockTime@\OFkeyword{clockTime}!キーワードエントリ}%
+\index{キーワードエントリ!clockTime@\OFkeyword{clockTime}}%
+ \hskip1em- \OFkeyword{clockTime} & 実時間\OFkeyword{writeInterval}秒ごとにデータを書き出す \\
+\index{writeInterval@\OFkeyword{writeInterval}!キーワード}%
+\index{キーワード!writeInterval@\OFkeyword{writeInterval}}%
+ \OFkeyword{writeInterval} & 上記の\OFkeyword{writeControl}と関連して用いられるスカラ \\
+\index{purgeWrite@\OFkeyword{purgeWrite}!キーワード}%
+\index{キーワード!purgeWrite@\OFkeyword{purgeWrite}}%
+ \OFkeyword{purgeWrite} & 周期的ベースで時刻ディレクトリを上書きすることによって
+ 保存される時刻ディレクトリの数の限界を表す整数．
+ たとえば$t_{0} = 5\unit{s}$，$\Delta t = 1\unit{s}$，\texttt{purgeWrite 2;}のとき，
+ \OFpath{6}と\OFpath{7}，二つのディレクトリにデータが書き込まれた後，
+ $8\unit{s}$のデータが\OFpath{6}に上書きされ，
+ $9\unit{s}$のデータが\OFpath{7}に上書きされる．
+ 時間ディレクトリ限界を無効にするには，\texttt{purgeWrite 0;}とする．\dag
+ 定常状態解析では，以前の反復計算の結果を\texttt{purgeWrite 1;}とすることで連続して上書きできる． \\
+\index{writeFormat@\OFkeyword{writeFormat}!キーワード}%
+\index{キーワード!writeFormat@\OFkeyword{writeFormat}}%
+ \OFkeyword{writeFormat} & データファイルのフォーマットを指定する \\
+\index{ascii@\OFkeyword{ascii}!キーワードエントリ}%
+\index{キーワードエントリ!ascii@\OFkeyword{ascii}}%
+ \hskip1em- \OFkeyword{ascii}\dag & ASCIIフォーマット，writePrecisionの有効桁まで書かれる \\
+\index{binary@\OFkeyword{binary}!キーワードエントリ}%
+\index{キーワードエントリ!binary@\OFkeyword{binary}}%
+ \hskip1em- \OFkeyword{binary} & バイナリー・フォーマット \\
+\index{writePrecision@\OFkeyword{writePrecision}!キーワード}%
+\index{キーワード!writePrecision@\OFkeyword{writePrecision}}%
+ \OFkeyword{writePrecision} & 上記のwriteFormatに関連して使用される整数，デフォルトでは6. \\
+\index{writeCompression@\OFkeyword{writeCompression}!キーワード}%
+\index{キーワード!writeCompression@\OFkeyword{writeCompression}}%
+ \OFkeyword{writeCompression} & データファイルの圧縮を指定する \\
+\index{uncompressed@\OFkeyword{uncompressed}!キーワードエントリ}%
+\index{キーワードエントリ!uncompressed@\OFkeyword{uncompressed}}%
+ \hskip1em- \OFkeyword{uncompressed} & 非圧縮\dag \\
+\index{compressed@\OFkeyword{compressed}!キーワードエントリ}%
+\index{キーワードエントリ!compressed@\OFkeyword{compressed}}%
+ \hskip1em- \OFkeyword{compressed} & gzip圧縮 \\
+\index{timeFormat@\OFkeyword{timeFormat}!キーワード}%
+\index{キーワード!timeFormat@\OFkeyword{timeFormat}}%
+ \OFkeyword{timeFormat} & 時刻ディレクトリのネーミングのフォーマットの選択 \\
+\index{fixed@\OFkeyword{fixed}!キーワードエントリ}%
+\index{キーワードエントリ!fixed@\OFkeyword{fixed}}%
+ \hskip1em- \OFkeyword{fixed} & $\pm m.dddddd$の$d$の数が\OFkeyword{timePrecision}で決められる \\
+\index{scientific@\OFkeyword{scientific}!キーワードエントリ}%
+\index{キーワードエントリ!scientific@\OFkeyword{scientific}}%
+ \hskip1em- \OFkeyword{scientific} & $\pm m.dddddd\mathrm{e}\mathord{\pm}xx$の$d$の数が\OFkeyword{timePrecision}で決められる \\
+\index{general@\OFkeyword{general}!キーワードエントリ}%
+\index{キーワードエントリ!general@\OFkeyword{general}}%
+ \hskip1em- \OFkeyword{general}\dag & 指数が$-4$未満もしくは\OFkeyword{timePrecision}で指定された指数以上のとき\OFkeyword{scientific}のフォーマットを指定する \\
+\index{timePrecision@\OFkeyword{timePrecision}!キーワード}%
+\index{キーワード!timePrecision@\OFkeyword{timePrecision}}%
+ \OFkeyword{timePrecision} & 上記のtimeFormatに関連して使用される整数，デフォルトでは6 \\
+\index{graphFormat@\OFkeyword{graphFormat}!キーワード}%
+\index{キーワード!graphFormat@\OFkeyword{graphFormat}}%
+ \OFkeyword{graphFormat} & アプリケーションによって描かれるグラフデータのフォーマット \\
+\index{raw@\OFkeyword{raw}!キーワードエントリ}%
+\index{キーワードエントリ!raw@\OFkeyword{raw}}%
+ \hskip1em- \OFkeyword{raw}\dag & 横書きの生のASCII形式 \\
+\index{gnuplot@\OFkeyword{gnuplot}!キーワードエントリ}%
+\index{キーワードエントリ!gnuplot@\OFkeyword{gnuplot}}%
+ \hskip1em- \OFkeyword{gnuplot} & gnuplot形式のデータ \\
+\index{xmgr@\OFkeyword{xmgr}!キーワードエントリ}%
+\index{キーワードエントリ!xmgr@\OFkeyword{xmgr}}%
+ \hskip1em- \OFkeyword{xmgr} & Grace/xmgr形式のデータ \\
+\index{jplot@\OFkeyword{jplot}!キーワードエントリ}%
+\index{キーワードエントリ!jplot@\OFkeyword{jplot}}%
+ \hskip1em- \OFkeyword{jplot} & jPlot形式のデータ \\
+ データの読み込み \\
+\index{runTimeModifiable@\OFkeyword{runTimeModifiable}!キーワード}%
+\index{キーワード!runTimeModifiable@\OFkeyword{runTimeModifiable}}%
+ \OFkeyword{runTimeModifiable} & controlDictのようないずれかのディクショナリの
+ yes\dag/noスイッチは各タイムステップの始めにOpenFOAMによって再度読み込まれる． \\
+ \\
+ \multicolumn{2}{l}{Run-time loadable functionality} \\
+ \hline
+\index{libs@\OFkeyword{libs}!キーワード}%
+\index{キーワード!libs@\OFkeyword{libs}}%
+ \OFkeyword{libs} & 実行時にロードする (\OFpath{\$LD\_LIBRARY\_PATH}上の) 追加ライブラリのリスト．
+ 例えば ("libUser1.so" "libUser2.so") \\
+\index{functions@\OFkeyword{functions}!キーワード}%
+\index{キーワード!functions@\OFkeyword{functions}}%
+ \OFkeyword{functions} & 機能のリスト．
+ 例えばランタイムにロードするprobesは\OFpath{\$FOAM\_TUTORIALS}の例を見る． \\
+ \hline
+ \multicolumn{2}{l}{\dag\quad 関連キーワードが省略されるなら，デフォルト入力を表示します．}
+\end{longtable}

@@ -1,0 +1,40 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lXl}
+ キーワード & 意味 & 例 \\
+ \hline
+\index{castellatedMesh@\OFkeyword{castellatedMesh}!キーワード}%
+\index{キーワード!castellatedMesh@\OFkeyword{castellatedMesh}}%
+ \OFkeyword{castellatedMesh} & ギザギザのメッシュを作成するかどうか & \OFkeyword{true} \\
+\index{snap@\OFkeyword{snap}!キーワード}%
+\index{キーワード!snap@\OFkeyword{snap}}%
+ \OFkeyword{snap} & 表面のスナップの有無 & \OFkeyword{true} \\
+\index{doLayers@\OFkeyword{doLayers}!キーワード}%
+\index{キーワード!doLayers@\OFkeyword{doLayers}}%
+ \OFkeyword{doLayers} & レイヤの追加の有無 & \OFkeyword{true} \\
+\index{mergeTolerance@\OFkeyword{mergeTolerance}!キーワード}%
+\index{キーワード!mergeTolerance@\OFkeyword{mergeTolerance}}%
+ \OFkeyword{mergeTolerance} & 初期メッシュの有界ボックスの比として許容値をまとめる & \OFkeyword{1e-06} \\
+\index{debug@\OFkeyword{debug}!キーワード}%
+\index{キーワード!debug@\OFkeyword{debug}}%
+ \OFkeyword{debug} & 中間メッシュと画面プリントの記述の制御 \\
+ & 最終メッシュのみ記述 & \OFkeyword{0} \\
+ & 中間メッシュの記述 & \OFkeyword{1} \\
+ & 後処理のため\OFkeyword{cellLevel}を付けた\OFkeyword{volScalarField}を記述 & \OFkeyword{2} \\
+ & \OFpath{.obj}ファイルとして現在の交点を記述 & \OFkeyword{4} \\
+\index{geometry@\OFkeyword{geometry}!キーワード}%
+\index{キーワード!geometry@\OFkeyword{geometry}}%
+ \OFkeyword{geometry} & 表面に使用した全ての幾何学のサブディクショナリ \\
+\index{castellatedMeshControls@\OFkeyword{castellatedMeshControls}!キーワード}%
+\index{キーワード!castellatedMeshControls@\OFkeyword{castellatedMeshControls}}%
+ \OFkeyword{castellatedMeshControls} & 城壁メッシュ制御のサブディクショナリ \\
+\index{snapControls@\OFkeyword{snapControls}!キーワード}%
+\index{キーワード!snapControls@\OFkeyword{snapControls}}%
+ \OFkeyword{snapControls} & 表面スナップ制御のサブディクショナリ \\
+\index{addLayersControls@\OFkeyword{addLayersControls}!キーワード}%
+\index{キーワード!addLayersControls@\OFkeyword{addLayersControls}}%
+ \OFkeyword{addLayersControls} & レイヤ追加制御のサブディクショナリ \\
+\index{meshQualityControls@\OFkeyword{meshQualityControls}!キーワード}%
+\index{キーワード!meshQualityControls@\OFkeyword{meshQualityControls}}%
+ \OFkeyword{meshQualityControls} & メッシュ特性制御のサブディクショナリ \\
+ \hline
+\end{tabularx}

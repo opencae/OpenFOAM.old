@@ -1,0 +1,238 @@
+%#! platex UserGuideJa
+\begin{longtable}{lX}
+ \multicolumn{2}{l}{基礎的なCFDコード} \\
+ \hline
+\index{laplacianFoam@\OFtool{laplacianFoam}!ソルバ}%
+\index{ソルバ!laplacianFoam@\OFtool{laplacianFoam}}%
+ \OFtool{laplacianFoam} & 固体の熱拡散のような単純なラプラス方程式を解く \\
+\index{potentialFoam@\OFtool{potentialFoam}!ソルバ}%
+\index{ソルバ!potentialFoam@\OFtool{potentialFoam}}%
+ \OFtool{potentialFoam} & シンプルなポテンシャル流のコード．
+ 完全ナビエ・ストークスコードを解く際の
+ 保存された初期値の生成にも使用できる \\
+\index{scalarTransportFoam@\OFtool{scalarTransportFoam}!ソルバ}%
+\index{ソルバ!scalarTransportFoam@\OFtool{scalarTransportFoam}}%
+ \OFtool{scalarTransportFoam} & パッシブスカラの輸送方程式を解く \\
+ \\
+ \multicolumn{2}{l}{非圧縮性流れ} \\
+ \hline
+\index{boundaryFoam@\OFtool{boundaryFoam}!ソルバ}%
+\index{ソルバ!boundaryFoam@\OFtool{boundaryFoam}}%
+ \OFtool{boundaryFoam} & 1次元の乱流用の定常状態ソルバで，
+ 通常，解析では流入口で境界層条件を発生させます． \\
+\index{channelOodles@\OFtool{channelOodles}!ソルバ}%
+\index{ソルバ!channelOodles@\OFtool{channelOodles}}%
+ \OFtool{channelOodles} & チャネル内流れ用の非圧縮LES \\
+\index{icoDyMFoam@\OFtool{icoDyMFoam}!ソルバ}%
+\index{ソルバ!icoDyMFoam@\OFtool{icoDyMFoam}}%
+ \OFtool{icoDyMFoam} & ダイナミック・メッシュをもつ
+ ニュートン流体の非圧縮性，層流の非定常ソルバ \\
+\index{icoFoam@\OFtool{icoFoam}!ソルバ}%
+\index{ソルバ!icoFoam@\OFtool{icoFoam}}%
+ \OFtool{icoFoam} & 非圧縮性，層流の速度-圧力ソルバ．非ニュートン流体も可 \\
+\index{nonNewtonianIcoFoam@\OFtool{nonNewtonianIcoFoam}!ソルバ}%
+\index{ソルバ!nonNewtonianIcoFoam@\OFtool{nonNewtonianIcoFoam}}%
+ \OFtool{nonNewtonianIcoFoam} & 非ニュートン流体の非圧縮性，層流の非定常ソルバ \\
+\index{oodles@\OFtool{oodles}!ソルバ}%
+\index{ソルバ!oodles@\OFtool{oodles}}%
+ \OFtool{oodles} & 非圧縮性のLESソルバ \\
+\index{simpleFoam@\OFtool{simpleFoam}!ソルバ}%
+\index{ソルバ!simpleFoam@\OFtool{simpleFoam}}%
+ \OFtool{simpleFoam} & 非ニュートン流体の非圧縮性，乱流の定常状態ソルバ \\
+\index{turbDyMFoam@\OFtool{turbDyMFoam}!ソルバ}%
+\index{ソルバ!turbDyMFoam@\OFtool{turbDyMFoam}}%
+ \OFtool{turbDyMFoam} & ダイナミックメッシュをもつ
+ ニュートン流体の非圧縮性，乱流の非定常ソルバ \\
+\index{turbFoam@\OFtool{turbFoam}!ソルバ}%
+\index{ソルバ!turbFoam@\OFtool{turbFoam}}%
+ \OFtool{turbFoam} & 非圧縮性，乱流の非定常ソルバ \\
+ \\
+ \multicolumn{2}{l}{圧縮性流れ} \\
+ \hline
+\index{coodles@\OFtool{coodles}!ソルバ}%
+\index{ソルバ!coodles@\OFtool{coodles}}%
+ \OFtool{coodles} & 圧縮性のLESソルバ \\
+\index{rhoCentralFoam@\OFtool{rhoCentralFoam}!ソルバ}%
+\index{ソルバ!rhoCentralFoam@\OFtool{rhoCentralFoam}}%
+ \OFtool{rhoCentralFoam} & 中央風上スキームに基づいた密度ベース圧縮性流れのソルバ \\
+\index{rhoPimpleFoam@\OFtool{rhoPimpleFoam}!ソルバ}%
+\index{ソルバ!rhoPimpleFoam@\OFtool{rhoPimpleFoam}}%
+ \OFtool{rhoPimpleFoam} & 換気と熱輸送のための圧縮性乱流用の非定常ソルバ \\
+\index{rhoPorousSimpleFoam@\OFtool{rhoPorousSimpleFoam}!ソルバ}%
+\index{ソルバ!rhoPorousSimpleFoam@\OFtool{rhoPorousSimpleFoam}}%
+ \OFtool{rhoPorousSimpleFoam} & 多孔性を陰的または陽的に扱う圧縮性流体のための非定常乱流ソルバ \\
+\index{rhopSonicFoam@\OFtool{rhopSonicFoam}!ソルバ}%
+\index{ソルバ!rhopSonicFoam@\OFtool{rhopSonicFoam}}%
+ \OFtool{rhopSonicFoam} & 圧力・密度に基づいた圧縮性流れのソルバ \\
+\index{rhoSimpleFoam@\OFtool{rhoSimpleFoam}!ソルバ}%
+\index{ソルバ!rhoSimpleFoam@\OFtool{rhoSimpleFoam}}%
+ \OFtool{rhoSimpleFoam} & 換気と熱輸送のある圧縮性流体の乱流の定常状態ソルバ \\
+\index{rhoSonicFoam@\OFtool{rhoSonicFoam}!ソルバ}%
+\index{ソルバ!rhoSonicFoam@\OFtool{rhoSonicFoam}}%
+ \OFtool{rhoSonicFoam} & 密度に基づいた圧縮性流れのソルバ \\
+\index{rhoTurbFoam@\OFtool{rhoTurbFoam}!ソルバ}%
+\index{ソルバ!rhoTurbFoam@\OFtool{rhoTurbFoam}}%
+ \OFtool{rhoTurbFoam} & 圧縮性，乱流の非定常ソルバ \\
+\index{sonicFoam@\OFtool{sonicFoam}!ソルバ}%
+\index{ソルバ!sonicFoam@\OFtool{sonicFoam}}%
+ \OFtool{sonicFoam} & 圧縮性，遷音速／超音速層流気体ソルバ \\
+\index{sonicFoamAutoMotion@\OFtool{sonicFoamAutoMotion}!ソルバ}%
+\index{ソルバ!sonicFoamAutoMotion@\OFtool{sonicFoamAutoMotion}}%
+ \OFtool{sonicFoamAutoMotion} & 移動メッシュをもつ圧縮性，
+ 遷音速／超音速層流気体ソルバ \\
+\index{sonicLiquidFoam@\OFtool{sonicLiquidFoam}!ソルバ}%
+\index{ソルバ!sonicLiquidFoam@\OFtool{sonicLiquidFoam}}%
+ \OFtool{sonicLiquidFoam} & 圧縮性，遷音速／超音速層流液体ソルバ \\
+\index{sonicTurbFoam@\OFtool{sonicTurbFoam}!ソルバ}%
+\index{ソルバ!sonicTurbFoam@\OFtool{sonicTurbFoam}}%
+ \OFtool{sonicTurbFoam} & 圧縮性，遷音速／超音速乱流ソルバ \\
+ \\
+ \multicolumn{2}{l}{多層流} \\
+ \hline
+\index{bubbleFoam@\OFtool{bubbleFoam}!ソルバ}%
+\index{ソルバ!bubbleFoam@\OFtool{bubbleFoam}}%
+ \OFtool{bubbleFoam} & 液体の中の気泡のように非圧縮分散性2相2流体ソルバ \\
+\index{compressibleLesInterFoam@\OFtool{compressibleLesInterFoam}!ソルバ}%
+\index{ソルバ!compressibleLesInterFoam@\OFtool{compressibleLesInterFoam}}%
+ \OFtool{compressibleLesInterFoam} & 界面を捕獲するやり方で
+ 流体占有率を求め (VOF法)，
+ 不混和性の圧縮性等温2相流をLESで解くソルバ \\
+\index{interDyMFoam@\OFtool{interDyMFoam}!ソルバ}%
+\index{ソルバ!interDyMFoam@\OFtool{interDyMFoam}}%
+ \OFtool{interDyMFoam} & VOF法と補助的な格子移動を用いて，
+ 界面を捕獲する非圧縮性の2相流のソルバ \\
+\index{interFoam@\OFtool{interFoam}!ソルバ}%
+\index{ソルバ!interFoam@\OFtool{interFoam}}%
+ \OFtool{interFoam} & VOF法を用いて界面を捕獲する非圧縮性の2相流のソルバ \\
+\index{interPhaseChangeFoam@\OFtool{interPhaseChangeFoam}!ソルバ}%
+\index{ソルバ!interPhaseChangeFoam@\OFtool{interPhaseChangeFoam}}%
+ \OFtool{interPhaseChangeFoam} & VOF法を用いて，キャビテーション等の
+ 相変化を伴なう不混和性の非圧縮性等温2相流を解くソルバ \\
+\index{lesCavitatingFoam@\OFtool{lesCavitatingFoam}!ソルバ}%
+\index{ソルバ!lesCavitatingFoam@\OFtool{lesCavitatingFoam}}%
+ \OFtool{lesCavitatingFoam} & LES乱流モデルによる非定常の
+ キャビテーション用コード \\
+\index{lesInterFoam@\OFtool{lesInterFoam}!ソルバ}%
+\index{ソルバ!lesInterFoam@\OFtool{lesInterFoam}}%
+ \OFtool{lesInterFoam} & インタフェースをもつ非圧縮2相流のソルバ．
+ 乱流のモデル化は各種の非圧縮性LESモデルにより，
+ これらは実行時に変更できる． \\
+\index{multiphaseInterFoam@\OFtool{multiphaseInterFoam}!ソルバ}%
+\index{ソルバ!multiphaseInterFoam@\OFtool{multiphaseInterFoam}}%
+ \OFtool{multiphaseInterFoam} & VOF法を使った多数のインタフェースをもつ
+ 非圧縮非混合性流れの任意数のソルバ \\
+\index{rasCavitatingFoam@\OFtool{rasCavitatingFoam}!ソルバ}%
+\index{ソルバ!rasCavitatingFoam@\OFtool{rasCavitatingFoam}}%
+ \OFtool{rasCavitatingFoam} & RAS乱流モデルによる
+ 非定常のキャビテーション用コード \\
+\index{rasInterFoam@\OFtool{rasInterFoam}!ソルバ}%
+\index{ソルバ!rasInterFoam@\OFtool{rasInterFoam}}%
+ \OFtool{rasInterFoam} & インタフェースをもった2相の非圧縮性流れのソルバ．
+ 乱流は各種の非圧縮性RASモデルのランタイムを使ってモデル化される \\
+\index{settlingFoam@\OFtool{settlingFoam}!ソルバ}%
+\index{ソルバ!settlingFoam@\OFtool{settlingFoam}}%
+ \OFtool{settlingFoam} & 分散相の設定シミュレーション用の非圧縮2相流コード \\
+\index{twoLiquidMixingFoam@\OFtool{twoLiquidMixingFoam}!ソルバ}%
+\index{ソルバ!twoLiquidMixingFoam@\OFtool{twoLiquidMixingFoam}}%
+ \OFtool{twoLiquidMixingFoam} & 2層の非圧縮性流れを混合したソルバ \\
+\index{twoPhaseEulerFoam@\OFtool{twoPhaseEulerFoam}!ソルバ}%
+\index{ソルバ!twoPhaseEulerFoam@\OFtool{twoPhaseEulerFoam}}%
+ \OFtool{twoPhaseEulerFoam} & 液体の中の気体の泡のように分散した状態の
+ 2層の非圧縮性流れのシステム \\
+ \\
+ \multicolumn{2}{l}{直接数値シミュレーション (DNS)} \\
+ \hline
+\index{dnsFoam@\OFtool{dnsFoam}!ソルバ}%
+\index{ソルバ!dnsFoam@\OFtool{dnsFoam}}%
+ \OFtool{dnsFoam} & 直方体中の等方性乱流のための直接数値解法 (DNS) コード \\
+ \\
+ \multicolumn{2}{l}{燃焼} \\
+ \hline
+\index{coldEngineFoam@\OFtool{coldEngineFoam}!ソルバ}%
+\index{ソルバ!coldEngineFoam@\OFtool{coldEngineFoam}}%
+ \OFtool{coldEngineFoam} & 内燃機関のコールドフローのソルバ \\
+\index{dieselEngineFoam@\OFtool{dieselEngineFoam}!ソルバ}%
+\index{ソルバ!dieselEngineFoam@\OFtool{dieselEngineFoam}}%
+ \OFtool{dieselEngineFoam} & ディーゼルエンジン用噴射・燃焼用コード \\
+\index{dieselFoam@\OFtool{dieselFoam}!ソルバ}%
+\index{ソルバ!dieselFoam@\OFtool{dieselFoam}}%
+ \OFtool{dieselFoam} & ディーゼル噴射・燃焼用コード \\
+\index{engineFoam@\OFtool{engineFoam}!ソルバ}%
+\index{ソルバ!engineFoam@\OFtool{engineFoam}}%
+ \OFtool{engineFoam} & エンジン内部の燃焼用コード \\
+\index{PDRFoam@\OFtool{PDRFoam}!ソルバ}%
+\index{ソルバ!PDRFoam@\OFtool{PDRFoam}}%
+ \OFtool{PDRFoam} & 格子では解像できないくらい小さな固体による抵抗を扱うために，
+ 多孔質の抵抗を分布させるPDRモデルを内蔵した
+ 圧縮性予混合／部分的予混合乱流燃焼コード \\
+\index{reactingFoam@\OFtool{reactingFoam}!ソルバ}%
+\index{ソルバ!reactingFoam@\OFtool{reactingFoam}}%
+ \OFtool{reactingFoam} & 化学反応コード \\
+\index{XiFoam@\OFtool{XiFoam}!ソルバ}%
+\index{ソルバ!XiFoam@\OFtool{XiFoam}}%
+ \OFtool{XiFoam} & 圧縮性予混合／部分的予混合乱流燃焼コード \\
+\index{Xoodles@\OFtool{Xoodles}!ソルバ}%
+\index{ソルバ!Xoodles@\OFtool{Xoodles}}%
+ \OFtool{Xoodles} & 圧縮性予混合／部分的予混合乱流燃焼
+ ラージ・エディ・シミュレーション (LES) コード \\
+ \\
+ \multicolumn{2}{l}{熱輸送} \\
+ \hline
+\index{buoyantFoam@\OFtool{buoyantFoam}!ソルバ}%
+\index{ソルバ!buoyantFoam@\OFtool{buoyantFoam}}%
+ \OFtool{buoyantFoam} & 換気と熱輸送がある
+ 圧縮性乱流・浮力流用の非定常ソルバ \\
+\index{buoyantSimpleFoam@\OFtool{buoyantSimpleFoam}!ソルバ}%
+\index{ソルバ!buoyantSimpleFoam@\OFtool{buoyantSimpleFoam}}%
+ \OFtool{buoyantSimpleFoam} & \\
+\index{buoyantSimpleRadiationFoam@\OFtool{buoyantSimpleRadiationFoam}!ソルバ}%
+\index{ソルバ!buoyantSimpleRadiationFoam@\OFtool{buoyantSimpleRadiationFoam}}%
+ \OFtool{buoyantSimpleRadiationFoam} & 放射と換気，熱輸送がある
+ 圧縮性乱流・浮力流用の定常ソルバ \\
+\index{chtMultiRegionFoam@\OFtool{chtMultiRegionFoam}!ソルバ}%
+\index{ソルバ!chtMultiRegionFoam@\OFtool{chtMultiRegionFoam}}%
+ \OFtool{chtMultiRegionFoam} & 浮力駆動の流れと
+ 固体との熱輸送を連成するソルバ \\
+\index{lesBuoyantFoam@\OFtool{lesBuoyantFoam}!ソルバ}%
+\index{ソルバ!lesBuoyantFoam@\OFtool{lesBuoyantFoam}}%
+ \OFtool{lesBuoyantFoam} & 換気と熱輸送がある
+ 圧縮性乱流・浮力流用のLES乱流モデルによる非定常ソルバ \\
+ \\
+ \multicolumn{2}{l}{電磁流体} \\
+ \hline
+\index{electrostaticFoam@\OFtool{electrostaticFoam}!ソルバ}%
+\index{ソルバ!electrostaticFoam@\OFtool{electrostaticFoam}}%
+ \OFtool{electrostaticFoam} & 静電方程式コード \\
+\index{mhdFoam@\OFtool{mhdFoam}!ソルバ}%
+\index{ソルバ!mhdFoam@\OFtool{mhdFoam}}%
+ \OFtool{mhdFoam} & 磁場の影響によって誘発される
+ 非圧縮性層流の電磁流体 (MHD) 用ソルバ \\
+ \\
+ \multicolumn{2}{l}{固体応力解析} \\
+ \hline
+\index{solidDisplacementFoam@\OFtool{solidDisplacementFoam}!ソルバ}%
+\index{ソルバ!solidDisplacementFoam@\OFtool{solidDisplacementFoam}}%
+ \OFtool{solidDisplacementFoam} & 選択が自由な熱拡散と熱応力をもった
+ 線形弾性や固体の微小ひずみの非定常分離有限体積ソルバ \\
+\index{solidEquilibriumDisplacementFoam@\OFtool{solidEquilibriumDisplacementFoam}!ソルバ}%
+\index{ソルバ!solidEquilibriumDisplacementFoam@\OFtool{solidEquilibriumDisplacementFoam}}%
+ \OFtool{solidEquilibriumDisplacementFoam} & 固体の線形弾性や
+ 微小ひずみの定常状態分離有限体積ソルバ \\
+ \\
+ \multicolumn{2}{l}{分子力学} \\
+ \hline
+\index{gnemdFoam@\OFtool{gnemdFoam}!ソルバ}%
+\index{ソルバ!gnemdFoam@\OFtool{gnemdFoam}}%
+ \OFtool{gnemdFoam} & 任意形状の解析領域における
+ 原子を解析する汎用の分子力学用ソルバであり，
+ 場のデータを作成するために原子や分子の量を格子内で平均する \\
+\index{mdEquilibrationFoam@\OFtool{mdEquilibrationFoam}!ソルバ}%
+\index{ソルバ!mdEquilibrationFoam@\OFtool{mdEquilibrationFoam}}%
+ \OFtool{mdEquilibrationFoam} & 分子力学系の平衡やその前提条件を解く \\
+ \\
+ \multicolumn{2}{l}{金融工学} \\
+ \hline
+\index{financialFoam@\OFtool{financialFoam}!ソルバ}%
+\index{ソルバ!financialFoam@\OFtool{financialFoam}}%
+ \OFtool{financialFoam} & 物価に対するBlack-Scholes方程式を解く
+\end{longtable}

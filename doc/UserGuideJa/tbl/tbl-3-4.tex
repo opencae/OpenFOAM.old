@@ -1,0 +1,72 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textwidth}{lXp{10zw}}
+ \multicolumn{3}{l}{必須入力} \\
+ \hline
+\index{numberOfSubdomains@\OFkeyword{numberOfSubdomains}!キーワード}%
+\index{キーワード!numberOfSubdomains@\OFkeyword{numberOfSubdomains}}%
+ \OFkeyword{numberOfSubdomains} & サブドメインの総数 & $N$ \\
+\index{method@\OFkeyword{method}!キーワード}%
+\index{キーワード!method@\OFkeyword{method}}%
+ \OFkeyword{method} & 分割方法 &
+\index{simple@\OFkeyword{simple}!キーワードエントリ}%
+\index{キーワードエントリ!simple@\OFkeyword{simple}}%
+         \OFkeyword{simple}/\hfil\break
+\index{hierarchical@\OFkeyword{hierarchical}!キーワードエントリ}%
+\index{キーワードエントリ!hierarchical@\OFkeyword{hierarchical}}%
+         \OFkeyword{hierarchical}/\hfil\break
+\index{metis@\OFkeyword{metis}!キーワードエントリ}%
+\index{キーワードエントリ!metis@\OFkeyword{metis}}%
+         \OFkeyword{metis}/
+\index{manual/@\OFkeyword{manual/}!キーワードエントリ}%
+\index{キーワードエントリ!manual/@\OFkeyword{manual/}}%
+         \OFkeyword{manual/} \\
+ \\
+ \multicolumn{3}{l}{\OFkeyword{simpleCoeffs}エントリ} \\
+ \hline
+\index{n@\OFkeyword{n}!キーワード}%
+\index{キーワード!n@\OFkeyword{n}}%
+ \OFkeyword{n} & $x$，$y$，$z$のサブドメイン数 & $(n_{x}, n_{y}, n_{z})$ \\
+\index{delta@\OFkeyword{delta}!キーワード}%
+\index{キーワード!delta@\OFkeyword{delta}}%
+ \OFkeyword{delta} & セルのスキュー因数 & 一般的には，$10^{-3}$ \\
+ \\
+ \multicolumn{3}{l}{\OFkeyword{hierarchicalCoeffs}エントリ} \\
+ \hline
+ \OFkeyword{n} & $x$，$y$，$z$のサブドメイン数 & $(n_{x}, n_{y}, n_{z})$ \\
+ \OFkeyword{delta} & セルのスキュー因数 & 一般的には，$10^{-3}$ \\
+\index{order@\OFkeyword{order}!キーワード}%
+\index{キーワード!order@\OFkeyword{order}}%
+ \OFkeyword{order} & 分割の順序 & \OFkeyword{xyz}/\OFkeyword{xzy}/\OFkeyword{yzx}... \\
+ \\
+ \multicolumn{3}{l}{%
+\index{metisCoeffs@\OFkeyword{metisCoeffs}!キーワード}%
+\index{キーワード!metisCoeffs@\OFkeyword{metisCoeffs}}%
+ \OFkeyword{metisCoeffs}エントリ} \\
+ \hline
+\index{processorWeights@\OFkeyword{processorWeights}!キーワード}%
+\index{キーワード!processorWeights@\OFkeyword{processorWeights}}%
+ \OFkeyword{processorWeights}
+ & プロセッサへのセルの割当の重み係数の一覧．
+     例：\verb|<wt1>|はプロセッサ1の重み係数．
+     重みは規格化され，
+     どんな範囲の値も取ることが可能．
+     & (\verb|<wt1>|...\verb|<wtN>|) \\
+ \\
+ \multicolumn{3}{l}{%
+\index{manualCoeffs@\OFkeyword{manualCoeffs}!キーワード}%
+\index{キーワード!manualCoeffs@\OFkeyword{manualCoeffs}}%
+ \OFkeyword{manualCoeffs}エントリ} \\
+ \hline
+ \OFkeyword{dataFile} & プロセッサへのセルの割当のデータを含むファイル名 & \texttt{"<fileName>"} \\
+ \\
+ \multicolumn{3}{l}{分散型データの入力（オプション）---\autoref{ssec:3.4.3}参照} \\
+ \hline
+\index{distributed@\OFkeyword{distributed}!キーワード}%
+\index{キーワード!distributed@\OFkeyword{distributed}}%
+ \OFkeyword{distributed} & データはいくつかのディスクのに分散しますか？ & \OFkeyword{yes}/\OFkeyword{no} \\
+\index{roots@\OFkeyword{roots}!キーワード}%
+\index{キーワード!roots@\OFkeyword{roots}}%
+ \OFkeyword{roots} & ケースディレクトリへのルートパス．
+     例：\verb|<rt1>|はノード1へのルートパス
+     & (\verb|<rt1>|...\verb|<rtN>|) \\
+\end{tabularx}

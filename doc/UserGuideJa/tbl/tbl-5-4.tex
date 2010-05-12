@@ -1,0 +1,91 @@
+%#! platex UserGuideJa
+\begin{tabularx}{\textheight}{lXp{9zw}}
+ \OFboundary{fixedValue}から派生 & 意味 & 指定するデータ \\
+ \hline
+\index{movingWallVelocity@\OFboundary{movingWallVelocity}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!movingWallVelocity@\OFboundary{movingWallVelocity}}%
+ \OFboundary{movingWallVelocity} &
+     ノーマルパッチの値を置き換えるのでパッチのフラックスは$0$ & \OFkeyword{value} \\
+\index{pressureInletVelocity@\OFboundary{pressureInletVelocity}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!pressureInletVelocity@\OFboundary{pressureInletVelocity}}%
+ \OFboundary{pressureInletVelocity} &
+     流入口の$p$が分かっているとき，$\bm{U}$は，フラックスから評価され，
+     パッチはノーマル． & \OFkeyword{value} \\
+\index{pressureDirectedInletVelocity@\OFboundary{pressureDirectedInletVelocity}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!pressureDirectedInletVelocity@\OFboundary{pressureDirectedInletVelocity}}%
+ \OFboundary{pressureDirectedInletVelocity} &
+     流入口の$p$が分かっているとき，$\bm{U}$は，
+     \OFkeyword{inletDirection}のフラックスから計算される． &
+         \OFkeyword{value}，\OFkeyword{inletDirection} \\
+\index{surfaceNormalFixedValue@\OFboundary{surfaceNormalFixedValue}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!surfaceNormalFixedValue@\OFboundary{surfaceNormalFixedValue}}%
+ \OFboundary{surfaceNormalFixedValue} &
+     大きさによって，ベクトル境界条件をノーマルパッチに指定します．
+     ベクトルの+veはドメインを指す． & \OFkeyword{value} \\
+\index{totalPressure@\OFboundary{totalPressure}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!totalPressure@\OFboundary{totalPressure}}%
+ \OFboundary{totalPressure} &
+     全圧$p_{0} = p + \frac{1}{2}\rho|\bm{U}|^{2}$は固定．
+     $\bm{U}$が変わるとそれに従い$p$も調整される． & \OFkeyword{p0} \\
+\index{turbulentInlet@\OFboundary{turbulentInlet}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!turbulentInlet@\OFboundary{turbulentInlet}}%
+ \OFboundary{turbulentInlet} &
+     平均値のスケールに基づく変動変数について計算する &
+         \OFkeyword{referenceField}, \OFkeyword{fluctuationScale} \\
+ \\
+ \OFboundary{fixedGradient}/\OFboundary{zeroGradient}から派生 \\
+ \hline
+\index{fluxCorrectedVelocity@\OFboundary{fluxCorrectedVelocity}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!fluxCorrectedVelocity@\OFboundary{fluxCorrectedVelocity}}%
+ \OFboundary{fluxCorrectedVelocity} &
+     フラックスから流入口の$\bm{U}$の法線成分を計算する &
+         \OFkeyword{value} \\
+\index{wallBuoyantPressure@\OFboundary{wallBuoyantPressure}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!wallBuoyantPressure@\OFboundary{wallBuoyantPressure}}%
+ \OFboundary{wallBuoyantPressure} &
+     気圧勾配に基づく\OFboundary{fixedGradient}圧を設定する & --- \\
+ \\
+ \OFboundary{mixed}から派生 \\
+ \hline
+\index{inletOutlet@\OFboundary{inletOutlet}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!inletOutlet@\OFboundary{inletOutlet}}%
+ \OFboundary{inletOutlet} &
+     $\bm{U}$の向きによって\OFboundary{fixedValue}と
+     \OFboundary{zeroGradient}の間で$\bm{U}$と$p$を切り替える &
+         \OFkeyword{inletValue}，\OFkeyword{value} \\
+\index{outletInlet@\OFboundary{outletInlet}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!outletInlet@\OFboundary{outletInlet}}%
+ \OFboundary{outletInlet} &
+     $\bm{U}$の向きによって\OFboundary{fixedValue}と
+     \OFboundary{zeroGradient}の間で$\bm{U}$と$p$を切り替える &
+         \OFkeyword{outletValue}，\OFkeyword{value} \\
+ \OFboundary{pressureInletOutletVelocity} &
+     \OFboundary{pressureInletVelocity}と
+     \OFboundary{inletOutlet}の組み合わせ & \OFkeyword{value} \\
+ \OFboundary{pressureDirectedInletOutletVelocity} &
+     \OFboundary{pressureDirectedInletVelocity}と\OFboundary{inletOutlet}の組み合わせ &
+         \OFkeyword{value}，\OFkeyword{inletDirection} \\
+\index{pressureTransmissive@\OFboundary{pressureTransmissive}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!pressureTransmissive@\OFboundary{pressureTransmissive}}%
+ \OFboundary{pressureTransmissive} &
+     周囲の圧力$p_{\infty}$に超音速圧縮波を伝える & \OFkeyword{pInf} \\
+\index{supersonicFreeStream@\OFboundary{supersonicFreeStream}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!supersonicFreeStream@\OFboundary{supersonicFreeStream}}%
+ \OFboundary{supersonicFreeStream} &
+     斜めの衝撃を$p_{\infty}$，$T_{\infty}$，$U_{\infty}$の環境に伝える &
+         \OFkeyword{pInf}，\OFkeyword{TInf}，\OFkeyword{UInf} \\
+ その他 \\
+ \hline
+\index{slip@\OFboundary{slip}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!slip@\OFboundary{slip}}%
+ \OFboundary{slip} & $\phi$がスカラなら\OFboundary{zeroGradient}，
+     $\phi$がベクトルなら法線成分は\OFboundary{fixedValue 0}で，
+     接線成分は\OFboundary{zeroGradient} & --- \\
+\index{partialSlip@\OFboundary{partialSlip}!きょうかいじょうけん@境界条件}%
+\index{きょうかいじょうけん@境界条件!partialSlip@\OFboundary{partialSlip}}%
+ \OFboundary{partialSlip} &
+     混合\OFboundary{zeroGradient}/\OFboundary{slip}条件は
+     \OFkeyword{valueFraction}による．\OFboundary{slip}ならば$1$． &
+         \OFkeyword{valueFraction} \\
+ \hline
+\end{tabularx}

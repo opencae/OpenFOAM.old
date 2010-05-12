@@ -1,0 +1,231 @@
+%#! platex UserGuideJa
+\chapter{モデルと物性値}
+\label{chap:7}
+OpenFOAMは特定のクラスの問題に対し，
+各々に対応した幅広い範囲のソルバを内蔵しています．
+ユーザは，特定のケースに対してモデリングを行う際に
+最初にソルバの選択ができるように，
+その方程式とアルゴリズムは一つ一つが異なったものとなっています．
+ソルバーは，一般的には\autoref{sec:3.5}に，
+ケースに対して適切なソルバが見つけやすいように記述してありますので，
+この中から選択して下さい．各々のケースを定義するためには，
+最終的にはパラメータと物理的特性が必要となりますが，
+いくつかのモデリングのオプションはケースの
+\index{constant@\OFpath{constant}!ディレクトリ}%
+\index{ディレクトリ!constant@\OFpath{constant}}%
+\OFpath{constant}ディレクトリの中のディクショナリに
+登録されている中から実行時に指定することができます．
+本章では，一般的なモデルと，実行時に指定される
+関連したプロパティについて詳しく説明します．
+
+
+
+\section{熱物理モデル}
+\label{sec:7.1}
+熱物性モデルは，エネルギ，熱および物理的な特性が関与しています．
+
+\index{thermophysicalProperties@\OFdictionary{thermophysicalProperties}!ディクショナリ}%
+\index{ディクショナリ!thermophysicalProperties@\OFdictionary{thermophysicalProperties}}%
+\OFdictionary{thermophysicalProperties}ディレクトリは，
+\index{thermophysical@\OFemph{thermophysical}!ライブラリ}%
+\index{ライブラリ!thermophysical@\OFemph{thermophysical}}%
+\OFemph{thermophysical}モデルのライブラリを使用する
+すべてのソルバにより読み込まれます．
+熱物性モデルは，OpenFOAMの中では，
+その他のプロパティについても計算される
+圧力温度 ($p$--$T$) システムとして構築されます．
+これは，シミュレーションの中で使用される完全な熱物性モデルを指定する
+\index{thermoType@\OFkeyword{thermoType}!キーワード}%
+\index{キーワード!thermoType@\OFkeyword{thermoType}}%
+\OFkeyword{thermoType}と呼ばれる必須のディクショナリ登録です．
+熱物性のモデリングは，状態の基礎方程式を定義している
+レイヤからスタートし，
+前のレイヤからプロパティを読込んだモデリングのレイヤを追加します．
+\OFkeyword{thermoType}の名称は，
+\autoref{tbl:7.1}にリストアップしている
+モデリングのマルチレイヤを意味しています．
+
+
+\vskip\floatsep
+\begingroup
+ \small
+% \begin{table}[ht]
+ \LTXtable{\textwidth}{tbl/tbl-7-1}
+ \addtocounter{table}{-1}%
+ \tblcaption{熱物性モデリングの階層}
+ \label{tbl:7.1}
+% \end{table}
+\endgroup
+\vskip\floatsep
+
+
+\OFkeyword{thermoType}のエントリは，次の形式をとる．
+\begin{OFfile}
+\begin{verbatim}
+thermoModel<mixture<transport<specieThermo<thermo<equationOfState>>>>>
+\end{verbatim}
+\end{OFfile}
+それで，次に示すのは，\OFkeyword{thermoType}のエントリの例である．
+\begin{OFfile}
+\begin{verbatim}
+hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
+\end{verbatim}
+\end{OFfile}
+
+
+\subsection{熱物性データ}
+\label{ssec:7.1.1}
+基本的な熱物理の性質は，入力データから，
+各々の種 (species) のために指定される．
+そのデータは，種のために，
+次に示す形式の複合的なエントリを使って指定される．
+この複合的なエントリは，キーワード\OFkeyword{mixture}が使われる．
+\begin{OFfile}
+\begin{verbatim}
+mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
+\end{verbatim}
+\end{OFfile}
+物性係数 \verb|<specieCoeffs>| は，
+\autoref{tbl:7.2}にリストされるエントリを含み，
+その順番は入力で指定される順番となる．
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-7-2}
+ \caption{物性係数}
+ \label{tbl:7.2}
+\end{table}
+
+
+熱物理の係数 \verb|<thermoCoeffs>| は，見かけ上，
+他の性質がそれから導出される，比熱容量を評価することに関連している．
+現在の\OFkeyword{thermo}モデルは，以下に示す通りである．
+\begin{description}
+ \item[hConstThermo]
+            一定の$c_{p}$と融解熱$H_{\mathrm{f}}$を仮定する．
+            これらは，単純に \verb|<specieCoeffs>| の後に
+            二つの値$c_{p}$と$H_{\mathrm{f}}$を続けて指定する．
+ \item[janafThermo]
+            $c_{p}$を温度の関数として計算する．
+            このとき，一連の係数は，熱力学のJANA表のものを用いる．
+            順序づけられた係数のリストを，
+            \autoref{tbl:7.3}に示した．
+            関数は，温度の下限$T_{\mathrm{l}}$と上限$T_{\mathrm{h}}$の間で妥当性が確認されている．
+            係数のセットが二つ指定される．
+            最初のセットは常温$T_{\mathrm{c}}$以上の温度についてのものである．
+            （そして，$T_{\mathrm{h}}$以下である．
+            二つめのセットは$T_{\mathrm{c}}$より低く$T_{\mathrm{l}}$より高い範囲についてのもの）．
+            $c_{p}$を温度の関数として表すと，
+\begin{align}
+ \label{eq:7.1}
+ c_{p} = R((((a_{4}T + a_{3})T + a_{2})T + a_{1})T + a_{0})
+\end{align}
+            加えて，$a_{5}$，$a_{6}$という積分定数がある．
+            これらは，それぞれ，$h$と$s$を評価するために使われ，
+            高温と低温の両方で同じ定数が用いられる．
+\end{description}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-7-3}
+ \caption{JANAF熱力学的係数}
+ \label{tbl:7.3}
+\end{table}
+
+
+移動係数 \verb|<transportCoeffs>| は，
+動的粘性率，熱伝導度，層流熱伝導度（エンタルピ方程式のため）を
+評価するために使われる．
+現在のtransportモデルは，以下に説明する通りである．
+\begin{description}
+ \item[constTransport]
+            $\mu$とプラントル数$\nPr = c_{p}\mu/\kappa$が一定であると仮定する．
+            ここでは，\verb|<thermoCoeffs>| の後に$\mu$と$\nPr$の二つの値を続けて指定する．
+ \item[sutherlandTransport]
+            $\mu$を温度$T$の関数として計算する．
+            これには，サザーランド係数$A_{\mathrm{s}}$とサザーランド温度$T_{\mathrm{s}}$を用いる．
+            この二つの数は，\verb|<thermoCoeffs>| の後に続けて指定する．
+            $\mu$は，次のように計算される．
+\begin{align}
+ \label{eq:7.2}
+ \mu = \frac{A_{\mathrm{s}}\sqrt{T}}{1 + T_{\mathrm{s}}/T}
+\end{align}
+\end{description}
+次は，\OFkeyword{fuel}という名前の種についてのエントリの例である．
+これは，\OFtool{sutherlandTransport}と\OFtool{janafThermo}を使ってモデルされている．
+また，エントリの説明のためにコメントが入っている．
+\begin{OFfile}
+\begin{verbatim}
+fuel                                          // keyword
+fuel 1 44.0962                                // specie
+200 5000 1000                                 // -- janafThermo --
+7.53414 0.0188722 -6.27185e-06 9.14756e-10 -4.78381e-14
+-16467.5 -17.8923
+0.933554 0.0264246 6.10597e-06 -2.19775e-08 9.51493e-12
+-13958.5 19.2017                              // -----------------
+1.67212e-06 170.672;                          // sutherlandTransport
+\end{verbatim}
+\end{OFfile}
+次に示すのは，\OFkeyword{air}という名前の種についての，エントリの例である．
+これは，\OFtool{constTransport}と\OFtool{hConstThermo}でモデルされている．
+エントリの説明のためにコメントが入っている．
+\begin{OFfile}
+\begin{verbatim}
+mixture        // keyword
+air 1 28.9     // specie
+1000 2.544e+06 // hConstThermo
+1.8e-05 0.7;   // constTransport
+\end{verbatim}
+\end{OFfile}
+
+
+
+\section{乱流モデル}
+\label{sec:7.2}
+\index{RASProperties@\OFdictionary{RASProperties}!ディクショナリ}%
+\index{ディクショナリ!RASProperties@\OFdictionary{RASProperties}}%
+\OFdictionary{RASProperties}ディクショナリは，
+乱流モデルとしてReynolds-averaged stress (RAS) モデルを使っている
+ソルバが読み込みます．
+\index{LESProperties@\OFdictionary{LESProperties}!ディクショナリ}%
+\index{ディクショナリ!LESProperties@\OFdictionary{LESProperties}}%
+\OFdictionary{LESProperties}ディクショナリは，
+乱流モデルとしてlarge-eddy simulation (LES) モデルを使っている
+ソルバが読み込みます．
+\OFkeyword{RASProperties}に必要なエントリは，
+\autoref{tbl:7.4}に示します．
+また，\OFdictionary{LESProperties}ディクショナリのエントリは，
+\autoref{tbl:7.5}に示します．
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-7-4}
+ \caption{\OFdictionary{RASProperties}ディクショナリにおけるキーワードエントリ}
+ \label{tbl:7.4}
+\end{table}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-7-5}
+ \caption{\OFdictionary{LESProperties}ディクショナリにおけるキーワードエントリ}
+ \label{tbl:7.5}
+\end{table}
+
+
+非圧縮性および圧縮性のRAS乱流モデル，等容変化および非等容変化LESモデル，
+そしてデルタモデルは，\autoref{tbl:3.9}に示しています．
+関連するケースの\OFdictionary{turbulenceProperties}ディクショナリを見て，
+各々のモデルのために必要とされる
+係数のリストとデフォルト値を参考にしてください．
+必要とされる係数は，RASモデルが非圧縮性か圧縮性かにより，
+あるいはLESモデルが等容変化か非等容変化かによって異なります．
+参考として，それらのモデルはそれぞれ，
+\OFpath{\$FOAM\_TUTORIALS}の中にある以下の例題ケースの
+\OFkeyword{RASProperties}か
+\OFdictionary{LESProperties}ディクショナリに示しています．
+\begin{description}
+ \item[\OFpath{turbFoam/cavity}] 非圧縮性RASモデル
+ \item[\OFpath{sonicTurbFoam/prism}] 圧縮性RASモデル
+ \item[\OFpath{oodles/pitzDaily}] 等容LESモデル
+ \item[\OFpath{Xoodles/pitzDaily}] 非等容LESモデル
+\end{description}
