@@ -691,6 +691,8 @@ $Ox$軸上の点から$Oy$軸上への円弧が時計回りとなるように定
 \OFdictionary{blockMeshDict}ファイルは，
 \autoref{tbl:5.5}で説明されている
 キーワードを使用するディクショナリです．
+\index{convertToMeters@\OFkeyword{convertToMeters}!キーワード}%
+\index{キーワード!convertToMeters@\OFkeyword{convertToMeters}}%
 \OFkeyword{convertToMeters}キーワードは，
 メッシュ記述におけるすべての頂点の座標にかけられる
 尺度因子を指定します．例えば，
@@ -710,14 +712,14 @@ convertToMeters 0.001;
 \begin{OFverbatim}[file]
 vertices
 (
-( 0 0 0 ) // vertex number 0
-( 1 0 0.1) // vertex number 1
-( 1.1 1 0.1) // vertex number 2
-( 0 1 0.1) // vertex number 3
-(-0.1 -0.1 1 ) // vertex number 4
-( 1.3 0 1.2) // vertex number 5
-( 1.4 1.1 1.3) // vertex number 6
-( 0 1 1.1) // vertex number 7
+    ( 0 0 0 ) // vertex number 0
+    ( 1 0 0.1) // vertex number 1
+    ( 1.1 1 0.1) // vertex number 2
+    ( 0 1 0.1) // vertex number 3
+    (-0.1 -0.1 1 ) // vertex number 4
+    ( 1.3 0 1.2) // vertex number 5
+    ( 1.4 1.1 1.3) // vertex number 6
+    ( 0 1 1.1) // vertex number 7
 );
 \end{OFverbatim}
 
@@ -759,7 +761,7 @@ vertices
 \begin{OFverbatim}[file]
 edges
 (
-arc 1 5 (1.1 0.0 0.5)
+    arc 1 5 (1.1 0.0 0.5)
 );
 \end{OFverbatim}
 
@@ -778,9 +780,9 @@ arc 1 5 (1.1 0.0 0.5)
 \begin{OFverbatim}[file]
 blocks
 (
-hex (0 1 2 3 4 5 6 7) // vertex numbers
-(10 10 10) // numbers of cells in each direction
-simpleGrading (1 2 3) // cell expansion ratios
+    hex (0 1 2 3 4 5 6 7) // vertex numbers
+    (10 10 10) // numbers of cells in each direction
+    simpleGrading (1 2 3) // cell expansion ratios
 );
 \end{OFverbatim}
 それぞれのブロックの定義は以下のとおりです．
@@ -881,24 +883,24 @@ edgeGrading (1 1 1 1 2 2 2 2 3 3 3 3)
 \begin{OFverbatim}[file]
 patches // keyword
 (
-patch // patch type for patch 0
-inlet // patch name
-(
-(0 4 7 3) // block face in this patch
-) // end of 0th patch definition
-patch // patch type for patch 1
-outlet // arbitrary patch name
-(
-(1 2 6 5)
-)
-wall
-walls
-(
-(0 1 5 4)
-(0 3 2 1)
-(3 7 6 2)
-(4 5 6 7)
-)
+    patch // patch type for patch 0
+    inlet // patch name
+    (
+        (0 4 7 3) // block face in this patch
+    ) // end of 0th patch definition
+    patch // patch type for patch 1
+    outlet // arbitrary patch name
+    (
+        (1 2 6 5)
+    )
+    wall
+    walls
+    (
+        (0 1 5 4)
+        (0 3 2 1)
+        (3 7 6 2)
+        (4 5 6 7)
+    )
 );
 \end{OFverbatim}
 それぞれのブロック面は四つの頂点番号のリストによって定義されます．
@@ -938,9 +940,9 @@ face matchingで2ブロックをつなげるためには，
 \begin{OFverbatim}[file]
 mergePatchPairs
 (
-( <masterPatch> <slavePatch> ) // merge patch pair 0
-( <masterPatch> <slavePatch> ) // merge patch pair 1
-...
+    ( <masterPatch> <slavePatch> ) // merge patch pair 0
+    ( <masterPatch> <slavePatch> ) // merge patch pair 1
+    ...
 )
 \end{OFverbatim}
 パッチの組は，最初のパッチはマスタになり，

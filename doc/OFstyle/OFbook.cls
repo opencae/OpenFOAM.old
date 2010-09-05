@@ -699,6 +699,7 @@
         \columnseprule\z@ \columnsep2zw
         \twocolumn[\@makeschapterhead{\indexname}]%
         \@mkboth{\indexname}{}%
+        \addcontentsline{toc}{chapter}{\indexname}%
         \thispagestyle{jpl@in}%
         \small
         \parindent\z@

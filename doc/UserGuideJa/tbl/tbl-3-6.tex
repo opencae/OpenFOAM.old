@@ -22,6 +22,11 @@
  ディクショナリのエントリを変更するユーティリティ．
  たとえば，フィールドと\OFpath{polyMesh/boundary}ファイルの
  パッチタイプを変更するときなどに使える． \\
+\index{dsmcInitialise@\OFtool{dsmcInitialise}!ユーティリティ}%
+\index{ユーティリティ!dsmcInitialise@\OFtool{dsmcInitialise}}%
+ \OFtool{dsmcInitialise} &
+ 初期化ディクショナリ\OFdictionary{system/dsmcInitialise}に従って，
+ \OFtool{dsmcFoam}用にケースを初期化する \\
 \index{engineSwirl@\OFtool{engineSwirl}!ユーティリティ}%
 \index{ユーティリティ!engineSwirl@\OFtool{engineSwirl}}%
  \OFtool{engineSwirl} & エンジン計算のために旋回流を発生させる \\
@@ -71,10 +76,13 @@
 \index{cfx4ToFoam@\OFtool{cfx4ToFoam}!ユーティリティ}%
 \index{ユーティリティ!cfx4ToFoam@\OFtool{cfx4ToFoam}}%
  \OFtool{cfx4ToFoam} & CFX~4メッシュをOpenFOAM形式へ変換する \\
+\index{fluent3DMeshToFoam@\OFtool{fluent3DMeshToFoam}!ユーティリティ}%
+\index{ユーティリティ!fluent3DMeshToFoam@\OFtool{fluent3DMeshToFoam}}%
+ \OFtool{fluent3DMeshToFoam} & FluentのメッシュをOpenFOAM形式に変換する \\
 \index{fluentMeshToFoam@\OFtool{fluentMeshToFoam}!ユーティリティ}%
 \index{ユーティリティ!fluentMeshToFoam@\OFtool{fluentMeshToFoam}}%
- \OFtool{fluentMeshToFoam} & Fluentのメッシュを
- 複数の領域と領域の境界の処理を含むOpenFOAM形式に変換する \\
+ \OFtool{fluentMeshToFoam} & FluentのメッシュをOpenFOAM形式に変換する．
+ 複数の領域と，領域の境界の処理も扱える \\
 \index{foamMeshToFluent@\OFtool{foamMeshToFluent}!ユーティリティ}%
 \index{ユーティリティ!foamMeshToFluent@\OFtool{foamMeshToFluent}}%
  \OFtool{foamMeshToFluent} & OpenFOAMメッシュをFluentメッシュ形式で出力する \\
@@ -150,9 +158,6 @@
  \OFtool{createBaffles} &
  内部面を境界面にする．
  \OFtool{mergeOrSplitBaffles}と異なり，点の複製はしない． \\
-\index{couplePatches@\OFtool{couplePatches}!ユーティリティ}%
-\index{ユーティリティ!couplePatches@\OFtool{couplePatches}}%
- \OFtool{couplePatches} & 周期的なプロセッサのパッチを再編成する \\
 \index{createPatch@\OFtool{createPatch}!ユーティリティ}%
 \index{ユーティリティ!createPatch@\OFtool{createPatch}}%
  \OFtool{createPatch} & 選択した境界面の外部にパッチを作成する．
@@ -281,9 +286,9 @@
  \OFtool{ensightFoamReader} &
  変換せずにOpenFOAMのデータを直接読むための
  EnSightのライブラリ・モジュール \\
-\index{Fieldview9Reader@\OFtool{Fieldview9Reader}!ユーティリティ}%
-\index{ユーティリティ!Fieldview9Reader@\OFtool{Fieldview9Reader}}%
- \OFtool{Fieldview9Reader} &
+\index{fieldview9Reader@\OFtool{fieldview9Reader}!ユーティリティ}%
+\index{ユーティリティ!fieldview9Reader@\OFtool{fieldview9Reader}}%
+ \OFtool{fieldview9Reader} &
  OpenFOAMのメッシュとデータを読み込むための
  Fieldview 9の読み込みモジュール \\
 \index{PV3FoamReader@\OFtool{PV3FoamReader}!ユーティリティ}%

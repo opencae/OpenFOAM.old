@@ -1116,12 +1116,20 @@ DisplaysウインドウのLine Seriesパネルから
 Standard type of Notation，Specify Axis Rangeを選択し，
 フォントはSans Serifの12ポイントです．
 このグラフは点で表示していますが，
-\OFemph{Display}ウィンドウで\OFemph{Enable Line Series}ボタンを
+\OFemph{Display}ウィンドウで
+\index{Enable Line Series@\OFemph{Enable Line Series}!ボタン}%
+\index{ボタン!Enable Line Series@\OFemph{Enable Line Series}}%
+\OFemph{Enable Line Series}ボタンを
 有効にすれば線で表示できます．
 注：もしこのボタンが，グレー表示で無効の状態になっていたら，
 \OFemph{Line Series}パネルでどれか変数を選択すれば有効になります．
 \OFemph{Enable Line Series}ボタンを選択しておけば，
-\OFemph{Line Style}や\OFemph{Marker Style}もユーザの好で調整できます．
+\index{Line Style@\OFkeyword{Line Style}!メニュー}%
+\index{メニュー!Line Style@\OFkeyword{Line Style}}%
+\OFemph{Line Style}や
+\index{Marker Style@\OFkeyword{Marker Style}!メニュー}%
+\index{メニュー!Marker Style@\OFkeyword{Marker Style}}%
+\OFemph{Marker Style}もユーザの好みで調整できます．
 
 
 \begin{figure}[ht]
@@ -1587,8 +1595,12 @@ RASやlarge-edy simulation (LES) のような，
 これにより，RAS乱流モデルを採用していたほとんどのソルバに
 LESモデルを採用した同等のソルバが存在し，
 ソルバのコードに多くの重複がみられました．
-しかし，バージョン1.6からは，
-実行時に\OFpath{turbulenceProperties}ディクショナリで
+しかし，バージョン1.6からは，実行時に
+\index{turbulenceProperties@\OFdictionary{turbulenceProperties}!ディクショナリ}%
+\index{ディクショナリ!turbulenceProperties@\OFdictionary{turbulenceProperties}}%
+\OFpath{turbulenceProperties}ディクショナリで
+\index{simulationType@\OFkeyword{simulationType}!キーワード}%
+\index{キーワード!simulationType@\OFkeyword{simulationType}}%
 \OFkeyword{simulationType}キーワードを設定することにより，
 乱流のモデリング手法を選択できるようになりました．
 このファイルは\OFpath{constant}ディレクトリに存在します．
@@ -1599,20 +1611,29 @@ simulationType  RASModel;
 
 // ************************************************************************* //
 \end{OFverbatim}
-\OFkeyword{simulationType}の選択肢は\OFkeyword{laminar}，
-\OFkeyword{RASModel}，そして\OFkeyword{LESModel}です．
+\OFkeyword{simulationType}の選択肢は
+\index{laminar@\OFkeyword{laminar}!キーワードエントリ}%
+\index{キーワードエントリ!laminar@\OFkeyword{laminar}}%
+\OFkeyword{laminar}，
+\index{RASModel@\OFkeyword{RASModel}!キーワードエントリ}%
+\index{キーワードエントリ!RASModel@\OFkeyword{RASModel}}%
+\OFkeyword{RASModel}，そして
+\index{LESModel@\OFkeyword{LESModel}!キーワードエントリ}%
+\index{キーワードエントリ!LESModel@\OFkeyword{LESModel}}%
+\OFkeyword{LESModel}です．
 このケースで選択されている\OFkeyword{RASModel}の場合，
 RASモデリングの選択は
 \index{RASProperties@\OFdictionary{RASProperties}!ディクショナリ}%
 \index{ディクショナリ!RASProperties@\OFdictionary{RASProperties}}%
 \OFpath{RASProperties}ファイルに記述します．
 このファイルも同じく\OFpath{constant}ディレクトリにあります．
-\index{らんりゅう@乱流!モデル}%
 乱流モデルは\autoref{tbl:3.9}に示されている多くの使用可能なモデルから，
 \OFkeyword{RASModel}エントリで選択します．
 ここでは，標準$k$--$\varepsilon$モデルである\OFkeyword{kEpsilon}を選択します．
 \OFkeyword{turbulence}のスイッチが\OFkeyword{on}になっていることも確認します．
 乱流モデルに必要な係数には，それぞれのコードの中でデフォルト値が与えられています．
+\index{printCoeffs@\OFkeyword{printCoeffs}!キーワード}%
+\index{キーワード!printCoeffs@\OFkeyword{printCoeffs}}%
 \OFkeyword{printCoeffs}というオプションのスイッチを\OFkeyword{on}にすると，
 実行時に乱流モデルが呼ばれたときに，これらのデフォルト値が標準出力，
 すなわちターミナルに出力されるようになります．
@@ -2334,7 +2355,13 @@ fluxRequired
 \OFdictionary{fvSolution}ディクショナリは，
 線形方程式ソルバおよび求解に使用されるアルゴリズムを制御します．
 まず\OFsubdictionary{solvers}サブディクショナリを見ると，
-\OFkeyword{D}のソルバが\OFkeyword{GAMG}になっていることがわかります．
+\OFkeyword{D}の
+\index{solver@\OFkeyword{solver}!キーワード}%
+\index{キーワード!solver@\OFkeyword{solver}}%
+\OFkeyword{solver}が
+\index{GAMG@\OFkeyword{GAMG}!キーワードエントリ}%
+\index{キーワードエントリ!GAMG@\OFkeyword{GAMG}}%
+\OFkeyword{GAMG}になっていることがわかります．
 \index{tolerance@\OFkeyword{tolerance}!キーワード}%
 \index{キーワード!tolerance@\OFkeyword{tolerance}}%
 \OFkeyword{tolerance}で表される
@@ -2844,7 +2871,10 @@ regions
 
 
 重力加速度は全領域にわたって一様で，
-\OFpath{constant}ディレクトリの\OFpath{g}ファイルで指定されます．
+\OFpath{constant}ディレクトリの
+\index{g@\OFpath{g}!ファイル}%
+\index{ファイル!g@\OFpath{g}}%
+\OFpath{g}ファイルで指定されます．
 \OFpath{U}や\OFpath{p}のような通常のフィールドのファイルと異なり，
 \OFpath{g}は\OFclass{uniformDimensionedVectorField}であり，
 単に\OFkeyword{dimensions}と\OFkeyword{value}の組だけを含みます．
@@ -2861,7 +2891,12 @@ value           ( 0 -9.81 0 );
 
 \subsection{乱流モデル}
 \label{ssec:2.3.5@1.6}
-キャビティの例題のように，\OFdictionary{turbulenceProperties}ディクショナリの
+キャビティの例題のように，
+\index{turbulenceProperties@\OFdictionary{turbulenceProperties}!ディクショナリ}%
+\index{ディクショナリ!turbulenceProperties@\OFdictionary{turbulenceProperties}}%
+\OFdictionary{turbulenceProperties}ディクショナリの
+\index{simulationType@\OFkeyword{simulationType}!キーワード}%
+\index{キーワード!simulationType@\OFkeyword{simulationType}}%
 \OFkeyword{simulationType}キーワードで乱流のモデリング手法を選択することができます．
 この例題は乱流モデルを使わずに実行したいので\OFkeyword{laminar}と指定します．
 \begin{OFverbatim}[file, linenum=17]

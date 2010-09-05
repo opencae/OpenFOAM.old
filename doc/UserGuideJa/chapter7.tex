@@ -186,20 +186,32 @@ air 1 28.9     // specie
 \index{turbulenceProperties@\OFdictionary{turbulenceProperties}!ディクショナリ}%
 \index{ディクショナリ!turbulenceProperties@\OFdictionary{turbulenceProperties}}%
 \OFdictionary{turbulenceProperties}ディクショナリを読み込みます．
-このファイルの中では，\OFkeyword{simulationType}キーワードで
+このファイルの中では，
+\index{simulationType@\OFkeyword{simulationType}!キーワード}%
+\index{キーワード!simulationType@\OFkeyword{simulationType}}%
+\OFkeyword{simulationType}キーワードで
 使用する乱流モデルとして次のいずれかを選択します．
 \begin{description}
- \item[laminar] 乱流モデルを使用しない
- \item[RASmodel] レイノルズ平均応力 (RAS) モデル
- \item[LESmodel] ラージ・エディ・シミュレーション (LES) モデル
+ \item[laminar]
+\index{laminar@\OFkeyword{laminar}!キーワードエントリ}%
+\index{キーワードエントリ!laminar@\OFkeyword{laminar}}%
+            乱流モデルを使用しない
+ \item[RASModel]
+\index{RASModel@\OFkeyword{RASModel}!キーワードエントリ}%
+\index{キーワードエントリ!RASModel@\OFkeyword{RASModel}}%
+            レイノルズ平均応力 (RAS) モデル
+ \item[LESModel]
+\index{LESModel@\OFkeyword{LESModel}!キーワードエントリ}%
+\index{キーワードエントリ!LESModel@\OFkeyword{LESModel}}%
+            ラージ・エディ・シミュレーション (LES) モデル
 \end{description}
 
-\OFkeyword{RASmodel}が選択されているとき，
+\OFkeyword{RASModel}が選択されているとき，
 RASモデリングの選択は，同じく\OFpath{constant}ディレクトリにある
 \OFdictionary{RASProperties}ファイルで設定します．
 RAS乱流モデルは，\autoref{tbl:3.9}に示した利用可能なモデルの長いリストから，
 \OFkeyword{RASModel}エントリで選択します．
-同様に，\OFkeyword{LESmodel}が選択された場合，
+同様に，\OFkeyword{LESModel}が選択された場合，
 LESモデリングの詳細は\OFdictionary{LESProperties}ディクショナリで記述し，
 LES乱流モデルは\OFkeyword{LESModel}エントリで選択します．
 \OFdictionary{RASProperties}に必要なエントリは，

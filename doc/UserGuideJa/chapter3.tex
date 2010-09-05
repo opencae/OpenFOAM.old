@@ -777,7 +777,10 @@ OpenFOAMは，ファイルが新しく修正されたかどうか調べるとき
 一つもしくは複数の共有オブジェクトライブラリを
 実行時に動的にリンクさせるメカニズムを採用しています．
 そのためには，ただ単に\OFpath{controlDict}に
-オプションのキーワードである\OFkeyword{libs}を追加し，
+オプションのキーワードである
+\index{libs@\OFkeyword{libs}!キーワード}%
+\index{キーワード!libs@\OFkeyword{libs}}%
+\OFkeyword{libs}を追加し，
 ライブラリの完全なファイル名を引用符付き文字列のエントリとして
 リストに入力すればすればよいだけです．
 たとえば\OFemph{new1}と\OFemph{new2}というライブラリを実行時にリンクしたいなら，
@@ -931,12 +934,20 @@ roots           ( );
             ユーザが，最初に$y$方向を，次に$x$方向を，
             というように，各方向の分割する順番を指定する点が異なっています．
  \item[\OFkeyword{scotch}]
+\index{scotch@\OFkeyword{scotch}!キーワードエントリ}%
+\index{キーワードエントリ!scotch@\OFkeyword{scotch}}%
             Scotch分割はユーザからのジオメトリの入力を必要とせず，
             プロセッサの限界の数値を最小化するよう試みます．
-            ユーザは，任意指定の\OFkeyword{processorWeights}キーワードにより
+            ユーザは，任意指定の
+\index{processorWeights@\OFkeyword{processorWeights}!キーワード}%
+\index{キーワード!processorWeights@\OFkeyword{processorWeights}}%
+            \OFkeyword{processorWeights}キーワードにより
             プロセッサ間の重み付けを行うことができるため，
             パフォーマンスの異なるマシン同士を有効に使うことができます．
-            また，もう一つ\OFkeyword{strategy}という任意のキーワードエントリがあり，
+            また，もう一つ
+\index{strategy@\OFkeyword{strategy}!キーワード}%
+\index{キーワード!strategy@\OFkeyword{strategy}}%
+            \OFkeyword{strategy}という任意のキーワードエントリがあり，
             複雑な文字列をScotchに渡すことにより分割の戦略を制御できます．
             さらなる情報を得るには，ソースコードファイル
             \OFpath{\$FOAM\_SRC/decompositionMethods/%
