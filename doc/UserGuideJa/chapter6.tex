@@ -518,7 +518,7 @@ Fluentフォーマットに変換します．変換は，二つのファイル�
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  1.6                                   |
+|  \\    /   O peration     | Version:  1.7.1                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -901,7 +901,7 @@ Grace/xmgr，jPlotフォーマットがあります．
 ここから解かれる各々の方程式について，レポート行に，ソルバ名，
 解かれる変数，その初期と最終の残差，
 そして反復回数が書かれていることが読み取れます．
-\begin{OFverbatim}[baselinestretch=0.8, leftskip=3em, weight=\small]
+\begin{OFverbatim}[baselinestretch=1, leftskip=3em, weight=\scriptsize]
     Starting time loop
 
 Time = 0.005
@@ -954,7 +954,7 @@ ExecutionTime = 0.19 s
 \begin{OFverbatim}[terminal]
 foamJob <solver>
 \end{OFverbatim}
-その他のオプションは，\verb|foamJob -h|を実行することで見ることができます．
+その他のオプションは，\verb|foamJob -help|を実行することで見ることができます．
 \OFpath{log}ファイルは，UNIX \texttt{tail}コマンドを用いることで
 見たいときに見ることができます．
 一般的には，followを意味する\verb|-f|オプションを

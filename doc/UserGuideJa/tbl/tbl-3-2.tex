@@ -13,30 +13,33 @@
 \index{WM PROJECT VERSION@\OFenv{WM\_PROJECT\_VERSION}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!WM PROJECT VERSION@\OFenv{WM\_PROJECT\_VERSION}}%
  \OFenv{\$WM\_PROJECT\_VERSION}
- & コンパイルされたプロジェクトのバージョン：\texttt{1.6} \\
+ & コンパイルされたプロジェクトのバージョン：\texttt{1.7.1} \\
 \index{WM PROJECT DIR@\OFenv{WM\_PROJECT\_DIR}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!WM PROJECT DIR@\OFenv{WM\_PROJECT\_DIR}}%
  \OFenv{\$WM\_PROJECT\_DIR}
  & OpenFOAMのバイナリ実行ファイル置き場へのフルパス，\hfil\break
-     例：\OFpath{\$HOME/OpenFOAM/OpenFOAM-1.6} \\
+     例：\OFpath{\$HOME/OpenFOAM/OpenFOAM-1.7.1} \\
 \index{WM PROJECT USER DIR@\OFenv{WM\_PROJECT\_USER\_DIR}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!WM PROJECT USER DIR@\OFenv{WM\_PROJECT\_USER\_DIR}}%
  \OFenv{\$WM\_PROJECT\_USER\_DIR}
  & ユーザのバイナリ実行ファイル置き場へのフルパス，\hfil\break
-     例：\OFpath{\$HOME/OpenFOAM/\${USER}-1.6} \\
+     例：\OFpath{\$HOME/OpenFOAM/\${USER}-1.7.1} \\
  \\
  その他のパスと設定 & \\
  \hline
 \index{WM ARCH@\OFenv{WM\_ARCH}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!WM ARCH@\OFenv{WM\_ARCH}}%
  \OFenv{\$WM\_ARCH}
- & マシン構造：
-     \texttt{cray decAlpha dec ibm linux linuxPPC sgi3 sgi32\hfil\break
-     sgi64 sgiN32 solaris sx4 t3d} \\
+ & マシン・アーキテクチャ：
+     \texttt{Linux}, \texttt{SunOS} \\
+\index{WM ARCH OPTION@\OFenv{WM\_ARCH\_OPTION}!かんきょうへんすう@環境変数}%
+\index{かんきょうへんすう@環境変数!WM ARCH OPTION@\OFenv{WM\_ARCH\_OPTION}}%
+ \OFenv{\$WM\_ARCH\_OPTION}
+ & \texttt{32}あるいは\texttt{64}ビットのアーキテクチャ \\
 \index{WM COMPILER@\OFenv{WM\_COMPILER}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!WM COMPILER@\OFenv{WM\_COMPILER}}%
  \OFenv{\$WM\_COMPILER}
- & 使用するコンパイラ：\texttt{Gcc3} - \textsf{gcc} 4.3.3, \texttt{KAI} - \textsf{KAI} \\
+ & 使用するコンパイラ：\texttt{Gcc43} - \textsf{gcc} 4.3.3, \texttt{ICC} - Intel \\
 \index{WM COMPILER DIR@\OFenv{WM\_COMPILER\_DIR}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!WM COMPILER DIR@\OFenv{WM\_COMPILER\_DIR}}%
  \OFenv{\$WM\_COMPILER\_DIR}
@@ -76,13 +79,13 @@
  & $=$ \OFenv{\$WM\_ARCH\$WM\_COMPILER...}\hfill\break
      \null\hfill\OFenv{...\$WM\_COMPILE\_OPTION\$WM\_MPLIB}，\break
      例：\texttt{linuxGcc3OptMPICH} \\
+\index{WM PRECISION OPTION@\OFenv{WM\_PRECISION\_OPTION}!かんきょうへんすう@環境変数}%
+\index{かんきょうへんすう@環境変数!WM PRECISION OPTION@\OFenv{WM\_PRECISIO\_OPTION}}%
+ \OFenv{\$WM\_PRECISION\_OPTION}
+ & コンパイルされたバイナリの精度，\texttt{SP}なら単精度，もしくは，\texttt{DP}なら倍精度 \\
 \index{WM PROJECT LANGUAGE@\OFenv{WM\_PROJECT\_LANGUAGE}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!WM PROJECT LANGUAGE@\OFenv{WM\_PROJECT\_LANGUAGE}}%
  \OFenv{\$WM\_PROJECT\_LANGUAGE}
  & プロジェクトのプログラミング言語，例：\texttt{c++} \\
-\index{WM SHELL@\OFenv{WM\_SHELL}!かんきょうへんすう@環境変数}%
-\index{かんきょうへんすう@環境変数!WM SHELL@\OFenv{WM\_SHELL}}%
- \OFenv{\$WM\_SHELL}
- & wmakeスクリプトに使うシェル：\texttt{bash}，\texttt{csh}，\texttt{ksh}，\texttt{tcsh} \\
  \hline
 \end{tabularx}

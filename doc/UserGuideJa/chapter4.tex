@@ -10,7 +10,7 @@
 収納されているディレクトリの名前になります．
 このケースディレクトリ自体はどこにでも置くことができますが，
 \autoref{chap:2}の冒頭で述べたように，
-\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.6}のように，
+\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.7.1}のように，
 ユーザのプロジェクトのサブディレクトリ，
 \index{run@\OFpath{run}!ディレクトリ}%
 \index{ディレクトリ!run@\OFpath{run}}%
@@ -19,7 +19,7 @@
 \index{FOAM RUN@\OFenv{FOAM\_RUN}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!FOAM RUN@\OFenv{FOAM\_RUN}}%
 \OFenv{\$FOAM\_RUN}の環境変数がデフォルトで
-\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.6}に設定されることです．
+\OFpath{\$HOME/OpenFOAM/\$\{USER\}-1.7.1}に設定されることです．
 コマンドラインでプリセットエイリアス，\OFpath{run}を実行することにより，
 素早くこのディレクトリに移動することができます．
 OpenFOAMの配布の際に添付されているチュートリアルのケースは，
@@ -511,13 +511,13 @@ pressure 1e+05;
 以下の代替マクロを圧力場のファイル\OFpath{p}に記述します．
 \begin{OFverbatim}[file]
 #include "initialConditions"
-internalField $pressure
+internalField uniform $pressure;
 boundaryField
 {
     patch1
     {
         type fixedValue;
-        value $pressure;
+        value $internalField;
     }
 }
 \end{OFverbatim}
@@ -910,10 +910,10 @@ grad(p) Gauss linear;
 \end{OFverbatim}
 三つの基本的な勾配スキーム (\OFkeyword{Gauss}，\OFkeyword{leastSquares}，
 \OFkeyword{fourth}) の範囲限定版は，
-次の\OFkeyword{limited Gauss}スキームの例のように，
-離散化スキームの前に\OFkeyword{limited}を付けることで選択できます．
+次のセルで制限されたガウス・スキームの例のように，離散化スキームの前に
+\OFkeyword{cellLimited} (または\OFkeyword{faceLimited}) を付けることで選択できます．
 \begin{OFverbatim}[file]
-grad(p) limited Gauss linear;
+grad(p) cellLimited Gauss linear 1;
 \end{OFverbatim}
 
 
@@ -1425,14 +1425,14 @@ SIMPLEとPISOの両方で利用できます．
 \index{pRefCell@\OFkeyword{pRefCell}!キーワード}%
 \index{キーワード!pRefCell@\OFkeyword{pRefCell}}%
 \OFkeyword{pRefCell}に設定します．
-圧力が\OFkeyword{pd}であるところでは，
+圧力が\OFkeyword{p\_rgh}であるところでは，
 名前はそれぞれ
-\index{pdRefValue@\OFkeyword{pdRefValue}!キーワード}%
-\index{キーワード!pdRefValue@\OFkeyword{pdRefValue}}%
-\OFkeyword{pdRefValue}と
-\index{pdRefCell@\OFkeyword{pdRefCell}!キーワード}%
-\index{キーワード!pdRefCell@\OFkeyword{pdRefCell}}%
-\OFkeyword{pdRefCell}です．
+\index{p rghRefValue@\OFkeyword{p\_rghRefValue}!キーワード}%
+\index{キーワード!p rghRefValue@\OFkeyword{p\_rghRefValue}}%
+\OFkeyword{p\_rghRefValue}と
+\index{p rghRefCell@\OFkeyword{p\_rghRefCell}!キーワード}%
+\index{キーワード!p rghRefCell@\OFkeyword{p\_rghRefCell}}%
+\OFkeyword{p\_rghRefCell}です．
 これらの入力は，一般に\OFsubdictionary{PISO}/\OFsubdictionary{SIMPLE}サブディクショナリに格納されて，
 ケースに応じてソルバがそれらを必要としたときに使われます．
 もしこれを忘れるとソルバは実行されずに，エラーメッセージが出ます．

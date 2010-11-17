@@ -253,6 +253,7 @@
 \@addtoreset{equation}{chapter}
 \def\theequation{\thechapter.\@arabic\c@equation}
 \@addtoreset{footnote}{chapter}
+\def\thefootnote{\fnsymbol{footnote}}
 \long\def\@makefntext#1{% #1: <footnote text>
         \parindent1zw
         \noindent\hbox to 2zw{\hss\@makefnmark}#1}

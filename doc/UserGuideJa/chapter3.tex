@@ -23,12 +23,6 @@ OpenFOAMは一連のプリコンパイル済ライブラリに分けられ，
 
 この章ではソルバ，ユーティリティ，ライブラリの概説と
 これらの作成，修正，編集，実行方法について述べます．
-ソルバとユーティリティのコードの実際の書き方については
-ここでは述べませんがプログラマ・ガイドに記載してあります．
-なお，プログラマ・ガイドは現在改訂中ですので，
-もし何か不明な点がありましたら，
-\href{http://www.openfoam.org}{OpenFOAMのウェブサイト}で
-新たな情報が得られるかもしれません．
 
 
 
@@ -494,16 +488,16 @@ wclean <optionalArguments> <optionalDirectory>
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 1991-2009 OpenCFD Ltd.
+    \\  /    A nd           | Copyright (C) 1991-2010 OpenCFD Ltd.
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
 
-    OpenFOAM is free software; you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by the
-    Free Software Foundation; either version 2 of the License, or (at your
-    option) any later version.
+    OpenFOAM is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
     OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
@@ -511,8 +505,7 @@ License
     for more details.
 
     You should have received a copy of the GNU General Public License
-    along with OpenFOAM; if not, write to the Free Software Foundation,
-    Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Application
     pisoFoam
@@ -656,8 +649,9 @@ int main(int argc, char *argv[])
 \index{C++こうぶん@C++構文!# include@\verb+# include+}%
 \verb|# include|命令文を含んでいます．
 
-\OFtool{pisoFoam}は\OFtool{cfdTools}や\OFtool{incompressibleRASModels}や
-\OFemph{incompressibleTransportModels}ライブラリを提供し，
+\OFtool{pisoFoam}は\OFclass{incompressibleRASModels}や
+\OFclass{incompressibleLESModels}や
+\OFclass{incompressibleTransportModels}ライブラリを提供し，
 それゆえ\verb|EXE_INC = -I...|オプションとライブラリにリンクする
 \verb|EXE_LIBS = -l...|オプションにより
 指定されるヘッダファイルが必要となります．
@@ -695,12 +689,12 @@ SOURCE DIR=.
 SOURCE=pisoFoam.C ;
 g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 -DscalarMachine -DoptSolvers -DPARALLEL -DUSEMPI -Wall -O2 -DNoRepository
--ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-1.6/src/OpenFOAM/lnInclude
+-ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-1.7.1/src/OpenFOAM/lnInclude
 -IlnInclude
 -I.
 ......
 -lmpich -L/usr/X11/lib -lm
--o .../OpenFOAM/OpenFOAM-1.6/applications/bin/linuxOptMPICH/pisoFoam
+-o .../OpenFOAM/OpenFOAM-1.7.1/applications/bin/linuxOptMPICH/pisoFoam
 \end{OFverbatim}
 再コンパイルすることも可能ですが，
 実行ファイルが最新でコンパイルする必要がないというときには
@@ -708,7 +702,7 @@ g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 \begin{OFverbatim}[file]
 make: Nothing to be done for `allFiles'.
 make: `Make/linuxOptMPICH/dependencies' is up to date.
-make: `.../OpenFOAM/OpenFOAM-1.6/applications/bin/linuxOptMPICH/pisoFoam'
+make: `.../OpenFOAM/OpenFOAM-1.7.1/applications/bin/linuxOptMPICH/pisoFoam'
 is up to date.
 \end{OFverbatim}
 
@@ -726,7 +720,7 @@ OpenFOAMは，実行時にメッセージを出力するシステムを提供し
 そのスイッチは\OFpath{\$WM\_PROJECT\_DIR/etc/controlDict}ファイルの
 中にあり，設定を変更したい場合には，
 \OFpath{\$HOME}ディレクトリに (例えば
-\OFpath{\$HOME/.OpenFOAM/1.6/controlDict}ファイルのように) コピーを
+\OFpath{\$HOME/.OpenFOAM/1.7.1/controlDict}ファイルのように) コピーを
 作成します．スイッチが可能なリストは非常に多く，
 \OFtool{foamDebugSwitches}アプリケーションを実行することにより閲覧できます．
 スイッチのほとんどは，クラスまたは機能性のレンジと一致しており，
@@ -1187,7 +1181,7 @@ OpenFOAM配布のライブラリは
 \OFpath{\$FOAM\_LIB/\$WM\_OPTIONS}ディレクトリ内にあり，
 コマンド欄に\texttt{lib}と入力すればすぐに見つかります．
 一方，名前は\texttt{lib}を前につけて，
-例えば\OFtool{incompressibleTransportModels}が非圧縮性の輸送モデルの
+例えば\OFclass{incompressibleTransportModels}が非圧縮性の輸送モデルの
 ライブラリを含むというように合理的でかつ説明的です．
 表現を簡単にするためにライブラリは二つのタイプに分けられます．
 \begin{description}

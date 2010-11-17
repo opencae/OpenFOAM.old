@@ -156,7 +156,7 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
             $\mu$と$\kappa$を温度$T$の関数として，任意次数の多項式から計算する．
 \end{description}
 次は，\OFkeyword{fuel}という名前の種についてのエントリの例である．
-これは，\OFtool{sutherlandTransport}と\OFtool{janafThermo}を使ってモデルされている．
+これは，\OFclass{sutherlandTransport}と\OFclass{janafThermo}を使ってモデルされている．
 また，エントリの説明のためにコメントが入っている．
 \begin{OFverbatim}[file]
 fuel                                          // keyword
@@ -169,7 +169,7 @@ fuel 1 44.0962                                // specie
 1.67212e-06 170.672;                          // sutherlandTransport
 \end{OFverbatim}
 次に示すのは，\OFkeyword{air}という名前の種についての，エントリの例である．
-これは，\OFtool{constTransport}と\OFtool{hConstThermo}でモデルされている．
+これは，\OFclass{constTransport}と\OFclass{hConstThermo}でモデルされている．
 エントリの説明のためにコメントが入っている．
 \begin{OFverbatim}[file]
 mixture        // keyword
@@ -274,7 +274,7 @@ RASモデルの係数には，それぞれのソースコードの中でデフ�
 
 \subsection{壁関数}
 \label{ssec:7.2.2}
-OpenFOAMではバージョン1.6から，個別のパッチの境界条件として適用する，
+OpenFOAMでは，個別のパッチの境界条件として適用する，
 様々な壁関数が利用可能になっています．
 これにより，異なる壁領域に異なる壁関数モデルを適用することが可能になります．
 壁関数モデルの選択は，
@@ -321,8 +321,9 @@ boundaryField
 find $FOAM SRC/turbulenceModels -name wallFunctions
 \end{OFverbatim}%$
 
-それぞれの壁関数境界条件では，\OFkeyword{E}と\OFkeyword{kappa}という
-オプションのキーワードエントリで$E$と$\kappa$のデフォルト値を上書きできます．
+それぞれの壁関数境界条件では，
+\OFkeyword{E}，\OFkeyword{kappa}，そして\OFkeyword{Cmu}という
+オプションのキーワードエントリで$E$，$\kappa$，そして$C_{\mu}$のデフォルト値を上書きできます．
 \OFpath{nut}や\OFpath{mut}ファイルのいずれかのパッチで壁関数を選択したならば，
 \OFpath{epsilon}フィールドの対応するパッチでは\OFkeyword{epsilonWallFunction}を，
 乱流場\OFpath{k}，\OFpath{q}，\OFpath{R}の対応するパッチには

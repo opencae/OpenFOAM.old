@@ -134,8 +134,8 @@ OpenFOAMで提供されるメッシュ・ジェネレータ\OFtool{blockMesh}は
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  1.6                                   |
-|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|  \\    /   O peration     | Version:  1.7.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -908,7 +908,7 @@ Source time: 0.5
 Target time: 0.5
 Create meshes
 
-Source mesh size: 400   Target mesh size: 1681
+Source mesh size: 400   Target mesh size: 1600
 
 Consistently creating and mapping fields for time 0.5
 
@@ -1042,11 +1042,13 @@ components
 
 \OFtool{foamCalc}は\OFcase{cavity}と
 \OFcase{cavityFine}のどちらに対しても実行することができます．
-例として次のように入力し\OFcase{cavity}に対して実行します．
+例えば\OFcase{cavity}に対しては，
+以下のように\OFpath{cavity}ディレクトリに移動して\OFtool{foamCalc}を実行します．
 \begin{OFverbatim}[terminal]
-foamCalc components U -case $FOAM_RUN/tutorials1.5/icoFoam/cavity
+cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
+foamCalc components U
 \end{OFverbatim}%$
-それぞれのコンポーネントが\OFtool{ParaView}内でグラフとして描画されます．
+それぞれの成分が\OFtool{ParaView}内でグラフとして描画されます．
 簡単に，早く，しかもラベル付けや形式化の調整ができるので，
 とても高性能な出力を表示ができます．
 しかしながら，出版用にグラフを作成するならばgnuplotやGrace/xmgrなどの
@@ -1424,7 +1426,7 @@ cat log
 初期の圧力残差は小さくなります．
 \OFpath{log}において\verb|No Iterations 0|は，
 \OFkeyword{U}の計算が止まったことを示しています．
-\begin{OFverbatim}[file, linenum]
+\begin{OFverbatim}[file, linenum, weight=\footnotesize]
 
 Time = 1.63
 
@@ -2748,9 +2750,26 @@ mergePatchPairs
 \OFkeyword{zeroGradient}の境界条件を課すことになります．
 
 \OFkeyword{top}の境界は大気に対して開放されていることから，
-\OFkeyword{atmosphere}タイプの境界条件を与えます．
-また，この2次元問題において，前後の面のような
-\OFkeyword{defaultFaces}の境界条件は通常通り\OFkeyword{empty}タイプです．
+内部流れに応じて流出・流入のいずれも可能にしておく必要があります．
+したがって，以下のような，安定性を維持しながらこれを可能にするような
+圧力と速度に対する境界条件の組み合わせを用いることになります．
+\begin{itemize}
+ \item \OFboundary{totalPressure}は，与えられた全圧\OFkeyword{p0}と
+       局所速度\OFkeyword{U}から計算される\OFboundary{fixedValue}条件です．
+ \item \OFboundary{pressureInletOutletVelocity}は
+       全成分に\OFboundary{zeroGradient}を適用しますが，
+       流入がある場合は例外として\OFboundary{fixedValue}が
+\OFrevision{法線成分では？}%
+       \OFemph{接線}成分に適用されます
+ \item \OFboundary{inletOutlet}は，流れが外向きならば\OFboundary{zeroGradient}であり，
+       流れが内向きならば\OFboundary{fixedValue}です
+\end{itemize}
+すべての壁の境界においては，圧力場には\OFboundary{buoyantPressure}境界条件を適用しますが，
+これは局所的な密度勾配から法線方向勾配を計算します．
+
+2次元問題における前後の面を表している\OFkeyword{defaultFaces}パッチは，
+通常通り\OFkeyword{empty}タイプにします．
+
 
 \subsection{初期条件の設定}
 \label{ssec:2.3.3}
@@ -2923,10 +2942,13 @@ simulationType  laminar;
 \index{adjustTimeStep@\OFkeyword{adjustTimeStep}!キーワード}%
 \index{キーワード!adjustTimeStep@\OFkeyword{adjustTimeStep}}%
 \OFkeyword{adjustTimeStep}を\OFkeyword{on}にして，
-$\nCo$の最大値
+$\nCo$の最大値 (相の場については
+\index{maxAlphaCo@\OFkeyword{maxAlphaCo}!キーワード}%
+\index{キーワード!maxAlphaCo@\OFkeyword{maxAlphaCo}}%
+\OFkeyword{maxAlphaCo}，その他の場については
 \index{maxCo@\OFkeyword{maxCo}!キーワード}%
 \index{キーワード!maxCo@\OFkeyword{maxCo}}%
-\OFkeyword{maxCo}を$0.2$にしましょう．
+\OFkeyword{maxCo}) を$0.5$にしましょう．
 時間ステップの上限
 \index{maxDeltaT@\OFkeyword{maxDeltaT}!キーワード}%
 \index{キーワード!maxDeltaT@\OFkeyword{maxDeltaT}}%
@@ -2987,6 +3009,7 @@ runTimeModifiable yes;
 adjustTimeStep  yes;
 
 maxCo           0.5;
+maxAlphaCo      0.5;
 
 maxDeltaT       1;
 
@@ -3053,8 +3076,6 @@ ddtSchemes
 gradSchemes
 {
     default         Gauss linear;
-    grad(U)         Gauss linear;
-    grad(alpha1)    Gauss linear;
 }
 
 divSchemes
@@ -3082,7 +3103,7 @@ snGradSchemes
 fluxRequired
 {
     default         no;
-    p;
+    p_rgh;
     pcorr;
     alpha1;
 }
@@ -3194,7 +3215,7 @@ blocks
 再初期化しなければなりません．
 というのも\OFkeyword{alpha1}は新しい格子とは合致しない
 いくつかの要素を含んでいるからです．
-ここで，\OFkeyword{U}や\OFkeyword{p}という場は
+ここで，\OFkeyword{U}や\OFkeyword{p\_rgh}という場は
 変更する必要がないことに注意しましょう．
 それらは\OFkeyword{uniform}として明記されており
 フィールド内の要素の数と独立だからです．

@@ -9,9 +9,7 @@
 \index{applyWallFunctionBoundaryConditions@\OFtool{applyWallFunctionBoundaryConditions}!ユーティリティ}%
 \index{ユーティリティ!applyWallFunctionBoundaryConditions@\OFtool{applyWallFunctionBoundaryConditions}}%
  \OFtool{applyWallFunctionBoundaryConditions} &
- OpenFOAMのRASケースを，新しい壁関数を使うように更新する．
- ケースが圧縮性か非圧縮性かを判定しようと試みるが，
- コマンドライン引数で\hskip\xkanjiskip\verb|-compressible|を与えることもできる． \\
+ OpenFOAMのRASケースを，新しい（バージョン1.6の）壁関数を使うように更新する． \\
 \index{boxTurb@\OFtool{boxTurb}!ユーティリティ}%
 \index{ユーティリティ!boxTurb@\OFtool{boxTurb}}%
  \OFtool{boxTurb} & 与えられたエネルギスペクトルに適合し，
@@ -214,7 +212,7 @@
  \OFtool{rotateMesh} & メッシュおよび場を方向$\bm{n}_{1}$から方向$\bm{n}_{2}$へと回転させる \\
 \index{setSet@\OFtool{setSet}!ユーティリティ}%
 \index{ユーティリティ!setSet@\OFtool{setSet}}%
- \OFtool{setSet} & セル・面・点のセットをインタラクティブに操作する \\
+ \OFtool{setSet} & セル・面・点のセットやゾーンをインタラクティブに操作する \\
 \index{setsToZones@\OFtool{setsToZones}!ユーティリティ}%
 \index{ユーティリティ!setsToZones@\OFtool{setsToZones}}%
  \OFtool{setsToZones} & メッシュに
@@ -318,6 +316,9 @@
 \index{foamToGMV@\OFtool{foamToGMV}!ユーティリティ}%
 \index{ユーティリティ!foamToGMV@\OFtool{foamToGMV}}%
  \OFtool{foamToGMV} & OpenFOAMの出力をGMVで読めるファイルに変換する． \\
+\index{foamToTecplot360@\OFtool{foamToTecplot360}!ユーティリティ}%
+\index{ユーティリティ!foamToTecplot360@\OFtool{foamToTecplot360}}%
+ \OFtool{foamToTecplot360} & Tecplotバイナリファイル形式のライタ． \\
 \index{foamToVTK@\OFtool{foamToVTK}!ユーティリティ}%
 \index{ユーティリティ!foamToVTK@\OFtool{foamToVTK}}%
  \OFtool{foamToVTK} & レガシーなVTKファイル形式のライタ． \\
@@ -400,13 +401,14 @@ obtained from field phi.'' の訳を掲載した．}%
 \index{ユーティリティ!wallShearStress@\OFtool{wallShearStress}}%
  \OFtool{wallShearStress} &
  指定した時刻における壁面せん断応力を計算して書き出す \\
-\index{yPlusRAS@\OFtool{yPlusRAS}!ユーティリティ}%
-\index{ユーティリティ!yPlusRAS@\OFtool{yPlusRAS}}%
- \OFtool{yPlusRAS} &
- 指定した時刻について，各壁面における\OFkeyword{yPlus}を計算する \\
 \index{yPlusLES@\OFtool{yPlusLES}!ユーティリティ}%
 \index{ユーティリティ!yPlusLES@\OFtool{yPlusLES}}%
  \OFtool{yPlusLES} &
+ 指定した時刻について，各壁面における\OFkeyword{yPlus}を計算する \\
+\index{yPlusRAS@\OFtool{yPlusRAS}!ユーティリティ}%
+\index{ユーティリティ!yPlusRAS@\OFtool{yPlusRAS}}%
+ \OFtool{yPlusRAS} &
+ RAS乱流モデルを使用しているとき，
  指定した時刻について，各壁面における\OFkeyword{yPlus}を計算する \\
  \\
  \multicolumn{2}{l}{乱流の後処理} \\
@@ -518,6 +520,10 @@ obtained from field phi.'' の訳を掲載した．}%
  \OFtool{equilibriumFlameT} & 与えられた燃料の種類・燃焼していない気体の
  温度と平衡定数に対して酸素，水，二酸化炭素の分離の影響を考慮して
  平衡状態の炎の温度を計算する \\
+\index{IFCLookUpTableGen@\OFtool{IFCLookUpTableGen}!ユーティリティ}%
+\index{ユーティリティ!IFCLookUpTableGen@\OFtool{IFCLookUpTableGen}}%
+ \OFtool{IFCLookUpTableGen} &
+ 与えられた燃料についてフィートの関数で無限の速さの化学関係を計算する。出力はモルで与えられる。 \\
 \index{mixtureAdiabaticFlameT@\OFtool{mixtureAdiabaticFlameT}!ユーティリティ}%
 \index{ユーティリティ!mixtureAdiabaticFlameT@\OFtool{mixtureAdiabaticFlameT}}%
  \OFtool{mixtureAdiabaticFlameT} & 与えられた混合・温度に対して
