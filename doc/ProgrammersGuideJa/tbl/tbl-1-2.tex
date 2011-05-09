@@ -1,0 +1,71 @@
+%#! platex ProgrammersGuideJa
+\begin{longtable}{Xlll}
+ 演算 & 備考 & 数学表記 & OpenFOAMでの表記 \\
+ \hline
+ 加算 &  & $\bm{a} + \bm{b}$ & \verb|a + b| \\
+ 減算 &  & $\bm{a} - \bm{b}$ & \verb|a - b| \\
+ スカラ倍 &  & $s\bm{a}$ & \verb|s * a| \\
+ スカラ除算 &  & $\bm{a}/s$ & \verb|a / s| \\
+ 外積 & $\mathop{\mathrm{rank}}a, b \ge 1$ & $\bm{a}\bm{b}$ & \verb|a * b| \\
+ 内積 & $\mathop{\mathrm{rank}}a, b \ge 1$ & $\bm{a} \inProd \bm{b}$ & \verb|a & b| \\
+ 二重内積 & $\mathop{\mathrm{rank}}a, b \ge 2$ & $\bm{a} \biInProd \bm{b}$ & \verb|a && b| \\
+ クロス積 & $\mathop{\mathrm{rank}}a, b = 1$ & $\bm{a} \times \bm{b}$ & \verb|a ^ b| \\
+ 平方 &  & $\bm{a}^{2}$ & \verb|sqr(a)| \\
+ 平方絶対値 &  & $|\bm{a}|^{2}$ & \verb|magSqr(a)| \\
+ 絶対値 &  & $|\bm{a}|$ & \verb|mag(a)| \\
+ 累乗 & $n = 0, 1, \dots, 4$ & $\bm{a}^{n}$ & \verb|pow(a, n)| \\
+ 成分平均値 & $i = 1, \dots, N$ & $\bar{\bm{a}_{i}}$ & \verb|cmptAv(a)| \\
+ 最大成分 & $i = 1, \dots, N$ & $\max(\bm{a}_{i})$ & \verb|max(a)| \\
+ 最小成分 & $i = 1, \dots, N$ & $\min(\bm{a}_{i})$ & \verb|min(a)| \\
+ スケール &  & $\mathop{\mathrm{scale}}(\bm{a}, \bm{b})$ & \verb|scale(a, b)| \\
+ 幾何変換 & \multicolumn{2}{r}{テンソル$\bm{T}$による$\bm{a}$の幾何変換} & \verb|transform(T, a)| \\
+ \\
+ \multicolumn{4}{l}{\sffamily\gtfamily 2階テンソル特有の演算} \\
+ \hline
+ 転置 &  & $\bm{T}^{\mathrm{T}}$ & \verb|T.T()| \\
+ 対角 &  & $\mathop{\mathrm{diag}}\bm{T}$ & \verb|diag(T)| \\
+ トレース &  & $\mathop{\mathrm{tr}}\bm{T}$ & \verb|tr(T)| \\
+ 偏差成分 &  & $\mathop{\mathrm{dev}}\bm{T}$ & \verb|dev(T)| \\
+ 静水圧成分%
+\footnote{訳注：原文では抜けている．}%
+ &  & $\mathop{\mathrm{hyd}}\bm{T}$ & \verb|hyd(T)| \\
+ 対称成分 &  & $\mathop{\mathrm{symm}}\bm{T}$ & \verb|symm(T)| \\
+ 歪成分 &  & $\mathop{\mathrm{skew}}\bm{T}$ & \verb|skew(T)| \\
+ 行列式 &  & $\det\bm{T}$ & \verb|det(T)| \\
+ 逆元 &  & $\mathop{\mathrm{inv}}\bm{T}$ & \verb|inv(T)| \\
+ ホッジ双対 &  & $\mathop{*}\bm{T}$ & \verb|*T| \\
+ \\
+ \multicolumn{4}{l}{\sffamily\gtfamily スカラ特有の演算} \\
+ \hline
+ 符号（真偽値） &  & $\mathop{\mathrm{sgn}}(s)$ & \verb|sgn(s)| \\
+ 正数（真偽値） &  & $s \ge 0$ & \verb|pos(s)| \\
+ 負数（真偽値） &  & $s < 0$ & \verb|neg(s)| \\
+ 制限 & $n$はスカラ & $\mathop{\mathrm{limit}}(s, n)$ & \verb|limit(s, n)| \\
+ 平方根 &  & $\sqrt{s}$ & \verb|sqrt(s)| \\
+ 指数 &  & $\exp s$ & \verb|exp(s)| \\
+ 自然対数 &  & $\ln s$ & \verb|log(s)| \\
+ 常用対数 &  & $\log_{10}s$ & \verb|log10(s)| \\
+ 正弦 &  & $\sin s$ & \verb|sin(s)| \\
+ 余弦 &  & $\cos s$ & \verb|cos(s)| \\
+ 正接 &  & $\tan s$ & \verb|tan(s)| \\
+ 逆正弦 &  & $\arcsin s$ & \verb|asin(s)| \\
+ 逆余弦 &  & $\arccos s$ & \verb|acos(s)| \\
+ 逆正接 &  & $\arctan s$ & \verb|atan(s)| \\
+ 逆余弦 &  & $\arccos s$ & \verb|acos(s)| \\
+ 双曲線正弦 &  & $\sinh s$ & \verb|sinh(s)| \\
+ 双曲線余弦 &  & $\cosh s$ & \verb|cosh(s)| \\
+ 双曲線正接 &  & $\tanh s$ & \verb|tanh(s)| \\
+ 双曲線逆正弦 &  & $\mathop{\mathrm{arcsinh}} s$ & \verb|asinh(s)| \\
+ 双曲線逆余弦 &  & $\mathop{\mathrm{arccosh}} s$ & \verb|acosh(s)| \\
+ 双曲線逆正接 &  & $\mathop{\mathrm{arctanh}} s$ & \verb|atanh(s)| \\
+ 誤差関数 &  & $\mathop{\mathrm{erf}} s$ & \verb|erf(s)| \\
+ 相補誤差関数 &  & $\mathop{\mathrm{erfc}} s$ & \verb|erfc(s)| \\
+ 対数ガンマ関数 &  & $\ln\Gamma s$ & \verb|lgamma(s)| \\
+ 0次の第1種ベッセル関数 &  & $\mathop{J_{0}}s$ & \verb|j0(s)| \\
+ 1次の第1種ベッセル関数 &  & $\mathop{J_{1}}s$ & \verb|j1(s)| \\
+ 0次の第2種ベッセル関数 &  & $\mathop{Y_{0}}s$ & \verb|y0(s)| \\
+ 1次の第2種ベッセル関数 &  & $\mathop{Y_{1}}s$ & \verb|y1(s)| \\
+ \hline
+ \multicolumn{4}{l}{別途記載がないかぎり$\bm{a}$，$\bm{b}$は任意ランクのテンソル} \\
+ \multicolumn{4}{l}{$s$はスカラ，$N$はテンソル成分の数} \\
+\end{longtable}

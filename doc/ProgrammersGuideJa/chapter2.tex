@@ -1,0 +1,903 @@
+%#! platex ProgrammersGuideJa
+\chapter{離散化手法}
+\label{chap:2}
+これまではテンソル代数について議論してきました．
+我々が解きたい偏微分方程式は，テンソルの時間および空間に対する微分に関するものです．
+したがって，\OFemph{テンソル場}，すなわち時間および空間の領域にわたって変化するテンソルへと，
+表現を拡張する必要があります．
+この章では，まずはじめに登場するすべての微分演算の数学的表現を解説します．
+そして，OpenFOAMではテンソル場がどのように構築されているのか，
+これらの場の微分はどのようにして代数式へと離散化されるのかを紹介します．
+
+
+
+\section{微分演算子}
+\label{sec:2.1}
+空間微分を定義する前に，ベクトル演算子ナブラ$\nabla$を紹介します．
+添字表記では$\partial_{i}$と書かれます．
+\begin{align}
+ \label{eq:2.1}
+ \nabla \equiv \partial_{i} \equiv \frac{\partial}{\partial x_{i}}
+ \equiv \left(\frac{\partial}{\partial x_{1}},\
+ \frac{\partial}{\partial x_{2}},\
+ \frac{\partial}{\partial x_{3}}\right)
+\end{align}
+ナブラ演算子は，以下のルールに従う便利な表記法です．
+\begin{itemize}
+ \item テンソルに作用するときは，自身の右側に向かって，通常の積の微分のルールに従う．
+       例えば$\partial_{i}ab = (\partial_{i}a)b + a(\partial_{i}b)$
+ \item それ以外の場合，ナブラ演算子は代数演算における通常のベクトルと同様に振る舞う．
+\end{itemize}
+
+
+\subsection{勾配}
+\label{ssec:2.1.1}
+スカラ場$s$が定義されていて，連続微分可能ならば，
+$s$の勾配$\nabla s$は以下のベクトル場となります．
+\begin{align}
+ \label{eq:2.2}
+ \nabla s = \partial_{i}s
+ = \left(\frac{\partial s}{\partial x_{1}},\
+ \frac{\partial s}{\partial x_{2}},\
+ \frac{\partial s}{\partial x_{3}}\right)
+\end{align}
+
+勾配はあらゆるテンソル場に作用し，一つランクの高いテンソル場を作ります．
+例えば，ベクトル場$\bm{a}$の勾配は，以下の2階テンソルです．
+\begin{align}
+ \label{eq:2.3}
+ \nabla\bm{a} = \partial_{i}a_{j} =
+ \begin{pmatrix}
+  \partial a_{1}/\partial x_{1} & \partial a_{2}/\partial x_{1} & \partial a_{3}/\partial x_{1} \\
+  \partial a_{1}/\partial x_{2} & \partial a_{2}/\partial x_{2} & \partial a_{3}/\partial x_{2} \\
+  \partial a_{1}/\partial x_{3} & \partial a_{2}/\partial x_{3} & \partial a_{3}/\partial x_{3} \\
+ \end{pmatrix}
+\end{align}
+
+
+\subsection{発散}
+\label{ssec:2.1.2}
+ベクトル場$\bm{a}$が定義されていて，連続微分可能ならば，
+$\bm{a}$の発散は以下のスカラ場となります．
+\begin{align}
+ \label{eq:2.4}
+ \nabla \inProd \bm{a} = \partial_{i}a_{i}
+ = \frac{\partial a_{1}}{\partial x_{1}}
+ + \frac{\partial a_{2}}{\partial x_{2}}
+ + \frac{\partial a_{3}}{\partial x_{3}}
+\end{align}
+
+発散はランク1以上のあらゆるテンソル場に作用し，一つランクの低いテンソル場を作ります．
+例えば，2階テンソル場$\bm{T}$の発散は，以下のベクトル場です
+（見やすいように列ベクトルに展開して表示しています）．
+\begin{align}
+ \label{eq:2.5}
+ \nabla \inProd \bm{T} = \partial_{i}T_{ij} =
+ \begin{pmatrix}
+  \partial T_{11}/\partial x_{1} + \partial T_{12}/\partial x_{1} + \partial T_{13}/\partial x_{1} \\
+  \partial T_{21}/\partial x_{2} + \partial T_{22}/\partial x_{2} + \partial T_{23}/\partial x_{2} \\
+  \partial T_{31}/\partial x_{3} + \partial T_{32}/\partial x_{3} + \partial T_{33}/\partial x_{3} \\
+ \end{pmatrix}
+\end{align}
+
+
+\subsection{回転}
+\label{ssec:2.1.3}
+ベクトル場$\bm{a}$が定義されていて，連続微分可能ならば，
+$\bm{a}$の回転$\nabla \times \bm{a}$は以下のベクトル場となります．
+\begin{align}
+ \label{eq:2.6}
+ \nabla \times \bm{a} = e_{ijk}\partial{j}a_{k}
+ = \left(\frac{\partial a_{3}}{\partial x_{2}} - \frac{\partial a_{2}}{\partial x_{3}},\
+ \frac{\partial a_{1}}{\partial x_{3}} - \frac{\partial a_{3}}{\partial x_{1}},\
+ \frac{\partial a_{2}}{\partial x_{1}} - \frac{\partial a_{1}}{\partial x_{2}}\right)
+\end{align}
+
+回転は以下のように勾配と関連付けられます．
+\begin{align}
+ \label{eq:2.7}
+ \nabla \times \bm{a} = 2(\mathop{*}\mathop{\mathrm{skew}}\bm{a})
+\end{align}
+
+
+\subsection{ラプラシアン}
+\label{ssec:2.1.4}
+ラプラシアンは，数学的には$\nabla^{2} = \nabla \inProd \nabla$のように，
+発散と勾配を組み合わせて定義できる演算です．
+しかしながらラプラシアンは，
+テンソルのランクを一つ上げる演算と一つ下げる演算の二つの組み合わせと考えるよりも，
+あるテンソル場を同じランクの別のテンソル場に変換する一つの演算と考えるべきです．
+
+実際に，ナブラをベクトル演算子として定義したように，
+ラプラシアンは以下のように\OFemph{スカラ演算子}として定義するのが最適です．
+\begin{align}
+ \label{eq:2.8}
+ \nabla^{2} \equiv \partial^{2} \equiv
+ \frac{\partial^{2}}{\partial x_{1}^{2}}
+ + \frac{\partial^{2}}{\partial x_{2}^{2}}
+ + \frac{\partial^{2}}{\partial x_{3}^{2}}
+\end{align}
+例えば，スカラ場$s$のラプラシアンは以下のスカラ場になります．
+\begin{align}
+ \label{eq:2.9}
+ \nabla^{2}s \equiv \partial^{2}s \equiv
+ \frac{\partial^{2}s}{\partial x_{1}^{2}}
+ + \frac{\partial^{2}s}{\partial x_{2}^{2}}
+ + \frac{\partial^{2}s}{\partial x_{3}^{2}}
+\end{align}
+
+
+\subsection{時間微分}
+\label{ssec:2.1.5}
+テンソルの時間微分については複数の定義があります．
+時間微分を表現するときには，そのテンソルが，
+動いている物質のある体積の物理量に関連していることを思い出す必要があります．
+物質の中のある無限に小さい体積あるいは粒子の動きを追跡し，
+テンソル物理量$\phi$の時間変化を観察することを考えれば，
+以下のように表示される時間の\OFemph{完全微分}あるいは\OFemph{物質微分}になります．
+\begin{align}
+ \label{eq:2.10}
+ \frac{\mathrm{D}\phi}{\mathrm{D}t} = \lim_{\Delta t \to 0}\frac{\Delta\phi}{\Delta t}
+\end{align}
+しかしながら，連続体力学，特に流体力学では，多くの場合，
+空間に固定された1点での$\phi$の時間変化を，
+その点を異なる粒子が通過するものとして観察します．
+空間内の1点でのこの変化は$\partial / \partial t$で表示される\OFemph{空間}時間微分とよばれ，
+以下のように物質微分と関連付けられます．
+\begin{align}
+ \label{eq:2.11}
+ \frac{\mathrm{D}\phi}{\mathrm{D}t}
+ = \frac{\partial\phi}{\partial t} + \bm{U} \inProd \nabla\phi
+\end{align}
+ここで，$\bm{U}$は物理量$\phi$の速度場です．
+右辺の第2項は$\phi$の変化の移流速度として知られています．
+
+
+
+\section{離散化の概要}
+\label{sec:2.2}
+項の離散化とは，\OFemph{問題の離散量への近似}を意味します．
+有限体積法，および有限要素法や有限差分法のようなその他の手法は，
+いずれも以下のように問題を離散化します．
+\begin{description}
+ \item[空間の離散化] 解の定義域を，ひとつなぎの空間の領域を満たして区切るような点の集合で定義します．
+ \item[時間の離散化] （非定常の問題について）時間の定義域を，
+            時間の区間あるいはステップの有限な数へと分割します．
+ \item[等式の離散化] 問題を記述する偏微分方程式群から，
+            領域のそれぞれの位置で定義された離散量に関して，
+            代数式系を構築します．
+\end{description}
+
+
+\subsection{OpenFOAMのリストと場}
+\label{ssec:2.2.1}
+OpenFOAMでは，データの集合を保持しておいて，
+そのデータに対して代数演算のような
+関数を適用することがよく必要になります．
+そこでOpenFOAMは，\OFclass{Type}の関数を継承した
+\OFclass{Type}クラスのあらゆるオブジェクトのリストの生成を可能にする
+配列テンプレートクラス\OFclass{List<Type>}を提供しています．
+
+OpenFOAMでは，テンソルクラスのリストは
+テンプレートクラス\OFclass{Field<Type>}によって
+標準で定義されています．
+コードの視認性をより良くするために，
+例えば\OFclass{Field<vector>}のような\OFclass{Field<Type>}のインスタンスは，
+\texttt{typedef}定義により\OFclass{scalarField}，\OFclass{vectorField}，
+\OFclass{tensorField}，\OFclass{symmTensorField}，\OFclass{tensorThirdField}，
+そして\OFclass{symmTensorThirdField}と改名されています．
+\OFclass{Field}どうしの代数演算は，
+それらの場が同じ数の要素をもっている，
+といった明らかな制約条件のもとで実行できます．
+OpenFOAMは，ある場と一つのテンソルとの演算もサポートしています．
+例えば，\verb|U = 2.0 * U|という演算で，
+\OFkeyword{U}という\OFclass{Field}すべての値に
+2という\OFclass{scalar}をかけることができます．
+
+
+
+\section{解析領域の離散化}
+\label{sec:2.3}
+解析領域の離散化を\autoref{fig:2.1}に示します．
+空間領域が数値メッシュに離散化され，
+そのうえで偏微分方程式群が離散化されます．
+必要ならば，時間の離散化は，
+時間ステップ$\Delta{t}$の組に単純に分割されます．
+この$\Delta{t}$は，場合によっては，数値計算中に
+計算された条件に依存して変化するかもしれません．
+
+さらに詳細なレベルでは，空間の離散化には，
+領域を複数のセルや検査体積に再分割する必要があります．
+これらのセルは連続，すなわち，
+互いに重なることなく，領域を完全に埋め尽くします．
+典型的なセルを\autoref{fig:2.2}に示します．
+
+
+\begin{figure}[ht]
+ \includegraphics{fig-2-1}
+ \caption{解析領域の離散化}
+ \label{fig:2.1}
+\end{figure}
+
+
+\begin{figure}[ht]
+ \includegraphics{fig-2-2}
+ \caption{有限体積法の離散化におけるパラメータ}
+ \label{fig:2.2}
+\end{figure}
+
+
+従属変数とその他の物理量は，たいていセル中心$P$で保存されますが，
+面や点で保存される場合もあります．
+セルは，一般に$f$とラベル付けされる平らな面で境界付けられます．
+OpenFOAMでは，各セルをつくる面の数に制限はなく，
+各面の配置にも制約はありません．
+このような種類のメッシュは通常，
+セルの面が所定の（例えば座標軸に沿った）配置になるメッシュと区別して，
+「任意非構造」とよばれます．
+任意非構造メッシュを採用したコードは，
+領域の形状が複雑であったり時間変化する場合などは特に，
+とても自由にメッシュの生成や操作を行うことができます．
+
+ほとんどの物理量はセル中心で定義されますが，
+セルの面で定義されるものもいくつかあります．
+セルの面には二つのタイプがあります．
+\begin{description}
+ \item[内部面] 二つのセル（二つを上回ることはありません）をつなぐ面です．
+            それぞれの内部面について，OpenFOAMは
+            隣接するセルのうち一つをその面の「所有セル」，
+            もう一方を「隣接セル」として指定します．
+ \item[境界面] 一つだけのセルに属する面で，それゆえ領域の境界と一致します．
+            これらの面には単純に所有セルしかありません．
+\end{description}
+
+
+\subsection{OpenFOAMにおけるメッシュ定義}
+\label{ssec:2.3.1}
+OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法がありますが，
+まずはもっとも基本的なメッシュクラスである\OFclass{polyMesh}について述べます．
+多面体からなるので\OFclass{polyMesh}といいます．
+\OFclass{polyMesh}は以下および\autoref{fig:2.2}に示すように，
+メッシュ形状を定義するための最小限の情報で構成されます．
+\begin{description}
+ \item[点] 頂点の座標ベクトルのリスト，すなわち\OFclass{vectorField}ですが，
+            改めて\texttt{typedef}宣言により\OFclass{pointField}と名付けられています．
+ \item[面] セルの面のリスト\OFclass{List<face>}，あるいは\OFclass{faceList}です．
+            ここで，\OFclass{face}クラスは
+            \OFclass{pointField}に対応する頂点番号のリストで定義されます．
+ \item[セル] セルのリスト\OFclass{List<cell>}あるいは\OFclass{cellList}です．
+            ここで，\OFclass{cell}クラスは
+            上記の\OFclass{faceList}に対応する面番号のリストで定義されます．
+ \item[境界] \OFclass{polyBoundaryMesh}は，境界の異なる領域を表すパッチのリスト
+            \OFclass{polyPatchList}から成り立っています．
+            このような方法で，解析の際に各々のパッチに
+            異なる境界条件を適用できるように境界が細分化されます．
+            あらゆる\OFclass{polyPatch}の全ての面は
+            \OFclass{faceList}の一つのブロックに保存されており，
+            ブロックの最初と最後の面への参照が保存された
+            \OFclass{slice}クラスを使うことにより，
+            それらの面に簡単にアクセスできます．
+            それぞれの\OFclass{polyPatch}は以下から成り立っています．
+            \begin{itemize}
+             \item \OFclass{slice}
+             \item 名前を付けるための\OFclass{word}
+            \end{itemize}
+\end{description}
+
+有限体積法による離散化には，
+\OFclass{polyMesh}に保存されている
+メッシュ形状に由来する固有のデータが使われます．
+そのためOpenFOAMでは，\OFclass{polyMesh}クラスを拡張した\OFclass{fvMesh}に，
+有限体積法による離散化に必要な追加のデータが保存されます．
+\OFclass{fvMesh}は{polyMesh}から構成され，
+\autoref{tbl:2.1}に示すようなデータが保存されます．
+これらのデータは，メッシュが動いたり細分化されたりする場合には，
+実行時に更新することができます．
+
+
+\begin{figure}[ht]
+ \includegraphics{fig-2-3}
+ \caption{OpenFOAMにおける基本的なメッシュ表現の概略図}
+ \label{fig:2.3}
+\end{figure}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-2-1}
+ \caption{\OFclass{fvMesh}に保存されるデータ}
+ \label{tbl:2.1}
+\end{table}
+
+
+\subsection{OpenFOAMにおける\OFclass{geometricField}の定義}
+\label{ssec:2.3.2}
+これまでのところ，場，すなわちテンソルのリスト，およびメッシュが定義できます．
+これらを合わせることで，領域の離散点におけるテンソル場を定義することができます．
+これはOpenFOAMにおいては，テンプレートクラス
+\OFclass{geometricField<Type>}によって記述されます．
+\OFclass{Field}の値は，
+領域内部において例えばセル中心で定義されるものと，
+領域の境界において例えば境界面上で定義されるものに分けられます．
+\OFclass{geometricField<Type>}は以下のような情報を保存します．
+\begin{description}
+ \item[内部場] 単純に，\autoref{ssec:2.2.1}で述べたような
+            \OFclass{Field<Type>}です．
+ \item[境界場] これは\OFclass{GeometricBoundaryField}であり，その中では，
+            それぞれのパッチの面について\OFclass{Field}が定義され，
+            その境界のパッチについて\OFclass{Field}が定義されます．
+            つまりこれは\OFclass{FieldField<Type>}クラスのオブジェクトに保存される，場の場です．
+            また\OFclass{fvBoundaryMesh}への参照も保存されます．[**]
+ \item[メッシュ] \OFclass{fvMesh}への参照ですが，
+            その場がセル中心，面，などのうちどこで定義されているかに応じた
+            いくつかの詳細情報も加わります．
+ \item[次元] \href{../UserGuideJa/UserGuideJa.pdf#subsection.4.2.6}{ユーザガイドの4.2.6項}で述べる
+            \OFclass{dimensionSet}です．
+ \item[古い値] 時間微分の離散化には，前の時間ステップにおける場のデータが必要になります．
+            \OFclass{geometricField<Type>}は，
+            前の，一つ古い時間ステップ，および必要ならばその前の，二つ古い時間ステップ
+            において保存された場のデータへの参照を保存しています．
+ \item[前回の反復時の値] 反復解法の手順では不足緩和を利用できますが，
+            これは前回の反復時のデータへのアクセスを必要とします．
+            ここでも，必要であれば，\OFclass{geometricField<Type>}は
+            前回の反復時のデータへの参照を保存します．
+\end{description}
+\autoref{sec:2.3}で述べたように，物理量はセル中心で定義することが主ですが，
+セル面上で保存することもよくあり，セル頂点で定義することもときどきあります．
+\OFclass{geometricField<Type>}は，場の変数がどこで定義されているかによって，
+以下のように\texttt{typedef}宣言で改名されています．
+\begin{description}
+ \item[\OFclass{volField<Type>}] 場がセル中心で定義されているとき
+ \item[\OFclass{surfaceField<Type>}] 場がセルの面で定義されているとき
+ \item[\OFclass{pointField<Type>}] 場がセルの頂点で定義されているとき
+\end{description}
+
+これらの\OFclass{geometricField<Type>}から
+\texttt{typedef}された場のクラスは\autoref{fig:2.4}に図示されています．
+\OFclass{geometricField<Type>}は\OFclass{Field<Type>}のテンソル代数を全て継承しており，
+全ての演算は\OFclass{dimensionSet}の次元チェックに従います．
+また次節で述べる有限体積法の離散化手順にも依存することがあります．
+\OFclass{geometricField<Type>}を作るときに使われるクラス構造は\autoref{fig:2.5}%
+\footnote{この図はクラス階層を厳密に表したものではなく，
+むしろいくつかの原始クラスを\OFclass{geometricField<Type>}につながる
+一般的な構造を表したものです．}%
+に図示されています．
+
+
+\begin{figure}[ht]
+ \includegraphics{fig-2-4-a}\par
+ \medskip
+ (a) \OFclass{volField<Type>}\par
+ \bigskip
+ \includegraphics{fig-2-4-b}\par
+ \medskip
+ (b) \OFclass{surfaceField<Type>}\par
+ \bigskip
+ \includegraphics{fig-2-4-c}\par
+ \medskip
+ (c) \OFclass{pointField<Type>}\par
+ \medskip
+ \caption{二つの境界パッチをもつメッシュ上で定義された
+ \OFclass{geometricField<Type>}のタイプ（簡単のため2次元で表している）}
+ \label{fig:2.4}
+\end{figure}
+
+
+\begin{figure}[ht]
+ \includegraphics{fig-2-5}
+ \caption{\OFclass{geometricField<Type>}につながる基本的なクラス構造}
+ \label{fig:2.5}
+\end{figure}
+
+
+\section{方程式の離散化}
+\label{sec:2.4}
+方程式の離散化により，偏微分方程式は一般に以下のような行列で表される代数方程式に変換されます．
+\begin{align}
+ \label{eq:2.12}
+ [A][x] = [b]
+\end{align}
+ここで$[A]$は正方行列，$[x]$は従属変数の列ベクトル，$[b]$はソースベクトルです．
+$[x]$と$[b]$は，その形状，例えば\OFclass{geometricField<Type>}，
+またはもっと厳密には，有限体積法による離散化を用いているならば\OFclass{volField<Type>}の
+各位置で定義された値のリストという本来の正確な表現ではなく，
+むしろ行列用語でいう「ベクトル」です．
+
+$[A]$は代数式群の係数のリストであり，\OFclass{geometricField<Type>}では記述できません．
+したがって，独自のクラス\OFclass{fvMatrix}で与えられます．
+\OFclass{fvMatrix<Type>}は\OFclass{geometric<Type>Field}の離散化によって生成され，
+したがって\OFclass{<Type>}を継承します．
+これは，加算\hskip\xkanjiskip\verb|+|，
+減算\hskip\xkanjiskip\verb|-|\hskip\xkanjiskip
+そして乗算\hskip\xkanjiskip\verb|*|\hskip\xkanjiskip
+という標準的な行列の代数演算の多くをサポートします．
+
+OpenFOAMのコードにおいて偏微分方程式の各項は，
+それぞれ静的な関数のクラス\OFclass{finiteVolumeMethod}や
+\OFclass{finiteVolumeCalculus}を用いて記述されます．
+これらのクラスは\texttt{typedef}によって，それぞれ\OFclass{fvm}および\OFclass{fvc}と略されます．
+\OFclass{fvm}や\OFclass{fvc}は，
+例えば$\nabla^{2}$，$\nabla \inProd {}$および$\partial/\partial t$といった
+\OFclass{geometricField<Type>}を離散化する微分演算子を表す静的な関数を備えています．
+これらの関数を，一つではなく二つのクラス\OFclass{fvm}と\OFclass{fvc}で定義しているのは，
+以下のように区別するためです．
+\begin{itemize}
+ \item \OFclass{fvm}の関数は陰的な微分を計算し，\OFclass{fvMatrix<Type>}を返す．
+ \item \OFclass{fvc}のいくつかの関数は陽的な微分を計算，その他は陽的な計算をし，
+       \OFclass{geometricField<Type>}を返す．
+\end{itemize}
+\autoref{fig:2.6}には，
+二つの境界パッチをもつメッシュ上で定義された\OFclass{geometricField<Type>}を示しており，
+陽的な演算が単にある場を他の場に変換するだけであることを表しています．
+簡単のために2次元で描いています．
+
+
+\begin{figure}[ht]
+ \includegraphics{fig-2-6}
+ \caption{\OFclass{geometricField<Type>}とその演算}
+ \label{fig:2.6}
+\end{figure}
+
+
+\OFclass{fvm}および\OFclass{fvc}で使える，偏微分方程式の項を離散化する主な関数を
+\autoref{tbl:2.2}にリストアップしています．
+各項の有限体積法による離散化は，ガウスの定理により，
+その体積を囲んでいるセル表面の面積分に変換されます．
+\begin{align}
+ \label{eq:2.13}
+ \int_{V}\nabla \star \phi\,\mathrm{d}V
+ = \int_{S}\mathrm{d}\bm{S} \star \phi
+\end{align}
+ここで$\bm{S}$は表面積ベクトル，$\phi$は任意のテンソル場，
+そして$\star$はテンソル任意の乗算，例えば内積，外積，クロス積，
+およびそれぞれの微分，発散$\nabla \inProd \phi$，
+勾配$\nabla\phi$および$\nabla \times \phi$を表しています．
+次に，体積および面積分は各項について後述するような適切なスキームで線形化されます．
+OpenFOAMでは，いくつかの項は常に同じスキームで離散化されますが，
+その他の項の離散化についてはスキームの選択肢が提供されています．
+スキームの選択はコードの中で直接指定することもできますし，
+ジョブの実行時にインプットファイルから読み込んで
+\OFclass{fvSchemes}クラスのオブジェクトとして保持する方法もあります．
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-2-2}
+ \caption{OpenFOAMにおける偏微分方程式の項の離散化}
+ \label{tbl:2.2}
+\end{table}
+
+
+\subsection{ラプラシアン項}
+\label{ssec:2.4.1}
+ラプラシアンの項は，以下のように検査体積で積分・線形化されます．
+\begin{align}
+ \label{eq:2.14}
+ \int_{V}\nabla \inProd (\varGamma\nabla\phi)\,\mathrm{d}V
+ = \int_{S}\mathrm{d}\bm{S} \inProd (\varGamma\nabla\phi)
+ = \sum_{f}\varGamma_{f}\bm{S}_{f} \inProd (\nabla\phi)_{f}
+\end{align}
+みているセル$P$の中心と隣のセル$N$の中心の間の長さベクトル$\bm{d}$が
+そのフェイス面に垂直，すなわち$\bm{S}_{f}$に平行ならば，
+面の勾配の離散化は陰的になります．
+\begin{align}
+ \label{eq:2.15}
+ \bm{S}_{f} \inProd (\nabla\phi)_{f}
+ = |S_{f}|\frac{\phi_{N} - \phi_{P}}{|\bm{d}|}
+\end{align}
+非直交メッシュの場合，
+セル中心勾配（これはセル中心値の中心差分から計算される）の
+内挿によって評価される陽的な項が加わります．
+
+
+\subsection{対流項}
+\label{ssec:2.4.2}
+対流項は，以下のように検査体積で積分・線形化されます．
+\begin{align}
+ \label{eq:2.16}
+ \int_{V}\nabla \inProd (\rho\bm{U}\phi)\,\mathrm{d}V
+ = \int_{S}\mathrm{d}\bm{S} \inProd (\rho\bm{U}\phi)
+ = \sum_{f}\bm{S}_{f} \inProd (\rho\bm{U})_{f}\phi_{f}
+ = \sum_{f}F\phi_{f}
+\end{align}
+
+表面の場$\phi_{f}$はさまざまなスキームで評価されます．
+\begin{description}
+ \item[中心差分 (CD)] は，2次精度ですが不安定です．
+            \begin{align}
+             \label{eq:2.17}
+             \phi_{f} = f{x}\phi_{P} + (1 - f_{x})\phi_{N}
+            \end{align}
+            ここで$f_{x} \equiv \overline{fN}/\overline{PN}$，
+            $\overline{fN}$は$f$とセル中心$N$の距離，
+            $\overline{PN}$はセル中心同士$P$と$N$の距離です．
+ \item[風上差分 (UD)] は，流れの方向から$\phi_{f}$を決定し，
+            精度は犠牲になりますが安定です．
+            \begin{align}
+             \label{eq:2.18}
+             \phi_{f} =
+             \begin{cases}
+              \phi_{P} & F \ge 0 \text{のとき} \\
+              \phi_{N} & F < 0 \text{のとき}
+             \end{cases}
+            \end{align}
+ \item[ブレンド差分 (BD)] スキームは，適切な精度で
+            安定性を保つことを狙ってUDとCDを組み合わせます．
+            \begin{align}
+             \phi_{f} = (1 - \gamma)(\phi_{f})_{\mathrm{UD}} + \gamma(\phi_{f})_{\mathrm{CD}}
+            \end{align}
+            OpenFOAMには，ブレンド係数$\gamma$を選ぶGamma差分スキームのいくつかの実装がありますが，
+            それはほかのよく知られたスキーム，van Leer，SUPERBEE，MINMODなどを表しています．
+\end{description}
+
+
+\subsection{1階の時間微分}
+\label{ssec:2.4.3}
+1階の時間微分$\partial/\partial t$は，以下のように検査体積で積分されます．
+\begin{align}
+ \label{eq:2.20}
+ \frac{\partial}{\partial t}\int_{V}\rho\phi\,\mathrm{d}V
+\end{align}
+この項は，以下のものを使って時間に関して単純な差分で離散化されます．
+\begin{description}
+ \item[新しい値] いま解いている時間ステップの値$\phi^{n} \equiv \phi(t + \Delta t)$
+ \item[古い値] 前の時間ステップで保存された値$\phi^{o} \equiv \phi(t)$
+ \item[二つ古い値] 二つ前の時間ステップで保存された値$\phi^{oo} \equiv \phi(t - \Delta t)$
+\end{description}
+\href{../UserGuideJa/UserGuideJa.pdf#section.4.4}{ユーザガイドの4.4節}に詳しく述べられているように，
+該当する入力ファイルの中で\OFkeyword{timeScheme}キーワードを使って，
+二つのうち一つの離散化スキームを宣言することができます．
+\begin{description}
+ \item[オイラーの陰解法] スキーム，\OFkeyword{timeScheme EulerImplicit}，
+            これは時間に関して1次精度です．
+            \begin{align}
+             \label{eq:2.21}
+             \frac{\partial}{\partial t}\int_{V}\rho\phi\,\mathrm{d}V
+             = \frac{(\rho_{P}\phi_{P}V)^{n} - (\rho_{P}\phi_{P}V)^{o}}{\Delta t}
+            \end{align}
+ \item[後退差分] スキーム，\OFkeyword{timeScheme BackwardDifferencing}，
+            これは二つ前の値を保存することにより時間に関して2次精度であり，
+            したがって\OFkeyword{EulerImplicit}よりデータ保存のオーバーヘッドが大きくなります．
+            \begin{align}
+             \label{eq:2.22}
+             \frac{\partial}{\partial t}\int_{V}\rho\phi\,\mathrm{d}V
+             = \frac{3(\rho_{P}\phi_{P}V)^{n} - 4(\rho_{P}\phi_{P}V)^{o}
+             + (\rho_{P}\phi_{P}V)^{oo}}{2\Delta t}
+            \end{align}
+\end{description}
+
+
+\subsection{2階の時間微分}
+\label{ssec:2.4.4}
+2階の時間微分は，以下のように検査体積で積分・線形化されます．
+\begin{align}
+ \label{eq:2.23}
+ \frac{\partial}{\partial t}\int_{V}\rho\frac{\partial\phi}{\partial t}\,\mathrm{d}V
+ = \frac{(\rho_{P}\phi_{P}V)^{n} - 2(\rho_{P}\phi_{P}V)^{o}
+ + (\rho_{P}\phi_{P}V)^{oo}}{\Delta t^{2}}
+\end{align}
+これは時間について1次精度です．
+
+
+\subsection{発散}
+\label{ssec:2.4.5}
+この節で述べる発散項は，
+\autoref{ssec:2.4.2}の対流項とは区別される完全に陽的な項です．
+つまり対流項は，速度とある従属変数の積の発散ではありません．
+この項は以下のように検査体積で積分・線形化されます．
+\begin{align}
+ \label{eq:2.24}
+ \int_{V}\nabla \inProd \phi\,\mathrm{d}V
+ = \int_{S}\mathrm{d}\bm{S} \inProd \phi
+ = \sum_{f}\bm{S}_{f} \inProd \phi_{f}
+\end{align}
+\OFkeyword{fvc::div}関数は\OFclass{surface<Type>}または
+\OFclass{vol<Type>Field}のどちらも引数にとることができます．
+前者では$\phi_{f}$は直接与えられ，
+後者では\autoref{ssec:2.4.10}で述べる中心差分で値が面上に内挿されます．
+
+
+\subsection{勾配}
+\label{ssec:2.4.6}
+勾配の項は様々な方法で評価できる陽的な項です．
+そのスキームは，例えば\OFkeyword{fvc::gGrad}，\OFkeyword{fvc::lsGrad}などのような
+離散化スキームに対して適切な特定の勾配関数を選ぶか，
+または入力ファイルの中の適切な\OFkeyword{timeScheme}キーワードに
+連動した\OFkeyword{fvc::grad}関数を使うか，
+いずれの方法でも評価できます．
+\begin{description}
+ \item[ガウス積分] は，\OFkeyword{fvc::grad}関数を
+            \OFkeyword{timeScheme Gauss}と合わせて使うことで動作します．
+            この離散化は体積分に対してガウスの定理を適用する標準的な手法を使います．
+            \begin{align}
+             \label{eq:2.25}
+             \int_{V}\nabla\phi\,\mathrm{d}V
+             = \int_{S}\mathrm{d}\bm{S}\phi
+             = \sum_{f}\bm{S}_{f}\phi_{f}
+            \end{align}
+ \item[最小二乗法] は，以下の考えに基づいています．
+            \begin{enumerate}
+             \item 点$P$における値を，点$P$における勾配を使って隣の点$N$に外挿する．
+             \item 点$N$に外挿された値を，点$N$における実際の値と比較，この差が誤差となる．
+             \item 点$P$の付近の全ての点における誤差を，
+                   それぞれの勾配で重み付けして二乗した総和を最小化すれば，
+                   勾配の良い近似値が得られる．
+            \end{enumerate}
+            最小二乗法は\OFkeyword{fvc::grad}関数を
+            \OFkeyword{timeScheme leastSquares}と組み合わせるか，
+            直接\OFkeyword{fvc::lsGrad}を使うことで動作します．
+            この離散化は，まず全ての点$P$において，その近隣の点$N$での総和を求めて，
+            テンソル$\bm{G}$を計算します．
+            \begin{align}
+             \label{eq:2.26}
+             \bm{G} = \sum_{N}w_{N}^{2}\bm{d}\bm{d}
+            \end{align}
+            ここで$\bm{d}$は$P$から$N$へのベクトルであり，
+            重み関数は$w_{N} = 1/|\bm{d}|$です．
+            勾配は以下のように評価されます．
+            \begin{align}
+             \label{eq:2.27}
+             (\nabla\phi)_{P}
+             = \sum_{N}w_{N}^{2}\bm{G}^{-1} \inProd \bm{d}(\phi_{N} - \phi_{P})
+            \end{align}
+ \item[面に垂直な勾配] 面に垂直な勾配$\bm{n}_{f} \inProd (\nabla\phi)_{f}$は
+            セルの面において以下のスキームを使って評価できます．
+            \begin{align}
+             \label{eq:2.28}
+             (\nabla\phi)_{f} = \frac{\phi_{N} - \phi_{P}}{|\bm{d}|}
+            \end{align}
+            この勾配は\OFkeyword{fvc::snGrad}関数で呼び出され，
+            \OFclass{surfaceField<Type>}を返します．
+            このスキームは\autoref{ssec:2.4.1}で述べた
+            ラプラシアンの離散化スキームと似た方法で直接評価され，
+            また同じように非直交メッシュの場合には，
+            この面の勾配の精度を高めるために補正が加えられます．
+            この補正は\OFkeyword{fvc::snGradCorrection}関数を使って呼び出されます．
+            [Check**]
+\end{description}
+
+
+\subsection{勾配の勾配の平方}
+\label{ssec:2.4.7}
+勾配の勾配の平方の項は，場の勾配をとり，得られた勾配場の勾配をとり，
+そしてその結果の絶対値二乗を計算することで評価されます．
+$\phi$の勾配の勾配の平方を数式で書くと$|\nabla (\nabla\phi)|^{2}$となります．
+
+
+\subsection{回転}
+\label{ssec:2.4.8}
+回転は，\autoref{ssec:2.4.6}で述べた勾配の項から評価されます．
+まず勾配が離散化され，それから\autoref{eq:2.7}の関係（以下に再掲）を
+使って回転が評価されます．
+\begin{align*}
+ \nabla \times \phi = 2 \mathop{*} (\mathop{\mathrm{skew}}\nabla\phi)
+\end{align*}
+
+
+\subsection{湧き出し項}
+\label{ssec:2.4.9}
+湧き出し項は三つの方法で指定できます．
+\begin{description}
+ \item[陽解法] すべての陽的な項は\OFclass{volField<Type>}です．
+            したがって，陽的な湧き出し項は単純に値の場として等式の中に組み込まれます．
+            例えば，\OFkeyword{phi}と\OFkeyword{f}を\OFclass{volScalarField}として定義し，
+            そして以下のようにします．
+            \begin{OFverbatim}[file]
+solve(fvm::laplacian(phi) == f)
+            \end{OFverbatim}
+ \item[陰解法] 陰的な湧き出し項は，以下のように検査体積で積分・線形化されます．
+            \begin{align}
+             \label{eq:2.29}
+             \int_{V}\rho\phi\,\mathrm{d}V = \rho_{P}V_{P}\phi_{P}
+            \end{align}
+ \item[陰・陽解法] 陰的な湧き出し項は，行列の対角成分の係数を変えます．
+            その係数と行列の項の符号に依存して，
+            これは行列の対角成分の支配力を増大または減少させます．
+            対角成分の支配力を減少させることは，
+            行列の方程式の反復解法の際の不安定さを引き起こします．
+            したがって，OpenFOAMは混成の湧き出し項の離散化方法を提供しており，
+            これは係数が正のとき陰的に，負のときには陽的になります．
+            数式上は，点$P$に対する行列の係数は$V_{P}\max(\rho_{P},\ 0)$，
+            そして湧き出し項は$V_{P}\phi_{P}\min(\rho_{P},\ 0)$となります．
+\end{description}
+
+
+\subsection{その他の陽的な離散化スキーム}
+\label{ssec:2.4.10}
+
+他にも\OFclass{volField<Type>}を\OFclass{surface<Type>Field}に，
+および逆に変換する離散化手法がいくつかあります．
+\begin{description}
+ \item[面積分] \OFkeyword{fvc::surfaceIntegrate}は，
+            それぞれのセルを区切る面での値\OFclass{surface<Type>Field}の総和をとり，
+            セルの体積で割るという操作をします．
+            すなわち$(\sum_{f}\phi_{f})/V_{P}$となります．
+            これは\OFclass{volField<Type>}を返します．
+ \item[面総和] \OFkeyword{fvc::surfaceSum}は，
+            それぞれのセルを区切る面での値\OFclass{surface<Type>Field}の総和をとる操作です．
+            すなわち$\sum_{f}\phi_{f}$となり，
+            \OFclass{volField<Type>}を返します．
+ \item[平均値] \OFkeyword{fvc::average}は，
+            面の値\OFclass{surface<Type>Field}の面積重み付け平均をとります．
+            すなわち$(\sum_{f}S_{f}\phi_{f})/\sum_{f}S_{f}$となり，
+            \OFclass{volField<Type>}を返します．
+ % \item[Reconstruct] 
+ \item[面内挿] \OFclass{geometric<Type>Field}の関数\OFkeyword{faceInterpolate()}は，
+            セル中心の値\OFclass{volField<Type>}を，
+            中心差分を使ってセルの面上へ内挿し，\OFclass{surface<Type>Field}を返します．
+\end{description}
+
+
+
+\section{時間微分}
+\label{sec:2.5}
+時間微分の離散化については\autoref{ssec:2.4.3}および\autoref{ssec:2.4.4}で述べましたが，
+非定常問題における空間微分の扱い方について考える必要があります．
+もし$\mathcal{A}$を任意の空間微分演算子，
+例えばラプラシアン，として，
+あらゆる空間微分を$\mathcal{A}\phi$で表すとすれば，
+非定常の偏微分方程式を積分型で以下のように表記できます．
+\begin{align}
+ \label{eq:2.30}
+ \int_{t}^{t + \Delta t}\left[\frac{\partial}{\partial t}\int_{V}\rho\phi\,\mathrm{d}V
+ + \int_{V}\mathcal{A}\phi\,\mathrm{d}V\right]\mathrm{d}t = 0
+\end{align}
+\autoref{eq:2.21}のオイラー陰解法を使うと，第1項は次のように書けます．
+\begin{align}
+ \label{eq:2.31}
+ \int_{t}^{t + \Delta t}
+ \left[\frac{\partial}{\partial t}\int_{V}\rho\phi\,\mathrm{d}V\right]\mathrm{d}t
+ &= \int_{t}^{t + \Delta t}
+ \frac{(\rho_{P}\phi_{P}V)^{n} - (\rho_{P}\phi_{P}V)^{o}}{\Delta t}\mathrm{d}t \\
+ &= \frac{(\rho_{P}\phi_{P}V)^{n} - (\rho_{P}\phi_{P}V)^{o}}{\Delta t}\Delta t
+\end{align}
+
+第2項は次のように書けます．
+\begin{align}
+ \label{eq:2.32}
+ \int_{t}^{t + \Delta t}\left[\int_{V}\mathcal{A}\phi\,\mathrm{d}V\right]\mathrm{d}t
+ = \int_{t}^{t + \Delta t}\mathcal{A}^{*}\phi\,\mathrm{d}t
+\end{align}
+ここで$\mathcal{A}^{*}$は空間で離散化した$\mathcal{A}$を表します．
+時間積分は三つの方法で離散化できます．
+\begin{description}
+ \item[オイラー陰解法] 空間については陰解法で離散化し，したがって現在の値$\phi^{n}$をとります．
+            \begin{align}
+             \label{eq:2.33}
+             \int_{t}^{t + \Delta t}\mathcal{A}^{*}\phi\,\mathrm{d}t
+             = \mathcal{A}^{*}\phi^{n}\Delta t
+            \end{align}
+            これは時間について1次精度であり，有界性と無条件安定性を保証します．
+ \item[陽解法] 空間については陽解法で離散化し，したがって前の時刻の値$\phi^{o}$をとります．
+            \begin{align}
+             \label{eq:2.34}
+             \int_{t}^{t + \Delta t}\mathcal{A}^{*}\phi\,\mathrm{d}t
+             = \mathcal{A}^{*}\phi^{o}\Delta t
+            \end{align}
+            これは時間について1次精度であり，もしクーラン数$\nCo$が$1$より大きければ不安定です．
+            クーラン数は以下のように定義されます．
+            \begin{align}
+             \label{eq:2.35}
+             \nCo = \frac{\bm{U}_{f} \inProd \bm{d}}{|\bm{d}|^{2}\Delta t}
+            \end{align}
+            ここで$\bm{U}_{f}$は代表速度，例えば波面の速度，流れの速度などです．
+ \item[クランク・ニコルソン法] 空間の項の離散化に台形公式を使い，
+            したがって現在の値$\phi^{n}$と前の時刻の値$\phi^{o}$の平均値をとります．
+            \begin{align}
+             \label{eq:2.36}
+             \int_{t}^{t + \Delta t}\mathcal{A}^{*}\phi\,\mathrm{d}t
+             = \mathcal{A}^{*}\left(\frac{\phi^{n} + \phi^{o}}{2}\right)\Delta t
+            \end{align}
+            これは時間について2次精度であり，無条件で安定ですが，有界性は保証されません．
+\end{description}
+
+
+\subsection{OpenFOAMにおける時間微分の取扱い}
+\label{ssec:2.5.1}
+現在のところ，時間の離散化の取り扱いは，
+解くべき偏微分方程式における空間微分の実装によって制御されます．
+例えば，非定常の拡散方程式を解きたいとします．
+\begin{align}
+ \label{eq:2.37}
+ \frac{\partial\phi}{\partial t} = \kappa\nabla^{2}\phi
+\end{align}
+これに対するオイラーの陰解法は以下のようになります．
+\begin{OFverbatim}[file]
+solve(fvm::ddt(phi) == kappa*fvm::laplacian(phi))
+\end{OFverbatim}
+ここで\OFkeyword{Laplacian}の項を陰解法で離散化するために\OFclass{fvm}クラスを使います．
+陽解法で実装するには以下のようにします．
+\begin{OFverbatim}[file]
+solve(fvm::ddt(phi) == kappa*fvc::laplacian(phi))
+\end{OFverbatim}
+今度は\OFkeyword{Laplacian}の項を陽解法で離散化するために\OFclass{fvc}クラスを使います．
+クランク・ニコルソン・スキームは，陰解法と陽解法の平均をとることで実装できます．
+\begin{OFverbatim}[file]
+solve
+    (
+    fvm::ddt(phi)
+    ==
+    kappa*0.5*(fvm::laplacian(phi) + fvc::laplacian(phi))
+    )
+\end{OFverbatim}
+
+
+
+\section{境界条件}
+\label{sec:2.6}
+解きたい問題を完成させるためには境界条件が必要です．
+したがって全ての境界面において境界条件を指定しなければなりません．
+境界条件は二つのタイプに分けられます．
+\begin{description}
+ \item[ディリクレ条件] は，その従属変数の境界における値を定めます．
+            したがって，このガイドでは「固定値」とよびます．
+            % したがって，このガイドでは `fixed value' とよびます．
+ \item[ノイマン条件] は，その従属変数の境界に垂直な勾配を定めます．
+            したがって，このガイドでは「固定勾配」とよびます．
+            % したがって，このガイドでは `fixed gradient' とよびます．
+\end{description}
+
+面にわたる総和$\sum_{f}$を含む項の離散化を行うときには，
+それらの面のうちの一つが境界面であったらどうなるかを考慮する必要があります．
+\begin{description}
+ \item[固定値] 境界における値$\phi_{b}$を指定
+            \begin{itemize}
+             \item 離散化に，境界面における値$\phi_{f}$を使う場合は，
+                   単純に$\phi_{b}$で置き換えることができます．
+                   例えば\autoref{eq:2.16}の移流項の場合です．
+             \item 面における勾配$(\nabla\phi)_{f}$が必要な項，
+                   例えばラプラシアンなど，の場合には，
+                   その勾配は境界面における値とセル中心の値を使って計算されます．
+                   \begin{align}
+                    \label{eq:2.38}
+                    \bm{S}_{f} \inProd (\nabla\phi)_{f}
+                    = |S_{f}|\frac{\phi_{b} - \phi_{P}}{|\bm{d}|}
+                   \end{align}
+            \end{itemize}
+ \item[固定勾配] 固定勾配境界条件$g_{b}$は，
+            勾配と，境界の単位法線ベクトルとの内積になります．
+            \begin{align}
+             \label{eq:2.39}
+             g_{b} = \left(\frac{\bm{S}}{|\bm{S}|} \inProd \nabla\phi\right)_{f}
+            \end{align}
+            \begin{itemize}
+             \item 離散化に，境界面における値$\phi_{f}$を使う場合は，
+                   セル中心の値を境界上に内挿する必要があります．
+                   \begin{align}
+                    \label{eq:2.40}
+                    \phi_{f}
+                    &= \phi_{P} + \bm{d} \inProd (\nabla\phi)_{f} \notag \\
+                    &= \phi_{P} + |\bm{d}|g_{b}
+                   \end{align}
+             \item 離散化に面の勾配が評価される場合は，
+                   直接$\phi_{b}$で置き換えることができます．
+                   \begin{align}
+                    \label{eq:2.41}
+                    \bm{S}_{f} \inProd (\nabla\phi)_{f} = |S_{f}|g_{b}
+                   \end{align}
+            \end{itemize}
+\end{description}
+
+
+\subsection{物理的な境界条件}
+\label{ssec:2.6.1}
+境界条件の指定は通常，本当の振る舞いに対するエンジニアの解釈です．
+現実の境界条件は一般に，
+前節で述べたような数値的記述ではなく，
+物理的な特性によって定義されます．
+非圧縮性流体の流れでは，以下のような物理的な境界があります．
+\begin{description}
+ \item[入口] 入口における速度場が与えられ，それと整合させるために，
+            圧力の境界条件は勾配ゼロになります．
+ \item[出口] 出口における圧力場が与えられ，
+            速度には勾配ゼロ境界条件が指定されます．
+ \item[滑りなし不浸透性壁面] 流体の速度は壁面自身の速度と等しくなり，
+            したがって，固定値条件が指定されます．
+            壁を通り抜ける流束がゼロであることから，
+            圧力は勾配ゼロが指定されます．
+\end{description}
+
+解の領域と境界条件がある面について対称となるような問題では，
+その対称面の片側の半分の領域だけしかモデル化する必要はありません．
+その面の境界条件は以下に従って指定しなければなりません．
+\begin{description}
+ \item[対称面] 対称面条件は，その面に垂直な勾配成分をゼロと指定します．[Check**]
+\end{description}
