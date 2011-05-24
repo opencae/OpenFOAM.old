@@ -12,8 +12,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.1 r9760"
-   width="353.80838"
-   height="152.65782"
+   width="353.45682"
+   height="151.64659"
    xml:space="preserve"
    sodipodi:docname="fig-2-4-a.svg"><sodipodi:namedview
      pagecolor="#ffffff"
@@ -28,9 +28,9 @@
      inkscape:window-height="920"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="17.512304"
-     inkscape:cx="134.85622"
-     inkscape:cy="48.208383"
+     inkscape:zoom="2.189038"
+     inkscape:cx="262.93755"
+     inkscape:cy="-5.6287891"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -72,7 +72,7 @@
      d="m 1723.51,2511.25 2490,0 0,1199.96 -2490,0 0,-1199.96 z" /></clipPath>
 
 </defs><g
-     transform="matrix(1.25,0,0,-1.25,-215.78479,814.11127)"
+     transform="matrix(1.25,0,0,-1.25,-215.78479,814.50279)"
      inkscape:label="fig-2-4-a"
      inkscape:groupmode="layer"
      id="g10"><path
@@ -308,7 +308,7 @@
    d="m 401.3191,548.01851 c 3.62929,-9.6722 19.00352,-9.6722 19.00352,0.51996" /><text
    transform="scale(1,-1)"
    xml:space="preserve"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Hiragino Mincho Pro;-inkscape-font-specification:Hiragino Mincho Pro Light"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
    x="301.53467"
    y="-641.65302"
    id="text4712"
@@ -317,8 +317,9 @@
      id="tspan4714"
      x="301.53467"
      y="-641.65302">パッチ<tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmr12;-inkscape-font-specification:cmr12"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"
    id="tspan4716"> 1</tspan></tspan></text>
+
 
 
 <text
@@ -327,14 +328,15 @@
    id="text4718"
    y="-550.94208"
    x="410.19992"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Hiragino Mincho Pro;-inkscape-font-specification:Hiragino Mincho Pro Light"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
    xml:space="preserve"><tspan
      y="-550.94208"
      x="410.19992"
      id="tspan4720"
      sodipodi:role="line">パッチ<tspan
    id="tspan4722"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmr12;-inkscape-font-specification:cmr12"> 2</tspan></tspan></text>
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"> 2</tspan></tspan></text>
+
 
 
 
@@ -343,7 +345,7 @@
    id="text5990"
    y="-550.9422"
    x="183.07367"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Hiragino Mincho Pro;-inkscape-font-specification:Hiragino Mincho Pro Light"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
    xml:space="preserve"
    transform="scale(1,-1)"><tspan
      y="-550.9422"
@@ -351,11 +353,12 @@
      id="tspan5992"
      sodipodi:role="line">パッチ<tspan
    id="tspan5994"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmr12;-inkscape-font-specification:cmr12"> 1</tspan></tspan></text>
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"> 1</tspan></tspan></text>
+
 
 <text
    xml:space="preserve"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Hiragino Mincho Pro;-inkscape-font-specification:Hiragino Mincho Pro Light"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
    x="183.07367"
    y="-539.60199"
    id="text5996"
@@ -365,13 +368,14 @@
      id="tspan5998"
      x="183.07367"
      y="-539.60199">パッチ<tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmr12;-inkscape-font-specification:cmr12"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"
    id="tspan6000"> 2</tspan></tspan></text>
+
 
 <text
    transform="scale(1,-1)"
    xml:space="preserve"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Hiragino Mincho Pro;-inkscape-font-specification:Hiragino Mincho Pro Light"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
    x="182.01962"
    y="-585.26917"
    id="text6002"
@@ -381,17 +385,19 @@
      y="-585.26917"
      id="tspan6012">内部の場</tspan></text>
 
+
 <text
    sodipodi:linespacing="125%"
    id="text6015"
    y="-564.30164"
    x="183.15735"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Hiragino Mincho Pro;-inkscape-font-specification:Hiragino Mincho Pro Light"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
    xml:space="preserve"
    transform="scale(1,-1)"><tspan
      id="tspan6019"
      y="-564.30164"
      x="183.15735"
      sodipodi:role="line">境界の場</tspan></text>
+
 
 </g></svg>
