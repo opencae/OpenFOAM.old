@@ -102,7 +102,7 @@ $\bm{a}$の回転$\nabla \times \bm{a}$は以下のベクトル場となりま�
 
 \subsection{ラプラシアン}
 \label{ssec:2.1.4}
-ラプラシアンは，数学的には$\nabla^{2} = \nabla \inProd \nabla$のように，
+ラプラシアンは，数学的には$\Laplacian = \nabla \inProd \nabla$のように，
 発散と勾配を組み合わせて定義できる演算です．
 しかしながらラプラシアンは，
 テンソルのランクを一つ上げる演算と一つ下げる演算の二つの組み合わせと考えるよりも，
@@ -112,7 +112,7 @@ $\bm{a}$の回転$\nabla \times \bm{a}$は以下のベクトル場となりま�
 ラプラシアンは以下のように\OFemph{スカラ演算子}として定義するのが最適です．
 \begin{align}
  \label{eq:2.8}
- \nabla^{2} \equiv \partial^{2} \equiv
+ \Laplacian \equiv \partial^{2} \equiv
  \frac{\partial^{2}}{\partial x_{1}^{2}}
  + \frac{\partial^{2}}{\partial x_{2}^{2}}
  + \frac{\partial^{2}}{\partial x_{3}^{2}}
@@ -120,7 +120,7 @@ $\bm{a}$の回転$\nabla \times \bm{a}$は以下のベクトル場となりま�
 例えば，スカラ場$s$のラプラシアンは以下のスカラ場になります．
 \begin{align}
  \label{eq:2.9}
- \nabla^{2}s \equiv \partial^{2}s \equiv
+ \Laplacian s \equiv \partial^{2}s \equiv
  \frac{\partial^{2}s}{\partial x_{1}^{2}}
  + \frac{\partial^{2}s}{\partial x_{2}^{2}}
  + \frac{\partial^{2}s}{\partial x_{3}^{2}}
@@ -330,7 +330,7 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
  \item[メッシュ] \OFclass{fvMesh}への参照ですが，
             その場がセル中心，面，などのうちどこで定義されているかに応じた
             いくつかの詳細情報も加わります．
- \item[次元] \href{../UserGuideJa/UserGuideJa.pdf#subsection.4.2.6}{ユーザガイドの4.2.6項}で述べる
+ \item[次元] \href{UserGuideJa.pdf#subsection.4.2.6}{ユーザガイドの4.2.6項}で述べる
             \OFclass{dimensionSet}です．
  \item[古い値] 時間微分の離散化には，前の時間ステップにおける場のデータが必要になります．
             \OFclass{geometricField<Type>}は，
@@ -416,7 +416,7 @@ OpenFOAMのコードにおいて偏微分方程式の各項は，
 \OFclass{finiteVolumeCalculus}を用いて記述されます．
 これらのクラスは\texttt{typedef}によって，それぞれ\OFclass{fvm}および\OFclass{fvc}と略されます．
 \OFclass{fvm}や\OFclass{fvc}は，
-例えば$\nabla^{2}$，$\nabla \inProd {}$および$\partial/\partial t$といった
+例えば$\Laplacian$，$\nabla \inProd {}$および$\partial/\partial t$といった
 \OFclass{geometricField<Type>}を離散化する微分演算子を表す静的な関数を備えています．
 これらの関数を，一つではなく二つのクラス\OFclass{fvm}と\OFclass{fvc}で定義しているのは，
 以下のように区別するためです．
@@ -542,7 +542,7 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
  \item[古い値] 前の時間ステップで保存された値$\phi^{o} \equiv \phi(t)$
  \item[二つ古い値] 二つ前の時間ステップで保存された値$\phi^{oo} \equiv \phi(t - \Delta t)$
 \end{description}
-\href{../UserGuideJa/UserGuideJa.pdf#section.4.4}{ユーザガイドの4.4節}に詳しく述べられているように，
+\href{UserGuideJa.pdf#section.4.4}{ユーザガイドの4.4節}に詳しく述べられているように，
 該当する入力ファイルの中で\OFkeyword{timeScheme}キーワードを使って，
 二つのうち一つの離散化スキームを宣言することができます．
 \begin{description}
@@ -797,7 +797,7 @@ solve(fvm::laplacian(phi) == f)
 例えば，非定常の拡散方程式を解きたいとします．
 \begin{align}
  \label{eq:2.37}
- \frac{\partial\phi}{\partial t} = \kappa\nabla^{2}\phi
+ \frac{\partial\phi}{\partial t} = \kappa\Laplacian\phi
 \end{align}
 これに対するオイラーの陰解法は以下のようになります．
 \begin{OFverbatim}[file]
