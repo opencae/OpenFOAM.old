@@ -3,11 +3,11 @@
 %%
 
 \def\OpenFOAM{%
-  {\usefont{OT1}{phv}{m}{n}Open}%
-  \kern-2\p@
-  \textcolor{blue}{\fontsize{1.5\cwd}{\cvs}\selectfont\usefont{OMS}{cmsy}{m}{n}\char114}%
-  \kern-2\p@
-  {\usefont{OT1}{phv}{m}{n}FOAM}}
+  {\usefont{T1}{phv}{m}{n}Open}%
+  \kern-0.125\cwd
+  \textcolor[rgb]{0.2, 0.2, 1}{\fontsize{1.5\cwd}{\cvs}\selectfont\usefont{OMS}{cmsy}{m}{n}\char114}%
+  \kern-0.125\cwd
+  {\usefont{T1}{phv}{m}{n}FOAM}}
 
 \def\OFdraft#1{\ifdim\overfullrule>\z@ #1\else\relax\fi}
 \def\OFrevision{\@ifstar{\OF@revision@}{\OF@revision}}
@@ -148,14 +148,19 @@
 \def\jdash{\penalty\z@\resizebox{2\Cwd}{\height}{\char\jis"213D\kern-.5zw\char\jis"213D}}
 \def\jhyphen{\char\jis"213E}%"
 
-\def\degree{^{\circ}}%
-\def\degC{\degree\mkern-1mu\mathrm{C}}%
+\def\micro{\text{\textmu}}
+
+% \def\degree{^{\circ}}%
+\def\degree{\text{\textdegree}}%
+% \def\degC{\degree\mkern-1mu\mathrm{C}}%
+\def\degC{\text{\textcelsius}}%
 \def\degR{\degree\mkern-1mu\mathrm{R}}%
 
 \def\@LapChar{\nabla^{2}}
 \def\Laplacian{\mathop{\@LapChar\null}}
 
 \def\nCo{\mathord{\mathit{Co}}}
+\def\nHa{\mathord{\mathit{Ha}}}
 \def\nPr{\mathord{\mathit{Pr}}}
 \def\nPe{\mathord{\mathit{Pe}}}
 \def\nRe{\mathord{\mathit{Re}}}

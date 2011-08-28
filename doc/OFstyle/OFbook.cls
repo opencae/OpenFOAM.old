@@ -137,13 +137,16 @@
 \paperheight297mm
 \paperwidth210mm
 \hoffset\z@ \voffset\z@
-\textwidth 45\Cwd
+\textwidth 40\Cwd
 \marginparwidth\z@ \marginparsep\z@
 \oddsidemargin\paperwidth
 \advance\oddsidemargin by-\textwidth
-\oddsidemargin.5\oddsidemargin
+\oddsidemargin.6\oddsidemargin
 \advance\oddsidemargin by-1in
-\evensidemargin\oddsidemargin
+\evensidemargin\paperwidth
+\advance\evensidemargin by-\textwidth
+\advance\evensidemargin by-2in
+\advance\evensidemargin by-\oddsidemargin
 \topskip\Cht
 \headheight12\p@
 \footskip27\p@
@@ -217,15 +220,16 @@
         \setcounter{page}{1}%
         \null\vfill
         \begin{center}%
-         {\HUGE\sffamily\OpenFOAM\par}%
+         {\fontsize{42.5\p@}{\cvs}\selectfont\sffamily\OpenFOAM\par}%
+         \vskip1.5\Cvs
          {\LARGE\gtfamily\sffamily オープンソースCFDツールボックス\par}%
          \vfill
          {\LARGE\gtfamily\sffamily \@title\par}%
          \vfill
-         {\normalfont Version \@version\par}%
-         {\normalfont\@date\par}%
+         {\large Version \@version\par}%
+         {\large\@date\par}%
          \vskip\Cvs
-         {\normalfont\@author\par}%
+         {\large\@author\par}%
          \vfill
         \end{center}%
         \global\let\maketitle\relax
@@ -252,7 +256,7 @@
 \def\@chappos{\postchaptername}
 \@addtoreset{equation}{chapter}
 \def\theequation{\thechapter.\@arabic\c@equation}
-\@addtoreset{footnote}{chapter}
+\@addtoreset{footnote}{page}
 \def\thefootnote{\fnsymbol{footnote}}
 \long\def\@makefntext#1{% #1: <footnote text>
         \parindent1zw
