@@ -1,7 +1,7 @@
 Index
 Symbols Numbers A B C D E F G H I J K L M N O P Q R S T U V W X Z
 Symbols
-UserGuide-Index.txt UserGuide.txt toIndexOnly.sh
+*
 tensor member function
 +
 tensor member function
