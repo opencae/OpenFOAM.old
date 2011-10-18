@@ -7,4 +7,5 @@ do
 	echo "$line"
     fi
 done
-) | sed -e /^U-[0-9]*/d -e "/^Index U-[0-9]*/d"  -e /^Open∇FOAM-/d -e "s/, [UP]-[0-9]*.*$//"
+) | sed -e /^U-[0-9]*/d -e "/^Index U-[0-9]*/d"  -e /^Open∇FOAM-/d
+
