@@ -2,143 +2,139 @@
 \begin{longtable}{lX}
  \multicolumn{2}{l}{状態方程式 --- equationOfState} \\
  \hline
-\index{icoPolynomial@\OFemph{icoPolynomial}!モデル}%
-\index{モデル!icoPolynomial@\OFemph{icoPolynomial}}%
- \OFemph{icoPolynomial} &
+\index{icoPolynomial@\OFclass{icoPolynomial}!モデル}%
+\index{モデル!icoPolynomial@\OFclass{icoPolynomial}}%
+ \OFclass{icoPolynomial} &
  液体などの非圧縮性流体に対する多項式の状態方程式 \\
-\index{perfectGas@\OFemph{perfectGas}!モデル}%
-\index{モデル!perfectGas@\OFemph{perfectGas}}%
- \OFemph{perfectGas} &
+\index{perfectGas@\OFclass{perfectGas}!モデル}%
+\index{モデル!perfectGas@\OFclass{perfectGas}}%
+ \OFclass{perfectGas} &
  理想気体状態方程式 \\
  \\
  \multicolumn{2}{l}{標準熱特性 --- thermo} \\
  \hline
-\index{eConstThermo@\OFemph{eConstThermo}!モデル}%
-\index{モデル!eConstThermo@\OFemph{eConstThermo}}%
- \OFemph{eConstThermo} &
+\index{eConstThermo@\OFclass{eConstThermo}!モデル}%
+\index{モデル!eConstThermo@\OFclass{eConstThermo}}%
+ \OFclass{eConstThermo} &
  内部エネルギ$e$とエントロピ$s$の評価を備えた，比熱$c_{\mathrm{p}}$一定のモデル \\
-\index{hConstThermo@\OFemph{hConstThermo}!モデル}%
-\index{モデル!hConstThermo@\OFemph{hConstThermo}}%
- \OFemph{hConstThermo} &
+\index{hConstThermo@\OFclass{hConstThermo}!モデル}%
+\index{モデル!hConstThermo@\OFclass{hConstThermo}}%
+ \OFclass{hConstThermo} &
  エンタルピ$h$とエントロピ$s$の評価を備えた，比熱$c_{\mathrm{p}}$一定のモデル \\
-\index{hPolynomialThermo@\OFemph{hPolynomialThermo}!モデル}%
-\index{モデル!hPolynomialThermo@\OFemph{hPolynomialThermo}}%
- \OFemph{hPolynomialThermo} &
+\index{hPolynomialThermo@\OFclass{hPolynomialThermo}!モデル}%
+\index{モデル!hPolynomialThermo@\OFclass{hPolynomialThermo}}%
+ \OFclass{hPolynomialThermo} &
  $h$と$s$を評価する多項式の係数の関数により$c_{\mathrm{p}}$が評価される \\
-\index{janafThermo@\OFemph{janafThermo}!モデル}%
-\index{モデル!janafThermo@\OFemph{janafThermo}}%
- \OFemph{janafThermo} &
+\index{janafThermo@\OFclass{janafThermo}!モデル}%
+\index{モデル!janafThermo@\OFclass{janafThermo}}%
+ \OFclass{janafThermo} &
  JANAFの熱物性表の係数から$c_{\mathrm{p}}$が評価され，
  それにより$h$，$s$が評価される． \\
  \\
  \multicolumn{2}{l}{派生熱特性 --- specieThermo} \\
  \hline
-\index{specieThermo@\OFemph{specieThermo}!モデル}%
-\index{モデル!specieThermo@\OFemph{specieThermo}}%
- \OFemph{specieThermo} &
+\index{specieThermo@\OFclass{specieThermo}!モデル}%
+\index{モデル!specieThermo@\OFclass{specieThermo}}%
+ \OFclass{specieThermo} &
  $c_{\mathrm{p}}$，$h$，そして/または，$s$から得られた特殊な熱特性 \\
  \\
  \multicolumn{2}{l}{輸送特性 --- transport} \\
  \hline
-\index{constTransport@\OFemph{constTransport}!モデル}%
-\index{モデル!constTransport@\OFemph{constTransport}}%
- \OFemph{constTransport} &
+\index{constTransport@\OFclass{constTransport}!モデル}%
+\index{モデル!constTransport@\OFclass{constTransport}}%
+ \OFclass{constTransport} &
  一定の輸送特性 \\
-\index{polynomialTransport@\OFemph{polynomialTransport}!モデル}%
-\index{モデル!polynomialTransport@\OFemph{polynomialTransport}}%
- \OFemph{polynomialTransport} &
+\index{polynomialTransport@\OFclass{polynomialTransport}!モデル}%
+\index{モデル!polynomialTransport@\OFclass{polynomialTransport}}%
+ \OFclass{polynomialTransport} &
  多項式に基づく温度依存輸送特性 \\
-\index{sutherlandTransport@\OFemph{sutherlandTransport}!モデル}%
-\index{モデル!sutherlandTransport@\OFemph{sutherlandTransport}}%
- \OFemph{sutherlandTransport} &
+\index{sutherlandTransport@\OFclass{sutherlandTransport}!モデル}%
+\index{モデル!sutherlandTransport@\OFclass{sutherlandTransport}}%
+ \OFclass{sutherlandTransport} &
  温度依存する輸送輸送のためのサザーランドの公式 \\
  \\
  \multicolumn{2}{l}{混合特性 --- mixture} \\
  \hline
-\index{pureMixture@\OFemph{pureMixture}!モデル}%
-\index{モデル!pureMixture@\OFemph{pureMixture}}%
- \OFemph{pureMixture} &
+\index{pureMixture@\OFclass{pureMixture}!モデル}%
+\index{モデル!pureMixture@\OFclass{pureMixture}}%
+ \OFclass{pureMixture} &
  不活性ガス混合の一般熱モデル計算 \\
-\index{homogeneousMixture@\OFemph{homogeneousMixture}!モデル}%
-\index{モデル!homogeneousMixture@\OFemph{homogeneousMixture}}%
- \OFemph{homogeneousMixture} &
+\index{homogeneousMixture@\OFclass{homogeneousMixture}!モデル}%
+\index{モデル!homogeneousMixture@\OFclass{homogeneousMixture}}%
+ \OFclass{homogeneousMixture} &
  正規化燃料質量分率$b$に基づく混合気燃焼 \\
-\index{inhomogeneousMixture@\OFemph{inhomogeneousMixture}!モデル}%
-\index{モデル!inhomogeneousMixture@\OFemph{inhomogeneousMixture}}%
- \OFemph{inhomogeneousMixture} &
+\index{inhomogeneousMixture@\OFclass{inhomogeneousMixture}!モデル}%
+\index{モデル!inhomogeneousMixture@\OFclass{inhomogeneousMixture}}%
+ \OFclass{inhomogeneousMixture} &
  $b$と総燃料質量分率$f_{\mathrm{t}}$に基づく混合気燃焼 \\
-\index{veryInhomogeneousMixture@\OFemph{veryInhomogeneousMixture}!モデル}%
-\index{モデル!veryInhomogeneousMixture@\OFemph{veryInhomogeneousMixture}}%
- \OFemph{veryInhomogeneousMixture} &
+\index{veryInhomogeneousMixture@\OFclass{veryInhomogeneousMixture}!モデル}%
+\index{モデル!veryInhomogeneousMixture@\OFclass{veryInhomogeneousMixture}}%
+ \OFclass{veryInhomogeneousMixture} &
  $b$と$f_{\mathrm{t}}$と未燃燃料質量分率$f_{\mathrm{u}}$に基づく混合気燃焼 \\
-\index{dieselMixture@\OFemph{dieselMixture}!モデル}%
-\index{モデル!dieselMixture@\OFemph{dieselMixture}}%
- \OFemph{dieselMixture} &
+\index{dieselMixture@\OFclass{dieselMixture}!モデル}%
+\index{モデル!dieselMixture@\OFclass{dieselMixture}}%
+ \OFclass{dieselMixture} &
  $f_{\mathrm{t}}$と$f_{\mathrm{u}}$に基づく混合気燃焼 \\
-\index{basicMultiComponentMixture@\OFemph{basicMultiComponentMixture}!モデル}%
-\index{モデル!basicMultiComponentMixture@\OFemph{basicMultiComponentMixture}}%
- \OFemph{basicMultiComponentMixture} &
+\index{basicMultiComponentMixture@\OFclass{basicMultiComponentMixture}!モデル}%
+\index{モデル!basicMultiComponentMixture@\OFclass{basicMultiComponentMixture}}%
+ \OFclass{basicMultiComponentMixture} &
  複数の成分に基づく基本的な混合気 \\
-\index{multiComponentMixture@\OFemph{multiComponentMixture}!モデル}%
-\index{モデル!multiComponentMixture@\OFemph{multiComponentMixture}}%
- \OFemph{multiComponentMixture} &
+\index{multiComponentMixture@\OFclass{multiComponentMixture}!モデル}%
+\index{モデル!multiComponentMixture@\OFclass{multiComponentMixture}}%
+ \OFclass{multiComponentMixture} &
  複数の成分に基づく派生的な混合気 \\
-\index{reactingMixture@\OFemph{reactingMixture}!モデル}%
-\index{モデル!reactingMixture@\OFemph{reactingMixture}}%
- \OFemph{reactingMixture} &
+\index{reactingMixture@\OFclass{reactingMixture}!モデル}%
+\index{モデル!reactingMixture@\OFclass{reactingMixture}}%
+ \OFclass{reactingMixture} &
  熱力学と反応スキームを用いた混合気燃焼 \\
-\index{egrMixture@\OFemph{egrMixture}!モデル}%
-\index{モデル!egrMixture@\OFemph{egrMixture}}%
- \OFemph{egrMixture} &
+\index{egrMixture@\OFclass{egrMixture}!モデル}%
+\index{モデル!egrMixture@\OFclass{egrMixture}}%
+ \OFclass{egrMixture} &
  排気ガス再循環の混合気 \\
-% \index{chemkinMixture@\OFemph{chemkinMixture}!モデル}%
-% \index{モデル!chemkinMixture@\OFemph{chemkinMixture}}%
-%  \OFemph{chemkinMixture} &
-%  CHEMKIN熱力学と反応スキームデータベースファイルを用いた混合気燃焼 \\
  \\
  \multicolumn{2}{l}{熱モデル --- thermoModel} \\
  \hline
-\index{hPsiThermo@\OFemph{hPsiThermo}!モデル}%
-\index{モデル!hPsiThermo@\OFemph{hPsiThermo}}%
- \OFemph{hPsiThermo} &
+\index{hPsiThermo@\OFclass{hPsiThermo}!モデル}%
+\index{モデル!hPsiThermo@\OFclass{hPsiThermo}}%
+ \OFclass{hPsiThermo} &
      エンタルピ$h$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{hsPsiThermo@\OFemph{hsPsiThermo}!モデル}%
-\index{モデル!hsPsiThermo@\OFemph{hsPsiThermo}}%
- \OFemph{hsPsiThermo} &
+\index{hsPsiThermo@\OFclass{hsPsiThermo}!モデル}%
+\index{モデル!hsPsiThermo@\OFclass{hsPsiThermo}}%
+ \OFclass{hsPsiThermo} &
 \OFrevision*{sensible enthalpy?}%
      顕在エンタルピ$h_{\mathrm{s}}$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{ePsiThermo@\OFemph{ePsiThermo}!モデル}%
-\index{モデル!ePsiThermo@\OFemph{ePsiThermo}}%
- \OFemph{ePsiThermo} &
+\index{ePsiThermo@\OFclass{ePsiThermo}!モデル}%
+\index{モデル!ePsiThermo@\OFclass{ePsiThermo}}%
+ \OFclass{ePsiThermo} &
      内部エネルギ$e$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{hRhoThermo@\OFemph{hRhoThermo}!モデル}%
-\index{モデル!hRhoThermo@\OFemph{hRhoThermo}}%
- \OFemph{hRhoThermo} &
+\index{hRhoThermo@\OFclass{hRhoThermo}!モデル}%
+\index{モデル!hRhoThermo@\OFclass{hRhoThermo}}%
+ \OFclass{hRhoThermo} &
      エンタルピ$h$に基づく一般熱物理モデル計算 \\
-\index{hsRhoThermo@\OFemph{hsRhoThermo}!モデル}%
-\index{モデル!hsRhoThermo@\OFemph{hsRhoThermo}}%
- \OFemph{hsRhoThermo}%
-\footnote{訳注：原文では\OFemph{hRhoThermo}となっているが，おそらく誤植．}%
+\index{hsRhoThermo@\OFclass{hsRhoThermo}!モデル}%
+\index{モデル!hsRhoThermo@\OFclass{hsRhoThermo}}%
+ \OFclass{hsRhoThermo}%
+\footnote{訳注：原文では\OFclass{hRhoThermo}となっているが，おそらく誤植．}%
  &
      顕在エンタルピ$h_{\mathrm{s}}$に基づく一般熱物理モデル計算 \\
-\index{hPsiMixtureThermo@\OFemph{hPsiMixtureThermo}!モデル}%
-\index{モデル!hPsiMixtureThermo@\OFemph{hPsiMixtureThermo}}%
- \OFemph{hPsiMixtureThermo} &
+\index{hPsiMixtureThermo@\OFclass{hPsiMixtureThermo}!モデル}%
+\index{モデル!hPsiMixtureThermo@\OFclass{hPsiMixtureThermo}}%
+ \OFclass{hPsiMixtureThermo} &
  エンタルピ$h$と$\psi$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hsPsiMixtureThermo@\OFemph{hsPsiMixtureThermo}!モデル}%
-\index{モデル!hsPsiMixtureThermo@\OFemph{hsPsiMixtureThermo}}%
- \OFemph{hsPsiMixtureThermo} &
+\index{hsPsiMixtureThermo@\OFclass{hsPsiMixtureThermo}!モデル}%
+\index{モデル!hsPsiMixtureThermo@\OFclass{hsPsiMixtureThermo}}%
+ \OFclass{hsPsiMixtureThermo} &
  顕在エンタルピ$h_{\mathrm{s}}$と$\psi$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hRhoMixtureThermo@\OFemph{hRhoMixtureThermo}!モデル}%
-\index{モデル!hRhoMixtureThermo@\OFemph{hRhoMixtureThermo}}%
- \OFemph{hRhoMixtureThermo} &
+\index{hRhoMixtureThermo@\OFclass{hRhoMixtureThermo}!モデル}%
+\index{モデル!hRhoMixtureThermo@\OFclass{hRhoMixtureThermo}}%
+ \OFclass{hRhoMixtureThermo} &
  エンタルピ$h$と$\rho$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hsRhoMixtureThermo@\OFemph{hsRhoMixtureThermo}!モデル}%
-\index{モデル!hsRhoMixtureThermo@\OFemph{hsRhoMixtureThermo}}%
- \OFemph{hsRhoMixtureThermo} &
+\index{hsRhoMixtureThermo@\OFclass{hsRhoMixtureThermo}!モデル}%
+\index{モデル!hsRhoMixtureThermo@\OFclass{hsRhoMixtureThermo}}%
+ \OFclass{hsRhoMixtureThermo} &
  顕在エンタルピ$h_{\mathrm{s}}$と$\rho$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hhuMixtureThermo@\OFemph{hhuMixtureThermo}!モデル}%
-\index{モデル!hhuMixtureThermo@\OFemph{hhuMixtureThermo}}%
- \OFemph{hhuMixtureThermo} &
+\index{hhuMixtureThermo@\OFclass{hhuMixtureThermo}!モデル}%
+\index{モデル!hhuMixtureThermo@\OFclass{hhuMixtureThermo}}%
+ \OFclass{hhuMixtureThermo} &
  未燃ガスと混合気燃焼のエンタルピ計算
 \end{longtable}

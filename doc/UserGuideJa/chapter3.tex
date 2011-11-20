@@ -60,8 +60,6 @@ OpenFOAMのメインプログラミング言語としてのC++の選択の背景
 そしてそれらの場，テンソル代数，テンソル解析，次元の単位などの
 概念を含んでおり，これらの解は離散化手法やマトリクス，
 ソルバそして解法アルゴリズムを必要とします．
-テンソル数学と値計算法については
-プログラマ・ガイドの第1\nobreak 章と第2\nobreak 章に記載しています．
 
 
 \subsection{オブジェクト指向とC++}
@@ -488,7 +486,7 @@ wclean <optionalArguments> <optionalDirectory>
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 1991-2010 OpenCFD Ltd.
+    \\  /    A nd           | Copyright (C) 2004-2010 OpenCFD Ltd.
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -565,11 +563,11 @@ int main(int argc, char *argv[])
 
             for (int corr=0; corr<nCorr; corr++)
             {
-                volScalarField rUA = 1.0/UEqn.A();
+                volScalarField rAU(1.0/UEqn.A());
 
-                U = rUA*UEqn.H();
+                U = rAU*UEqn.H();
                 phi = (fvc::interpolate(U) & mesh.Sf())
-                    + fvc::ddtPhiCorr(rUA, U, phi);
+                    + fvc::ddtPhiCorr(rAU, U, phi);
 
                 adjustPhi(phi, U, p);
 
@@ -580,7 +578,7 @@ int main(int argc, char *argv[])
 
                     fvScalarMatrix pEqn
                     (
-                        fvm::laplacian(rUA, p) == fvc::div(phi)
+                        fvm::laplacian(rAU, p) == fvc::div(phi)
                     );
 
                     pEqn.setReference(pRefCell, pRefValue);
@@ -606,7 +604,7 @@ int main(int argc, char *argv[])
 
                 #include "continuityErrs.H"
 
-                U -= rUA*fvc::grad(p);
+                U -= rAU*fvc::grad(p);
                 U.correctBoundaryConditions();
             }
         }
@@ -664,6 +662,7 @@ EXE_INC = \
     -I$(LIB_SRC)/finiteVolume/lnInclude
 
 EXE_LIBS = \
+    -lincompressibleTurbulenceModel \
     -lincompressibleRASModels \
     -lincompressibleLESModels \
     -lincompressibleTransportModels \
@@ -679,7 +678,7 @@ pisoFoam.C
 
 EXE = $(FOAM_APPBIN)/pisoFoam
 \end{OFverbatim}%$
-\OFpath{\$FOAM\_CFD/pisoFoam}ディレクトリで\verb|wmake|とタイプすれば
+\OFpath{\$FOAM\_SOLVERS/incompressible/pisoFoam}ディレクトリで\verb|wmake|とタイプすれば
 \OFtool{pisoFoam}をコンパイルできます．
 
 コードはコンパイルされ以下のようなメッセージをが作成されます．
@@ -689,12 +688,12 @@ SOURCE DIR=.
 SOURCE=pisoFoam.C ;
 g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 -DscalarMachine -DoptSolvers -DPARALLEL -DUSEMPI -Wall -O2 -DNoRepository
--ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-1.7.1/src/OpenFOAM/lnInclude
+-ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-2.0.0/src/OpenFOAM/lnInclude
 -IlnInclude
 -I.
 ......
 -lmpich -L/usr/X11/lib -lm
--o .../OpenFOAM/OpenFOAM-1.7.1/applications/bin/linuxOptMPICH/pisoFoam
+-o .../OpenFOAM/OpenFOAM-2.0.0/applications/bin/linuxOptMPICH/pisoFoam
 \end{OFverbatim}
 再コンパイルすることも可能ですが，
 実行ファイルが最新でコンパイルする必要がないというときには
@@ -702,7 +701,7 @@ g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 \begin{OFverbatim}[file]
 make: Nothing to be done for `allFiles'.
 make: `Make/linuxOptMPICH/dependencies' is up to date.
-make: `.../OpenFOAM/OpenFOAM-1.7.1/applications/bin/linuxOptMPICH/pisoFoam'
+make: `.../OpenFOAM/OpenFOAM-2.0.0/applications/bin/linuxOptMPICH/pisoFoam'
 is up to date.
 \end{OFverbatim}
 
@@ -720,7 +719,7 @@ OpenFOAMは，実行時にメッセージを出力するシステムを提供し
 そのスイッチは\OFpath{\$WM\_PROJECT\_DIR/etc/controlDict}ファイルの
 中にあり，設定を変更したい場合には，
 \OFpath{\$HOME}ディレクトリに (例えば
-\OFpath{\$HOME/.OpenFOAM/1.7.1/controlDict}ファイルのように) コピーを
+\OFpath{\$HOME/.OpenFOAM/2.0.0/controlDict}ファイルのように) コピーを
 作成します．スイッチが可能なリストは非常に多く，
 \OFtool{foamDebugSwitches}アプリケーションを実行することにより閲覧できます．
 スイッチのほとんどは，クラスまたは機能性のレンジと一致しており，
@@ -876,6 +875,22 @@ openMPIというパブリックドメインを使用しています．
 \OFdictionary{decomposeParDict}ディクショナリをコピーすることができます．
 そして，ディクショナリ中のエントリを次のように置き換えます．
 \begin{OFverbatim}[file, linenum=17]
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      decomposeParDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 numberOfSubdomains 4;
 
@@ -892,11 +907,6 @@ hierarchicalCoeffs
     n               ( 1 1 1 );
     delta           0.001;
     order           xyz;
-}
-
-metisCoeffs
-{
-    processorWeights ( 1 1 1 1 );
 }
 
 manualCoeffs
@@ -944,15 +954,8 @@ roots           ( );
             \OFkeyword{strategy}という任意のキーワードエントリがあり，
             複雑な文字列をScotchに渡すことにより分割の戦略を制御できます．
             さらなる情報を得るには，ソースコードファイル
-            \OFpath{\$FOAM\_SRC/decompositionMethods/%
-            decompositionMethods/scotchDecomp/scotchDecomp.C}を読んでください．
- \item[\OFkeyword{metis}]
-\index{metis@\OFkeyword{metis}!キーワードエントリ}%
-\index{キーワードエントリ!metis@\OFkeyword{metis}}%
-            METIS分割はScotchと似ていますが，
-            このライブラリは商用利用がフリーではないので，
-            将来リリースするOpenFOAMではScotchを支持し，
-            こちらは廃止していきます．
+            \scalebox{0.89}[1]{\OFpath{\$FOAM\_SRC/decompositionMethods/%
+            decompositionMethods/scotchDecomp/scotchDecomp.C}}を読んでください．
  \item[\OFkeyword{manual}]
 \index{manual@\OFkeyword{manual}!キーワードエントリ}%
 \index{キーワードエントリ!manual@\OFkeyword{manual}}%
@@ -1040,7 +1043,7 @@ mpirun --hostfile <machines> -np <nProcs>
 以下のコマンドを実行させる必要があります
 \begin{OFverbatim}[terminal]
 mpirun --hostfile machines -np 4 icoFoam -parallel > log &
-\end{OFverbatim}%$
+\end{OFverbatim}
 
 \subsection{複数のディスクへのデータの分配}
 \label{ssec:3.4.3}

@@ -1,14 +1,23 @@
 %#! platex UserGuideJa
 \begin{tabularx}{\textwidth}{lX}
- \multicolumn{2}{l}{ハイレベルデバッグスイッチ - サブディクショナリ DebugSwitches} \\
+ \multicolumn{2}{l}{ハイレベルデバッグスイッチ - サブディクショナリ \OFdictionary{DebugSwitches}} \\
  \hline
  \texttt{level} & OpenFOAMのデバッグメッセージの全体のレベル - - 0, 1, 2の3レベル \\
  \texttt{lduMatrix} & 実行中のソルバの収束メッセージ - 0, 1, 2の3レベル \\
  \\
- \multicolumn{2}{l}{最適化スイッチ - サブディクショナリ OptimisationSwitches} \\
+ \multicolumn{2}{l}{最適化スイッチ - サブディクショナリ \OFdictionary{OptimisationSwitches}} \\
  \hline
  \texttt{fileModificationSkew} & NFSの上でNFSのアップデートの最大遅れと
      OpenFOAM実行のための差分クロックより長く設定すべき時間（秒）． \\
+ \texttt{fileModificationChecking} & シミュレーション中にファイルが変更されたか
+     どうかをチェックする方法であり，\OFkeyword{timeStamp}を読む，
+     または\OFkeyword{inotify}（通知しない），
+     あるいはマスタ・ノードに存在するデータのみを読み込む\OFkeyword{timeStampMaster}，
+     \OFkeyword{inotifyMaster}があります． \\
+\texttt{commsType} & 並列計算の通信方法．\OFkeyword{nonBlocking}，
+     \OFkeyword{scheduled}，\OFkeyword{blocking}． \\
+\texttt{floatTransfer} & \OFkeyword{1}とすると，
+     転送の前に数値を\OFkeyword{float}の精度に丸めます．デフォルトは\OFkeyword{0}です． \\
  \texttt{nProcsSimpleSum} & 並列処理のために全領域の和を最適化します．
      階層和は線形和（デフォルトで16）よりよく機能し，
      プロセッサの数を設定します． \\

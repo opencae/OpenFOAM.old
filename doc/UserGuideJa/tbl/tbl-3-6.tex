@@ -28,6 +28,9 @@
 \index{engineSwirl@\OFtool{engineSwirl}!ユーティリティ}%
 \index{ユーティリティ!engineSwirl@\OFtool{engineSwirl}}%
  \OFtool{engineSwirl} & エンジン計算のために旋回流を発生させる \\
+\index{faceAgglomerate@\OFtool{faceAgglomerate}!ユーティリティ}%
+\index{ユーティリティ!faceAgglomerate@\OFtool{faceAgglomerate}}%
+ \OFtool{faceAgglomerate} & （いまのところ解説なし） \\
 \index{foamUpgradeFvSolution@\OFtool{foamUpgradeFvSolution}!ユーティリティ}%
 \index{ユーティリティ!foamUpgradeFvSolution@\OFtool{foamUpgradeFvSolution}}%
  \OFtool{foamUpgradeFvSolution} &
@@ -43,23 +46,34 @@
  分子動力学 (MD) シミュレーションのフィールドを初期化する． \\
 \index{setFields@\OFtool{setFields}!ユーティリティ}%
 \index{ユーティリティ!setFields@\OFtool{setFields}}%
- \OFtool{setFields} & ディクショナリでセルのセットを選択する \\
+ \OFtool{setFields} & ディクショナリによって，選択されたセル・パッチのセット上に値を設定する． \\
+\index{viewFactorGen@\OFtool{viewFactorGen}!ユーティリティ}%
+\index{ユーティリティ!viewFactorGen@\OFtool{viewFactorGen}}%
+ \OFtool{viewFactorGen} & （解説なし） \\
+\index{wallFunctionTable@\OFtool{wallFunctionTable}!ユーティリティ}%
+\index{ユーティリティ!wallFunctionTable@\OFtool{wallFunctionTable}}%
+ \OFtool{wallFunctionTable} & 乱流の壁関数で使いやすいように表を生成する． \\
  \\
  \multicolumn{2}{l}{メッシュ生成} \\
  \hline
 \index{blockMesh@\OFtool{blockMesh}!ユーティリティ}%
 \index{ユーティリティ!blockMesh@\OFtool{blockMesh}}%
  \OFtool{blockMesh} & マルチブロック・メッシュのジェネレータ \\
+\index{extrudeMesh@\OFtool{extrudeMesh}!ユーティリティ}%
+\index{ユーティリティ!extrudeMesh@\OFtool{extrudeMesh}}%
+ \OFtool{extrudeMesh} &
+ 既存のパッチやファイルから読み込んだパッチを
+ （デフォルトでは面の外側へ，オプションで反転して）押し出す． \\
 \index{extrude2DMesh@\OFtool{extrude2DMesh}!ユーティリティ}%
 \index{ユーティリティ!extrude2DMesh@\OFtool{extrude2DMesh}}%
  \OFtool{extrude2DMesh} &
  2Dメッシュ（すべての面が2点で，前後の面がない）を読み込み，
  与えられた厚さに押し出すことで3Dメッシュをつくる． \\
-\index{extrudeMesh@\OFtool{extrudeMesh}!ユーティリティ}%
-\index{ユーティリティ!extrudeMesh@\OFtool{extrudeMesh}}%
- \OFtool{extrudeMesh} &
- 既存のパッチやファイルから読み込んだパッチを押し出す
- （デフォルトでは面の外側へ，オプションで面を反転する） \\
+\index{extrudeToRegionMesh@\OFtool{extrudeToRegionMesh}!ユーティリティ}%
+\index{ユーティリティ!extrudeToRegionMesh@\OFtool{extrudeToRegionMesh}}%
+ \OFtool{extrudeToRegionMesh} &
+ \OFkeyword{faceZones}を個別のメッシュに（別の領域として）押し出す．
+ 例えば，液体の膜領域を作るために \\
 \index{snappyHexMesh@\OFtool{snappyHexMesh}!ユーティリティ}%
 \index{ユーティリティ!snappyHexMesh@\OFtool{snappyHexMesh}}%
  \OFtool{snappyHexMesh} &
@@ -74,6 +88,12 @@
 \index{cfx4ToFoam@\OFtool{cfx4ToFoam}!ユーティリティ}%
 \index{ユーティリティ!cfx4ToFoam@\OFtool{cfx4ToFoam}}%
  \OFtool{cfx4ToFoam} & CFX~4メッシュをOpenFOAM形式へ変換する \\
+\index{datToFoam@\OFtool{datToFoam}!ユーティリティ}%
+\index{ユーティリティ!datToFoam@\OFtool{datToFoam}}%
+ \OFtool{datToFoam} &
+ \OFtool{datToFoam}メッシュファイル内を読み，
+ \OFpath{points}ファイルを出力する．
+ \OFtool{blockMesh}との結合に使われる． \\
 \index{fluent3DMeshToFoam@\OFtool{fluent3DMeshToFoam}!ユーティリティ}%
 \index{ユーティリティ!fluent3DMeshToFoam@\OFtool{fluent3DMeshToFoam}}%
  \OFtool{fluent3DMeshToFoam} & FluentのメッシュをOpenFOAM形式に変換する \\
@@ -89,6 +109,10 @@
  \OFtool{foamToStarMesh} &
  OpenFOAMメッシュを読み込み，
  PROSTAR (v4) のbnd/cel/vrtフォーマットに書き出す \\
+\index{foamToSurface@\OFtool{foamToSurface}!ユーティリティ}%
+\index{ユーティリティ!foamToSurface@\OFtool{foamToSurface}}%
+ \OFtool{foamToSurface} &
+ OpenFOAMのメッシュを読み込み，面のフォーマットで境界を書き出す． \\
 \index{gambitToFoam@\OFtool{gambitToFoam}!ユーティリティ}%
 \index{ユーティリティ!gambitToFoam@\OFtool{gambitToFoam}}%
  \OFtool{gambitToFoam} & GAMBITメッシュをOpenFOAM形式へ変換する \\
@@ -112,21 +136,15 @@
 \index{ユーティリティ!plot3dToFoam@\OFtool{plot3dToFoam}}%
  \OFtool{plot3dToFoam} &
  Plot3dメッシュ（アスキー形式）をOpenFOAM形式に変換 \\
-\index{polyDualMesh@\OFtool{polyDualMesh}!ユーティリティ}%
-\index{ユーティリティ!polyDualMesh@\OFtool{polyDualMesh}}%
- \OFtool{polyDualMesh} &
-\OFrevision*{意味不明}%
- polyMeshの二重を計算し，
- すべてのフィーチャやパッチのエッジに忠実にする． \\
 \index{sammToFoam@\OFtool{sammToFoam}!ユーティリティ}%
 \index{ユーティリティ!sammToFoam@\OFtool{sammToFoam}}%
  \OFtool{sammToFoam} & STAR-CD SAMMメッシュをOpenFOAM形式へ変換する \\
+\index{star3ToFoam@\OFtool{star3ToFoam}!ユーティリティ}%
+\index{ユーティリティ!star3ToFoam@\OFtool{star3ToFoam}}%
+ \OFtool{star3ToFoam} & STAR-CD (v3) PROSTARメッシュをOpenFOAM形式へ変換する \\
 \index{star4ToFoam@\OFtool{star4ToFoam}!ユーティリティ}%
 \index{ユーティリティ!star4ToFoam@\OFtool{star4ToFoam}}%
  \OFtool{star4ToFoam} & STAR-CD (v4) PROSTARメッシュをOpenFOAM形式へ変換する \\
-\index{starToFoam@\OFtool{starToFoam}!ユーティリティ}%
-\index{ユーティリティ!starToFoam@\OFtool{starToFoam}}%
- \OFtool{starToFoam} & STAR-CD PROSTARメッシュをOpenFOAM形式へ変換する \\
 \index{tetgenToFoam@\OFtool{tetgenToFoam}!ユーティリティ}%
 \index{ユーティリティ!tetgenToFoam@\OFtool{tetgenToFoam}}%
  \OFtool{tetgenToFoam} & tetgenにより書かれた.ele，
@@ -145,9 +163,9 @@
 \index{autoPatch@\OFtool{autoPatch}!ユーティリティ}%
 \index{ユーティリティ!autoPatch@\OFtool{autoPatch}}%
  \OFtool{autoPatch} & ユーザが指定した角度に基づいて外部面をパッチに分割する \\
-\index{cellSet@\OFtool{cellSet}!ユーティリティ}%
-\index{ユーティリティ!cellSet@\OFtool{cellSet}}%
- \OFtool{cellSet} & ディクショナリでセルのセットを選択する \\
+% \index{cellSet@\OFtool{cellSet}!ユーティリティ}%
+% \index{ユーティリティ!cellSet@\OFtool{cellSet}}%
+%  \OFtool{cellSet} & ディクショナリでセルのセットを選択する \\
 \index{checkMesh@\OFtool{checkMesh}!ユーティリティ}%
 \index{ユーティリティ!checkMesh@\OFtool{checkMesh}}%
  \OFtool{checkMesh} & メッシュの妥当性をチェックする \\
@@ -164,9 +182,9 @@
 \index{ユーティリティ!deformedGeom@\OFtool{deformedGeom}}%
  \OFtool{deformedGeom} & \OFtool{polyMesh}を変位場\OFkeyword{U}と
  引数として与えられた尺度因子により変形させる \\
-\index{faceSet@\OFtool{faceSet}!ユーティリティ}%
-\index{ユーティリティ!faceSet@\OFtool{faceSet}}%
- \OFtool{faceSet} & ディクショナリで面のセットを選択する \\
+% \index{faceSet@\OFtool{faceSet}!ユーティリティ}%
+% \index{ユーティリティ!faceSet@\OFtool{faceSet}}%
+%  \OFtool{faceSet} & ディクショナリで面のセットを選択する \\
 \index{flattenMesh@\OFtool{flattenMesh}!ユーティリティ}%
 \index{ユーティリティ!flattenMesh@\OFtool{flattenMesh}}%
  \OFtool{flattenMesh} & 2次元デカルトメッシュの前後の面を平らにする \\
@@ -197,9 +215,15 @@
 \index{objToVTK@\OFtool{objToVTK}!ユーティリティ}%
 \index{ユーティリティ!objToVTK@\OFtool{objToVTK}}%
  \OFtool{objToVTK} & obj線（面ではない）のファイルを読み込み，vtkに変換する \\
-\index{pointSet@\OFtool{pointSet}!ユーティリティ}%
-\index{ユーティリティ!pointSet@\OFtool{pointSet}}%
- \OFtool{pointSet} & ディクショナリで点のセットを選択する \\
+\index{polyDualMesh@\OFtool{polyDualMesh}!ユーティリティ}%
+\index{ユーティリティ!polyDualMesh@\OFtool{polyDualMesh}}%
+ \OFtool{polyDualMesh} &
+\OFrevision*{意味不明}%
+ polyMeshの二重を計算し，
+ すべてのフィーチャやパッチのエッジに忠実にする． \\
+% \index{pointSet@\OFtool{pointSet}!ユーティリティ}%
+% \index{ユーティリティ!pointSet@\OFtool{pointSet}}%
+%  \OFtool{pointSet} & ディクショナリで点のセットを選択する \\
 \index{refineMesh@\OFtool{refineMesh}!ユーティリティ}%
 \index{ユーティリティ!refineMesh@\OFtool{refineMesh}}%
  \OFtool{refineMesh} & 複数の方向にあるセルを細分化する． \\
@@ -218,6 +242,11 @@
  \OFtool{setsToZones} & メッシュに
  \OFkeyword{pointZones}/\OFkeyword{faceZones}/\OFkeyword{cellZones}を，
  同様に名づけられた\OFkeyword{pointSets}/\OFkeyword{faceSets}/\OFkeyword{cellSets}から追加する \\
+\index{singleCellMesh@\OFtool{singleCellMesh}!ユーティリティ}%
+\index{ユーティリティ!singleCellMesh@\OFtool{singleCellMesh}}%
+ \OFtool{singleCellMesh} & メッシュの一つのセルを残して全て削除する．
+ 境界のみのデータに使うためのメッシュと場を生成するのに使われる．
+ paraviewで境界を見ているだけだと不正なメッシュになるかもしれない． \\
 \index{splitMesh@\OFtool{splitMesh}!ユーティリティ}%
 \index{ユーティリティ!splitMesh@\OFtool{splitMesh}}%
  \OFtool{splitMesh} & 内部の面の外面を作ることでメッシュを分割する．\OFtool{attachDetach}を用いる \\
@@ -230,6 +259,10 @@
 \index{subsetMesh@\OFtool{subsetMesh}!ユーティリティ}%
 \index{ユーティリティ!subsetMesh@\OFtool{subsetMesh}}%
  \OFtool{subsetMesh} & \OFtool{cellSet}に基づいたメッシュの区分を選択する \\
+\index{topoSet@\OFtool{topoSet}!ユーティリティ}%
+\index{ユーティリティ!topoSet@\OFtool{topoSet}}%
+ \OFtool{topoSet} & ディクショナリによって
+ \OFkeyword{faceSets}/\OFkeyword{cellSets}/\OFkeyword{pointSets}を操作する． \\
 \index{transformPoints@\OFtool{transformPoints}!ユーティリティ}%
 \index{ユーティリティ!transformPoints@\OFtool{transformPoints}}%
  \OFtool{transformPoints} & 平行移動，回転，拡大・縮小のオプションにしたがって，
@@ -255,6 +288,10 @@
 \index{modifyMesh@\OFtool{modifyMesh}!ユーティリティ}%
 \index{ユーティリティ!modifyMesh@\OFtool{modifyMesh}}%
  \OFtool{modifyMesh} & メッシュ要素を操作する \\
+\index{PDRMesh@\OFtool{PDRMesh}!ユーティリティ}%
+\index{ユーティリティ!PDRMesh@\OFtool{PDRMesh}}%
+ \OFtool{PDRMesh} & PDRタイプのシミュレーションのための
+ メッシュおよび場の調整ユーティリティ \\
 \index{refineHexMesh@\OFtool{refineHexMesh}!ユーティリティ}%
 \index{ユーティリティ!refineHexMesh@\OFtool{refineHexMesh}}%
  \OFtool{refineHexMesh} & セルを$2 \times 2 \times 2$に分割して
@@ -289,12 +326,12 @@
  \OFtool{fieldview9Reader} &
  OpenFOAMのメッシュとデータを読み込むための
  Fieldview 9の読み込みモジュール \\
-\index{PV3FoamReader@\OFtool{PV3FoamReader}!ユーティリティ}%
-\index{ユーティリティ!PV3FoamReader@\OFtool{PV3FoamReader}}%
- \OFtool{PV3FoamReader} & ParaView 3の読み込みモジュール \\
-\index{PVFoamReader@\OFtool{PVFoamReader}!ユーティリティ}%
-\index{ユーティリティ!PVFoamReader@\OFtool{PVFoamReader}}%
- \OFtool{PVFoamReader} & ParaViewの読み込みモジュール \\
+% \index{PV3FoamReader@\OFtool{PV3FoamReader}!ユーティリティ}%
+% \index{ユーティリティ!PV3FoamReader@\OFtool{PV3FoamReader}}%
+%  \OFtool{PV3FoamReader} & ParaView 3の読み込みモジュール \\
+% \index{PVFoamReader@\OFtool{PVFoamReader}!ユーティリティ}%
+% \index{ユーティリティ!PVFoamReader@\OFtool{PVFoamReader}}%
+%  \OFtool{PVFoamReader} & ParaViewの読み込みモジュール \\
  \\
  \multicolumn{2}{l}{データ変換の後処理} \\
  \hline
@@ -437,7 +474,14 @@ obtained from field phi.'' の訳を掲載した．}%
  \OFtool{particleTracks} &
  \OFrevision*{用語不明：tracked-parcel-type cloud}%
  パーセル追跡タイプの雲を使って計算されたケースの
- 粒子の飛跡をVTKファイルに書き出す \\
+ 粒子の飛跡をVTKファイルに書き出す． \\
+\index{steadyParticleTracks@\OFtool{steadyParticleTracks}!ユーティリティ}%
+\index{ユーティリティ!steadyParticleTracks@\OFtool{steadyParticleTracks}}%
+ \OFtool{steadyParticleTracks} &
+ \OFrevision*{用語不明：steady-state cloud}%
+ 定常状態の雲を使って計算されたケースの
+ 粒子の飛跡をVTKファイルに書き出す．
+ 注意：使う前に（並列で計算しているなら）ケースを再構築しておく必要がある． \\
  \\
  \multicolumn{2}{l}{サンプリングの後処理} \\
  \hline
@@ -464,11 +508,17 @@ obtained from field phi.'' の訳を掲載した．}%
 \index{ユーティリティ!execFlowFunctionObjects@\OFtool{execFlowFunctionObjects}}%
  \OFtool{execFlowFunctionObjects} & 選択された時間セットに対して，
  選択されたディクショナリ (デフォルトでは\OFdictionary{system/controlDict}) で
- 指定された関数オブジェクトのセットを実行する \\
+ 指定された関数オブジェクトのセットを実行する．
+ 代わりのディクショナリは\OFdictionary{system/}フォルダ以下に置く． \\
+\index{foamCalc@\OFtool{foamCalc}!ユーティリティ}%
+\index{ユーティリティ!foamCalc@\OFtool{foamCalc}}%
+ \OFtool{foamCalc} & 指定された時刻におけるフィールド計算の汎用ユーティリティ． \\
+\index{foamListTimes@\OFtool{foamListTimes}!ユーティリティ}%
+\index{ユーティリティ!foamListTimes@\OFtool{foamListTimes}}%
+ \OFtool{foamListTimes} & timeSelectorを使って時刻をリスト化する． \\
 \index{pdfPlot@\OFtool{pdfPlot}!ユーティリティ}%
 \index{ユーティリティ!pdfPlot@\OFtool{pdfPlot}}%
- \OFtool{pdfPlot} & 確率密度関数をプロットするための\hskip\xkanjiskip
- \texttt{.obj}ファイルを生成する \\
+ \OFtool{pdfPlot} & 確率密度関数のグラフを生成する． \\
 \index{postChannel@\OFtool{postChannel}!ユーティリティ}%
 \index{ユーティリティ!postChannel@\OFtool{postChannel}}%
  \OFtool{postChannel} & チャンネル流計算のポストプロセスデータ \\
@@ -482,6 +532,121 @@ obtained from field phi.'' の訳を掲載した．}%
 \index{ユーティリティ!writeCellCentres@\OFtool{writeCellCentres}}%
  \OFtool{writeCellCentres} &  三つのコンポーネントを，
  閾値化してポストプロセスで使えるようにvolScalarFieldsとして書き出す \\
+ \\
+ \multicolumn{2}{l}{面メッシュ (例えばSTL) ツール} \\
+ \hline
+\index{surfaceAdd@\OFtool{surfaceAdd}!ユーティリティ}%
+\index{ユーティリティ!surfaceAdd@\OFtool{surfaceAdd}}%
+ \OFtool{surfaceAdd} & 二つの面を加える．点を幾何学的に同化させる．
+ 三角形の重複や交差のチェックは行わない． \\
+\index{surfaceAutoPatch@\OFtool{surfaceAutoPatch}!ユーティリティ}%
+\index{ユーティリティ!surfaceAutoPatch@\OFtool{surfaceAutoPatch}}%
+ \OFtool{surfaceAutoPatch} & 特性角度によって面をパッチにする．
+ \OFtool{autoPatch}と同様． \\
+\index{surfaceCheck@\OFtool{surfaceCheck}!ユーティリティ}%
+\index{ユーティリティ!surfaceCheck@\OFtool{surfaceCheck}}%
+ \OFtool{surfaceCheck} & （いまのところ解説なし） \\
+\index{surfaceClean@\OFtool{surfaceClean}!ユーティリティ}%
+\index{ユーティリティ!surfaceClean@\OFtool{surfaceClean}}%
+ \OFtool{surfaceClean} & - 邪魔板を除去，- 小さなエッジをつぶして三角形を除去，
+ - 細長い三角形の頂点を底辺に射影してエッジに分解する． \\
+\index{surfaceCoarsen@\OFtool{surfaceCoarsen}!ユーティリティ}%
+\index{ユーティリティ!surfaceCoarsen@\OFtool{surfaceCoarsen}}%
+ \OFtool{surfaceCoarsen} & `bunnylod' を使って面を粗くする． \\
+\index{surfaceConvert@\OFtool{surfaceConvert}!ユーティリティ}%
+\index{ユーティリティ!surfaceConvert@\OFtool{surfaceConvert}}%
+ \OFtool{surfaceConvert} & ある面メッシュの書式を他のものに変換する． \\
+\index{surfaceFeatureConvert@\OFtool{surfaceFeatureConvert}!ユーティリティ}%
+\index{ユーティリティ!surfaceFeatureConvert@\OFtool{surfaceFeatureConvert}}%
+ \OFtool{surfaceFeatureConvert} & edgeMeshの書式との変換を行う． \\
+\index{surfaceFeatureExtract@\OFtool{surfaceFeatureExtract}!ユーティリティ}%
+\index{ユーティリティ!surfaceFeatureExtract@\OFtool{surfaceFeatureExtract}}%
+ \OFtool{surfaceFeatureExtract} & 面要素を取り出し，ファイルに書き込む． \\
+\index{surfaceFind@\OFtool{surfaceFind}!ユーティリティ}%
+\index{ユーティリティ!surfaceFind@\OFtool{surfaceFind}}%
+ \OFtool{surfaceFind} & 近くの面と頂点を見つける． \\
+\index{surfaceInertia@\OFtool{surfaceInertia}!ユーティリティ}%
+\index{ユーティリティ!surfaceInertia@\OFtool{surfaceInertia}}%
+ \OFtool{surfaceInertia} & コマンドラインで指定されたtriSurfaceの
+ 慣性テンソル・慣性主軸・慣性モーメントを計算する．
+ 慣性は固形物や薄い殻のものかもしれない．%
+\OFrevision{？}%
+ \\
+\index{surfaceMeshConvert@\OFtool{surfaceMeshConvert}!ユーティリティ}%
+\index{ユーティリティ!surfaceMeshConvert@\OFtool{surfaceMeshConvert}}%
+ \OFtool{surfaceMeshConvert} & オプションでcoordinateSystem上での
+ スケーリングや変形（回転・移動）を伴って，面のフォーマットを変換する． \\
+\index{surfaceMeshConvertTesting@\OFtool{surfaceMeshConvertTesting}!ユーティリティ}%
+\index{ユーティリティ!surfaceMeshConvertTesting@\OFtool{surfaceMeshConvertTesting}}%
+ \OFtool{surfaceMeshConvertTesting} & ある面メッシュのフォーマットを他のものに変換する．
+ ただし現時点では試験的な機能． \\
+\index{surfaceMeshExport@\OFtool{surfaceMeshExport}!ユーティリティ}%
+\index{ユーティリティ!surfaceMeshExport@\OFtool{surfaceMeshExport}}%
+ \OFtool{surfaceMeshExport} & オプションでcoordinateSystem上での
+ スケーリングや変形（回転・移動）を伴って，
+ surfMeshをさまざまなサードパーティの面フォーマットにエクスポートする． \\
+\index{surfaceMeshImport@\OFtool{surfaceMeshImport}!ユーティリティ}%
+\index{ユーティリティ!surfaceMeshImport@\OFtool{surfaceMeshImport}}%
+ \OFtool{surfaceMeshImport} & オプションでcoordinateSystem上での
+ スケーリングや変形（回転・移動）を伴って，
+ さまざまなサードパーティの面フォーマットからsurfMeshにインポートする． \\
+\index{surfaceMeshInfo@\OFtool{surfaceMeshInfo}!ユーティリティ}%
+\index{ユーティリティ!surfaceMeshInfo@\OFtool{surfaceMeshInfo}}%
+ \OFtool{surfaceMeshInfo} & 面メッシュに関するさまざまな情報 \\
+\index{surfaceMeshTriangulate@\OFtool{surfaceMeshTriangulate}!ユーティリティ}%
+\index{ユーティリティ!surfaceMeshTriangulate@\OFtool{surfaceMeshTriangulate}}%
+ \OFtool{surfaceMeshTriangulate} & polyMeshからtriSurfaceを取り出す．
+ 全ての境界面を三角形にする．三角形の領域番号はpolyMeshのパッチ番号になる．
+ オプションで名前のついたパッチのみを三角形にする． \\
+\index{surfaceOrient@\OFtool{surfaceOrient}!ユーティリティ}%
+\index{ユーティリティ!surfaceOrient@\OFtool{surfaceOrient}}%
+ \OFtool{surfaceOrient} & ユーザが与えた「外側の」点に従って，法線を設定する．
+ \texttt{-inside}とすると，与えた点は内側とみなされる． \\
+\index{surfacePointMerge@\OFtool{surfacePointMerge}!ユーティリティ}%
+\index{ユーティリティ!surfacePointMerge@\OFtool{surfacePointMerge}}%
+ \OFtool{surfacePointMerge} & 面上で，絶対距離以内にある点をマージする．
+ 絶対距離であることに注意． \\
+\index{surfaceRedistributePar@\OFtool{surfaceRedistributePar}!ユーティリティ}%
+\index{ユーティリティ!surfaceRedistributePar@\OFtool{surfaceRedistributePar}}%
+ \OFtool{surfaceRedistributePar} & triSurfaceを（再）配置する．
+ 分解されていない面またはすでに分解された面を，
+ それぞれのプロセッサがそのメッシュにオーバラップする三角形全てをもつように再配置する． \\
+\index{surfaceRefineRedGreen@\OFtool{surfaceRefineRedGreen}!ユーティリティ}%
+\index{ユーティリティ!surfaceRefineRedGreen@\OFtool{surfaceRefineRedGreen}}%
+ \OFtool{surfaceRefineRedGreen} &
+ 三角形の三辺全てを分割して精密化する (`red' 精密化)．
+ （精密化するようマークされていない）隣り合う三角形は，
+ 半分にして (`green') 精密化する．
+ \OFrevision{？}
+ (R. Verfuerth, ``A review of a posteriori error estimation and
+ adaptive mesh refinement techniques'', Wiley-Teubner, 1996) \\
+\index{surfaceSmooth@\OFtool{surfaceSmooth}!ユーティリティ}%
+\index{ユーティリティ!surfaceSmooth@\OFtool{surfaceSmooth}}%
+ \OFtool{surfaceSmooth} & 単純なラプラシアン・スムーザの例 \\
+\index{surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}!ユーティリティ}%
+\index{ユーティリティ!surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}}%
+ \OFtool{surfaceSplitByPatch} & triSurfaceの領域を個別のファイルに書きだす． \\
+\index{surfaceSplitNonManifolds@\OFtool{surfaceSplitNonManifolds}!ユーティリティ}%
+\index{ユーティリティ!surfaceSplitNonManifolds@\OFtool{surfaceSplitNonManifolds}}%
+ \OFtool{surfaceSplitNonManifolds} & 複雑に接続された面を，
+ 点を複製することで複雑に接続されたエッジにおいて分割しようとする．
+ コンセプトを紹介すると，
+ \OFrevision{？}
+ - borderEdgeは四つの面が接続しているエッジ，
+ - borderPointeはちょうど二つのborderEdgeが接続している点，
+ - borderLineはborderEdgeの接続リスト． \\
+\index{surfaceSubset@\OFtool{surfaceSubset}!ユーティリティ}%
+\index{ユーティリティ!surfaceSubset@\OFtool{surfaceSubset}}%
+ \OFtool{surfaceSubset} & triSurfaceの見たい部分だけを選択して区分化する面の解析ツール．
+ \OFtool{subsetMesh}に基づいている． \\
+\index{surfaceToPatch@\OFtool{surfaceToPatch}!ユーティリティ}%
+\index{ユーティリティ!surfaceToPatch@\OFtool{surfaceToPatch}}%
+ \OFtool{surfaceToPatch} & 面を読み込み，メッシュに面の領域を適用する．
+ 難しい作業にはboundaryMeshを使う． \\
+\index{surfaceTransformPoints@\OFtool{surfaceTransformPoints}!ユーティリティ}%
+\index{ユーティリティ!surfaceTransformPoints@\OFtool{surfaceTransformPoints}}%
+ \OFtool{surfaceTransformPoints} & 面を変形（拡大縮小・回転）する．
+ \OFtool{transformPoints}と同様であるが対象は面． \\
  \\
  \multicolumn{2}{l}{並行処理} \\
  \hline
@@ -520,33 +685,10 @@ obtained from field phi.'' の訳を掲載した．}%
  \OFtool{equilibriumFlameT} & 与えられた燃料の種類・燃焼していない気体の
  温度と平衡定数に対して酸素，水，二酸化炭素の分離の影響を考慮して
  平衡状態の炎の温度を計算する \\
-\index{IFCLookUpTableGen@\OFtool{IFCLookUpTableGen}!ユーティリティ}%
-\index{ユーティリティ!IFCLookUpTableGen@\OFtool{IFCLookUpTableGen}}%
- \OFtool{IFCLookUpTableGen} &
- 与えられた燃料についてフィートの関数で無限の速さの化学関係を計算する。出力はモルで与えられる。 \\
 \index{mixtureAdiabaticFlameT@\OFtool{mixtureAdiabaticFlameT}!ユーティリティ}%
 \index{ユーティリティ!mixtureAdiabaticFlameT@\OFtool{mixtureAdiabaticFlameT}}%
  \OFtool{mixtureAdiabaticFlameT} & 与えられた混合・温度に対して
  断熱状態の炎の温度を計算する \\
- \\
- \multicolumn{2}{l}{エラーの推量} \\
- \hline
-\index{estimateScalarError@\OFtool{estimateScalarError}!ユーティリティ}%
-\index{ユーティリティ!estimateScalarError@\OFtool{estimateScalarError}}%
- \OFtool{estimateScalarError} & 標準フォームによる
- スカラ輸送方程式の解の誤差を予想する \\
-\index{icoErrorEstimate@\OFtool{icoErrorEstimate}!ユーティリティ}%
-\index{ユーティリティ!icoErrorEstimate@\OFtool{icoErrorEstimate}}%
- \OFtool{icoErrorEstimate} & 非圧縮性層流CFDアプリケーション
- icoFoamの解の誤差を予想する \\
-\index{icoMomentError@\OFtool{icoMomentError}!ユーティリティ}%
-\index{ユーティリティ!icoMomentError@\OFtool{icoMomentError}}%
- \OFtool{icoMomentError} & 非圧縮性層流CFDアプリケーション
- icoFoamの解の誤差を予想する \\
-\index{momentScalarError@\OFtool{momentScalarError}!ユーティリティ}%
-\index{ユーティリティ!momentScalarError@\OFtool{momentScalarError}}%
- \OFtool{momentScalarError} & 標準フォームによる
- スカラ輸送方程式の解の誤差を予想する \\
  \\
  \multicolumn{2}{l}{様々なユーティリティ} \\
  \hline
@@ -564,7 +706,7 @@ obtained from field phi.'' の訳を掲載した．}%
  ケースに関わる\OFkeyword{IOobject}をすべて変換する \\
 \index{foamInfoExec@\OFtool{foamInfoExec}!ユーティリティ}%
 \index{ユーティリティ!foamInfoExec@\OFtool{foamInfoExec}}%
- \OFtool{foamInfoExec} & ケースを調べ，スクリーンに情報を表示する \\
+ \OFtool{foamInfoExec} & ケースを調べ，標準出力に情報を書きだす． \\
 \index{patchSummary@\OFtool{patchSummary}!ユーティリティ}%
 \index{ユーティリティ!patchSummary@\OFtool{patchSummary}}%
  \OFtool{patchSummary} & 指定された時刻について，

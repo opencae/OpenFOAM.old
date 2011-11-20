@@ -123,8 +123,8 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
             高温と低温の両方で同じ定数が用いられる．
  \item[hPolynomialThermo]
             $c_{\mathrm{p}}$を温度の関数として，任意次数の多項式によって計算する．
-            次のケースがその使用例である：
-            \OFpath{\$FOAM\_TUTORIALS/lagrangian/porousExplicitSourceReactingParcelFoam/filter}
+            次のケースがその使用例である：\\
+            \hfil\OFpath{\$FOAM\_TUTORIALS/lagrangian/porousExplicitSourceReactingParcelFoam/filter}
 \end{description}
 
 
@@ -142,7 +142,8 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
 \begin{description}
  \item[constTransport]
             $\mu$とプラントル数$\nPr = c_{\mathrm{p}}\mu/\kappa$が一定であると仮定する．
-            ここでは，\verb|<thermoCoeffs>| の後に$\mu$と$\nPr$の二つの値を続けて指定する．
+            ここでは，\break
+            \verb|<thermoCoeffs>| の後に$\mu$と$\nPr$の二つの値を続けて指定する．
  \item[sutherlandTransport]
             $\mu$を温度$T$の関数として計算する．
             これには，サザーランド係数$A_{\mathrm{s}}$とサザーランド温度$T_{\mathrm{s}}$を用いる．
@@ -312,8 +313,9 @@ boundaryField
 // ************************************************************************* //
 \end{OFverbatim}
 本リリースでは様々な壁関数モデルが利用できます．
-たとえば，\OFkeyword{nutWallFunction}，\OFkeyword{nutRoughWallFunction}，
-\OFkeyword{nutSpalartAllmarasStandardRoughWallFunction}，
+たとえば，\OFkeyword{nutWallFunction}，\break
+\OFkeyword{nutRoughWallFunction}，
+\OFkeyword{nutSpalartAllmarasStandardRoughWallFunction}，\break
 \OFkeyword{nutSpalartAllmarasStandardWallFunction}，
 そして\OFkeyword{nutSpalartAllmarasWallFunction}．
 ユーザは，当該ディレクトリから，すべての壁関数モデルのリストを参照できます．

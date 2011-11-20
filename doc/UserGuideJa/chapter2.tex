@@ -134,8 +134,8 @@ OpenFOAMで提供されるメッシュ・ジェネレータ\OFtool{blockMesh}は
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  1.7.1                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|  \\    /   O peration     | Version:  2.0.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -149,7 +149,7 @@ FoamFile
 
 convertToMeters 0.1;
 
-vertices
+vertices        
 (
     (0 0 0)
     (1 0 0)
@@ -161,35 +161,48 @@ vertices
     (0 1 0.1)
 );
 
-blocks
+blocks          
 (
     hex (0 1 2 3 4 5 6 7) (20 20 1) simpleGrading (1 1 1)
 );
 
-edges
+edges           
 (
 );
 
-patches
+boundary
 (
-    wall movingWall
-    (
-        (3 7 6 2)
-    )
-    wall fixedWalls
-    (
-        (0 4 7 3)
-        (2 6 5 1)
-        (1 5 4 0)
-    )
-    empty frontAndBack
-    (
-        (0 3 2 1)
-        (4 5 6 7)
-    )
+
+    movingWall 
+    {
+        type wall;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+    fixedWalls 
+    {
+        type wall;
+        faces
+        (
+            (0 4 7 3)
+            (2 6 5 1)
+            (1 5 4 0)
+        );
+    }
+    frontAndBack 
+    {
+        type empty;
+        faces
+        (
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
 );
 
-mergePatchPairs
+mergePatchPairs 
 (
 );
 
@@ -221,7 +234,7 @@ mergePatchPairs
 \begin{OFverbatim}[terminal]
 blockMesh
 \end{OFverbatim}
-\OFtool{blockMesh}の実行状況はターミナルウインドウに表示されます．
+\OFtool{blockMesh}の実行状況はターミナルウィンドウに表示されます．
 \index{blockMeshDict@\OFdictionary{blockMeshDict}!ディクショナリ}%
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
 \OFdictionary{blockMeshDict}ファイルに誤りがあった場合，
@@ -475,13 +488,13 @@ writeFormat     ascii;
 
 writePrecision  6;
 
-writeCompression uncompressed;
+writeCompression off;
 
 timeFormat      general;
 
 timePrecision   6;
 
-runTimeModifiable yes;
+runTimeModifiable true;
 
 
 // ************************************************************************* //
@@ -529,17 +542,17 @@ paraFoam
 paraFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \end{OFverbatim}%$
 
-\autoref{fig:6.1}に示すように\OFtool{ParaView}のウインドウが開きます．
+\autoref{fig:6.1}に示すように\OFtool{ParaView}のウィンドウが開きます．
 \index{Pipeline Browser@\OFemph{Pipeline Browser}!ウィンドウ}%
 \index{ウィンドウ!Pipeline Browser@\OFemph{Pipeline Browser}}%
 \OFemph{Pipeline Browser}を見ると，\OFtool{ParaView}が\OFkeyword{cavity.OpenFOAM}，
 つまりキャビティケースのモデュールを開いていることが確認できます．
 \emph{\OFemph{Apply}ボタンをクリックする前に}%
-\index{Region Status@\OFemph{Region Status}!ウィンドウパネル}%
-\index{ウィンドウパネル!Region Status@\OFemph{Region Status}}%
-\OFemph{Region Status}とパネルから
+\index{Mesh Parts@\OFemph{Mesh Parts}!ウィンドウパネル}%
+\index{ウィンドウパネル!Mesh Parts@\OFemph{Mesh Parts}}%
+\OFemph{Mesh Parts}パネルから
 表示する要素を選択する必要があります．
-解析ケースが単純なので\OFemph{Region Status}パネルのチェックボックスで
+解析ケースが単純なので\OFemph{Mesh Parts}パネルのチェックボックスで
 全てのデータを選択することが簡単です．
 パネル内の全要素を自動的にチェックすることができます．
 \OFtool{ParaView}でジオメトリを読込むためには\OFemph{Apply}ボタンをクリックします．
@@ -622,7 +635,7 @@ icoFoam
 \begin{OFverbatim}[terminal]
 icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \end{OFverbatim}%$
-ジョブの進捗は，ターミナルウインドウに表示されます．
+ジョブの進捗は，ターミナルウィンドウに表示されます．
 現在の時刻，最大クーラン数，全てのフィールドの初期値と最終的結果を表示します．
 
 
@@ -630,7 +643,7 @@ icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \label{ssec:2.1.4}
 結果が時刻ディレクトリに書かれるとすぐに，
 \OFtool{paraFoam}を使って見ることができます．
-\OFtool{paraFoam}ウインドウに戻って，
+\OFtool{paraFoam}ウィンドウに戻って，
 \texttt{cavity.OpenFOAM}ケースモジュールの
 \index{Properties@\OFemph{Properties}!ウィンドウパネル}%
 \index{ウィンドウパネル!Properties@\OFemph{Properties}}%
@@ -644,11 +657,11 @@ icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 最初に必須の実行時間として$0.5\unit{s}$分のデータを読込まなければなりません．
 ケースが実行中で一方\OFtool{ParaView}を開いている場合，
 時間ディレクトリの出力データは\OFtool{ParaView}に自動的にロードはされません．
-データをロードするためには，\OFemph{Properties}画面で
-\index{Update GUI@\OFemph{Update GUI}!ボタン}%
-\index{ボタン!Update GUI@\OFemph{Update GUI}}%
-\OFemph{Update GUI}を選択し，
-緑のApplyボタンをクリックします． そうすれば時間データはロードされます．
+データをロードするためには，\OFemph{Properties}ウィンドウで
+\index{Refresh Times@\OFemph{Refresh Times}!ボタン}%
+\index{ボタン!Refresh Times@\OFemph{Refresh Times}}%
+\OFemph{Refresh Times}をクリックします．
+これで各時刻のデータが\OFtool{ParaView}にロードされます．
 
 \subsubsection{等値面とコンタプロット}
 \label{sssec:2.1.4.1}
@@ -699,7 +712,7 @@ Active Variable Controls toolbarかDisplay windowの
 Color panelにあるEdit Color Map buttonをクリックすると
 フォントの大きさや種類，スケールの番号付けの形式など，
 カラーバーの設定を変更することができます．
-カラーバーはドラッグアンドドロップによりimageウインドウに置くことも可能です．
+カラーバーはドラッグアンドドロップによりimageウィンドウに置くことも可能です．
 
 最近のバージョンのParaViewでは，
 よく使われる青・緑・赤という（虹色の）カラースケールではなく，
@@ -714,7 +727,8 @@ ParaViewはいつもこのタイプのカラーバーを使うようになりま
 確認できます．正しいコンタ図を得るために断面を作成するか，
 \autoref{sssec:6.1.6.1}に示すsliceフィルタを用いてジオメトリを
 スライスします．\autoref{sssec:6.1.6.1}に示すsliceフィルタを用います．
-断面の中心座標は$(0.05, 0.05, 0.005)$，基準点は$(0, 0, 1)$とします．
+断面の中心座標は$(0.05, 0.05, 0.005)$，
+基準点は$(0, 0, 1)$とします (\OFemph{Z Normal}ボタンをクリックします)．
 断面を作成後，\autoref{ssec:6.1.6}に示すcontourフィルタによってコンタを描画します．
 
 
@@ -736,34 +750,42 @@ ParaViewはいつもこのタイプのカラーバーを使うようになりま
 \label{sssec:2.1.4.2}
 流速ベクトルを描画する前に，先に作成した断面やコンタなどの
 他のモジュールは不要なので取り除きましょう．
-Pipeline Browserでそれらのモジュールを選択し，
+\OFemph{Pipeline Browser}でそれらのモジュールを選択し，
 Properties PanelのDeleteをクリックして削除するか，
-Pipeline Browserで目の形のボタンをクリックして
+\OFemph{Pipeline Browser}で目の形のボタンをクリックして
 それらのモジュールを非表示にします．
 
 各格子の中心におけるベクトルグラフを作成することにしましょう．
 まず，\autoref{sssec:6.1.7.1}に述べるように
 格子の中心のデータのみに絞り込みます．
-Pipeline Browser上で強調表示されている
+\OFemph{Pipeline Browser}上で強調表示されている
 cavity.OpenFOAMのモジュールを選択し，
-FilterメニューからCell Centersを選択してApplyをクリックします．
+Filter $\rightarrow$ AlphabeticalメニューからCell Centersを選択してApplyをクリックします．
 
-Centersが強調表示され，FilterメニューからGlyphを選択します．
-\autoref{fig:2.6}のようなPropertiesウインドウが表示されます．
-Propertiesパネルの結果ではvectorsメニューはベクトル場は速度のみなので
-速度場Uが選択されています．
-Scale Modeは速度のVector Magnitudeが初期値として選択されていますが，
-offを選択し，Set Scale Factorに0.005をにして全体のの速度を見ます．
-Applyをクリックすると単色，例えば白，のベクトルが表示されます．
-通常は\OFemph{Display}パネルで\OFkeyword{Color by U}を選択して大きさに応じた色付けをします．
-\OFkeyword{Edit Color Map}を\OFemph{Show Color Legend}に設定し，
+\OFemph{Pipeline Browser}でCentersが強調表示された状態で，
+Filter $\rightarrow$ AlphabeticalメニューからGlyphを選択します．
+\autoref{fig:2.6}のような\OFemph{Properties}ウィンドウが表示されます．
+この\OFemph{Properties}パネルの\OFkeyword{vectors}メニューでは，
+ベクトル場は速度のみなので，速度場\OFkeyword{U}が自動的に選択されています．
+\OFkeyword{Scale Mode}は速度の\OFkeyword{Vector Magnitude}が初期値として選択されていますが，
+領域全体を通る速度の様子を見るために，\OFkeyword{off}を選択し，
+\OFemph{Set Scale Factor}に0.005をにします．
+\OFemph{Apply}をクリックするとベクトルが表示されますが，単色，例えば白になっているでしょう．
+通常は\OFemph{Display}パネルで\OFkeyword{Color by U}を選択して速度に応じた色付けをします．
+\OFkeyword{Edit Color Map}の中で\OFemph{Show Color Legend}を選択し，
 速度の凡例を表示させましょう．出力結果は\autoref{fig:2.7}のようになります．
 \index{Color Legend@\OFemph{Color Legend}!ウィンドウ}%
 \index{ウィンドウ!Color Legend@\OFemph{Color Legend}}%
 \OFemph{Color Legend}（凡例）にはTimes Romanフォントが使用され，
-Automatic Label Formatを解除してLabel Formatテキストボックスに
+\OFemph{Automatic Label Format}を解除して\OFemph{Label Format}テキストボックスに
 \verb|%-#6.2f|を入力することで二つの有効数字でラベルを固定しています．
-背景色はView SettingsのGeneral Panelで白に設定されています．
+背景色は，\autoref{sssec:6.1.5.1}で述べるように，
+\OFkeyword{View Settings}の\OFemph{General}パネルで白に設定されています．
+
+左右の壁において，ベトルが壁面を通り抜けるように見えていることに注意してください．
+しかし，さらによく調べると，この壁に垂直な方向を向いている速度は$0$であることがわかります．
+この少し混乱する状態は，スケーリングが\OFkeyword{off}で速度が$0$のとき，
+\OFtool{ParaView}は$x$方向のベクトルで表示するということに起因します．
 
 
 \begin{figure}[ht]
@@ -979,7 +1001,7 @@ cd $FOAM_RUN/tutorials/incompressible/icoFoam
 touch cavityFine/cavityFine.OpenFOAM
 \end{OFverbatim}%$
 
-こうしてFileメニューからOpen Dataを選んでディレクトリツリーをたどり，
+こうしてFileメニューからOpen Dataを選んでディレクトリツリーをたどり，\break
 \texttt{cavityFine.OpenFOAM}を選ぶことで，
 cavityFineケースをParaViewに読み込めるようになりました．
 さて，\OFtool{ParaView}で精密なメッシュの結果の
@@ -1053,45 +1075,45 @@ foamCalc components U
 とても高性能な出力を表示ができます．
 しかしながら，出版用にグラフを作成するならばgnuplotやGrace/xmgrなどの
 専用のグラフ描画ソフトを使って生データから作画するのがよいでしょう．
-これを行うには，\autoref{ssec:2.2.3}または\autoref{sec:6.5}で述べる
+これを行うには，\autoref{sec:6.5}や\autoref{ssec:2.2.3}で述べる
 \OFtool{sample}ユーティリティを使うとよいでしょう．
 
 描画をする前に，新しく生成された\OFkeyword{Ux}，\OFkeyword{Uy}，\OFkeyword{Uz}のデータを
 \OFtool{ParaView}に読み込ませる必要があります．
-作業をしている基本のモジュール，
-この場合\texttt{cavity.OpenFOAM}の\OFemph{Properties}パネルの上部にある
-\OFemph{Update GUI}ボタンをチェックしします．
-\OFemph{Apply}をクリックすることでVol Field Statusウインドウに
-新しいデータが読み込まれます．
-新しいデータの選択と変更の適用を確認し，
-必要なら\OFemph{Apply}をもう一度クリックします．
-境界領域が\OFemph{Region Status}パネルで選択されていると
+これには，\texttt{cavity.OpenFOAM}モジュールのPropertiesパネルの上部にある
+Refresh Timesをクリックします．
+これにより，\OFtool{ParaView}に新しいフィールドが読み込まれ，
+Volume Fieldsウィンドウに現れます．
+新しいフィールドを選択し，変更が適用されたことを確認します．
+つまり，必要ならApplyを再度クリックします．
+また，Mesh Partsパネルで境界領域が選択されているならば，
 境界部分のデータ補間が不適切に行われています．
-したがって\OFkeyword{movingwall}や\OFkeyword{fixedwall}，\OFkeyword{frontAndBack}といった
-\OFemph{Region Status}パネルのパッチの選択を解除して変更を適用します．
+したがって，Mesh Partsパネルで，
+\OFkeyword{movingwall}や\OFkeyword{fixedwall}，\OFkeyword{frontAndBack}といった
+パッチの選択を解除して，変更を適用します．
 
 さて，\OFtool{ParaView}でグラフを表示してみましょう．
 まずは描画したいモジュールを選択し，
 \index{Plot Over Line@\OFkeyword{Plot Over Line}!メニューエントリ}%
 \index{メニューエントリ!Plot Over Line@\OFkeyword{Plot Over Line}}%
 \OFkeyword{Plot Over Line}フィルタをFilter $\rightarrow$ Data Analisysから選択します．
-3D Viewウインドウの傍に新しいXY Plotウインドウが開きます．
-Propertiesウインドウで線の終点を指定すると
+3D Viewウィンドウの下または横に新しいXY Plotウィンドウが開きます．
+Propertiesウィンドウで線の終点を指定すると
 Plobelineモジュールが作成されます．
 この例ではPoint1を$(0.05, 0, 0.005)$，
 Point2を$(0.05, 0.1, 0.005)$と指定して線を領域の中心の真上におきます．
 Resolutionは100まで設定できます．
 
-ApplyをクリックするとXY Plotウインドウにグラフが描画されます．
-Displayパネルの
-\index{Plot Type@\OFkeyword{Plot Type}!メニュー}%
-\index{メニュー!Plot Type@\OFkeyword{Plot Type}}%
-\OFkeyword{Plot Type}をScatter Plotに設定し，
-Attribute Mode Point Dataにします．
-Use Data Arrayオプションの\verb|arc_length|でX軸データがキャビティの
-底からの距離になります．
+ApplyをクリックするとXY Plotウィンドウにグラフが描画されます．
+Displayパネルで，
+\index{Attribute Mode@\OFkeyword{Attribute Mode}!メニュー}%
+\index{メニュー!Attribute Mode@\OFkeyword{Attribute Mode}}%
+\texttt{Attribute Mode}を\texttt{Point Data}に設定します．
+\texttt{Use Data Array}オプションを\texttt{X Axis Data}にし，
+\verb|arc_length|オプションを加えて，
+グラフの$x$軸データがキャビティの底からの距離になるようにできます．
 
-DisplaysウインドウのLine Seriesパネルから
+DisplaysウィンドウのLine Seriesパネルから
 表示するデータを選択することができます．
 表示されているスカラ場のリストから，
 ベクトルの大きさや成分を初期値とすることもできます．
@@ -1100,17 +1122,15 @@ DisplaysウインドウのLine Seriesパネルから
 選択した系列の上の四角形の色が線の色です．
 この上でダブルクリックをすれば簡単に変更することができます．
 
-グラフを初期化するにはXY Plot自体を動かします．
-カーソルがグラフ上にある状態で右クリックして
-メニューからPropertiesを選択します．
-各軸のタイトルや形式の設定をする
-\index{Chart Options@\OFemph{Chart Options}!ウィンドウ}%
-\index{ウィンドウ!Chart Options@\OFemph{Chart Options}}%
-\OFemph{Chart Options}ウインドウが表示されます．
-各軸のメニューはダブルクリックをしてLayout and Tytleにすることで
-拡大することができます．
-フォントや色，軸名の位置，軸の値の範囲や線形か対数かといった
-設定が行うことができます．
+グラフの体裁を整えるには，\OFemph{Line Series}パネルの下にある設定，
+\texttt{Line Color}，\texttt{Line Thickness}，\texttt{Line Style}，
+\texttt{Marker Style}，そして\texttt{Chart Axes}を変更します．
+
+また，\OFemph{XY Plot}の左上にあるボタンをクリックすることもできます．
+例えば，3番目のボタンでは，それぞれの軸のタイトルや凡例などを設定する
+\OFemph{View Settings}を制御することができます．
+また，軸のタイトルのフォント，色，配置，
+値の範囲や線形・対数表示など，様々な設定を行うことができます．
 
 \autoref{fig:2.11}は\OFtool{ParaView}によって作画された図です．
 望みどおりのグラフが作成できます．
@@ -1192,9 +1212,25 @@ $20 \times 20$セルのメッシュを作り，
 それぞれのブロックは$x$方向，$y$方向に10セルを有し，
 もっとも大きなセルともっとも小さなセルとの大きさの比は2です．
 \begin{OFverbatim}[file, linenum=17]
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
 convertToMeters 0.1;
 
-vertices
+vertices        
 (
     (0 0 0)
     (0.5 0 0)
@@ -1216,7 +1252,7 @@ vertices
     (1 1 0.1)
 );
 
-blocks
+blocks          
 (
     hex (0 1 4 3 9 10 13 12) (10 10 1) simpleGrading (2 2 1)
     hex (1 2 5 4 10 11 14 13) (10 10 1) simpleGrading (0.5 2 1)
@@ -1224,37 +1260,49 @@ blocks
     hex (4 5 8 7 13 14 17 16) (10 10 1) simpleGrading (0.5 0.5 1)
 );
 
-edges
+edges           
 (
 );
 
-patches
+boundary
 (
-    wall movingWall
-    (
-        (6 15 16 7)
-        (7 16 17 8)
-    )
-    wall fixedWalls
-    (
-        (3 12 15 6)
-        (0 9 12 3)
-        (0 1 10 9)
-        (1 2 11 10)
-        (2 5 14 11)
-        (5 8 17 14)
-    )
-    empty frontAndBack
-    (
-        (0 3 4 1)
-        (1 4 5 2)
-        (3 6 7 4)
-        (4 7 8 5)
-        (9 10 13 12)
-        (10 11 14 13)
-        (12 13 16 15)
-        (13 14 17 16)
-    )
+    movingWall
+    {
+        type wall;
+        faces
+        (
+            (6 15 16 7)
+            (7 16 17 8)
+        );
+    }
+    fixedWalls
+    {
+        type wall;
+        faces
+        (
+            (3 12 15 6)
+            (0 9 12 3)
+            (0 1 10 9)
+            (1 2 11 10)
+            (2 5 14 11)
+            (5 8 17 14)
+        );
+    }
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 3 4 1)
+            (1 4 5 2)
+            (3 6 7 4)
+            (4 7 8 5)
+            (9 10 13 12)
+            (10 11 14 13)
+            (12 13 16 15)
+            (13 14 17 16)
+        );
+    }
 );
 
 mergePatchPairs
@@ -1356,7 +1404,7 @@ mapFields ../cavityFine -consistent
 これは大変に低い条件であり，
 したがってキャビティの底部中央に小さな二次渦を伴うのみで，
 迅速に安定解を導くことができました．
-しかし，ここでレイノルズ数を$50$に上げると，
+しかし，ここでレイノルズ数を$100$に上げると，
 収束解を得るのにより長い時間を要することになります．
 そこで\OFcase{cavity}ケースのメッシュを初期条件として使用することとします．
 \OFpath{cavity}ケースディレクトリを\OFpath{cavityHighRe}という名前でコピーします．
@@ -1485,7 +1533,7 @@ ExecutionTime = 1.02 s  ClockTime = 1 s
 実行不可能であります．
 そのかわりに，
 \index{らんりゅうモデル@乱流モデル!RAS}%
-レイノルズ平均応力 (RAS) 乱流モデルが
+レイノルズ平均シミューレション (RAS) 乱流モデルが
 平均流れの挙動を解くのに用いられ，
 ゆらぎの統計値が計算されています．
 壁関数を伴う標準$k$--$\varepsilon$モデルが
@@ -1510,10 +1558,9 @@ OpenFOAMソルバにおいて実行されます．
 壁近傍のセルにおける流れがモデル化されることにより，
 壁方向へのメッシュ勾配は必ずしも必要ではありません．
 
-バージョン1.6から，
-壁関数は個別のパッチの境界条件として設定するようになり，
-壁関数の範囲を指定することが可能になりました．
-これにより，異なる壁面に異なる壁関数モデルを適用することが可能になります．
+OpenFOAMでは，様々な壁関数モデルを利用することができ，
+それぞれのパッチの境界条件として設定します．
+これにより，壁面ごとに異なる壁関数モデルを適用することが可能になります．
 壁関数の選択は，乱流粘性係数$\nu_{\mathrm{t}}$の
 ファイル\OFpath{0/nut}で指定します．
 \begin{OFverbatim}[file, linenum=17]
@@ -1526,12 +1573,12 @@ boundaryField
 {
     movingWall
     {
-        type            nutWallFunction;
+        type            nutkWallFunction;
         value           uniform 0;
     }
     fixedWalls
     {
-        type            nutWallFunction;
+        type            nutkWallFunction;
         value           uniform 0;
     }
     frontAndBack
@@ -1591,21 +1638,14 @@ $20\unit{\%}$に等しいとすると，次のように表されます．
 上記のとおり$k$，$\varepsilon$を設定してください．
 $U$と$p$に対する初期条件は前と同じように，
 それぞれ$(0, 0, 0)$と$0$です．
-バージョン1.6より以前のOpenFOAMでは，
-RASやlarge-edy simulation (LES) のような，
-乱流モデルのタイプはソルバによって決まっていました．
-これにより，RAS乱流モデルを採用していたほとんどのソルバに
-LESモデルを採用した同等のソルバが存在し，
-ソルバのコードに多くの重複がみられました．
-しかし，バージョン1.6からは，実行時に
-\index{turbulenceProperties@\OFdictionary{turbulenceProperties}!ディクショナリ}%
-\index{ディクショナリ!turbulenceProperties@\OFdictionary{turbulenceProperties}}%
-\OFpath{turbulenceProperties}ディクショナリで
-\index{simulationType@\OFkeyword{simulationType}!キーワード}%
-\index{キーワード!simulationType@\OFkeyword{simulationType}}%
-\OFkeyword{simulationType}キーワードを設定することにより，
-乱流のモデリング手法を選択できるようになりました．
-このファイルは\OFpath{constant}ディレクトリに存在します．
+
+OpenFOAMで提供されている乱流モデルには，
+例えばRASやlarge-edy simulation (LES) のような，
+さまざまな手法があります．
+ほとんどの非定常ソルバでは，乱流のモデリング手法は
+実行時に\OFdictionary{turbulenceProperties}ディクショナリの
+\OFkeyword{simulationType}キーワードで選択できます．
+このファイルは\OFpath{constant}ディレクトリの中に見つかります．
 \begin{OFverbatim}[file, linenum=17]
 
 simulationType  RASModel;
@@ -1643,7 +1683,7 @@ RASモデリングの選択は
 （たとえば\OFkeyword{kEpsilon}モデルなら\OFkeyword{kEpsilonCoeffs}）
 のサブディクショナリとして表示されます．
 モデルの係数は，必要に応じて\OFdictionary{RASProperties}ディクショナリに
-サブディクショナリを追加し，値を適宜調整することで変更することができます．
+サブディクショナリを追加（コピー\&ペースト）し，値を適宜調整することで変更することができます．
 
 次いで，
 \index{transportProperties@\OFdictionary{transportProperties}!ディクショナリ}%
@@ -1666,7 +1706,7 @@ RASモデリングの選択は
 
 \subsubsection{コードの実行}
 \label{sssec:2.1.8.2}
-ケースディレクトリに入り，\texttt{pisoFoam}とタイプすることで
+ケースディレクトリに入り，ターミナルで\texttt{pisoFoam}とタイプすることで
 \OFtool{pisoFoam}を実行します．
 粘性が小さいこの計算ケースでは，
 移動している上面近傍の境界層は極めて薄く，
@@ -1711,10 +1751,10 @@ $20\unit{s}$にセットします．
 底部右側，長さ$0.04\unit{m}$の正方形を除いたものであり，
 \OFdictionary{blockMeshDict}は以下のようになっています．
 \begin{OFverbatim}[file, linenum=17]
- convertToMeters 0.1;
+convertToMeters 0.1;
 
- vertices
- (
+vertices
+(
     (0 0 0)
     (0.6 0 0)
     (0 0.4 0)
@@ -1732,51 +1772,64 @@ $20\unit{s}$にセットします．
     (0 1 0.1)
     (0.6 1 0.1)
     (1 1 0.1)
- );
 
- blocks
- (
+);
+
+blocks
+(
     hex (0 1 3 2 8 9 11 10) (12 8 1) simpleGrading (1 1 1)
     hex (2 3 6 5 10 11 14 13) (12 12 1) simpleGrading (1 1 1)
     hex (3 4 7 6 11 12 15 14) (8 12 1) simpleGrading (1 1 1)
- );
+);
 
- edges
- (
- );
+edges
+(
+);
 
- patches
- (
-    wall lid
-    (
-        (5 13 14 6)
-        (6 14 15 7)
-    )
-    wall fixedWalls
-    (
-        (0 8 10 2)
-        (2 10 13 5)
-        (7 15 12 4)
-        (4 12 11 3)
-        (3 11 9 1)
-        (1 9 8 0)
-    )
-    empty frontAndBack
-    (
-        (0 2 3 1)
-        (2 5 6 3)
-        (3 6 7 4)
-        (8 9 11 10)
-        (10 11 14 13)
-        (11 12 15 14)
-    )
- );
+boundary
+(
+    lid
+    {
+        type wall;
+        faces
+        (
+            (5 13 14 6)
+            (6 14 15 7)
+        );
+    }
+    fixedWalls
+    {
+        type wall;
+        faces
+        (
+            (0 8 10 2)
+            (2 10 13 5)
+            (7 15 12 4)
+            (4 12 11 3)
+            (3 11 9 1)
+            (1 9 8 0)
+        );
+    }
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 2 3 1)
+            (2 5 6 3)
+            (3 6 7 4)
+            (8 9 11 10)
+            (10 11 14 13)
+            (11 12 15 14)
+        );
+    }
+);
 
- mergePatchPairs
- (
- );
+mergePatchPairs
+(
+);
 
- // ************************************************************************* //
+// ************************************************************************* //
 \end{OFverbatim}
 \OFtool{blockMesh}を実行してメッシュを生成します．
 パッチは\OFcase{cavity}ケースと同様に設定されています．
@@ -1910,9 +1963,7 @@ Acceptボタンをクリックすると，形状のこれらのアイテムは�
 なお平面ひずみ条件は，3次元方向に厚い固体に対して適用されます．
 
 円形の穴を有する無限大に大きく薄い板への負荷に対しては，
-解析解が存在します．垂直の対称面%
-\footnote{訳注：の面}%
-における法線方向応力の解は以下となります．
+解析解が存在します．垂直な対称面における法線方向応力の解は以下となります．
 \begin{align}
  \label{eq:2.14}
  (\sigma_{xx})_{x=0} =
@@ -1960,7 +2011,7 @@ OpenFOAMでは全てのジオメトリが3次元で生成されます．
 \begin{OFverbatim}[file, linenum=17]
 convertToMeters 1;
 
-vertices        
+vertices
 (
     (0.5 0 0)
     (1 0 0)
@@ -1986,7 +2037,7 @@ vertices
     (0 0.5 0.5)
 );
 
-blocks          
+blocks
 (
     hex (5 4 9 10 16 15 20 21) (10 10 1) simpleGrading (1 1 1)
     hex (0 1 4 5 11 12 15 16) (10 10 1) simpleGrading (1 1 1)
@@ -1995,7 +2046,7 @@ blocks
     hex (9 4 7 8 20 15 18 19) (10 20 1) simpleGrading (1 1 1)
 );
 
-edges           
+edges
 (
     arc 0 5 (0.469846 0.17101 0)
     arc 5 10 (0.17101 0.469846 0)
@@ -2007,46 +2058,70 @@ edges
     arc 15 20 (0.34202 0.939693 0.5)
 );
 
-patches         
+boundary
 (
-    symmetryPlane left 
-    (
-        (8 9 20 19)
-        (9 10 21 20)
-    )
-    patch right 
-    (
-        (2 3 14 13)
-        (3 6 17 14)
-    )
-    symmetryPlane down 
-    (
-        (0 1 12 11)
-        (1 2 13 12)
-    )
-    patch up 
-    (
-        (7 8 19 18)
-        (6 7 18 17)
-    )
-    patch hole 
-    (
-        (10 5 16 21)
-        (5 0 11 16)
-    )
-    empty frontAndBack 
-    (
-        (10 9 4 5)
-        (5 4 1 0)
-        (1 4 3 2)
-        (4 7 6 3)
-        (4 9 8 7)
-        (21 16 15 20)
-        (16 11 12 15)
-        (12 13 14 15)
-        (15 14 17 18)
-        (15 18 19 20)
-    )
+    left
+    {
+        type symmetryPlane;
+        faces
+        (
+            (8 9 20 19)
+            (9 10 21 20)
+        );
+    }
+    right
+    {
+        type patch;
+        faces
+        (
+            (2 3 14 13)
+            (3 6 17 14)
+        );
+    }
+    down
+    {
+        type symmetryPlane;
+        faces
+        (
+            (0 1 12 11)
+            (1 2 13 12)
+        );
+    }
+    up
+    {
+        type patch;
+        faces
+        (
+            (7 8 19 18)
+            (6 7 18 17)
+        );
+    }
+    hole
+    {
+        type patch;
+        faces
+        (
+            (10 5 16 21)
+            (5 0 11 16)
+        );
+    }
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (10 9 4 5)
+            (5 4 1 0)
+            (1 4 3 2)
+            (4 7 6 3)
+            (4 9 8 7)
+            (21 16 15 20)
+            (16 11 12 15)
+            (12 13 14 15)
+            (15 14 17 18)
+            (15 18 19 20)
+        );
+    }
 );
 
 mergePatchPairs
@@ -2261,7 +2336,7 @@ writeFormat     ascii;
 
 writePrecision  6;
 
-writeCompression uncompressed;
+writeCompression off;
 
 timeFormat      general;
 
@@ -2269,7 +2344,7 @@ timePrecision   6;
 
 graphFormat     raw;
 
-runTimeModifiable yes;
+runTimeModifiable true;
 
 
 // ************************************************************************* //
@@ -2383,19 +2458,7 @@ fluxRequired
 
 solvers
 {
-    D
-    {
-        solver          GAMG;
-        tolerance       1e-06;
-        relTol          0.9;
-        smoother        GaussSeidel;
-        cacheAgglomeration true;
-        nCellsInCoarsestLevel 20;
-        agglomerator    faceAreaPair;
-        mergeLevels     1;
-    }
-
-    T
+    "(D|T)"
     {
         solver          GAMG;
         tolerance       1e-06;
@@ -2511,8 +2574,6 @@ sets
         nPoints 100;
     }
 );
-
-surfaces        ();
 
 fields          ( sigmaxx );
 
@@ -2670,32 +2731,48 @@ edges
 (
 );
 
-patches         
+boundary
 (
-    wall leftWall 
-    (
-        (0 12 16 4)
-        (4 16 20 8)
-    )
-    wall rightWall 
-    (
-        (7 19 15 3)
-        (11 23 19 7)
-    )
-    wall lowerWall 
-    (
-        (0 1 13 12)
-        (1 5 17 13)
-        (5 6 18 17)
-        (2 14 18 6)
-        (2 3 15 14)
-    )
-    patch atmosphere 
-    (
-        (8 20 21 9)
-        (9 21 22 10)
-        (10 22 23 11)
-    )
+    leftWall
+    {
+        type wall;
+        faces
+        (
+            (0 12 16 4)
+            (4 16 20 8)
+        );
+    }
+    rightWall
+    {
+        type wall;
+        faces
+        (
+            (7 19 15 3)
+            (11 23 19 7)
+        );
+    }
+    lowerWall
+    {
+        type wall;
+        faces
+        (
+            (0 1 13 12)
+            (1 5 17 13)
+            (5 6 18 17)
+            (2 14 18 6)
+            (2 3 15 14)
+        );
+    }
+    atmosphere
+    {
+        type patch;
+        faces
+        (
+            (8 20 21 9)
+            (9 21 22 10)
+            (10 22 23 11)
+        );
+    }
 );
 
 mergePatchPairs
@@ -2836,7 +2913,21 @@ regions
 液体の領域における格子の集合を定義しています．
 また，この領域における相比率$\alpha_{1}$を$1$と指定しています．
 
-さて，
+\index{setFields@\OFtool{setFields}!ユーティリティ}%
+\index{ユーティリティ!setFields@\OFtool{setFields}}%
+\OFtool{setFields}ユーティリティはファイルから場を読み込み，
+再計算したうえで，再びファイルに書き込みます．
+そのファイルは上書きされてしまうので，
+\OFtool{setFields}を実行する前にバックアップをとることをお勧めします．
+この\OFcase{damBreak}チュートリアルには，
+\OFkeyword{alpha1}場は最初は\OFkeyword{alpha1.org}という名前の
+バックアップしか置いてありません．\OFtool{setFields}を実行する前に，
+まず以下のようにタイプして\OFkeyword{alpha1.org}を\OFkeyword{alpha1}にコピーする必要があります．
+\begin{OFverbatim}[terminal]
+cp 0/alpha1.org 0/alpha1
+\end{OFverbatim}
+
+さて，それでは
 \index{setFields@\OFtool{setFields}!ユーティリティ}%
 \index{ユーティリティ!setFields@\OFtool{setFields}}%
 \OFtool{setFields}を他のプログラムと同様に起動してください．
@@ -3020,17 +3111,7 @@ maxDeltaT       1;
 
 \subsection{離散化スキーム}
 \label{ssec:2.3.6}
-OpenFOAMにおける自由表面の扱いは，乱流の影響を考慮しません．
-これは乱流モデルに対するレイノルズ平均モデルの手法が
-空気と水の間のごく薄い表面の概念と適合しない事実に基づいています．
-結果として，全ての自由表面シミュレーションは
-流体の
-\index{ちょくせつすうちシミュレーション@直接数値シミュレーション}%
-直接数値シミュレーション (DNS) としてみることができます．
-DNSはメッシュ数に対して一定の要求があり，
-それは我々のテストケースにおけるメッシュの解像度を遥かに超えています．
-
-このソルバは，OpenCFDによって開発された
+この\OFtool{interFoam}ソルバは，OpenCFDによって開発された
 Multidimensional Universal Limiter for Explicit Solution (MULES) 法を用いており，
 基礎を成す数値的スキームやメッシュ構造から
 独立な段階分数の有界性を保存するために使います．
@@ -3145,7 +3226,7 @@ $1$以上は拡張された界面の圧縮を意味します．
 コードの実行方法については，
 前述のチュートリアルに詳細に記述しています．
 以下を試してください．
-\texttt{tee}によって計算内容をターミナルウインドウに表示しつつ，
+\texttt{tee}によって計算内容をターミナルウィンドウに表示しつつ，
 ログファイルに記録します．
 \begin{OFverbatim}[terminal]
 cd $FOAM_RUN/tutorials/multiphase/interFoam/laminar/damBreak
@@ -3158,8 +3239,8 @@ interFoam | tee log
 \subsection{後処理}
 \label{ssec:2.3.9}
 結果の後処理は，通常の方法で行えます．
-\autoref{fig:2.22}のように
-参照時間の経過とともに相比率\OFkeyword{alpha1}の発達を見ることができます．
+ユーザは参照時間の経過に伴う相比率\OFkeyword{alpha1}の発達を見ることができます．
+例えば\autoref{fig:2.22}をみてください．
 
 
 \begin{figure}[ht]

@@ -1,9 +1,9 @@
 %#! platex UserGuideJa
 \begin{longtable}{lX}
  \multicolumn{2}{l}{基本的なOpenFOAMツールのライブラリ ---
-\index{OpenFOAM@\OFemph{OpenFOAM}!ライブラリ}%
-\index{ライブラリ!OpenFOAM@\OFemph{OpenFOAM}}%
- \OFemph{OpenFOAM}} \\
+\index{OpenFOAM@\string\OFclass{OpenFOAM}!ライブラリ}%
+\index{ライブラリ!OpenFOAM@\string\OFclass{OpenFOAM}}%
+ \OFclass{OpenFOAM}} \\
  \hline
 \index{algorithms@\OFtool{algorithms}!ツール}%
 \index{ツール!algorithms@\OFtool{algorithms}}%
@@ -59,9 +59,9 @@
      初期クラス \\
  \\
  \multicolumn{2}{l}{有限体積法ライブラリ ---
-\index{finiteVolume@\OFemph{finiteVolume}!ライブラリ}%
-\index{ライブラリ!finiteVolume@\OFemph{finiteVolume}}%
- \OFemph{finiteVolume}} \\
+\index{finiteVolume@\string\OFclass{finiteVolume}!ライブラリ}%
+\index{ライブラリ!finiteVolume@\string\OFclass{finiteVolume}}%
+ \OFclass{finiteVolume}} \\
  \hline
 \index{cfdTools@\OFtool{cfdTools}!ツール}%
 \index{ツール!cfdTools@\OFtool{cfdTools}}%
@@ -94,152 +94,194 @@
      有限体積法による離散化のためのメッシュのサーフェスデータ \\
 \index{volMesh@\OFtool{volMesh}!ツール}%
 \index{ツール!volMesh@\OFtool{volMesh}}%
- \OFtool{volMesh}%
-\footnote{訳注：原文では空欄だが，おそらく脱字と思われる．}%
- &
+ \OFtool{volMesh} &
      有限体積法による離散化のためのメッシュのボリューム（セル）データ \\
  \\
  \multicolumn{2}{l}{後処理ライブラリ} \\
  \hline
-\index{fieldFunctionObjects@\OFemph{fieldFunctionObjects}!ライブラリ}%
-\index{ライブラリ!fieldFunctionObjects@\OFemph{fieldFunctionObjects}}%
- \OFemph{fieldFunctionObjects} &
+\index{fieldFunctionObjects@\OFclass{fieldFunctionObjects}!ライブラリ}%
+\index{ライブラリ!fieldFunctionObjects@\OFclass{fieldFunctionObjects}}%
+ \OFclass{fieldFunctionObjects} &
      平均・最大・最小などを含むフィールド関数オブジェクト \\
-\index{foamCalcFunctions@\OFemph{foamCalcFunctions}!ライブラリ}%
-\index{ライブラリ!foamCalcFunctions@\OFemph{foamCalcFunctions}}%
- \OFemph{foamCalcFunctions} &
+\index{foamCalcFunctions@\OFclass{foamCalcFunctions}!ライブラリ}%
+\index{ライブラリ!foamCalcFunctions@\OFclass{foamCalcFunctions}}%
+ \OFclass{foamCalcFunctions} &
      \OFtool{foamCalc}ユーティリティのための関数 \\
-\index{forces@\OFemph{forces}!ライブラリ}%
-\index{ライブラリ!forces@\OFemph{forces}}%
- \OFemph{forces} &
+\index{forces@\OFclass{forces}!ライブラリ}%
+\index{ライブラリ!forces@\OFclass{forces}}%
+ \OFclass{forces} &
      関数オブジェクトによる，力・揚力・抗力の後処理ツール \\
-\index{postCalc@\OFemph{postCalc}!ライブラリ}%
-\index{ライブラリ!postCalc@\OFemph{postCalc}}%
- \OFemph{postCalc} &
+\index{jobControl@\OFclass{jobControl}!ライブラリ}%
+\index{ライブラリ!jobControl@\OFclass{jobControl}}%
+ \OFclass{jobControl} &
+     関数オブジェクトが使われている実行中のジョブを制御するツール \\
+\index{postCalc@\OFclass{postCalc}!ライブラリ}%
+\index{ライブラリ!postCalc@\OFclass{postCalc}}%
+ \OFclass{postCalc} &
      後処理工程で関数オブジェクトの機能を利用するためのもの \\
-\index{sampling@\OFemph{sampling}!ライブラリ}%
-\index{ライブラリ!sampling@\OFemph{sampling}}%
- \OFemph{sampling} &
+\index{sampling@\OFclass{sampling}!ライブラリ}%
+\index{ライブラリ!sampling@\OFclass{sampling}}%
+ \OFclass{sampling} &
      領域における特定の場所での場のデータの抽出用ツール \\
-\index{systemCall@\OFemph{systemCall}!ライブラリ}%
-\index{ライブラリ!systemCall@\OFemph{systemCall}}%
- \OFemph{systemCall} &
+\index{systemCall@\OFclass{systemCall}!ライブラリ}%
+\index{ライブラリ!systemCall@\OFclass{systemCall}}%
+ \OFclass{systemCall} &
      ケースの実行時にシステム・コールを行うための一般的な関数オブジェクト \\
-\index{utilityFunctionObjects@\OFemph{utilityFunctionObjects}!ライブラリ}%
-\index{ライブラリ!utilityFunctionObjects@\OFemph{utilityFunctionObjects}}%
- \OFemph{utilityFunctionObjects} &
+\index{utilityFunctionObjects@\OFclass{utilityFunctionObjects}!ライブラリ}%
+\index{ライブラリ!utilityFunctionObjects@\OFclass{utilityFunctionObjects}}%
+ \OFclass{utilityFunctionObjects} &
      ユーティリティの関数オブジェクト \\
  \\
  \multicolumn{2}{l}{解法とメッシュ操作のライブラリ} \\
  \hline
-\index{autoMesh@\OFemph{autoMesh}!ライブラリ}%
-\index{ライブラリ!autoMesh@\OFemph{autoMesh}}%
- \OFemph{autoMesh} &
+\index{autoMesh@\OFclass{autoMesh}!ライブラリ}%
+\index{ライブラリ!autoMesh@\OFclass{autoMesh}}%
+ \OFclass{autoMesh} &
      \OFtool{snappyHexMesh}ユーティリティの機能のためのライブラリ \\
-\index{dynamicMesh@\OFemph{dynamicMesh}!ライブラリ}%
-\index{ライブラリ!dynamicMesh@\OFemph{dynamicMesh}}%
- \OFemph{dynamicMesh} &
+\index{blockMesh@\OFclass{blockMesh}!ライブラリ}%
+\index{ライブラリ!blockMesh@\OFclass{blockMesh}}%
+ \OFclass{blockMesh} &
+     \OFtool{blockMesh}ユーティリティの機能のためのライブラリ \\
+\index{dynamicMesh@\OFclass{dynamicMesh}!ライブラリ}%
+\index{ライブラリ!dynamicMesh@\OFclass{dynamicMesh}}%
+ \OFclass{dynamicMesh} &
      移動メッシュをもつシステムの解法 \\
-\index{dynamicFvMesh@\OFemph{dynamicFvMesh}!ライブラリ}%
-\index{ライブラリ!dynamicFvMesh@\OFemph{dynamicFvMesh}}%
- \OFemph{dynamicFvMesh} &
+\index{dynamicFvMesh@\OFclass{dynamicFvMesh}!ライブラリ}%
+\index{ライブラリ!dynamicFvMesh@\OFclass{dynamicFvMesh}}%
+ \OFclass{dynamicFvMesh} &
      移動とトポロジ変化を伴う有限体積メッシュのためのライブラリ \\
-\index{edgeMesh@\OFemph{edgeMesh}!ライブラリ}%
-\index{ライブラリ!edgeMesh@\OFemph{edgeMesh}}%
- \OFemph{edgeMesh} &
+\index{edgeMesh@\OFclass{edgeMesh}!ライブラリ}%
+\index{ライブラリ!edgeMesh@\OFclass{edgeMesh}}%
+ \OFclass{edgeMesh} &
      Foredge-basedメッシュ記述の操作のため \\
-\index{errorEstimation@\OFemph{errorEstimation}!ライブラリ}%
-\index{ライブラリ!errorEstimation@\OFemph{errorEstimation}}%
- \OFemph{errorEstimation} &
-     誤差推定ツール \\
-\index{fvMotionSolver@\OFemph{fvMotionSolver}!ライブラリ}%
-\index{ライブラリ!fvMotionSolver@\OFemph{fvMotionSolver}}%
- \OFemph{fvMotionSolver} &
+% \index{errorEstimation@\OFclass{errorEstimation}!ライブラリ}%
+% \index{ライブラリ!errorEstimation@\OFclass{errorEstimation}}%
+%  \OFclass{errorEstimation} &
+%      誤差推定ツール \\
+\index{fvMotionSolvers@\OFclass{fvMotionSolvers}!ライブラリ}%
+\index{ライブラリ!fvMotionSolvers@\OFclass{fvMotionSolvers}}%
+ \OFclass{fvMotionSolvers} &
      有限体積メッシュの移動のソルバ \\
-\index{ODE@\OFemph{ODE}!ライブラリ}%
-\index{ライブラリ!ODE@\OFemph{ODE}}%
- \OFemph{ODE} &
+\index{ODE@\OFclass{ODE}!ライブラリ}%
+\index{ライブラリ!ODE@\OFclass{ODE}}%
+ \OFclass{ODE} &
      常微分方程式のソルバ \\
-\index{meshTools@\OFemph{meshTools}!ライブラリ}%
-\index{ライブラリ!meshTools@\OFemph{meshTools}}%
- \OFemph{meshTools} &
+\index{meshTools@\OFclass{meshTools}!ライブラリ}%
+\index{ライブラリ!meshTools@\OFclass{meshTools}}%
+ \OFclass{meshTools} &
      OpenFOAMメッシュ操作のためのツール \\
-\index{surfMesh@\OFemph{surfMesh}!ライブラリ}%
-\index{ライブラリ!surfMesh@\OFemph{surfMesh}}%
- \OFemph{surfMesh} &
+\index{surfMesh@\OFclass{surfMesh}!ライブラリ}%
+\index{ライブラリ!surfMesh@\OFclass{surfMesh}}%
+ \OFclass{surfMesh} &
      異なる書式のサーフェス・メッシュを扱うためのライブラリ \\
-\index{triSurface@\OFemph{triSurface}!ライブラリ}%
-\index{ライブラリ!triSurface@\OFemph{triSurface}}%
- \OFemph{triSurface} &
+\index{triSurface@\OFclass{triSurface}!ライブラリ}%
+\index{ライブラリ!triSurface@\OFclass{triSurface}}%
+ \OFclass{triSurface} &
      標準三角surface-basedメッシュ記述の操作のため \\
-\index{topoChangeFvMesh@\OFemph{topoChangeFvMesh}!ライブラリ}%
-\index{ライブラリ!topoChangeFvMesh@\OFemph{topoChangeFvMesh}}%
- \OFemph{topoChangeFvMesh} &
+\index{topoChangeFvMesh@\OFclass{topoChangeFvMesh}!ライブラリ}%
+\index{ライブラリ!topoChangeFvMesh@\OFclass{topoChangeFvMesh}}%
+ \OFclass{topoChangeFvMesh} &
      トポロジ変化の機能（大部分は冗長） \\
  \\
  \multicolumn{2}{l}{ラグランジュ粒子追跡ライブラリ} \\
  \hline
-\index{coalCombustion@\OFemph{coalCombustion}!ライブラリ}%
-\index{ライブラリ!coalCombustion@\OFemph{coalCombustion}}%
- \OFemph{coalCombustion} &
+\index{coalCombustion@\OFclass{coalCombustion}!ライブラリ}%
+\index{ライブラリ!coalCombustion@\OFclass{coalCombustion}}%
+ \OFclass{coalCombustion} &
      炭塵燃焼のモデリング \\
-\index{dieselSpray@\OFemph{dieselSpray}!ライブラリ}%
-\index{ライブラリ!dieselSpray@\OFemph{dieselSpray}}%
- \OFemph{dieselSpray} &
+\index{dieselSpray@\OFclass{dieselSpray}!ライブラリ}%
+\index{ライブラリ!dieselSpray@\OFclass{dieselSpray}}%
+ \OFclass{dieselSpray} &
      ディーゼル噴霧・噴射のモデリング \\
-\index{dsmc@\OFemph{dsmc}!ライブラリ}%
-\index{ライブラリ!dsmc@\OFemph{dsmc}}%
- \OFemph{dsmc} &
+\index{distributionModels@\OFclass{distributionModels}!ライブラリ}%
+\index{ライブラリ!distributionModels@\OFclass{distributionModels}}%
+ \OFclass{distributionModels} &
+     粒子分布関数のモデリング \\
+\index{dsmc@\OFclass{dsmc}!ライブラリ}%
+\index{ライブラリ!dsmc@\OFclass{dsmc}}%
+ \OFclass{dsmc} &
      直接シミュレーション・モンテ・カルロ法のモデリング \\
-\index{lagrangian@\OFemph{lagrangian}!ライブラリ}%
-\index{ライブラリ!lagrangian@\OFemph{lagrangian}}%
- \OFemph{lagrangian} &
+\index{lagrangian@\OFclass{lagrangian}!ライブラリ}%
+\index{ライブラリ!lagrangian@\OFclass{lagrangian}}%
+ \OFclass{lagrangian} &
      基本ラグランジュもしくは粒子追跡解スキーム \\
-\index{lagrangianIntermediate@\OFemph{lagrangianIntermediate}!ライブラリ}%
-\index{ライブラリ!lagrangianIntermediate@\OFemph{lagrangianIntermediate}}%
- \OFemph{lagrangianIntermediate} &
+\index{lagrangianIntermediate@\OFclass{lagrangianIntermediate}!ライブラリ}%
+\index{ライブラリ!lagrangianIntermediate@\OFclass{lagrangianIntermediate}}%
+ \OFclass{lagrangianIntermediate} &
      粒子追跡の動力学，熱力学，多種粒子反応，粒子力など \\
-\index{potential@\OFemph{potential}!ライブラリ}%
-\index{ライブラリ!potential@\OFemph{potential}}%
- \OFemph{potential} &
+\index{potential@\OFclass{potential}!ライブラリ}%
+\index{ライブラリ!potential@\OFclass{potential}}%
+ \OFclass{potential} &
      分子動力学のための分子間ポテンシャル \\
-\index{molecule@\OFemph{molecule}!ライブラリ}%
-\index{ライブラリ!molecule@\OFemph{molecule}}%
- \OFemph{molecule} &
+\index{molecule@\OFclass{molecule}!ライブラリ}%
+\index{ライブラリ!molecule@\OFclass{molecule}}%
+ \OFclass{molecule} &
      分子動力学のための分子クラス \\
-\index{molecularMeasurements@\OFemph{molecularMeasurements}!ライブラリ}%
-\index{ライブラリ!molecularMeasurements@\OFemph{molecularMeasurements}}%
- \OFemph{molecularMeasurements} &
+\index{molecularMeasurements@\OFclass{molecularMeasurements}!ライブラリ}%
+\index{ライブラリ!molecularMeasurements@\OFclass{molecularMeasurements}}%
+ \OFclass{molecularMeasurements} &
      分子動力学における測定を実行するためのもの \\
-\index{solidParticle@\OFemph{solidParticle}!ライブラリ}%
-\index{ライブラリ!solidParticle@\OFemph{solidParticle}}%
- \OFemph{solidParticle} &
+\index{solidParticle@\OFclass{solidParticle}!ライブラリ}%
+\index{ライブラリ!solidParticle@\OFclass{solidParticle}}%
+ \OFclass{solidParticle} &
      個体粒子の実装 \\
  \\
  \multicolumn{2}{l}{さまざまなライブラリ} \\
  \hline
-\index{conversion@\OFemph{conversion}!ライブラリ}%
-\index{ライブラリ!conversion@\OFemph{conversion}}%
- \OFemph{conversion} &
+\index{conversion@\OFclass{conversion}!ライブラリ}%
+\index{ライブラリ!conversion@\OFclass{conversion}}%
+ \OFclass{conversion} &
      メッシュとデータの変換のためのツール \\
-\index{decompositionMethods@\OFemph{decompositionMethods}!ライブラリ}%
-\index{ライブラリ!decompositionMethods@\OFemph{decompositionMethods}}%
- \OFemph{decompositionMethods} &
+\index{decompositionMethods@\OFclass{decompositionMethods}!ライブラリ}%
+\index{ライブラリ!decompositionMethods@\OFclass{decompositionMethods}}%
+ \OFclass{decompositionMethods} &
      領域分割のためのツール \\
-\index{engine@\OFemph{engine}!ライブラリ}%
-\index{ライブラリ!engine@\OFemph{engine}}%
- \OFemph{engine} &
+\index{engine@\OFclass{engine}!ライブラリ}%
+\index{ライブラリ!engine@\OFclass{engine}}%
+ \OFclass{engine} &
      エンジンの計算のためのツール \\
-\index{MGridGenGAMGAgglomeration@\OFemph{MGridGenGAMGAgglomeration}!ライブラリ}%
-\index{ライブラリ!MGridGenGAMGAgglomeration@\OFemph{MGridGenGAMGAgglomeration}}%
- \OFemph{MGridGenGAMGAgglomeration} &
+\index{fileFormats@\OFclass{fileFormats}!ライブラリ}%
+\index{ライブラリ!fileFormats@\OFclass{fileFormats}}%
+ \OFclass{fileFormats} &
+     いくつかのサードパーティフォーマットデータの
+     読み込み・書き込みのためのコア・ルーチン \\
+\index{genericFvPatchField@\OFclass{genericFvPatchField}!ライブラリ}%
+\index{ライブラリ!genericFvPatchField@\OFclass{genericFvPatchField}}%
+ \OFclass{genericFvPatchField} &
+     一般的なパッチフィールド \\
+\index{MGridGenGAMGAgglomeration@\OFclass{MGridGenGAMGAgglomeration}!ライブラリ}%
+\index{ライブラリ!MGridGenGAMGAgglomeration@\OFclass{MGridGenGAMGAgglomeration}}%
+ \OFclass{MGridGenGAMGAgglomeration} &
      \OFkeyword{MGridGen}アルゴリズムを用いたセルの凝集のためのライブラリ \\
-\index{OSspecific@\OFemph{OSspecific}!ライブラリ}%
-\index{ライブラリ!OSspecific@\OFemph{OSspecific}}%
- \OFemph{OSspecific} &
+\index{pairPatchAgglomeration@\OFclass{pairPatchAgglomeration}!ライブラリ}%
+\index{ライブラリ!pairPatchAgglomeration@\OFclass{pairPatchAgglomeration}}%
+ \OFclass{pairPatchAgglomeration} &
+     プリミティブなペアパッチの凝集手法 \\
+\index{OSspecific@\OFclass{OSspecific}!ライブラリ}%
+\index{ライブラリ!OSspecific@\OFclass{OSspecific}}%
+ \OFclass{OSspecific} &
      オペレーティング・システム固有の機能 \\
-\index{randomProcesses@\OFemph{randomProcesses}!ライブラリ}%
-\index{ライブラリ!randomProcesses@\OFemph{randomProcesses}}%
- \OFemph{randomProcesses} &
-     分析と生成のランダムプロセスのツール
+\index{randomProcesses@\OFclass{randomProcesses}!ライブラリ}%
+\index{ライブラリ!randomProcesses@\OFclass{randomProcesses}}%
+ \OFclass{randomProcesses} &
+     分析と生成のランダムプロセスのツール \\
+ \\
+ \multicolumn{2}{l}{さまざまなライブラリ} \\
+ \hline
+\index{distributed@\OFclass{distributed}!ライブラリ}%
+\index{ライブラリ!distributed@\OFclass{distributed}}%
+ \OFclass{distributed} &
+     分散した面の探索と入出力のツール \\
+\index{reconstruct@\OFclass{reconstruct}!ライブラリ}%
+\index{ライブラリ!reconstruct@\OFclass{reconstruct}}%
+ \OFclass{reconstruct} &
+     メッシュ・フィールドの再構築のライブラリ \\
+\index{scotchDecomp@\OFclass{scotchDecomp}!ライブラリ}%
+\index{ライブラリ!scotchDecomp@\OFclass{scotchDecomp}}%
+ \OFclass{scotchDecomp} &
+     Scotch領域分割のライブラリ \\
+\index{ptscotchDecomp@\OFclass{ptscotchDecomp}!ライブラリ}%
+\index{ライブラリ!ptscotchDecomp@\OFclass{ptscotchDecomp}}%
+ \OFclass{ptscotchDecomp} &
+     PTScotch領域分割のライブラリ
 \end{longtable}

@@ -39,7 +39,7 @@ OpenFOAMケースの基本的なディレクトリ構造を
 
 
 \begin{figure}[ht]
- \begin{minipage}{.5\textwidth}
+ \begin{minipage}{.6\textwidth}
   \includegraphics{fig-4-1}
   \hskip5pt
   \begin{minipage}[b]{7zw}
@@ -392,7 +392,8 @@ SIにおける物質量の基本単位は$\unit*{mol}$である．}%
 \subsection{次元付の型}
 \label{ssec:4.2.7}
 物理量は一般に，それらの関連する次元によって特定されます．
-これらの入力は，\verb|dimensionedScalar|の
+これらの入力は，\break
+\OFkeyword{dimensionedScalar}の
 以下の例が示すフォーマットをもっています．
 \begin{OFverbatim}[file]
 nu             nu  [0 2 -1 0 0 0 0]  1;
@@ -1015,7 +1016,7 @@ $\psi = 0$の場合は純粋な\OFkeyword{Eular}に対応します．
 定常の非圧縮流れのためには\OFtool{simpleFoam}を使うべきです．
 
 2次時間微分項 ($\partial^{2}/\partial t^{2}$) は，
-\OFsubdictionary{d2dt2Schemes}サブディクショナリの中で指定します．
+\OFsubdictionary{d2dt2Schemes}サブディクショナリの中で指定します．\break
 \OFsubdictionary{d2dt2Schemes}としては，\OFkeyword{Euler}スキームのみが利用可能です．
 
 
