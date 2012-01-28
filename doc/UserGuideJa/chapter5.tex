@@ -41,11 +41,9 @@ OpenFOAMがメッシュの妥当性を常にチェックすることは決して
 \index{polyMesh@\OFclass{polyMesh}!クラス}%
 \index{クラス!polyMesh@\OFclass{polyMesh}}%
 \OFclass{polyMesh}と定義しています．
-プログラマ・ガイドの2.3節においてより詳細に述べますが，
 このような形式のメッシュを用いていると，
 特に計算領域の幾何形状が複雑であったり，それらが何度も変更されるときに，
-メッシュの生成やその操作においてとても大きな自由度があることだけを，
-ここでは述べておくことにします．
+メッシュの生成やその操作においてとても大きな自由度があります．
 しかしながら，このようにメッシュが無条件の汎用性をもった代償として，
 従来のツールによって生成されたメッシュを変換するのは難しいこともあります．
 そのため，OpenFOAMのライブラリは，
@@ -217,7 +215,7 @@ movingWall
 
 \subsection{\OFtool{cellShape}ツール}
 \label{ssec:5.1.3}
-別の標準的（でより単純）なメッシュ形式を，
+標準的（でより単純）なメッシュ形式を，
 OpenFOAMのライブラリで扱えるように変換する際に，
 特に必要となるであろう\OFtool{cellShape}というツールについても説明しておきたいと思います．
 
@@ -315,7 +313,7 @@ OpenFOAMは3次元の空間用に設計されており，
 多くの要素に関連しており，便宜上この章で扱います．
 
 まず考えるべきことは，境界条件の適用のために，
-境界はバラバラにされてパッチの組み合わせになるということです．
+境界は分割されてパッチの組み合わせになるということです．
 一つのパッチは一つ以上の境界面に閉じられた領域をもち，
 それらが物理的に接続している必要はありません．
 
@@ -484,13 +482,6 @@ boundaryField
 \end{table}
 
 
-\begin{figure}[ht]
- \includegraphics{fig-5-4}
- \caption{\OFkeyword{cyclic}パッチを利用した周期境界の連続形状}
- \label{fig:5.4}
-\end{figure}
-
-
 \begin{description}
  \item[\OFboundary{patch}]
 \index{patch@\OFboundary{patch}!きょうかいじょうけん@境界条件}%
@@ -537,19 +528,19 @@ boundaryField
 \index{きょうかいじょうけん@境界条件!cyclic@\OFboundary{cyclic}}%
             熱交換管のような繰り返しの多い形状では，
             二つのパッチをあたかも一つのように扱うことができるようにする場合があります．
-            単一の\OFkeyword{cyclic}パッチは，
-            \OFkeyword{faceList}において面を二つに分割します．
-            そして\autoref{fig:5.4}に示すように，
-            二つの面のセットを結び付けます．
-            面の各組は同じ領域のものである必要がありますが，
-            同じ方向のものである必要はありません．
+            ある\OFboundary{cyclic}パッチは
+            \OFpath{boundary}ファイル内の\OFkeyword{neighbourPatch}キーワードで
+            もう一つのパッチと結び付けられます．
+            接続される面の各ペアは，
+            \OFpath{boundary}ファイル内の\OFkeyword{matchTolerance}キーワードで
+            与えられる許容誤差に収まるような，ほぼ等しい面積をもっている必要があります．
+            面の方向が一致している必要はありません．
  \item[\OFboundary{processor}]
 \index{processor@\OFboundary{processor}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!processor@\OFboundary{processor}}%
-            数多くの処理の中で，計算が平行して行われている場合は，
-            だいたい同じ数の格子を各処理が計算するために，
-            メッシュは分けられる必要があります．
-            メッシュの中の異なる部分間の境界は\OFkeyword{processor}境界とよばれます．
+            多数のプロセッサで計算を並列実行する際には，
+            各プロセッサがほぼ同数のセルを計算するようにメッシュを分割する必要があります．
+            別々のメッシュの間の境界は\OFkeyword{processor}境界とよばれます．
 \end{description}
 
 
@@ -571,16 +562,16 @@ OpenFOAMには多数の派生型境界条件があり，ここには掲載しき
 かわりに，ごく一部を\autoref{tbl:5.4}に紹介します．
 利用できる全てのモデルの一覧を得たければ，
 OpenFOAMのソースコードを参照してください．
-派生型境界条件のソースコードは以下のような場所に見つかります．
+派生型境界条件のソースコードは以下のような場所にあります．
 \begin{itemize}
  \item \OFpath{\$FOAM SRC/finiteVolume/fields/fvPatchFields/derived}の中
  \item 特定のモデルライブラリの中．
-       これはターミナルで以下のようなコマンドを実行することで探せます．
+       ターミナルで以下のようなコマンドを実行することで探せます．
 \begin{OFverbatim}{terminal}
 find $FOAM_SRC -name "*derivedFvPatch*"
 \end{OFverbatim}%$
  \item 特定のソルバの中．
-       これはターミナルで以下のようなコマンドを実行することで探せます．
+       ターミナルで以下のようなコマンドを実行することで探せます．
 \begin{OFverbatim}{terminal}
 find $FOAM_SOLVERS -name "*fvPatch*"
 \end{OFverbatim}%$
@@ -606,7 +597,7 @@ find $FOAM_SOLVERS -name "*fvPatch*"
 \index{blockMesh@\OFtool{blockMesh}!ユーティリティ}%
 \index{ユーティリティ!blockMesh@\OFtool{blockMesh}}%
 \index{メッシュ!せいせい@生成}%
-このセクションでは，OpenFOAMとともに供給される
+本節では，OpenFOAM付属の
 メッシュ生成ユーティリティの\OFtool{blockMesh}について説明します．
 \OFtool{blockMesh}ユーティリティは，
 \index{メッシュ!こうばいづけ@勾配付け}%
@@ -636,22 +627,21 @@ find $FOAM_SOLVERS -name "*fvPatch*"
 一つあるいは複数の3次元の六面体のブロックに領域を分割することです．
 ブロックの辺は，直線，円弧またはスプラインであるかもしれません．
 メッシュは，ブロックの各方向の多くのセルとして表面上指定され，
-これは\OFtool{blockMesh}がメッシュ・データを生成するのに十分な情報です．
+これは\OFtool{blockMesh}がメッシュ・データを生成するのに必要な情報です．
 
 各ブロックの幾何形状は八つの頂点，
 六面体の各隅のひとつによって定義されます．
-頂点はラベルを使用することで各頂点にアクセスできるように
-リストに書かれています． OpenFOAMは常にC++の慣習に従って，
+頂点はリストの中に書かれ，各頂点にはそのラベルでアクセスできるようになっています．
+OpenFOAMは常にC++の慣習に従って，
 リストの最初の要素をラベル `0' とします．
 リストに従って，各頂点に番号付けがされているブロックの例を
 \autoref{fig:5.5}に示します．
-頂点1と5を接続する辺は，
-\OFtool{blockMesh}で曲がった辺を指定できるのを
-読者に思いおこさせるために曲がっています．
+頂点1と5を接続する辺をみてわかるように，
+\OFtool{blockMesh}では曲線を作ることもできます．
 
-\autoref{ssec:5.3.3}で説明されるように，
-1組以上の頂点をお互いの上で潰すことによって
-八つ未満の頂点をもつブロックを生成することが可能です．
+\autoref{ssec:5.3.3}で説明するように，
+1組以上の頂点をお互いに重ねることで
+八つ未満の頂点をもつブロックを生成することも可能です．
 
 各ブロックは，
 \index{ざひょうじく@座標軸!みぎてけい@右手系}
@@ -663,13 +653,13 @@ $Ox$軸上の点から$Oy$軸上への円弧が時計回りとなるように定
 \begin{itemize}
  \label{p:U-130}
  \item 軸の原点はブロックの定義における最初の入力です．
-       私たちの例では頂点0です．
+       例では頂点0です．
  \item $x_{1}$の方向は，頂点0から頂点1まで動くことによって示されます．
  \item $x_{2}$の方向は，頂点1から頂点2まで動くことによって示されます．
  \item 頂点0，1，2，3は$x_{3} = 0$の平面を定義します．
- \item 頂点4は頂点0から$x_{3}$方向に動くことによって，見つけられます．
+ \item 頂点4は頂点0から$x_{3}$方向へ辿っていくと見つかります．
  \item 頂点5，6，および7は，頂点1，2，および3から
-       それぞれ$x_{3}$の方向に動くことで，同様に見つけられます．
+       それぞれ$x_{3}$の方向へ辿っていくことで，同様に見つかります．
 \end{itemize}
 
 
@@ -726,16 +716,13 @@ vertices
 
 \subsubsection{辺}
 \label{sssec:5.3.1.2}
-2頂点をつなぐ辺のそれぞれは，
-デフォルトでまっすぐであると仮定されています．
-しかしながら，どんな辺も，
-\OFkeyword{edges}と名づけられるリストにおける入力で
-曲がるように指定されるかもしれません．
-そのリストはオプションです．
-幾何形状がどんな曲がった辺も含んでいないなら，
-それは省略されるかもしれません．
+2頂点をつなぐ各辺はデフォルトで直線とみなされます．
+ただし，\OFkeyword{edges}というリスト内のエントリで，
+いずれの辺も曲線として指定することができます．
+このリストはオプションです．
+ジオメトリ内に曲線が一つもなければ省略できます．
 
-曲がった辺のための各入力は，
+曲線の各エントリは，
 \autoref{tbl:5.6}に挙げられているものから
 カーブのタイプを指定するキーワードとともに始まります．
 
@@ -756,7 +743,7 @@ vertices
 全く同等であり，内挿点を全く必要としません．
 \OFkeyword{line}辺を使用する必要は全くありませんが，
 それが完全性のために含まれていることに注意してください．
-\autoref{fig:5.6}での私たちの例のブロックでは，
+\autoref{fig:5.6}に示した例題のブロックでは，
 内挿点$(1.1, 0.0, 0.5)$を通して以下のように
 頂点1と5をつなぐ\OFkeyword{arc}辺を指定します．
 \begin{OFverbatim}[file]
@@ -772,7 +759,7 @@ edges
 \index{blocks@\OFkeyword{blocks}!キーワード}%
 \index{キーワード!blocks@\OFkeyword{blocks}}%
 \OFkeyword{blocks}と名づけられたリストに含まれています．
-各ブロックの定義は，セクション\autoref{sec:5.3}で示された順序をもつ
+各ブロックの定義は，\autoref{sec:5.3}で示された順序をもつ
 頂点ラベルのリストからなる複合入力です．
 ベクトルが各方向に必要なセルの数，タイプ，
 および各方向のセル拡大比のリストを与えます．
@@ -790,7 +777,7 @@ blocks
 \begin{description}
  \item[Vertex numbering]
 \index{blockMesh@\OFtool{blockMesh}!じっこうかのう@実行可能な頂点の番号付け}%
-            \OFpath{OpenFOAM-1.7.1/cellModels}ファイルに
+            \OFpath{OpenFOAM-2.0.0/cellModels}ファイルに
             定義されているように，最初の入力がブロックの
 \index{けいじょう@形状}%
             形状識別子です．
@@ -851,57 +838,74 @@ edgeGrading (1 1 1 1 2 2 2 2 3 3 3 3)
 \end{figure}
 
 
-\subsubsection{パッチ}
+\subsubsection{境界}
 \label{sssec:5.3.1.4}
-\index{patches@\OFkeyword{patches}!キーワード}%
-\index{キーワード!patches@\OFkeyword{patches}}%
-\OFkeyword{patches}というリストで
-メッシュのパッチを与えます．
-リストにおける各パッチは以下を含む複合記入です．
+\index{boundary@\OFkeyword{boundary}!キーワード}%
+\index{キーワード!boundary@\OFkeyword{boundary}}%
+\OFkeyword{boundary}というリストでメッシュの境界を与えます．
+境界はパッチ（領域）に分解され，
+リストされた各パッチは名前をキーワードとしてもっています．
+この名前はユーザが決めますが，例えば\OFkeyword{inlet}のように
+そのパッチの意味がわかりやすいような名前にすることをお勧めします．
+フィールドのデータファイルで境界条件を設定するときの識別にも，この名前が使われます．
+パッチの情報は以下のサブディクショナリ内に収められます．
 \begin{itemize}
- \item パッチタイプ，いくつかの境界条件が適用されている一般的なパッチか，
-       \autoref{tbl:5.1}にリストアップされていて
-       セクション\autoref{ssec:5.2.2}で説明される特定の幾何的条件のどちらか．
- \item パッチを作るブロックの面のリスト，
-       便利にパッチを特定できる名前が推奨されるものの，
-       名前はユーザの選択に任されます．
-       例えば\OFkeyword{quoteTextinlet}，
-       この名前は，境界条件をフィールドデータファイルに
-       設定するための識別子として使用されます．
-       \OFtool{blockMesh}は\OFkeyword{patches}リストから省かれる
-       どんな境界パッチからも面を集め，
-       それらに\OFkeyword{defaultFaces}とよばれる
-       \OFkeyword{empty}タイプからなるデフォルトパッチを割り当てます．
-       これは，2次元の幾何形状において，
-       それらが必要に応じて\OFkeyword{empty}パッチに
-       集められるのを知りながら，
-       ユーザは2次元平面にあるブロック面を
-       省略する選択ができることを意味します．
+ \item \OFkeyword{type}:
+       パッチタイプ．
+       適用できる境界条件がいくつかある一般的な\OFkeyword{patch}か，
+       あるいは\autoref{tbl:5.1}にリストアップされ
+       \autoref{ssec:5.2.2}で説明している特殊な幾何的条件のどちらか．
+ \item \OFkeyword{faces}:
+       パッチを作るブロックの面のリスト．
+       名前はユーザの選択に任されますが
+       例えば\OFkeyword{inlet}のように，
+       パッチの特定に便利な名前を推奨します．
+       この名前は，境界条件をフィールドのデータファイルに
+       設定する際の識別に使用されます．
 \end{itemize}
+\OFtool{blockMesh}は\OFkeyword{boundary}リストに含まれない全ての面を集めて，
+それらに\OFkeyword{defaultFaces}という名前で
+\OFkeyword{empty}タイプのデフォルトパッチを割り当てます．
+これは，2次元の幾何形状において，
+それらが必要に応じて\OFkeyword{empty}パッチに
+集められるのを知りながら，
+ユーザは2次元平面にあるブロック面を
+省略する選択ができることを意味します．
+
 \autoref{fig:5.5}での例のブロックに戻って，
 もし左面に流入があり，右面における流出があり，
 他の四つの表面が壁であるならば，以下のとおりパッチは定義できるでしょう．
 \begin{OFverbatim}[file]
-patches // keyword
+boundary               // keyword
 (
-    patch // patch type for patch 0
-    inlet // patch name
-    (
-        (0 4 7 3) // block face in this patch
-    ) // end of 0th patch definition
-    patch // patch type for patch 1
-    outlet // arbitrary patch name
-    (
-        (1 2 6 5)
-    )
-    wall
+    inlet              // patch name
+
+        type patch;    // patch type for patch 0
+        faces
+        (
+            (0 4 7 3)  // block face in this patch
+        );
+                       // end of 0th patch definition
+
+    outlet             // patch name
+
+        type patch;    // patch type for patch 1
+        faces
+        (
+            (1 2 6 5)
+        );
+
     walls
-    (
-        (0 1 5 4)
-        (0 3 2 1)
-        (3 7 6 2)
-        (4 5 6 7)
-    )
+
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+            (0 3 2 1)
+            (3 7 6 2)
+            (4 5 6 7)
+        );
+
 );
 \end{OFverbatim}
 それぞれのブロック面は四つの頂点番号のリストによって定義されます．
@@ -909,26 +913,42 @@ patches // keyword
 どの頂点からも始めても，他の頂点を定義するために
 時計回りに面を回るようなものにならなければなりません．
 
+\OFtool{blockMesh}で\OFboundary{cyclic}パッチを指定するには，
+結びつけるパッチの名前を\OFkeyword{neighbourPatch}キーワードで指定しなければなりません．
+例えば，ある一組の周期境界パッチは以下のように指定します．
+\begin{OFverbatim}[file]
+left
+
+    type            cyclic;
+    neighbourPatch  right;
+    faces           ((0 4 7 3));
+
+right
+
+    type            cyclic;
+    neighbourPatch  left;
+    faces           ((1 5 6 2));
+\end{OFverbatim}
+
 
 \subsection{複数のブロック}
 \label{ssec:5.3.2}
-1ブロック以上を使用することでメッシュを作成できます．
-そのような事情では，メッシュは前述のテキストで
-説明されるように作成されます．
-唯一の追加設定がブロック間の接続です．
-そこに，二つの異なる可能性があります．
+メッシュは一つ以上のブロックから作成されます．
+このため，前述したようにメッシュを作成することができますが，
+一つだけ追記しておくべきことはブロックどうしの接続です．
+これには2通りの可能性があります．
 \begin{description}
- \item[face matching]
-            あるブロックのパッチを包括する面の組が，
-            別のブロックのパッチを包括する面の組と全く同じ位置にあるものです．
- \item[face merging]
-            あるブロックのパッチからの面のグループは，
-            二つのブロックをつなげながら新しい内部の面の組を作成するために，
-            別のブロックのパッチからの面の別のグループに関連づけられます．
+ \item[face matching（面の一致）]
+            一方のブロックのパッチを構成する面の組が，
+            他方のブロックのパッチを構成する面の組と
+            \emph{同一の頂点の組}からなる場合です．
+ \item[face merging（面の合併）]
+            一方のブロックのパッチをなす面のあるグループが，
+            他方のブロックのパッチをなす面の別のグループに結合され，
+            二つのブロックに接続された新しい内部面の組が作成されます．
 \end{description}
 face matchingで2ブロックをつなげるためには，
-接続を形成する二つのパッチが
-\OFkeyword{patches}リストから単に無視されるべきです．
+接続を形成する二つのパッチを\OFkeyword{patches}リスト内から単に除外します．
 \OFtool{blockMesh}は，面が外部の境界を形成せず，
 同じところに位置する各組を，2ブロックからのセルを接続する，
 ひとつの内部面に結合するのを特定します．
@@ -994,7 +1014,7 @@ mergePatchPairs
 八つ未満の頂点でブロックを作成するために，
 1組以上の頂点をお互いの上で潰すことが可能です．
 頂点を潰す最も一般的な例としては，
-セクション\autoref{ssec:5.2.2}で説明した
+\autoref{ssec:5.2.2}で説明した
 \index{wedge@\OFboundary{wedge}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!wedge@\OFboundary{wedge}}%
 \OFboundary{wedge}パッチタイプを使用する
@@ -1060,11 +1080,11 @@ STL形式の三角の表面形状から
 六面体と
 \index{メッシュ!ぶんかつろくめんたい@分割六面体}%
 分割六面体の3次元メッシュを自動的に生成します．
-はじめのメッシュの細分化と，後に現れる分割の六進法のメッシュの
-\index{ひょうめんメッシュ@表面メッシュ}%
-表面形状への変形を繰り返して表面形状に近づいていきます．
-オプションとして，現れたメッシュを縮小させ，
-レイヤセルを挿入することができます．
+初期メッシュから細分化を繰り返し，
+できた六面体メッシュを表面に合わせて変形することで，
+徐々に表面形状を形成していきます．
+オプションとして，できたメッシュを縮小させ，
+セルレイヤを挿入することができます．
 メッシュの細分化のレベルは非常に柔軟性が高く，
 表面の処理はあらかじめ定義したメッシュの水準に適合します．
 \OFtool{snappyHexMesh}は毎回負荷を平均化して並列動作をします．
@@ -1118,6 +1138,8 @@ Stereolithography (STL) 形式の
 
 \OFtool{snappyHexMesh}で読み込む形状は
 \OFpath{snappyHexMeshDict}内の\OFkeyword{geometory}の部分に記述します．
+形状は，STLによる表面形状，またはOpenFOAMによる境界形状エントリによって指定できます．
+
 形状はSTL形状またはOpenFOAMにおける幾何実体によって指定されます．
 以下に例を示します．
 \begin{OFverbatim}[file]
@@ -1197,40 +1219,44 @@ geometry
 \end{table}
 
 
-\autoref{fig:5.11}で示されたように，
-最初に領域内で指定された輪郭に従って選択されたセルで分割が開始します．
-
-
 \begin{figure}[ht]
  \includegraphics{fig-5-11}
- \caption{\OFtool{snappyHexMesh}の輪郭によるセルの分割}
+ \caption{\OFtool{snappyHexMesh}メッシングプロセスにおける輪郭によるセル分割}
  \label{fig:5.11}
 \end{figure}
 
 
-\OFkeyword{castellatedMeshControls}サブディクショナリの輪郭のリストにおいて
-\OFpath{edgeMesh}ファイルの名前と細分化のレベルを記述します．
+分割のプロセスは，\autoref{fig:5.11}に示したように，
+まず領域内で指定された輪郭に従って選択されたセルから始まります．
+\OFsubdictionary{castellatedMeshControls}サブディクショナリの\OFkeyword{features}リストには，
+\OFclass{edgeMesh}のファイル名および細分化の\OFkeyword{level}を含む
+ディクショナリ・エントリを記述します．
 \begin{OFverbatim}[file]
 features
-  (
-      {
-          file "someLine.eMesh"; // file containing edge mesh
-          level 2;               // level of refinement
-      }
-  );
+(
+    {
+        file "features.eMesh"; // file containing edge mesh
+        level 2;               // level of refinement
+    }
+);
 \end{OFverbatim}
-
-輪郭の細分化に続き，\autoref{fig:5.12}に示すように，
-指定された表面における分割のためにセルが選択されます．
+\OFclass{edgeMesh}に含まれる輪郭データは，
+以下のように\OFtool{surfaceFeatureExtract}を使って
+STL形状ファイルから取り出すことができます．
+\begin{OFverbatim}[terminal]
+surfaceFeatureExtract -includeAngle 150 surface.stl features
+\end{OFverbatim}
 
 
 \begin{figure}[ht]
  \includegraphics{fig-5-12}
- \caption{\OFtool{snappyHexMesh}の表面によるセルの分割}
+ \caption{\OFtool{snappyHexMesh}メッシングプロセスにおける表面によるセル分割}
  \label{fig:5.12}
 \end{figure}
 
 
+輪郭の細分化に続き，\autoref{fig:5.12}に示すように，
+指定された表面における分割のためにセルが選択されます．
 \OFkeyword{castellatedMeshControls}の
 \OFdictionary{refinementSurface}ディクショナリで，各STL表面のディクショナリ入力と，
 型の最小，最大細分化のデフォルトレベルの指定を行います．
@@ -1280,7 +1306,7 @@ refinementSurfaces
 
 \begin{figure}[ht]
  \includegraphics{fig-5-13}
- \caption{snappyHexMeshにおけるメッシュの除去}
+ \caption{\OFtool{snappyHexMesh}メッシングプロセスにおけるセルの除去}
  \label{fig:5.13}
 \end{figure}
 
@@ -1345,7 +1371,7 @@ refinementRegions
 
 \begin{figure}[ht]
  \includegraphics{fig-5-14}
- \caption{\OFtool{snappyHexMesh}の領域によるセルの分割}
+ \caption{\OFtool{snappyHexMesh}メッシングプロセスにおける領域によるセル分割}
  \label{fig:5.14}
 \end{figure}
 
@@ -1383,7 +1409,7 @@ refinementRegions
 
 \begin{figure}[ht]
  \includegraphics{fig-5-15}
- \caption{\OFtool{snappyHexMesh}における表面のスナップ}
+ \caption{\OFtool{snappyHexMesh}メッシングプロセスにおける表面のスナップ}
  \label{fig:5.15}
 \end{figure}
 
@@ -1400,7 +1426,7 @@ refinementRegions
 
 \begin{figure}[ht]
  \includegraphics{fig-5-16}
- \caption{レイヤの挿入}
+ \caption{\OFtool{snappyHexMesh}メッシングプロセスにおけるレイヤの挿入}
  \label{fig:5.16}
 \end{figure}
 
@@ -1434,9 +1460,8 @@ refinementRegions
 
 レイヤのサブディクショナリはレイヤが適用される各パッチと
 必要な表面レイヤの数の入力を含んでいます．
-パッチ名は，レイヤ追加が表面幾何形状ではなく
-既存メッシュに関連付けられるので使われ，
-したがって，表面領域ではなく，パッチに適用されます．
+レイヤ追加は表面形状ではなく，できあがったメッシュに関連しているのでパッチ名が使われ，
+したがって表面領域に対してではなくパッチに対して適用されます．
 レイヤの入力例は以下のとおりです．
 \begin{OFverbatim}[file]
  layers
@@ -1509,7 +1534,7 @@ OpenFOAMが用いる形式にそれらを変換できます．
 Fluentは，\texttt{.msh}拡張子をもつ単一のファイルに，
 メッシュ・データを書き出します．
 ASCII書式でファイルを書かなければなりませんが，
-それは，Fluentのデフォルトの選択ではありません．
+それは，Fluentのデフォルト設定ではありません．
 2次元の幾何形状を含んでいる単一の流れの
 Fluentメッシュを変換することは可能です．
 OpenFOAMでは，2次元幾何形状は，現在のところ，
@@ -1527,25 +1552,25 @@ OpenFOAMでは，2次元幾何形状は，現在のところ，
        直接的な対応は全くないので，
        ユーザはケースを実行する前に境界条件をチェックするべきです．
  \item 2次元メッシュから軸対称なメッシュを生成することは
-       現在サポートされていませんが，ご要望があれば実装されるでしょう．
+       現在サポートされていませんが，需要があれば実装されるでしょう．
  \item 複数の媒質からなるメッシュは受入れられません．
        もし複数の流体媒質が存在していると，
-       それらは単一のOpenFOAMメッシュに変換されるでしょう．
+       それらは単一のOpenFOAMメッシュに変換されます．
        もし固体領域が検出されると，
-       コンバータは，それを排除しようと試みるでしょう．
- \item Fluentはメッシュの内部にパッチを定義することを
-       ユーザに許しています．つまり，面の両側にセルが存在する場合です．
+       コンバータは，それを排除しようと試みます．
+ \item Fluentではメッシュの内部にパッチを定義することができます．
+       つまり，面の両側にセルが存在する場合です．
        そのようなパッチはOpenFOAMでは許容されていないので，
-       コンバータはそれらを排除しようと試みるでしょう．
- \item 現在，埋め込まれたインタフェースと細分化の
-       ツリーに関するサポートは全くありません．
+       コンバータはそれらを排除しようと試みます．
+ \item 現在，埋め込まれたインタフェースと
+       細分化ツリーに関してはサポートされていません．
 \end{itemize}
-Fluent \texttt{.msh}ファイルの変換は，
-必要なディレクトリとファイルを作成することによって
-まず新しいOpenFOAMケースを作ることで始まります．
-ケースディレクトリは\OFpath{system}のサブディレクトリに
-\OFdictionary{controlDict}ファイルを含みます．
-そしてコマンド・プロンプトにおいて，ユーザは以下を実行することになります．
+Fluent \texttt{.msh}ファイルの変換手順は，
+まず必要なディレクトリとファイルを作成して
+新しいOpenFOAMケースを作ることから始めます．
+ケースディレクトリには，\OFpath{system}サブディレクトリの中に
+\OFdictionary{controlDict}ファイルをおきます．
+そして以下のコマンドを実行します．
 \begin{OFverbatim}[terminal]
 fluentMeshToFoam <meshFile>
 \end{OFverbatim}
@@ -1555,12 +1580,12 @@ fluentMeshToFoam <meshFile>
 
 \subsection{\OFtool{starToFoam}}
 \label{ssec:5.5.2}
-このセクションはSTAR-CDコードで生成されたメッシュを，
-OpenFOAMのメッシュのクラスが読むことができる書式に変換する方法を説明します．
+本節ではSTAR-CDコードで生成されたメッシュを，
+OpenFOAMのメッシュのクラスが読むことができる形式に変換する方法を説明します．
 メッシュはSTAR-CDとともに供給されるどのパッケージでも生成できます．
 例えばPROSTAR，SAMM，ProAMおよびそれらの派生物です．
 コンバータは，統合された任意のカップルマッチングを含む
-どんなただ一つの流れのメッシュも受け入れ，
+どんな単一流れのメッシュも受け入れ，
 すべてのセルタイプがサポートされます．
 コンバータがサポートしない特徴は以下のとおりです．
 \begin{itemize}
@@ -1568,48 +1593,46 @@ OpenFOAMのメッシュのクラスが読むことができる書式に変換す
  \item バッフル，すなわち，領域内に挿入された厚さなしの壁
  \item 部分境界，カップルマッチのうちの
        覆われていない部分は境界面であると考えられます．
- \item スライドするインターフェース
+ \item スライディング・インタフェース
 \end{itemize}
-複数の流れのメッシュに関しては，
-メッシュ変換は，別々のメッシュとして
-それぞれの個々の流れを書くことによって実現され，
-OpenFOAMでそれらを組み立て直すことができます．
+複数の流れを含むメッシュに関しては，
+それぞれの独立した流れを別々のメッシュとして書き出し，
+それらをOpenFOAMで組み立て直すことで，メッシュ変換が実現できます．
 
 OpenFOAMは，\autoref{sec:5.1}で指定された
 かなり厳しい妥当性評価基準に整合しているメッシュの入力だけを
 受け入れるという方針を採ります．
 無効なメッシュを用いて実行されることはなく，
 それ自体が無効なメッシュは変換できません．
-以下のセクションは，STAR-CDとともに供給された
+以下の節では，STAR-CDとともに供給された
 メッシュ生成パッケージを用いてメッシュを生成する際に，
 OpenFOAM形式に変換できることを保証するために
 取らなければならない方法を説明します．
-これからのセクションにおいて重複を避けるために，
+これからの節において重複を避けるために，
 STAR-CDとともに供給されるメッシュ生成ツールは，
 STAR-CDという総称によって参照されることにします．
 
 \subsubsection{変換における一般的なアドバイス}
 \label{sssec:5.5.2.1}
-ユーザは\OFtool{starToFoam}の変換を試みる前に，
-STAR-CDのメッシュをチェックするツールを動かすべきです．
-そして，変換の後に，
+\OFtool{starToFoam}の変換を試みる前に，
+STAR-CDのメッシュチェックツールを実行することをお勧めします．
+そして変換の後に，新たに変換されたメッシュで
 \index{checkMesh@\OFtool{checkMesh}!ユーティリティ}%
 \index{ユーティリティ!checkMesh@\OFtool{checkMesh}}%
-\OFtool{checkMesh}ユーティリティは
-新たに変換されたメッシュで実行されるべきです．
-あるいはまた，\OFtool{starToFoam}はユーザが問題のあるセルを
-より近くで見ることができるようにするための
-\textsf{PROSTAR}コマンドを含む警告を発行するかもしれません．
-問題の多いセルとマッチは，OpenFOAMを用いてメッシュを使おうとする前に，
-チェックされ修正されるべきです．
-無効なメッシュはOpenFOAMで動きませんが，
-それが正当性評価基準を課さない別の環境では
-動くかもしれないということを覚えていてください．
+\OFtool{checkMesh}ユーティリティを実行するべきです．
+あるいは，\OFtool{starToFoam}は，ユーザが問題のあるセルに
+注目することができるように，
+\textsf{PROSTAR}コマンドを含む警告を出すことがあります．
+問題の多いセルとマッチは，OpenFOAMでメッシュを使おうとする前に
+チェックして修正するべきです．
+OpenFOAMで動作しない無効なメッシュでも，
+課される妥当性評価基準が異なる別の環境では
+動くかもしれないことを覚えておいてください．
 
-コンバータにおいて許容度を合わせることで，
-許容度のマッチングに関するいくつかの問題を克服できます．
-しかしながら，有効性への限界があり，
-デフォルトレベルからマッチング許容度を増加させることが
+許容誤差のマッチングに関するいくつかの問題は，
+コンバータのマッチング許容誤差を使って解決することができます．
+しかしながら，その有効性には限界があり，
+マッチング許容誤差をデフォルトレベルから増加させることが
 明らかに必要であるということは，
 オリジナルのメッシュが正確でないことを示します．
 
@@ -1624,28 +1647,28 @@ STAR-CDのメッシュをチェックするツールを動かすべきです．
 CSET NEWS FLUID
 CSET INVE
 \end{OFverbatim}
-\texttt{CSET}は空であるべきです．これがそうでないなら，
+\texttt{CSET}は空であるべきです．そうでないなら，
 \texttt{CSET}でセルを調べて，モデルを調整してください．
 もしセルを本当に必要としていないなら，
 \textsf{PROSTAR}コマンドを使用することでそれらを取り除くことができます．
 \begin{OFverbatim}[terminal]
 CDEL CSET
 \end{OFverbatim}
-同様に，頂点も取り除かれる必要があるでしょう．
+同様に，頂点も取り除く必要があるでしょう．
 \begin{OFverbatim}[terminal]
 CSET NEWS FLUID
 VSET NEWS CSET
 VSET INVE
 \end{OFverbatim}
-これらの必要とされていない頂点を取り除く前に，
-必要とされていない境界面は，除かれる前に，集められなければなりません．
+これらの必要でない頂点を取り除く前に，
+不要な境界面を集めておかなければなりません．
 \begin{OFverbatim}[terminal]
 CSET NEWS FLUID
 VSET NEWS CSET
 BSET NEWS VSET ALL
 BSET INVE
 \end{OFverbatim}
-\texttt{BSET}が空でないなら，必要とされていない境界面は
+\texttt{BSET}が空でないなら，不要な境界面は
 以下のコマンドを使用して削除することができます．
 \begin{OFverbatim}[terminal]
 BDEL BSET
@@ -1657,36 +1680,34 @@ BDEL BSET
 
 \subsubsection{デフォルトの境界条件の削除}
 \label{sssec:5.5.2.3}
-デフォルトで，STAR-CDは明示的に境界領域に関連づけられていない
-どんな境界面に対して壁境界を適用します．
-残っている境界面は，割り当てられた境界タイプ0として
-\OFkeyword{default}境界領域に集められます．
-OpenFOAMは，人為ミスを誘発するので，
-意図的に未定義の界面のための\OFkeyword{default}境界条件の
-概念をもっていません．
-例えば，すべての関連付けられていない面に
-デフォルト条件を意図して与えたかどうかをチェックする手段は全くありません．
+デフォルトでSTAR-CDは，明示的に境界領域と結びつけられていない
+全ての境界面に対して壁境界を適用します．
+そのほかの境界面は，\texttt{default}境界領域に集められ，
+境界タイプ\texttt{0}として割り当てられます．
+これは人為ミスを誘発するので，OpenFOAMは，
+未定義の界面のための\texttt{default}境界条件の概念を意図的に用意していません．
+例えば，すべての未定義の境界面にデフォルト条件を
+意図して与えたかどうかをチェックする手段は全くありません．
 
 したがって，メッシュが首尾よく変換されるために，
 各OpenFOAMメッシュに対するすべての境界を指定しなければなりません．
-default境界は，以下で説明された手順を用いることで
-実体をもつものに変えられる必要があります．
+以下で説明された手順を用いることで
+\texttt{default}境界を実際の境界条件に変更する必要があります．
 \begin{enumerate}
- \item \OFkeyword{Wire Surface}オプションで幾何学形状をプロットしてください．
+ \item \OFkeyword{Wire Surface}オプションで幾何形状をプロットしてください．
  \item \OFkeyword{default}領域0と同じパラメータで
-       余分な境界領域を定義してください．
-       そして，すべての見えている面を，
-       境界ツールでゾーンオプションを選択して，
-       モデルのスクリーンに描かれている全体の周りに多角形を描くことによって，
-       10といった新しい領域に加えてください．
-       \textsf{PROSTAR}の以下のコマンドを発行することによって，
+       追加の境界領域を定義してください．
+       そして，境界ツールでゾーン指定を選択し，
+       スクリーンに描かれたモデル全体のまわりに多角形を描くことで，
+       全ての見えている面を10などの新しい領域に加えてください．
+       \textsf{PROSTAR}で以下のコマンドを実行することによって，
        これができます．
 \begin{OFverbatim}[terminal]
 RDEF 10 WALL
 BZON 10 ALL
 \end{OFverbatim}
- \item 私たちはセットからすべての以前に定義された境界タイプを
-       外すことになるでしょう．境界領域に行ってください．
+ \item そのセットから，すでに定義されている境界タイプを全て外してください．
+       境界領域から実行していきます．
 \begin{OFverbatim}[terminal]
 BSET NEWS REGI 1
 BSET NEWS REGI 2
@@ -1703,7 +1724,7 @@ BSET DELE REGI 1
 REPL
 \end{OFverbatim}
        これは境界領域1の上で定義された境界領域10の面を与えるはずです．
-       \verb|BDEL BSET|と共にそれらを削除してください．
+       \verb|BDEL BSET|と入力して，それらを削除してください．
        すべての領域にこれらを繰り返してください．
 \end{enumerate}
 
@@ -1744,7 +1765,7 @@ CPSET NEWS TYPE INTEGRAL
 CPMOD CPSET 1
 \end{OFverbatim}
 そして，計算格子の構成要素をそれら自身のファイルに書かなければなりません．
-これはコマンドを発行し，境界に対して\textsf{PROSTAR}を用いることで行われます．
+これは以下のコマンドを実行し，境界に対して\textsf{PROSTAR}を用いることで行います．
 \begin{OFverbatim}[terminal]
 BWRITE
 \end{OFverbatim}
@@ -1763,7 +1784,7 @@ VWRITE
 現在の既定の設定では，ASCII書式でファイルを書き出します．
 カップルが存在しているなら，
 拡張子\texttt{.cpl}をもつ追加カップルファイルが
-以下のコマンドをタイプすることによって書きだされる必要があります．
+以下のコマンドをタイプすることによって書きだす必要があります．
 \begin{OFverbatim}[terminal]
 CPWRITE
 \end{OFverbatim}
@@ -1772,7 +1793,7 @@ CPWRITE
 パネルに目を通して，すべてのSTAR-CDのサブモデル，
 材料，および流体の特性に注目してください．
 材料の特性と数学的モデルは，OpenFOAMディクショナリファイルを作成し，
-編集することで設定される必要があるでしょう．
+編集することで設定する必要があります．
 
 \textsf{PROSTAR}ファイルを変換する手順は最初に，
 必要なディレクトリを作成することで新しいOpenFOAMのケースを作ることです．
@@ -1787,12 +1808,12 @@ CPWRITE
 \texttt{.vrt}ファイルは，フリー・フォーマットというよりむしろ
 指定された幅に関するデータ列で書かれています．
 座標値が続く頂点番号を与えるデータの典型的な行は，
-以下のとおりであるかもしれません．
+以下のとおりです．
 \begin{OFverbatim}[file]
 19422 -0.105988957 -0.413711881E-02 0.000000000E+00
 \end{OFverbatim}
 縦座標が科学表記法で書かれていて，
-負であるなら，値の間には，スペースが全くないかもしれません．
+負であるなら，値の間には，スペースが全くないこともあります．
 例えば以下のような状況です．
 \begin{OFverbatim}[file]
 19423 -0.953953117E-01-0.338810333E-02 0.000000000E+00
@@ -1818,7 +1839,7 @@ foamCorrectVrt <file>.vrt
 \subsubsection{OpenFOAMのフォーマットへのメッシュの変換}
 \label{sssec:5.5.2.7}
 ここで，OpenFOAMの実行に必要な境界，セル，
-およびポイントファイルを作成するために，
+および頂点ファイルを作成するために，
 変換ユーティリティ\OFtool{starToFoam}を実行できます．
 \begin{OFverbatim}[terminal]
 starToFoam <meshFilePrefix>
@@ -1826,7 +1847,7 @@ starToFoam <meshFilePrefix>
 \texttt{<meshFilePrefix>} は，メッシュファイルの絶対か相対パスを
 含んでいる接頭語の名前です．
 ユーティリティの実行後に，OpenFOAM境界タイプは
-\OFkeyword{boundary}ファイルを手で編集することによって指定されるべきです．
+\OFkeyword{boundary}ファイルを手で編集することによって指定します．
 
 
 \subsection{\OFtool{gambitToFoam}}
@@ -1874,10 +1895,10 @@ OpenFOAMメッシュの\OFkeyword{defaultFaces}パッチに入れられ，
 タイプ\OFkeyword{wall}が与えられます．
 もちろん，それに続けてパッチタイプを変えることができます．
 
-CFXでのOpenFOAMの2次元幾何形状は，一つのセルの厚さ [**] の
+CFXでのOpenFOAMの2次元形状は，一つのセルの厚さ [**] の
 3次元メッシュとして作成されます．
 もしユーザがCFXによって作成されたメッシュで2次元のケースを動かしたいなら，
-前後の面に関する境界条件は\OFkeyword{empty}として設定されるべきです．
+前後の面に関する境界条件は\OFkeyword{empty}として設定します．
 ユーザは，計算面の他のすべての面に関する境界条件が
 正しく設定されていることを確かめるべきです．
 現在，2次元のCFXメッシュから軸対称の幾何形状を作成するための機能はありません．
