@@ -1,14 +1,14 @@
 %#! platex UserGuideJa
 \chapter{モデルと物性値}
 \label{chap:7}
-OpenFOAMは特定のクラスの問題に対し，
-各々に対応した幅広い範囲のソルバを内蔵しています．
+OpenFOAMには，各々が特定の問題に特化して設計されたソルバが，
+幅広い範囲にわたって用意されています．
 ユーザは，特定のケースに対してモデリングを行う際に
 最初にソルバの選択ができるように，
 その方程式とアルゴリズムは一つ一つが異なったものとなっています．
-ソルバーは，一般的には\autoref{sec:3.5}に，
-ケースに対して適切なソルバが見つけやすいように記述してありますので，
-この中から選択して下さい．各々のケースを定義するためには，
+ソルバの選択には，通常，\autoref{sec:3.5}にある各ソルバの説明に目を通して，
+そのケースに対して適切なソルバを見つけてください．
+各々のケースを定義するためには，
 最終的にはパラメータと物理的特性が必要となりますが，
 いくつかのモデリングのオプションはケースの
 \index{constant@\OFpath{constant}!ディレクトリ}%
@@ -71,17 +71,19 @@ hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
 
 \subsection{熱物性データ}
 \label{ssec:7.1.1}
-基本的な熱物理の性質は，入力データから，
-各々の種 (species) のために指定される．
-そのデータは，種のために，
-次に示す形式の複合的なエントリを使って指定される．
-この複合的なエントリは，キーワード\OFkeyword{mixture}が使われる．
-\begin{OFverbatim}[file]
-mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
-\end{OFverbatim}
-物性係数 \verb|<specieCoeffs>| は，
-\autoref{tbl:7.2}にリストされるエントリを含み，
-その順番は入力で指定される順番となる．
+基本的な熱物性値は，各種類ごとに入力データに指定します．
+データエントリには，\OFkeyword{O2}，\OFkeyword{H2O}，
+\OFkeyword{mixture}といった物質名を示すキーワードに続けて，
+以下のような係数のサブディクショナリを入力する必要があります．
+\begin{description}
+ \item[\OFkeyword{specie}] その物質のモル数\OFkeyword{nMoles}，
+            およびモル質量%
+\footnote{訳注：原文ではmolecular weightとなっているので直訳すれば「モル重量」だが，
+            単位が$\unit*{g/mol}$とされているので「モル質量」とした．}%
+            \OFkeyword{molWeight}を$\unit*{g/mol}$の単位で入力します．
+ \item[\OFkeyword{thermodynamics}] 選択した熱物理モデル（後述）に対する係数を入力します．
+ \item[\OFkeyword{transport}] 選択した輸送モデル（後述）に対する係数を入力します．
+\end{description}
 
 
 \begin{table}[ht]
@@ -91,92 +93,116 @@ mixture <specieCoeffs> <thermoCoeffs> <transportCoeffs>
 \end{table}
 
 
-熱物理の係数 \verb|<thermoCoeffs>| は，見かけ上，
-他の性質がそれから導出される，比熱容量を評価することに関連している．
-現在の\OFkeyword{thermo}モデルは，以下に示す通りである．
+熱力学係数は見かけ上，比熱$c_{\mathrm{p}}$の評価に関与し，
+そこから他の物性値が導出されます．
+現在の\OFkeyword{thermo}モデルは，以下に示すとおりです．
 \begin{description}
  \item[hConstThermo]
-            一定の$c_{\mathrm{p}}$と融解熱$H_{\mathrm{f}}$を仮定する．
-            これらは，単純に \verb|<specieCoeffs>| の後に
-            二つの値$c_{\mathrm{p}}$と$H_{\mathrm{f}}$を続けて指定する．
+            $c_{\mathrm{p}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
+            単純に\OFkeyword{Cp}および\OFkeyword{Hf}というキーワードで
+            二つの値$c_{\mathrm{p}}$と$H_{\mathrm{f}}$を指定します．
  \item[eConstThermo]
-            一定の$c_{\mathrm{v}}$と融解熱$H_{\mathrm{f}}$を仮定する．
-            これらは，単純に \verb|<specieCoeffs>| の後に
-            二つの値$c_{\mathrm{v}}$と$H_{\mathrm{f}}$を続けて指定する．
+            $c_{\mathrm{v}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
+            単純に\OFkeyword{Cv}および\OFkeyword{Hf}というキーワードで
+            二つの値$c_{\mathrm{v}}$と$H_{\mathrm{f}}$を指定します．
  \item[janafThermo]
-            $c_{\mathrm{p}}$を温度の関数として計算する．
-            このとき，一連の係数は，熱力学のJANA表のものを用いる．
-            順序づけられた係数のリストを，
-            \autoref{tbl:7.3}に示した．
-            関数は，温度の下限$T_{\mathrm{l}}$と上限$T_{\mathrm{h}}$の間で妥当性が確認されている．
-            係数のセットが二つ指定される．
-            最初のセットは常温$T_{\mathrm{c}}$以上の温度についてのものである．
-            （そして，$T_{\mathrm{h}}$以下である．
-            二つめのセットは$T_{\mathrm{c}}$より低く$T_{\mathrm{l}}$より高い範囲についてのもの）．
+            熱力学の\OFemph{JANAF}表から得られた一連の係数により，
+            $c_{\mathrm{p}}$を温度の関数として計算します．
+            順に並べた係数のリストを\autoref{tbl:7.3}に示します．
+            関数は，温度の下限$T_{\mathrm{l}}$と上限$T_{\mathrm{h}}$の間で妥当性が確認されています．
+            係数は二組示されています．
+            最初の組は常温$T_{\mathrm{c}}$以上 (そして$T_{\mathrm{h}}$以下) の温度についてのものであり，
+            二組目は$T_{\mathrm{c}}$より以下 (そして$T_{\mathrm{l}}$以上) の範囲のものです．
             $c_{\mathrm{p}}$を温度の関数として表すと，
 \begin{align}
  \label{eq:7.1}
  c_{\mathrm{p}} = R((((a_{4}T + a_{3})T + a_{2})T + a_{1})T + a_{0})
 \end{align}
-            加えて，$a_{5}$，$a_{6}$という積分定数がある．
-            これらは，それぞれ，$h$と$s$を評価するために使われ，
-            高温と低温の両方で同じ定数が用いられる．
+            これに加えて，高温と低温の両方に$a_{5}$，$a_{6}$という積分定数があります．
+            これらは，それぞれ$h$と$s$を評価するために使われます．
  \item[hPolynomialThermo]
-            $c_{\mathrm{p}}$を温度の関数として，任意次数の多項式によって計算する．
-            次のケースがその使用例である：\\
+            $c_{\mathrm{p}}$を温度の関数として，任意次数の多項式によって計算します．
+            次のケースにその使用例があります：\\
             \hfil\OFpath{\$FOAM\_TUTORIALS/lagrangian/porousExplicitSourceReactingParcelFoam/filter}
 \end{description}
 
 
 \begin{table}[ht]
  \input{tbl/tbl-7-3}
- \caption{JANAF熱力学的係数}
+ \caption{JANAFの熱力学係数}
  \label{tbl:7.3}
 \end{table}
 
 
-移動係数 \verb|<transportCoeffs>| は，
-動的粘性率，熱伝導度，層流熱伝導度（エンタルピ方程式のため）を
-評価するために使われる．
-現在のtransportモデルは，以下に説明する通りである．
+輸送係数は，粘性係数%
+\footnote{訳注：原文にはdynamic viscosityとあるが，文脈からして動粘性係数ではない．}%
+$\mu$，熱伝導率$\kappa$，層流熱伝導率（エンタルピ方程式のため）$\alpha$を
+評価するために使われます．
+現在の\OFclass{transport}モデルは，以下に説明するとおりです．
 \begin{description}
- \item[constTransport]
-            $\mu$とプラントル数$\nPr = c_{\mathrm{p}}\mu/\kappa$が一定であると仮定する．
-            ここでは，\break
-            \verb|<thermoCoeffs>| の後に$\mu$と$\nPr$の二つの値を続けて指定する．
- \item[sutherlandTransport]
-            $\mu$を温度$T$の関数として計算する．
-            これには，サザーランド係数$A_{\mathrm{s}}$とサザーランド温度$T_{\mathrm{s}}$を用いる．
-            この二つの数は，\verb|<thermoCoeffs>| の後に続けて指定する．
-            $\mu$は，次のように計算される．
+ \item[\OFclass{constTransport}]
+            $\mu$とプラントル数$\nPr = c_{\mathrm{p}}\mu/\kappa$が一定であると仮定します．
+            それぞれキーワード\OFkeyword{mu}および\OFkeyword{Pr}によって指定します．
+ \item[\OFclass{sutherlandTransport}]
+            $\mu$を温度$T$の関数として計算します．
+            これには，サザーランド係数$A_{\mathrm{S}}$とサザーランド温度$T_{\mathrm{S}}$が用いられ，
+            キーワード\OFkeyword{As}および\OFkeyword{Ts}によって指定します．
+            $\mu$は，次のように計算されます．
 \begin{align}
  \label{eq:7.2}
- \mu = \frac{A_{\mathrm{s}}\sqrt{T}}{1 + T_{\mathrm{s}}/T}
+ \mu = \frac{A_{\mathrm{S}}\sqrt{T}}{1 + T_{\mathrm{S}}/T}
 \end{align}
  \item[polynomialTransport]
-            $\mu$と$\kappa$を温度$T$の関数として，任意次数の多項式から計算する．
+            $\mu$と$\kappa$を温度$T$の関数として，任意次数の多項式から計算します．
 \end{description}
-次は，\OFkeyword{fuel}という名前の種についてのエントリの例である．
-これは，\OFclass{sutherlandTransport}と\OFclass{janafThermo}を使ってモデルされている．
-また，エントリの説明のためにコメントが入っている．
+次は，\OFkeyword{fuel}という名前の種についてのエントリの例です．
+これは，\OFclass{sutherlandTransport}と\OFclass{janaf\-Thermo}を使ってモデル化されています．
 \begin{OFverbatim}[file]
-fuel                                          // keyword
-fuel 1 44.0962                                // specie
-200 5000 1000                                 // -- janafThermo --
-7.53414 0.0188722 -6.27185e-06 9.14756e-10 -4.78381e-14
--16467.5 -17.8923
-0.933554 0.0264246 6.10597e-06 -2.19775e-08 9.51493e-12
--13958.5 19.2017                              // -----------------
-1.67212e-06 170.672;                          // sutherlandTransport
+fuel
+{
+    specie
+    {
+        nMoles       1;
+        molWeight    16.0428;
+    }
+    thermodynamics
+    {
+        Tlow         200;
+        Thigh        6000;
+        Tcommon      1000;
+        highCpCoeffs (1.63543 0.0100844 -3.36924e-06 5.34973e-10
+                      -3.15528e-14 -10005.6 9.9937);
+        lowCpCoeffs  (5.14988 -0.013671 4.91801e-05 -4.84744e-08
+                      1.66694e-11 -10246.6 -4.64132);
+    }
+    transport
+    {
+        As           1.67212e-06;
+        Ts           170.672;
+    }
+}
 \end{OFverbatim}
-次に示すのは，\OFkeyword{air}という名前の種についての，エントリの例である．
-これは，\OFclass{constTransport}と\OFclass{hConstThermo}でモデルされている．
-エントリの説明のためにコメントが入っている．
+次に示すのは，\OFkeyword{air}という名前の物質についての，エントリの例です．
+これは，\OFclass{constTransport}と\OFclass{hConstThermo}でモデル化されています．
 \begin{OFverbatim}[file]
-mixture        // keyword
-air 1 28.9     // specie
-1000 2.544e+06 // hConstThermo
-1.8e-05 0.7;   // constTransport
+air
+{
+    specie
+    {
+        nMoles          1;
+        molWeight       28.96;
+    }
+    thermodynamics
+    {
+        Cp              1004.5;
+        Hf              2.544e+06;
+    }
+    transport
+    {
+        mu              1.8e-05;
+        Pr              0.7;
+    }
+}
 \end{OFverbatim}
 
 
@@ -295,12 +321,12 @@ boundaryField
 {
     movingWall
     {
-        type            nutWallFunction;
+        type            nutkWallFunction;
         value           uniform 0;
     }
     fixedWalls
     {
-        type            nutWallFunction;
+        type            nutkWallFunction;
         value           uniform 0;
     }
     frontAndBack

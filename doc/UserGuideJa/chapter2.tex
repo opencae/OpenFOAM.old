@@ -79,7 +79,8 @@ cp -r $FOAM_TUTORIALS $FOAM_RUN
 \subsection{前処理}
 \label{ssec:2.1.1}
 ケースはOpenFOAMでケースファイルを編集することで設定します．
-ケースファイルはemacsやvi，gedit，kate，neditなどの
+ケースファイルは\OFthirdparty{emacs}や\OFthirdparty{vi}，
+\OFthirdparty{gedit}，\OFthirdparty{kate}，\OFthirdparty{nedit}などの
 テキストエディタで作成・編集します．
 それは，入出力が初心者でもわかりやすいキーワードをもつ
 ディクショナリ形式が使われているからです．
@@ -297,11 +298,11 @@ boundaryField
 \end{description}
 このキャビティ流れの解析ケースでは境界は壁面のみですが，
 二つのパッチが使用されています．
-(1) キャビティの固定された側面と底面用の\OFkeyword{fixedwall}と，
-(2) キャビティの駆動天井面用の\OFkeyword{movingwall}です．
+(1) キャビティの固定された側面と底面用の\OFpatch{fixedwall}と，
+(2) キャビティの駆動天井面用の\OFpatch{movingwall}です．
 どちらも$p$が\OFkeyword{zeroGradient}ですが，
 これは圧力の境界に垂直な方向の勾配が$0$であるということです．
-\OFkeyword{frontAndBack}は2次元の問題の場合の表裏の平面を示していて，
+\OFpatch{frontAndBack}は2次元の問題の場合の表裏の平面を示していて，
 本ケースでは当然\OFkeyword{empty}となっています．
 
 このケースでは，もっともよく目にするものでありますが，
@@ -314,14 +315,14 @@ boundaryField
 内部の初期条件はベクトル量で3成分とも$0$を意味する
 \texttt{uniform (0 0 0)}になっています（\autoref{ssec:4.2.5}に詳述）．
 
-速度の境界条件は\OFkeyword{frontAndBack}パッチと同じ条件です．
-\OFkeyword{fixedWall}に関してはすべりなしのため
+速度の境界条件は\OFpatch{frontAndBack}パッチと同じ条件です．
+\OFpatch{fixedWall}に関してはすべりなしのため
 \index{value@\OFkeyword{value}!キーワード}%
 \index{キーワード!value@\OFkeyword{value}}%
 \OFkeyword{value}は\texttt{uniform (0 0 0)}となります．
 上面は$1\unit{m/s}$で移動するので\texttt{uniform (1 0 0)}で固定値を設定します．
 
-\subsubsection{物理量}
+\subsubsection{物性値}
 \label{sssec:2.1.1.3}
 ケースの物理量は，名前に\OFpath{...Properties}という語尾を与えられて
 ディクショナリに保存され，\OFpath{Dictionaries}ディレクトリツリーに置かれます．
@@ -332,7 +333,6 @@ boundaryField
 \index{ディクショナリ!transportProperties@\OFdictionary{transportProperties}}%
 \OFdictionary{transportProperties}ディクショナリに保存される
 動粘性係数を指定するだけです．
-
 \OFdictionary{transportProperties}ディクショナリを開いてエントリを見たり，
 編集することができますので，
 \index{ねんせいけいすう@粘性係数!どう@動\jdash}%
@@ -542,39 +542,39 @@ paraFoam
 paraFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \end{OFverbatim}%$
 
-\autoref{fig:6.1}に示すように\OFtool{ParaView}のウィンドウが開きます．
-\index{Pipeline Browser@\OFemph{Pipeline Browser}!ウィンドウ}%
-\index{ウィンドウ!Pipeline Browser@\OFemph{Pipeline Browser}}%
-\OFemph{Pipeline Browser}を見ると，\OFtool{ParaView}が\OFkeyword{cavity.OpenFOAM}，
+\autoref{fig:6.1}に示すように\OFthirdparty{ParaView}のウィンドウが開きます．
+\index{Pipeline Browser@\PVwindow{Pipeline Browser}!ウィンドウ}%
+\index{ウィンドウ!Pipeline Browser@\PVwindow{Pipeline Browser}}%
+\PVwindow{Pipeline Browser}を見ると，\OFthirdparty{ParaView}が\PVkeyword{cavity.OpenFOAM}，
 つまりキャビティケースのモデュールを開いていることが確認できます．
-\emph{\OFemph{Apply}ボタンをクリックする前に}%
-\index{Mesh Parts@\OFemph{Mesh Parts}!ウィンドウパネル}%
-\index{ウィンドウパネル!Mesh Parts@\OFemph{Mesh Parts}}%
-\OFemph{Mesh Parts}パネルから
+\emph{\PVbutton{Apply}ボタンをクリックする前に}%
+\index{Mesh Parts@\PVpanel{Mesh Parts}!ウィンドウパネル}%
+\index{ウィンドウパネル!Mesh Parts@\PVpanel{Mesh Parts}}%
+\PVpanel{Mesh Parts}パネルから
 表示する要素を選択する必要があります．
-解析ケースが単純なので\OFemph{Mesh Parts}パネルのチェックボックスで
+解析ケースが単純なので\PVpanel{Mesh Parts}パネルのチェックボックスで
 全てのデータを選択することが簡単です．
 パネル内の全要素を自動的にチェックすることができます．
-\OFtool{ParaView}でジオメトリを読込むためには\OFemph{Apply}ボタンをクリックします．
+\OFthirdparty{ParaView}でジオメトリを読込むためには\PVbutton{Apply}ボタンをクリックします．
 
 最初から適用されている一般的な設定については
 \autoref{sssec:6.1.5.1}を参照してください．
 
-\index{Display@\OFemph{Display}!ウィンドウパネル}%
-\index{ウィンドウパネル!Display@\OFemph{Display}}%
-\OFemph{Display}タブを開き選択したモジュールの表示形式を調整します．
+\index{Display@\PVpanel{Display}!ウィンドウパネル}%
+\index{ウィンドウパネル!Display@\PVpanel{Display}}%
+\PVpanel{Display}タブを開き選択したモジュールの表示形式を調整します．
 \autoref{fig:2.3}に示すように，
-(1) \OFkeyword{Color by}を\OFkeyword{Solid Color}に設定し，
-(2) \OFemph{Set Solid Color}をクリックし適当な色（背景が白の場合は黒など）を選択，
+(1) \PVkeyword{Color by}を\PVkeyword{Solid Color}に設定し，
+(2) \PVbutton{Set Solid Color}をクリックし適当な色（背景が白の場合は黒など）を選択，
 (3)\ 
-\index{Style@\OFemph{Style}!ウィンドウパネル}%
-\index{ウィンドウパネル!Style@\OFemph{Style}}%
-\OFemph{Style}パネルでは\OFkeyword{Representation}メニューから
-\OFkeyword{Wireframe}を選択します．
-背景色はトップメニューパネルで\OFkeyword{Edit}から
-\index{View Settings...@\OFkeyword{View Settings...}!メニューエントリ}%
-\index{メニューエントリ!View Settings...@\OFkeyword{View Settings...}}%
-\OFkeyword{View Settings...}を選択して設定します．
+\index{Style@\PVpanel{Style}!ウィンドウパネル}%
+\index{ウィンドウパネル!Style@\PVpanel{Style}}%
+\PVpanel{Style}パネルでは\PVkeyword{Representation}メニューから
+\PVkeyword{Wireframe}を選択します．
+背景色はトップメニューパネルで\PVkeyword{Edit}から
+\index{View Settings...@\PVkeyword{View Settings...}!メニューエントリ}%
+\index{メニューエントリ!View Settings...@\PVkeyword{View Settings...}}%
+\PVkeyword{View Settings...}を選択して設定します．
 
 
 \begin{figure}[ht]
@@ -584,23 +584,23 @@ paraFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \end{figure}
 
 
-ParaViewを使うのがはじめてならば，
+\OFthirdparty{ParaView}を使うのがはじめてならば，
 \autoref{ssec:6.1.5}で述べるように視点操作を試してみることをお勧めします．
-特に本ケースは2次元なので\OFkeyword{Edit}メニューの
-\index{View Settings@\OFkeyword{View Settings}!メニューエントリ}%
-\index{メニューエントリ!View Settings@\OFkeyword{View Settings}}%
-\OFkeyword{View Settings}のGeneralパネルで
-\index{Use Parallel Projection@\OFemph{Use Parallel Projection}!ボタン}%
-\index{ボタン!Use Parallel Projection@\OFemph{Use Parallel Projection}}%
-\OFemph{Use Parallel Projection}を
+特に本ケースは2次元なので\PVkeyword{Edit}メニューの
+\index{View Settings@\PVkeyword{View Settings}!メニューエントリ}%
+\index{メニューエントリ!View Settings@\PVkeyword{View Settings}}%
+\PVkeyword{View Settings}のGeneralパネルで
+\index{Use Parallel Projection@\PVbutton{Use Parallel Projection}!ボタン}%
+\index{ボタン!Use Parallel Projection@\PVbutton{Use Parallel Projection}}%
+\PVbutton{Use Parallel Projection}を
 選択するのがよいでしょう．
 軸の方向は，
-\index{Annotation@\OFemph{Annotation}!ウィンドウパネル}%
-\index{ウィンドウパネル!Annotation@\OFemph{Annotation}}%
-\OFemph{Annotation}ウィンドウの
-\index{Orientation Axes@\OFemph{Orientation Axes}!ボタン}%
-\index{ボタン!Orientation Axes@\OFemph{Orientation Axes}}%
-\OFemph{Orientation Axes}をオン・オフするか，
+\index{Annotation@\PVpanel{Annotation}!ウィンドウパネル}%
+\index{ウィンドウパネル!Annotation@\PVpanel{Annotation}}%
+\PVpanel{Annotation}ウィンドウの
+\index{Orientation Axes@\PVbutton{Orientation Axes}!ボタン}%
+\index{ボタン!Orientation Axes@\PVbutton{Orientation Axes}}%
+\PVbutton{Orientation Axes}をオン・オフするか，
 マウスのドラッグ\&ドロップによって操作することができます．
 
 
@@ -643,11 +643,11 @@ icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \label{ssec:2.1.4}
 結果が時刻ディレクトリに書かれるとすぐに，
 \OFtool{paraFoam}を使って見ることができます．
-\OFtool{paraFoam}ウィンドウに戻って，
+\OFtool{para\-Foam}ウィンドウに戻って，
 \texttt{cavity.OpenFOAM}ケースモジュールの
-\index{Properties@\OFemph{Properties}!ウィンドウパネル}%
-\index{ウィンドウパネル!Properties@\OFemph{Properties}}%
-\OFemph{Properties}パネルを選んでください．
+\index{Properties@\PVpanel{Properties}!ウィンドウパネル}%
+\index{ウィンドウパネル!Properties@\PVpanel{Properties}}%
+\PVpanel{Properties}パネルを選んでください．
 ケースモジュールのパネルが存在していないようならば，
 \texttt{cavity.OpenFOAM}が青くハイライトされているか，
 それと並んだ目のボタンは表示が有効であることを示しているか，
@@ -655,37 +655,37 @@ icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 
 見たいデータを表示する\OFtool{paraFoam}を準備するには，
 最初に必須の実行時間として$0.5\unit{s}$分のデータを読込まなければなりません．
-ケースが実行中で一方\OFtool{ParaView}を開いている場合，
-時間ディレクトリの出力データは\OFtool{ParaView}に自動的にロードはされません．
-データをロードするためには，\OFemph{Properties}ウィンドウで
-\index{Refresh Times@\OFemph{Refresh Times}!ボタン}%
-\index{ボタン!Refresh Times@\OFemph{Refresh Times}}%
-\OFemph{Refresh Times}をクリックします．
-これで各時刻のデータが\OFtool{ParaView}にロードされます．
+ケースが実行中で一方\OFthirdparty{ParaView}を開いている場合，
+時間ディレクトリの出力データは\OFthirdparty{ParaView}に自動的にロードはされません．
+データをロードするためには，\PVwindow{Properties}ウィンドウで
+\index{Refresh Times@\PVbutton{Refresh Times}!ボタン}%
+\index{ボタン!Refresh Times@\PVbutton{Refresh Times}}%
+\PVbutton{Refresh Times}をクリックします．
+これで各時刻のデータが\OFthirdparty{ParaView}にロードされます．
 
 \subsubsection{等値面とコンタプロット}
 \label{sssec:2.1.4.1}
 圧力を見るには
-\index{Display@\OFemph{Display}!ウィンドウパネル}%
-\index{ウィンドウパネル!Display@\OFemph{Display}}%
-\OFemph{Display}パネルを開き，
+\index{Display@\PVpanel{Display}!ウィンドウパネル}%
+\index{ウィンドウパネル!Display@\PVpanel{Display}}%
+\PVpanel{Display}パネルを開き，
 選択したモジュールの表示形式を調整します．
 圧力分布を見るには\autoref{fig:2.4}に示すように
-\OFemph{Style}パネルのRepresentationメニューをsurfaceにして
+\PVpanel{Style}パネルのRepresentationメニューをsurfaceにして
 ColorPanelのSet Color byを \includegraphics{icon-point-p}，
 そして
-\index{Rescale to Data Range@\OFemph{Rescale to Data Range}!ボタン}%
-\index{ボタン!Rescale to Data Range@\OFemph{Rescale to Data Range}}%
-\OFemph{Rescale to Data Range}ボタンをクリックし，
+\index{Rescale to Data Range@\PVbutton{Rescale to Data Range}!ボタン}%
+\index{ボタン!Rescale to Data Range@\PVbutton{Rescale to Data Range}}%
+\PVbutton{Rescale to Data Range}ボタンをクリックし，
 メニューバーの下のツールバーにある
-\index{VCR Controls@\OFkeyword{VCR Controls}!メニュー}%
-\index{メニュー!VCR Controls@\OFkeyword{VCR Controls}}%
-\OFkeyword{VCR Controls}または
-\index{Current Time Controls@\OFkeyword{Current Time Controls}!メニュー}%
-\index{メニュー!Current Time Controls@\OFkeyword{Current Time Controls}}%
-\OFkeyword{Current Time Controls}で現在時刻を0.5にして$t = 0.5\unit{s}$における解析結果を表示します．
+\index{VCR Controls@\PVkeyword{VCR Controls}!メニュー}%
+\index{メニュー!VCR Controls@\PVkeyword{VCR Controls}}%
+\PVkeyword{VCR Controls}または
+\index{Current Time Controls@\PVkeyword{Current Time Controls}!メニュー}%
+\index{メニュー!Current Time Controls@\PVkeyword{Current Time Controls}}%
+\PVkeyword{Current Time Controls}で現在時刻を0.5にして$t = 0.5\unit{s}$における解析結果を表示します．
 それらのパネルは\autoref{fig:6.4}に示すように
-\OFtool{ParaView}ウィンドウのトップメニューの下にあります．
+\OFthirdparty{ParaView}ウィンドウのトップメニューの下にあります．
 圧力場の解析結果は\autoref{fig:2.5}のように左上が低く，
 右上が高い圧力分布になるはずです．
 
@@ -703,32 +703,32 @@ Current timeを0.5にして$t = 0.5\unit{s}$における解析結果を表示し
 
 Active Variable Controlsツールバーの
 Toggle Color Legend Visibilityボタンをクリックするか
-\OFkeyword{View}メニューから
-\index{Show Color Legend@\OFkeyword{Show Color Legend}!メニューエントリ}%
-\index{メニューエントリ!Show Color Legend@\OFkeyword{Show Color Legend}}%
-\OFkeyword{Show Color Legend}を選択することで，
+\PVkeyword{View}メニューから
+\index{Show Color Legend@\PVkeyword{Show Color Legend}!メニューエントリ}%
+\index{メニューエントリ!Show Color Legend@\PVkeyword{Show Color Legend}}%
+\PVkeyword{Show Color Legend}を選択することで，
 カラーバーを表示させることができます．
-Active Variable Controls toolbarかDisplay windowの
+Active Variable Controls toolbarか\PVpanel{Display}ウィンドウの
 Color panelにあるEdit Color Map buttonをクリックすると
 フォントの大きさや種類，スケールの番号付けの形式など，
 カラーバーの設定を変更することができます．
 カラーバーはドラッグアンドドロップによりimageウィンドウに置くことも可能です．
 
-最近のバージョンのParaViewでは，
+最近のバージョンの\OFthirdparty{ParaView}では，
 よく使われる青・緑・赤という（虹色の）カラースケールではなく，
 青から白そして赤へと変化するカラースケールがデフォルトになっています．
-そこで，はじめてParaViewを使うユーザはこのカラースケールを変えたいと思うでしょう．
-これは，\OFemph{Color Scale Editor}で\OFemph{Choose Preset}を選び，
-\OFemph{Blue to Red Rainbow}を選択することで変更できます．
-\OFemph{OK}ボタンで確定したあとに，\OFemph{Make Default}を押せば
-ParaViewはいつもこのタイプのカラーバーを使うようになります．
+そこで，はじめて\OFthirdparty{ParaView}を使うユーザはこのカラースケールを変えたいと思うでしょう．
+これは，\PVwindow{Color Scale Editor}で\PVbutton{Choose Preset}を選び，
+\PVentry{Blue to Red Rainbow}を選択することで変更できます．
+\PVbutton{OK}ボタンで確定したあとに，\PVbutton{Make Default}を押せば
+\OFthirdparty{ParaView}はいつもこのタイプのカラーバーを使うようになります．
 
 イメージを回転をさせるとすべての表面に圧力分布で色づけされていることが
 確認できます．正しいコンタ図を得るために断面を作成するか，
 \autoref{sssec:6.1.6.1}に示すsliceフィルタを用いてジオメトリを
 スライスします．\autoref{sssec:6.1.6.1}に示すsliceフィルタを用います．
 断面の中心座標は$(0.05, 0.05, 0.005)$，
-基準点は$(0, 0, 1)$とします (\OFemph{Z Normal}ボタンをクリックします)．
+基準点は$(0, 0, 1)$とします (\PVbutton{Z Normal}ボタンをクリックします)．
 断面を作成後，\autoref{ssec:6.1.6}に示すcontourフィルタによってコンタを描画します．
 
 
@@ -750,42 +750,42 @@ ParaViewはいつもこのタイプのカラーバーを使うようになりま
 \label{sssec:2.1.4.2}
 流速ベクトルを描画する前に，先に作成した断面やコンタなどの
 他のモジュールは不要なので取り除きましょう．
-\OFemph{Pipeline Browser}でそれらのモジュールを選択し，
+\PVwindow{Pipeline Browser}でそれらのモジュールを選択し，
 Properties PanelのDeleteをクリックして削除するか，
-\OFemph{Pipeline Browser}で目の形のボタンをクリックして
+\PVwindow{Pipeline Browser}で目の形のボタンをクリックして
 それらのモジュールを非表示にします．
 
 各格子の中心におけるベクトルグラフを作成することにしましょう．
 まず，\autoref{sssec:6.1.7.1}に述べるように
 格子の中心のデータのみに絞り込みます．
-\OFemph{Pipeline Browser}上で強調表示されている
+\PVwindow{Pipeline Browser}上で強調表示されている
 cavity.OpenFOAMのモジュールを選択し，
 Filter $\rightarrow$ AlphabeticalメニューからCell Centersを選択してApplyをクリックします．
 
-\OFemph{Pipeline Browser}でCentersが強調表示された状態で，
+\PVwindow{Pipeline Browser}でCentersが強調表示された状態で，
 Filter $\rightarrow$ AlphabeticalメニューからGlyphを選択します．
-\autoref{fig:2.6}のような\OFemph{Properties}ウィンドウが表示されます．
-この\OFemph{Properties}パネルの\OFkeyword{vectors}メニューでは，
+\autoref{fig:2.6}のような\PVpanel{Properties}ウィンドウが表示されます．
+この\PVpanel{Properties}パネルの\PVkeyword{vectors}メニューでは，
 ベクトル場は速度のみなので，速度場\OFkeyword{U}が自動的に選択されています．
-\OFkeyword{Scale Mode}は速度の\OFkeyword{Vector Magnitude}が初期値として選択されていますが，
-領域全体を通る速度の様子を見るために，\OFkeyword{off}を選択し，
-\OFemph{Set Scale Factor}に0.005をにします．
-\OFemph{Apply}をクリックするとベクトルが表示されますが，単色，例えば白になっているでしょう．
-通常は\OFemph{Display}パネルで\OFkeyword{Color by U}を選択して速度に応じた色付けをします．
-\OFkeyword{Edit Color Map}の中で\OFemph{Show Color Legend}を選択し，
+\PVkeyword{Scale Mode}は速度の\PVkeyword{Vector Magnitude}が初期値として選択されていますが，
+領域全体を通る速度の様子を見るために，\PVkeyword{off}を選択し，
+\PVentry{Set Scale Factor}に0.005をにします．
+\PVbutton{Apply}をクリックするとベクトルが表示されますが，単色，例えば白になっているでしょう．
+通常は\PVpanel{Display}パネルで\PVkeyword{Color by U}を選択して速度に応じた色付けをします．
+\PVkeyword{Edit Color Map}の中で\PVentry{Show Color Legend}を選択し，
 速度の凡例を表示させましょう．出力結果は\autoref{fig:2.7}のようになります．
-\index{Color Legend@\OFemph{Color Legend}!ウィンドウ}%
-\index{ウィンドウ!Color Legend@\OFemph{Color Legend}}%
-\OFemph{Color Legend}（凡例）にはTimes Romanフォントが使用され，
-\OFemph{Automatic Label Format}を解除して\OFemph{Label Format}テキストボックスに
+\index{Color Legend@\PVwindow{Color Legend}!ウィンドウ}%
+\index{ウィンドウ!Color Legend@\PVwindow{Color Legend}}%
+\PVwindow{Color Legend}（凡例）にはTimes Romanフォントが使用され，
+\PVentry{Automatic Label Format}を解除して\PVentry{Label Format}テキストボックスに
 \verb|%-#6.2f|を入力することで二つの有効数字でラベルを固定しています．
 背景色は，\autoref{sssec:6.1.5.1}で述べるように，
-\OFkeyword{View Settings}の\OFemph{General}パネルで白に設定されています．
+\PVkeyword{View Settings}の\PVpanel{General}パネルで白に設定されています．
 
 左右の壁において，ベトルが壁面を通り抜けるように見えていることに注意してください．
 しかし，さらによく調べると，この壁に垂直な方向を向いている速度は$0$であることがわかります．
-この少し混乱する状態は，スケーリングが\OFkeyword{off}で速度が$0$のとき，
-\OFtool{ParaView}は$x$方向のベクトルで表示するということに起因します．
+この少し混乱する状態は，スケーリングが\PVkeyword{off}で速度が$0$のとき，
+\OFthirdparty{ParaView}は$x$方向のベクトルで表示するということに起因します．
 
 
 \begin{figure}[ht]
@@ -804,30 +804,30 @@ Filter $\rightarrow$ AlphabeticalメニューからGlyphを選択します．
 
 \subsubsection{流線プロット}
 \label{sssec:2.1.4.3}
-ParaViewで後処理を続ける前に，
+\OFthirdparty{ParaView}で後処理を続ける前に，
 上述のベクトルプロットのモジュールは不要なので削除しましょう．
 そうしたら，\autoref{ssec:6.1.8}の記述のように流速の流線をプロットしましょう．
 
-\OFemph{Pipeline Browser}で\texttt{cavity.OpenFOAM}モジュールをハイライトした状態で，
-\OFemph{Filter}メニューから\OFemph{Stream Tracer}を選択し，\OFemph{Apply}をクリックします．
+\PVwindow{Pipeline Browser}で\texttt{cavity.OpenFOAM}モジュールをハイライトした状態で，
+\PVmenu{Filter}メニューから\PVfilter{Stream Tracer}を選択し，\PVbutton{Apply}をクリックします．
 そうすると，\autoref{fig:2.8}に示すように
-\OFemph{Propaties}ウィンドウが現れます．
-\OFemph{Seed}の点は，ジオメトリの中心を垂直に通って，
-\OFkeyword{Line Sourse}に沿うように (例えば$(0.05, 0, 0.005)$から
+\PVpanel{Propaties}ウィンドウが現れます．
+\PVentry{Seed}の点は，ジオメトリの中心を垂直に通って，
+\PVkeyword{Line Sourse}に沿うように (例えば$(0.05, 0, 0.005)$から
 $(0.05, 0.1, 0.005)$まで) 指定しましょう．
-このガイドに掲載した図では\OFemph{Point Resolution}を21に，
-\OFemph{Max Propagation}を\OFkeyword{Length}で0.5に，
-\OFemph{Initial Step Length}を\OFkeyword{Cell Length}で0.01に，
-\OFemph{Integration Direction}を\OFkeyword{BOTH}という設定を行いました．
-また，\OFkeyword{Runge-Kutta 2} \OFemph{Integrator Type}は
+このガイドに掲載した図では\PVentry{Point Resolution}を21に，
+\PVentry{Max Propagation}を\PVkeyword{Length}で0.5に，
+\PVentry{Initial Step Length}を\PVkeyword{Cell Length}で0.01に，
+\PVentry{Integration Direction}を\PVkeyword{BOTH}という設定を行いました．
+また，\PVkeyword{Runge-Kutta 2} \PVentry{Integrator Type}は
 デフォルトパラメータで使いました．
 
-\OFemph{Apply}をクリックすると，トレーサが生成されます．
-そこで\OFemph{Filter}メニューから\OFkeyword{Tubes}を選択することで，
+\PVbutton{Apply}をクリックすると，トレーサが生成されます．
+そこで\PVmenu{Filter}メニューから\PVkeyword{Tubes}を選択することで，
 高品質の流線図を作ることができます．
 このレポートでは，次の設定を使いました．
-\OFemph{Num.\ sides}を20，\OFemph{Radius}を0.003，\OFemph{Radius factor}を10にしました．
-\OFemph{Accept}を押すことで，\autoref{fig:2.9}ができます．
+\PVentry{Num.\ sides}を20，\PVentry{Radius}を0.003，\PVentry{Radius factor}を10にしました．
+\PVbutton{Accept}を押すことで，\autoref{fig:2.9}ができます．
 
 
 \begin{figure}[ht]
@@ -981,18 +981,18 @@ cat log
 \label{sssec:2.1.5.6}
 各々の新しいケースは本質的には単なるPipeline Browserに現れる
 他のモジュールであるので，
-\OFtool{ParaView}で同時に複数のケースを開くことができます．
-若干不便なことには，\OFtool{ParaView}で新しいケースを開けるときには，
+\OFthirdparty{ParaView}で同時に複数のケースを開くことができます．
+若干不便なことには，\OFthirdparty{ParaView}で新しいケースを開けるときには，
 選ばれたデータが拡張子を含むファイル名である必要があります．
 しかし，OpenFOAMにおいて，
 各々のケースは特定のディレクトリ構造の中に拡張子なしで
 複数のファイルに保存されます．
 解決方法として，\OFtool{paraFoam}スクリプトが自動的に拡張子
 \OFpath{.OpenFOAM}が付いたダミーファイルを作成することになっています．
-それゆえに，\OFemph{cavity}ケースモジュールは
+それゆえに，\OFcase{cavity}ケースモジュールは
 \texttt{cavity.OpenFOAM}と名づけられます．
 
-\OFtool{ParaView}内から他のケースディレクトリを開けたいならば，
+\OFthirdparty{ParaView}内から他のケースディレクトリを開けたいならば，
 そのようなダミーファイルを作成する必要があります．
 たとえば，\OFcase{cavityFine}ケースを読み込むには，
 コマンドプロンプトで次のようにタイプしてファイルを作成します．
@@ -1003,8 +1003,8 @@ touch cavityFine/cavityFine.OpenFOAM
 
 こうしてFileメニューからOpen Dataを選んでディレクトリツリーをたどり，\break
 \texttt{cavityFine.OpenFOAM}を選ぶことで，
-cavityFineケースをParaViewに読み込めるようになりました．
-さて，\OFtool{ParaView}で精密なメッシュの結果の
+cavityFineケースを\OFthirdparty{ParaView}に読み込めるようになりました．
+さて，\OFthirdparty{ParaView}で精密なメッシュの結果の
 ベクトルプロットを作ることができます．
 同時に両方のケースのglyphを見られるようににすることによって，
 \OFcase{cavityFine}ケースのプロットを\OFcase{cavity}ケースと比較することができます．
@@ -1054,7 +1054,7 @@ components
 )
 \end{OFverbatim}
 
-\OFkeyword{comonents}および\OFkeyword{mag}の\OFkeyword{calcType}はスカラ速度を計測するのに有用です．
+\OFkeyword{components}および\OFkeyword{mag}の\OFkeyword{calcType}はスカラ速度を計測するのに有用です．
 ケースにて ``\texttt{foamCalc components U}'' を動かすと，
 各時刻のディレクトリから速度のベクトル場を読み込み，
 各ディレクトリに各軸方向成分のスカラ場
@@ -1070,7 +1070,7 @@ components
 cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 foamCalc components U
 \end{OFverbatim}%$
-それぞれの成分が\OFtool{ParaView}内でグラフとして描画されます．
+それぞれの成分が\OFthirdparty{ParaView}内でグラフとして描画されます．
 簡単に，早く，しかもラベル付けや形式化の調整ができるので，
 とても高性能な出力を表示ができます．
 しかしながら，出版用にグラフを作成するならばgnuplotやGrace/xmgrなどの
@@ -1079,41 +1079,41 @@ foamCalc components U
 \OFtool{sample}ユーティリティを使うとよいでしょう．
 
 描画をする前に，新しく生成された\OFkeyword{Ux}，\OFkeyword{Uy}，\OFkeyword{Uz}のデータを
-\OFtool{ParaView}に読み込ませる必要があります．
+\OFthirdparty{ParaView}に読み込ませる必要があります．
 これには，\texttt{cavity.OpenFOAM}モジュールのPropertiesパネルの上部にある
 Refresh Timesをクリックします．
-これにより，\OFtool{ParaView}に新しいフィールドが読み込まれ，
+これにより，\OFthirdparty{ParaView}に新しいフィールドが読み込まれ，
 Volume Fieldsウィンドウに現れます．
 新しいフィールドを選択し，変更が適用されたことを確認します．
 つまり，必要ならApplyを再度クリックします．
 また，Mesh Partsパネルで境界領域が選択されているならば，
 境界部分のデータ補間が不適切に行われています．
 したがって，Mesh Partsパネルで，
-\OFkeyword{movingwall}や\OFkeyword{fixedwall}，\OFkeyword{frontAndBack}といった
+\OFpatch{movingwall}や\OFpatch{fixedwall}，\OFpatch{frontAndBack}といった
 パッチの選択を解除して，変更を適用します．
 
-さて，\OFtool{ParaView}でグラフを表示してみましょう．
+さて，\OFthirdparty{ParaView}でグラフを表示してみましょう．
 まずは描画したいモジュールを選択し，
-\index{Plot Over Line@\OFkeyword{Plot Over Line}!メニューエントリ}%
-\index{メニューエントリ!Plot Over Line@\OFkeyword{Plot Over Line}}%
-\OFkeyword{Plot Over Line}フィルタをFilter $\rightarrow$ Data Analisysから選択します．
-3D Viewウィンドウの下または横に新しいXY Plotウィンドウが開きます．
-Propertiesウィンドウで線の終点を指定すると
+\index{Plot Over Line@\PVfilter{Plot Over Line}!メニューエントリ}%
+\index{メニューエントリ!Plot Over Line@\PVfilter{Plot Over Line}}%
+\PVfilter{Plot Over Line}フィルタを\PVmenu{Filter} $\rightarrow$ \PVmenu{Data Analisys}から選択します．
+\PVwindow{3D View}ウィンドウの下または横に新しい\PVwindow{XY Plot}ウィンドウが開きます．
+\PVpanel{Properties}ウィンドウで線の終点を指定すると
 Plobelineモジュールが作成されます．
 この例ではPoint1を$(0.05, 0, 0.005)$，
 Point2を$(0.05, 0.1, 0.005)$と指定して線を領域の中心の真上におきます．
 Resolutionは100まで設定できます．
 
-ApplyをクリックするとXY Plotウィンドウにグラフが描画されます．
-Displayパネルで，
-\index{Attribute Mode@\OFkeyword{Attribute Mode}!メニュー}%
-\index{メニュー!Attribute Mode@\OFkeyword{Attribute Mode}}%
-\texttt{Attribute Mode}を\texttt{Point Data}に設定します．
-\texttt{Use Data Array}オプションを\texttt{X Axis Data}にし，
+\PVbutton{Apply}をクリックすると\PVwindow{XY Plot}ウィンドウにグラフが描画されます．
+\PVpanel{Display}パネルで，
+\index{Attribute Mode@\PVmenu{Attribute Mode}!メニュー}%
+\index{メニュー!Attribute Mode@\PVmenu{Attribute Mode}}%
+\PVmenu{Attribute Mode}を\PVkeyword{Point Data}に設定します．
+\PVkeyword{Use Data Array}オプションを\PVkeyword{X Axis Data}にし，
 \verb|arc_length|オプションを加えて，
 グラフの$x$軸データがキャビティの底からの距離になるようにできます．
 
-DisplaysウィンドウのLine Seriesパネルから
+\PVpanel{Display}ウィンドウの\PVpanel{Line Series}パネルから
 表示するデータを選択することができます．
 表示されているスカラ場のリストから，
 ベクトルの大きさや成分を初期値とすることもできます．
@@ -1122,36 +1122,36 @@ DisplaysウィンドウのLine Seriesパネルから
 選択した系列の上の四角形の色が線の色です．
 この上でダブルクリックをすれば簡単に変更することができます．
 
-グラフの体裁を整えるには，\OFemph{Line Series}パネルの下にある設定，
-\texttt{Line Color}，\texttt{Line Thickness}，\texttt{Line Style}，
-\texttt{Marker Style}，そして\texttt{Chart Axes}を変更します．
+グラフの体裁を整えるには，\PVpanel{Line Series}パネルの下にある設定，
+\PVkeyword{Line Color}，\PVkeyword{Line Thickness}，\PVkeyword{Line Style}，
+\PVkeyword{Marker Style}，そして\PVkeyword{Chart Axes}を変更します．
 
-また，\OFemph{XY Plot}の左上にあるボタンをクリックすることもできます．
+また，\PVwindow{XY Plot}の左上にあるボタンをクリックすることもできます．
 例えば，3番目のボタンでは，それぞれの軸のタイトルや凡例などを設定する
-\OFemph{View Settings}を制御することができます．
+\PVentry{View Settings}を制御することができます．
 また，軸のタイトルのフォント，色，配置，
 値の範囲や線形・対数表示など，様々な設定を行うことができます．
 
-\autoref{fig:2.11}は\OFtool{ParaView}によって作画された図です．
+\autoref{fig:2.11}は\OFthirdparty{ParaView}によって作画された図です．
 望みどおりのグラフが作成できます．
 \autoref{fig:2.11}は軸のオプションとして
 Standard type of Notation，Specify Axis Rangeを選択し，
 フォントはSans Serifの12ポイントです．
 このグラフは点で表示していますが，
-\OFemph{Display}ウィンドウで
-\index{Enable Line Series@\OFemph{Enable Line Series}!ボタン}%
-\index{ボタン!Enable Line Series@\OFemph{Enable Line Series}}%
-\OFemph{Enable Line Series}ボタンを
+\PVpanel{Display}ウィンドウで
+\index{Enable Line Series@\PVbutton{Enable Line Series}!ボタン}%
+\index{ボタン!Enable Line Series@\PVbutton{Enable Line Series}}%
+\PVbutton{Enable Line Series}ボタンを
 有効にすれば線で表示できます．
 注：もしこのボタンが，グレー表示で無効の状態になっていたら，
-\OFemph{Line Series}パネルでどれか変数を選択すれば有効になります．
-\OFemph{Enable Line Series}ボタンを選択しておけば，
-\index{Line Style@\OFkeyword{Line Style}!メニュー}%
-\index{メニュー!Line Style@\OFkeyword{Line Style}}%
-\OFemph{Line Style}や
-\index{Marker Style@\OFkeyword{Marker Style}!メニュー}%
-\index{メニュー!Marker Style@\OFkeyword{Marker Style}}%
-\OFemph{Marker Style}もユーザの好みで調整できます．
+\PVpanel{Line Series}パネルでどれか変数を選択すれば有効になります．
+\PVbutton{Enable Line Series}ボタンを選択しておけば，
+\index{Line Style@\PVmenu{Line Style}!メニュー}%
+\index{メニュー!Line Style@\PVmenu{Line Style}}%
+\PVmenu{Line Style}や
+\index{Marker Style@\PVmenu{Marker Style}!メニュー}%
+\index{メニュー!Marker Style@\PVmenu{Marker Style}}%
+\PVmenu{Marker Style}もユーザの好みで調整できます．
 
 
 \begin{figure}[ht]
@@ -1590,7 +1590,7 @@ boundaryField
 
 // ************************************************************************* //
 \end{OFverbatim}
-このケースでは，\OFkeyword{movingWall}と\OFkeyword{fixedWalls}のパッチに対して
+このケースでは，\OFpatch{movingWall}と\OFpatch{fixedWalls}のパッチに対して
 \OFkeyword{nutWallFunction}キーワードエントリで標準的な壁関数を指定しています．
 これ以外の壁関数モデルとしては，
 粗壁面の壁関数\OFkeyword{nutRoughWallFunction}などがあります．
@@ -1834,8 +1834,8 @@ mergePatchPairs
 \OFtool{blockMesh}を実行してメッシュを生成します．
 パッチは\OFcase{cavity}ケースと同様に設定されています．
 物理量の適用の過程を明確にするために，
-元となるケース\OFcase{cavity}で\OFkeyword{movingWall}であった
-\OFkeyword{upper wall}は\OFkeyword{lid}という名前に変更されています．
+元となるケース\OFcase{cavity}で\OFpatch{movingWall}であった
+上側の壁は\OFpatch{lid}という名前に変更されています．
 
 パッチが一致しない場合，
 すべての物理量のデータが元のケースからマップされるという保証はありません．
@@ -1858,12 +1858,12 @@ cp -r 0 0.5
 速度場と圧力場を\OFcase{cavity}から\OFcase{cavityClipped}にマップしようとしています．
 パッチが一致しないため，
 \OFpath{system}ディレクトリの\OFpath{mapFieldsDict}を編集する必要があります．
-\OFkeyword{patchMap}と\OFkeyword{cuttingPatches}という二つの入力項目があります．
+\OFkeyword{patchMap}と\OFkeyword{cutting\-Patches}という二つの入力項目があります．
 \OFkeyword{patchMap}リストは元となる物理量のパッチとマッピング対象となる
 物理量のパッチを含みます．対象物理量のパッチに
 元となる物理量のパッチの値を引き継ぎたいときに利用します．
-\OFcase{cavityClipped}において\OFkeyword{lid}の境界値を
-\OFcase{cavity}の\OFkeyword{movingWall}から
+\OFcase{cavityClipped}において\OFpatch{lid}の境界値を
+\OFcase{cavity}の\OFpatch{movingWall}から
 引き継ぎたいので次のように\OFpath{patchMap}に記述します．
 \begin{OFverbatim}[file]
 patchMap
@@ -1890,7 +1890,7 @@ patchMap
 
 \OFkeyword{cuttingPatches}リストは，対象パッチを削除した，
 元の場の内部の値を写像した対象のパッチを含みます．
-本ケースでは，\OFkeyword{fixedWalls}を内挿プロセスの実例説明に用いることとします．
+本ケースでは，\OFpatch{fixedWalls}を内挿プロセスの実例説明に用いることとします．
 \begin{OFverbatim}[file]
 cuttingPatches
 (
@@ -1903,11 +1903,11 @@ mapFields ../cavity
 \end{OFverbatim}
 \autoref{fig:2.13}に示すような場を確認することができます．
 境界パッチは，期待したように元のケースからの値が引き継がれています．
-この実例において，\OFkeyword{fixedWalls}パッチの速度を$(0, 0, 0)$に
+この実例において，\OFpatch{fixedWalls}パッチの速度を$(0, 0, 0)$に
 リセットしたい場合があります．このときは，\OFpath{U}をエディタで開き，
-\OFkeyword{fixedWalls}を\OFkeyword{nonuniform}から
+\OFpatch{fixedWalls}を\OFkeyword{nonuniform}から
 \OFkeyword{uniform (0,0,0)}に変更します．
-そして，\OFtool{icoFoam}を実行すればよいです．
+そして，\OFtool{icoFoam}を実行しましょう．
 
 
 \subsection{修正した形状の後処理}
@@ -1916,13 +1916,13 @@ mapFields ../cavity
 最初の時刻は$0.5\unit{s}$，
 次いで$0.6\unit{s}$のように作成することができます．
 さらに，幾何形状のアウトラインも示しますが，
-これはは2次元のケースでは少し注意が必要です．
-ユーザはFilter menuからExtract Partsを選択することができ，
-Parameter panelにて，興味のあるパッチ，すなわち，
-\OFkeyword{lid}と\OFkeyword{fixedWalls}を，ハイライトすることができます．
-Acceptボタンをクリックすると，形状のこれらのアイテムは，
-ディスプレイ・パネルに表面ワイヤーフレームの選択により
-表示することができます．
+これは2次元のケースでは少し注意が必要です．
+\PVmenu{Filter}メニューから\PVfilter{Extract Parts}を選択し，
+\PVpanel{Parameter}パネルで，興味のあるパッチ，
+つまり\OFpatch{lid}と\OFpatch{fixedWalls}をハイライトします．
+\PVbutton{Apply}ボタンをクリックし，\PVpanel{Display}パネルで
+\PVkeyword{Wireframe}の選択すれば，
+ジオメトリのうち選択したものを表示することができます．
 \autoref{fig:2.14}は，パッチを黒で表示し，
 修正した形状の底部角部分において形成される渦を示しています．
 
@@ -1937,7 +1937,7 @@ Acceptボタンをクリックすると，形状のこれらのアイテムは�
 実行および後処理の方法を述べます．
 板の大きさは，辺長$4\unit{m}$および穴の半径$0.5\unit{m}$です．
 さらに\autoref{fig:2.15}に示すように，
-板の左右端にはの一様表面力が負荷されています．
+板の左右端には$\sigma = 10\unit{kPa}$の一様表面力が負荷されています．
 本形状においては二つの対称面が存在するため，
 解析領域は\autoref{fig:2.15}のグレーで示した板全体の
 4分の1の部分のみをカバーすれば十分です．
@@ -1950,14 +1950,13 @@ Acceptボタンをクリックすると，形状のこれらのアイテムは�
 \end{figure}
 
 
-本問題は板の面内に応力が負荷されるため，
-2次元問題として近似化されます．
-デカルト座標系においては，3次元構造の振舞いについて
-(1) 平面応力条件：本条件においては2次元の面外方向に
-はたらく応力成分は無視できるものと仮定される，
-(2) 平面ひずみ条件：本条件においては2次元の面外方向の
-ひずみ成分は無視できるものと仮定される，
-のふたつの仮定が考えられます．
+本問題では，板の面内に応力が負荷されるため，
+2次元問題として近似することができます．
+デカルト座標系においては，
+この構造の3番目の次元についての振る舞いを考察するにあたって，
+以下の二つの仮定をすることができます．
+(1) 平面応力条件：2次元平面内以外の方向にはたらく応力成分を無視できるものと仮定します．
+(2) 平面ひずみ条件：2次元平面内以外の方向にはたらくひずみ成分を無視できるものと仮定します．
 本ケースのように3次元方向に薄い固体に対しては，
 平面応力条件が適当です．
 なお平面ひずみ条件は，3次元方向に厚い固体に対して適用されます．
@@ -1991,7 +1990,7 @@ $x$--$y$平面におけるメッシュブロックの構造を
 \autoref{sssec:2.1.1.1}で述べたように，
 2次元として扱われるようなケースであっても，
 OpenFOAMでは全てのジオメトリが3次元で生成されます．
-したがって方向のブロックの大きさを設定しなければなりませんので，
+したがって$z$方向のブロックの大きさを設定しなければなりませんので，
 ここでは$0.5\unit{m}$とします．
 表面力境界条件は力でなく応力で指定されますので，
 断面積すなわち$z$方向の大きさは解に影響を与えません．
@@ -2007,7 +2006,7 @@ OpenFOAMでは全てのジオメトリが3次元で生成されます．
 \OFpath{\$FOAM\_RUN/tutorials/stressAnalysis/solidDisplacementFoam}ディレクトリの
 \OFpath{plateHole}ケースに移動し，\OFpath{plateHole}ケースの
 \OFpath{constant/polyMesh/blockMeshDict}をエディタで開きます．
-\OFdictionary{blockMeshDict}ディクショナリのエントリを以下に示します．
+\OFdictionary{block\-MeshDict}ディクショナリのエントリを以下に示します．
 \begin{OFverbatim}[file, linenum=17]
 convertToMeters 1;
 
@@ -2147,7 +2146,7 @@ mergePatchPairs
 \index{blockMeshDict@\OFdictionary{blockMeshDict}!ディクショナリ}%
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
 \OFdictionary{blockMeshDict}に含まれるブロック全てが
-同一の配向性を有する訳ではありません．
+同じ方向を向いているわけではありません．
 \autoref{fig:2.16}に示すように，
 ブロック0の$x_{2}$方向はブロック4の$-x_{1}$方向と同じになっています．
 このためブロック界面でセルが矛盾なく合うよう，
@@ -2155,13 +2154,13 @@ mergePatchPairs
 決定する際には注意を払わねばなりません．
 
 プレートの全側面，穴の面，前後面の六つのパッチが定義されます．
-そのうち左の面 (\OFkeyword{left}) と下の面 (\OFkeyword{down}) は対称面です．
+そのうち左の面 (\OFpatch{left}) と下の面 (\OFpatch{down}) は対称面です．
 このようなことはジオメトリ上の制限であるため，
 ただの場の境界条件とするよりはメッシュの定義の中に組み込んで作ります．
 よって，このパッチは\OFdictionary{blockMeshDict}内の
 特別な\OFkeyword{SymmetryPlane}タイプを
 使って定義するとよいでしょう．
-\OFkeyword{frontAndBack}パッチは2次元問題の場合は
+\OFpatch{frontAndBack}パッチは2次元問題の場合は
 無視される面を示しています．
 これは先ほども言ったようにジオメトリ上の制限なので，
 \OFdictionary{blockMeshDict}内の\OFkeyword{empty}タイプを使って定義しましょう．
@@ -2231,9 +2230,9 @@ boundaryField
 \end{OFverbatim}
 まず，変位の初期条件が$(0, 0, 0)\unit{m}$になっています．
 \OFpath{Constant/polyMesh/boundaries}のメッシュの記述にあるように，
-\OFkeyword{left}と\OFkeyword{down}のパッチは
+\OFpatch{left}と\OFpatch{down}のパッチは
 \OFkeyword{type}が\OFkeyword{symmetryPlane}である必要があります．
-同様に\OFkeyword{frontAndBack}は\OFkeyword{empty}になります．
+同様に\OFpatch{frontAndBack}は\OFkeyword{empty}になります．
 
 その他のパッチは表面力境界条件です．表面力境界条件は，
 (1) キーワード
@@ -2246,9 +2245,9 @@ boundaryField
 \OFkeyword{pressure}で表される，
 境界面の法線方向に働く表面力となる（外向きの場合は負値となる）圧力，
 の線形結合で指定されます．
-\OFkeyword{up}および\OFkeyword{hole}パッチは表面力ゼロであるため，
+\OFpatch{up}および\OFpatch{hole}パッチは表面力ゼロであるため，
 表面力ベクトルおよび圧力ともにゼロが設定されます．
-\OFkeyword{right}パッチについては，\autoref{fig:2.24}に示すように，
+\OFpatch{right}パッチについては，\autoref{fig:2.24}に示すように，
 表面力ベクトルは$(1\mathrm{e}4, 0, 0)\unit{Pa}$，
 圧力は$0\unit{Pa}$が設定されます．
 変位の初期条件は全て$(0, 0, 0)\unit{m}$が設定されます．
@@ -2294,7 +2293,7 @@ OpenFOAMが熱方程式を解くべきかどうかを実行時に指定します
 \end{table}
 
 
-本ケースにおいては熱方程式を解きません．
+本ケースにおいては熱の方程式は解きません．
 したがって\OFdictionary{thermalProperties}ディクショナリにおける
 \OFkeyword{thermalStress}キーワードエントリは\OFkeyword{no}に設定します．
 
@@ -2364,7 +2363,7 @@ runTimeModifiable true;
 
 線形弾性応力解析における運動方程式には，
 変位の勾配を含む陽な項がいくつか存在します．
-この勾配の正確かつ滑らかな評価によって計算は恩恵を受けます．
+この勾配を正確かつ滑らかに評価できれば，良い計算結果が得られます．
 通常，有限体積法における離散化は，
 \index{こうばい@勾配!ガウスのていり@ガウスの定理}%
 ガウスの定理に基づいています．
@@ -2429,8 +2428,8 @@ fluxRequired
 // ************************************************************************* //
 \end{OFverbatim}
 \OFpath{system}ディレクトリにある
-\OFdictionary{fvSolution}ディクショナリは，
-線形方程式ソルバおよび求解に使用されるアルゴリズムを制御します．
+\OFdictionary{fvSolution}ディクショナリでは，
+求解に使用される線形方程式のソルバおよびアルゴリズムを設定します．
 まず\OFsubdictionary{solvers}サブディクショナリを見ると，
 \OFkeyword{D}の
 \index{solver@\OFkeyword{solver}!キーワード}%
@@ -2494,7 +2493,7 @@ stressAnalysis
 \OFkeyword{D}キーワードには外側反復ループにおける収束許容値，
 すなわち初期残差に対して反復計算によって消去されるべき
 レベルを設定します．
-本問題では前述において設定したソルバ許容値のに設定します．
+本問題では前述において設定したソルバ許容値の$10^{-6}$に設定します．
 
 
 \subsection{コードの実行}
@@ -2508,7 +2507,7 @@ solidDisplacementFoam > log &
 \end{OFverbatim}%$
 実行後には生成されたログファイルを見て，
 反復回数および解を求める各方向変位の初期・最終残差などの
-収束状況を確認します．
+収束状況を確認できます．
 本ケースの反復許容回数設定では，
 最終残差は必ず初期残差の$0.1$倍以下となるはずです．
 いったん両初期残差ともに$10^{-6}$の収束許容残差以下となれば，
@@ -2667,7 +2666,7 @@ Volume of fluid (VOF) 法によるものであり，
 
 計算条件では，貯水池の左側に，膜で仕切られた水柱が最初存在します．
 時刻$t = 0\unit{s}$に，膜が取り除かれて，水柱が崩れだします．
-崩壊している間，水流はは貯水槽の底にある出っ張りにぶつかり，
+崩壊しながら，水流は貯水槽の底にある出っ張りにぶつかり，
 いくつかの気泡を含む，複雑な流れ場の様相を呈します．
 計算形状と初期条件は\autoref{fig:2.20}に示しました．
 
@@ -2683,8 +2682,8 @@ Volume of fluid (VOF) 法によるものであり，
 \label{ssec:2.3.1}
 \OFpath{\$FOAM\_RUN/tutorials/multiphase/interFoam/laminar}にある
 \OFpath{damBreak}のケースディレクトリに移動しましょう．
-前に述べた方法で\OFtool{blockMesh}を走らせて格子を生成してください．
-この\OFtool{damBreak}の格子は五つのブロックで構成されます．
+前述した方法で\OFtool{blockMesh}を実行して格子を生成してください．
+この\OFcase{damBreak}のメッシュは五つのブロックで構成されます．
 \OFdictionary{blockMeshDict}の中身を以下に示します．
 \begin{OFverbatim}[file, linenum=17]
 
@@ -2787,16 +2786,16 @@ mergePatchPairs
 \label{ssec:2.3.2}
 \OFpath{constant/polyMesh}ディレクトリの\OFpath{boundary}ファイルを見ることで
 \OFtool{blockMesh}で生成された境界の形状を確認しましょう．
-\OFkeyword{leftWall}，\OFkeyword{rightWall}，\OFkeyword{lowerWall}，
-\OFkeyword{atmosphere}，\OFkeyword{defaultFaces}の
+\OFpatch{leftWall}，\OFpatch{rightWall}，\OFpatch{lowerWall}，
+\OFpatch{atmosphere}，\OFpatch{defaultFaces}の
 五つの境界パッチがあります．
 パッチの種類について理解しておきましょう．
-\OFkeyword{atmosphere}は何の属性もなく，
+\OFpatch{atmosphere}は何の属性もなく，
 単に境界条件によって規定される標準の\OFboundary{patch}です．
-\OFkeyword{defaultFaces}は，本ケースでは2次元であるため
+\OFpatch{defaultFaces}は，本ケースでは2次元であるため
 パッチの法線方向を解析の対象としないため，\OFboundary{empty}とします．
-\OFkeyword{leftWall}，\OFkeyword{rightWall}，
-\OFkeyword{lowerWall}はそれぞれ
+\OFpatch{leftWall}，\OFpatch{rightWall}，
+\OFpatch{lowerWall}はそれぞれ
 \index{wall@\OFboundary{wall}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!wall@\OFboundary{wall}}%
 \OFboundary{wall}です．
@@ -2813,7 +2812,7 @@ mergePatchPairs
 \OFboundary{alphaContactAngle}の境界条件と関連付けられています．
 その場合，静的な接触角度\OFkeyword{theta0} $\theta_{0}$や，
 前縁や後縁における動的な接触角度である
-\OFkeyword{thetaA} $\theta_{\mathrm{A}}$と\OFkeyword{thetaR} $\theta_{\mathrm{B}}$，
+\OFkeyword{thetaA} $\theta_{\mathrm{A}}$と\OFkeyword{thetaR} $\theta_{\mathrm{R}}$，
 そして，動的な接触角度において速度に比例する係数
 \OFkeyword{uTheta}を指定する必要があります．
 
@@ -2824,9 +2823,9 @@ mergePatchPairs
 しかしながら，壁の境界条件として，
 通常の\OFkeyword{wall}タイプの境界条件を指定する別なやり方もあります．
 この場合，\OFkeyword{alpha1}に対して\OFkeyword{alphaContactAngle}の境界条件を設定する代わりに，
-\OFkeyword{zeroGradient}の境界条件を課すことになります．
+\OFkeyword{zeroGradient}に設定します．
 
-\OFkeyword{top}の境界は大気に対して開放されていることから，
+\OFpatch{top}の境界は大気に対して開放されていることから，
 内部流れに応じて流出・流入のいずれも可能にしておく必要があります．
 したがって，以下のような，安定性を維持しながらこれを可能にするような
 圧力と速度に対する境界条件の組み合わせを用いることになります．
@@ -2844,7 +2843,7 @@ mergePatchPairs
 すべての壁の境界においては，圧力場には\OFboundary{buoyantPressure}境界条件を適用しますが，
 これは局所的な密度勾配から法線方向勾配を計算します．
 
-2次元問題における前後の面を表している\OFkeyword{defaultFaces}パッチは，
+2次元問題における前後の面を表している\OFpatch{defaultFaces}パッチは，
 通常通り\OFkeyword{empty}タイプにします．
 
 
@@ -2910,7 +2909,7 @@ regions
 \index{キーワード!boxToCell@\OFkeyword{boxToCell}}%
 \OFkeyword{boxToCell}を使って，大きいほうと小さいほうの
 二つの座標点で定義されるバウンディング・ボックスを生成し，
-液体の領域における格子の集合を定義しています．
+液体の領域となるセルの集合を定義しています．
 また，この領域における相比率$\alpha_{1}$を$1$と指定しています．
 
 \index{setFields@\OFtool{setFields}!ユーティリティ}%
@@ -2949,11 +2948,10 @@ cp 0/alpha1.org 0/alpha1
 \index{transportProperties@\OFpath{transportProperties}!ファイル}%
 \index{ファイル!transportProperties@\OFpath{transportProperties}}%
 \OFpath{transportProperties}ファイルを確認しましょう．
-このファイルは，\OFkeyword{phase1}と\OFkeyword{phase2}に分かれて，
-各流体の物性値を保持しています．
-
+このディクショナリは各流体の物性値を含んでおり，
+二つのサブディクショナリ\OFsubdictionary{phase1}と
+\OFsubdictionary{phase2}に分かれています．
 各相の輸送モデルは，\OFkeyword{transportModel}によって選択されます．
-
 ここで，動粘性係数が\OFkeyword{nu}というキーワードで指定され，
 一定値である
 \index{Newtonian@\OFkeyword{Newtonian}!キーワードエントリ}%
@@ -3024,7 +3022,7 @@ simulationType  laminar;
 というのも，界面捕捉のアルゴリズムは，通常の流体計算に比べ，
 クーラン数$\nCo$に対してかなり鋭敏だからです．
 理想的には，界面がある領域において，
-およそ$0.5$である$\nCo$の上限値を超えてはいけません．
+上限値として$\nCo \approx 0.5$を超えないようにすべきです．
 伝播速度の予測が容易であるようなケースでは，$\nCo$の制限を守るような
 固定した時間ステップを指定することができますが，
 より複雑なケースの場合時間ステップの指定はずっと困難になります．
@@ -3048,7 +3046,7 @@ $\nCo$の最大値 (相の場については
 たとえば$1.0$等に設定すればよいでしょう．
 
 ただし，自動時間ステップ制御を用いると，
-ステップ自体は必ずしも使いやすい値に丸められるとは限りません．
+その時間ステップは必ずしも使いやすい値に丸められるとは限りません．
 したがって，固定の時間ステップ間隔でOpenFOAMに結果を出力させた場合，
 その時刻はきりの良い値になりません．
 ところがこの自動時間ステップ制御を用いていても，
@@ -3115,38 +3113,28 @@ maxDeltaT       1;
 Multidimensional Universal Limiter for Explicit Solution (MULES) 法を用いており，
 基礎を成す数値的スキームやメッシュ構造から
 独立な段階分数の有界性を保存するために使います．
-したがって，対流スキームの選択はそれが静的であるか，
-また閉鎖系であるかによって制限されません．
+したがって，対流項に対するスキームの選択は，
+風上差分のように，安定性や有界性の強いものに限定されません．
 
-したがって，運動量の式における対流項では風上差分を使用して
-計算を安定させることとします．
-\index{かざかみさぶん@風上差分}%
-風上差分によって導入された数値拡散は計算を安定させることでしょう．
-
-風上の設定は，\OFdictionary{fvSchemes}ディクショナリの
-\OFsubdictionary{divSchemes}サブディクショナリ内に作成されており，
-運動量方程式における$\nabla \cdot (\rho\bm{U}\bm{U})$項に対応する
-\OFkeyword{div(rho*phi,U)}キーワードは，
-\OFkeyword{Gauss upwind}を読みこみます．
-相$\gamma$に対する二つの方程式における対流項にはいくつかの注意を必要とします．
-適切な精度を維持しつつ有界性を保証しなくてはならないため，
-対流項内での補完間のためには，
-有界なスカラに対するリミッタ付きの線形なスキームである
-\OFkeyword{limitedLinear01}を用います．
-
-リミッタ付きの線形なスキームは
-\autoref{ssec:4.4.1}に記述される係数を必要とします．
-ここで安定性を最重視して，
-キーワード\OFkeyword{div(phi,alpha)}に対応する$\nabla \cdot (\bm{U}\alpha_{1})$項，
-キーワード\OFkeyword{div(phirb,alpha)}に対応する$\nabla \cdot (\bm{U}_{\mathrm{rb}}\alpha_{1})$項で
-$\phi = 1.0$の状態を選びます．
-\OFrevision{要再訳}
+対流項のスキームは，\OFdictionary{fvSchemes}ディクショナリの
+\OFsubdictionary{divSchemes}サブディクショナリで設定します．
+この例題では，運動量方程式における対流項$\nabla \cdot (\rho\bm{U}\bm{U})$に対しては，
+\OFkeyword{div(rho*phi,U)}キーワードにて，
+\OFkeyword{Gauss limitedLinearV 1.0}を使えば良い精度が得られます．
+リミッタ付きの線形なスキームでは，
+\autoref{ssec:4.4.1}に記述されるように係数$\phi$を必要とします．
+ここでは最も安定性が高くなるように$\phi = 1.0$とします．
+\OFkeyword{div(phi,alpha)}キーワードで表される$\nabla \cdot (\bm{U}\alpha_{1})$項には
+\OFkeyword{vanLeer}を使用します．
+\OFkeyword{div(phirb,alpha)}キーワードで表される$\nabla \cdot (\bm{U}_{\mathrm{rb}}\alpha_{1})$項にも
+同様に\OFkeyword{vanLeer}を使用してもよいですが，
+一般に\OFkeyword{interfaceCompression}スキームを用いたほうが，より滑らかな界面が得られます．
 
 その他の離散化項は一般に決ったスキームを使用します．
-それゆえ
+以上から
 \index{fvSchemes@\OFdictionary{fvSchemes}!ディクショナリ}%
 \index{ディクショナリ!fvSchemes@\OFdictionary{fvSchemes}}%
-\OFdictionary{fvSchemes}ディクショナリのエントリは以下のようになるべきです．
+\OFdictionary{fvSchemes}ディクショナリのエントリは以下のようになるでしょう．
 \begin{OFverbatim}[file, linenum=17]
 
 ddtSchemes
@@ -3201,7 +3189,7 @@ fluxRequired
 \OFtool{interFoam}に特化した要素を含んでいます．
 ここには，通常と同じく運動量方程式に対する反復数だけでなく，
 $\alpha_{1}$相方程式のPISOループに対する反復数も指定します．
-特に興味深いものは\OFkeyword{nAlphaSubCycles}と\OFkeyword{cAlpha}キーワードです．
+特に重要なものは\OFkeyword{nAlphaSubCycles}と\OFkeyword{cAlpha}キーワードです．
 \index{nAlphaSubCycles@\OFkeyword{nAlphaSubCycles}!キーワード}%
 \index{キーワード!nAlphaSubCycles@\OFkeyword{nAlphaSubCycles}}%
 \OFkeyword{nAlphaSubCycles}は$\alpha_{1}$方程式内の内側反復の数を表してあり，
@@ -3225,15 +3213,15 @@ $1$以上は拡張された界面の圧縮を意味します．
 \label{ssec:2.3.8}
 コードの実行方法については，
 前述のチュートリアルに詳細に記述しています．
-以下を試してください．
-\texttt{tee}によって計算内容をターミナルウィンドウに表示しつつ，
-ログファイルに記録します．
+以下のようにして，
+標準出力とファイルの両方への書き込みを可能にする
+\texttt{tee}コマンドを試してみてください．
 \begin{OFverbatim}[terminal]
 cd $FOAM_RUN/tutorials/multiphase/interFoam/laminar/damBreak
 interFoam | tee log
 \end{OFverbatim}%$
-コードは，出力のコピーを\OFpath{log}ファイル内に記録しつつ，
-対話形式で実行されます．
+このコードは，対話的に実行されつつ，
+出力のコピーを\OFpath{log}ファイルに記録してくれます．
 
 
 \subsection{後処理}
@@ -3261,7 +3249,7 @@ interFoam | tee log
 新しいケースは，一般的に一つのプロセッサでは
 計算するのに数時間を要するので，
 複数のプロセッサにアクセスしているのであれば，
-OpenFOAMの並列計算という能力を試してみてもよいでしょう．
+OpenFOAMの並列計算機能を試してみてもよいでしょう．
 
 まず初めに，\OFcase{damBreak}ケースのコピーをしてください．
 \begin{OFverbatim}[terminal]
@@ -3289,7 +3277,7 @@ blocks
 上記で，入力は\OFdictionary{blockMeshDict}ファイルで表示されているように，
 つまりは，格子の密度を変更しなければなりません．
 例えば\texttt{46 10 1}という入力や\texttt{1 2 1}という格子幅の勾配の入力のようにです．
-入力内容が正しければ，格子を生成します．
+正しく入力できたら，メッシュを生成します．
 
 ここで格子が\OFcase{damBreak}の例から変更されると，
 時刻\OFpath{0}のディレクトリ内の\OFpath{alpha1}という相の場を
@@ -3301,10 +3289,10 @@ blocks
 それらは\OFkeyword{uniform}として明記されており
 フィールド内の要素の数と独立だからです．
 フィールドの初期化はシャープな界面を持つように行いたいものです．
-つまり，その要素が$\alpha_{1} = 1$か$\alpha_{1} = 0$をもつようにです．
-\OFtool{mapFields}でのフィールドの更新は界面に補間された値$0 < \alpha_{1} < 1$が
-生成されるかもしれないので，
-\OFtool{setFields}ユーティリティを以下のように再実行したほうがよいでしょう．
+つまり，その要素が$\alpha_{1} = 1$または$\alpha_{1} = 0$となるようにです．
+\OFtool{mapFields}によりフィールドを更新すると，
+界面に補間された$0 < \alpha_{1} < 1$となる値が生成される可能性があるので，
+\OFtool{setFields}ユーティリティを再実行したほうがよいでしょう．
 その前に初期条件の一様な$\alpha_{1}$のバックアップファイル
 \OFpath{0/alpha1.org}を\OFpath{0/alpha1}にコピーします．
 \begin{OFverbatim}[terminal]
@@ -3332,7 +3320,7 @@ OpenFOAMで用いられる並列計算の手法はいわゆる領域分割であ
 対応する\OFkeyword{simpleCoeffs}は以下の基準のように編集しましょう．
 領域は，$x$，$y$，$z$方向で部分かサブ領域に分けられ，
 各方向へのサブ領域の数はベクトル$\bm{n}$として与えられます．
-この幾何形状は2次元なので，3次元方向のには分割され得ず，
+この幾何形状は2次元なので，3番目の方向$z$に分割されることはなく，
 それゆえ必ず$n_{z}$は$1$になります．
 $n_{x}$と$n_{y}$は$x$，$y$方向の領域の分割数$\bm{n}$を構成し，
 $n_{x}$と$n_{y}$の積で表されるサブ領域の数が\OFkeyword{numberOfSubdomain}に指定したものと
@@ -3398,6 +3386,6 @@ mpirun -np 4 interFoam -parallel > log &
 \begin{OFverbatim}[terminal]
 paraFoam -case processor1
 \end{OFverbatim}
-すると\OFkeyword{processor1}はParaViewのケースモジュールとして表れます．
-\OFkeyword{simple}方式を使った領域分割を行った
-\OFkeyword{processor1}から\autoref{fig:2.23}のような格子が見えます．
+すると\OFkeyword{processor1}が\OFthirdparty{ParaView}のケースモジュールとして表れます．
+\autoref{fig:2.23}に，\OFkeyword{simple}方式による領域分割を行った際の
+\OFkeyword{processor1}のメッシュを示します．

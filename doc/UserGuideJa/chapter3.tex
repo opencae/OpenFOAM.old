@@ -28,7 +28,7 @@ OpenFOAMは一連のプリコンパイル済ライブラリに分けられ，
 
 \section{OpenFOAMのプログラミング言語}
 \label{sec:3.1}
-OpenFOAMライブラリィのはたらきを理解するためには
+OpenFOAMライブラリのはたらきを理解するためには
 OpenFOAMの基本言語であるC++の予備知識がいくらか必要となります．
 そのために不可欠な知識が本章にあります．
 その前に重要なことは，オブジェクト指向プログラミングや
@@ -38,12 +38,10 @@ OpenFOAMのメインプログラミング言語としてのC++の選択の背景
 
 \subsection{言語とは}
 \label{ssec:3.1.1}
-口話と数学が普及には，
-特に抽象的な概念を表現する際の効率性が重要でした．
-
-（概念を表現する際の効率性の）例として，流量について，
+話し言葉と数学が普及したのは，特に抽象的な概念を表現する際の，効率性によるものでした．
+その例として，流量について，
 「速度場 (velocity field)」という言葉を私たちが使うとき，
-流れの性質の言及もせず何ら具体的な速度データがなくとも使っています．
+流れの性質の言及もせず，何ら具体的な速度データがなくとも使っています．
 その言葉の中には，運動の向きと大きさやその他の
 物理的性質との関係の概念が要約されています．
 これを数学にすると，「速度場」を$\bm{U}$などの簡易な記号で表し，
@@ -164,7 +162,7 @@ OpenFOAMのライブラリに依存している
 標準のUNIX
 \index{make@\OFtool{make}!スクリプト／エイリアス}%
 \index{スクリプト／エイリアス!make@\OFtool{make}}%
-\OFtool{make}ユーティティを使ってコンパイルします．
+\OFtool{make}ユーティリティを使ってコンパイルします．
 しかしながら，OpenFOAMはより用途が広く簡便性に優れている，
 \index{wmake@\OFtool{wmake}!スクリプト／エイリアス}%
 \index{スクリプト／エイリアス!wmake@\OFtool{wmake}}%
@@ -235,9 +233,9 @@ OpenFOAMのライブラリに依存している
 \verb|# include|命令文を使ったコードに含まれていますが，
 このようなコードはコンパイラに特定のファイルを読ませるために
 現在のファイルの読み込みを一時中断させます．
-すべての内蔵コードはヘッダファイルに入れること，
-コード可読性を高めるためにメインコードにrelevant locationに
-含めることができます．
+コードの中の，あらゆる独立した部品はヘッダファイルに収めて，
+メインコードの関連箇所でインクルードすることで，
+コード可読性を高めることができます．
 例えば多くのOpenFOAMアプリケーションでは，
 作成フィールドや読み込みフィールドの入力データのコードはコードの始めに
 \OFpath{createFields.H}と名づけられたファイルに含まれます．
@@ -413,15 +411,14 @@ EXE = $(FOAM_USER_APPBIN)/newApp
 \begin{OFverbatim}[terminal]
 wmake <optionalArguments> <optionalDirectory>
 \end{OFverbatim}
-\verb|<optionalDirectory>| はコンパイルしようとしているアプリケーションの
+\texttt{<optionalDirectory>} はコンパイルしようとしているアプリケーションの
 ディレクトリパスです．
-通常，\verb|<optionalDirectory>| が省略可能な場合には
+通常，\texttt{<optionalDirectory>} が省略可能な場合には
 \OFtool{wmake}はコンパイル中のアプリケーションのディレクトリ内から実行されます．
 
 
-アプリケーションファイルを作成したい場合には
-\verb|<optionalArguments>|は必要ありません．
-しかし\verb|<optionalArguments>|は\autoref{tbl:3.1}に示すように
+アプリケーションファイルを作成したい場合には \texttt{<optionalArguments>} は必要ありません．
+しかし \texttt{<optionalArguments>} は\autoref{tbl:3.1}に示すように
 ライブラリ等の作成の際には指定されることになります．
 
 
@@ -457,14 +454,15 @@ wmake <optionalArguments> <optionalDirectory>
 \begin{OFverbatim}[terminal]
 wclean <optionalArguments> <optionalDirectory>
 \end{OFverbatim}
-さらに，\verb|<optionalDirectory>|はコンパイルされるアプリケーションの
+さらに，\texttt{<optionalDirectory>} はコンパイルされるアプリケーションの
 ディレクトリへのパスです．
-通常，パスが省略できる場合にはwcleanはアプリケーションの
+通常，パスが省略できる場合には\OFtool{wclean}はアプリケーションの
 ディレクトリ範囲内で実行されます．
-もし\OFpath{Make}ディレクトリから依存ファイルとファイルを削除したい場合には，
-\verb|<optionalArguments>|は必要ありません．
-しかしもしlibが\verb|<optionalArguments>|に指定されていたら
-ローカルの\OFpath{InInclude}ディレクトリも削除される必要があります．
+
+依存ファイルと\OFpath{Make}ディレクトリのファイルを削除したい場合には，
+\texttt{<optionalArguments>} は必要ありません．
+しかし，もし\OFkeyword{lib}が \texttt{<optionalArguments>} に指定されていたら
+ローカルの\OFpath{lnInclude}ディレクトリも同時に削除されます．
 
 追加のスクリプト，
 \index{rmdepall@\OFtool{rmdepall}!スクリプト／エイリアス}%
@@ -641,7 +639,7 @@ int main(int argc, char *argv[])
 \verb|/*...*/| で記述されます．それに続き，
 コードはコンパイラに現在のファイルの読み込みを一時停止させ，
 \OFpath{pisoFoam.C}に\OFpath{fvCFD.H}を読み込ませるための
-例えば\verb|#include "fvCFD.H"|のような
+例えば \verb|#include "fvCFD.H"| のような
 様々な\ 
 \index{# include@\verb+# include+!C++こうぶん@C++構文}%
 \index{C++こうぶん@C++構文!# include@\verb+# include+}%
@@ -653,7 +651,7 @@ int main(int argc, char *argv[])
 それゆえ\verb|EXE_INC = -I...|オプションとライブラリにリンクする
 \verb|EXE_LIBS = -l...|オプションにより
 指定されるヘッダファイルが必要となります．
-\OFpath{Make/options}はそれゆえ以下のようになります．
+\OFpath{Make/\allowbreak options}はそれゆえ以下のようになります．
 \begin{OFverbatim}[file, linenum]
 EXE_INC = \
     -I$(LIB_SRC)/turbulenceModels/incompressible/turbulenceModel \
@@ -860,7 +858,7 @@ openMPIというパブリックドメインを使用しています．
 メッシュとフィールドは，
 \index{decomposePar@\OFtool{decomposePar}!ユーティリティ}%
 \index{ユーティリティ!decomposePar@\OFtool{decomposePar}}%
-\OFtool{decomposePar}ユーティティを用いて分割します．
+\OFtool{decomposePar}ユーティリティを用いて分割します．
 この根本的な目的は，最小限の労力でドメインを分割しつつ，
 解析の効率性を向上させようとするものです．
 ジオメトリとフィールドのデータは，
@@ -954,8 +952,8 @@ roots           ( );
             \OFkeyword{strategy}という任意のキーワードエントリがあり，
             複雑な文字列をScotchに渡すことにより分割の戦略を制御できます．
             さらなる情報を得るには，ソースコードファイル
-            \scalebox{0.89}[1]{\OFpath{\$FOAM\_SRC/decompositionMethods/%
-            decompositionMethods/scotchDecomp/scotchDecomp.C}}を読んでください．
+            \OFpath{\$FOAM\_SRC/decompositionMethods/\allowbreak
+            decompositionMethods/scotchDecomp/scotchDecomp.C}を読んでください．
  \item[\OFkeyword{manual}]
 \index{manual@\OFkeyword{manual}!キーワードエントリ}%
 \index{キーワードエントリ!manual@\OFkeyword{manual}}%
@@ -1106,7 +1104,7 @@ systemディレクトリや\OFpath{constant}ディレクトリ中のファイル
 時刻ディレクトリのセットを合併操作することにより再構築されます．
 \index{reconstructPar@\OFtool{reconstructPar}!ユーティリティ}%
 \index{ユーティリティ!reconstructPar@\OFtool{reconstructPar}}%
-\OFtool{reconstructPar}ユーティティは，次のように，
+\OFtool{reconstructPar}ユーティリティは，次のように，
 コマンドラインから実行することにより機能を発揮します
 \begin{OFverbatim}[terminal]
 reconstructPar

@@ -137,7 +137,7 @@
 \paperheight297mm
 \paperwidth210mm
 \hoffset\z@ \voffset\z@
-\textwidth 40\Cwd
+\textwidth 42\Cwd
 \marginparwidth\z@ \marginparsep\z@
 \oddsidemargin\paperwidth
 \advance\oddsidemargin by-\textwidth
@@ -174,8 +174,8 @@
 \setcounter{topnumber}{2}% 残りは jbook.cls の設定と同様
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{3}
-\def\topfraction{.7}
-\def\bottomfraction{.7}
+\def\topfraction{.8}
+\def\bottomfraction{.8}
 \def\textfraction{.2}
 \def\floatpagefraction{.5}
 \partopsep\z@

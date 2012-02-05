@@ -4,7 +4,7 @@
 \index{あとしょり@後処理}%
 本章では，OpenFOAMでの後処理のオプションについて述べます．
 OpenFOAMにはオープンソースの可視化アプリケーションである
-ParaViewを用いた後処理のユーティリティである
+\OFthirdparty{ParaView}を用いた後処理のユーティリティである
 \OFtool{paraFoam}が提供されており，
 これについては\autoref{sec:6.1}で述べています．
 後処理の別の方法としては，
@@ -19,45 +19,47 @@ EnSightやFieldview等のサードパーティから供給されている製品�
 \index{あとしょり@後処理!paraFoam@\OFtool{paraFoam}}%
 %%%
 \OFrevision{要再訳}
-\index{PVFoamReader@\OFemph{PVFoamReader}!ライブラリ}%
-\index{ライブラリ!PVFoamReader@\OFemph{PVFoamReader}}%
-\index{vtkFoam@\OFemph{vtkFoam}!ライブラリ}%
-\index{ライブラリ!vtkFoam@\OFemph{vtkFoam}}%
+\index{PVFoamReader@\OFclass{PVFoamReader}!ライブラリ}%
+\index{ライブラリ!PVFoamReader@\OFclass{PVFoamReader}}%
+\index{vtkFoam@\OFclass{vtkFoam}!ライブラリ}%
+\index{ライブラリ!vtkFoam@\OFclass{vtkFoam}}%
 %%%
 OpenFOAMで提供されているメインの後処理用のツールは，
-オープンソースの可視化アプリケーションである
-ParaViewで走る読み込みのモジュールです．
-このモジュールは，OpenFOAMにより提供されているParaViewの
-バージョン3.6.1を用いている二つのライブラリである
-\index{PV3FoamReader@\OFemph{PV3FoamReader}!ライブラリ}%
-\index{ライブラリ!PV3FoamReader@\OFemph{PV3FoamReader}}%
-\OFemph{PV3FoamReader}と
-\index{vtkPV3Foam@\OFemph{vtkPV3Foam}!ライブラリ}%
-\index{ライブラリ!vtkPV3Foam@\OFemph{vtkPV3Foam}}%
-\OFemph{vtkPV3Foam}にコンパイルされています．
+オープンソースの可視化アプリケーション\OFthirdparty{ParaView}から
+OpenFOAMのデータを読み込めるようにするモジュールです．
+このモジュールは，OpenFOAMにより提供されている\OFthirdparty{ParaView}の
+バージョン3.10.1を用いている二つのライブラリである
+\index{PV3FoamReader@\OFclass{PV3FoamReader}!ライブラリ}%
+\index{ライブラリ!PV3FoamReader@\OFclass{PV3FoamReader}}%
+\OFclass{PV3FoamReader}と
+\index{vtkPV3Foam@\OFclass{vtkPV3Foam}!ライブラリ}%
+\index{ライブラリ!vtkPV3Foam@\OFclass{vtkPV3Foam}}%
+\OFclass{vtkPV3Foam}にコンパイルされています (バージョン
+2.xの\OFthirdparty{ParaView}に対しては
+\OFclass{PVFoamReader}および\OFclass{vtkFoam}です)．
 最新のバイナリでリリースされているソフトウエアについても適切に走るはずですが，
-このバージョンのParaViewをお使いになることを推奨します．
-ParaViewに関する詳細な内容およびドキュメントについては
+このバージョンの\OFthirdparty{ParaView}をお使いになることを推奨します．
+\OFthirdparty{ParaView}に関する詳細な内容およびドキュメントについては
 \url{http://www.paraview.org}や
 \url{http://www.kitware.com/products/paraviewguide.html}の
 サイトから入手することができます．
 
-ParaViewはそのデータ処理とレンダリングのエンジンに
-Visualization Toolkit (VTK) を使っているため，
-VTKフォーマットであれば，どのようなデータでも読み込むことができます．
+\OFthirdparty{ParaView}はそのデータ処理とレンダリングのエンジンに
+Visualization Toolkit (\OFthirdparty{VTK}) を使っているため，
+\OFthirdparty{VTK}フォーマットであれば，どのようなデータでも読み込むことができます．
 OpenFOAMには\OFtool{foamToVTK}ユーティリティがあり，
-ネイティブな書式のデータをVTKの書式に変換することができ，
+ネイティブな書式のデータを\OFthirdparty{VTK}の書式に変換することができ，
 このことは，VTKベースの画像ツールであれば，OpenFOAMのcaseの
 後処理として使えることを意味しています．
-このことは，OpenFOAMでParaViewを使うことの代替法を提供しています．
+このことは，OpenFOAMで\OFthirdparty{ParaView}を使うことの代替法を提供しています．
 ユーザには高度な使い方，並列処理における可視化を経験してほしいことから，
 フリーのVisItを推奨します．
 これは，\url{http://llnl.gov/visit/}から入手できます．
 
 要約すると，OpenFoamの後処理用のツールとしては，
-ParaViewの読み込みモジュールを推奨します．
-代わりの方法としては，OpenFOAMのデータをParaViewに読み込ませるために
-VTKフォーマットに変換する方法と，
+\OFthirdparty{ParaView}の読み込みモジュールを推奨します．
+代わりの方法としては，OpenFOAMのデータを\OFthirdparty{ParaView}に読み込ませるために
+\OFthirdparty{VTK}フォーマットに変換する方法と，
 VTKベースのグラフィックツールを用いる方法があります．
 
 
@@ -65,37 +67,37 @@ VTKベースのグラフィックツールを用いる方法があります．
 \label{ssec:6.1.1}
 \OFtool{paraFoam}は，
 OpenFOAMで提供されている読み込みモジュールを用いて，
-ParaViewを立ち上げる厳密なスクリプトです．
-他のOpenFoamのユーティリティ同様に，
+\OFthirdparty{ParaView}を立ち上げる厳密なスクリプトです．
+他のOpenFOAMのユーティリティ同様に，
 ルートディレクトリのパスまたは \texttt{-case}オプションと，
 引数としてのケース名を入力して実行されます
 \begin{OFverbatim}[terminal]
 paraFoam -case <caseDir>
 \end{OFverbatim}
-ParaViewが立ち上がり，オープンすると\autoref{fig:6.1}のようになります．
+\OFthirdparty{ParaView}が立ち上がり，オープンすると\autoref{fig:6.1}のようになります．
 ケースは左側のパネルでコントロールされますが，
 それには次のような項目があります
 \begin{description}
- \item[\OFemph{Pipeline Browser}]
-\index{Pipeline Browser@\OFemph{Pipeline Browser}!ウィンドウ}%
-\index{ウィンドウ!Pipeline Browser@\OFemph{Pipeline Browser}}%
-            は，ParaViewの中でオープンしているモジュールをリストアップしており，
-            選択されたモジュールは黄色にハイライトされ，
+ \item[\PVwindow{Pipeline Browser}]
+\index{Pipeline Browser@\PVwindow{Pipeline Browser}!ウィンドウ}%
+\index{ウィンドウ!Pipeline Browser@\PVwindow{Pipeline Browser}}%
+            は，\OFthirdparty{ParaView}の中でオープンしているモジュールをリストアップしており，
+            選択されたモジュールは青くハイライトされ，
             このモジュールに関するグラフィックスは，
             脇の目のボタンをクリックすることにより，
             有効・無効の切り替えができます．
- \item[\OFemph{Properties}パネル]
-\index{Properties@\OFemph{Properties}!ウィンドウパネル}%
-\index{ウィンドウパネル!Properties@\OFemph{Properties}}%
+ \item[\PVpanel{Properties}パネル]
+\index{Properties@\PVpanel{Properties}!ウィンドウパネル}%
+\index{ウィンドウパネル!Properties@\PVpanel{Properties}}%
             には，時間や領域，およびフィールドなどのケースに関する
             入力条件の選択項目があります．
- \item[\OFemph{Display}パネル]
-\index{Display@\OFemph{Display}!ウィンドウパネル}%
-\index{ウィンドウパネル!Display@\OFemph{Display}}%
-            は，色など，選択されたモジュールの可視化の描画をコントロールします．
- \item[\OFemph{Information}パネル]
-\index{Information@\OFemph{Information}!ウィンドウパネル}%
-\index{ウィンドウパネル!Information@\OFemph{Information}}%
+ \item[\PVpanel{Display}パネル]
+\index{Display@\PVpanel{Display}!ウィンドウパネル}%
+\index{ウィンドウパネル!Display@\PVpanel{Display}}%
+            は，色など，選択されたモジュールの可視化の表現をコントロールします．
+ \item[\PVpanel{Information}パネル]
+\index{Information@\PVpanel{Information}!ウィンドウパネル}%
+\index{ウィンドウパネル!Information@\PVpanel{Information}}%
             はメッシュのジオメトリとサイズのようなケースの統計値を表示します．
 \end{description}
 
@@ -107,62 +109,62 @@ ParaViewが立ち上がり，オープンすると\autoref{fig:6.1}のように�
 \end{figure}
 
 
-ParaViewはツリー構成に基づいた構造で操作するようになっており，
+\OFthirdparty{ParaView}はツリー構成に基づいた構造で操作するようになっており，
 その中で，トップレベルのケースのモジュールからサブモジュールのケースを
 作成するフィルタをかけることができます．
 例えば，圧力のコンタのプロットは，すべての圧力データをもつ
 ケースモジュールのサブモジュールとすることができます．
-ParaViewの長所は，ユーザが数多くのサブモジュールを作ることができることと，
+\OFthirdparty{ParaView}の長所は，ユーザが数多くのサブモジュールを作ることができることと，
 画像やアニメーションのどちらでも作ることができるという点にあります．
 例えば，ソリッドのジオメトリ，メッシュおよび速度ベクトル，
 圧力のコンタのプロットなどが追加できますし，
 これらアイテムについては必要に応じてオン・オフすることができます．
 
-システムの一般的な操作は選択をし，
-\OFemph{Properties}パネルの緑の
-\index{Apply@\OFemph{Apply}!ボタン}%
-\index{ボタン!Apply@\OFemph{Apply}}%
-\OFemph{Apply}ボタンをクリックすることを基本としています．
-追加項目ボタンとしては，
+基本的な操作方法は，まず必要な項目の選択を行い，
+それから\PVpanel{Properties}パネルで緑色の
+\index{Apply@\PVbutton{Apply}!ボタン}%
+\index{ボタン!Apply@\PVbutton{Apply}}%
+をクリックします．
+そのほかのボタンとしては，
 必要に応じてGUIのリセットを行う
-\index{Reset@\OFemph{Reset}!ボタン}%
-\index{ボタン!Reset@\OFemph{Reset}}%
-\OFemph{Reset}ボタン，
+\index{Reset@\PVbutton{Reset}!ボタン}%
+\index{ボタン!Reset@\PVbutton{Reset}}%
+\PVbutton{Reset}ボタン，
 アクティブになっているモジュールを削除する
-\index{Delete@\OFemph{Delete}!ボタン}%
-\index{ボタン!Delete@\OFemph{Delete}}%
-\OFemph{Delete}ボタンがあります．
+\index{Delete@\PVbutton{Delete}!ボタン}%
+\index{ボタン!Delete@\PVbutton{Delete}}%
+\PVbutton{Delete}ボタンがあります．
 
 
-\subsection{\OFemph{Properties}パネル}
+\subsection{\PVpanel{Properties}パネル}
 \label{ssec:6.1.2}
-ケースモジュールの\OFemph{Properties}パネルにはタイムステップや領域，
+ケースモジュールの\PVpanel{Properties}パネルにはタイムステップや領域，
 およびフィールドの設定の機能があります．
 コントロール方法については，\autoref{fig:6.2}に説明を記載しています．
 現在の読み込みモジュールにおいて，
-ディレクトリ内のデータをParaViewに書き込むことは，特に価値はありません．
+ディレクトリ内のデータを\OFthirdparty{ParaView}に書き込むことは，特に価値はありません．
 \autoref{ssec:6.1.4}節に書いてあるように，
 現在の読み込みモジュールにおいて，
-\index{Current Time Controls@\OFkeyword{Current Time Controls}!メニュー}%
-\index{メニュー!Current Time Controls@\OFkeyword{Current Time Controls}}%
-\OFkeyword{Current Time Controls}あるいは
-\index{VCR Controls@\OFkeyword{VCR Controls}!メニュー}%
-\index{メニュー!VCR Controls@\OFkeyword{VCR Controls}}%
-\OFkeyword{VCR Controls}ツールバー内のボタンで，
+\index{Current Time Controls@\PVmenu{Current Time Controls}!メニュー}%
+\index{メニュー!Current Time Controls@\PVmenu{Current Time Controls}}%
+\PVmenu{Current Time Controls}あるいは
+\index{VCR Controls@\PVmenu{VCR Controls}!メニュー}%
+\index{メニュー!VCR Controls@\PVmenu{VCR Controls}}%
+\PVmenu{VCR Controls}ツールバー内のボタンで，
 表示のための時間データを選択することができます．
 paraFoamの操作においては，
-何らかの変更を行ったときにはAcceptをクリックする必要があります．
-このAcceptボタンは，ユーザが変更するつもりがなかった場合を考慮して，
+何らかの変更を行ったときには\PVbutton{Apply}をクリックする必要があります．
+この\PVbutton{Apply}ボタンは，ユーザが変更するつもりがなかった場合を考慮して，
 警告を与えるために緑色にハイライトされます．
 この操作方法は，承諾する前に多くの選択ができるという長所をもっており，
 特に，大きなケースでは，データ処理が最小限で行えるという便利さがあります．
 しばしばファイルのケースデータが変更され，
 （たとえばフィールドデータが新しい時間ディレクトリに書き込まれたりしたために）
-ParaViewを書き換える必要がある場合があります．
+\OFthirdparty{ParaView}を書き換える必要がある場合があります．
 変更を書き込む際には，Propertiesパネル一番上の
-\index{Update GUI@\OFemph{Update GUI}!ボタン}%
-\index{ボタン!Update GUI@\OFemph{Update GUI}}%
-\OFemph{Update GUI}ボタンを
+\index{Update GUI@\PVbutton{Update GUI}!ボタン}%
+\index{ボタン!Update GUI@\PVbutton{Update GUI}}%
+\PVbutton{Update GUI}ボタンを
 チェックすることによって変更します．
 
 
@@ -173,11 +175,11 @@ ParaViewを書き換える必要がある場合があります．
 \end{figure}
 
 
-\subsection{\OFemph{Display}パネル}
+\subsection{\PVpanel{Display}パネル}
 \label{ssec:6.1.3}
-\index{Display@\OFemph{Display}!ウィンドウパネル}%
-\index{ウィンドウパネル!Display@\OFemph{Display}}%
-\OFemph{Display}パネルには，与えられたケースモジュールのデータの
+\index{Display@\PVpanel{Display}!ウィンドウパネル}%
+\index{ウィンドウパネル!Display@\PVpanel{Display}}%
+\PVpanel{Display}パネルには，与えられたケースモジュールのデータの
 可視化に関する機能があります．
 
 
@@ -196,277 +198,289 @@ ParaViewを書き換える必要がある場合があります．
        適切なインターバルをRescale to Data Rangeで
        選択するように注意する必要があります．
  \item
-\index{Edit Color Map@\OFemph{Edit Color Map}!ボタン}%
-\index{ボタン!Edit Color Map@\OFemph{Edit Color Map}}%
-      \OFemph{Edit Color Map}ボタンでは，二つのパネルによるウィンドウが開きます．
+\index{Edit Color Map@\PVbutton{Edit Color Map}!ボタン}%
+\index{ボタン!Edit Color Map@\PVbutton{Edit Color Map}}%
+      \PVbutton{Edit Color Map}ボタンでは，二つのパネルによるウィンドウが開きます．
        \begin{enumerate}
         \item
-\index{Color Scale@\OFemph{Color Scale}!ウィンドウパネル}%
-\index{ウィンドウパネル!Color Scale@\OFemph{Color Scale}}%
-             \OFemph{Color Scale}パネルではスケールの色を選択することができます．
+\index{Color Scale@\PVpanel{Color Scale}!ウィンドウパネル}%
+\index{ウィンドウパネル!Color Scale@\PVpanel{Color Scale}}%
+             \PVpanel{Color Scale}パネルではスケールの色を選択することができます．
               標準の青〜赤のCFDスケールを選択するには，
-\index{Choose Preset@\OFemph{Choose Preset}!ボタン}%
-\index{ボタン!Choose Preset@\OFemph{Choose Preset}}%
-              \OFemph{Choose Preset}をクリックし，Blue to Red Rainbox HSVを選択します．
+\index{Choose Preset@\PVbutton{Choose Preset}!ボタン}%
+\index{ボタン!Choose Preset@\PVbutton{Choose Preset}}%
+              \PVbutton{Choose Preset}をクリックし，Blue to Red Rainbox HSVを選択します．
         \item
-\index{Color Legend@\OFemph{Color Legend}!ウィンドウパネル}%
-\index{ウィンドウパネル!Color Legend@\OFemph{Color Legend}}%
-             \OFemph{Color Legend}パネルではカラーバーの凡例の色を切り替えたり，
+\index{Color Legend@\PVpanel{Color Legend}!ウィンドウパネル}%
+\index{ウィンドウパネル!Color Legend@\PVpanel{Color Legend}}%
+             \PVpanel{Color Legend}パネルではカラーバーの凡例の色を切り替えたり，
               フォントのような凡例のレイアウトを決定します．
        \end{enumerate}
  \item 基本となるメッシュは
-\index{Style@\OFemph{Style}!ウィンドウパネル}%
-\index{ウィンドウパネル!Style@\OFemph{Style}}%
-       \OFemph{Style}パネルにある\OFkeyword{Representation}メニューの
-\index{Wrireframe@\OFkeyword{Wrireframe}!メニューエントリ}%
-\index{メニューエントリ!Wrireframe@\OFkeyword{Wrireframe}}%
-       \OFkeyword{Wrireframe}を選択することにより表示されます．
- \item \OFkeyword{Wrireframe}が選択されている場合のメッシュのようなジオメトリは
-\index{Color By@\OFkeyword{Color By}!メニュー}%
-\index{メニュー!Color By@\OFkeyword{Color By}}%
-       \OFkeyword{Color By}メニューから
-\index{Solid Color@\OFkeyword{Solid Color}!メニューエントリ}%
-\index{メニューエントリ!Solid Color@\OFkeyword{Solid Color}}%
-       \OFkeyword{Solid Color}を選択し，
-\index{Set Solid Color@\OFemph{Set Solid Color}!ボタン}%
-\index{ボタン!Set Solid Color@\OFemph{Set Solid Color}}%
-       \OFemph{Set Solid Color}ウィンドウで指定することにより可視化することができます．
+\index{Style@\PVpanel{Style}!ウィンドウパネル}%
+\index{ウィンドウパネル!Style@\PVpanel{Style}}%
+       \PVpanel{Style}パネルにある\PVmenu{Representation}メニューの
+\index{Wrireframe@\PVmenu{Wrireframe}!メニューエントリ}%
+\index{メニューエントリ!Wrireframe@\PVmenu{Wrireframe}}%
+       \PVmenu{Wrireframe}を選択することにより表示されます．
+ \item \PVmenu{Wrireframe}が選択されている場合のメッシュのようなジオメトリは
+\index{Color By@\PVmenu{Color By}!メニュー}%
+\index{メニュー!Color By@\PVmenu{Color By}}%
+       \PVmenu{Color By}メニューから
+\index{Solid Color@\PVmenu{Solid Color}!メニューエントリ}%
+\index{メニューエントリ!Solid Color@\PVmenu{Solid Color}}%
+       \PVmenu{Solid Color}を選択し，
+\index{Set Ambient Color@\PVbutton{Set Ambient Color}!ボタン}%
+\index{ボタン!Set Ambient Color@\PVbutton{Set Ambient Color}}%
+       \PVbutton{Set Ambient Color}ウィンドウで色を指定することにより可視化することができます．
  \item イメージは
-\index{Opacity@\OFemph{Opacity}!テキストボックス}%
-\index{テキストボックス!Opacity@\OFemph{Opacity}}%
-       \OFemph{Opacity}の値 ($1 = \mbox{solid}$，$0 = \mbox{invisible}$) を
+\index{Opacity@\PVpanel{Opacity}!テキストボックス}%
+\index{テキストボックス!Opacity@\PVpanel{Opacity}}%
+       \PVpanel{Opacity}の値 ($1 = \mbox{solid}$，$0 = \mbox{invisible}$) を
        修正することにより半透明にすることができます．
 \end{itemize}
 
 
 \subsection{ボタンツールバー}
 \label{ssec:6.1.4}
-ParaViewの各機能はメインウインドウ上部の
+\OFthirdparty{ParaView}の各機能はメインウインドウ上部の
 メニューバーのプルダウンメニューだけでなく，
 その下にあるボタンツールバーから選択することもできます．
 表示するツールバーは
-\index{View@\OFkeyword{View}!メニュー}%
-\index{メニュー!View@\OFkeyword{View}}%
-\OFkeyword{View}メニューの
-\index{Toolbars@\OFkeyword{Toolbars}!メニューエントリ}%
-\index{メニューエントリ!Toolbars@\OFkeyword{Toolbars}}%
-\OFkeyword{Toolbars}から選択することができます．
+\index{View@\PVmenu{View}!メニュー}%
+\index{メニュー!View@\PVmenu{View}}%
+\PVmenu{View}メニューの
+\index{Toolbars@\PVmenu{Toolbars}!メニューエントリ}%
+\index{メニューエントリ!Toolbars@\PVmenu{Toolbars}}%
+\PVmenu{Toolbars}から選択することができます．
 各ツールバーの初期設定の配置は\autoref{fig:6.4}のようになっており，
 それぞれどのプルダウンメニューの項目に対応するかを示しています．
 多くのボタンの機能はアイコンから明快ですし，
-\index{Help@\OFkeyword{Help}!メニュー}%
-\index{メニュー!Help@\OFkeyword{Help}}%
-\OFkeyword{Help}メニューのtooltipsにチェックがされていれば
+\index{Help@\PVmenu{Help}!メニュー}%
+\index{メニュー!Help@\PVmenu{Help}}%
+\PVmenu{Help}メニューのtooltipsにチェックがされていれば
 ポインタを上に置いたときに簡潔な注を表示させることができます．
 
 
 \begin{figure}[ht]
  \includegraphics{fig-6-4}
- \caption{ParaViewのツールバー}
+ \caption{\OFthirdparty{ParaView}のツールバー}
  \label{fig:6.4}
 \end{figure}
 
 
-\subsection{ビューの操作}
+\subsection{表示の操作}
 \label{ssec:6.1.5}
 本セクションでは，\OFtool{paraFoam}におけるオブジェクトの
-ビューの設定と取り扱いに関する操作について説明します．
+表示の設定と取り扱いに関する操作について説明します．
 
-\subsubsection{View settings}
+\subsubsection{表示の設定}
 \label{sssec:6.1.5.1}
-\index{View Settings@\OFkeyword{View Settings}!メニューエントリ}%
-\index{メニューエントリ!View Settings@\OFkeyword{View Settings}}%
-\OFkeyword{View Settings}を
-\index{Edit@\OFkeyword{Edit}!メニュー}%
-\index{メニュー!Edit@\OFkeyword{Edit}}%
-\OFkeyword{Edit}メニューから選択すると，
-\index{General@\OFemph{General}!ウィンドウパネル}%
-\index{ウィンドウパネル!General@\OFemph{General}}%
-\OFemph{General}，
-\index{Lights@\OFemph{Lights}!ウィンドウパネル}%
-\index{ウィンドウパネル!Lights@\OFemph{Lights}}%
-\OFemph{Lights}，
-\index{Annotation@\OFemph{Annotation}!ウィンドウパネル}%
-\index{ウィンドウパネル!Annotation@\OFemph{Annotation}}%
-\OFemph{Annotation}の3項目からなる
-\index{Render View Options@\OFemph{Render View Options}!ウィンドウ}%
-\index{ウィンドウ!Render View Options@\OFemph{Render View Options}}%
-\OFemph{Render View Options}ウインドウが表示されます．
-Generalには開始時に設定すべき以下の項目があります．
+\index{View Settings@\PVmenu{View Settings}!メニューエントリ}%
+\index{メニューエントリ!View Settings@\PVmenu{View Settings}}%
+\PVmenu{View Settings}を
+\index{Edit@\PVmenu{Edit}!メニュー}%
+\index{メニュー!Edit@\PVmenu{Edit}}%
+\PVmenu{Edit}メニューから選択すると，
+\index{General@\PVpanel{General}!ウィンドウパネル}%
+\index{ウィンドウパネル!General@\PVpanel{General}}%
+\PVpanel{General}，
+\index{Lights@\PVpanel{Lights}!ウィンドウパネル}%
+\index{ウィンドウパネル!Lights@\PVpanel{Lights}}%
+\PVpanel{Lights}，
+\index{Annotation@\PVpanel{Annotation}!ウィンドウパネル}%
+\index{ウィンドウパネル!Annotation@\PVpanel{Annotation}}%
+\PVpanel{Annotation}の3項目からなる
+\index{View Settings (Render View)@\PVwindow{View Settings (Render View)}!ウィンドウ}%
+\index{ウィンドウ!View Settings (Render View)@\PVwindow{View Settings (Render View)}}%
+\PVwindow{View Settings (Render View)}ウインドウが表示されます．
+\PVpanel{General}には以下のような項目がありますので，
+開始時に設定するとよいでしょう．
 \begin{itemize}
- \item 背景色，印刷物には白が望ましい
+ \item 背景色としては，印刷物には白が望ましいでしょう．
+       そのためには\PVbutton{Choose Color}ボタンの横の下向き矢印から
+       \PVbutton{background}を選択した後で，
+       \PVbutton{Choose Color}ボタンをクリックして色を選択します．
  \item CFD，特に2次元のケースでは
-\index{Use Parallel Projection@\OFemph{Use Parallel Projection}!ボタン}%
-\index{ボタン!Use Parallel Projection@\OFemph{Use Parallel Projection}}%
-       \OFemph{Use Parallel Projection}（平行投影）が通常用いられる
+\index{Use Parallel Projection@\PVbutton{Use Parallel Projection}!ボタン}%
+\index{ボタン!Use Parallel Projection@\PVbutton{Use Parallel Projection}}%
+       \PVbutton{Use Parallel Projection}（平行投影）がよく用いられます．
 \end{itemize}
 
-\OFemph{Lights}にはLight Kitパネルに光源の詳細設定があります．
-Headlightパネルでは直接光をコントロールします．
-Headlightボタンを白色光の強度1にすれば
-鮮明な色の画像を得られるでしょう．
+\PVpanel{Lights}パネルに含まれる\PVpanel{Light Kit}パネルでは光源の詳細設定ができます．
+\PVpanel{Headlight}パネルでは直接光をコントロールします．
+\PVbutton{Headlight}ボタンを白色光の強度1にすれば，
+等値面などの鮮明な色の画像を得られるでしょう．
 
-Annotationでは，ビューウィンドウにおける
+\PVpanel{Annotation}では，表示ウィンドウにおける
 軸や原点などの注釈の表示の有無を設定します．
-\index{Orientation Axes@\OFemph{Orientation Axes}!ボタン}%
-\index{ボタン!Orientation Axes@\OFemph{Orientation Axes}}%
-\OFemph{Orientation Axes}で$x$，$y$，$z$軸の色など，軸の表示設定をします．
+\index{Orientation Axes@\PVbutton{Orientation Axes}!ボタン}%
+\index{ボタン!Orientation Axes@\PVbutton{Orientation Axes}}%
+\PVbutton{Orientation Axes}で$x$，$y$，$z$軸の色など，軸の表示設定をします．
 
-\subsubsection{General settings}
+\subsubsection{一般的な設定}
 \label{sssec:6.1.5.2}
-\index{Settings@\OFkeyword{Settings}!メニューエントリ}%
-\index{メニューエントリ!Settings@\OFkeyword{Settings}}%
-\OFkeyword{Settings}を\OFkeyword{Edit}メニューから選択すると
-\OFemph{General}と
-\index{Render View@\OFemph{Render View}!ウィンドウパネル}%
-\index{ウィンドウパネル!Render View@\OFemph{Render View}}%
-\OFemph{Render View}の項目からなる
-\index{Options@\OFemph{Options}!ウィンドウ}%
-\index{ウィンドウ!Options@\OFemph{Options}}%
-\OFemph{Options}ウインドウが表示されます．
+\index{Settings@\PVmenu{Settings}!メニューエントリ}%
+\index{メニューエントリ!Settings@\PVmenu{Settings}}%
+\PVmenu{Settings}を\PVmenu{Edit}メニューから選択すると
+\PVpanel{General}，\PVpanel{Colors}，\PVpanel{Animations}，\PVpanel{Charts}，
+および
+\index{Render View@\PVpanel{Render View}!ウィンドウパネル}%
+\index{ウィンドウパネル!Render View@\PVpanel{Render View}}%
+\PVpanel{Render View}の項目からなる
+\index{Options@\PVwindow{Options}!ウィンドウ}%
+\index{ウィンドウ!Options@\PVwindow{Options}}%
+\PVwindow{Options}ウインドウが表示されます．
 
-GeneralパネルではParaViewの挙動の初期値を設定します．
+\PVpanel{General}パネルでは\OFthirdparty{ParaView}の挙動の初期値を設定します．
 特に，
-\index{Auto Accept@\OFemph{Auto Accept}!ボタン}%
-\index{ボタン!Auto Accept@\OFemph{Auto Accept}}%
-\OFemph{Auto Accept}をチェックすると
+\index{Auto Accept@\PVbutton{Auto Accept}!ボタン}%
+\index{ボタン!Auto Accept@\PVbutton{Auto Accept}}%
+\PVbutton{Auto Accept}をチェックすると
 Propertiesウインドウで行った変更が
-\index{Apply@\OFemph{Apply}!ボタン}%
-\index{ボタン!Apply@\OFemph{Apply}}%
-\OFemph{Apply}ボタンをクリックすることなく
+\index{Apply@\PVbutton{Apply}!ボタン}%
+\index{ボタン!Apply@\PVbutton{Apply}}%
+\PVbutton{Apply}ボタンをクリックすることなく
 自動で表示に反映されるようになります．
 大きな解析ケースではこのオプションは使わない方がよいでしょう．
 というのもいくつもの変更を行う際にそのつど再描画されるのは煩わしく，
 一度で反映させた方がよいと思われるからです．
 
-\index{Render View@\OFemph{Render View}!ウィンドウパネル}%
-\index{ウィンドウパネル!Render View@\OFemph{Render View}}%
-\OFemph{Render View}パネルには\OFemph{General}，
-\OFemph{Camera}，\OFemph{Server}の三つの項目があります．
-\OFemph{General}パネルではlevel of detail (LOD) で回転や平行移動，
+\index{Render View@\PVpanel{Render View}!ウィンドウパネル}%
+\index{ウィンドウパネル!Render View@\PVpanel{Render View}}%
+\PVpanel{Render View}パネルには\PVpanel{General}，
+\PVpanel{Camera}，\PVpanel{Server}の三つの項目があります．
+\PVpanel{General}パネルではlevel of detail (LOD) で回転や平行移動，
 サイズ変更といった操作時のレンダリングの精度を設定できます．
 レベルを下げることで多数のセルからなるケースにおいても
 視点操作時の再描画速度を早くすることができます．
 
-Cameraパネルでは3Dまたは2Dにおける視点の移動を設定します．
-回転，平行移動，ズームといった操作をマウスとshiftキー，
+\PVpanel{Camera}パネルでは3Dまたは2Dにおける視点の移動を設定します．
+回転，平行移動，ズームといった操作は，マウスとshiftキー，
 controlキーを組み合わせて行うことができますが，
 割当ては任意に設定することができます．
 
 
 \subsection{コンタのプロット}
 \label{ssec:6.1.6}
-コンタのプロットは，上部のメニューバーのFilterメニューから
-Contourを選択することにより作成することができます．
+コンタのプロットは，上部のメニューバーの\PVmenu{Filter}メニューから
+\PVfilter{Contour}を選択することにより作成することができます．
 フィルタはあたえられたモジュール上で役割を果たすことから，
-モジュール自体が3Dのケースの場合には，コンタはconstant valueを表す
-2D表示（同一面：アイソサーフェス）に設定されます．
-コンタに関するPropertiesにはユーザが編集できるIsosurfacesのリストがあり，
-New Rangeウィンドウにより使いやすくなっています．
+モジュール自体が3Dのケースの場合には，コンタは一定の値を表す
+2D表示（同値面：アイソサーフェス）に設定されます．
+コンタに関する\PVpanel{Properties}にはユーザが編集できる\PVpanel{Isosurfaces}のリストがあり，
+\PVwindow{New Range}ウィンドウにより使いやすくなっています．
 スカラフィールドはプルダウンメニューにより選択することができます．
 
-\subsubsection{cutting planeの使い方}
+\subsubsection{断面の使い方}
 \label{sssec:6.1.6.1}
-まれに，同一面でのコンタの作成でなく，
-断面のコンタを作成したい場合があります．
-このためには，最初にSliceフィルタを用いて，
+同一面でのコンタの作成でなく，
+断面のコンタを作成したい場合がよくあります．
+このためには，最初に\PVfilter{Slice}フィルタを用いて，
 コンタをプロットしたい切断面を作成する必要があります．
-このSliceフィルタにより，
-ユーザはそれぞれcenterとnormal/radiusを使って，
-Slice Typeメニューの中にPlane，BoxまたはSphereのカッティングを
-指定することができます．
+この\PVfilter{Slice}フィルタでは，
+ユーザは\PVkeyword{Slice Type}メニューで
+\PVkeyword{Plane}，\PVkeyword{Box}または\PVkeyword{Sphere}という
+切断方法を指定することができます．
+\OFrevision{古いキーワード？}%
+それぞれ\PVentry{center}および\PVentry{normal}または\PVentry{radius}の指定が必要です．
 マウスを使っても同じように切断面の操作を行うことができます．
-
-その後，コンタのラインを作成するために，
-切断された面でContourフィルタを実行することができます．
-
+そして\PVfilter{Contour}フィルタを実行すれば，
+指定した切断面でコンタラインが作成されます．
 
 \subsection{ベクトルのプロット}
 \label{ssec:6.1.7}
-ベクトルのプロットはGlyphフィルタを用いて作成します．
-フィルタはVectorsで選択されたフィールドを読み込み，
-Arrowによりクリアなベクトル画像を提供するための
-Glyph Typesのレンジを用意します．
-それぞれのグリフは，ユーザが最も効果的にパネルをコントロールするために
-選択されています． Promertiesパネルのリマインダには，
-グリフのための主要なScale Modeメニューがあります．
+ベクトルのプロットは\PVfilter{Glyph}フィルタを用いて作成します．
+このフィルタは\PVentry{Vectors}で選択されたフィールドを読み込み，
+いくつかの\PVentry{Glyph Types}が用意されていますが，
+\PVentry{Arrow}によりクリアなベクトル画像が得られます．
+それぞれのグリフには，
+パネル上でユーザが操作して最も良い視覚効果を得るための，
+描画をコントロールする選択肢が備わっています．
+
+\PVpanel{Properties}パネルの残りの部分にある主要なものは
+グリフの\PVentry{Scale Mode}メニューです．
 その中でも最もよく使うオプションは，
-ベクトルの大きさに比例したグリフの長さのVector，
-各々のグリフの長さが同じにするOff，
-また，Set Scale Factorはグリフの基本的な長さをコントロールします．
+グリフの長さがベクトルの大きさに比例する\PVentry{Vector}，
+全てのグリフを同じ長さにする\PVentry{Off}です．
+また，\PVentry{Set Scale Factor}はグリフの基本的な長さをコントロールします．
 
 \subsubsection{セルの中心でのプロット}
 \label{sssec:6.1.7.1}
-ベクトルは，デフォルトによりセルの頂点上に作成されますが，
+ベクトルは，デフォルトではセルの頂点上に作成されますが，
 セルの中心にプロットデータを作成したい場合もあります．
-この場合には，最初にcaseモジュールに対してCell Centersを適用し，
-その後セルの中心の計算結果のためにGlyphフィルタを適用します．
+このためには，まずそのケースモジュールに対して\PVfilter{Cell Centers}フィルタを適用し，
+それから得られたセル中心データに対して\PVfilter{Glyph}フィルタを適用します．
 
 \subsection{流線}
 \label{ssec:6.1.8}
-流線は，Stream Tracerフィルタを用いて作成された
+流線は，\PVfilter{Stream Tracer}フィルタを用いて作成された
 トレーサラインを用いて作成されます．
 トレーサの
-\index{Seed@\OFemph{Seed}!ウィンドウパネル}%
-\index{ウィンドウパネル!Seed@\OFemph{Seed}}%
-\OFemph{Seed}パネルで，Line SourceあるいはPoint Cloud全般の
+\index{Seed@\PVpanel{Seed}!ウィンドウパネル}%
+\index{ウィンドウパネル!Seed@\PVpanel{Seed}}%
+\PVpanel{Seed}パネルで，\PVentry{Line Source}あるいは\PVentry{Point Cloud}全般の
 トレーサポイントの配分を指定します．
 ユーザは線のようなトレーサソースを見ることができますが，
 白で表示させている場合は背景を変更しなければなりません．
 トレーサの軌跡の間隔とトレーサのステップの長さは
-Stream Tracerパネルの下にあるテキストボックスで指定します．
+\PVpanel{Stream Tracer}パネルの下にあるテキストボックスで指定します．
 望み通りのトレーサのラインを作成するプロセスは大部分が試行錯誤であり，
 ステップの長さを減少させることによりと同じように
 円滑にはっきりと表示することができますが，反面計算時間が長くなります．
 トレーサのラインが作成できた後は，
-より高品質な画像を作り出すためにTubesフィルタを
-Tracerモジュールに適用することができます．
+より高品質な画像を作り出すために\PVpanel{Tubes}フィルタを
+\PVmodule{Tracer}モジュールに適用することができます．
 このTubesは各々のトレーサのラインをたどっており，
 厳密な円筒型にはなっていませんが，
 固定された側面と半径の数値を持っています．
 上述のように側面の数値が10に設定されたとき，
-Tubesは円筒型として表示されますが，
-くどいようですが，これには計算コストがかかります．
+\PVfilter{Tubes}は円筒型として表示されますが，
+やはり，これにも計算コストがかかります．
 
 
 \subsection{画像の出力}
 \label{ssec:6.1.9}
-画像を出力する最も簡単な方法はFileメニューから
-\index{Save Screeshot@\OFkeyword{Save Screeshot}!メニューエントリ}%
-\index{メニューエントリ!Save Screeshot@\OFkeyword{Save Screeshot}}%
-\OFkeyword{Save Screeshot}を選択することです．
+\OFthirdparty{ParaView}から画像を出力する最も簡単な方法は
+\PVmenu{File}メニューから
+\index{Save Screeshot@\PVmenu{Save Screeshot}!メニューエントリ}%
+\index{メニューエントリ!Save Screeshot@\PVmenu{Save Screeshot}}%
+\PVmenu{Save Screeshot}を選択することです．
 選択すると，保存する画像の解像度を指定するウインドウが現れます．
 自動的に解像度が設定されるよう，
 アスペクト比を固定するボタンがあります．
 ピクセル解像度を設定すると画像が保存されます．
 より高画質で保存するには，
-解像度を幅1000ピクセル以上にするとよいでしょう．
-A4サイズの書面やPDFの図として，シャープな仕上がりになります．
+$x$方向の解像度を1000以上にするとよいでしょう．
+PDF文書などに挿入する際に，A4あるいはUSレターサイズなどの
+書面に合うようにスケーリングすれば，
+シャープな仕上がりになります．
 
 
 \subsection{アニメーション出力}
 \label{ssec:6.1.10}
 アニメーションを作成するには，
-まずFileメニューから
-\index{Save Animation@\OFkeyword{Save Animation}!メニューエントリ}%
-\index{メニューエントリ!Save Animation@\OFkeyword{Save Animation}}%
-\OFkeyword{Save Animation}を選択します．
+まず\PVmenu{File}メニューから
+\index{Save Animation@\PVmenu{Save Animation}!メニューエントリ}%
+\index{メニューエントリ!Save Animation@\PVmenu{Save Animation}}%
+\PVmenu{Save Animation}を選択します．
 解像度などいくつかの項目を設定するダイアログウインドウが
 表示されるので，必要な解像度を指定します．
 それ以外では，タイムステップごとのフレーム数が重要です．
 これは直感的には1と設定するでしょうが，
 アニメーションのフレーム数を多くするために
 より大きな値にしてもかまいません．
-この方法は特に，mpegなど，動画プレイヤーの再生速度に制限がある場合に，
+この方法は，特に\texttt{mpeg}など，動画プレイヤの再生速度に制限がある場合に，
 アニメーションの速度を遅くしたいときに有効です．
 
-\OFkeyword{Save Animation}ボタンを押すと，
+\PVbutton{Save Animation}ボタンを押すと，
 ファイル名やファイル形式を設定する別のウインドウが現れます．
 OKを押すと，``\verb|<ファイル名>_<画像番号>.<拡張子>|'' という名前で
 一群の画像ファイルが保存されます．
-例えばanimationというケースの3番目の画像は，
+例えば，ファイル名を ``\verb|animation|'' として
+\texttt{jpg}形式で保存した場合の3番目の画像は，
 ``\verb|animation_0002.jpg|'' となります．
-（画像番号は0000から始まります）
+（\verb|<画像番号>| は0000から始まります）
 
 一連の画像が保存されると，
 適当なソフトを使って動画に変換することができます．
@@ -481,21 +495,21 @@ mpg動画を作成する際に初期設定の \verb|-quality 90%|から
 
 
 
-\section{Fluentによる後処理}
+\section{\OFthirdparty{Fluent}による後処理}
 \label{sec:6.2}
-Fluentを，OpenFOAMで実行したケースに，
+\OFthirdparty{Fluent}を，OpenFOAMで実行したケースに，
 ポストプロセッサとして適用することも可能です．
 その目的のために，二つの変換器が提供されています．
 \index{foamMeshToFluent@\OFtool{foamMeshToFluent}!ユーティリティ}%
 \index{ユーティリティ!foamMeshToFluent@\OFtool{foamMeshToFluent}}%
 \OFtool{foamMeshToFluent}は，
-OpenFOAMのメッシュをFluentフォーマットに変換し，
+OpenFOAMのメッシュを\OFthirdparty{Fluent}フォーマットに変換し，
 それを\texttt{.msh}ファイルとして書き出します．
 そして，
 \index{foamDataToFluent@\OFtool{foamDataToFluent}!ユーティリティ}%
 \index{ユーティリティ!foamDataToFluent@\OFtool{foamDataToFluent}}%
 \OFtool{foamDataToFluent}は，OpenFOAMの結果のデータを，
-Fluentが読むことができる\texttt{.dat}ファイルに変換します．
+\OFthirdparty{Fluent}が読むことができる\texttt{.dat}ファイルに変換します．
 \OFtool{foamMeshToFluent}は，普通の方法で実行することができます．
 その結果のメッシュは，そのケースディレクトリの
 \index{fluentInterface@\OFpath{fluentInterface}!ディレクトリ}%
@@ -504,22 +518,21 @@ Fluentが読むことができる\texttt{.dat}ファイルに変換します．
 すなわち，\OFpath{<caseName>/fluentInterface/<caseName>.msh}です．
 
 \OFtool{foamDataToFluent}は，OpenFOAMのデータの結果を，
-Fluentフォーマットに変換します．変換は，二つのファイルに制御されます．
-まず，\OFdictionary{controlDict}ディクショナリは，\OFkeyword{startTime}を設定し，
-変換される結果のセットを与えます．
-これは，変換される結果のセットを与えます．
-もしあなたが，最新の結果を変換したければ，
-\OFkeyword{startFrom}を\OFkeyword{latestTime}と設定することができます．
-\OFkeyword{translation}を指定する2番目のファイルは，
-\OFpath{foamDataToFluentDict}ディクショナリです．
-このファイルは，\OFpath{constant}ディレクトリに置かれています．
-\OFpath{foamDataToFluentDict}ディクショナリの例を以下に示します．
+\OFthirdparty{Fluent}フォーマットに変換します．
+変換は，二つのファイルで制御します．
+まず\OFdictionary{controlDict}ディクショナリに指定した\OFkeyword{startTime}が，
+変換される計算結果の時刻となります．
+最新の結果を変換したいならば
+\OFkeyword{startFrom}を\OFkeyword{latestTime}と設定すればよいでしょう．
+二つめは翻訳方法を指定する\OFpath{foamDataToFluentDict}ディクショナリです．
+これは\OFpath{constant}ディレクトリ内に配置します．
+この\OFpath{foamDataToFluentDict}ディクショナリの例を以下に示します．
 \begin{OFverbatim}[file, linenum]
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  1.7.1                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|  \\    /   O peration     | Version:  2.0.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -553,15 +566,15 @@ gamma           150;
 \begin{OFverbatim}[file]
 <fieldName> <fluentUnitNumber>
 \end{OFverbatim}
-\verb|<fluentUnitNumber>|は，Fluentポストプロセッサが使うラベルです．
-Fluentは，ある決まったセットのフィールドしか認識しません．
+\verb|<fluentUnitNumber>|は，\OFthirdparty{Fluent}ポストプロセッサが使うラベルです．
+\OFthirdparty{Fluent}は，ある決まったセットのフィールドしか認識しません．
 \verb|<fluentUnitNumber>|の数の基本的なセットは，
 \autoref{tbl:6.1}に引用されています．
 
 
 \begin{table}[ht]
  \input{tbl/tbl-6-1}
- \caption{ポストプロセッサのためのFluentのユニット番号}
+ \caption{ポストプロセッサのための\OFthirdparty{Fluent}のユニット番号}
  \label{tbl:6.1}
 \end{table}
 
@@ -573,9 +586,9 @@ Fluentは，ある決まったセットのフィールドしか認識しませ�
 ユーザは，他のユーティリティのように，
 \OFtool{foamDataToFluent}を実行することができます．
 
-Fluentでその結果を見るためには，
+\OFthirdparty{Fluent}でその結果を見るためには，
 ケースのディレクトリの\OFpath{fluentInterface}サブディレクトリに移動して，
-3次元のバージョンのFluentを次のようにして開始します．
+3次元のバージョンの\OFthirdparty{Fluent}を次のようにして開始します．
 \begin{OFverbatim}[terminal]
 fluent 3d
 \end{OFverbatim}
@@ -589,8 +602,8 @@ fluent 3d
 読むことができます．
 
 注意すべき点：ユーザは，OpenFOAM形式への変換に使われた
-オリジナルのFluentメッシュファイルを，
-OpenFOAMの解をFluentフォーマットに変換したものと
+オリジナルの\OFthirdparty{Fluent}メッシュファイルを，
+OpenFOAMの解を\OFthirdparty{Fluent}フォーマットに変換したものと
 合わせて使ってはなりません．
 なぜなら，ゾーンの番号付けの順序が保証できないからです．
 
@@ -611,7 +624,7 @@ OpenFOAMのケースデータをFieldview \texttt{.uns}ファイルの形式に
 すでに\OFpath{Fieldview}ディレクトリが存在していた場合は削除されます．
 
 デフォルトでは，\OFtool{foamToFieldview}は全ての
-\OFpath{time}ディレクトリのデータを読み込んで，
+\OFpath{time}ディレクトリのデータを読み込んで，\break
 \OFpath{<case>\_nn.uns}のようなファイルのセットに出力します．
 \OFpath{nn}は連番で，最初の\OFpath{time}ディレクトリの
 時刻歴データでは1から始まり，その後2，3，4と続きます．
@@ -680,7 +693,7 @@ EnSightに必要なのはこのライブラリで，
 \subsubsection{EnSightの読込モジュールの設定}
 \label{sssec:6.4.2.1}
 EnSightリーダの実行には，環境変数が適切である必要があります．
-\OFpath{\$WM\_PROJECT\_\allowbreak DIR/etc/apps/\allowbreak ensightFoam}内の
+\OFpath{\$WM\_PROJECT\_\allowbreak DIR/\allowbreak etc/apps/\allowbreak ensightFoam}内の
 \OFpath{bashrc}または\OFpath{cshrc}ファイルで設定を行います．
 EnSightに関する環境変数は\autoref{tbl:6.2}の\verb|$CEI_|や\verb|$ENSIGHT7_|です．
 EnSightの通常インストール時のパス設定では，
@@ -740,7 +753,7 @@ Grace/xmgr，gnuplot，jPlotのような様々な形式で書き出すことが�
 \OFpath{\$FOAM\_UTILITIES/postProcessing/sampling/sample}の
 \OFpath{sample}ソースコードディレクトリにある
 \/\OFpath{sampleDict}の例をコピーすることで作成できます．
-\/\OFpath{\$FOAM\_TUTORIALS/\allowbreak solidDisplacementFoam}の
+\/\OFpath{\$FOAM\_\allowbreak TUTORIALS/\allowbreak solidDisplacementFoam}の
 \OFpath{plateHole}チュートリアルのケースにも
 1D線型データ取得のための記述例があります．
 \begin{OFverbatim}[file, linenum=17]
@@ -760,8 +773,6 @@ sets
         nPoints 100;
     }
 );
-
-surfaces        ();
 
 fields          ( sigmaxx );
 
@@ -901,7 +912,7 @@ Grace/xmgr，jPlotフォーマットがあります．
 ここから解かれる各々の方程式について，レポート行に，ソルバ名，
 解かれる変数，その初期と最終の残差，
 そして反復回数が書かれていることが読み取れます．
-\begin{OFverbatim}[baselinestretch=1, leftskip=3em, weight=\scriptsize]
+\begin{OFverbatim}[baselinestretch=1, leftskip=1em, weight=\scriptsize]
     Starting time loop
 
 Time = 0.005
@@ -942,9 +953,9 @@ ExecutionTime = 0.19 s
 \label{ssec:6.6.1}
 \index{foamJob@\OFtool{foamJob}!スクリプト／エイリアス}%
 \index{スクリプト／エイリアス!foamJob@\OFtool{foamJob}}%
-残差や反復回数，クーラン数などがレポートデータとして
-スクリーンを横切るのをモニタすれば十分でしょう．
-代わりに，レポートをログファイルにリダイレクトすることで
+ユーザは，残差や反復回数，クーラン数などが，レポートデータとして
+スクリーンを流れるのを確認すれば十分かもしれません．
+その代わりに，レポートをログファイルにリダイレクトすることで
 計算速度を向上させることもできます．
 このために\OFtool{foamJob}スクリプトは，
 便利なオプションを提供しています．
@@ -955,7 +966,7 @@ ExecutionTime = 0.19 s
 foamJob <solver>
 \end{OFverbatim}
 その他のオプションは，\verb|foamJob -help|を実行することで見ることができます．
-\OFpath{log}ファイルは，UNIX \texttt{tail}コマンドを用いることで
+\OFpath{log}ファイルは，\OFthirdparty{UNIX} \OFthirdparty{tail}コマンドを用いることで
 見たいときに見ることができます．
 一般的には，followを意味する\verb|-f|オプションを
 一緒に用いることで\OFpath{log}ファイルに新しいデータが
@@ -993,7 +1004,7 @@ foamLog <logFile>
 観察したいのは$U_{x}$方程式の初期残差です．
 この場合，\OFpath{logs/Ux\_0}ファイルからデータを取り出し，
 \autoref{fig:6.5}のようにプロットします．
-ここでは，残差は単調に収束許容値まで減少しているが読み取れます．
+ここでは，残差は単調に収束許容値まで減少しているのが読み取れます．
 
 \OFtool{foamLog}は，\OFpath{log}ファイルから，
 うまくそれができるようにファイルを作成します．

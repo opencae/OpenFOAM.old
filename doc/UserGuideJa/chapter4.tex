@@ -149,8 +149,8 @@ OpenFOAMのファイルフォーマットの書式についての説明は
  \item 行は特に意味をもちませんが，
 \index{//@\verb+//+!OpenFOAMファイルこうぶん@OpenFOAMファイル構文}%
 \index{OpenFOAMファイルこうぶん@OpenFOAMファイル構文!//@\verb+//+}%
-       コメント・デリミタ\verb|//|があればOpenFOAMは行の最後までテキストを無視します．
- \item 複数行にわたるコメントは，\verb|/*|と\verb|*/|で囲んで終了させます．
+       コメント・デリミタ \verb|//| があればOpenFOAMは行の最後までテキストを無視します．
+ \item 複数行にわたるコメントは，\verb|/*| と \verb|*/| で囲んで終了させます．
 \end{itemize}
 
 
@@ -257,7 +257,7 @@ PISO
 OpenFOAMアプリケーションはリストを含んでいます．
 例えば，メッシュ記述のための頂点リストがあります．
 リストは一般的にI/Oにあり独自のフォーマットをもっていて，
-入力は丸括弧\verb|( )|内にされます．
+入力は丸括弧 \verb|( )| 内にされます．
 また，丸括弧の前のフォーマットの選択もあります．
 \begin{description}
  \item[simple]
@@ -269,7 +269,7 @@ OpenFOAMアプリケーションはリストを含んでいます．
     );
 \end{OFverbatim}
  \item[numbered]
-            キーワードに続いてリスト内の要素数\verb|<n>|がくる．
+            キーワードに続いてリスト内の要素数 \verb|<n>| がくる．
 \begin{OFverbatim}[file]
     <listName>
     <n>
@@ -278,8 +278,8 @@ OpenFOAMアプリケーションはリストを含んでいます．
     );
 \end{OFverbatim}
  \item[token identifier]
-            キーワードに続いてクラス名の識別子ラベル\verb|<Type>|がくる．
-            \verb|<Type>|はリストに何が入っているかを記載したもので，
+            キーワードに続いてクラス名の識別子ラベル \verb|<Type>| がくる．
+            \verb|<Type>| はリストに何が入っているかを記載したもので，
             例えばスカラ要素のリストであれば次のようになる．
 \begin{OFverbatim}[file]
     <listName>
@@ -290,7 +290,7 @@ OpenFOAMアプリケーションはリストを含んでいます．
     );
 \end{OFverbatim}
 \end{description}
-ここで留意すべきはリスト\verb|<scalar>|での\verb|<scalar>|は
+ここで留意すべきはリスト \verb|<scalar>| での \verb|<scalar>| は
 一般名ではなく入力された実際の文字列です．
 単純なフォーマットは，リストを書くときの便利な方法です．
 その他のフォーマットはリストのサイズがデータを読み込む前に
@@ -481,14 +481,13 @@ boundaryField
 \label{ssec:4.2.9}
 OpenFOAMのケースファイルを柔軟に設定するためのディレクティブや
 代替マクロといったオプションのファイル構文があります．
-ディレクティブはケースファイル内で
-\verb|#|から始まるコマンドとして記述されます．
-代替マクロは\verb|$|から始まります．%$
+ディレクティブはケースファイル内で \verb|#| から始まるコマンドとして記述されます．
+代替マクロは \verb|$| から始まります．%$
 
 OpenFOAMでは現在$4$種類のディレクティブが利用可能できます．
 \begin{description}
  \item[\texttt{\char'043include "<fileName>"}]
-            または\texttt{\char'043includeIfPresent "<fileName>"}
+            または \texttt{\char'043includeIfPresent "<fileName>"}
             \OFpath{<fileName>}という名前のファイルを読み込む
  \item[\texttt{\char'043inputMode}]
             二つのオプションがある．
@@ -1236,7 +1235,7 @@ GAMG
 ソルバディクショナリの
 \index{preconditioner@\OFkeyword{preconditioner}!キーワード}%
 \index{キーワード!preconditioner@\OFkeyword{preconditioner}}%
-\OFkeyword{preconditioner}キーワードで指定します．
+\OFkeyword{precon\-ditioner}キーワードで指定します．
 それらの前処理手法を\autoref{tbl:4.13}に記載します．
 
 
