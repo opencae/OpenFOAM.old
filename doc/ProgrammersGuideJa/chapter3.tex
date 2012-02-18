@@ -130,8 +130,8 @@ OpenFOAMでは全てのメッシュが3次元で扱われることを思い出�
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -314,8 +314,8 @@ $y$方向に無限の領域を仮定して得られた解析解に対して，
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -375,19 +375,39 @@ functions
 
             Info<< "Reading inlet velocity  uInfX\n" << endl;
 
+            scalar ULeft = 0.0;
+            label leftI = mesh().boundaryMesh().findPatchID("left");
+            const fvPatchVectorField& fvp = U.boundaryField()[leftI];
+            if (fvp.size())
+            {
+                ULeft = fvp[0].x();
+            }
+            reduce(ULeft, maxOp<scalar>());
+
             dimensionedScalar uInfX
             (
                 "uInfx",
                 dimensionSet(0, 1, -1, 0, 0),
-                U.boundaryField()[3][0].x()
+                ULeft
             );
+
             Info << "U at inlet = " << uInfX.value() << " m/s" << endl;
+
+
+            scalar magCylinder = 0.0;
+            label cylI = mesh().boundaryMesh().findPatchID("cylinder");
+            const fvPatchVectorField& cylFvp = mesh().C().boundaryField()[cylI];
+            if (cylFvp.size())
+            {
+                magCylinder = mag(cylFvp[0]);
+            }
+            reduce(magCylinder, maxOp<scalar>());
 
             dimensionedScalar radius
             (
                 "radius",
                 dimensionSet(0, 1, 0, 0, 0),
-                mag(U.mesh().boundary()[4].Cf()[0])
+                magCylinder
             );
 
             Info << "Cylinder radius = " << radius.value() << " m" << endl;
@@ -741,8 +761,8 @@ OpenFOAMではメッシュは常に3次元なので，\autoref{fig:3.5}では$z 
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -1154,8 +1174,8 @@ $x$方向に$0.06 \unit{m}$，$y$方向に$0.05 \unit{m}$の，
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -1378,8 +1398,8 @@ $10 \unit{s}$における圧力の結果を\autoref{fig:3.8}に示します．
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -1525,8 +1545,8 @@ $0.1 \unit{ms}$になっている．}%
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -1778,8 +1798,8 @@ $x$および$y$方向についてセル数を4倍に増やします．
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile

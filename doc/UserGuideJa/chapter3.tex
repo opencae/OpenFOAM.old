@@ -484,7 +484,7 @@ wclean <optionalArguments> <optionalDirectory>
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2004-2010 OpenCFD Ltd.
+    \\  /    A nd           | Copyright (C) 2011 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -686,12 +686,12 @@ SOURCE DIR=.
 SOURCE=pisoFoam.C ;
 g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 -DscalarMachine -DoptSolvers -DPARALLEL -DUSEMPI -Wall -O2 -DNoRepository
--ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-2.0.0/src/OpenFOAM/lnInclude
+-ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-2.1.0/src/OpenFOAM/lnInclude
 -IlnInclude
 -I.
 ......
 -lmpich -L/usr/X11/lib -lm
--o .../OpenFOAM/OpenFOAM-2.0.0/applications/bin/linuxOptMPICH/pisoFoam
+-o .../OpenFOAM/OpenFOAM-2.1.0/applications/bin/linuxOptMPICH/pisoFoam
 \end{OFverbatim}
 再コンパイルすることも可能ですが，
 実行ファイルが最新でコンパイルする必要がないというときには
@@ -699,7 +699,7 @@ g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 \begin{OFverbatim}[file]
 make: Nothing to be done for `allFiles'.
 make: `Make/linuxOptMPICH/dependencies' is up to date.
-make: `.../OpenFOAM/OpenFOAM-2.0.0/applications/bin/linuxOptMPICH/pisoFoam'
+make: `.../OpenFOAM/OpenFOAM-2.1.0/applications/bin/linuxOptMPICH/pisoFoam'
 is up to date.
 \end{OFverbatim}
 
@@ -717,7 +717,7 @@ OpenFOAMは，実行時にメッセージを出力するシステムを提供し
 そのスイッチは\OFpath{\$WM\_PROJECT\_DIR/etc/controlDict}ファイルの
 中にあり，設定を変更したい場合には，
 \OFpath{\$HOME}ディレクトリに (例えば
-\OFpath{\$HOME/.OpenFOAM/2.0.0/controlDict}ファイルのように) コピーを
+\OFpath{\$HOME/.OpenFOAM/\OFversion/controlDict}ファイルのように) コピーを
 作成します．スイッチが可能なリストは非常に多く，
 \OFtool{foamDebugSwitches}アプリケーションを実行することにより閲覧できます．
 スイッチのほとんどは，クラスまたは機能性のレンジと一致しており，
@@ -876,7 +876,7 @@ openMPIというパブリックドメインを使用しています．
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
+|  \\    /   O peration     | Version:  2.1.0                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/

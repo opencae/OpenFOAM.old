@@ -537,7 +537,16 @@
    \begingroup
    \trivlist\item\relax
    \leftskip\@totalleftmargin \rightskip\z@skip
-   \parindent\z@ \parfillskip\@flushglue
+   \parindent\z@\parfillskip\@flushglue\parskip\z@skip
+   \@@par
+   \@tempswafalse
+   \def\par{%
+     \if@tempswa
+       \leavevmode \null \@@par\penalty\interlinepenalty
+     \else
+       \@tempswatrue
+       \ifhmode\@@par\penalty\interlinepenalty\fi
+     \fi}%
    \obeylines \verbatim@font
    \@verb@checkoption}
 \def\endOFverbatim{%

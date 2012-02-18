@@ -10,7 +10,7 @@
 収納されているディレクトリの名前になります．
 このケースディレクトリ自体はどこにでも置くことができますが，
 \autoref{chap:2}の冒頭で述べたように，
-\OFpath{\$HOME/OpenFOAM/\$\{USER\}-2.0.0}のように，
+\OFpath{\$HOME/OpenFOAM/\$\{USER\}-\OFversion}のように，
 ユーザのプロジェクトのサブディレクトリ，
 \index{run@\OFpath{run}!ディレクトリ}%
 \index{ディレクトリ!run@\OFpath{run}}%
@@ -19,7 +19,7 @@
 \index{FOAM RUN@\OFenv{FOAM\_RUN}!かんきょうへんすう@環境変数}%
 \index{かんきょうへんすう@環境変数!FOAM RUN@\OFenv{FOAM\_RUN}}%
 \OFenv{\$FOAM\_RUN}の環境変数がデフォルトで
-\OFpath{\$HOME/OpenFOAM/\$\{USER\}-2.0.0/run}に設定されていることです．
+\OFpath{\$HOME/OpenFOAM/\$\{USER\}-\OFversion/run}に設定されていることです．
 コマンドラインでプリセットエイリアス，\OFpath{run}を実行することにより，
 素早くこのディレクトリに移動することができます．
 OpenFOAMをダウンロードする際に添付されているチュートリアルのケースは，
@@ -134,8 +134,7 @@ OpenFOAMは，文字列，スカラ，ベクトル，テンソル，リスト，
 ファイルの書式は特に難しいものではなく
 直感的に理解できる多くのソフトウエアパッケージをもっていますが，
 これらについては特に記載はしておりません．
-OpenFOAMのファイルフォーマットの書式についての説明は
-次のセクションで行います．
+OpenFOAMのファイルフォーマットの書式については次節で説明します．
 
 
 \subsection{一般的な構文規則}
@@ -157,8 +156,7 @@ OpenFOAMのファイルフォーマットの書式についての説明は
 \subsection{ディクショナリ}
 \label{ssec:4.2.2}
 OpenFOAMにおいてデータを指定する最も一般的な手段としては\emph{ディクショナリ}を使います．
-ディクショナリには，\emph{キーワード}に応じてI/Oから読み出すことのできる
-設定データの項目が含まれています．
+ディクショナリには，\emph{キーワード}に応じてI/Oから読み出すことのできるデータ項目が含まれています．
 キーワード・エントリは以下のような一般的な書式に従います．
 \begin{OFverbatim}[file]
 <keyword>  <dataEntry1> ... <dataEntryN>;
@@ -172,8 +170,8 @@ OpenFOAMにおいてデータを指定する最も一般的な手段としては
 ディクショナリは論理的なカテゴリにエントリを構成するための手段を提供しており，
 階層的に指定できるので，
 どんなディクショナリもそれ自体が一つ以上のディクショナリエントリを含んでいます．
-ディクショナリの書式は以下のように波括弧 \verb|{ }| で囲まれた入力に従い，
-ディクショナリ名を指定します．
+ディクショナリの書式は，以下のようにディクショナリ名を指定し，
+その後に波括弧 \verb|{ }| で囲まれたキーワード・エントリが続きます．
 \begin{OFverbatim}[file]
 <dictionaryName>
 {
@@ -869,7 +867,7 @@ default vanLeer01;
 \subsubsection{ベクトル場に対するスキーム}
 \label{sssec:4.4.1.2}
 ベクトル場に対する制限付きスキームについては，
-場の方向を考慮にいれて構成された制限を行う改良版があります．
+場の方向を考慮にいれて構成された改良版のリミッタがあります．
 これらのスキームは，通常のスキームの名前に\OFkeyword{V}を
 加えることで選択することができ，
 \OFkeyword{limitedLinear}に対しては\OFkeyword{limitedLinearV}といった具合です．
@@ -1129,7 +1127,7 @@ PISO
 \OFdictionary{fvSolution}は実行されるソルバ特有のサブディクショナリを含んでいます．
 しかしながら，標準のソルバに使われる\OFdictionary{fvSolution}の大部分は
 標準的なサブディクショナリの小さなセットが占めています．
-これらのサブディクショナリはこのセクションの後半で説明する
+これらのサブディクショナリは本節の後半で説明する
 \OFsubdictionary{solvers}，\OFsubdictionary{relaxationFactors}，\OFsubdictionary{PISO}，
 および\OFsubdictionary{SIMPLE}を含んでいます．
 
@@ -1369,50 +1367,50 @@ solvers
 {
     p
     {
-        solver           PCG;
-        preconditioner   DIC;
-        tolerance        1e-06;
-        relTol           0.01;
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0.01;
     }
 
     U
     {
-        solver           PBiCG;
-        preconditioner   DILU;
-        tolerance        1e-05;
-        relTol           0.1;
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0.1;
     }
 
     k
     {
-        solver           PBiCG;
-        preconditioner   DILU;
-        tolerance        1e-05;
-        relTol           0.1;
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0.1;
     }
 
     epsilon
     {
-        solver           PBiCG;
-        preconditioner   DILU;
-        tolerance        1e-05;
-        relTol           0.1;
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0.1;
     }
 
     R
     {
-        solver           PBiCG;
-        preconditioner   DILU;
-        tolerance        1e-05;
-        relTol           0.1;
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0.1;
     }
 
     nuTilda
     {
-        solver           PBiCG;
-        preconditioner   DILU;
-        tolerance        1e-05;
-        relTol           0.1;
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0.1;
     }
 }
 
@@ -1430,12 +1428,18 @@ SIMPLE
 
 relaxationFactors
 {
-    p               0.3;
-    U               0.7;
-    k               0.7;
-    epsilon         0.7;
-    R               0.7;
-    nuTilda         0.7;
+    fields
+    {
+        p               0.3;
+    }
+    equations
+    {
+        U               0.7;
+        k               0.7;
+        epsilon         0.7;
+        R               0.7;
+        nuTilda         0.7;
+    }
 }
 
 
@@ -1497,7 +1501,7 @@ SIMPLEとPISOの両方で利用できます．
 \subsection{その他のパラメタ}
 \label{ssec:4.5.4}
 標準のOpenFOAMソルバアプリケーションの多くの\OFdictionary{fvSolutions}ディクショナリには，
-これまでこのセクションで説明した以外の項目はありません．
+これまで本節で説明した以外の項目はありません．
 しかし，一般に，\OFdictionary{fvSolution}ディクショナリはソルバ，アルゴリズム，
 または実際の何かを制御するどんなパラメータをもっていてもおかしくありません．
 どんなソルバでも，必要なパラメタを把握するために

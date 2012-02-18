@@ -450,10 +450,10 @@ boundaryField
 
 // ************************************************************************* //
 \end{OFverbatim}
-\OFpath{boundary}ファイルにおける\OFkeyword{type}には，
+\OFpath{boundary}ファイルにおける\OFkeyword{type}は，
 \OFkeyword{symmetryPlane}や\OFkeyword{empty}といった
-形態的制約を受けるパッチを除くすべてのパッチに対し
-\OFkeyword{patch}と記述されています．
+幾何学的制約を受けるパッチを除くすべてのパッチに対して
+\OFkeyword{patch}となっています．
 \OFpath{p}ファイルには\OFkeyword{inlet}や
 \OFkeyword{bottom}といった面に適用される基本型と
 \OFkeyword{outlet}に適用される複雑な派生型が記述されています．
@@ -879,24 +879,25 @@ edgeGrading (1 1 1 1 2 2 2 2 3 3 3 3)
 boundary               // keyword
 (
     inlet              // patch name
-
+    {
         type patch;    // patch type for patch 0
         faces
         (
             (0 4 7 3)  // block face in this patch
         );
-                       // end of 0th patch definition
+    }                  // end of 0th patch definition
 
     outlet             // patch name
-
+    {
         type patch;    // patch type for patch 1
         faces
         (
             (1 2 6 5)
         );
+    }
 
     walls
-
+    {
         type wall;
         faces
         (
@@ -905,7 +906,7 @@ boundary               // keyword
             (3 7 6 2)
             (4 5 6 7)
         );
-
+    }
 );
 \end{OFverbatim}
 それぞれのブロック面は四つの頂点番号のリストによって定義されます．
@@ -918,16 +919,17 @@ boundary               // keyword
 例えば，ある一組の周期境界パッチは以下のように指定します．
 \begin{OFverbatim}[file]
 left
-
+{
     type            cyclic;
     neighbourPatch  right;
     faces           ((0 4 7 3));
-
+}
 right
-
+{
     type            cyclic;
     neighbourPatch  left;
     faces           ((1 5 6 2));
+}
 \end{OFverbatim}
 
 
@@ -1113,7 +1115,7 @@ Stereolithography (STL) 形式の
 \OFtool{snappyHexMesh}を実行するには以下の準備が必要です．
 \begin{itemize}
  \item 2進法またはASCIIで表されたSTL形式による表面形状データを
-       ケースディレクトリの\OFpath{triSurface}サブディレクトリに置く．
+       ケースディレクトリの\OFpath{constant/triSurface}サブディレクトリに置く．
  \item \autoref{ssec:5.4.2}で述べる\OFtool{blockMesh}を使用して，
        解析領域の範囲とメッシュ密度の基準を決めるために
        六角形の基礎メッシュを作成しておく．
@@ -1895,7 +1897,7 @@ OpenFOAMメッシュの\OFkeyword{defaultFaces}パッチに入れられ，
 タイプ\OFkeyword{wall}が与えられます．
 もちろん，それに続けてパッチタイプを変えることができます．
 
-CFXでのOpenFOAMの2次元形状は，一つのセルの厚さ [**] の
+CFXでのOpenFOAMの2次元形状は，一つのセルの厚さの
 3次元メッシュとして作成されます．
 もしユーザがCFXによって作成されたメッシュで2次元のケースを動かしたいなら，
 前後の面に関する境界条件は\OFkeyword{empty}として設定します．

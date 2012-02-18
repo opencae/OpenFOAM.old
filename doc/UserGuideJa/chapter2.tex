@@ -135,8 +135,8 @@ OpenFOAMで提供されるメッシュ・ジェネレータ\OFtool{blockMesh}は
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.0.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -173,7 +173,6 @@ edges
 
 boundary
 (
-
     movingWall 
     {
         type wall;
@@ -557,12 +556,9 @@ paraFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 パネル内の全要素を自動的にチェックすることができます．
 \OFthirdparty{ParaView}でジオメトリを読込むためには\PVbutton{Apply}ボタンをクリックします．
 
-最初から適用されている一般的な設定については
-\autoref{sssec:6.1.5.1}を参照してください．
-
 \index{Display@\PVpanel{Display}!ウィンドウパネル}%
 \index{ウィンドウパネル!Display@\PVpanel{Display}}%
-\PVpanel{Display}タブを開き選択したモジュールの表示形式を調整します．
+\PVpanel{Display}パネルを開き選択したモジュールの表示形式を調整します．
 \autoref{fig:2.3}に示すように，
 (1) \PVkeyword{Color by}を\PVkeyword{Solid Color}に設定し，
 (2) \PVbutton{Set Solid Color}をクリックし適当な色（背景が白の場合は黒など）を選択，
@@ -1420,7 +1416,7 @@ cp -r cavity cavityHighRe
 \index{ディクショナリ!transportProperties@\OFdictionary{transportProperties}}%
 \OFdictionary{transportProperties}ディクショナリを編集します．
 レイノルズ数を10倍に増加させるためには，
-動粘性係数を10分の1まで減らす必要があります（例えば10から）．
+動粘性係数を10分の1，すなわち$1 \times 10^{-3} \unit{m^{2}s^{-1}}$まで減らす必要があります．
 これで\OFcase{cavity}ケースの実行結果から
 \index{リスタート}%
 リスタートして，このケースを実行できます．
@@ -1590,10 +1586,11 @@ boundaryField
 
 // ************************************************************************* //
 \end{OFverbatim}
-このケースでは，\OFpatch{movingWall}と\OFpatch{fixedWalls}のパッチに対して
-\OFkeyword{nutWallFunction}キーワードエントリで標準的な壁関数を指定しています．
+このケースでは標準的な壁関数を採用し，
+\OFpatch{movingWall}と\OFpatch{fixedWalls}のパッチに対して
+\OFkeyword{nutWall\-Function}タイプを指定しています．
 これ以外の壁関数モデルとしては，
-粗壁面の壁関数\OFkeyword{nutRoughWallFunction}などがあります．
+粗壁面の壁関数\OFkeyword{nutRough\-WallFunction}などがあります．
 
 次に，$k$と$\varepsilon$のファイル (\OFpath{0/k}と\OFpath{0/epsilon}) を開き，
 境界条件を確かめます．
@@ -2385,6 +2382,11 @@ runTimeModifiable true;
 d2dt2Schemes
 {
     default         steadyState;
+}
+
+ddtSchemes
+{
+    default         Euler;
 }
 
 gradSchemes
