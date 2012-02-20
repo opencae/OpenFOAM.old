@@ -548,6 +548,8 @@
        \ifhmode\@@par\penalty\interlinepenalty\fi
      \fi}%
    \obeylines \verbatim@font
+   \settowidth\dimen@{XX}%
+   \edef\@verb@dblcharwd{\the\dimen@}%
    \@verb@checkoption}
 \def\endOFverbatim{%
    \endtrivlist
@@ -557,10 +559,10 @@
 \begingroup
 \catcode`\^^M=\active%
 \gdef\@verb@checkoption@[#1]#2^^M{%
+   \let\do\@makeother \dospecials
    \setkeys{OFv}{#1}%
    \@verb@font@weight
-   \def\@verb@space{\if@verb@visiblespace\@xxxii\else\ \fi}%
-   \let\do\@makeother \dospecials
+   \def\@verb@space{\if@verb@visiblespace\@xxxii\else~\fi}%
    \@verb@loop}%
 \endgroup%
 \begingroup
@@ -599,8 +601,11 @@
    \ifx#1\@nnil\else
       \count@=`#1\relax
       \ifnum `\ =\count@   {\@verb@space}%
-      \else                {#1}%
-      \fi
+      \else\ifnum \count@<\@cclvi {#1}%
+      \else
+         \hbox to\@verb@dblcharwd{\hskip\z@#1\hss}%
+         \advance\@verb@currpos\@ne
+      \fi\fi
       \advance\@verb@currpos\@ne
       \expandafter\@verb@put@line@loop
    \fi}
