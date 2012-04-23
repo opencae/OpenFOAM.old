@@ -17,7 +17,10 @@
 \OFpath{polyMesh}ディレクトリも一緒にありますので，
 ユーザは簡単にメッシュを見ることができます．
 
-例題は，インストールしたOpenFOAMの\OFpath{tutorials}サブディレクトリ
+例題は，インストールしたOpenFOAMの
+\index{tutorials@\OFpath{tutorials}}%  
+\index{tutorials directory@\OFpath{tutorials} directory}%  
+\OFpath{tutorials}サブディレクトリ
 の中にあるチュートリアルと対応しています．
 それらはソルバごとのサブディレクトリにまとめられています．
 例えば\OFtool{icoFoam}の全てのケースは\OFpath{icoFoam}サブディレクトリの中にあります．
@@ -38,11 +41,17 @@ cp -r $FOAM_TUTORIALS/* $FOAM_RUN
 
 \section{円柱まわりの流れ}
 \label{sec:3.1}
-この例題では，\OFtool{potentialFoam}を使って円柱まわりのポテンシャル流れを調べます．
+この例題では，\OFtool{potentialFoam}を使って
+\index{えんちゅう@円柱!まわりのながれ@まわりの流れ}%  
+\index{れいだい@例題!まわりのながれ@まわりの流れ}%  
+円柱まわりのポテンシャル流れを調べます．
 この例題にはOpenFOAMの以下のような特徴を紹介します．
 \begin{itemize}
+\index{めっしゅ@メッシュ!ひちょっこうこうし@非直交格子}%  
  \item 非直交格子
- \item OpenFOAMの問題に対する解析解の生成
+ \item OpenFOAMの問題に対する
+\index{かいせきかい@解析解}%
+解析解の生成
 \end{itemize}
 
 
@@ -87,6 +96,8 @@ cp -r $FOAM_TUTORIALS/* $FOAM_RUN
  \item[ソルバ名] \OFtool{potentialFoam}: ポテンシャル流れのコード，
             すなわち，流れが非圧縮性，定常，回転なし，非粘性とみなし，重力は無視します．
  \item[ケース名] \OFpath{\$FOAM\_TUTORIALS/potentialFoam}%
+\index{potentialFoam そるば@\OFclass{potentialFoam} ソルバ}% 
+\index{potentialFoam@\OFclass{potentialFoam}}% 
 \footnote{訳注：これは古いバージョンでの配置．
 現行バージョンでは\OFpath{\$FOAM\_TUTORIALS/basic/potentialFoam}にある．}%
             ディレクトリの中にある\OFcase{cylinder}ケース．
@@ -107,6 +118,8 @@ cp -r $FOAM_TUTORIALS/* $FOAM_RUN
 
 \subsection{メッシュ生成}
 \label{ssec:3.1.3}
+\index{blockMesh@\OFtool{blockMesh}!キーワード}%
+\index{キーワード!blockMesh@\OFtool{blockMesh}}%
 \OFtool{blockMesh}を使ったメッシュ生成はユーザ・ガイドで解説されています．
 このケースでは，メッシュは\autoref{fig:3.2}に示すように10ブロックからなっています．
 OpenFOAMでは全てのメッシュが3次元で扱われることを思い出してください．
@@ -285,7 +298,6 @@ mergePatchPairs
 // ************************************************************************* //
 \end{OFverbatim}
 
-
 \subsection{境界条件と初期条件}
 \label{ssec:3.1.4}
 \OFtool{FoamX}を使うか，ケース・ファイルを手で編集して，
@@ -307,6 +319,7 @@ $y$方向に無限の領域を仮定して得られた解析解に対して，
 \label{ssec:3.1.5}
 この問題では，流れは非圧縮性で非粘性を仮定しているので，
 流体の物性値は何も指定する必要がありません．
+\index{ディレクトリ!system@\OFpath{system}}%
 \OFpath{system}サブディレクトリの中の，
 \OFdictionary{controlDict}に実行のための制御パラメータを指定します．
 定常流れを仮定しているため，1ステップだけ実行すればよいことに注意してください．
@@ -655,15 +668,20 @@ functions
 % 数値解の精度について調査してみましょう．
 
 
-
 \section{バック・ステップ上の定常乱流}
+\index{れいだい@例題!ばっくすてっぷじょうのていじょうらんりゅう@バック・ステップ上の定常乱流}%
+\index{ばっくすてっぷじょうのていじょうらんりゅう@バック・ステップ上の定常乱流}%
 \label{sec:3.2}
-この例題では，後方に面する段差上を流れる定常乱流について調べます．
+この例題では，後方に面する段差上を流れる
+\index{らんりゅう@乱流!ていじょう@定常}%
+定常乱流について調べます．
 この問題設定は，PitzとDailyが実験的に調べたものに由来しており，
 数値解との比較することができます．
 この例題では，新たにOpenFOAMの以下のような特徴を紹介します．
 \begin{itemize}
- \item 完全なメッシュの勾配付け機能を利用した，\OFtool{blockMesh}によるメッシュ生成
+ \item 完全なメッシュの
+ \index{メッシュ!こうばい@勾配}%
+ 勾配付け機能を利用した，\OFtool{blockMesh}によるメッシュ生成
  \item 定常乱流
 \end{itemize}
 
@@ -721,7 +739,10 @@ functions
              \item 係数：$C_{\mu} = 0.09$; $C_{1} = 1.44$; $C_{2} = 1.92$;
                    $\alpha_{k} = 1$; $\alpha_{\epsilon} = 0.76923$．
             \end{itemize}
- \item[ソルバ名] \OFtool{simpleFoam}: 定常非圧縮性流れ用．
+ \item[ソルバ名] 
+ \index{simpleFoam@\OFtool{simpleFoam}!ソルバ}%
+ \index{ソルバ!simpleFoam@\OFtool{simpleFoam}}%
+ \OFtool{simpleFoam}: 定常非圧縮性流れ用．
  \item[ケース名] \OFpath{\$FOAM\_TUTORIALS/simpleFoam}%
 \footnote{訳注：これは古いバージョンでの配置．
 現行バージョンでは\OFpath{\$FOAM\_TUTORIALS/incompressible/simpleFoam}にある．}%
@@ -731,14 +752,22 @@ functions
 この問題は\OFtool{simpleFoam}を使って解きます．
 SIMPLEアルゴリズムを用いた定常流れのためのソルバなのでこのように名付けられています．
 このソルバは，標準のOpenFOAMリリースの
-\OFclass{incompressibleTurbulenceModels}ライブラリの中の乱流モデル，
-および\OFclass{incompressibleTransportModels}ライブラリの中の非ニュートン流体モデル
+\OFclass{incompressibleTurbulenceModels}
+\index{incompressibleTurbulenceModels!ライブラリ}%
+\index{ライブラリ!incompressibleTurbulenceModels}%
+ライブラリの中の乱流モデル，
+および\OFclass{incompressibleTransportModels}
+\index{incompressibleTransportModels!ライブラリ}%
+\index{ライブラリ!incompressibleTransportModels}%
+ライブラリの中の非ニュートン流体モデル
 の全てを適用することができます．
 
 
 \subsection{メッシュ生成}
 \label{ssec:3.2.2}
-この問題の流れはちょうどよく複雑で，適切な解を得るにはメッシュの勾配付けが必要となります．
+この問題の流れはちょうどよく複雑で，適切な解を得るにはメッシュの
+\index{メッシュ!こうばい@勾配}%
+勾配付けが必要となります．
 一般に，最もせん断力のかかる領域が特に決め手であり，せん断力の小さい領域より細かいメッシュを必要とします．
 どこで大きなせん断力が生じるかは，計算が進んだらどのような解になるはずであるかを考察することで予想できます．
 入口では$x$方向の強い一様流ですが，段差を過ぎると，
@@ -1060,6 +1089,8 @@ $1000$回の反復後に系は定常状態に達し，
 
 
 \section{フォワード・ステップ上の超音速流れ}
+\index{れいだい@例題!フォワード・ステップじょうのちょうおんそくながれ@フォワード・ステップ上の超音速流れ}%
+\index{フォワード・ステップじょうのちょうおんそくながれ@フォワード・ステップ上の超音速流れ}%
 \label{sec:3.3}
 この例題では前方に面する段差上の超音速流れについて調べます．
 問題の概要は，マッハ数$3$の流れが入口付近に段差のある長方形の領域に流入し，
@@ -1067,6 +1098,8 @@ $1000$回の反復後に系は定常状態に達し，
 
 この例題では，新たにOpenFOAMの以下のような特徴を紹介します．
 \begin{itemize}
+ \index{ちょうおんそくながれ@超音速流れ}
+ \index{ながれ@流れ!ちょうおんそくながれ@超音速流れ}
  \item 超音速流れ
 \end{itemize}
 
@@ -1146,7 +1179,10 @@ $1000$回の反復後に系は定常状態に達し，
 \footnote{訳注：これは古いバージョンでの配置．
 現行バージョンでは\OFpath{\$FOAM\_TUTORIALS/compressible/sonicFoam}にある．}%
             ディレクトリの中にある\OFcase{forwardStep}ケース．
- \item[ソルバ名] \OFtool{sonicFoam}: 圧縮性の遷音速・超音速層流%
+ \item[ソルバ名]
+ \index{ソルバ!sonicFoam@\OFtool{sonicFoam}}%
+ \index{sonicFoam@\OFtool{sonicFoam}!ソルバ}%
+ \OFtool{sonicFoam}: 圧縮性の遷音速・超音速層流%
 \footnote{訳注：古いバージョンでは層流のみだったが，現行バージョンでは乱流にも対応している．}%
             の気体の流れの実装．
 \end{description}
@@ -1296,6 +1332,8 @@ $10 \unit{s}$における圧力の結果を\autoref{fig:3.8}に示します．
 
 
 \section{加圧された水タンクの減圧}
+\index{かあつされたみずたんくのげんあつ@加圧された水タンクの減圧}%
+\index{れいだい@例題!かあつされたみずたんくのげんあつ@加圧された水タンクの減圧}%
 \label{sec:3.4}
 この例題では，加圧した液体で満たされたタンク近くのバルブを急に開くという問題について調べます．
 このような問題の結果には圧力波の伝播が重要であり，したがって圧縮性の液体としてモデル化する必要があります．
@@ -1303,7 +1341,9 @@ $10 \unit{s}$における圧力の結果を\autoref{fig:3.8}に示します．
 この例題では，新たにOpenFOAMの以下のような特徴を紹介します．
 \begin{itemize}
  \item メッシュの改善
+ \index{めっしゅメッシュ!かいぜん@改善}%
  \item 液体中の圧力波
+ \index{あつりょくは@圧力波!えきたいちゅうの@液体中の}
 \end{itemize}
 
 
@@ -1354,13 +1394,22 @@ $10 \unit{s}$における圧力の結果を\autoref{fig:3.8}に示します．
                     = -\nabla p
                    \end{align}
             \end{itemize}
+ \index{empty!きょうかいじょうけん@境界条件}%
+ \index{pressureOutlet!きょうかいじょうけん@境界条件}%
+ \index{wall!きょうかいじょうけん@境界条件}%
  \item[境界条件] \OFtool{FoamX}を使って，以下のような物理境界条件を設定できます．
             \begin{itemize}
-             \item \OFkeyword{outerWall}は\OFboundary{wall}条件として指定
-             \item \OFkeyword{axis}は\OFboundary{symmetryPlane}として指定
+             \item \OFkeyword{outerWall}は
+				   \index{きょうかいじょうけん@境界条件!wall@\OFboundary{wall}}%
+				   \OFboundary{wall}条件として指定
+             \item \OFkeyword{axis}は
+				   \index{きょうかいじょうけん@境界条件!symmetryPlane@\OFboundary{symmetryPlane}}%
+				   \OFboundary{symmetryPlane}として指定
              \item \OFkeyword{nozzle}は$p = 0 \unit{bar}$の
+                   \index{きょうかいじょうけん@境界条件!pressureOutlet@\OFboundary{pressureOutlet}}%
                    \OFboundary{pressureOutlet}として指定
              \item \OFkeyword{front}および\OFkeyword{back}境界は
+                   \index{きょうかいじょうけん@境界条件!empty@\OFboundary{empty}}%
                    \OFboundary{empty}として指定
             \end{itemize}
  \item[初期条件] $\bm{U} = \bm{0} \unit{m/s}$，$p = 100 \unit{bar}$．
@@ -1377,7 +1426,10 @@ $10 \unit{s}$における圧力の結果を\autoref{fig:3.8}に示します．
              \item 参照圧力$p_{0} = 1 \unit{bar}$
              \item 水の圧縮率$\psi = 4.54 \times 10^{-7} \unit{s^{2}/m^{2}}$
             \end{itemize}
- \item[ソルバ名] \OFtool{sonicLiquidFoam}: 遷音速・超音速の圧縮性液体の層流コード．
+ \item[ソルバ名] 
+ \index{ソルバ!sonicLiquidFoam@\OFtool{sonicLiquidFoam}}%
+ \index{sonicLiquidFoam@\OFtool{sonicLiquidFoam}!ソルバ}%
+ \OFtool{sonicLiquidFoam}: 遷音速・超音速の圧縮性液体の層流コード．
  \item[ケース名] \OFpath{\$FOAM\_TUTORIALS/sonicLiquidFoam}%
 \footnote{訳注：これは古いバージョンでの配置．
 現行バージョンでは\OFpath{\$FOAM\_TUTORIALS/compressible/sonicLiquidFoam}にある．}%
@@ -1540,7 +1592,9 @@ mergePatchPairs
 興味があるのは圧力波の伝播なので，シミュレーション時間を$0.25 \unit{ms}$とします．%
 \footnote{訳注：誤植か？ 引用されている\OFdictionary{controlDict}では
 $0.1 \unit{ms}$になっている．}%
-参考に，ファイル\OFdictionary{controlDict}を以下に引用します．
+参考に，ファイル
+\index{controlDict@\OFdictionary{controlDict}}%
+\OFdictionary{controlDict}を以下に引用します．
 \begin{OFverbatim}[file, linenum]
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
@@ -1670,13 +1724,22 @@ $x$および$y$方向についてセル数を4倍に増やします．
 
 \section{磁性液体流れ}
 \label{sec:3.5}
-この例題では，磁場の中を通過し，電気の伝導を伴う液体の流れについて調べます．
-この問題は，電磁流体力学 (MHD) として知られる，流体力学の一つの分野であり，\OFtool{mhdFoam}を使います．
+この例題では，磁場の中を通過し，
+\index{えきたい@液体!でんきのでんどう@電気の伝導}%
+電気の伝導を伴う液体の流れについて調べます．
+この問題は，
+\index{でんじりゅうたいりきがく@電磁流体力学}%
+電磁流体力学 (MHD) として知られる，流体力学の一つの分野であり，
+\index{ソルバ!mhdFoam@\OFtool{mhdFoam}}%
+\index{mhdFoam@\OFtool{mhdFoam}!ソルバ}%
+\OFtool{mhdFoam}を使います．
 
 
 \subsection{問題設定}
 \label{ssec:3.5.1}
-この問題はハルトマン問題として知られており，
+この問題は
+index{れいだい@例題!ハルトマンもんだい@ハルトマン問題}%
+ハルトマン問題として知られており，
 解析解によって\OFtool{mhdFoam}を検証できるので選びました．
 問題は以下のように定義されます．
 \begin{description}
@@ -1754,12 +1817,19 @@ $x$および$y$方向についてセル数を4倍に増やします．
                     - \nabla \inProd (\varGamma_{\bm{B}}\bm{B}) = 0
                    \end{align}
             \end{itemize}
- \item[境界条件] \mbox{}
+            \item[境界条件] \mbox{}
+            \index{empty@きょうかいじょうけん@境界条件}%
+            \index{inlet@きょうかいじょうけん@境界条件}%
+            \index{outlet@きょうかいじょうけん@境界条件}%
             \begin{itemize}
-             \item \OFkeyword{inlet}は速度固定$\bm{U} = (0,\ 0,\ 0) \unit{m/s}$の
+             \item \OFkeyword{inlet}
+             \index{きょうかいじょうけん@境界条件!inlet@\OFkeyword{inlet}}%
+					は速度固定$\bm{U} = (0,\ 0,\ 0) \unit{m/s}$の
                    \OFboundary{inlet}条件として指定%
 \footnotemark
-             \item \OFkeyword{outlet}は圧力固定$p = 0 \unit{Pa}$の
+             \item \OFkeyword{outlet}
+             \index{きょうかいじょうけん@境界条件!outlet@\OFkeyword{outlet}}%
+					は圧力固定$p = 0 \unit{Pa}$の
                    \OFboundary{outlet}として指定
 \addtocounter{footnote}{-1}
 \footnote{訳注：古いバージョンでは\OFboundary{inlet}，
@@ -1767,10 +1837,12 @@ $x$および$y$方向についてセル数を4倍に増やします．
 現行バージョンでは，それぞれ\OFkeyword{U}あるいは\OFkeyword{p}を\OFboundary{fixedValue}とし，
 他方を\OFboundary{zeroGradient}とする．}%
              \item \OFkeyword{upperWall}は$\bm{B} = (0,\ 20,\ 0) \unit{T}$の
+                   \index{きょうかいじょうけん@境界条件!wall@\OFboundary{wall}}%
                    \OFboundary{wall}として指定
              \item \OFkeyword{lowerWall}は$\bm{B} = (0,\ 20,\ 0) \unit{T}$の
                    \OFboundary{wall}として指定
              \item \OFkeyword{front}および\OFkeyword{back}境界は
+                   \index{きょうかいじょうけん@境界条件!\OFboundary{empty}}%
                    \OFboundary{empty}として指定
             \end{itemize}
  \item[初期条件] $\bm{U} = \bm{0} \unit{m/s}$，$p = 100 \unit{Pa}$，
@@ -1782,7 +1854,9 @@ $x$および$y$方向についてセル数を4倍に増やします．
              \item 電気伝導率$\sigma = 1 \unit{(\Omega\,m)}$
              \item 透磁率$\mu = 1 \unit{H/m}$
             \end{itemize}
- \item[ソルバ名] \OFtool{mhdFoam}: 非圧縮性で層流の電磁流体コード
+ \item[ソルバ名] 
+ \index{mhdFoam@\OFtool{mhdFoam}}%
+ \OFtool{mhdFoam}: 非圧縮性で層流の電磁流体コード
  \item[ケース名] \OFpath{\$FOAM\_TUTORIALS/mhdFoam}%
 \footnote{訳注：これは古いバージョンでの配置．
 現行バージョンでは\OFpath{\$FOAM\_TUTORIALS/electromagnetics/mhdFoam}にある．}%
