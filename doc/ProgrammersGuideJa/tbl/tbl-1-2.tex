@@ -2,36 +2,88 @@
 \begin{longtable}{Xlll}
  演算 & 備考 & 数学表記 & OpenFOAMでの表記 \\
  \hline
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!+@\verb'+'}%
+\index{+@\verb'+'!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  加算 &  & $\bm{a} + \bm{b}$ & \verb|a + b| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!-@\verb+-+}%
+\index{-@\verb+-+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  減算 &  & $\bm{a} - \bm{b}$ & \verb|a - b| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!*@\verb+*+}%
+\index{*@\verb+*+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  スカラ倍 &  & $s\bm{a}$ & \verb|s * a| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!/@\verb+/+}%
+\index{/@\verb+/+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  スカラ除算 &  & $\bm{a}/s$ & \verb|a / s| \\
  外積 & $\mathop{\mathrm{rank}}a, b \ge 1$ & $\bm{a}\bm{b}$ & \verb|a * b| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!&@\verb+&+}%
+\index{&@\verb+&+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  内積 & $\mathop{\mathrm{rank}}a, b \ge 1$ & $\bm{a} \inProd \bm{b}$ & \verb|a & b| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!&&@\verb+&&+}%
+\index{&&@\verb+&&+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  二重内積 & $\mathop{\mathrm{rank}}a, b \ge 2$ & $\bm{a} \biInProd \bm{b}$ & \verb|a && b| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!^@\verb+^+}%
+\index{^@\verb+^+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  クロス積 & $\mathop{\mathrm{rank}}a, b = 1$ & $\bm{a} \times \bm{b}$ & \verb|a ^ b| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!sqr@\verb+sqr+}%
+\index{sqr@\verb+sqr+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  平方 &  & $\bm{a}^{2}$ & \verb|sqr(a)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!magSqr@\verb+magSqr+}%
+\index{magSqr@\verb+magSqr+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  平方絶対値 &  & $|\bm{a}|^{2}$ & \verb|magSqr(a)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!mag@\verb+mag+}%
+\index{mag@\verb+mag+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  絶対値 &  & $|\bm{a}|$ & \verb|mag(a)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!pow@\verb+pow+}%
+\index{pow@\verb+pow+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  累乗 & $n = 0, 1, \dots, 4$ & $\bm{a}^{n}$ & \verb|pow(a, n)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!cmptAv@\verb+cmptAv+}%
+\index{cmptAv@\verb+cmptAv+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  成分平均値 & $i = 1, \dots, N$ & $\bar{\bm{a}_{i}}$ & \verb|cmptAv(a)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!max@\verb+max+}%
+\index{max@\verb+max+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  最大成分 & $i = 1, \dots, N$ & $\max(\bm{a}_{i})$ & \verb|max(a)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!min@\verb+min+}%
+\index{min@\verb+min+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  最小成分 & $i = 1, \dots, N$ & $\min(\bm{a}_{i})$ & \verb|min(a)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!scale@\verb+scale+}%
+\index{scale@\verb+scale+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  スケール &  & $\mathop{\mathrm{scale}}(\bm{a}, \bm{b})$ & \verb|scale(a, b)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!transform@\verb+transform+}%
+\index{transform@\verb+transform+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  幾何変換 & \multicolumn{2}{r}{テンソル$\bm{T}$による$\bm{a}$の幾何変換} & \verb|transform(T, a)| \\
  \\
  \multicolumn{4}{l}{\sffamily\gtfamily 2階テンソル特有の演算} \\
  \hline
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!T()@\verb+T()+}%
+\index{T()@\verb+T()+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  転置 &  & $\bm{T}^{\mathrm{T}}$ & \verb|T.T()| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!diag@\verb+diag+}%
+\index{diag@\verb+diag+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  対角 &  & $\mathop{\mathrm{diag}}\bm{T}$ & \verb|diag(T)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!tr@\verb+tr+}%
+\index{tr@\verb+tr+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  トレース &  & $\mathop{\mathrm{tr}}\bm{T}$ & \verb|tr(T)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!dev@\verb+dev+}%
+\index{dev@\verb+dev+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  偏差成分 &  & $\mathop{\mathrm{dev}}\bm{T}$ & \verb|dev(T)| \\
  静水圧成分%
 \footnote{訳注：原文では抜けている．}%
  &  & $\mathop{\mathrm{hyd}}\bm{T}$ & \verb|hyd(T)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!symm@\verb+symm+}%
+\index{symm@\verb+symm+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  対称成分 &  & $\mathop{\mathrm{symm}}\bm{T}$ & \verb|symm(T)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!skew@\verb+skew+}%
+\index{skew@\verb+skew+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  歪成分 &  & $\mathop{\mathrm{skew}}\bm{T}$ & \verb|skew(T)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!det@\verb+det+}%
+\index{det@\verb+det+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  行列式 &  & $\det\bm{T}$ & \verb|det(T)| \\
+%% 原文では索引が cofactors となっているが，表に合わせて cof とする．
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!cof@\verb+cof+}%
+\index{cof@\verb+cof+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
+ 余因子 &  & $\mathop{\mathrm{cof}}\bm{T}$ & \verb|cof(T)| \\
+\index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!inv@\verb+inv+}%
+\index{inv@\verb+inv+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  逆元 &  & $\mathop{\mathrm{inv}}\bm{T}$ & \verb|inv(T)| \\
  ホッジ双対 &  & $\mathop{*}\bm{T}$ & \verb|*T| \\
  \\
@@ -69,3 +121,7 @@
  \multicolumn{4}{l}{別途記載がないかぎり$\bm{a}$，$\bm{b}$は任意ランクのテンソル} \\
  \multicolumn{4}{l}{$s$はスカラ，$N$はテンソル成分の数} \\
 \end{longtable}
+
+%% 該当なし
+% \index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!I@\verb+I+}%
+% \index{I@\verb+I+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%

@@ -1,12 +1,13 @@
 %#! platex ProgrammersGuideJa
 \chapter{離散化手法}
 \label{chap:2}
+\index{ゆうげんたいせきほう@有限体積法!りさんか@離散化}%
 これまではテンソル代数について議論してきました．
 我々が解きたい偏微分方程式は，テンソルの時間および空間に対する微分に関するものです．
 したがって，\OFemph{テンソル場}，すなわち時間および空間の領域にわたって変化するテンソルへと，
 表現を拡張する必要があります．
 この章では，まずはじめに登場するすべての微分
-\index{えんざん@演算}%  
+\index{えんざん@演算}%
 演算の数学的表現を解説します．
 そして，OpenFOAMではテンソル場がどのように構築されているのか，
 これらの場の微分はどのようにして代数式へと離散化されるのかを紹介します．
@@ -15,8 +16,10 @@
 
 \section{微分演算子}
 \label{sec:2.1}
-\index{えんざんし@演算子!べくとる@ベクトル}%  
-空間微分を定義する前に，ベクトル演算子ナブラ$\nabla$を紹介します．
+空間微分を定義する前に，
+\index{えんざんし@演算子!ベクトル}%
+\index{ベクトル!えんざんし@演算子}%
+\OFemph{ベクトル演算子}ナブラ$\nabla$を紹介します．
 添字表記では$\partial_{i}$と書かれます．
 \begin{align}
  \label{eq:2.1}
@@ -27,14 +30,9 @@
 \end{align}
 ナブラ演算子は，以下のルールに従う便利な表記法です．
 \begin{itemize}
- \item テンソルに
-\index{さようする@作用する}%  
-\index{べくとる@ベクトル!さようする@作用する}%  
-作用するときは，自身の右側に向かって，通常の積の微分のルールに従う．
+ \item テンソルに作用するときは，自身の右側に向かって，通常の積の微分のルールに従う．
        例えば$\partial_{i}ab = (\partial_{i}a)b + a(\partial_{i}b)$
- \item それ以外の場合，ナブラ演算子は代数演算における通常の
-\index{べくとる@ベクトル}%  
-ベクトルと同様に振る舞う．
+ \item それ以外の場合，ナブラ演算子は代数演算における通常のベクトルと同様に振る舞う．
 \end{itemize}
 
 
@@ -66,9 +64,7 @@ $s$の勾配$\nabla s$は以下のベクトル場となります．
 \subsection{発散}
 \label{ssec:2.1.2}
 ベクトル場$\bm{a}$が定義されていて，連続微分可能ならば，
-$\bm{a}$の発散は以下の
-\index{すから@スカラ}%  
-スカラ場となります．
+$\bm{a}$の発散は以下のスカラ場となります．
 \begin{align}
  \label{eq:2.4}
  \nabla \inProd \bm{a} = \partial_{i}a_{i}
@@ -120,7 +116,8 @@ $\bm{a}$の回転$\nabla \times \bm{a}$は以下のベクトル場となりま�
 
 実際に，ナブラをベクトル演算子として定義したように，
 ラプラシアンは以下のように
-\index{えんざんし@演算子!すから@スカラ}% 
+\index{えんざんし@演算子!スカラ}%
+\index{スカラ!えんざんし@演算子}%
 \OFemph{スカラ演算子}として定義するのが最適です．
 \begin{align}
  \label{eq:2.8}
@@ -161,9 +158,7 @@ $\bm{a}$の回転$\nabla \times \bm{a}$は以下のベクトル場となりま�
  \frac{\mathrm{D}\phi}{\mathrm{D}t}
  = \frac{\partial\phi}{\partial t} + \bm{U} \inProd \nabla\phi
 \end{align}
-ここで，$\bm{U}$は物理量$\phi$の速度
-\index{ば@\場}%
-場です．
+ここで，$\bm{U}$は物理量$\phi$の速度場です．
 右辺の第2項は$\phi$の変化の移流速度として知られています．
 
 
@@ -185,37 +180,41 @@ $\bm{a}$の回転$\nabla \times \bm{a}$は以下のベクトル場となりま�
 
 \subsection{OpenFOAMのリストと場}
 \label{ssec:2.2.1}
+\index{リスト}%
+\index{ば@場}%
 OpenFOAMでは，データの集合を保持しておいて，
 そのデータに対して代数演算のような
 関数を適用することがよく必要になります．
 そこでOpenFOAMは，\OFclass{Type}の関数を継承した
-\OFclass{Type}クラスのあらゆるオブジェクトの
-\index{りすと@リスト}%
-リストの生成を可能にする
+\OFclass{Type}クラスのあらゆるオブジェクトのリストの生成を可能にする
 配列テンプレートクラス\OFclass{List<Type>}を提供しています．
-\index{てんぷれーと class@テンプレート class!List<Type>@\OFclass{List<Type>}}%
-\index{List<Type> てんぷれーと class@\OFclass{List<Type>} テンプレート class}%
-OpenFOAMでは，テンソルクラスの
-リストは
-\index{てんぷれーと class@テンプレート class!Field<Type>@\OFclass{Field<Type>}}%
+\index{テンプレートクラス!List<Type>@\OFclass{List<Type>}}%
+\index{List<Type>@\OFclass{List<Type>}!テンプレートクラス}%
+OpenFOAMでは，テンソルクラスのリストは
+\index{テンプレートクラス!Field<Type>@\OFclass{Field<Type>}}%
+\index{Field<Type>@\OFclass{Field<Type>}!テンプレートクラス}%
 テンプレートクラス\OFclass{Field<Type>}によって
 標準で定義されています．
 コードの視認性をより良くするために，
 例えば\OFclass{Field<vector>}のような\OFclass{Field<Type>}のインスタンスは，
 \texttt{typedef}定義により
-\index{class!scalarField@\OFclass{scalarField}}%  
-\index{class!vectorField@\OFclass{vectorField}}% 
-\index{vectorField class@\OFclass{vectorField} class}% 
-\OFclass{scalarField}，\OFclass{vectorField}，
-\index{class!tensorField@\OFclass{tensorField}}% 
-\index{tensorField class@\OFclass{tensorField} class}%   
-\index{class!symmTensorField@\OFclass{symmTensorField}}% 
-\index{symmTensorField class@\OFclass{symmTensorField} class}% 
-\index{class!tensorThirdField@\OFclass{tensorThirdField}}%  
-\index{class!tensorThirdField class@\OFclass{tensorThirdField} class}%  
-\index{tensorThirdField class@\OFclass{tensorThirdField} class}%  
-\OFclass{tensorField}，\OFclass{symmTensorField}，\OFclass{tensorThirdField}，
-\index{class!symmTensorThirdField@\OFclass{symmTensorThirdField}}% 
+\index{クラス!scalarField@\OFclass{scalarField}}%
+\index{scalarFieldクラス@\OFclass{scalarField}クラス}%
+\OFclass{scalarField}，
+\index{クラス!vectorField@\OFclass{vectorField}}%
+\index{vectorFieldクラス@\OFclass{vectorField}クラス}%
+\OFclass{vectorField}，
+\index{クラス!tensorField@\OFclass{tensorField}}%
+\index{tensorFieldクラス@\OFclass{tensorField}クラス}%
+\OFclass{tensorField}，
+\index{クラス!symmTensorField@\OFclass{symmTensorField}}%
+\index{symmTensorFieldクラス@\OFclass{symmTensorField}クラス}%
+\OFclass{symmTensorField}，
+\index{クラス!tensorThirdField@\OFclass{tensorThirdField}}%
+\index{tensorThirdFieldクラス@\OFclass{tensorThirdField}クラス}%
+\OFclass{tensorThirdField}，
+\index{クラス!symmTensorThirdField@\OFclass{symmTensorThirdField}}%
+\index{symmTensorThirdFieldクラス@\OFclass{symmTensorThirdField}クラス}%
 そして\OFclass{symmTensorThirdField}と改名されています．
 \OFclass{Field}どうしの代数演算は，
 それらの場が同じ数の要素をもっている，
@@ -253,8 +252,6 @@ OpenFOAMは，ある場と一つのテンソルとの演算もサポートして
 
 \begin{figure}[ht]
  \includegraphics{fig-2-2}
-\index{ゆうげんたいせきほう@有限体積法!りさんか@離散化}%
-\index{めっしゅ@メッシュ!ゆうげんたいせきほう@有限体積法}%
  \caption{有限体積法の離散化におけるパラメータ}
  \label{fig:2.2}
 \end{figure}
@@ -262,9 +259,7 @@ OpenFOAMは，ある場と一つのテンソルとの演算もサポートして
 
 従属変数とその他の物理量は，たいていセル中心$P$で保存されますが，
 面や点で保存される場合もあります．
-セルは，一般に$f$とラベル付けされる平らな
-\index{めん@面}%    
-面で境界付けられます．
+セルは，一般に$f$とラベル付けされる平らな面で境界付けられます．
 OpenFOAMでは，各セルをつくる面の数に制限はなく，
 各面の配置にも制約はありません．
 このような種類のメッシュは通常，
@@ -291,9 +286,10 @@ OpenFOAMでは，各セルをつくる面の数に制限はなく，
 \label{ssec:2.3.1}
 OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法がありますが，
 まずはもっとも
-\index{めっしゅ@メッシュ!きほんてきな@基本的な}%  
+\index{メッシュ!きほんてきな@基本的な}%
 基本的なメッシュクラスである
-\index{class!polyMesh@\OFclass{polyMesh}}%  
+\index{クラス!polyMesh@\OFclass{polyMesh}}%
+\index{polyMeshクラス@\OFclass{polyMesh}クラス}%
 \OFclass{polyMesh}について述べます．
 多面体からなるので\OFclass{polyMesh}といいます．
 \OFclass{polyMesh}は以下および\autoref{fig:2.2}に示すように，
@@ -303,50 +299,54 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
             改めて\texttt{typedef}宣言により\OFclass{pointField}と名付けられています．
  \item[面] セルの面のリスト\OFclass{List<face>}，あるいは\OFclass{faceList}です．
             ここで，
-\index{class!face@\OFclass{face}%  
-\index{face@\OFclass{faceクラス}%  
-\OFclass{face}クラスは
-\index{class!pointField@\OFclass{pointField}}%             
-\OFclass{pointField}に対応する頂点番号のリストで定義されます．
+\index{クラス!face@\OFclass{face}}%
+\index{faceクラス@\OFclass{face}クラス}%
+            \OFclass{face}クラスは
+\index{クラス!pointField@\OFclass{pointField}}%
+\index{pointFieldクラス@\OFclass{pointField}クラス}%
+            \OFclass{pointField}に対応する頂点番号のリストで定義されます．
  \item[セル] セルのリスト\OFclass{List<cell>}あるいは\OFclass{cellList}です．
             ここで，
-\index{class!cell@\OFclass{cell}}%
-\OFclass{cell}クラスは
+\index{クラス!cell@\OFclass{cell}}%
+\index{cellクラス@\OFclass{cell}クラス}%
+            \OFclass{cell}クラスは
             上記の\OFclass{faceList}に対応する面番号のリストで定義されます．
- \item[境界] 
-\index{class!polyBoundaryMesh@\OFclass{polyBoundaryMesh}}% 
-\OFclass{polyBoundaryMesh}は，境界の異なる領域を表すパッチのリスト
-\index{class!polyPatchlist@\OFclass{polyPatchList}}% 
-\index{polyPatchlist class@\OFclass{polyPatchList} class}%                 
-\OFclass{polyPatchList}から成り立っています．
+ \item[境界]
+\index{クラス!polyBoundaryMesh@\OFclass{polyBoundaryMesh}}%
+\index{polyBoundaryMeshクラス@\OFclass{polyBoundaryMesh}クラス}%
+            \OFclass{polyBoundaryMesh}は，境界の異なる領域を表すパッチのリスト
+\index{クラス!polyPatchlist@\OFclass{polyPatchList}}%
+\index{polyPatchlistクラス@\OFclass{polyPatchList}クラス}%
+            \OFclass{polyPatchList}から成り立っています．
             このような方法で，解析の際に各々のパッチに
             異なる境界条件を適用できるように境界が細分化されます．
             あらゆる
-\index{class!polyPatch@\OFclass{polyPatch}}% 
-\index{polyPatch class@\OFclass{polyPatch} class}% 
-\OFclass{polyPatch}の全ての面は
+\index{クラス!polyPatch@\OFclass{polyPatch}}%
+\index{polyPatchクラス@\OFclass{polyPatch}クラス}%
+            \OFclass{polyPatch}の全ての面は
             \OFclass{faceList}の一つのブロックに保存されており，
             ブロックの最初と最後の面への参照が保存された
-\index{class!slice@\OFclass{slice}}% 
-\index{slice class@\OFclass{slice} class}% 
+\index{クラス!slice@\OFclass{slice}}%
+\index{sliceクラス@\OFclass{slice}クラス}%
             \OFclass{slice}クラスを使うことにより，
             それらの面に簡単にアクセスできます．
             それぞれの\OFclass{polyPatch}は以下から成り立っています．
             \begin{itemize}
              \item \OFclass{slice}
-\index{class!word\OFclass{word}}% 
-\index{word class\OFclass{word} class}% 
+\index{クラス!word\OFclass{word}}%
+\index{wordクラス@\OFclass{word}クラス}%
              \item 名前を付けるための\OFclass{word}
             \end{itemize}
 \end{description}
 
 有限体積法による離散化には，
 \OFclass{polyMesh}に保存されている
-\index{ゆうげんたいせきほう@有限体積法!めっしゅ@メッシュ}%  
+\index{ゆうげんたいせきほう@有限体積法!メッシュ}%
+\index{メッシュ!ゆうげんたいせきほう@有限体積法}%
 メッシュ形状に由来する固有のデータが使われます．
 そのためOpenFOAMでは，\OFclass{polyMesh}クラスを拡張した
-\index{class!fvMesh@\OFclass{fvMesh}}% 
-\index{fvMesh class@\OFclass{fvMesh} class}% 
+\index{クラス!fvMesh@\OFclass{fvMesh}}%
+\index{fvMeshクラス@\OFclass{fvMesh}クラス}%
 \OFclass{fvMesh}に，
 有限体積法による離散化に必要な追加のデータが保存されます．
 \OFclass{fvMesh}は{polyMesh}から構成され，
@@ -374,8 +374,8 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
 これまでのところ，場，すなわちテンソルのリスト，およびメッシュが定義できます．
 これらを合わせることで，領域の離散点におけるテンソル場を定義することができます．
 これはOpenFOAMにおいては，
-\index{FieldField<Type>@\OFclass{FieldField<Type>}!てんぷれーと class@テンプレート class}%  
-\index{てんぷれーと class@テンプレート class!FieldField<Type>@\OFclass{FieldField<Type>}}%  
+\index{FieldField<Type>@\OFclass{FieldField<Type>}!テンプレートクラス}%
+\index{テンプレートクラス!FieldField<Type>@\OFclass{FieldField<Type>}}%
 テンプレートクラス
 \OFclass{geometricField<Type>}によって記述されます．
 \OFclass{Field}の値は，
@@ -386,9 +386,9 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
  \item[内部場] 単純に，\autoref{ssec:2.2.1}で述べたような
             \OFclass{Field<Type>}です．
  \item[境界場] これは
-\index{GeometricBoundaryFiel てんぷれーと class@\OFclass{GeometricBoundaryField} テンプレート class}% 
-\index{てんぷれーと class@テンプレート class!GeometricBoundaryFiel@\OFclass{GeometricBoundaryField}}%  
-\OFclass{GeometricBoundaryField}であり，その中では，
+\index{GeometricBoundaryField@\OFclass{GeometricBoundaryField}!テンプレートクラス}%
+\index{テンプレートクラス!GeometricBoundaryField@\OFclass{GeometricBoundaryField}}%
+            \OFclass{GeometricBoundaryField}であり，その中では，
             それぞれのパッチの面について\OFclass{Field}が定義され，
             その境界のパッチについて\OFclass{Field}が定義されます．
             つまりこれは
@@ -399,11 +399,12 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
             その場がセル中心，面，などのうちどこで定義されているかに応じた
             いくつかの詳細情報も加わります．
  \item[次元] \href{UserGuideJa.pdf#subsection.4.2.6}{ユーザガイドの4.2.6項}で述べる
-\index{class!dimensionSet@\OFclass{dimensionSet}}%   
-\index{dimensionSet@\OFclass{dimensionSet}}%             
-\OFclass{dimensionSet}です．
+\index{クラス!dimensionSet@\OFclass{dimensionSet}}%
+\index{dimensionSetクラス@\OFclass{dimensionSet}クラス}%
+            \OFclass{dimensionSet}です．
  \item[古い値] 時間微分の離散化には，前の時間ステップにおける場のデータが必要になります．
-\index{eometricField<Type> てんぷれーとclass@\OFclass{geometricField<Type>} テンプレートclass}%  
+\index{geometricField<Type>@\OFclass{geometricField<Type>}!テンプレートクラス}%
+\index{テンプレートクラス!geometricField<Type>@\OFclass{geometricField<Type>}}%
             \OFclass{geometricField<Type>}は，
             前の，一つ古い時間ステップ，および必要ならばその前の，二つ古い時間ステップ
             において保存された場のデータへの参照を保存しています．
@@ -419,7 +420,8 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
 \begin{description}
  \item[\OFclass{volField<Type>}] 場がセル中心で定義されているとき
  \item[\OFclass{surfaceField<Type>}] 場がセルの面で定義されているとき
-\index{pointField<Type> てんぷれーと class@\OFclass{pointField<Type>} テンプレート class}% 
+\index{pointField<Type>@\OFclass{pointField<Type>}!テンプレートクラス}%
+\index{テンプレートクラス!pointField<Type>@\OFclass{pointField<Type>}}%
  \item[\OFclass{pointField<Type>}] 場がセルの頂点で定義されているとき
 \end{description}
 
@@ -427,8 +429,8 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
 \texttt{typedef}された場のクラスは\autoref{fig:2.4}に図示されています．
 \OFclass{geometricField<Type>}は\OFclass{Field<Type>}のテンソル代数を全て継承しており，
 全ての演算は
-\index{class!dimensionSet@\OFclass{dimensionSet}}%
-\index{dimensionSet@\OFclass{dimensionSet}}%  
+\index{クラス!dimensionSet@\OFclass{dimensionSet}}%
+\index{dimensionSetクラス@\OFclass{dimensionSet}クラス}%
 \OFclass{dimensionSet}の次元チェックに従います．
 また次節で述べる有限体積法の離散化手順にも依存することがあります．
 \OFclass{geometricField<Type>}を作るときに使われるクラス構造は\autoref{fig:2.5}%
@@ -441,18 +443,24 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
 \begin{figure}[ht]
  \includegraphics{fig-2-4-a}\par
  \medskip
- (a) \OFclass{volField<Type>}\par
-\index{てんぷれーと class@テンプレート class!volField<Type>@\OFclass{volField<Type>}}%  
+ (a)
+\index{テンプレートクラス!volField<Type>@\OFclass{volField<Type>}}%
+\index{volField<Type>@\OFclass{volField<Type>}!テンプレートクラス}%
+ \OFclass{volField<Type>}\par
  \bigskip
  \includegraphics{fig-2-4-b}\par
  \medskip
- (b) \OFclass{surfaceField<Type>}\par
-\index{てんぷれーと class@テンプレート class!surfaceField<Type>@\OFclass{surfaceField<Type>}}%  
+ (b)
+\index{テンプレートクラス!surfaceField<Type>@\OFclass{surfaceField<Type>}}%
+\index{surfaceField<Type>@\OFclass{surfaceField<Type>}!テンプレートクラス}%
+ \OFclass{surfaceField<Type>}\par
  \bigskip
  \includegraphics{fig-2-4-c}\par
  \medskip
- (c) \OFclass{pointField<Type>}\par
-\index{てんぷれーと class@テンプレート class!pointField<Type>@\OFclass{pointField<Type>}}%  
+ (c)
+\index{テンプレートクラス!pointField<Type>@\OFclass{pointField<Type>}}%
+\index{pointField<Type>@\OFclass{pointField<Type>}!テンプレートクラス}%
+ \OFclass{pointField<Type>}\par
  \medskip
  \caption{二つの境界パッチをもつメッシュ上で定義された
  \OFclass{geometricField<Type>}のタイプ（簡単のため2次元で表している）}
@@ -469,7 +477,7 @@ OpenFOAMにはいくつかの異なるレベルのメッシュ記述方法があ
 
 \section{方程式の離散化}
 \label{sec:2.4}
-\index{ほうていしき@方程式}%  
+\index{ほうていしき@方程式}%
 方程式の離散化により，偏微分方程式は一般に以下のような行列で表される代数方程式に変換されます．
 \begin{align}
  \label{eq:2.12}
@@ -483,8 +491,8 @@ $[x]$と$[b]$は，その形状，例えば\OFclass{geometricField<Type>}，
 
 $[A]$は代数式群の係数のリストであり，\OFclass{geometricField<Type>}では記述できません．
 したがって，独自のクラス
-\index{fvMatrix てんぷれーとくらす@\OFclass{fvMatrix} テンプレートクラス}% 
-\index{てんぷれーと class@テンプレート class!fvMatrix@\OFclass{fvMatrix}}% 
+\index{fvMatrix@\OFclass{fvMatrix}!テンプレートクラス}%
+\index{テンプレートクラス!fvMatrix@\OFclass{fvMatrix}}%
 \OFclass{fvMatrix}で与えられます．
 \OFclass{fvMatrix<Type>}は\OFclass{geometric<Type>Field}の離散化によって生成され，
 したがって\OFclass{<Type>}を継承します．
@@ -495,11 +503,11 @@ $[A]$は代数式群の係数のリストであり，\OFclass{geometricField<Typ
 
 OpenFOAMのコードにおいて偏微分方程式の各項は，
 それぞれ静的な関数のクラス
-\index{class!finiteVolumeMethod@\OFclass{finiteVolumeMethod}}%
-\index{class!finiteVolumeMethod class@\OFclass{finiteVolumeMethod}class}%  
+\index{クラス!finiteVolumeMethod@\OFclass{finiteVolumeMethod}}%
+\index{finiteVolumeMethodクラス@\OFclass{finiteVolumeMethod}クラス}%
 \OFclass{finiteVolumeMethod}や
-\index{class!finiteVolumeCalculus@\OFclass{finiteVolumeCalculus}}% 
-\index{class!finiteVolumeCalculus class@\OFclass{finiteVolumeCalculus}class}% 
+\index{クラス!finiteVolumeCalculus@\OFclass{finiteVolumeCalculus}}%
+\index{finiteVolumeCalculusクラス@\OFclass{finiteVolumeCalculus}クラス}%
 \OFclass{finiteVolumeCalculus}を用いて記述されます．
 これらのクラスは\texttt{typedef}によって，それぞれ\OFclass{fvm}および\OFclass{fvc}と略されます．
 \OFclass{fvm}や\OFclass{fvc}は，
@@ -525,14 +533,15 @@ OpenFOAMのコードにおいて偏微分方程式の各項は，
 \end{figure}
 
 
-\index{class!fvm@\OFclass{fvm}}% 
-\index{class!fvc@\OFclass{fvc}}% 
-\index{fvc class@\OFclass{fvc} class}% 
-\index{fvm class@\OFclass{fvm} class}% 
-\OFclass{fvm}および\OFclass{fvc}で使える，偏微分方程式の項を離散化する主な関数を
+\index{クラス!fvm@\OFclass{fvm}}%
+\index{fvmクラス@\OFclass{fvm}クラス}%
+\OFclass{fvm}および
+\index{クラス!fvc@\OFclass{fvc}}%
+\index{fvcクラス@\OFclass{fvc}クラス}%
+\OFclass{fvc}で使える，偏微分方程式の項を離散化する主な関数を
 \autoref{tbl:2.2}にリストアップしています．
 各項の有限体積法による離散化は，
-\index{がうすのていり@ガウスの定理}%  
+\index{ガウスのていり@ガウスの定理}%
 ガウスの定理により，
 その体積を囲んでいるセル表面の面積分に変換されます．
 \begin{align}
@@ -549,8 +558,8 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
 その他の項の離散化についてはスキームの選択肢が提供されています．
 スキームの選択はコードの中で直接指定することもできますし，
 ジョブの実行時にインプットファイルから読み込んで
-\index{class!fvSchemes@\OFclass{fvSchemes}}% 
-\index{fvSchemes class@\OFclass{fvSchemes} class}% 
+\index{クラス!fvSchemes@\OFclass{fvSchemes}}%
+\index{fvSchemesクラス@\OFclass{fvSchemes}クラス}%
 \OFclass{fvSchemes}クラスのオブジェクトとして保持する方法もあります．
 
 
@@ -563,7 +572,7 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
 
 \subsection{ラプラシアン項}
 \label{ssec:2.4.1}
-\index{らぷらしあん@ラプラシアン}%  
+\index{ラプラシアン}%
 ラプラシアンの項は，以下のように検査体積で積分・線形化されます．
 \begin{align}
  \label{eq:2.14}
@@ -598,8 +607,8 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
 
 表面の場$\phi_{f}$はさまざまなスキームで評価されます．
 \begin{description}
-\index{さぶん@差分!ちゅうしんさぶん@\OFkeyword{中心差分 (CD)}!キーワード}%
-\index{キーワード!さぶん@差分!ちゅうしんさぶん@\OFkeyword{中心差分 (CD)}}%
+\index{さぶん@差分!ちゅうしん@中心}%
+\index{ちゅうしんさぶん@中心差分}%
  \item[中心差分 (CD)] は，2次精度ですが不安定です．
             \begin{align}
              \label{eq:2.17}
@@ -608,8 +617,8 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
             ここで$f_{x} \equiv \overline{fN}/\overline{PN}$，
             $\overline{fN}$は$f$とセル中心$N$の距離，
             $\overline{PN}$はセル中心同士$P$と$N$の距離です．
-\index{さぶん@差分!かざかみさぶん@\OFkeyword{風上差分 (UD)}!キーワード}%
-\index{キーワード!さぶん@差分!かざかみさぶん@\OFkeyword{風上差分 (UD)}}%
+\index{さぶん@差分!かざかみ@風上}%
+\index{かざかみさぶん@風上差分}%
  \item[風上差分 (UD)] は，流れの方向から$\phi_{f}$を決定し，
             精度は犠牲になりますが安定です．
             \begin{align}
@@ -620,23 +629,27 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
               \phi_{N} & F < 0 \text{のとき}
              \end{cases}
             \end{align}
-\index{さぶん@差分!ぶれんどさぶん@\OFkeyword{ブレンド差分(BD)}!キーワード}%
-\index{キーワード!さぶん@差分!ぶれんどさぶん@\OFkeyword{ブレンド差分(BD)}}%
+\index{さぶん@差分!ブレンド}%
+\index{ぶれんどさぶん@ブレンド差分}%
  \item[ブレンド差分 (BD)] スキームは，適切な精度で
             安定性を保つことを狙ってUDとCDを組み合わせます．
             \begin{align}
              \phi_{f} = (1 - \gamma)(\phi_{f})_{\mathrm{UD}} + \gamma(\phi_{f})_{\mathrm{CD}}
             \end{align}
             OpenFOAMには，ブレンド係数$\gamma$を選ぶ
-\index{さぶん@差分!Gammaさぶんすきーむ@Gamma差分スキーム}%  
-\index{Gammaさぶんすきーむ@Gamma差分スキーム}%  
-Gamma差分スキームのいくつかの実装がありますが，
-\index{さぶん@差分!van Leer@van Leer}%  
-\index{さぶん@差分!SUPERBEE@SUPERBEE}%  
-\index{SUPERBEE さぶん@SUPERBEE　差分}%  
-\index{さぶん@差分!MINMOD@MINMOD}%  
-\index{MINMOD さぶん@MINMOD 差分}%  
-            それはほかのよく知られたスキーム，van Leer，SUPERBEE，MINMODなどを表しています．
+\index{さぶん@差分!Gamma}%
+\index{Gammaさぶんすきーむ@Gamma差分スキーム}%
+            Gamma差分スキームのいくつかの実装がありますが，
+            それはほかのよく知られたスキーム，
+\index{さぶん@差分!van Leer}%
+\index{van Leerさぶん@van Leer差分}%
+            van Leer，
+\index{さぶん@差分!SUPERBEE}%
+\index{SUPERBEEさぶん@SUPERBEE差分}%
+            SUPERBEE，
+\index{さぶん@差分!MINMOD}%
+\index{MINMODさぶん@MINMOD差分}%
+            MINMODなどを表しています．
 \end{description}
 
 
@@ -648,10 +661,7 @@ Gamma差分スキームのいくつかの実装がありますが，
  \label{eq:2.20}
  \frac{\partial}{\partial t}\int_{V}\rho\phi\,\mathrm{d}V
 \end{align}
-この項は，以下のものを使って時間に関して単純な
-\index{さぶん@差分}%  
-\index{おいらーのいんかいほう@オイラーの陰解法!さぶん@差分}%
-差分で離散化されます．
+この項は，以下のものを使って時間に関して単純な差分で離散化されます．
 \begin{description}
  \item[新しい値] いま解いている時間ステップの値$\phi^{n} \equiv \phi(t + \Delta t)$
  \item[古い値] 前の時間ステップで保存された値$\phi^{o} \equiv \phi(t)$
@@ -661,8 +671,8 @@ Gamma差分スキームのいくつかの実装がありますが，
 該当する入力ファイルの中で\OFkeyword{timeScheme}キーワードを使って，
 二つのうち一つの離散化スキームを宣言することができます．
 \begin{description}
-\index{さぶん@差分!おいらーのいんかいほう@\OFkeyword{オイラーの陰解法}!キーワード}%
-\index{キーワード!さぶん@差分!おいらーのいんかいほう@\OFkeyword{オイラーの陰解法}}%
+\index{さぶん@差分!オイラーのいんかいほう@オイラーの陰解法}%
+\index{オイラーのいんかいほう@オイラーの陰解法!さぶん@差分}%
  \item[オイラーの陰解法] スキーム，\OFkeyword{timeScheme EulerImplicit}，
             これは時間に関して1次精度です．
             \begin{align}
@@ -670,8 +680,8 @@ Gamma差分スキームのいくつかの実装がありますが，
              \frac{\partial}{\partial t}\int_{V}\rho\phi\,\mathrm{d}V
              = \frac{(\rho_{P}\phi_{P}V)^{n} - (\rho_{P}\phi_{P}V)^{o}}{\Delta t}
             \end{align}
-\index{さぶん@差分!こうたいさぶん@\OFkeyword{後退差分}!キーワード}%  
-\index{キーワード!さぶん@差分!こうたいさぶん@\OFkeyword{後退差分}}% 
+\index{さぶん@差分!こうたい@後退}%
+\index{こうたいさぶん@後退差分}%
 \item[後退差分] スキーム，\OFkeyword{timeScheme BackwardDifferencing}，
             これは二つ前の値を保存することにより時間に関して2次精度であり，
             したがって\OFkeyword{EulerImplicit}よりデータ保存のオーバーヘッドが大きくなります．
@@ -700,7 +710,7 @@ Gamma差分スキームのいくつかの実装がありますが，
 \subsection{発散}
 \label{ssec:2.4.5}
 この節で述べる
-\index{はっさんこう@発散項}%  
+\index{はっさんこう@発散項}%
 発散項は，
 \autoref{ssec:2.4.2}の対流項とは区別される完全に陽的な項です．
 つまり対流項は，速度とある従属変数の積の発散ではありません．
@@ -719,7 +729,7 @@ Gamma差分スキームのいくつかの実装がありますが，
 
 \subsection{勾配}
 \label{ssec:2.4.6}
-\index{こうばい@勾配}%  
+\index{こうばい@勾配}%
 勾配の項は様々な方法で評価できる陽的な項です．
 そのスキームは，例えば\OFkeyword{fvc::gGrad}，\OFkeyword{fvc::lsGrad}などのような
 離散化スキームに対して適切な特定の勾配関数を選ぶか，
@@ -727,6 +737,7 @@ Gamma差分スキームのいくつかの実装がありますが，
 連動した\OFkeyword{fvc::grad}関数を使うか，
 いずれの方法でも評価できます．
 \begin{description}
+\index{こうばい@勾配!ガウススキーム}%
  \item[ガウス積分] は，\OFkeyword{fvc::grad}関数を
             \OFkeyword{timeScheme Gauss}と合わせて使うことで動作します．
             この離散化は体積分に対してガウスの定理を適用する標準的な手法を使います．
@@ -736,7 +747,7 @@ Gamma差分スキームのいくつかの実装がありますが，
              = \int_{S}\mathrm{d}\bm{S}\phi
              = \sum_{f}\bm{S}_{f}\phi_{f}
             \end{align}
-\index{こうばい@勾配!さいしょうにじょうほう@最小二乗法}%  
+\index{こうばい@勾配!さいしょうにじょうほう@最小二乗法}%
  \item[最小二乗法] は，以下の考えに基づいています．
             \begin{enumerate}
              \item 点$P$における値を，点$P$における勾配を使って隣の点$N$に外挿する．
@@ -762,8 +773,8 @@ Gamma差分スキームのいくつかの実装がありますが，
              (\nabla\phi)_{P}
              = \sum_{N}w_{N}^{2}\bm{G}^{-1} \inProd \bm{d}(\phi_{N} - \phi_{P})
             \end{align}
+\index{こうばい@勾配!めんにすいちょく@面に垂直}%
  \item[面に垂直な勾配] 面に垂直な勾配$\bm{n}_{f} \inProd (\nabla\phi)_{f}$は
-\index{こうばい@勾配!めんにすいちょくなこうばい@面に垂直な勾配}%  
             セルの面において以下のスキームを使って評価できます．
             \begin{align}
              \label{eq:2.28}
@@ -844,7 +855,7 @@ solve(fvm::laplacian(phi) == f)
             面の値\OFclass{surface<Type>Field}の面積重み付け平均をとります．
             すなわち$(\sum_{f}S_{f}\phi_{f})/\sum_{f}S_{f}$となり，
             \OFclass{volField<Type>}を返します．
- % \item[Reconstruct] 
+ % \item[Reconstruct]
  \item[面内挿] \OFclass{geometric<Type>Field}の関数\OFkeyword{faceInterpolate()}は，
             セル中心の値\OFclass{volField<Type>}を，
             中心差分を使ってセルの面上へ内挿し，\OFclass{surface<Type>Field}を返します．
@@ -852,10 +863,9 @@ solve(fvm::laplacian(phi) == f)
 
 
 
-\section{時間微分}
+\section{時間の離散化}
 \label{sec:2.5}
-\index{おいらーのいんかいほう@オイラーの陰解法!じかんびぶん@時間微分}%  
-\index{じかんびぶん@時間微分}%  
+\index{じかんのりさんか@時間の離散化}%
 時間微分の離散化については\autoref{ssec:2.4.3}および\autoref{ssec:2.4.4}で述べましたが，
 非定常問題における空間微分の扱い方について考える必要があります．
 もし$\mathcal{A}$を任意の空間微分演算子，
@@ -886,7 +896,8 @@ solve(fvm::laplacian(phi) == f)
 ここで$\mathcal{A}^{*}$は空間で離散化した$\mathcal{A}$を表します．
 時間積分は三つの方法で離散化できます．
 \begin{description}
-\index{じかんびぶん@時間微分!おいらーいんかいほう@オイラー陰解法}%  
+\index{オイラーのいんかいほう@オイラーの陰解法!じかんのりさんか@時間の離散化}%
+\index{じかんのりさんか@時間の離散化!オイラーのいんかいほう@オイラーの陰解法}%
  \item[オイラー陰解法] 空間については陰解法で離散化し，したがって現在の値$\phi^{n}$をとります．
             \begin{align}
              \label{eq:2.33}
@@ -894,8 +905,8 @@ solve(fvm::laplacian(phi) == f)
              = \mathcal{A}^{*}\phi^{n}\Delta t
             \end{align}
             これは時間について1次精度であり，有界性と無条件安定性を保証します．
-\index{ようかいほう@陽解法!じかんびぶん@時間微分}%  
-\index{じかんびぶん@時間微分!ようかいほう@陽解法}%  
+\index{ようかいほう@陽解法!じかんのりさんか@時間の離散化}%
+\index{じかんのりさんか@時間の離散化!ようかいほう@陽解法}%
  \item[陽解法] 空間については陽解法で離散化し，したがって前の時刻の値$\phi^{o}$をとります．
             \begin{align}
              \label{eq:2.34}
@@ -903,18 +914,17 @@ solve(fvm::laplacian(phi) == f)
              = \mathcal{A}^{*}\phi^{o}\Delta t
             \end{align}
             これは時間について1次精度であり，もしクーラン数$\nCo$が$1$より大きければ不安定です．
-\index{くーらんすう@クーラン数}%              
-クーラン数は以下のように定義されます．
+\index{クーランすう@クーラン数}%
+            クーラン数は以下のように定義されます．
             \begin{align}
              \label{eq:2.35}
              \nCo = \frac{\bm{U}_{f} \inProd \bm{d}}{|\bm{d}|^{2}\Delta t}
             \end{align}
             ここで$\bm{U}_{f}$は代表速度，例えば波面の速度，流れの速度などです．
+\index{クランク・ニコルソンほう@クランク・ニコルソン法}%
+\index{じかんのりさんか@時間の離散化!クランク・ニコルソンほう@クランク・ニコルソン法}%
  \item[クランク・ニコルソン法]
-\index{くらんくにこるそんほう@\OFkeyword{クランク・ニコルソン法}!キーワード}%  
-\index{キーワード!くらんくにこるそんほう@\OFkeyword{クランク・ニコルソン法}}%  
-\index{じかんびぶん@時間微分!くらんくにこるそんほう@\OFkeyword{クランク・ニコルソン法}}%  
- 空間の項の離散化に台形公式を使い，
+            空間の項の離散化に台形公式を使い，
             したがって現在の値$\phi^{n}$と前の時刻の値$\phi^{o}$の平均値をとります．
             \begin{align}
              \label{eq:2.36}
@@ -927,7 +937,7 @@ solve(fvm::laplacian(phi) == f)
 
 \subsection{OpenFOAMにおける時間微分の取扱い}
 \label{ssec:2.5.1}
-\index{じかんびぶん@時間微分!OpenFOAMにおける@OpenFOAMにおける}%  
+\index{じかんのりさんか@時間の離散化!OpenFOAMにおける}%
 現在のところ，時間の離散化の取り扱いは，
 解くべき偏微分方程式における空間微分の実装によって制御されます．
 例えば，非定常の拡散方程式を解きたいとします．
@@ -965,13 +975,11 @@ solve
 したがって全ての境界面において境界条件を指定しなければなりません．
 境界条件は二つのタイプに分けられます．
 \begin{description}
-\index{でぃりくれじょうけん@\OFkeyword{ディレクレ条件}!キーワード}%
-\index{キーワード!でぃりくれじょうけん@\OFkeyword{ディレクレ条件}}%
+\index{きょうかいじょうけん@境界条件!ディリクレ}%
  \item[ディリクレ条件] は，その従属変数の境界における値を定めます．
             したがって，このガイドでは「固定値」とよびます．
             % したがって，このガイドでは `fixed value' とよびます．
-\index{のいまんじょうけん@\OFkeyword{ノイマン条件}!キーワード}%
-\index{キーワード!のいまんじょうけん@\OFkeyword{ノイマン条件}}%
+\index{きょうかいじょうけん@境界条件!ノイマン}%
  \item[ノイマン条件] は，その従属変数の境界に垂直な勾配を定めます．
             したがって，このガイドでは「固定勾配」とよびます．
             % したがって，このガイドでは `fixed gradient' とよびます．
@@ -1028,16 +1036,13 @@ solve
 物理的な特性によって定義されます．
 非圧縮性流体の流れでは，以下のような物理的な境界があります．
 \begin{description}
-\index{いりぐち@\OFkeyword{入口}!キーワード}%
-\index{キーワード!いりぐち@\OFkeyword{入口}}%
+\index{きょうかいじょうけん@境界条件!いりぐち@入口}%
  \item[入口] 入口における速度場が与えられ，それと整合させるために，
             圧力の境界条件は勾配ゼロになります．
-\index{でぐち@\OFkeyword{出口}!キーワード}%
-\index{キーワード!でぐち@\OFkeyword{出口}}%
+\index{きょうかいじょうけん@境界条件!でぐち@出口}%
  \item[出口] 出口における圧力場が与えられ，
             速度には勾配ゼロ境界条件が指定されます．
-\index{すべりなしふしんとうせいへきめん@\OFkeyword{滑りなし不浸透性壁面}!キーワード}%
-\index{キーワード!すべりなしふしんとうせいへきめん@\OFkeyword{滑りなし不浸透性壁面}}%
+\index{きょうかいじょうけん@境界条件!すべりなしふしんとうせいへきめん@滑りなし不浸透性壁面}%
  \item[滑りなし不浸透性壁面] 流体の速度は壁面自身の速度と等しくなり，
             したがって，固定値条件が指定されます．
             壁を通り抜ける流束がゼロであることから，
@@ -1048,7 +1053,6 @@ solve
 その対称面の片側の半分の領域だけしかモデル化する必要はありません．
 その面の境界条件は以下に従って指定しなければなりません．
 \begin{description}
-\index{たいしょうめん@\OFkeyword{対称面}!キーワード}%
-\index{キーワード!たいしょうめん@\OFkeyword{対称面}}%
+\index{きょうかいじょうけん@境界条件!たいしょうめん@対称面}%
  \item[対称面] 対称面条件は，その面に垂直な勾配成分をゼロと指定します．[Check**]
 \end{description}

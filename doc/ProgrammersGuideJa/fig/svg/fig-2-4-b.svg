@@ -11,7 +11,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.1 r9760"
+   inkscape:version="0.48.2 r9819"
    width="353.45682"
    height="151.64659"
    xml:space="preserve"
@@ -47,9 +47,9 @@
      inkscape:window-height="923"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="4.3780761"
-     inkscape:cx="191.63767"
-     inkscape:cy="75.627542"
+     inkscape:zoom="3.0957673"
+     inkscape:cx="200.27535"
+     inkscape:cy="73.713607"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -330,8 +330,9 @@
      id="tspan4714"
      x="301.53467"
      y="-503.13351">パッチ<tspan
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
    id="tspan4716"> 1</tspan></tspan></text>
+
 
 <text
    sodipodi:linespacing="125%"
@@ -346,7 +347,8 @@
      id="tspan4720"
      sodipodi:role="line">パッチ<tspan
    id="tspan4722"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"> 2</tspan></tspan></text>
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"> 2</tspan></tspan></text>
+
 
 <text
    sodipodi:linespacing="125%"
@@ -361,7 +363,8 @@
      id="tspan5992"
      sodipodi:role="line">パッチ<tspan
    id="tspan5994"
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"> 1</tspan></tspan></text>
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"> 1</tspan></tspan></text>
+
 
 <text
    xml:space="preserve"
@@ -375,8 +378,9 @@
      id="tspan5998"
      x="183.07367"
      y="-401.08249">パッチ<tspan
-   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:cmr12;-inkscape-font-specification:cmr12"
+   style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
    id="tspan6000"> 2</tspan></tspan></text>
+
 
 <text
    xml:space="preserve"
@@ -391,6 +395,7 @@
      y="-446.74966"
      id="tspan6012">内部の場</tspan></text>
 
+
 <text
    sodipodi:linespacing="125%"
    id="text6015"
@@ -403,5 +408,6 @@
      y="-425.78214"
      x="183.15735"
      sodipodi:role="line">境界の場</tspan></text>
+
 
 </g></svg>

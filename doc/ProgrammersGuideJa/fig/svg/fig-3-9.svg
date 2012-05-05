@@ -11,9 +11,9 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg8508"
    version="1.1"
-   inkscape:version="0.48.1 r9760"
+   inkscape:version="0.48.2 r9819"
    width="456.78488"
-   height="212.32007"
+   height="214.44278"
    xml:space="preserve"
    sodipodi:docname="fig-3-9.svg"><metadata
      id="metadata8514"><rdf:RDF><cc:Work
@@ -136,9 +136,9 @@
      inkscape:window-height="933"
      id="namedview8510"
      showgrid="false"
-     inkscape:zoom="1.408167"
-     inkscape:cx="230.67571"
-     inkscape:cy="45.815344"
+     inkscape:zoom="3.3342228"
+     inkscape:cx="228.39244"
+     inkscape:cy="107.22139"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -150,7 +150,7 @@
      id="g8516"
      inkscape:groupmode="layer"
      inkscape:label="ProgrammersGuide"
-     transform="matrix(1.25,0,0,-1.25,-152.6102,674.84403)"><path
+     transform="matrix(1.25,0,0,-1.25,-152.6102,674.84525)"><path
    inkscape:connector-curvature="0"
    id="path8594"
    style="fill:none;stroke:#000000;stroke-width:0.94484997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
@@ -294,15 +294,18 @@
    transform="scale(1,-1)"
    id="text8810"
    x="179.36099"
-   y="-506.254"><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmmi12;-inkscape-font-specification:cmmi12"
+   y="-506.254"
+   style="font-size:11.95510006px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMMathItalic12;-inkscape-font-specification:LMMathItalic12 Italic"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510006px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMMathItalic12;-inkscape-font-specification:LMMathItalic12 Italic"
      x="179.36099"
      y="-506.254"
      id="tspan8812">x</tspan><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmmi12;-inkscape-font-specification:cmmi12"
+     style="font-size:11.95510006px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMMathItalic12;-inkscape-font-specification:LMMathItalic12 Italic"
      x="190.7012"
      y="-534.604"
      id="tspan8814">y</tspan></text>
+
 
 
 
@@ -312,11 +315,14 @@
    transform="scale(1,-1)"
    id="text8820"
    x="152.94611"
-   y="-415.543"><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmmi12;-inkscape-font-specification:cmmi12"
+   y="-415.543"
+   style="font-size:11.95510006px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMMathItalic12;-inkscape-font-specification:LMMathItalic12 Italic"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510006px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMMathItalic12;-inkscape-font-specification:LMMathItalic12 Italic"
      x="152.94611"
      y="-415.543"
      id="tspan8822">p</tspan></text>
+
 
 
 
@@ -325,42 +331,45 @@
    transform="scale(1,-1)"
    id="text8824"
    x="162.14415"
-   y="-415.543"><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
+   y="-415.543"
+   style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
      x="162.14415 174.57301 184.32883 190.83578 196.68576"
      y="-415.543"
      sodipodi:role="line"
      id="tspan8826">=0bar</tspan><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
+     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
      x="329.60715 335.45712 341.3071"
      y="-429.71799"
      sodipodi:role="line"
      id="tspan8828">240</tspan><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
+     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
      x="238.89626 244.74623"
      y="-426.88324"
      sodipodi:role="line"
      id="tspan8830">50</tspan><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
+     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
      x="219.05135 224.90132"
      y="-392.86292"
      sodipodi:role="line"
      id="tspan8832">10</tspan><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
+     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
      x="193.53615 199.38612"
      y="-429.71802"
      sodipodi:role="line"
      id="tspan8834">50</tspan><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
+     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
      x="150.46236 156.31233 162.16229"
      y="-483.57434"
      sodipodi:role="line"
      id="tspan8836">100</tspan><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
+     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
      x="162.14415"
      sodipodi:role="line"
      id="tspan8838"
      y="0" /></text>
+
 
 
 
@@ -391,8 +400,11 @@
      sodipodi:role="line"
      id="tspan4387-2-2"
      y="-415.543"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
-   id="tspan4104-2">出口</tspan>:</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
+       id="tspan4104-2">出口</tspan><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
+       id="tspan5125">:</tspan></tspan></text>
+
 
 
 
@@ -414,24 +426,25 @@
      id="tspan3499"><tspan
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
        id="tspan3121">注意：図は</tspan><tspan
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmmi12;-inkscape-font-specification:cmmi12"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:LMMathItalic12;-inkscape-font-specification:LMMathItalic12 Bold Italic"
        id="tspan3501"> x </tspan><tspan
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
-       id="tspan3123">軸が水平となる通常の向きから</tspan><tspan
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmsy10;-inkscape-font-specification:cmsy10"
-       id="tspan3514" /></tspan><tspan
+       id="tspan3123">軸が水平となる通常の向きから</tspan></tspan><tspan
      style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"
      x="250.87747"
-     y="-370.99985"
+     y="-369.30267"
      sodipodi:role="line"
      id="tspan3262"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Latin Modern Roman;-inkscape-font-specification:Latin Modern Roman"
-   id="tspan3264"
-   dx="36.154602">−</tspan>90<tspan
-   style="font-family:Latin Modern Roman;-inkscape-font-specification:Latin Modern Roman"
-   id="tspan3117">°</tspan><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
-   id="tspan3119"> 回転させたものです．</tspan></tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
+       id="tspan3264"
+       dx="36.154602">−</tspan><tspan
+       style="font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
+       id="tspan5129">90</tspan><tspan
+       style="font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
+       id="tspan3117">° </tspan><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho"
+       id="tspan3119">回転させたものです． </tspan></tspan></text>
+
 <g
    id="g3179"
    transform="translate(-89.78892,-50.09559)"><text
@@ -445,8 +458,11 @@
      sodipodi:role="line"
      x="342.95071"
      style="font-size:11.95510006px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr12;-inkscape-font-specification:cmr12"><tspan
-   id="tspan3104"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho">寸法は</tspan> mm</tspan></text>
+       id="tspan3104"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:IPAMincho;-inkscape-font-specification:IPAMincho">寸法は</tspan><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:LMRoman12;-inkscape-font-specification:LMRoman12"
+       id="tspan5127"> mm</tspan></tspan></text>
+
 
 
 
