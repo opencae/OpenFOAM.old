@@ -11,7 +11,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg10103"
    sodipodi:version="0.32"
-   inkscape:version="0.47"
+   inkscape:version="0.48.2 r9819"
    width="367.56171"
    height="268.51239"
    xml:space="preserve"
@@ -20,7 +20,7 @@
    inkscape:output_extension="org.inkscape.output.svg.inkscape"><metadata
      id="metadata10108"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs10106"><inkscape:perspective
    sodipodi:type="inkscape:persp3d"
    inkscape:vp_x="0 : 526.18109 : 1"
@@ -85,9 +85,15 @@
    inkscape:vp_z="1 : 0.5 : 1"
    inkscape:vp_y="0 : 1000 : 0"
    inkscape:vp_x="0 : 0.5 : 1"
-   sodipodi:type="inkscape:persp3d" /></defs><sodipodi:namedview
-     inkscape:window-height="1122"
-     inkscape:window-width="1592"
+   sodipodi:type="inkscape:persp3d" />
+
+
+
+
+
+</defs><sodipodi:namedview
+     inkscape:window-height="923"
+     inkscape:window-width="1680"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      guidetolerance="10.0"
@@ -98,11 +104,11 @@
      pagecolor="#ffffff"
      id="base"
      showgrid="false"
-     inkscape:zoom="2.6116692"
-     inkscape:cx="198.97807"
-     inkscape:cy="133.38622"
+     inkscape:zoom="7.4262537"
+     inkscape:cx="38.666025"
+     inkscape:cy="198.24648"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="0"
      inkscape:current-layer="g10112"
      inkscape:window-maximized="0" /><g
      id="g10112"
@@ -193,11 +199,14 @@
    transform="scale(1,-1)"
    id="text10278"
    x="142.48779"
-   y="-106.3975"><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmss 12;-inkscape-font-specification:cmss12"
+   y="-106.3975"
+   style="-inkscape-font-specification:LMSans12;font-family:LMSans12;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:11.95510025px;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510025px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMSans12;-inkscape-font-specification:LMSans12;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
      x="142.48779"
      y="-106.3975"
      id="tspan10280">wedge</tspan></text>
+
 
 
 
@@ -206,22 +215,28 @@
    transform="scale(1,-1)"
    id="text10298"
    x="214.80206"
-   y="-106.3975"><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr 12;-inkscape-font-specification:cmr12"
+   y="-106.3975"
+   style="-inkscape-font-specification:LMRoman12;font-family:LMRoman12;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:11.95510025px;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510025px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
      x="214.80206"
      y="-106.3975"
      id="tspan10300">1</tspan></text>
+
 
 
 <text
    transform="scale(1,-1)"
    id="text10302"
    x="40.4375"
-   y="-205.6226"><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmss 12;-inkscape-font-specification:cmss12"
+   y="-205.6226"
+   style="-inkscape-font-specification:LMSans12;font-family:LMSans12;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:11.95510025px;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510025px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMSans12;-inkscape-font-specification:LMSans12;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
      x="40.4375"
      y="-205.6226"
      id="tspan10304">wedge</tspan></text>
+
 
 
 
@@ -230,11 +245,14 @@
    transform="scale(1,-1)"
    id="text10322"
    x="113.84549"
-   y="-205.6226"><tspan
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr 12;-inkscape-font-specification:cmr12"
+   y="-205.6226"
+   style="-inkscape-font-specification:LMRoman12;font-family:LMRoman12;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:11.95510025px;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510025px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
      x="113.84549"
      y="-205.6226"
      id="tspan10324">2</tspan></text>
+
 
 
 <text
@@ -251,6 +269,7 @@
      y="-163.16089">対称軸</tspan></text>
 
 
+
 <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:'IPA明朝';-inkscape-font-specification:'IPA明朝'"
@@ -263,6 +282,7 @@
      id="tspan13610"
      x="73.750732"
      y="-204.66628">パッチ</tspan></text>
+
 
 
 <text
@@ -283,6 +303,7 @@
      id="tspan13616">くさび形にする</tspan></text>
 
 
+
 <text
    xml:space="preserve"
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:'IPA明朝';-inkscape-font-specification:'IPA明朝'"
@@ -297,41 +318,42 @@
      y="-105.44118">パッチ</tspan></text>
 
 
+
 <path
    sodipodi:nodetypes="cc"
    d="M 2.613,113.48453 L 2.613,86.510001"
    style="fill:none;stroke:#000000;stroke-width:0.472;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-   id="path13650" /><g
-   id="g2908"
-   transform="translate(2.5972507,0)"><text
-   y="-160.2627"
-   x="8.3158998"
+   id="path13650" /><text
+   transform="scale(1,-1)"
    id="text10250"
-   transform="scale(1,-1)"><tspan
-     id="tspan10252"
+   x="10.913151"
+   y="-160.2627"
+   style="-inkscape-font-specification:LMRoman12;font-family:LMRoman12;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:11.95510025px;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510025px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMRoman12;-inkscape-font-specification:LMRoman12;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+     x="10.913151"
      y="-160.2627"
-     x="8.3158998"
-     style="font-size:11.95510006px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmr 12;-inkscape-font-specification:cmr12">5</tspan></text>
-
-<text
-   y="-164.6006"
-   x="14.166"
-   id="text10254"
-   transform="scale(1,-1)"><tspan
-     id="tspan10256"
-     y="-164.6006"
-     x="14.166"
-     style="font-size:7.97009993px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmsy 8;-inkscape-font-specification:cmsy8">±</tspan></text>
-
+     id="tspan10252">5</tspan></text>
 <text
    transform="scale(1,-1)"
-   y="-160.30356"
-   x="-3.0899425"
+   id="text10254"
+   x="16.76325"
+   y="-164.6006"
+   style="font-size:7.97009945px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LMMathSymbols8;-inkscape-font-specification:LMMathSymbols8 Italic"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:7.97009945px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMMathSymbols8;-inkscape-font-specification:LMMathSymbols8 Italic"
+     x="16.76325"
+     y="-164.6006"
+     id="tspan10256">◦</tspan></text>
+<text
+   style="font-size:11.95510025px;-inkscape-font-specification:LMMathItalic12 Italic;font-family:LMMathItalic12;font-weight:normal;font-style:italic;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
    id="text10250-1"
-   style="font-size:12px"><tspan
-     id="tspan10252-5"
+   x="-0.49269176"
+   y="-160.30356"
+   transform="scale(1,-1)"
+   sodipodi:linespacing="125%"><tspan
+     style="font-size:11.95510025px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:LMMathItalic12;-inkscape-font-specification:LMMathItalic12 Italic;text-anchor:start;text-align:start;line-height:125%"
+     x="-0.49269176"
      y="-160.30356"
-     x="-3.0899425"
-     style="font-size:11.95510006px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:cmmi12;-inkscape-font-specification:cmmi12">&lt;</tspan></text>
-
-</g></g></svg>
+     id="tspan10252-5">&lt;</tspan></text>
+</g></svg>
