@@ -78,11 +78,17 @@ hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
 \begin{description}
  \item[\OFkeyword{specie}] その物質のモル数\OFkeyword{nMoles}，
             およびモル質量%
+\index{specie@\OFkeyword{specie}!キーワード}
+\index{キーワード!specie@\OFkeyword{specie}}
 \footnote{訳注：原文ではmolecular weightとなっているので直訳すれば「モル重量」だが，
             単位が$\unit*{g/mol}$とされているので「モル質量」とした．}%
             \OFkeyword{molWeight}を$\unit*{g/mol}$の単位で入力します．
  \item[\OFkeyword{thermodynamics}] 選択した熱物理モデル（後述）に対する係数を入力します．
+\index{キーワード!thermodynamics@\OFkeyword{thermodynamics}}
+\index{thermodynamics@\OFkeyword{thermodynamics}!キーワード}
  \item[\OFkeyword{transport}] 選択した輸送モデル（後述）に対する係数を入力します．
+\index{キーワード!transport@\OFkeyword{transport}}
+\index{transport@\OFkeyword{transport}!キーワード}
 \end{description}
 
 
@@ -103,7 +109,10 @@ hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
             二つの値$c_{\mathrm{p}}$と$H_{\mathrm{f}}$を指定します．
  \item[eConstThermo]
             $c_{\mathrm{v}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
-            単純に\OFkeyword{Cv}および\OFkeyword{Hf}というキーワードで
+            単純に\OFkeyword{Cv}
+\index{Cv@\OFkeyword{Cv}!キーワード}
+\index{キーワード!Cv@\OFkeyword{Cv}}
+および\OFkeyword{Hf}というキーワードで
             二つの値$c_{\mathrm{v}}$と$H_{\mathrm{f}}$を指定します．
  \item[janafThermo]
             熱力学の\OFemph{JANAF}表から得られた一連の係数により，
@@ -182,6 +191,24 @@ fuel
     }
 }
 \end{OFverbatim}
+\index{キーワード!As@\OFverbatim{As}}
+\index{As@\OFverbatim{As}!キーワード}
+\index{キーワード!Ts@\OFverbatim{Ts}}
+\index{Ts@\OFverbatim{Ts}!キーワード}
+\index{Tlow@\OFverbatim{Tlow}!キーワード}
+\index{Thigh@\OFverbatim{Thigh}!キーワード}
+\index{キーワード!Tlow@\OFverbatim{Tlow}}
+\index{キーワード!Thigh@\OFverbatim{Thigh}}
+\index{キーワード!Tcommon@\OFverbatim{Tcommon}}
+\index{Tcommon@\OFverbatim{Tcommon}!キーワード}
+\index{highCpCoeffs@\OFverbatim{highCpCoeffs}!キーワード}
+\index{lowCpCoeffs@\OFverbatim{lowCpCoeffs}!キーワード}
+\index{キーワード!highCpCoeffs@\OFverbatim{highCpCoeffs}}
+\index{キーワード!lowCpCoeffs@\OFverbatim{lowCpCoeffs}}
+\index{キーワード!nMoles@\OFverbatim{nMoles}}
+\index{キーワード!molWeight@\OFverbatim{molweight}}
+\index{molWeight@\OFverbatim{molweight}!キーワード}
+\index{nMoles@\OFverbatim{nMoles}!キーワード}
 次に示すのは，\OFkeyword{air}という名前の物質についての，エントリの例です．
 これは，\OFclass{constTransport}と\OFclass{hConstThermo}でモデル化されています．
 \begin{OFverbatim}[file]
@@ -204,6 +231,14 @@ air
     }
 }
 \end{OFverbatim}
+\index{キーワード!Cp@\OFverbatim{Cp}}
+\index{Cp@\OFverbatim{Cp}!キーワード}
+\index{Hf@\OFverbatim{Hf}!キーワード}
+\index{キーワード!Hf@\OFverbatim{Hf}}
+\index{キーワード!mu@\OFverbatim{mu}}
+\index{mu@\OFverbatim{mu}!キーワード}
+\index{Pr@\OFverbatim{Pr}!キーワード}
+\index{キーワード!Pr@\OFverbatim{Pr}}
 
 
 

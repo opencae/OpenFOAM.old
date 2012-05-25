@@ -7,15 +7,40 @@
  \\
  \multicolumn{2}{l}{最適化スイッチ - サブディクショナリ \OFdictionary{OptimisationSwitches}} \\
  \hline
+ \index{fileModificationSkew@\texttt{fileModificationSkew}!キーワード}%
+ \index{キーワード!fileModificationSkew@\texttt{fileModificationSkew}}%
  \texttt{fileModificationSkew} & NFSの上でNFSのアップデートの最大遅れと
      OpenFOAM実行のための差分クロックより長く設定すべき時間（秒）． \\
+ \index{fileModificationChecking@\texttt{fileModificationChecking}!キーワード}%
+ \index{キーワード!fileModificationChecking@\texttt{fileModificationChecking}}%
  \texttt{fileModificationChecking} & シミュレーション中にファイルが変更されたか
-     どうかをチェックする方法であり，\OFkeyword{timeStamp}を読む，
-     または\OFkeyword{inotify}（通知しない），
-     あるいはマスタ・ノードに存在するデータのみを読み込む\OFkeyword{timeStampMaster}，
-     \OFkeyword{inotifyMaster}があります． \\
+     どうかをチェックする方法であり，
+	 \index{timeStamp@\OFkeyword{timeStamp}!キーワードエントリ}%
+	 \index{キーワードエントリ!timeStamp@\OFkeyword{timeStamp}}%
+	 \OFkeyword{timeStamp}を読む，
+     または
+	 \index{inotify@\OFkeyword{inotify}!キーワードエントリ}%
+	 \index{キーワードエントリ!inotify@\OFkeyword{inotify}}%
+	 \OFkeyword{inotify}（通知しない），
+     あるいはマスタ・ノードに存在するデータのみを読み込む
+	 \index{timeStampMaster@\OFkeyword{timeStampMaster}!キーワードエントリ}%
+	 \index{キーワードエントリ!timeStampMaster@\OFkeyword{timeStampMaster}}%
+	 \OFkeyword{timeStampMaster}，
+     \index{inotifyMaster@\OFkeyword{inotifyMaster}!キーワードエントリ}%
+     \index{キーワードエントリ!inotifyMaster@\OFkeyword{inotifyMaster}}%
+	 \OFkeyword{inotifyMaster}があります． \\
+\index{commsType@\texttt{commsType}!キーワード}%
+\index{キーワード!commsType@\texttt{commsType}}%
 \texttt{commsType} & 並列計算の通信方法．\OFkeyword{nonBlocking}，
      \OFkeyword{scheduled}，\OFkeyword{blocking}． \\
+	 \index{nonBlocking@\OFkeyword{nonBlocking}!キーワードエントリ}%
+	 \index{キーワードエントリ!nonBlocking@\OFkeyword{nonBlocking}}%
+	 \index{scheduled@\OFkeyword{scheduled}!キーワードエントリ}%
+	 \index{キーワードエントリ!scheduled@\OFkeyword{scheduled}}%
+	 \index{blocking@\OFkeyword{blocking}!キーワードエントリ}%
+	 \index{キーワードエントリ!blocking@\OFkeyword{blocking}}%
+\index{floatTransfer@\texttt{floatTransfer}!キーワード}%
+\index{キーワード!floatTransfer@\texttt{floatTransfer}}%
 \texttt{floatTransfer} & \OFkeyword{1}とすると，
      転送の前に数値を\OFkeyword{float}の精度に丸めます．デフォルトは\OFkeyword{0}です． \\
  \texttt{nProcsSimpleSum} & 並列処理のために全領域の和を最適化します．

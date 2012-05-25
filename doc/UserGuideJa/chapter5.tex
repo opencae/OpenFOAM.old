@@ -842,6 +842,7 @@ edgeGrading (1 1 1 1 2 2 2 2 3 3 3 3)
 \label{sssec:5.3.1.4}
 \index{boundary@\OFkeyword{boundary}!キーワード}%
 \index{キーワード!boundary@\OFkeyword{boundary}}%
+\index{boundary keyword@\OFtool{boundary keyword}}%
 \OFkeyword{boundary}というリストでメッシュの境界を与えます．
 境界はパッチ（領域）に分解され，
 リストされた各パッチは名前をキーワードとしてもっています．
@@ -916,6 +917,8 @@ boundary               // keyword
 
 \OFtool{blockMesh}で\OFboundary{cyclic}パッチを指定するには，
 結びつけるパッチの名前を\OFkeyword{neighbourPatch}キーワードで指定しなければなりません．
+\index{flow!@neighbourPatch@\OFkeyword{neighbourPatch}}%
+\index{neighbourPatch keyword@\OFkeyword{neighbourPatch} keyword}%
 例えば，ある一組の周期境界パッチは以下のように指定します．
 \begin{OFverbatim}[file]
 left
@@ -1072,6 +1075,7 @@ blockMesh -case <case>
 \section{\OFtool{snappyHexMesh}ユーティリティを使ったメッシュ生成}
 \label{sec:5.4}
 \index{snappyHexMesh@\OFtool{snappyHexMesh}!ユーティリティ}%
+\index{surface mesh@surface mesh}%
 \index{ユーティリティ!snappyHexMesh@\OFtool{snappyHexMesh}}%
 \index{メッシュ!せいせい@生成}%
 OpenFOAMのメッシュ生成ユーティリティ
@@ -1244,6 +1248,8 @@ features
 \end{OFverbatim}
 \OFclass{edgeMesh}に含まれる輪郭データは，
 以下のように\OFtool{surfaceFeatureExtract}を使って
+\index{surfaceFeatureExtract ユーティリティ@\OFtool{surfaceFeatureExtract} ユーティリティ}%
+\index{ユーティリティ!surfaceFeatureExtract@\OFtool{surfaceFeatureExtract}}%
 STL形状ファイルから取り出すことができます．
 \begin{OFverbatim}[terminal]
 surfaceFeatureExtract -includeAngle 150 surface.stl features
