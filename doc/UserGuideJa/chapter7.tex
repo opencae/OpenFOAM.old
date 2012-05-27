@@ -76,19 +76,25 @@ hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
 \OFkeyword{mixture}といった物質名を示すキーワードに続けて，
 以下のような係数のサブディクショナリを入力する必要があります．
 \begin{description}
- \item[\OFkeyword{specie}] その物質のモル数\OFkeyword{nMoles}，
+ \item[\OFkeyword{specie}]
+\index{specie@\OFkeyword{specie}!キーワード}%
+\index{キーワード!specie@\OFkeyword{specie}}%
+            その物質のモル数
+\index{nMoles@\OFkeyword{nMoles}!キーワード}%
+\index{キーワード!nMoles@\OFkeyword{nMoles}}%
+            \OFkeyword{nMoles}，
             およびモル質量%
-\index{specie@\OFkeyword{specie}!キーワード}
-\index{キーワード!specie@\OFkeyword{specie}}
 \footnote{訳注：原文ではmolecular weightとなっているので直訳すれば「モル重量」だが，
             単位が$\unit*{g/mol}$とされているので「モル質量」とした．}%
+\index{molWeight@\OFkeyword{molweight}!キーワード}%
+\index{キーワード!molWeight@\OFkeyword{molweight}}%
             \OFkeyword{molWeight}を$\unit*{g/mol}$の単位で入力します．
+\index{thermodynamics@\OFkeyword{thermodynamics}!キーワード}%
+\index{キーワード!thermodynamics@\OFkeyword{thermodynamics}}%
  \item[\OFkeyword{thermodynamics}] 選択した熱物理モデル（後述）に対する係数を入力します．
-\index{キーワード!thermodynamics@\OFkeyword{thermodynamics}}
-\index{thermodynamics@\OFkeyword{thermodynamics}!キーワード}
+\index{transport@\OFkeyword{transport}!キーワード}%
+\index{キーワード!transport@\OFkeyword{transport}}%
  \item[\OFkeyword{transport}] 選択した輸送モデル（後述）に対する係数を入力します．
-\index{キーワード!transport@\OFkeyword{transport}}
-\index{transport@\OFkeyword{transport}!キーワード}
 \end{description}
 
 
@@ -105,14 +111,23 @@ hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
 \begin{description}
  \item[hConstThermo]
             $c_{\mathrm{p}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
-            単純に\OFkeyword{Cp}および\OFkeyword{Hf}というキーワードで
+            単純に
+\index{Cp@\OFkeyword{Cp}!キーワード}%
+\index{キーワード!Cp@\OFkeyword{Cp}}%
+            \OFkeyword{Cp}および
+\index{Hf@\OFkeyword{Hf}!キーワード}%
+\index{キーワード!Hf@\OFkeyword{Hf}}%
+            \OFkeyword{Hf}というキーワードで
             二つの値$c_{\mathrm{p}}$と$H_{\mathrm{f}}$を指定します．
  \item[eConstThermo]
             $c_{\mathrm{v}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
-            単純に\OFkeyword{Cv}
-\index{Cv@\OFkeyword{Cv}!キーワード}
-\index{キーワード!Cv@\OFkeyword{Cv}}
-および\OFkeyword{Hf}というキーワードで
+            単純に
+\index{Cv@\OFkeyword{Cv}!キーワード}%
+\index{キーワード!Cv@\OFkeyword{Cv}}%
+            \OFkeyword{Cv}および
+\index{Hf@\OFkeyword{Hf}!キーワード}%
+\index{キーワード!Hf@\OFkeyword{Hf}}%
+            \OFkeyword{Hf}というキーワードで
             二つの値$c_{\mathrm{v}}$と$H_{\mathrm{f}}$を指定します．
  \item[janafThermo]
             熱力学の\OFemph{JANAF}表から得られた一連の係数により，
@@ -151,11 +166,23 @@ $\mu$，熱伝導率$\kappa$，層流熱伝導率（エンタルピ方程式の�
 \begin{description}
  \item[\OFclass{constTransport}]
             $\mu$とプラントル数$\nPr = c_{\mathrm{p}}\mu/\kappa$が一定であると仮定します．
-            それぞれキーワード\OFkeyword{mu}および\OFkeyword{Pr}によって指定します．
+            それぞれキーワード
+\index{mu@\OFkeyword{mu}!キーワード}%
+\index{キーワード!mu@\OFkeyword{mu}}%
+            \OFkeyword{mu}および
+\index{Pr@\OFkeyword{Pr}!キーワード}%
+\index{キーワード!Pr@\OFkeyword{Pr}}%
+            \OFkeyword{Pr}によって指定します．
  \item[\OFclass{sutherlandTransport}]
             $\mu$を温度$T$の関数として計算します．
             これには，サザーランド係数$A_{\mathrm{S}}$とサザーランド温度$T_{\mathrm{S}}$が用いられ，
-            キーワード\OFkeyword{As}および\OFkeyword{Ts}によって指定します．
+            キーワード
+\index{As@\OFkeyword{As}!キーワード}%
+\index{キーワード!As@\OFkeyword{As}}%
+            \OFkeyword{As}および
+\index{Ts@\OFkeyword{Ts}!キーワード}%
+\index{キーワード!Ts@\OFkeyword{Ts}}%
+            \OFkeyword{Ts}によって指定します．
             $\mu$は，次のように計算されます．
 \begin{align}
  \label{eq:7.2}
@@ -166,6 +193,16 @@ $\mu$，熱伝導率$\kappa$，層流熱伝導率（エンタルピ方程式の�
 \end{description}
 次は，\OFkeyword{fuel}という名前の種についてのエントリの例です．
 これは，\OFclass{sutherlandTransport}と\OFclass{janaf\-Thermo}を使ってモデル化されています．
+\index{Tlow@\OFkeyword{Tlow}!キーワード}%
+\index{キーワード!Tlow@\OFkeyword{Tlow}}%
+\index{Thigh@\OFkeyword{Thigh}!キーワード}%
+\index{キーワード!Thigh@\OFkeyword{Thigh}}%
+\index{Tcommon@\OFkeyword{Tcommon}!キーワード}%
+\index{キーワード!Tcommon@\OFkeyword{Tcommon}}%
+\index{highCpCoeffs@\OFkeyword{highCpCoeffs}!キーワード}%
+\index{キーワード!highCpCoeffs@\OFkeyword{highCpCoeffs}}%
+\index{lowCpCoeffs@\OFkeyword{lowCpCoeffs}!キーワード}%
+\index{キーワード!lowCpCoeffs@\OFkeyword{lowCpCoeffs}}%
 \begin{OFverbatim}[file]
 fuel
 {
@@ -191,24 +228,6 @@ fuel
     }
 }
 \end{OFverbatim}
-\index{キーワード!As@\OFverbatim{As}}
-\index{As@\OFverbatim{As}!キーワード}
-\index{キーワード!Ts@\OFverbatim{Ts}}
-\index{Ts@\OFverbatim{Ts}!キーワード}
-\index{Tlow@\OFverbatim{Tlow}!キーワード}
-\index{Thigh@\OFverbatim{Thigh}!キーワード}
-\index{キーワード!Tlow@\OFverbatim{Tlow}}
-\index{キーワード!Thigh@\OFverbatim{Thigh}}
-\index{キーワード!Tcommon@\OFverbatim{Tcommon}}
-\index{Tcommon@\OFverbatim{Tcommon}!キーワード}
-\index{highCpCoeffs@\OFverbatim{highCpCoeffs}!キーワード}
-\index{lowCpCoeffs@\OFverbatim{lowCpCoeffs}!キーワード}
-\index{キーワード!highCpCoeffs@\OFverbatim{highCpCoeffs}}
-\index{キーワード!lowCpCoeffs@\OFverbatim{lowCpCoeffs}}
-\index{キーワード!nMoles@\OFverbatim{nMoles}}
-\index{キーワード!molWeight@\OFverbatim{molweight}}
-\index{molWeight@\OFverbatim{molweight}!キーワード}
-\index{nMoles@\OFverbatim{nMoles}!キーワード}
 次に示すのは，\OFkeyword{air}という名前の物質についての，エントリの例です．
 これは，\OFclass{constTransport}と\OFclass{hConstThermo}でモデル化されています．
 \begin{OFverbatim}[file]
@@ -231,14 +250,6 @@ air
     }
 }
 \end{OFverbatim}
-\index{キーワード!Cp@\OFverbatim{Cp}}
-\index{Cp@\OFverbatim{Cp}!キーワード}
-\index{Hf@\OFverbatim{Hf}!キーワード}
-\index{キーワード!Hf@\OFverbatim{Hf}}
-\index{キーワード!mu@\OFverbatim{mu}}
-\index{mu@\OFverbatim{mu}!キーワード}
-\index{Pr@\OFverbatim{Pr}!キーワード}
-\index{キーワード!Pr@\OFverbatim{Pr}}
 
 
 
@@ -299,23 +310,6 @@ LES乱流モデルは\OFkeyword{LESModel}エントリで選択します．
 非圧縮性および圧縮性のRAS乱流モデル，等容変化および非等容変化LESモデル，
 そしてデルタモデルは，\autoref{tbl:3.9}に示しています．
 これらの使用例は\OFpath{\$FOAM\_TUTORIALS}以下に見つかります．
-
-% 関連するケースの\OFdictionary{turbulenceProperties}ディクショナリを見て，
-% 各々のモデルのために必要とされる
-% 係数のリストとデフォルト値を参考にしてください．
-% 必要とされる係数は，RASモデルが非圧縮性か圧縮性かにより，
-% あるいはLESモデルが等容変化か非等容変化かによって異なります．
-% 参考として，それらのモデルはそれぞれ，
-% \OFpath{\$FOAM\_TUTORIALS}の中にある以下の例題ケースの
-% \OFkeyword{RASProperties}か
-% \OFdictionary{LESProperties}ディクショナリに示しています．
-% \begin{description}
-%  \item[\OFpath{turbFoam/cavity}] 非圧縮性RASモデル
-%  \item[\OFpath{sonicTurbFoam/prism}] 圧縮性RASモデル
-%  \item[\OFpath{oodles/pitzDaily}] 等容LESモデル
-%  \item[\OFpath{Xoodles/pitzDaily}] 非等容LESモデル
-% \end{description}
-
 
 
 \subsection{モデル係数}

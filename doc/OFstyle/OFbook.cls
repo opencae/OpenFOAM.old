@@ -716,6 +716,7 @@
 \def\theindex{%
         \clearpage
         \columnseprule\z@ \columnsep2zw
+        \refstepcounter{chapter}%
         \twocolumn[\@makeschapterhead{\indexname}]%
         \@mkboth{\indexname}{}%
         \addcontentsline{toc}{chapter}{\indexname}%

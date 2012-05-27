@@ -1,5 +1,6 @@
 \documentclass{OFbook}
 \setcounter{secnumdepth}{4}
+\nofiles
 
 \usepackage[dvipdfm]{color}
 \usepackage[dvipdfm]{graphicx}
@@ -14,15 +15,17 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
+
 \usepackage[dvipdfm,
  bookmarks=true,
  bookmarksnumbered=true,
  pdftitle={OpenFOAM User Guide},
- pdfsubject={Japanese Edition},
+ pdfsubject={Japanese edition},
  pdfauthor={The Open CAE Society of Japan (www.opencae.jp)},
  pdfkeywords={OpenFOAM},
  colorlinks=true,
  linkcolor=red,
+ filecolor=blue,
  urlcolor=blue
  ]{hyperref}[2007/12/08]
 \usepackage{atbegshi}
@@ -32,10 +35,10 @@
 
 \usepackage{makeidx}
 \makeindex
+\def\seename{$\Longrightarrow$}
 
 \title{ユーザガイド和訳}
-\author{OpenFOAMユーザー会\\
-        一般社団法人 オープンCAE学会}
+\author{一般社団法人 オープンCAE学会}
 \version{2.1.0}
 \def\thepage{U-\arabic{page}}
 
@@ -45,9 +48,9 @@
 \frontmatter
 
 \begin{OFdeclaration}
-\include{copyright}
-\include{GFDL}
-\include{trademarks}
+ \include{copyright}
+ \include{GFDL}
+ \include{trademarks}
 \end{OFdeclaration}
 
 \tableofcontents
@@ -62,6 +65,9 @@
 \include{chapter7}
 
 \backmatter
+\makeatletter
+\def\@linkcolor{blue}%
+\makeatother
 \printindex
 
 \end{document}

@@ -1,5 +1,6 @@
 \documentclass{OFbook}
 \setcounter{secnumdepth}{4}
+\nofiles
 
 \usepackage[dvipdfm]{color}
 \usepackage[dvipdfm]{graphicx}
@@ -24,6 +25,7 @@
  pdfkeywords={OpenFOAM},
  colorlinks=true,
  linkcolor=red,
+ filecolor=blue,
  urlcolor=blue
  ]{hyperref}[2007/12/08]
 \usepackage{atbegshi}
@@ -35,7 +37,8 @@
 \makeindex
 \def\seename{$\Longrightarrow$}
 
-\title{プログラマズ・ガイド 和訳}
+\title{プログラマズガイド和訳}
+\author{一般社団法人 オープンCAE学会}
 \version{2.1.0}
 \def\thepage{P-\arabic{page}}
 
@@ -58,6 +61,9 @@
 \include{chapter3}
 
 \backmatter
+\makeatletter
+\def\@linkcolor{blue}%
+\makeatother
 \printindex
 
 \end{document}

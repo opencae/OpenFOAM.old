@@ -186,7 +186,6 @@ OpenFOAMによって読み書きされるすべてのデータファイルは，
 \autoref{tbl:4.1}に記載されており，
 キーワード入力の標準セットを含む
 \index{FoamFile@\OFkeyword{FoamFile}!キーワード}%
-\index{flow!FoamFile@\OFkeyword{FoamFile}}%
 \index{キーワード!FoamFile@\OFkeyword{FoamFile}}%
 \OFkeyword{FoamFile}と
 名付けられたディクショナリから始まります．
@@ -597,7 +596,7 @@ OpenFOAMのソルバは全て，
 時間制御方式と\OFkeyword{writeInterval}入力だけは完全に強制的で，
 省略できる任意の項目には\autoref{tbl:4.4}で示された
 デフォルト値のデータベースが用いられます．
-\index{timeStep@\OFtool{timeStep}!キーワード エントリ}%
+
 
 \vskip\floatsep
 \begingroup
@@ -610,7 +609,7 @@ OpenFOAMのソルバは全て，
 % \end{table}
 \endgroup
 \vskip\floatsep
-\index{startTime keyword@\OFkeyword{startTime} keyword}%
+
 
 以下に\OFdictionary{controlDict}ディクショナリの入力例を示します．
 \begin{OFverbatim}[file, linenum=17]
@@ -875,8 +874,7 @@ default vanLeer01;
 これら\OFkeyword{V}版は\OFkeyword{limitedLinearV}，\OFkeyword{vanLeerV}，
 \OFkeyword{GammaV}，\OFkeyword{limitedCubicV}，\OFkeyword{SFCDV}といったスキームで
 利用することができます．
-\index{filteredLinear2@\OFkeyword{filteredLinear2}!キーワード エントリ}%
-\index{キーワード エントリ!filteredLinear2@\OFkeyword{filteredLinear2}}%
+
 
 \begin{table}[ht]
  \input{tbl/tbl-4-6}
@@ -1044,8 +1042,7 @@ $\psi = 1$の場合には純粋な\OFkeyword{CrankNicholson}，
 $\psi = 0$の場合は純粋な\OFkeyword{Eular}に対応します．
 純粋な\OFkeyword{CrankNicholson}では不安定なケースにおいては，
 混合係数をいじることで計算を安定化させることができることがあります．
-\index{キーワード エントリ!localEuler@\OFkeyword{localEuler}}%
-\index{localEuler@\OFkeyword{localEuler}!キーワード エントリ}%
+
 
 \begin{table}[ht]
  \input{tbl/tbl-4-11}
@@ -1220,9 +1217,8 @@ GAMG
 \index{そうたいてきなきょようち@相対的な許容値}%
        \emph{相対的な許容値}以下に減少する，\OFkeyword{relTol};
  \item 反復回数が\emph{最大反復回数}を超える．\OFkeyword{maxIter};
+\index{さいだい@最大!はんぷくかいすう@反復回数}%
 \index{はんぷくかいすう@反復回数!さいだい@最大}%
-\index{manual@\OFkeyword{manual}!maxIter@\OFkeyword{maxIter}}%
-\index{manual@\OFkeyword{manual}!さいだいはんぷくかいすう@最大反復回数}%
 \end{itemize}
 ソルバの公差は解が十分正確であると考えることができるくらい
 小さい残差レベルにまでするべきです．
@@ -1232,7 +1228,7 @@ GAMG
 \OFkeyword{tolerance}および\OFkeyword{relTol}といった公差は
 全てのソルバに対してディクショナリで指定しなければなりませんが，
 \OFkeyword{maxIter}はオプションです．
-\index{flow!@maxIter@\OFkeyword{maxIter}}%
+
 
 \subsubsection{前処理付き共役勾配ソルバ}
 \label{sssec:4.5.1.2}
