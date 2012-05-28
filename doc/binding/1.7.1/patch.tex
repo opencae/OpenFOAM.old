@@ -1,0 +1,81 @@
+\documentclass{OFbook}
+
+\usepackage[dvipdfm]{color}
+\usepackage[dvipdfm]{graphicx}
+% \usepackage{mediabb}
+% \graphicspath{{./fig/pdf/}}
+% \usepackage{ltxtable}
+
+\usepackage[deluxe]{otf}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+% \usepackage[dvipdfm,
+%  bookmarks=true,
+%  bookmarksnumbered=true,
+%  pdftitle={OpenFOAM User Guide},
+%  pdfsubject={Japanese Edition},
+%  pdfauthor={The Open CAE Society of Japan},
+%  pdfkeywords={OpenFOAM},
+%  colorlinks=true,
+%  linkcolor=red,
+%  urlcolor=blue
+%  ]{hyperref}[2007/12/08]
+% \usepackage{atbegshi}
+% \AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+
+\usepackage{OFmacros}
+
+% \usepackage{makeidx}
+% \makeindex
+
+% \title{ユーザガイド和訳}
+% \author{OpenFOAMユーザー会\\
+%         一般社団法人 オープンCAE学会}
+\version{1.7.1}
+% \def\thepage{U-\arabic{page}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+
+\setbox0=\vbox to .5\paperwidth{\hsize=.5\paperheight%
+  \null\vfill
+  \begin{center}%
+    {\LARGE\OpenFOAM\textsuperscript{\textregistered}\par}%
+    \vskip1.5\Cvs
+    {\LARGE\gtfamily\sffamily オープンソースCFDツールボックス\par}%
+    \vfill
+    {\LARGE\gtfamily\sffamily ユーザガイドのオープンCAE学会による和訳\par}%
+    \vfill
+    {\LARGE Available free from openfoam.org.\par}%
+  \end{center}%
+  \vfill\hfill
+  \vbox{\hsize=.45\paperheight
+    \noindent {\large\sffamily Disclaimer}\par
+    OPENFOAM\textsuperscript{\textregistered} is a registered trade mark of OpenCFD Limited,
+    the producer of the OpenFOAM software and owner of the
+    OPENFOAM\textsuperscript{\textregistered}
+    and OpenCFD\textsuperscript{\textregistered} trade marks.
+    This offering is not approved or endorsed by OpenCFD Limited.\par}%
+  \hfill\null\vfill
+}
+
+\setbox1=\hbox{\copy0\copy0}
+
+\makeatletter
+\setbox\@outputbox\vbox{%
+  \vskip-1in
+  \noindent
+  \hskip-1in
+  \rotatebox{90}{\copy1}%
+  \rotatebox{90}{\copy1}}
+\shipout\box\@outputbox
+\makeatother
+
+
+\end{document}
