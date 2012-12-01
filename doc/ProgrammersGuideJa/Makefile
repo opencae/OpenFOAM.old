@@ -7,7 +7,7 @@ TITLE = ProgrammersGuideJa
 CLS = OFbook.cls
 STY = OFmacros.sty
 IST = OFindex.ist
-INCLUDES = copyright.tex GFDL.tex trademarks.tex \
+INCLUDES = copyright.tex CreativeCommons.tex trademarks.tex \
 	chapter1.tex chapter2.tex chapter3.tex
 TBL = tbl/*.tex
 

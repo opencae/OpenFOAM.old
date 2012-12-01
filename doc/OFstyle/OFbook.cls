@@ -212,6 +212,10 @@
                 \@chapapp\thechapter\@chappos\hskip1zw##1}{}}%
         \def\sectionmark##1{%
                 \markright{\thesection\hskip1zw##1}}}
+\def\ps@onlychapter{%
+        \ps@headings
+        \def\chaptermark##1{\markboth{##1}{}}%
+        \let\sectionmark\@gobble}
 \def\version#1{\gdef\@version{#1}}
 \def\@version{\@latex@error{No \noexpand\version given}\@ehc}
 \def\maketitle{%
@@ -352,9 +356,10 @@
         {1sp \@plus.3\Cdp}% 後アキ
         {\normalsize\gtfamily\sffamily\mdseries}}
 \def\OFdeclaration{%
+        \pagestyle{onlychapter}%
         \def\@makechapterhead##1{%
-                \thispagestyle{headings}%
-                \centerline{\reset@font\Large\bfseries\noindent##1}%
+                \thispagestyle{onlychapter}%
+                {\reset@font\Large\gtfamily\sffamily\mdseries\noindent##1}%
                 \vskip.5\baselineskip}%
         \def\thesection{\@arabic\c@section}%
         \def\@seccntformat##1{\csname the##1\endcsname. }
@@ -363,6 +368,7 @@
                 {\Cvs \@plus.5\Cdp \@minus.2\Cdp}% 前アキ
                 {.5\Cvs \@plus.3\Cdp}% 後アキ
                 {\large\bfseries\raggedright}}%
+        \def\theenumi{\@alph\c@enumi}%  a, b, c, ...
         }
 \def\endOFdeclaration{%
         \setcounter{chapter}{0}%
@@ -412,7 +418,7 @@
         \leftmargin\leftmarginvi
         \labelwidth\leftmarginvi \advance\labelwidth-\labelsep}
 \def\theenumi{\@arabic\c@enumi}%      1, 2, 3, ...
-\def\theenumii{\@arabic\c@enumii}%    a, b, c, ...
+\def\theenumii{\@alph\c@enumii}%    a, b, c, ...
 \def\theenumiii{\@roman\c@enumiii}%  i, ii, iii, ...
 \def\theenumiv{\@Alph\c@enumiv}%    A, B, C, ...
 \def\labelenumi{\theenumi.}%          1., 2., 3., ...
