@@ -30,7 +30,9 @@
  \OFtool{engineSwirl} & エンジン計算のために旋回流を発生させる \\
 \index{faceAgglomerate@\OFtool{faceAgglomerate}!ユーティリティ}%
 \index{ユーティリティ!faceAgglomerate@\OFtool{faceAgglomerate}}%
- \OFtool{faceAgglomerate} & （いまのところ解説なし） \\
+ \OFtool{faceAgglomerate} &
+ 形態係数放射モデルを使って境界面を凝集させる．
+ 細かい格子から粗い格子へのマップを書き出す． \\
 \index{foamUpgradeFvSolution@\OFtool{foamUpgradeFvSolution}!ユーティリティ}%
 \index{ユーティリティ!foamUpgradeFvSolution@\OFtool{foamUpgradeFvSolution}}%
  \OFtool{foamUpgradeFvSolution} &
@@ -49,7 +51,9 @@
  \OFtool{setFields} & ディクショナリによって，選択されたセル・パッチのセット上に値を設定する． \\
 \index{viewFactorGen@\OFtool{viewFactorGen}!ユーティリティ}%
 \index{ユーティリティ!viewFactorGen@\OFtool{viewFactorGen}}%
- \OFtool{viewFactorGen} & （解説なし） \\
+ \OFtool{viewFactorGen} &
+ 凝集された面 (\OFtool{faceAgglomerate}) に基づいて，
+ 形態係数放射モデルで使うための形態係数を計算する． \\
 \index{wallFunctionTable@\OFtool{wallFunctionTable}!ユーティリティ}%
 \index{ユーティリティ!wallFunctionTable@\OFtool{wallFunctionTable}}%
  \OFtool{wallFunctionTable} & 乱流の壁関数で使いやすいように表を生成する． \\
@@ -91,7 +95,7 @@
 \index{datToFoam@\OFtool{datToFoam}!ユーティリティ}%
 \index{ユーティリティ!datToFoam@\OFtool{datToFoam}}%
  \OFtool{datToFoam} &
- \OFtool{datToFoam}メッシュファイル内を読み，
+ \OFtool{datToFoam} (.dat) メッシュファイル内を読み，
  \OFpath{points}ファイルを出力する．
  \OFtool{blockMesh}との結合に使われる． \\
 \index{fluent3DMeshToFoam@\OFtool{fluent3DMeshToFoam}!ユーティリティ}%
@@ -244,9 +248,11 @@
  同様に名づけられた\OFkeyword{pointSets}/\OFkeyword{faceSets}/\OFkeyword{cellSets}から追加する \\
 \index{singleCellMesh@\OFtool{singleCellMesh}!ユーティリティ}%
 \index{ユーティリティ!singleCellMesh@\OFtool{singleCellMesh}}%
- \OFtool{singleCellMesh} & メッシュの一つのセルを残して全て削除する．
- 境界のみのデータに使うためのメッシュと場を生成するのに使われる．
- paraviewで境界を見ているだけだと不正なメッシュになるかもしれない． \\
+ \OFtool{singleCellMesh} &
+ 全てのフィールドを読み込み，内側の面が全て取り除かれたメッシュ (\OFclass{singleCellFvMesh})
+ に変換して\OFregion{singleMesh}領域に書き出す．
+ 境界のみのデータとして使えるメッシュとフィールドを生成するのに使う．
+ しかし不正なメッシュになりやすいので，ParaViewで境界を見ることにのみ使う． \\
 \index{splitMesh@\OFtool{splitMesh}!ユーティリティ}%
 \index{ユーティリティ!splitMesh@\OFtool{splitMesh}}%
  \OFtool{splitMesh} & 内部の面の外面を作ることでメッシュを分割する．\OFtool{attachDetach}を用いる \\
@@ -283,8 +289,8 @@
 \index{combinePatchFaces@\OFtool{combinePatchFaces}!ユーティリティ}%
 \index{ユーティリティ!combinePatchFaces@\OFtool{combinePatchFaces}}%
  \OFtool{combinePatchFaces} & 同じセル内でパッチの重複した面をチェックし結合する．
- これはたとえば，細分化された隣接セルが削除され，
- 同じセルに属する4面が取り残された結果として現れる \\
+ 重複した面は，例えば細分化された隣接セルが削除されたり，
+ 同じセルに属する4面が取り残された結果として現れる． \\
 \index{modifyMesh@\OFtool{modifyMesh}!ユーティリティ}%
 \index{ユーティリティ!modifyMesh@\OFtool{modifyMesh}}%
  \OFtool{modifyMesh} & メッシュ要素を操作する \\
@@ -321,17 +327,6 @@
  \OFtool{ensightFoamReader} &
  変換せずにOpenFOAMのデータを直接読むための
  EnSightのライブラリ・モジュール \\
-\index{fieldview9Reader@\OFtool{fieldview9Reader}!ユーティリティ}%
-\index{ユーティリティ!fieldview9Reader@\OFtool{fieldview9Reader}}%
- \OFtool{fieldview9Reader} &
- OpenFOAMのメッシュとデータを読み込むための
- Fieldview 9の読み込みモジュール \\
-% \index{PV3FoamReader@\OFtool{PV3FoamReader}!ユーティリティ}%
-% \index{ユーティリティ!PV3FoamReader@\OFtool{PV3FoamReader}}%
-%  \OFtool{PV3FoamReader} & ParaView 3の読み込みモジュール \\
-% \index{PVFoamReader@\OFtool{PVFoamReader}!ユーティリティ}%
-% \index{ユーティリティ!PVFoamReader@\OFtool{PVFoamReader}}%
-%  \OFtool{PVFoamReader} & ParaViewの読み込みモジュール \\
  \\
  \multicolumn{2}{l}{データ変換の後処理} \\
  \hline
@@ -346,10 +341,6 @@
  \OFtool{foamToEnsightParts} &
  OpenFOAMデータをEnSight形式へ変換する．
  それぞれのセル・ゾーンとパッチに対してEnsightパーツが作られる \\
-\index{foamToFieldview9@\OFtool{foamToFieldview9}!ユーティリティ}%
-\index{ユーティリティ!foamToFieldview9@\OFtool{foamToFieldview9}}%
- \OFtool{foamToFieldview9} & OpenFOAMのメッシュを
- バージョン3.0 Fieldview-UNS形式（バイナリ）へ変換する． \\
 \index{foamToGMV@\OFtool{foamToGMV}!ユーティリティ}%
 \index{ユーティリティ!foamToGMV@\OFtool{foamToGMV}}%
  \OFtool{foamToGMV} & OpenFOAMの出力をGMVで読めるファイルに変換する． \\
@@ -369,14 +360,7 @@
 \index{Co@\OFtool{Co}!ユーティリティ}%
 \index{ユーティリティ!Co@\OFtool{Co}}%
  \OFtool{Co} & \OFkeyword{phi}場からクーラン数$\nCo$を計算し，
- \OFclass{surfaceScalarField}として書き出す%
-\footnote{訳注：原文では ``Configurable graph drawing program''
-と記述されているが，誤植と思われるため，
-\OFpath{\$WM\_\allowbreak{}PROJECT\_\allowbreak{}DIR/\allowbreak
-applications/utilities/postProcessing/velocityField/Co/Co.C}の
-Descriptionに記述されている ``Calculates and writes the Co number as a surfaceScalarField
-obtained from field phi.'' の訳を掲載した．}%
- \\
+ \OFclass{surfaceScalarField}として書き出す \\
 \index{enstrophy@\OFtool{enstrophy}!ユーティリティ}%
 \index{ユーティリティ!enstrophy@\OFtool{enstrophy}}%
  \OFtool{enstrophy} & 速度場\OFkeyword{U}のエンストロフィを計算し，書き出す \\
@@ -437,10 +421,12 @@ obtained from field phi.'' の訳を掲載した．}%
 \index{wallShearStress@\OFtool{wallShearStress}!ユーティリティ}%
 \index{ユーティリティ!wallShearStress@\OFtool{wallShearStress}}%
  \OFtool{wallShearStress} &
+ RAS乱流モデルを使用しているとき，
  指定した時刻における壁面せん断応力を計算して書き出す \\
 \index{yPlusLES@\OFtool{yPlusLES}!ユーティリティ}%
 \index{ユーティリティ!yPlusLES@\OFtool{yPlusLES}}%
  \OFtool{yPlusLES} &
+ LES乱流モデルを使用しているとき，
  指定した時刻について，各壁面における\OFkeyword{yPlus}を計算する \\
 \index{yPlusRAS@\OFtool{yPlusRAS}!ユーティリティ}%
 \index{ユーティリティ!yPlusRAS@\OFtool{yPlusRAS}}%
@@ -545,7 +531,7 @@ obtained from field phi.'' の訳を掲載した．}%
  \OFtool{autoPatch}と同様． \\
 \index{surfaceCheck@\OFtool{surfaceCheck}!ユーティリティ}%
 \index{ユーティリティ!surfaceCheck@\OFtool{surfaceCheck}}%
- \OFtool{surfaceCheck} & （いまのところ解説なし） \\
+ \OFtool{surfaceCheck} & 幾何的・トポロジ的な面の品質をチェックする． \\
 \index{surfaceClean@\OFtool{surfaceClean}!ユーティリティ}%
 \index{ユーティリティ!surfaceClean@\OFtool{surfaceClean}}%
  \OFtool{surfaceClean} & - 邪魔板を除去，- 小さなエッジをつぶして三角形を除去，
@@ -596,12 +582,13 @@ obtained from field phi.'' の訳を掲載した．}%
 \index{surfaceMeshTriangulate@\OFtool{surfaceMeshTriangulate}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshTriangulate@\OFtool{surfaceMeshTriangulate}}%
  \OFtool{surfaceMeshTriangulate} & polyMeshからtriSurfaceを取り出す．
- 全ての境界面を三角形にする．三角形の領域番号はpolyMeshのパッチ番号になる．
+ アウトプットの面フォーマットに依存して，面を三角形にする．
+ 三角形の領域番号はpolyMeshのパッチ番号になる．
  オプションで名前のついたパッチのみを三角形にする． \\
 \index{surfaceOrient@\OFtool{surfaceOrient}!ユーティリティ}%
 \index{ユーティリティ!surfaceOrient@\OFtool{surfaceOrient}}%
  \OFtool{surfaceOrient} & ユーザが与えた「外側の」点に従って，法線を設定する．
- \texttt{-inside}とすると，与えた点は内側とみなされる． \\
+ \texttt{-inside}を使うと，与えた点は内側とみなされる． \\
 \index{surfacePointMerge@\OFtool{surfacePointMerge}!ユーティリティ}%
 \index{ユーティリティ!surfacePointMerge@\OFtool{surfacePointMerge}}%
  \OFtool{surfacePointMerge} & 面上で，絶対距離以内にある点をマージする．
@@ -615,9 +602,7 @@ obtained from field phi.'' の訳を掲載した．}%
 \index{ユーティリティ!surfaceRefineRedGreen@\OFtool{surfaceRefineRedGreen}}%
  \OFtool{surfaceRefineRedGreen} &
  三角形の三辺全てを分割して精密化する (`red' 精密化)．
- （精密化するようマークされていない）隣り合う三角形は，
- 半分にして (`green') 精密化する．
-\OFrevision*{？}%
+ （精密化するようマークされていない）隣り合う三角形は半分にする (`green' 精密化)．
  (R. Verfuerth, ``A review of a posteriori error estimation and
  adaptive mesh refinement techniques'', Wiley-Teubner, 1996) \\
 \index{surfaceSmooth@\OFtool{surfaceSmooth}!ユーティリティ}%
@@ -661,11 +646,6 @@ obtained from field phi.'' の訳を掲載した．}%
 \index{reconstructParMesh@\OFtool{reconstructParMesh}!ユーティリティ}%
 \index{ユーティリティ!reconstructParMesh@\OFtool{reconstructParMesh}}%
  \OFtool{reconstructParMesh} & 幾何情報のみを使ってメッシュを再結合する \\
-\index{redistributeMeshPar@\OFtool{redistributeMeshPar}!ユーティリティ}%
-\index{ユーティリティ!redistributeMeshPar@\OFtool{redistributeMeshPar}}%
- \OFtool{redistributeMeshPar} &
- \OFdictionary{decomposeParDict}ファイルの最新の設定に従って，
- 分割されたメッシュを再分配する \\
  \\
  \multicolumn{2}{l}{熱物理に関連したユーティリティ} \\
  \hline

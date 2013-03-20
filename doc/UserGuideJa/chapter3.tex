@@ -484,7 +484,7 @@ wclean <optionalArguments> <optionalDirectory>
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2011 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2012 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -563,11 +563,16 @@ int main(int argc, char *argv[])
             {
                 volScalarField rAU(1.0/UEqn.A());
 
-                U = rAU*UEqn.H();
-                phi = (fvc::interpolate(U) & mesh.Sf())
-                    + fvc::ddtPhiCorr(rAU, U, phi);
+                volVectorField HbyA("HbyA", U);
+                HbyA = rAU*UEqn.H();
+                surfaceScalarField phiHbyA
+                (
+                    "phiHbyA",
+                    (fvc::interpolate(HbyA) & mesh.Sf())
+                  + fvc::ddtPhiCorr(rAU, U, phi)
+                );
 
-                adjustPhi(phi, U, p);
+                adjustPhi(phiHbyA, U, p);
 
                 // Non-orthogonal pressure corrector loop
                 for (int nonOrth=0; nonOrth<=nNonOrthCorr; nonOrth++)
@@ -576,7 +581,7 @@ int main(int argc, char *argv[])
 
                     fvScalarMatrix pEqn
                     (
-                        fvm::laplacian(rAU, p) == fvc::div(phi)
+                        fvm::laplacian(rAU, p) == fvc::div(phiHbyA)
                     );
 
                     pEqn.setReference(pRefCell, pRefValue);
@@ -596,13 +601,13 @@ int main(int argc, char *argv[])
 
                     if (nonOrth == nNonOrthCorr)
                     {
-                        phi -= pEqn.flux();
+                        phi = phiHbyA - pEqn.flux();
                     }
                 }
 
                 #include "continuityErrs.H"
 
-                U -= rAU*fvc::grad(p);
+                U = HbyA - rAU*fvc::grad(p);
                 U.correctBoundaryConditions();
             }
         }
@@ -686,12 +691,12 @@ SOURCE DIR=.
 SOURCE=pisoFoam.C ;
 g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 -DscalarMachine -DoptSolvers -DPARALLEL -DUSEMPI -Wall -O2 -DNoRepository
--ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-2.1.0/src/OpenFOAM/lnInclude
+-ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-2.2.0/src/OpenFOAM/lnInclude
 -IlnInclude
 -I.
 ......
 -lmpich -L/usr/X11/lib -lm
--o .../OpenFOAM/OpenFOAM-2.1.0/applications/bin/linuxOptMPICH/pisoFoam
+-o .../OpenFOAM/OpenFOAM-2.2.0/applications/bin/linuxOptMPICH/pisoFoam
 \end{OFverbatim}
 再コンパイルすることも可能ですが，
 実行ファイルが最新でコンパイルする必要がないというときには
@@ -699,7 +704,7 @@ g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 \begin{OFverbatim}[file]
 make: Nothing to be done for `allFiles'.
 make: `Make/linuxOptMPICH/dependencies' is up to date.
-make: `.../OpenFOAM/OpenFOAM-2.1.0/applications/bin/linuxOptMPICH/pisoFoam'
+make: `.../OpenFOAM/OpenFOAM-2.2.0/applications/bin/linuxOptMPICH/pisoFoam'
 is up to date.
 \end{OFverbatim}
 
@@ -876,7 +881,7 @@ openMPIというパブリックドメインを使用しています．
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.1.0                                 |
+|  \\    /   O peration     | Version:  2.2.0                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
