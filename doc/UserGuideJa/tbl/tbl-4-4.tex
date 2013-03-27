@@ -46,7 +46,7 @@
  \OFkeyword{writeControl} & ファイルへのデータの書き出しのタイミングの制御 \\
 \index{timeStep@\OFkeyword{timeStep}!キーワードエントリ}%
 \index{キーワードエントリ!timeStep@\OFkeyword{timeStep}}%
- \hskip1em- \OFkeyword{timeStep}\dag &  タイムステップの\OFkeyword{writeInterval}ごとにデータを書き出す \\
+ \hskip1em- \OFkeyword{timeStep}\dag &  時間ステップの\OFkeyword{writeInterval}ごとにデータを書き出す \\
 \index{runTime@\OFkeyword{runTime}!キーワードエントリ}%
 \index{キーワードエントリ!runTime@\OFkeyword{runTime}}%
  \hskip1em- \OFkeyword{runTime} & 解析時間\OFkeyword{writeInterval}秒ごとにデータを書き出す \\
@@ -123,22 +123,34 @@
 \index{jplot@\OFkeyword{jplot}!キーワードエントリ}%
 \index{キーワードエントリ!jplot@\OFkeyword{jplot}}%
  \hskip1em- \OFkeyword{jplot} & jPlot形式のデータ \\
- データの読み込み \\
+ \\
+ \multicolumn{2}{l}{可変時間ステップ} \\
+ \hline
+\index{adjustTimeStep@\OFkeyword{adjustTimeStep}!キーワード}%
+\index{キーワード!adjustTimeStep@\OFkeyword{adjustTimeStep}}%
+ \OFkeyword{adjustTimeStep} & 時間ステップをシミュレーション実行中に
+ 調整するかどうかを決めるyes\dag/noスイッチ．通常は\OFkeyword{maxCo}に従う． \\
+\index{maxCo@\OFkeyword{maxCo}!キーワード}%
+\index{キーワード!maxCo@\OFkeyword{maxCo}}%
+ \OFkeyword{maxCo} & クーラン数の最大値．例えば\OFkeyword{0.5} \\
+ \\
+ \multicolumn{2}{l}{データの読み込み} \\
+ \hline
 \index{runTimeModifiable@\OFkeyword{runTimeModifiable}!キーワード}%
 \index{キーワード!runTimeModifiable@\OFkeyword{runTimeModifiable}}%
- \OFkeyword{runTimeModifiable} & controlDictのようないずれかのディクショナリの
- yes\dag/noスイッチは各タイムステップの始めにOpenFOAMによって再度読み込まれる． \\
+ \OFkeyword{runTimeModifiable} & \OFdictionary{controlDict}などのディクショナリを
+ 各時間ステップの始めに再読み込みするかどうかを決めるyes\dag/noスイッチ \\
  \\
- \multicolumn{2}{l}{Run-time loadable functionality} \\
+ \multicolumn{2}{l}{実行時にロード可能な機能} \\
  \hline
 \index{libs@\OFkeyword{libs}!キーワード}%
 \index{キーワード!libs@\OFkeyword{libs}}%
- \OFkeyword{libs} & 実行時にロードする (\OFpath{\$LD\_LIBRARY\_PATH}上の) 追加ライブラリのリスト．
- 例えば ("libUser1.so" "libUser2.so") \\
+ \OFkeyword{libs} & 実行時にロードする (\OFpath{\$LD\_LIBRARY\_PATH}上の) 追加ライブラリのリスト．\\
+ & 例えば \OFkeyword{("libUser1.so" "libUser2.so")} \\
 \index{functions@\OFkeyword{functions}!キーワード}%
 \index{キーワード!functions@\OFkeyword{functions}}%
  \OFkeyword{functions} & 関数のリスト．
- 実行時に例えばprobesをロードする．\OFpath{\$FOAM\_TUTORIALS}の例を参照． \\
+ 実行時に例えば\OFkeyword{probes}をロードする．\OFpath{\$FOAM\_TUTORIALS}の例を参照． \\
  \hline
  \multicolumn{2}{l}{\dag\quad 関連キーワードが省略されるなら，デフォルト入力を表示します．}
 \end{longtable}
