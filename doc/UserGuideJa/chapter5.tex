@@ -155,8 +155,8 @@ OpenFOAMのメッシュのフォーマットである
 \index{polyMesh@\OFclass{polyMesh}!クラス}%
 \index{クラス!polyMesh@\OFclass{polyMesh}}%
 \OFclass{polyMesh}データが全て収められています．
-このpolyMeshの記述は面ベースであり，既に述べましたように，
-内部のセルは二つのセルと接続し，境界面はセルと境界のパッチを指定します．
+この\OFclass{polyMesh}の記述は面ベースであり，既に述べたように，
+内部の面は二つのセルと接続し，境界面はセルと境界のパッチを指定します．
 各面には「保有」セルと「隣接」セルが割り当てられ，
 面を通じた接続は，保有セルと隣接セルのラベルによって
 簡潔に記述することができます．
@@ -376,12 +376,14 @@ OpenFOAMは3次元の空間用に設計されており，
     bottom
     {
         type            symmetryPlane;
+        inGroups        1(symmetryPlane);
         nFaces          25;
         startFace       10415;
     }
     top
     {
         type            symmetryPlane;
+        inGroups        1(symmetryPlane);
         nFaces          125;
         startFace       10440;
     }
@@ -394,6 +396,7 @@ OpenFOAMは3次元の空間用に設計されており，
     defaultFaces
     {
         type            empty;
+        inGroups        1(empty);
         nFaces          10500;
         startFace       10675;
     }
@@ -420,7 +423,7 @@ boundaryField
         field           p;
         phi             phi;
         rho             rho;
-        psi             psi;
+        psi             thermo:psi;
         gamma           1.4;
         fieldInf        1;
         lInf            3;
