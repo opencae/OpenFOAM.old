@@ -59,14 +59,39 @@ OpenFOAMには，各々が特定の問題に特化して設計されたソルバ
 \vskip\floatsep
 
 
-通常\OFkeyword{thermoType}のエントリは次の形式をとります．
+以下は\OFkeyword{thermoType}のエントリの一例です．
 \begin{OFverbatim}[file]
-thermoModel<mixture<transport<specieThermo<thermo<equationOfState>>>>>
+thermoType
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
 \end{OFverbatim}
-次に示すのは\OFkeyword{thermoType}のエントリの例です．
-\begin{OFverbatim}[file]
-hThermo<pureMixture<constTransport<specieThermo<hConstThermo<perfectGas>>>>>
-\end{OFverbatim}
+このキーワード・エントリは，
+例えば輸送 (\OFkeyword{transport}) を定数（粘性と熱拡散を定数）として，
+理想気体の状態方程式 (\OFkeyword{equationOfState}) を使うといった，
+熱物理モデルの選択を示しています．
+それに加えて\OFkeyword{energy}というキーワード・エントリがあり，
+解析におけるエネルギの扱い方を指定することができます．
+エネルギとしては，内部エネルギかエンタルピ，
+そして生成熱$\Delta h_{\mathrm{f}}$を含めるかどうかを選択できます．
+生成熱を含める場合は\emph{絶対}エネルギを使いますが，
+そうでない場合は\emph{顕在}エネルギを使います．
+例えば，絶対エネルギ$h$と顕在エネルギ$h_{\mathrm{s}}$の関係は以下のようになります．
+\begin{align}
+ \label{eq:7.1@2.2.0}
+ h = h_{\mathrm{s}} + \sum_{i}c_{i}\Delta h_{\mathrm{f}}^{i}
+\end{align}
+ここで$c_{i}$と$h_{\mathrm{f}}^{i}$は，それぞれ化学種$i$のモル比と生成熱です．
+ほとんどのケースにおいて，反応によるエネルギ変化を扱いやすいように，顕在エネルギを使います．
+\OFkeyword{energy}に対するキーワード・エントリは，
+例えば\OFkeyword{sensibleEnthalpy}，\OFkeyword{sensibleInternalEnergy}，
+そして\OFkeyword{absoluteEnthalpy}などがあります．
 
 
 \subsection{熱物性データ}
