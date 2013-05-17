@@ -12,7 +12,7 @@ OpenFOAMが提供するすべてのソルバと
 
 チュートリアルのケースは\OFtool{blockMesh}の前処理ツールを使用して記述し，
 OpenFOAMのソルバで動かし，\OFtool{paraFoam}を使用して後処理を行います．
-OpenFOAMのサポートするサードパーティの後処理ツールでアクセスする
+OpenFOAMのサポートするサードパーティの後処理ツールにアクセスする
 ユーザには次の選択肢があります．
 \OFtool{paraFoam}を使用しチュートリアルを進めるか，
 または後処理が必要な際に
@@ -47,9 +47,9 @@ cp -r $FOAM_TUTORIALS $FOAM_RUN
 \index{チュートリアル!てんじょうくどうのキャビティながれ@天井駆動のキャビティ流れ}%
 \index{キャビティながれ@キャビティ流れ}%
 このチュートリアルは2次元正方形領域の等温非圧縮性流れに関して，
-プリプロセス，計算，ポストプロセスする方法を解説します．
+前処理，計算，後処理する方法を解説します．
 \autoref{fig:2.1}に
-正方形のすべての境界が壁面境界であるジオメトリを示します．
+正方形のすべての境界が壁面境界とした形状を示します．
 上の壁面境界は$x$軸方向に$1\unit{m/s}$の速度ではたらき，
 他の三つの壁面境界は静止しています．
 チュートリアルにおいてはこれを解くにあたって，まず
@@ -82,8 +82,9 @@ cp -r $FOAM_TUTORIALS $FOAM_RUN
 ケースファイルは\OFthirdparty{emacs}や\OFthirdparty{vi}，
 \OFthirdparty{gedit}，\OFthirdparty{kate}，\OFthirdparty{nedit}などの
 テキストエディタで作成・編集します．
-それは，入出力が初心者でもわかりやすいキーワードをもつ
-ディクショナリ形式が使われているからです．
+編集ファイルがOpenFOAM内に存在するのは、
+入出力が初心者でも理解されるような
+わかりやすいキーワードをもつディクショナリ形式を用いているからです．
 
 解析ケースはメッシュ，物理量，物性，制御パラメータなどの要素を
 含んでいますが\autoref{sec:4.1}において示すように，
@@ -296,7 +297,7 @@ boundaryField
             記述します（\autoref{ssec:4.2.8}に詳述）．
 \end{description}
 このキャビティ流れの解析ケースでは境界は壁面のみですが，
-二つのパッチが使用されています．
+以下に名付けられた二つのパッチに分けます．
 (1) キャビティの固定された側面と底面用の\OFpatch{fixedwall}と，
 (2) キャビティの駆動天井面用の\OFpatch{movingwall}です．
 どちらも$p$が\OFkeyword{zeroGradient}ですが，
@@ -315,7 +316,7 @@ boundaryField
 \texttt{uniform (0 0 0)}になっています（\autoref{ssec:4.2.5}に詳述）．
 
 速度の境界条件は\OFpatch{frontAndBack}パッチと同じ条件です．
-\OFpatch{fixedWall}に関してはすべりなしのため
+\OFpatch{fixedWall}に関してはno-slip条件（すべりなし）のため
 \index{value@\OFkeyword{value}!キーワード}%
 \index{キーワード!value@\OFkeyword{value}}%
 \OFkeyword{value}は\texttt{uniform (0 0 0)}となります．
@@ -332,12 +333,12 @@ boundaryField
 \index{ディクショナリ!transportProperties@\OFdictionary{transportProperties}}%
 \OFdictionary{transportProperties}ディクショナリに保存される
 動粘性係数を指定するだけです．
-\OFdictionary{transportProperties}ディクショナリを開いてエントリを見たり，
+\OFdictionary{transportProperties}ディクショナリを開いてその中身を確認したり，
 編集することができますので，
 \index{ねんせいけいすう@粘性係数!どう@動\jdash}%
 動粘性係数が正しくセットされることを確かめてください．
-動粘性係数は，\OFkeyword{nu} (方程式で見られる
-ギリシア語シンボル$\nu$の音声ラベル)
+動粘性係数は，\OFkeyword{nu} (方程式で用いられる
+ギリシア語のアルファベット$\nu$)
 というキーワードになります．
 まず最初に，このケースはレイノルズ数を$10$で計算します．
 \index{レイノルズすう@レイノルズ数}%
