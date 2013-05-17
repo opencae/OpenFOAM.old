@@ -209,19 +209,19 @@ mergePatchPairs
 
 // ************************************************************************* //
 \end{OFverbatim}
-ファイルの最初はバナー（1--7行）形式のヘッダ情報で，
+まずファイルは（1--7行）タイトル欄にの中にヘッダ情報が含まれており，
 ファイル情報は，波括弧 (\verb|{|\ldots\verb|}|) で囲まれる
 \OFsubdictionary{FoamFile}サブディクショナリの中で記述されます．
 
 今後は，簡便化とスペースの都合上，
-バナーと\OFsubdictionary{FoamFile}サブディクショナリを含む
+タイトルと\OFsubdictionary{FoamFile}サブディクショナリを含む
 ファイルヘッダはケースファイルの引用の際に省きます．
 
-まずファイルは初めにブロックの頂点の座標
+初めにファイルはブロックの頂点の座標
 \index{vertices@\OFkeyword{vertices}!キーワード}%
 \index{キーワード!vertices@\OFkeyword{vertices}}%
-\OFkeyword{vertices}を指定します．
-それに続き，頂点名とセル番号から
+\OFkeyword{vertices}を特定します．
+その後，頂点名とセル番号から
 \index{blocks@\OFkeyword{blocks}!キーワード}%
 \index{キーワード!blocks@\OFkeyword{blocks}}%
 \OFkeyword{blocks}（ここでは一つのみ）を定義します．
@@ -231,7 +231,7 @@ mergePatchPairs
 
 メッシュは\OFdictionary{blockMeshDict}ファイル上で
 \OFtool{blockMesh}を実行すると生成されます．
-ケースディレクトリ内から以下をターミナルに入力するだけです．
+ケースディレクトリ内から以下をターミナルに入力するだけで実行されます．
 \begin{OFverbatim}[terminal]
 blockMesh
 \end{OFverbatim}
@@ -282,8 +282,8 @@ boundaryField
  \item[dimensions]
 \index{dimensions@\OFkeyword{dimensions}!キーワード}%
 \index{キーワード!dimensions@\OFkeyword{dimensions}}%
-            物理量の次元を定義．ここでは動圧，
-            つまり$\unit*{m^{2}s^{-2}}$（\autoref{ssec:4.2.6}に詳述）．
+            物理量の次元を指定します．ここに動圧は，
+            $\unit*{m^{2}s^{-2}}$（\autoref{ssec:4.2.6}に詳述）．
  \item[internalField]
 \index{internalField@\OFkeyword{internalField}!キーワード}%
 \index{キーワード!internalField@\OFkeyword{internalField}}%
@@ -320,7 +320,8 @@ boundaryField
 \index{value@\OFkeyword{value}!キーワード}%
 \index{キーワード!value@\OFkeyword{value}}%
 \OFkeyword{value}は\texttt{uniform (0 0 0)}となります．
-上面は$1\unit{m/s}$で移動するので\texttt{uniform (1 0 0)}で固定値を設定します．
+上面はx方向に$1\unit{m/s}$で移動するので，
+\texttt{uniform (1 0 0)}と\OFkeyword{fixedValue}の条件が必要です．
 
 \subsubsection{物性値}
 \label{sssec:2.1.1.3}
@@ -632,7 +633,7 @@ icoFoam
 \begin{OFverbatim}[terminal]
 icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \end{OFverbatim}%$
-ジョブの進捗は，ターミナルウィンドウに表示されます．
+ジョブの進行過程は，ターミナルウィンドウに表示されます．
 現在の時刻，最大クーラン数，全てのフィールドの初期値と最終的結果を表示します．
 
 
@@ -644,7 +645,7 @@ icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \texttt{cavity.OpenFOAM}ケースモジュールの
 \index{Properties@\PVpanel{Properties}!ウィンドウパネル}%
 \index{ウィンドウパネル!Properties@\PVpanel{Properties}}%
-\PVpanel{Properties}パネルを選んでください．
+\PVpanel{Properties}パネルを選択して下さい．
 ケースモジュールのパネルが存在していないようならば，
 \texttt{cavity.OpenFOAM}が青くハイライトされているか，
 それと並んだ目のボタンは表示が有効であることを示しているか，
@@ -1315,10 +1316,10 @@ mergePatchPairs
 
 \subsubsection{計算時間，時間ステップの変更}
 \label{sssec:2.1.6.2}
-もっとも速い速度と小さいセルが上蓋に面することになり，
+最も速い速度と最小セルがキャビティ上面に位置し，
 したがって，\autoref{sssec:2.1.1.4}で示したように，
-もっとも高いクーラン数が上蓋に面するセルに生じます．
-このようなことから上蓋に面するセルの大きさを見積もることは，
+最大クーラン数がキャビティの上面のセルに生じます．
+このようなことから上面のセルの大きさを見積もることは，
 本ケースにて適当な時間ステップを計算する上で有効です．
 
 一様でないメッシュ勾配を使用している場合，
@@ -1348,13 +1349,13 @@ mergePatchPairs
   \end{cases}
 \end{align}
 \OFcase{cavityGrade}ケースにおいては，各方向のセルの数は$10$であり，
-もっとも大きなセルと小さなセルとの比は$2$，
+もっとも最大セルと最小セルとの比は$2$，
 ブロックの縦横は$0.05\unit{m}$です．
-したがって，もっとも小さなセルサイズは$3.45\unit{mm}$となります．
+したがって，最小セルサイズは$3.45\unit{mm}$となります．
 \autoref{eq:2.2} から時間ステップは，クラーン数を$1$以下に抑えるために
 $3.45\unit{ms}$以下にしなければなりません．
 有意な解析結果を得るためには，
-時間ステップ\OFkeyword{deltaT}を$2.5\unit{ms}$まで短くし，
+時間ステップ\OFkeyword{deltaT}を$2.5\unit{ms}$まで小さくし，
 \OFkeyword{writeInterval}を40とします．
 これより解析結果は$0.1\unit{s}$ごとに書き出されることとなります．
 
@@ -1389,8 +1390,8 @@ cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavityGrade
 mapFields ../cavityFine -consistent
 \end{OFverbatim}%$
 今度は，ケースディレクトリから\OFtool{icoFoam}を実行します．
-そして，ランタイム情報をモニタリングします．
-そして，このケースの完全に収束した結果を見て，
+そして，計算時間の情報をモニタリングします．
+そして，このケースでの収束した結果を見て，
 以前に\autoref{sssec:2.1.5.6}と\autoref{sssec:2.1.5.7}で説明した
 後処理ツールを使って他の結果と比較します．
 
@@ -1532,7 +1533,7 @@ ExecutionTime = 1.02 s  ClockTime = 1 s
 \index{らんりゅうモデル@乱流モデル!RAS}%
 レイノルズ平均シミューレション (RAS) 乱流モデルが
 平均流れの挙動を解くのに用いられ，
-ゆらぎの統計値が計算されています．
+乱れの統計値が計算されています．
 壁関数を伴う標準$k$--$\varepsilon$モデルが
 本チュートリアルの上面が移動する
 キャビティケース（レイノルズ数$10^{4}$）を解くのに用いられています．
@@ -1617,7 +1618,7 @@ $k$と$\varepsilon$は，これらのパラメタを用いて次式で表され�
  \label{eq:2.10}
  k = \frac{1}{2}({U_{x}'}^{2} + {U_{y}'}^{2} + {U_{z}'}^{2})
 \end{align}
-で表されます．各項は$x$，$y$，$z$方向速度ゆらぎ成分です．
+で表されます．各項は$x$，$y$，$z$方向速度乱れ成分です．
 ここで，初期乱流が等方的であると仮定します．
 例えば，${U_{x}'}^{2} = {U_{y}'}^{2} = {U_{z}'}^{2}$となり，
 これら速度は上面速度の$5\unit{\%}$に等しく，
