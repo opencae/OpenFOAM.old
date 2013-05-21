@@ -37,21 +37,21 @@ OpenFOAMのデータを読み込めるようにするモジュールです．
 \OFclass{vtkPV3Foam}にコンパイルされています (バージョン
 2.xの\OFthirdparty{ParaView}に対しては
 \OFclass{PVFoamReader}および\OFclass{vtkFoam}です)．
-最新のバイナリでリリースされているソフトウエアについても適切に走るはずですが，
+最新のバイナリでリリースされているソフトウエアについても適切に動作するはずですが，
 このバージョンの\OFthirdparty{ParaView}をお使いになることを推奨します．
 \OFthirdparty{ParaView}に関する詳細な内容およびドキュメントについては
 \url{http://www.paraview.org}や
 \url{http://www.kitware.com/products/paraviewguide.html}の
 サイトから入手することができます．
 
-\OFthirdparty{ParaView}はそのデータ処理とレンダリングのエンジンに
+\OFthirdparty{ParaView}はそのデータ処理と可視化エンジンとして
 Visualization Toolkit (\OFthirdparty{VTK}) を使っているため，
 \OFthirdparty{VTK}フォーマットであれば，どのようなデータでも読み込むことができます．
 OpenFOAMには\OFtool{foamToVTK}ユーティリティがあり，
 ネイティブな書式のデータを\OFthirdparty{VTK}の書式に変換することができ，
-このことは，VTKベースの画像ツールであれば，OpenFOAMのcaseの
+VTKベースの画像ツールであれば，OpenFOAMのcaseの
 後処理として使えることを意味しています．
-このことは，OpenFOAMで\OFthirdparty{ParaView}を使うことの代替法を提供しています．
+このことは，OpenFOAMで\OFthirdparty{ParaView}を使用するための代替手段を提供しています．
 ユーザには高度な使い方，並列処理における可視化を経験してほしいことから，
 フリーのVisItを推奨します．
 これは，\url{http://llnl.gov/visit/}から入手できます．
@@ -65,18 +65,18 @@ VTKベースのグラフィックツールを用いる方法があります．
 
 \subsection{\OFtool{paraFoam}の概要}
 \label{ssec:6.1.1}
-\OFtool{paraFoam}は，
+\OFtool{paraFoam}を厳密に言えば，
 OpenFOAMで提供されている読み込みモジュールを用いて，
-\OFthirdparty{ParaView}を立ち上げる厳密なスクリプトです．
+\OFthirdparty{ParaView}を立ち上げるスクリプトです．
 他のOpenFOAMのユーティリティ同様に，
-ルートディレクトリのパスまたは \texttt{-case}オプションと，
-引数としてのケース名を入力して実行されます
+ケースディレクトリ内からまたは引数としてケース名に\texttt{-case}オプションからコマンドを
+入力して実行されます．
 \begin{OFverbatim}[terminal]
 paraFoam -case <caseDir>
 \end{OFverbatim}
 \OFthirdparty{ParaView}が立ち上がり，オープンすると\autoref{fig:6.1}のようになります．
 ケースは左側のパネルでコントロールされますが，
-それには次のような項目があります
+それには次のような項目があります．
 \begin{description}
  \item[\PVwindow{Pipeline Browser}]
 \index{Pipeline Browser@\PVwindow{Pipeline Browser}!ウィンドウ}%
@@ -387,7 +387,7 @@ controlキーを組み合わせて行うことができますが，
 \label{sssec:6.1.6.1}
 同一面でのコンタの作成でなく，
 断面のコンタを作成したい場合がよくあります．
-このためには，最初に\PVfilter{Slice}フィルタを用いて，
+そうするには，最初に\PVfilter{Slice}フィルタを用いて，
 コンタをプロットしたい切断面を作成する必要があります．
 この\PVfilter{Slice}フィルタでは，
 ユーザは\PVkeyword{Slice Type}メニューで
