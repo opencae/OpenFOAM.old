@@ -44,14 +44,13 @@ OpenFOAMのデータを読み込めるようにするモジュールです．
 \url{http://www.kitware.com/products/paraviewguide.html}の
 サイトから入手することができます．
 
-\OFthirdparty{ParaView}はそのデータ処理と可視化エンジンとして
+\OFthirdparty{ParaView}はそのデータ処理とレンダリングのエンジンとして
 Visualization Toolkit (\OFthirdparty{VTK}) を使っているため，
 \OFthirdparty{VTK}フォーマットであれば，どのようなデータでも読み込むことができます．
 OpenFOAMには\OFtool{foamToVTK}ユーティリティがあり，
 ネイティブな書式のデータを\OFthirdparty{VTK}の書式に変換することができ，
-VTKベースの画像ツールであれば，OpenFOAMのcaseの
-後処理として使えることを意味しています．
-このことは，OpenFOAMで\OFthirdparty{ParaView}を使用するための代替手段を提供しています．
+つまりVTKベースの画像ツールであれば，OpenFOAMのケースの後処理として使うことができます．
+これは，OpenFOAMで\OFthirdparty{ParaView}を使用する代替の手段となります．
 ユーザには高度な使い方，並列処理における可視化を経験してほしいことから，
 フリーのVisItを推奨します．
 これは，\url{http://llnl.gov/visit/}から入手できます．
@@ -65,12 +64,13 @@ VTKベースのグラフィックツールを用いる方法があります．
 
 \subsection{\OFtool{paraFoam}の概要}
 \label{ssec:6.1.1}
-\OFtool{paraFoam}を厳密に言えば，
-OpenFOAMで提供されている読み込みモジュールを用いて，
+\OFtool{paraFoam}は厳密には，
+OpenFOAMで提供されている読み込みモジュールを用いて
 \OFthirdparty{ParaView}を立ち上げるスクリプトです．
 他のOpenFOAMのユーティリティ同様に，
-ケースディレクトリ内からまたは引数としてケース名に\texttt{-case}オプションからコマンドを
-入力して実行されます．
+ケースディレクトリ内からコマンド一つだけで，
+あるいは引数として\texttt{-case}オプションでケース・パスを付けて，
+実行します．
 \begin{OFverbatim}[terminal]
 paraFoam -case <caseDir>
 \end{OFverbatim}

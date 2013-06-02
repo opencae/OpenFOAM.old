@@ -82,9 +82,9 @@ cp -r $FOAM_TUTORIALS $FOAM_RUN
 ケースファイルは\OFthirdparty{emacs}や\OFthirdparty{vi}，
 \OFthirdparty{gedit}，\OFthirdparty{kate}，\OFthirdparty{nedit}などの
 テキストエディタで作成・編集します．
-編集ファイルがOpenFOAM内に存在するのは、
-入出力が初心者でも理解されるような
-わかりやすいキーワードをもつディクショナリ形式を用いているからです．
+OpenFOAMでは，初心者でも理解できるような
+わかりやすいキーワードをもつディクショナリ形式を用いて入出力を行うため，
+ファイルを直接編集することが可能です．
 
 解析ケースはメッシュ，物理量，物性，制御パラメータなどの要素を
 含んでいますが\autoref{sec:4.1}において示すように，
@@ -209,19 +209,20 @@ mergePatchPairs
 
 // ************************************************************************* //
 \end{OFverbatim}
-まずファイルは（1--7行）タイトル欄にの中にヘッダ情報が含まれており，
-ファイル情報は，波括弧 (\verb|{|\ldots\verb|}|) で囲まれる
-\OFsubdictionary{FoamFile}サブディクショナリの中で記述されます．
+ファイルの最初（1--7行目）にはバナー形式のヘッダ情報があり，
+それから波括弧 (\verb|{|\ldots\verb|}|) で囲まれる
+\OFsubdictionary{FoamFile}サブディクショナリの中に，
+ファイルの情報が記述されています．
 
-今後は，簡便化とスペースの都合上，
-タイトルと\OFsubdictionary{FoamFile}サブディクショナリを含む
-ファイルヘッダはケースファイルの引用の際に省きます．
+簡便化とスペースの都合上，今後ケースファイルを引用する際は，
+バナーと\OFsubdictionary{FoamFile}サブディクショナリを含む
+ファイルヘッダは省きます．
 
-初めにファイルはブロックの頂点の座標
+ファイルの最初には，ブロックの頂点の座標
 \index{vertices@\OFkeyword{vertices}!キーワード}%
 \index{キーワード!vertices@\OFkeyword{vertices}}%
-\OFkeyword{vertices}を特定します．
-その後，頂点名とセル番号から
+\OFkeyword{vertices}を指定します．
+それから，頂点名とセル番号から
 \index{blocks@\OFkeyword{blocks}!キーワード}%
 \index{キーワード!blocks@\OFkeyword{blocks}}%
 \OFkeyword{blocks}（ここでは一つのみ）を定義します．
@@ -282,8 +283,8 @@ boundaryField
  \item[dimensions]
 \index{dimensions@\OFkeyword{dimensions}!キーワード}%
 \index{キーワード!dimensions@\OFkeyword{dimensions}}%
-            物理量の次元を指定します．ここに動圧は，
-            $\unit*{m^{2}s^{-2}}$（\autoref{ssec:4.2.6}に詳述）．
+            物理量の次元を指定します．ここでは動圧，つまり
+            $\unit*{m^{2}s^{-2}}$（\autoref{ssec:4.2.6}に詳述）とします．
  \item[internalField]
 \index{internalField@\OFkeyword{internalField}!キーワード}%
 \index{キーワード!internalField@\OFkeyword{internalField}}%
@@ -297,7 +298,7 @@ boundaryField
             記述します（\autoref{ssec:4.2.8}に詳述）．
 \end{description}
 このキャビティ流れの解析ケースでは境界は壁面のみですが，
-以下に名付けられた二つのパッチに分けます．
+二つのパッチに分けて以下のように名付けます．
 (1) キャビティの固定された側面と底面用の\OFpatch{fixedwall}と，
 (2) キャビティの駆動天井面用の\OFpatch{movingwall}です．
 どちらも$p$が\OFkeyword{zeroGradient}ですが，
@@ -316,12 +317,14 @@ boundaryField
 \texttt{uniform (0 0 0)}になっています（\autoref{ssec:4.2.5}に詳述）．
 
 速度の境界条件は\OFpatch{frontAndBack}パッチと同じ条件です．
-\OFpatch{fixedWall}に関してはno-slip条件（すべりなし）のため
+その他の境界は壁ですが，
+\OFpatch{fixedWall}ではすべりなし (no-slip) 条件を仮定するため，
 \index{value@\OFkeyword{value}!キーワード}%
 \index{キーワード!value@\OFkeyword{value}}%
-\OFkeyword{value}は\texttt{uniform (0 0 0)}となります．
-上面はx方向に$1\unit{m/s}$で移動するので，
-\texttt{uniform (1 0 0)}と\OFkeyword{fixedValue}の条件が必要です．
+\OFkeyword{value}が\texttt{uniform (0 0 0)}の\OFkeyword{fixedValue}とします．
+上面は$x$方向に$1\unit{m/s}$で移動するので，
+こちらも\OFkeyword{fixedValue}ですが，
+\OFkeyword{value}は\texttt{uniform (1 0 0)}とします．
 
 \subsubsection{物性値}
 \label{sssec:2.1.1.3}
@@ -338,8 +341,7 @@ boundaryField
 編集することができますので，
 \index{ねんせいけいすう@粘性係数!どう@動\jdash}%
 動粘性係数が正しくセットされることを確かめてください．
-動粘性係数は，\OFkeyword{nu} (方程式で用いられる
-ギリシア語のアルファベット$\nu$)
+動粘性係数は，\OFkeyword{nu} (数式中で$\nu$と書かれるギリシア文字の音声ラベル)
 というキーワードになります．
 まず最初に，このケースはレイノルズ数を$10$で計算します．
 \index{レイノルズすう@レイノルズ数}%
@@ -645,7 +647,7 @@ icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \texttt{cavity.OpenFOAM}ケースモジュールの
 \index{Properties@\PVpanel{Properties}!ウィンドウパネル}%
 \index{ウィンドウパネル!Properties@\PVpanel{Properties}}%
-\PVpanel{Properties}パネルを選択して下さい．
+\PVpanel{Properties}パネルを選択してください．
 ケースモジュールのパネルが存在していないようならば，
 \texttt{cavity.OpenFOAM}が青くハイライトされているか，
 それと並んだ目のボタンは表示が有効であることを示しているか，
@@ -1316,10 +1318,10 @@ mergePatchPairs
 
 \subsubsection{計算時間，時間ステップの変更}
 \label{sssec:2.1.6.2}
-最も速い速度と最小セルがキャビティ上面に位置し，
-したがって，\autoref{sssec:2.1.1.4}で示したように，
-最大クーラン数がキャビティの上面のセルに生じます．
-このようなことから上面のセルの大きさを見積もることは，
+最も速度が速くて最もサイズの小さいセルが上面に隣接するセルであり，
+\autoref{sssec:2.1.1.4}で示したように，
+この上面のセルにおいてクーラン数が最大となります．
+このようなことから上面に隣接するセルの大きさを見積もることは，
 本ケースにて適当な時間ステップを計算する上で有効です．
 
 一様でないメッシュ勾配を使用している場合，
@@ -1349,7 +1351,7 @@ mergePatchPairs
   \end{cases}
 \end{align}
 \OFcase{cavityGrade}ケースにおいては，各方向のセルの数は$10$であり，
-もっとも最大セルと最小セルとの比は$2$，
+最大セルと最小セルとの比は$2$，
 ブロックの縦横は$0.05\unit{m}$です．
 したがって，最小セルサイズは$3.45\unit{mm}$となります．
 \autoref{eq:2.2} から時間ステップは，クラーン数を$1$以下に抑えるために
@@ -1389,11 +1391,10 @@ $3.45\unit{ms}$以下にしなければなりません．
 cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavityGrade
 mapFields ../cavityFine -consistent
 \end{OFverbatim}%$
-今度は，ケースディレクトリから\OFtool{icoFoam}を実行します．
-そして，計算時間の情報をモニタリングします．
-そして，このケースでの収束した結果を見て，
-以前に\autoref{sssec:2.1.5.6}と\autoref{sssec:2.1.5.7}で説明した
-後処理ツールを使って他の結果と比較します．
+今度は，ケースディレクトリから\OFtool{icoFoam}を実行して，
+計算実行時の情報をモニタリングします．
+そして，\autoref{sssec:2.1.5.6}と\autoref{sssec:2.1.5.7}で説明した
+後処理ツールを使って，収束した結果を見たり，他の結果と比較します．
 
 
 \subsection{レイノルズ数の増大}
@@ -3293,7 +3294,7 @@ blocks
 変更する必要がないことに注意しましょう．
 それらは\OFkeyword{uniform}として明記されており
 フィールド内の要素の数と独立だからです．
-フィールドの初期化はシャープな界面を持つように行いたいものです．
+フィールドの初期化はシャープな界面をもつように行いたいものです．
 つまり，その要素が$\alpha_{1} = 1$または$\alpha_{1} = 0$となるようにです．
 \OFtool{mapFields}によりフィールドを更新すると，
 界面に補間された$0 < \alpha_{1} < 1$となる値が生成される可能性があるので，
