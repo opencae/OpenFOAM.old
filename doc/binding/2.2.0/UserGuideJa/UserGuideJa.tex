@@ -1,0 +1,129 @@
+\documentclass{OFbook}
+\setcounter{secnumdepth}{4}
+\nofiles
+
+\usepackage[dvipdfm]{color}
+\usepackage[dvipdfm]{graphicx}
+\usepackage{mediabb}
+\graphicspath{{./fig/pdf/}}
+\usepackage{ltxtable}
+
+\usepackage[deluxe]{otf}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+
+\usepackage[dvipdfm,
+ bookmarks=true,
+ bookmarksnumbered=true,
+ pdftitle={OpenFOAM User Guide},
+ pdfsubject={Japanese edition},
+ pdfauthor={The Open CAE Society of Japan (www.opencae.jp)},
+ pdfkeywords={OpenFOAM},
+ colorlinks=true,
+ linkcolor=red,
+ filecolor=blue,
+ urlcolor=blue,
+ hidelinks
+ ]{hyperref}[2007/12/08]
+\usepackage{atbegshi}
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+
+\usepackage{OFmacros}
+
+\usepackage{makeidx}
+\makeindex
+\def\seename{$\Longrightarrow$}
+
+\title{ユーザガイド和訳}
+\author{一般社団法人 オープンCAE学会}
+\version{2.2.0}
+\def\thepage{U-\arabic{page}}
+
+% \date{}
+
+
+\makeatletter
+
+\def\OpenFOAM{%
+  {\usefont{T1}{phv}{m}{n}Open}%
+  \kern-0.125\cwd
+  {\fontsize{1.5\cwd}{\cvs}\selectfont\usefont{OMS}{cmsy}{m}{n}\char114}%
+  \kern-0.125\cwd
+  {\usefont{T1}{phv}{m}{n}FOAM}}
+
+\def\maketitle{%
+        \cleardoublepage
+        \thispagestyle{empty}%
+        \setcounter{page}{1}%
+        \null\vfill
+        \begin{center}%
+         {\LARGE\OpenFOAM\textsuperscript{\textregistered}\par}%
+         \vskip1.5\Cvs
+         {\LARGE\gtfamily\sffamily オープンソースCFDツールボックス\par}%
+         \vskip3\Cvs
+         {\LARGE\gtfamily\sffamily ユーザガイドのオープンCAE学会による和訳\par}%
+         \vskip2\Cvs
+         {\LARGE Available free from openfoam.org.\par}%
+        \end{center}%
+        \vskip1.5\Cvs
+        \hfill
+        \vbox{\hsize=.85\textwidth
+        \noindent {\large\sffamily Disclaimer}\par
+        OPENFOAM\textsuperscript{\textregistered} is a registered trade mark of ESI Group.,
+        the producer of the OpenFOAM software and owner of the
+        OPENFOAM\textsuperscript{\textregistered}
+        and OpenCFD\textsuperscript{\textregistered} trade marks.
+        This offering is not approved or endorsed by ESI Group.\par
+        \vskip\Cvs
+        Translated from the original English to Japanese
+        by OpenCAE Society, Japan (www.opencae.jp)\par}%
+        \hfill\null\vfill
+        \begin{center}%
+         {\large Version \@version\par}%
+         {\large\@date\par}%
+        \end{center}%
+        \vfill
+        \global\let\maketitle\relax
+        \global\let\@author\@empty
+        \global\let\@date\@empty
+        \global\let\@title\@empty
+        \global\let\title\relax
+        \global\let\author\relax
+        \global\let\date\relax
+        \global\let\and\relax
+        \newpage}
+
+\makeatother
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\begin{OFdeclaration}
+ \include{copyright}
+ \include{trademarks}
+\end{OFdeclaration}
+
+\tableofcontents
+
+\mainmatter
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+\include{chapter7}
+
+\backmatter
+\makeatletter
+\def\@linkcolor{blue}%
+\makeatother
+\printindex
+
+\end{document}
