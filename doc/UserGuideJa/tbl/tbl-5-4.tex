@@ -5,23 +5,23 @@
 \index{movingWallVelocity@\string\OFboundary{movingWallVelocity}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!movingWallVelocity@\string\OFboundary{movingWallVelocity}}%
  \OFboundary{movingWallVelocity} &
-     ノーマルパッチの値を置き換えるのでパッチのフラックスは$0$ & \OFkeyword{value} \\
+     パッチでのフラックスが$0$となるよう、パッチでの値の法線方向を置き換える． & \OFkeyword{value} \\
 \index{pressureInletVelocity@\string\OFboundary{pressureInletVelocity}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!pressureInletVelocity@\string\OFboundary{pressureInletVelocity}}%
  \OFboundary{pressureInletVelocity} &
-     流入口の$p$が分かっているとき，$\bm{U}$は，フラックスから評価され，
-     パッチはノーマル． & \OFkeyword{value} \\
+     流入口の$p$が分かっているとき，$\bm{U}$の値はフラックスから，
+     法線方向はパッチから評価される． & \OFkeyword{value} \\
 \index{pressureDirectedInletVelocity@\string\OFboundary{pressureDirectedInletVelocity}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!pressureDirectedInletVelocity@\string\OFboundary{pressureDirectedInletVelocity}}%
  \OFboundary{pressureDirectedInletVelocity} &
-     流入口の$p$が分かっているとき，$\bm{U}$は，
-     \OFkeyword{inletDirection}のフラックスから計算される． &
+     流入口の$p$が分かっているとき，$\bm{U}$の値はフラックスから計算され，
+     \OFkeyword{inletDirection}の方向となる． &
          \OFkeyword{value}，\OFkeyword{inletDirection} \\
 \index{surfaceNormalFixedValue@\string\OFboundary{surfaceNormalFixedValue}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!surfaceNormalFixedValue@\string\OFboundary{surfaceNormalFixedValue}}%
  \OFboundary{surfaceNormalFixedValue} &
-     大きさによって，ベクトル境界条件をノーマルパッチに指定します．
-     ベクトルの+veはドメインを指す． & \OFkeyword{value} \\
+     パッチの法線方向にベクトル型境界条件をその大きさによって指定します．
+     領域の外側を示す方向が正です． & \OFkeyword{value} \\
 \index{totalPressure@\string\OFboundary{totalPressure}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!totalPressure@\string\OFboundary{totalPressure}}%
  \OFboundary{totalPressure} &
@@ -43,7 +43,7 @@
 \index{buoyantPressure@\string\OFboundary{buoyantPressure}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!buoyantPressure@\string\OFboundary{buoyantPressure}}%
  \OFboundary{buoyantPressure} &
-     気圧勾配に基づく\OFboundary{fixedGradient}圧を設定する & --- \\
+     気圧勾配に基づく圧力に\OFboundary{fixedGradient}設定する & --- \\
  \\
  \OFboundary{mixed}から派生 \\
  \hline
@@ -85,7 +85,7 @@
 \index{きょうかいじょうけん@境界条件!partialSlip@\string\OFboundary{partialSlip}}%
  \OFboundary{partialSlip} &
      混合\OFboundary{zeroGradient}/\OFboundary{slip}条件は
-     \OFkeyword{valueFraction}による．\OFboundary{slip}ならば$0$． &
+     \OFkeyword{valueFraction}による．$0$ならば\OFboundary{slip}． &
          \OFkeyword{valueFraction} \\
  \hline
 \end{tabularx}

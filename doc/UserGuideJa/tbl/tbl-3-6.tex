@@ -13,7 +13,7 @@
 \index{boxTurb@\OFtool{boxTurb}!ユーティリティ}%
 \index{ユーティリティ!boxTurb@\OFtool{boxTurb}}%
  \OFtool{boxTurb} & 与えられたエネルギスペクトルに適合し，
- 自由に発散する乱流のboxを生成する \\
+ 連続の式を満す乱流のboxを生成する \\
 \index{changeDictionary@\OFtool{changeDictionary}!ユーティリティ}%
 \index{ユーティリティ!changeDictionary@\OFtool{changeDictionary}}%
  \OFtool{changeDictionary} &
@@ -31,8 +31,12 @@
 \index{faceAgglomerate@\OFtool{faceAgglomerate}!ユーティリティ}%
 \index{ユーティリティ!faceAgglomerate@\OFtool{faceAgglomerate}}%
  \OFtool{faceAgglomerate} &
- 形態係数放射モデルを使って境界面を凝集させる．
+ 形態係数放射モデルの解析用に境界面をグルーピングして，
  細かい格子から粗い格子へのマップを書き出す． \\
+\index{foamUpgradeCyclics@\OFtool{foamUpgradeCyclics}!ユーティリティ}%
+\index{ユーティリティ!foamUpgradeCyclics@\OFtool{foamUpgradeCyclics}}%
+ \OFtool{foamUpgradeCyclics} &
+ 分離された周期境界のメッシュや場を更新するツール \\
 \index{foamUpgradeFvSolution@\OFtool{foamUpgradeFvSolution}!ユーティリティ}%
 \index{ユーティリティ!foamUpgradeFvSolution@\OFtool{foamUpgradeFvSolution}}%
  \OFtool{foamUpgradeFvSolution} &
@@ -52,11 +56,11 @@
 \index{viewFactorGen@\OFtool{viewFactorGen}!ユーティリティ}%
 \index{ユーティリティ!viewFactorGen@\OFtool{viewFactorGen}}%
  \OFtool{viewFactorGen} &
- 凝集された面 (\OFtool{faceAgglomerate}) に基づいて，
+ グルーピングされた面 (\OFtool{faceAgglomerate}) に基づいて，
  形態係数放射モデルで使うための形態係数を計算する． \\
 \index{wallFunctionTable@\OFtool{wallFunctionTable}!ユーティリティ}%
 \index{ユーティリティ!wallFunctionTable@\OFtool{wallFunctionTable}}%
- \OFtool{wallFunctionTable} & 乱流の壁関数で使いやすいように表を生成する． \\
+ \OFtool{wallFunctionTable} & 乱流の壁関数で使用される表を生成する． \\
  \\
  \multicolumn{2}{l}{メッシュ生成} \\
  \hline
@@ -131,7 +135,7 @@
  \OFtool{kivaToFoam} & KIVAグリッドをOpenFOAM形式へ変換する \\
 \index{mshToFoam@\OFtool{mshToFoam}!ユーティリティ}%
 \index{ユーティリティ!mshToFoam@\OFtool{mshToFoam}}%
- \OFtool{mshToFoam} & アドベンチャーシステムによって作られた\OFpath{.msh}形式を読み込む \\
+ \OFtool{mshToFoam} & Adventureシステムによって作られた\OFpath{.msh}形式を読み込む \\
 \index{netgenNeutralToFoam@\OFtool{netgenNeutralToFoam}!ユーティリティ}%
 \index{ユーティリティ!netgenNeutralToFoam@\OFtool{netgenNeutralToFoam}}%
  \OFtool{netgenNeutralToFoam} &
@@ -142,7 +146,7 @@
  Plot3dメッシュ（アスキー形式）をOpenFOAM形式に変換 \\
 \index{sammToFoam@\OFtool{sammToFoam}!ユーティリティ}%
 \index{ユーティリティ!sammToFoam@\OFtool{sammToFoam}}%
- \OFtool{sammToFoam} & STAR-CD SAMMメッシュをOpenFOAM形式へ変換する \\
+ \OFtool{sammToFoam} & STAR-CD (v3) SAMMメッシュをOpenFOAM形式へ変換する \\
 \index{star3ToFoam@\OFtool{star3ToFoam}!ユーティリティ}%
 \index{ユーティリティ!star3ToFoam@\OFtool{star3ToFoam}}%
  \OFtool{star3ToFoam} & STAR-CD (v3) PROSTARメッシュをOpenFOAM形式へ変換する \\
@@ -152,7 +156,7 @@
 \index{tetgenToFoam@\OFtool{tetgenToFoam}!ユーティリティ}%
 \index{ユーティリティ!tetgenToFoam@\OFtool{tetgenToFoam}}%
  \OFtool{tetgenToFoam} & tetgenにより書かれた.ele，
- .node，.faceファイルを読み込む \\
+ .node，.faceファイルを変換する \\
 \index{writeMeshObj@\OFtool{writeMeshObj}!ユーティリティ}%
 \index{ユーティリティ!writeMeshObj@\OFtool{writeMeshObj}}%
  \OFtool{writeMeshObj} & メッシュのデバッグのため：
@@ -163,7 +167,7 @@
 \index{attachMesh@\OFtool{attachMesh}!ユーティリティ}%
 \index{ユーティリティ!attachMesh@\OFtool{attachMesh}}%
  \OFtool{attachMesh} & 指定されたメッシュ修正ユーティリティによって
- 位相的に独立したメッシュを付加する \\
+ トポロジ的に独立したメッシュを付加する \\
 \index{autoPatch@\OFtool{autoPatch}!ユーティリティ}%
 \index{ユーティリティ!autoPatch@\OFtool{autoPatch}}%
  \OFtool{autoPatch} & ユーザが指定した角度に基づいて外部面をパッチに分割する \\
@@ -195,24 +199,24 @@
 \index{insideCells@\OFtool{insideCells}!ユーティリティ}%
 \index{ユーティリティ!insideCells@\OFtool{insideCells}}%
  \OFtool{insideCells} & 面の内側に中心があるセルを抽出する．
- 面は閉じていて，個々に接続している必要がある \\
+ 面は閉じていて単一である必要がある \\
 \index{mergeMeshes@\OFtool{mergeMeshes}!ユーティリティ}%
 \index{ユーティリティ!mergeMeshes@\OFtool{mergeMeshes}}%
  \OFtool{mergeMeshes} & 二つのメッシュを合体させる \\
 \index{mergeOrSplitBaffles@\OFtool{mergeOrSplitBaffles}!ユーティリティ}%
 \index{ユーティリティ!mergeOrSplitBaffles@\OFtool{mergeOrSplitBaffles}}%
  \OFtool{mergeOrSplitBaffles} &
- 同じ点を共有する複数の面を探索し，
+ 同じ点を共有する面 (バッフル) を探索し，
  それらの面をマージ，もしくは点を複製する． \\
 \index{mirrorMesh@\OFtool{mirrorMesh}!ユーティリティ}%
 \index{ユーティリティ!mirrorMesh@\OFtool{mirrorMesh}}%
  \OFtool{mirrorMesh} & 与えられた面に対してメッシュの鏡映をつくる． \\
 \index{moveDynamicMesh@\OFtool{moveDynamicMesh}!ユーティリティ}%
 \index{ユーティリティ!moveDynamicMesh@\OFtool{moveDynamicMesh}}%
- \OFtool{moveDynamicMesh} & メッシュの動作と位相変化のユーティリティ \\
+ \OFtool{moveDynamicMesh} & メッシュの移動とトポロジ変化のユーティリティ \\
 \index{moveEngineMesh@\OFtool{moveEngineMesh}!ユーティリティ}%
 \index{ユーティリティ!moveEngineMesh@\OFtool{moveEngineMesh}}%
- \OFtool{moveEngineMesh} & エンジンシミュレーションのためにメッシュを動かすソルバ \\
+ \OFtool{moveEngineMesh} & エンジン解析のためにメッシュを動かすソルバ \\
 \index{moveMesh@\OFtool{moveMesh}!ユーティリティ}%
 \index{ユーティリティ!moveMesh@\OFtool{moveMesh}}%
  \OFtool{moveMesh} & メッシュを動かすソルバ \\
@@ -222,19 +226,17 @@
 \index{polyDualMesh@\OFtool{polyDualMesh}!ユーティリティ}%
 \index{ユーティリティ!polyDualMesh@\OFtool{polyDualMesh}}%
  \OFtool{polyDualMesh} &
-\OFrevision*{意味不明}%
- polyMeshの二重を計算し，
- すべてのフィーチャやパッチのエッジに忠実にする． \\
+ polyMeshの双対を求め，特徴線やパッチの辺を忠実に再現する． \\
 % \index{pointSet@\OFtool{pointSet}!ユーティリティ}%
 % \index{ユーティリティ!pointSet@\OFtool{pointSet}}%
 %  \OFtool{pointSet} & ディクショナリで点のセットを選択する \\
 \index{refineMesh@\OFtool{refineMesh}!ユーティリティ}%
 \index{ユーティリティ!refineMesh@\OFtool{refineMesh}}%
- \OFtool{refineMesh} & 複数の方向にあるセルを細分化する． \\
+ \OFtool{refineMesh} & 複数の方向にセルを細分化する． \\
 \index{rernumberMesh@\OFtool{renumberMesh}!ユーティリティ}%
 \index{ユーティリティ!rernumberMesh@\OFtool{renumberMesh}}%
- \OFtool{renumberMesh} & 行列の帯幅を狭くするためにセルリストに順番を付け直す．
- 全ての時刻ディレクトリから全ての計算領域を読み込み，順番を付け直すことで行う  \\
+ \OFtool{renumberMesh} & 行列の帯幅を狭くするためにセルの順番を付け直す．
+ 全ての時刻ディレクトリから全ての計算領域を読み込み，順番を付け直す \\
 \index{rotateMesh@\OFtool{rotateMesh}!ユーティリティ}%
 \index{ユーティリティ!rotateMesh@\OFtool{rotateMesh}}%
  \OFtool{rotateMesh} & メッシュおよび場を方向$\bm{n}_{1}$から方向$\bm{n}_{2}$へと回転させる \\
@@ -264,7 +266,7 @@
  \OFtool{stitchMesh} & メッシュを縫う \\
 \index{subsetMesh@\OFtool{subsetMesh}!ユーティリティ}%
 \index{ユーティリティ!subsetMesh@\OFtool{subsetMesh}}%
- \OFtool{subsetMesh} & \OFtool{cellSet}に基づいたメッシュの区分を選択する \\
+ \OFtool{subsetMesh} & \OFtool{cellSet}に基づいたメッシュ領域を選択する \\
 \index{topoSet@\OFtool{topoSet}!ユーティリティ}%
 \index{ユーティリティ!topoSet@\OFtool{topoSet}}%
  \OFtool{topoSet} & ディクショナリによって
@@ -276,7 +278,7 @@
 \index{zipUpMesh@\OFtool{zipUpMesh}!ユーティリティ}%
 \index{ユーティリティ!zipUpMesh@\OFtool{zipUpMesh}}%
  \OFtool{zipUpMesh} & 有効な形をもった全ての多面体のセルが閉じていることを確実にするために，
- ぶら下がった頂点をもつメッシュを読み込み，セルを締め上げる \\
+ ぶら下がった頂点をもつメッシュを読み込み，セルを閉じる \\
  \\
  \multicolumn{2}{l}{その他のメッシュ・ツール} \\
  \hline
@@ -360,7 +362,7 @@
 \index{Co@\OFtool{Co}!ユーティリティ}%
 \index{ユーティリティ!Co@\OFtool{Co}}%
  \OFtool{Co} & \OFkeyword{phi}場からクーラン数$\nCo$を計算し，
- \OFclass{surfaceScalarField}として書き出す \\
+ \OFclass{volScalarField}として書き出す \\
 \index{enstrophy@\OFtool{enstrophy}!ユーティリティ}%
 \index{ユーティリティ!enstrophy@\OFtool{enstrophy}}%
  \OFtool{enstrophy} & 速度場\OFkeyword{U}のエンストロフィを計算し，書き出す \\
@@ -373,7 +375,7 @@
  非対称部分の正方形の合計のうち2番目に大きな固有値を計算し，書き出す \\
 \index{Mach@\OFtool{Mach}!ユーティリティ}%
 \index{ユーティリティ!Mach@\OFtool{Mach}}%
- \OFtool{Mach} & 各時刻の速度場\OFkeyword{U}のローカルマッチ番号を計算し，書き出す \\
+ \OFtool{Mach} & 各時刻の速度場\OFkeyword{U}から局所マッハ数を計算し，オプション指定により書き出す \\
 \index{Pe@\OFtool{Pe}!ユーティリティ}%
 \index{ユーティリティ!Pe@\OFtool{Pe}}%
  \OFtool{Pe} & \OFkeyword{phi}場からペクレ数$\nPe$を計算し，
@@ -473,7 +475,7 @@
  \hline
 \index{probeLocations@\OFtool{probeLocations}!ユーティリティ}%
 \index{ユーティリティ!probeLocations@\OFtool{probeLocations}}%
- \OFtool{probeLocations} & 位置を探査する \\
+ \OFtool{probeLocations} & 位置での値を調べる \\
 \index{sample@\OFtool{sample}!ユーティリティ}%
 \index{ユーティリティ!sample@\OFtool{sample}}%
  \OFtool{sample} & 選択した補間スキーム，サンプリング・オプション，
@@ -510,14 +512,14 @@
  \OFtool{postChannel} & チャンネル流計算のポストプロセスデータ \\
 \index{ptot@\OFtool{ptot}!ユーティリティ}%
 \index{ユーティリティ!ptot@\OFtool{ptot}}%
- \OFtool{ptot} &  毎回，全圧を計算する \\
+ \OFtool{ptot} &  時刻毎に全圧を計算する \\
 \index{wdot@\OFtool{wdot}!ユーティリティ}%
 \index{ユーティリティ!wdot@\OFtool{wdot}}%
- \OFtool{wdot} &  wdotを毎回計算し，書き出す \\
+ \OFtool{wdot} &  時刻毎にwdotを計算し，書き出す \\
 \index{writeCellCentres@\OFtool{writeCellCentres}!ユーティリティ}%
 \index{ユーティリティ!writeCellCentres@\OFtool{writeCellCentres}}%
- \OFtool{writeCellCentres} &  三つのコンポーネントを，
- 閾値化してポストプロセスで使えるようにvolScalarFieldsとして書き出す \\
+ \OFtool{writeCellCentres} &  閾値制限してポストプロセスで使えるよう，
+ 格子中心の三つの座標値をvolScalarFieldsとして書き出す \\
  \\
  \multicolumn{2}{l}{面メッシュ (例えばSTL) ツール} \\
  \hline
@@ -534,7 +536,7 @@
  \OFtool{surfaceCheck} & 幾何的・トポロジ的な面の品質をチェックする． \\
 \index{surfaceClean@\OFtool{surfaceClean}!ユーティリティ}%
 \index{ユーティリティ!surfaceClean@\OFtool{surfaceClean}}%
- \OFtool{surfaceClean} & - 邪魔板を除去，- 小さなエッジをつぶして三角形を除去，
+ \OFtool{surfaceClean} & - バッフルを除去，- 小さなエッジをつぶして三角形を除去，
  - 細長い三角形の頂点を底辺に射影してエッジに分解する． \\
 \index{surfaceCoarsen@\OFtool{surfaceCoarsen}!ユーティリティ}%
 \index{ユーティリティ!surfaceCoarsen@\OFtool{surfaceCoarsen}}%
@@ -555,9 +557,7 @@
 \index{ユーティリティ!surfaceInertia@\OFtool{surfaceInertia}}%
  \OFtool{surfaceInertia} & コマンドラインで指定されたtriSurfaceの
  慣性テンソル・慣性主軸・慣性モーメントを計算する．
- 慣性は固形物や薄い殻のものかもしれない．%
-\OFrevision*{？}%
- \\
+ ソリッドもしくは薄い殻の慣性が算出可能．\\
 \index{surfaceMeshConvert@\OFtool{surfaceMeshConvert}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshConvert@\OFtool{surfaceMeshConvert}}%
  \OFtool{surfaceMeshConvert} & オプションでcoordinateSystem上での
@@ -622,7 +622,7 @@
  - borderLineはborderEdgeの接続リスト． \\
 \index{surfaceSubset@\OFtool{surfaceSubset}!ユーティリティ}%
 \index{ユーティリティ!surfaceSubset@\OFtool{surfaceSubset}}%
- \OFtool{surfaceSubset} & triSurfaceの見たい部分だけを選択して区分化する面の解析ツール．
+ \OFtool{surfaceSubset} & triSurfaceの必要な部分だけを選択する面の解析ツール．
  \OFtool{subsetMesh}に基づいている． \\
 \index{surfaceToPatch@\OFtool{surfaceToPatch}!ユーティリティ}%
 \index{ユーティリティ!surfaceToPatch@\OFtool{surfaceToPatch}}%
@@ -637,15 +637,15 @@
  \hline
 \index{decomposePar@\OFtool{decomposePar}!ユーティリティ}%
 \index{ユーティリティ!decomposePar@\OFtool{decomposePar}}%
- \OFtool{decomposePar} & OpenFOAMの平衡計算のために
+ \OFtool{decomposePar} & OpenFOAMの並列計算用に
  ケースのメッシュと計算領域を自動的に分割する \\
 \index{reconstructPar@\OFtool{reconstructPar}!ユーティリティ}%
 \index{ユーティリティ!reconstructPar@\OFtool{reconstructPar}}%
- \OFtool{reconstructPar} & OpenFOAMの平衡計算のために
- 分割したメッシュと計算領域を再構成する \\
+ \OFtool{reconstructPar} & OpenFOAMの並列計算用に
+ 分割したメッシュと計算領域を再構築する \\
 \index{reconstructParMesh@\OFtool{reconstructParMesh}!ユーティリティ}%
 \index{ユーティリティ!reconstructParMesh@\OFtool{reconstructParMesh}}%
- \OFtool{reconstructParMesh} & 幾何情報のみを使ってメッシュを再結合する \\
+ \OFtool{reconstructParMesh} & 幾何情報のみを使ってメッシュを再構築する \\
  \\
  \multicolumn{2}{l}{熱物理に関連したユーティリティ} \\
  \hline

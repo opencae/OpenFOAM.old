@@ -5,7 +5,7 @@
 \index{locationInMesh@\string\OFkeyword{locationInMesh}!キーワード}%
 \index{キーワード!locationInMesh@\string\OFkeyword{locationInMesh}}%
  \OFkeyword{locationInMesh} & メッシュが作成される領域内の位置ベクトル & \OFkeyword{(5 0 0)} \\
- & ベクトルが細分化の前または最中にセルの面と一致してはいけない \\
+ & 位置ベクトルが細分化の前または最中にセルの面と一致してはいけない \\
 \index{maxLocalCells@\string\OFkeyword{maxLocalCells}!キーワード}%
 \index{キーワード!maxLocalCells@\string\OFkeyword{maxLocalCells}}%
  \OFkeyword{maxLocalCells} & 細分化中におけるプロセッサあたりのセルの数の最大値 & \OFkeyword{1e+06} \\
@@ -23,12 +23,12 @@
  \OFkeyword{resolveFeatureAngle} & 角度がこの値を超えている交点をもつセルに最高レベルの細分化を行う & \OFkeyword{30} \\
 \index{features@\string\OFkeyword{features}!キーワード}%
 \index{キーワード!features@\string\OFkeyword{features}}%
- \OFkeyword{features} & 細分化に対する機能リスト \\
+ \OFkeyword{features} & 細分化する特徴辺のリスト \\
 \index{refinementSurfaces@\string\OFkeyword{refinementSurfaces}!キーワード}%
 \index{キーワード!refinementSurfaces@\string\OFkeyword{refinementSurfaces}}%
- \OFkeyword{refinementSurfaces} & 細分化に対する表面ディクショナリ \\
+ \OFkeyword{refinementSurfaces} & 細分化する表面のディクショナリ \\
 \index{refinementRegions@\string\OFkeyword{refinementRegions}!キーワード}%
 \index{キーワード!refinementRegions@\string\OFkeyword{refinementRegions}}%
- \OFkeyword{refinementRegions} & 細分化に対する領域ディクショナリ \\
+ \OFkeyword{refinementRegions} & 細分化する領域のディクショナリ \\
  \hline
 \end{tabularx}

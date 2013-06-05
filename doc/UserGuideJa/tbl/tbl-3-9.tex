@@ -1,6 +1,6 @@
 %#! platex UserGuideJa
 \begin{longtable}{lX}
- \multicolumn{2}{l}{非圧縮性流れ用乱流モデル ---
+ \multicolumn{2}{l}{非圧縮性流れ用RAS乱流モデル ---
 \index{incompressibleRASModels@\string\OFclass{incompressibleRASModels}!ライブラリ}%
 \index{ライブラリ!incompressibleRASModels@\string\OFclass{incompressibleRASModels}}%
  \OFclass{incompressibleRASModels}} \\
@@ -60,7 +60,7 @@
 \index{LaunderGibsonRSTM@\OFclass{LaunderGibsonRSTM}!モデル}%
 \index{モデル!LaunderGibsonRSTM@\OFclass{LaunderGibsonRSTM}}%
  \OFclass{LaunderGibsonRSTM} &
-     壁反射条件付きLaunder--Gibson RSTM \\
+     壁反射項付きLaunder--Gibson RSTM \\
 \index{realizableKE@\OFclass{realizableKE}!モデル}%
 \index{モデル!realizableKE@\OFclass{realizableKE}}%
  \OFclass{realizableKE} &
@@ -124,13 +124,13 @@
 \index{simpleFilter@\OFclass{simpleFilter}!モデル}%
 \index{モデル!simpleFilter@\OFclass{simpleFilter}}%
  \OFclass{simpleFilter} &
-     単一フィルタ \\
+     単純フィルタ \\
 \index{anisotropicFilter@\OFclass{anisotropicFilter}!モデル}%
 \index{モデル!anisotropicFilter@\OFclass{anisotropicFilter}}%
  \OFclass{anisotropicFilter} &
      異方性フィルタ \\
  \\
- \multicolumn{2}{l}{Large-eddyシミュレーション差分 ---
+ \multicolumn{2}{l}{Large-eddyシミュレーションのデルタ ---
 \index{LESdeltas@\string\OFclass{LESdeltas}!ライブラリ}%
 \index{ライブラリ!LESdeltas@\string\OFclass{LESdeltas}}%
  \OFclass{LESdeltas}} \\
@@ -142,7 +142,7 @@
 \index{cubeRootVolDelta@\OFclass{cubeRootVolDelta}!モデル}%
 \index{モデル!cubeRootVolDelta@\OFclass{cubeRootVolDelta}}%
  \OFclass{cubeRootVolDelta} &
-     セル体積の立方根差分 \\
+     セル体積の立方根のデルタ \\
 \index{maxDeltaxyz@\OFclass{maxDeltaxyz}!モデル}%
 \index{モデル!maxDeltaxyz@\OFclass{maxDeltaxyz}}%
  \OFclass{maxDeltaxyz} &
@@ -150,7 +150,7 @@
 \index{smoothDelta@\OFclass{smoothDelta}!モデル}%
 \index{モデル!smoothDelta@\OFclass{smoothDelta}}%
  \OFclass{smoothDelta} &
-     差分のスムージング \\
+     スムージングのデルタ \\
  \\
  \multicolumn{2}{l}{非圧縮LESモデル ---
 \index{incompressibleLESmodels@\string\OFclass{incompressibleLESmodels}!ライブラリ}%
@@ -168,11 +168,11 @@
 \index{dynSmagorinsky@\OFclass{dynSmagorinsky}!モデル}%
 \index{モデル!dynSmagorinsky@\OFclass{dynSmagorinsky}}%
  \OFclass{dynSmagorinsky} &
-     ダイナミック・スマゴリンスキ \\
+     ダイナミックSmagorinsky \\
 \index{homogenousDynSmagorinsky@\OFclass{homogenousDynSmagorinsky}!モデル}%
 \index{モデル!homogenousDynSmagorinsky@\OFclass{homogenousDynSmagorinsky}}%
  \OFclass{homogenousDynSmagorinsky} &
-     同次ダイナミック・スマゴリンスキ・モデル \\
+     同次ダイナミックSmagorinskyモデル \\
 \index{dynLagrangian@\OFclass{dynLagrangian}!モデル}%
 \index{モデル!dynLagrangian@\OFclass{dynLagrangian}}%
  \OFclass{dynLagrangian} &
@@ -184,11 +184,11 @@
 \index{mixedSmagorinsky@\OFclass{mixedSmagorinsky}!モデル}%
 \index{モデル!mixedSmagorinsky@\OFclass{mixedSmagorinsky}}%
  \OFclass{mixedSmagorinsky} &
-     スマゴリンスキとスケール相似の混合モデル \\
+     Smagorinskyとスケール相似の混合モデル \\
 \index{dynMixedSmagorinsky@\OFclass{dynMixedSmagorinsky}!モデル}%
 \index{モデル!dynMixedSmagorinsky@\OFclass{dynMixedSmagorinsky}}%
  \OFclass{dynMixedSmagorinsky} &
-     ダイナミック・スマゴリンスキとスケール相似の混合モデル \\
+     ダイナミックSmagorinskyとスケール相似の混合モデル \\
 \index{kOmegaSSTSAS@\OFclass{kOmegaSSTSAS}!モデル}%
 \index{モデル!kOmegaSSTSAS@\OFclass{kOmegaSSTSAS}}%
  \OFclass{kOmegaSSTSAS} &
@@ -200,11 +200,11 @@
 \index{dynOneEqEddy@\OFclass{dynOneEqEddy}!モデル}%
 \index{モデル!dynOneEqEddy@\OFclass{dynOneEqEddy}}%
  \OFclass{dynOneEqEddy} &
-     同時$k$方程式渦粘性モデル \\
+     ダイナミック$k$方程式渦粘性モデル \\
 \index{locDynOneEqEddy@\OFclass{locDynOneEqEddy}!モデル}%
 \index{モデル!locDynOneEqEddy@\OFclass{locDynOneEqEddy}}%
  \OFclass{locDynOneEqEddy} &
-     局部同時$k$方程式渦粘性モデル \\
+     局所ダイナミック$k$方程式渦粘性モデル \\
 \index{spectEddyVisc@\OFclass{spectEddyVisc}!モデル}%
 \index{モデル!spectEddyVisc@\OFclass{spectEddyVisc}}%
  \OFclass{spectEddyVisc} &
@@ -212,11 +212,11 @@
 \index{LRDDiffStress@\OFclass{LRDDiffStress}!モデル}%
 \index{モデル!LRDDiffStress@\OFclass{LRDDiffStress}}%
  \OFclass{LRDDiffStress} &
-     LRR差応力モデル \\
+     LRR差分応力モデル \\
 \index{DeardorffDiffStress@\OFclass{DeardorffDiffStress}!モデル}%
 \index{モデル!DeardorffDiffStress@\OFclass{DeardorffDiffStress}}%
  \OFclass{DeardorffDiffStress} &
-     Deardorff差応力モデル \\
+     Deardorff差分応力モデル \\
 \index{SpalartAllmaras@\OFclass{SpalartAllmaras}!モデル}%
 \index{モデル!SpalartAllmaras@\OFclass{SpalartAllmaras}}%
  \OFclass{SpalartAllmaras} &
@@ -246,7 +246,7 @@
 \index{dynOneEqEddy@\OFclass{dynOneEqEddy}!モデル}%
 \index{モデル!dynOneEqEddy@\OFclass{dynOneEqEddy}}%
  \OFclass{dynOneEqEddy} &
-     同時$k$方程式渦粘性モデル \\
+     ダイナミック$k$方程式渦粘性モデル \\
 \index{lowReOneEqEddy@\OFclass{lowReOneEqEddy}!モデル}%
 \index{モデル!lowReOneEqEddy@\OFclass{lowReOneEqEddy}}%
  \OFclass{lowReOneEqEddy} &
@@ -254,7 +254,7 @@
 \index{DeardorffDiffStress@\OFclass{DeardorffDiffStress}!モデル}%
 \index{モデル!DeardorffDiffStress@\OFclass{DeardorffDiffStress}}%
  \OFclass{DeardorffDiffStress} &
-     Deardorff差応力モデル \\
+     Deardorff差分応力モデル \\
 \index{SpalartAllmaras@\OFclass{SpalartAllmaras}!モデル}%
 \index{モデル!SpalartAllmaras@\OFclass{SpalartAllmaras}}%
  \OFclass{SpalartAllmaras} &

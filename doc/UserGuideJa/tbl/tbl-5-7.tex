@@ -1,32 +1,34 @@
-%#! platex UserGuideJa
+% #! platex UserGuideJa
 \begin{tabularx}{\textwidth}{lXl}
  キーワード & 意味 & 例 \\
  \hline
 \index{castellatedMesh@\string\OFkeyword{castellatedMesh}!キーワード}%
 \index{キーワード!castellatedMesh@\string\OFkeyword{castellatedMesh}}%
- \OFkeyword{castellatedMesh} & ギザギザのメッシュを作成するかどうか & \OFkeyword{true} \\
+ \OFkeyword{castellatedMesh} & 階段状のメッシュを作成するか & \OFkeyword{true} \\
 \index{snap@\string\OFkeyword{snap}!キーワード}%
 \index{キーワード!snap@\string\OFkeyword{snap}}%
- \OFkeyword{snap} & 表面のスナップの有無 & \OFkeyword{true} \\
+ \OFkeyword{snap} & 表面への適合操作をするか & \OFkeyword{true} \\
 \index{doLayers@\string\OFkeyword{doLayers}!キーワード}%
 \index{キーワード!doLayers@\string\OFkeyword{doLayers}}%
- \OFkeyword{doLayers} & レイヤの追加の有無 & \OFkeyword{true} \\
+ \OFkeyword{doLayers} & レイヤの追加をするか & \OFkeyword{true} \\
 \index{mergeTolerance@\string\OFkeyword{mergeTolerance}!キーワード}%
 \index{キーワード!mergeTolerance@\string\OFkeyword{mergeTolerance}}%
- \OFkeyword{mergeTolerance} & 初期メッシュの有界ボックスの比として許容値をまとめる & \OFkeyword{1e-06} \\
+ \OFkeyword{mergeTolerance} &
+ マージする許容値．初期メッシュのバウンディングボックスに対する比． &
+ \OFkeyword{1e-06} \\
 \index{debug@\string\OFkeyword{debug}!キーワード}%
 \index{キーワード!debug@\string\OFkeyword{debug}}%
- \OFkeyword{debug} & 中間メッシュと画面プリントの記述の制御 \\
- & 最終メッシュのみ記述 & \OFkeyword{0} \\
- & 中間メッシュの記述 & \OFkeyword{1} \\
- & 後処理のため\OFkeyword{cellLevel}を付けた\OFkeyword{volScalarField}を記述 & \OFkeyword{2} \\
- & \OFpath{.obj}ファイルとして現在の交点を記述 & \OFkeyword{4} \\
+ \OFkeyword{debug} & 中間メッシュと画面出力の制御 \\
+ & 最終メッシュのみ出力 & \OFkeyword{0} \\
+ & 中間メッシュの出力 & \OFkeyword{1} \\
+ & 後処理のため\OFkeyword{cellLevel}を付けた\OFkeyword{volScalarField}を出力 & \OFkeyword{2} \\
+ & \OFpath{.obj}ファイルとして中間時の交線を出力 & \OFkeyword{4} \\
 \index{geometry@\string\OFkeyword{geometry}!キーワード}%
 \index{キーワード!geometry@\string\OFkeyword{geometry}}%
- \OFkeyword{geometry} & 表面に使用した全てのジオメトリのサブディクショナリ \\
+ \OFkeyword{geometry} & 使用する全表面形状のサブディクショナリ \\
 \index{castellatedMeshControls@\string\OFkeyword{castellatedMeshControls}!キーワード}%
 \index{キーワード!castellatedMeshControls@\string\OFkeyword{castellatedMeshControls}}%
- \OFkeyword{castellatedMeshControls} & 城壁メッシュ制御のサブディクショナリ \\
+ \OFkeyword{castellatedMeshControls} & 階段状メッシュ制御のサブディクショナリ \\
 \index{snapControls@\string\OFkeyword{snapControls}!キーワード}%
 \index{キーワード!snapControls@\string\OFkeyword{snapControls}}%
  \OFkeyword{snapControls} & 表面スナップ制御のサブディクショナリ \\
@@ -35,6 +37,6 @@
  \OFkeyword{addLayersControls} & レイヤ追加制御のサブディクショナリ \\
 \index{meshQualityControls@\string\OFkeyword{meshQualityControls}!キーワード}%
 \index{キーワード!meshQualityControls@\string\OFkeyword{meshQualityControls}}%
- \OFkeyword{meshQualityControls} & メッシュ特性制御のサブディクショナリ \\
+ \OFkeyword{meshQualityControls} & メッシュ品質制御のサブディクショナリ \\
  \hline
 \end{tabularx}

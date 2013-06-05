@@ -64,7 +64,7 @@
  \OFkeyword{writeInterval} & 上記の\OFkeyword{writeControl}と関連して用いられるスカラ \\
 \index{purgeWrite@\OFkeyword{purgeWrite}!キーワード}%
 \index{キーワード!purgeWrite@\OFkeyword{purgeWrite}}%
- \OFkeyword{purgeWrite} & 周期的ベースで時刻ディレクトリを上書きすることによって
+ \OFkeyword{purgeWrite} & 周期的に時刻ディレクトリを上書きすることによって
  保存される時刻ディレクトリの数の限界を表す整数．
  たとえば$t_{0} = 5\unit{s}$，$\Delta t = 1\unit{s}$，\texttt{purgeWrite 2;}のとき，
  \OFpath{6}と\OFpath{7}，二つのディレクトリにデータが書き込まれた後，
@@ -77,13 +77,13 @@
  \OFkeyword{writeFormat} & データファイルのフォーマットを指定する \\
 \index{ascii@\OFkeyword{ascii}!キーワードエントリ}%
 \index{キーワードエントリ!ascii@\OFkeyword{ascii}}%
- \hskip1em- \OFkeyword{ascii}\dag & ASCIIフォーマット，writePrecisionの有効桁まで書かれる \\
+ \hskip1em- \OFkeyword{ascii}\dag & ASCIIフォーマット，\OFkeyword{writePrecision}の有効桁まで書かれる \\
 \index{binary@\OFkeyword{binary}!キーワードエントリ}%
 \index{キーワードエントリ!binary@\OFkeyword{binary}}%
  \hskip1em- \OFkeyword{binary} & バイナリー・フォーマット \\
 \index{writePrecision@\OFkeyword{writePrecision}!キーワード}%
 \index{キーワード!writePrecision@\OFkeyword{writePrecision}}%
- \OFkeyword{writePrecision} & 上記のwriteFormatに関連して使用される整数，デフォルトでは6. \\
+ \OFkeyword{writePrecision} & 上記の\OFkeyword{writeFormat}に関連して使用される整数，デフォルトでは6\dag. \\
 \index{writeCompression@\OFkeyword{writeCompression}!キーワード}%
 \index{キーワード!writeCompression@\OFkeyword{writeCompression}}%
  \OFkeyword{writeCompression} & データファイルの圧縮を指定する \\
@@ -107,7 +107,7 @@
  \hskip1em- \OFkeyword{general}\dag & 指数が$-4$未満もしくは\OFkeyword{timePrecision}で指定された指数以上のとき\OFkeyword{scientific}のフォーマットを指定する \\
 \index{timePrecision@\OFkeyword{timePrecision}!キーワード}%
 \index{キーワード!timePrecision@\OFkeyword{timePrecision}}%
- \OFkeyword{timePrecision} & 上記のtimeFormatに関連して使用される整数，デフォルトでは6 \\
+ \OFkeyword{timePrecision} & 上記のtimeFormatに関連して使用される整数，デフォルトでは6\dag \\
 \index{graphFormat@\OFkeyword{graphFormat}!キーワード}%
 \index{キーワード!graphFormat@\OFkeyword{graphFormat}}%
  \OFkeyword{graphFormat} & アプリケーションによって描かれるグラフデータのフォーマット \\
@@ -129,7 +129,7 @@
 \index{adjustTimeStep@\OFkeyword{adjustTimeStep}!キーワード}%
 \index{キーワード!adjustTimeStep@\OFkeyword{adjustTimeStep}}%
  \OFkeyword{adjustTimeStep} & 時間ステップをシミュレーション実行中に
- 調整するかどうかを決めるyes\dag/noスイッチ．通常は\OFkeyword{maxCo}に従う． \\
+ 調整するかどうかを決めるyes\dag/noスイッチ．通常は以下に従う． \\
 \index{maxCo@\OFkeyword{maxCo}!キーワード}%
 \index{キーワード!maxCo@\OFkeyword{maxCo}}%
  \OFkeyword{maxCo} & クーラン数の最大値．例えば\OFkeyword{0.5} \\

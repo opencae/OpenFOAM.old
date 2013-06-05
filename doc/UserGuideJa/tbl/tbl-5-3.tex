@@ -1,13 +1,13 @@
 %#! platex UserGuideJa
 \begin{tabularx}{\textwidth}{lXp{8zw}}
- 種類 & 物理量$\phi$に対して与える条件 & Data to specify \\
+ 種類 & 物理量$\phi$に対して与える条件 & 与えるデータ \\
  \hline
 \index{fixedValue@\string\OFboundary{fixedValue}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!fixedValue@\string\OFboundary{fixedValue}}%
- \OFboundary{fixedValue} & $\phi$の値が一定 & \OFkeyword{value} \\
+ \OFboundary{fixedValue} & $\phi$の値を指定 & \OFkeyword{value} \\
 \index{fixedGradient@\string\OFboundary{fixedGradient}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!fixedGradient@\string\OFboundary{fixedGradient}}%
- \OFboundary{fixedGradient} & $\phi$の勾配が一定 & \OFkeyword{gradient} \\
+ \OFboundary{fixedGradient} & $\phi$の勾配を指定 & \OFkeyword{gradient} \\
 \index{zeroGradient@\string\OFboundary{zeroGradient}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!zeroGradient@\string\OFboundary{zeroGradient}}%
  \OFboundary{zeroGradient} & $\phi$の勾配が$0$ & -- \\
@@ -16,7 +16,7 @@
  \OFboundary{calculated} & $\phi$の境界条件が他の物理量から決まる & -- \\
 \index{mixed@\string\OFboundary{mixed}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!mixed@\string\OFboundary{mixed}}%
- \OFboundary{mixed} & \OFboundary{fixedValue}と\OFboundary{fixedGradient}の組み合わせ，
+ \OFboundary{mixed} & \OFboundary{fixedValue}と\OFboundary{fixedGradient}の組み合わせ． 
      \OFkeyword{valueFraction}に依存する条件 &
          \OFkeyword{refValue}，\hfil\break
 \index{refGradient@\string\OFkeyword{refGradient}!キーワード}%
@@ -32,8 +32,9 @@
 \index{きょうかいじょうけん@境界条件!directionMixed@\string\OFboundary{directionMixed}}%
  \OFboundary{directionMixed} &
      \OFrevision*{要再訳}%
-     例えば法線方向と接線方向の異なるレベルでの組み合わせのような，
-     テンソルの\OFkeyword{valueFraction}に対しては\OFkeyword{mixed}条件 &
+     テンソル型の\OFkeyword{valueFraction}を用いる\OFkeyword{mixed}条件．
+     例えば法線方向と接線方向で異なる取り扱いを行う場合
+      &
          \OFkeyword{refValue}，\hfil\break
          \OFkeyword{refGradient}，\hfil\break
          \OFkeyword{valueFraction}，\hfil\break

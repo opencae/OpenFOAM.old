@@ -5,47 +5,48 @@
 \index{maxNonOrtho@\string\OFkeyword{maxNonOrtho}!キーワード}%
 \index{キーワード!maxNonOrtho@\string\OFkeyword{maxNonOrtho}}%
  \OFkeyword{maxNonOrtho} &
-     非直交性上限角．\OFkeyword{180}は不可 &
+     非直交性上限角．\OFkeyword{180}にすると無効 &
          \OFkeyword{65} \\
 \index{maxBoundarySkewness@\string\OFkeyword{maxBoundarySkewness}!キーワード}%
 \index{キーワード!maxBoundarySkewness@\string\OFkeyword{maxBoundarySkewness}}%
  \OFkeyword{maxBoundarySkewness} &
-     境界面ひずみ上限値．${} < 0$は不可 &
+     境界面ひずみ上限値．${} < 0$で無効 &
          \OFkeyword{20} \\
 \index{maxInternalSkewness@\string\OFkeyword{maxInternalSkewness}!キーワード}%
 \index{キーワード!maxInternalSkewness@\string\OFkeyword{maxInternalSkewness}}%
  \OFkeyword{maxInternalSkewness} &
-     内部面ひずみ上限値．${} < 0$は不可 &
+     内部面ひずみ上限値．${} < 0$で無効 &
          \OFkeyword{4} \\
 \index{maxConcave@\string\OFkeyword{maxConcave}!キーワード}%
 \index{キーワード!maxConcave@\string\OFkeyword{maxConcave}}%
  \OFkeyword{maxConcave} &
-     凹み上限角．\OFkeyword{180}は不可 &
+     凹み上限角．\OFkeyword{180}で無効 &
          \OFkeyword{80} \\
 \index{minFlatness@\string\OFkeyword{minFlatness}!キーワード}%
 \index{キーワード!minFlatness@\string\OFkeyword{minFlatness}}%
  \OFkeyword{minFlatness} &
-     実際の領域に対する最小の投影面積比率．\OFkeyword{-1}は不可 &
+     実際の領域に対する最小の投影面積比率．\OFkeyword{-1}で無効 &
          \OFkeyword{0.5} \\
 \index{minVol@\string\OFkeyword{minVol}!キーワード}%
 \index{キーワード!minVol@\string\OFkeyword{minVol}}%
  \OFkeyword{minVol} &
-     最小のピラミッドボリューム．大きな絶対値の負の数（例えば\OFkeyword{-1e30}）は不可 &
+     最小のピラミッドボリューム．大きな絶対値の負の数
+     （例えば\OFkeyword{-1e30}）で無効 &
          \OFkeyword{1e-13} \\
 \index{minArea@\string\OFkeyword{minArea}!キーワード}%
 \index{キーワード!minArea@\string\OFkeyword{minArea}}%
  \OFkeyword{minArea} &
-     最小面領域．${} < 0$は不可 &
+     最小の界面の面積．${} < 0$で無効 &
          \OFkeyword{} \\
 \index{minTwist@\string\OFkeyword{minTwist}!キーワード}%
 \index{キーワード!minTwist@\string\OFkeyword{minTwist}}%
  \OFkeyword{minTwist} &
-     最小面ねじれ．${} < -1$は不可 &
+     最小の界面のねじれ．${} < -1$で無効 &
          \OFkeyword{0.05} \\
 \index{minDeterminant@\string\OFkeyword{minDeterminant}!キーワード}%
 \index{キーワード!minDeterminant@\string\OFkeyword{minDeterminant}}%
  \OFkeyword{minDeterminant} &
-     最小正常セルの行列式．$\mbox{\OFkeyword{1}} = \mbox{\OFkeyword{hex}}$，${} \le 0$は不法なセル &
+     最小正規化セル行列式．$\mbox{\OFkeyword{1}}$で六面体．${} \le 0$は不法なセル &
          \OFkeyword{0.001} \\
 \index{minFaceWeight@\string\OFkeyword{minFaceWeight}!キーワード}%
 \index{キーワード!minFaceWeight@\string\OFkeyword{minFaceWeight}}%
@@ -60,16 +61,16 @@
 \index{minTriangleTwist@\string\OFkeyword{minTriangleTwist}!キーワード}%
 \index{キーワード!minTriangleTwist@\string\OFkeyword{minTriangleTwist}}%
  \OFkeyword{minTriangleTwist} &
-     Fluent計算可能性では${} > 0$ & \\
+     Fluent互換では${} > 0$ & \\
 \index{nSmoothScale@\string\OFkeyword{nSmoothScale}!キーワード}%
 \index{キーワード!nSmoothScale@\string\OFkeyword{nSmoothScale}}%
  \OFkeyword{nSmoothScale} &
-     エラー分布反復数 &
+     誤差分配反復数 &
          \OFkeyword{4} \\
 \index{errorReduction@\string\OFkeyword{errorReduction}!キーワード}%
 \index{キーワード!errorReduction@\string\OFkeyword{errorReduction}}%
  \OFkeyword{errorReduction} &
-     エラー点の置換のための減少量 &
+     エラー点の後方移動量のスケーリング係数 &
          \OFkeyword{} \\
 \index{relaxed@\string\OFkeyword{relaxed}!キーワード}%
 \index{キーワード!relaxed@\string\OFkeyword{relaxed}}%
