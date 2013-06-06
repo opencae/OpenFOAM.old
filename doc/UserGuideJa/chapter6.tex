@@ -964,7 +964,7 @@ ExecutionTime = 0.19 s
 \label{ssec:6.6.1}
 \index{foamJob@\OFtool{foamJob}!スクリプト／エイリアス}%
 \index{スクリプト／エイリアス!foamJob@\OFtool{foamJob}}%
-ユーザは，残差や反復回数，クーラン数などが，レポートデータとして
+ユーザは，残差や反復回数，Courant数などが，レポートデータとして
 スクリーンを流れるのを確認すれば十分かもしれません．
 その代わりに，レポートをログファイルにリダイレクトすることで
 計算速度を向上させることもできます．
@@ -995,7 +995,7 @@ tail -f log
 ジョブをモニタするには，限界があります．
 特に，長い期間にわたって，傾向を抽出するのは困難です．
 したがって，\OFtool{foamLog}スクリプトによって残差や反復回数，
-クーラン数のデータを抽出し，グラフにプロットできるように
+Courant数のデータを抽出し，グラフにプロットできるように
 一連のファイルとして出力することができます．
 スクリプトは次のように実行します．
 \begin{OFverbatim}[terminal]
@@ -1021,7 +1021,7 @@ foamLog <logFile>
 うまくそれができるようにファイルを作成します．
 \OFpath{cavity}チュートリアルの例では次のファイルがあります．
 \begin{itemize}
- \item クーラン数，\OFpath{Courant\_0}
+ \item Courant数，\OFpath{Courant\_0}
  \item $U_{x}$方程式の初期と最終の残差である，
        \OFpath{Ux\_0}と\OFpath{UxFinalRes\_0}，そして反復回数の
        \OFpath{UxIters\_0} (そしてこれと同等の$U_{y}$データ)

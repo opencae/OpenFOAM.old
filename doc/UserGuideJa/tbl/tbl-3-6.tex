@@ -361,7 +361,7 @@
  \hline
 \index{Co@\OFtool{Co}!ユーティリティ}%
 \index{ユーティリティ!Co@\OFtool{Co}}%
- \OFtool{Co} & \OFkeyword{phi}場からクーラン数$\nCo$を計算し，
+ \OFtool{Co} & \OFkeyword{phi}場からCourant数$\nCo$を計算し，
  \OFclass{volScalarField}として書き出す \\
 \index{enstrophy@\OFtool{enstrophy}!ユーティリティ}%
 \index{ユーティリティ!enstrophy@\OFtool{enstrophy}}%
@@ -375,10 +375,10 @@
  非対称部分の正方形の合計のうち2番目に大きな固有値を計算し，書き出す \\
 \index{Mach@\OFtool{Mach}!ユーティリティ}%
 \index{ユーティリティ!Mach@\OFtool{Mach}}%
- \OFtool{Mach} & 各時刻の速度場\OFkeyword{U}から局所マッハ数を計算し，オプション指定により書き出す \\
+ \OFtool{Mach} & 各時刻の速度場\OFkeyword{U}から局所Mach数を計算し，オプション指定により書き出す \\
 \index{Pe@\OFtool{Pe}!ユーティリティ}%
 \index{ユーティリティ!Pe@\OFtool{Pe}}%
- \OFtool{Pe} & \OFkeyword{phi}場からペクレ数$\nPe$を計算し，
+ \OFtool{Pe} & \OFkeyword{phi}場からPeclet数$\nPe$を計算し，
  \OFclass{surfaceScalarField}として書き出す \\
 \index{Q@\OFtool{Q}!ユーティリティ}%
 \index{ユーティリティ!Q@\OFtool{Q}}%
@@ -604,10 +604,10 @@
  三角形の三辺全てを分割して精密化する (`red' 精密化)．
  （精密化するようマークされていない）隣り合う三角形は半分にする (`green' 精密化)．
  (R. Verfuerth, ``A review of a posteriori error estimation and
- adaptive mesh refinement techniques'', Wiley-Teubner, 1996) \\
+ adaptive mesh refinement techniques'', Wiley--Teubner, 1996) \\
 \index{surfaceSmooth@\OFtool{surfaceSmooth}!ユーティリティ}%
 \index{ユーティリティ!surfaceSmooth@\OFtool{surfaceSmooth}}%
- \OFtool{surfaceSmooth} & 単純なラプラシアン・スムーザの例 \\
+ \OFtool{surfaceSmooth} & 単純なLaplace演算子スムーザの例 \\
 \index{surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}!ユーティリティ}%
 \index{ユーティリティ!surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}}%
  \OFtool{surfaceSplitByPatch} & triSurfaceの領域を個別のファイルに書きだす． \\

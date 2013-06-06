@@ -667,8 +667,8 @@ OpenFOAMでは，全ての補間項に対して幅広い補間スキームの中
 
 導関数の項は，このような選択の自由のさらなる好例となります．
 ユーザは，まず離散化手法を選択することができますが，
-ここではガウスによる有限体積積分を用いるのが一般的です．
-ガウス積分は格子の界面における値を足していくことで実現されますが，
+ここではGaussによる有限体積積分を用いるのが一般的です．
+Gauss積分は格子の界面における値を足していくことで実現されますが，
 界面での値は格子中心での値から補間しなければなりません．
 この補間スキームにおいてもユーザは自由に選ぶことができ，
 特定の導関数項，特に対流項に用いる発散項には，
@@ -791,7 +791,7 @@ OpenFOAMでの内挿スキームの選択肢を
 これは四つのカテゴリに分けられます．
 一つのカテゴリは一般的なスキームが，そして他の三つのカテゴリは，
 \autoref{ssec:4.4.5}で説明するように，
-主に流体での対流（発散）項のガウスの離散化と一緒に使われるものです．
+主に流体での対流（発散）項のGaussの離散化と一緒に使われるものです．
 ユーザが\OFsubdictionary{interpolationSchemes}サブディクショナリにおいて，
 対流特有のスキームを一般的なフィールドの内挿に適用することは，
 「ほとんどない」のですが，有効な内挿スキームとして
@@ -887,7 +887,7 @@ default vanLeer01;
 それは，界面が接続している二つの格子の中心における値の勾配の，
 界面の法線方向の成分です．
 表面法線方向勾配は，それ自体を使うためにも指定されますが，
-ガウス積分を使ってラプラシアン項を評価する際にも必要となります．
+Gauss積分を使ってLaplace演算子を評価する際にも必要となります．
 
 利用可能なスキームを\autoref{tbl:4.7}に示しますが，
 これらは単にキーワードとエントリを記述することで指定できます．
@@ -940,7 +940,7 @@ default limited 0.5;
 grad(p) leastSqueares;
 \end{OFverbatim}
 \OFkeyword{Gauss}キーワードは，
-ガウス積分による標準的な有限体積法の離散化を指定するもので，
+Gauss積分による標準的な有限体積法の離散化を指定するもので，
 これは，格子の中心から界面の中心への値の内挿を必要とします．
 このため，\OFkeyword{Gauss}エントリでは，
 \autoref{tbl:4.6}のような内挿スキームを続けて指定する必要があります．
@@ -953,16 +953,16 @@ grad(p) Gauss linear;
 \OFkeyword{fourth}) の範囲限定版は，
 離散化スキームの前に
 \OFkeyword{cellLimited} (または\OFkeyword{faceLimited}) を付けることで選択できます．
-例えば，セルで制限されたガウス・スキームは以下のようになります．
+例えば，セルで制限されたGaussスキームは以下のようになります．
 \begin{OFverbatim}[file]
 grad(p) cellLimited Gauss linear 1;
 \end{OFverbatim}
 
 
-\subsection{ラプラシアンスキーム}
+\subsection{Laplace演算子スキーム}
 \label{ssec:4.4.4}
-\OFsubdictionary{laplacianSchemes}サブディクショナリにはラプラシアン項を記述します．
-流体力学の中で見られる$\nabla \cdot (\rho\nabla\bm{U})$といった典型的なラプラシアン項を
+\OFsubdictionary{laplacianSchemes}サブディクショナリにはLaplace演算子項を記述します．
+流体力学の中で見られる$\nabla \cdot (\rho\nabla\bm{U})$といった典型的なLaplace演算子項を
 どのようにエントリに記述するかというと，
 \OFkeyword{laplacian(nu, U)}といったword識別子で与えます．
 離散化手法として選べるのは\OFkeyword{Gauss}スキームだけですが，
@@ -978,7 +978,7 @@ Gauss <interpolationScheme> <snGradScheme>
 表面法線方向勾配スキームは\autoref{tbl:4.7}から選択し，
 \autoref{tbl:4.9}に書かれているように
 スキームの選択は数値的性質を決定します．
-先の例でのラプラス項の典型的なエントリは以下のようになります．
+先の例でのLaplace演算子項の典型的なエントリは以下のようになります．
 \begin{OFverbatim}[file]
 laplacian(nu, U) Gauss linear corrected;
 \end{OFverbatim}

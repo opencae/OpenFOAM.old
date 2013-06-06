@@ -5,12 +5,12 @@
 \index{laplacianFoam@\OFtool{laplacianFoam}!ソルバ}%
 \index{ソルバ!laplacianFoam@\OFtool{laplacianFoam}}%
  \OFtool{laplacianFoam} &
- 固体の熱拡散のような単純なラプラス方程式を解く \\
+ 固体の熱拡散のような単純なLaplace方程式を解く \\
 \index{potentialFoam@\OFtool{potentialFoam}!ソルバ}%
 \index{ソルバ!potentialFoam@\OFtool{potentialFoam}}%
  \OFtool{potentialFoam} &
  単純なポテンシャル流のソルバ．
- 完全なナビエ・ストークス用コードを解く際の初期値の生成にも使用できる \\
+ 完全なNavier--Stokes用コードを解く際の初期値の生成にも使用できる \\
 \index{scalarTransportFoam@\OFtool{scalarTransportFoam}!ソルバ}%
 \index{ソルバ!scalarTransportFoam@\OFtool{scalarTransportFoam}}%
  \OFtool{scalarTransportFoam} &
@@ -59,7 +59,7 @@
 \index{ソルバ!potentialFreeSurfaceFoam@\OFtool{potentialFreeSurfaceFoam}}%
  \OFtool{potentialFreeSurfaceFoam} &
  単相の自由表面近似を使えるように波高さのフィールドを含んだ，
- 非圧縮性のナビエ・ストークス方程式ソルバ \\
+ 非圧縮性のNavier--Stokes方程式ソルバ \\
 \index{shallowWaterFoam@\OFtool{shallowWaterFoam}!ソルバ}%
 \index{ソルバ!shallowWaterFoam@\OFtool{shallowWaterFoam}}%
  \OFtool{shallowWaterFoam} &
@@ -320,24 +320,24 @@
 \index{ソルバ!LTSReactingParcelFoam@\OFtool{LTSReactingParcelFoam}}%
  \OFtool{LTSReactingParcelFoam} &
  質量，運動量，エネルギの陽的なソースを含む，
- 多孔質媒体の多相ラグランジュ型パーセルの反応の有無を扱える
+ 多孔質媒体の多相Lagrange型パーセルの反応の有無を扱える
  圧縮性の層流または乱流で
  定常問題用の局所時間ステップ (LTS) ソルバ \\
 \index{reactingParcelFilmFoam@\OFtool{reactingParcelFilmFoam}!ソルバ}%
 \index{ソルバ!reactingParcelFilmFoam@\OFtool{reactingParcelFilmFoam}}%
  \OFtool{reactingParcelFilmFoam} &
- ラグランジュ型パーセルの反応と表面膜のモデリングを伴う
+ Lagrange型パーセルの反応と表面膜のモデリングを伴う
  圧縮性層流・乱流用非定常PISOソルバ \\
 \index{reactingParcelFoam@\OFtool{reactingParcelFoam}!ソルバ}%
 \index{ソルバ!reactingParcelFoam@\OFtool{reactingParcelFoam}}%
  \OFtool{reactingParcelFoam} &
- ラグランジュ型パーセルの反応を伴う
+ Lagrange型パーセルの反応を伴う
  圧縮性層流・乱流用非定常PIMPLEソルバ．
  実行時にソース項や制約条件といった有限体積法オプションを選択できる． \\
 \index{simpleReactingParcelFoam@\OFtool{simpleReactingParcelFoam}!ソルバ}%
 \index{ソルバ!simpleReactingParcelFoam@\OFtool{simpleReactingParcelFoam}}%
  \OFtool{simpleReactingParcelFoam} &
- ラグランジュ型パーセルの反応を伴う
+ Lagrange型パーセルの反応を伴う
  圧縮性層流・乱流用定常状態SIMPLEソルバ．
  実行時にソース項や制約条件といった有限体積法オプションを選択できる． \\
 \index{sprayEngineFoam@\OFtool{sprayEngineFoam}!ソルバ}%

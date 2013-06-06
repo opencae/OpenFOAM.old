@@ -60,8 +60,8 @@ cp -r $FOAM_TUTORIALS $FOAM_RUN
 チュートリアルでは，
 メッシュの解像度の増加や壁方向への勾配の影響を調べます．
 これにより流れの
-\index{レイノルズすう@レイノルズ数}%
-レイノルズ数を増加させ，
+\index{Reynoldsすう@Reynolds数}%
+Reynolds数を増加させ，
 \index{pisoFoam@\OFtool{pisoFoam}!ソルバ}%
 \index{ソルバ!pisoFoam@\OFtool{pisoFoam}}%
 \OFtool{pisoFoam}ソルバを
@@ -101,8 +101,8 @@ cd $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 
 \subsubsection{メッシュ生成}
 \label{sssec:2.1.1.1}
-\index{ざひょうじく@座標軸!みぎてけいちょっこうデカルト@右手系直交デカルト}%
-OpenFOAMは常に3次元デカルト
+\index{ざひょうじく@座標軸!みぎてけいちょっこうCartesian@右手系直交Cartesian}%
+OpenFOAMは常に3次元Cartesian
 \index{ざひょうけい@座標系}%
 座標系で動くため，
 全てのジオメトリを3次元で生成します．
@@ -343,9 +343,9 @@ boundaryField
 動粘性係数が正しくセットされることを確かめてください．
 動粘性係数は，\OFkeyword{nu} (数式中で$\nu$と書かれるギリシア文字の音声ラベル)
 というキーワードになります．
-まず最初に，このケースはレイノルズ数を$10$で計算します．
-\index{レイノルズすう@レイノルズ数}%
-レイノルズ数は次のように定義されます．
+まず最初に，このケースはReynolds数を$10$で計算します．
+\index{Reynoldsすう@Reynolds数}%
+Reynolds数は次のように定義されます．
 \begin{align}
  \label{eq:2.1}
  \nRe = \frac{d|\bm{U}|}{\nu}
@@ -408,9 +408,9 @@ OpenFOAMは，柔軟性の高い時間制御を提供しますが，
 次に，時間ステップを設定する必要がありますが，
 これはキーワード\OFkeyword{deltaT}によって表されます．
 \OFtool{icoFoam}を動かすとき，時間の精度と安定性を達成するために，
-$1$未満のクーラン数が必要です．
-\index{クーランすう@クーラン数}%
-クーラン数は以下のように定義されます．
+$1$未満のCourant数が必要です．
+\index{Courantすう@Courant数}%
+Courant数は以下のように定義されます．
 \begin{align}
  \label{eq:2.2}
   \nCo = \frac{\Delta t|\bm{U}|}{\Delta x}
@@ -426,7 +426,7 @@ $\Delta t$は時間ステップ，$|\bm{U}|$はセルを通る流速の大きさ
  \label{eq:2.3}
   \Delta x = \frac{d}{n} = \frac{0.1}{20} = 0.005\unit{m}
 \end{align}
-したがって，領域中で$1$以下のクーラン数を達成するために，
+したがって，領域中で$1$以下のCourant数を達成するために，
 \index{じかんステップ@時間ステップ}%
 時間ステップ\OFkeyword{deltaT}を次のように設定しなくてはいけません．
 \begin{align}
@@ -636,7 +636,7 @@ icoFoam
 icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 \end{OFverbatim}%$
 ジョブの進行過程は，ターミナルウィンドウに表示されます．
-現在の時刻，最大クーラン数，全てのフィールドの初期値と最終的結果を表示します．
+現在の時刻，最大Courant数，全てのフィールドの初期値と最終的結果を表示します．
 
 
 \subsection{後処理}
@@ -819,7 +819,7 @@ $(0.05, 0.1, 0.005)$まで) 指定しましょう．
 \PVentry{Max Propagation}を\PVkeyword{Length}で0.5に，
 \PVentry{Initial Step Length}を\PVkeyword{Cell Length}で0.01に，
 \PVentry{Integration Direction}を\PVkeyword{BOTH}という設定を行いました．
-また，\PVkeyword{Runge-Kutta 2} \PVentry{Integrator Type}は
+また，\PVkeyword{Runge--Kutta 2} \PVentry{Integrator Type}は
 デフォルトパラメータで使いました．
 
 \PVbutton{Apply}をクリックすると，トレーサが生成されます．
@@ -943,7 +943,7 @@ End
 \subsubsection{設定の調整}
 \label{sssec:2.1.5.4}
 さて，全てのセルの寸法が半分になったので，
-$1$より小さいクーラン数を維持するためには\autoref{sssec:2.1.1.4}で述べるように
+$1$より小さいCourant数を維持するためには\autoref{sssec:2.1.1.4}で述べるように
 時間ステップを半分にしなければいけません．
 deltaTを\OFdictionary{controlDict}ディクショナリにて$0.0025\unit{s}$に設定しましょう．
 いままでは，フィールドデータを固定のステップ回数のもとでの時間間隔で
@@ -1320,7 +1320,7 @@ mergePatchPairs
 \label{sssec:2.1.6.2}
 最も速度が速くて最もサイズの小さいセルが上面に隣接するセルであり，
 \autoref{sssec:2.1.1.4}で示したように，
-この上面のセルにおいてクーラン数が最大となります．
+この上面のセルにおいてCourant数が最大となります．
 このようなことから上面に隣接するセルの大きさを見積もることは，
 本ケースにて適当な時間ステップを計算する上で有効です．
 
@@ -1397,13 +1397,13 @@ mapFields ../cavityFine -consistent
 後処理ツールを使って，収束した結果を見たり，他の結果と比較します．
 
 
-\subsection{レイノルズ数の増大}
+\subsection{Reynolds数の増大}
 \label{ssec:2.1.7}
-これまで解いたケースはレイノルズ数が$10$でした．
+これまで解いたケースはReynolds数が$10$でした．
 これは大変に低い条件であり，
 したがってキャビティの底部中央に小さな二次渦を伴うのみで，
 迅速に安定解を導くことができました．
-しかし，ここでレイノルズ数を$100$に上げると，
+しかし，ここでReynolds数を$100$に上げると，
 収束解を得るのにより長い時間を要することになります．
 そこで\OFcase{cavity}ケースのメッシュを初期条件として使用することとします．
 \OFpath{cavity}ケースディレクトリを\OFpath{cavityHighRe}という名前でコピーします．
@@ -1418,7 +1418,7 @@ cp -r cavity cavityHighRe
 \index{transportProperties@\OFdictionary{transportProperties}!ディクショナリ}%
 \index{ディクショナリ!transportProperties@\OFdictionary{transportProperties}}%
 \OFdictionary{transportProperties}ディクショナリを編集します．
-レイノルズ数を10倍に増加させるためには，
+Reynolds数を10倍に増加させるためには，
 動粘性係数を10分の1，すなわち$1 \times 10^{-3} \unit{m^{2}s^{-1}}$まで減らす必要があります．
 これで\OFcase{cavity}ケースの実行結果から
 \index{リスタート}%
@@ -1511,15 +1511,15 @@ ExecutionTime = 1.02 s  ClockTime = 1 s
 \end{OFverbatim}
 
 
-\subsection{高レイノルズ数流れ}
+\subsection{高Reynolds数流れ}
 \label{ssec:2.1.8}
 では，\OFtool{paraFoam}による結果を確認し，速度ベクトルを表示してください．
 計算領域の角における二次渦が幾分増大していることがわかります．
 このようなとき，ユーザは粘性係数を下げることにより
-レイノルズ数を増大させた計算ケースを再度実行できます．
+Reynolds数を増大させた計算ケースを再度実行できます．
 渦の数が増加するにともない，より複雑な流れを解くために
 当該領域でのメッシュ解像度を上げる必要がでてきます．
-さらに，レイノルズ数は収束に要する時間を増加させます．
+さらに，Reynolds数は収束に要する時間を増加させます．
 このような場合，残差をモニタし，解を収束させるために
 \OFkeyword{endTime}を延長したほうがよいでしょう．
 
@@ -1527,17 +1527,17 @@ ExecutionTime = 1.02 s  ClockTime = 1 s
 流れが乱流域に移行するという非現実的な状態となり，
 解法の安定性の問題が生じることとなります．
 もちろん，多くの工学的な問題は
-極めて高いレイノルズ数条件となっており，
+極めて高いReynolds数条件となっており，
 したがって，乱流挙動を直接解くのに多くのコストを負担することとなり，
 実行不可能であります．
 そのかわりに，
 \index{らんりゅうモデル@乱流モデル!RAS}%
-レイノルズ平均シミューレション (RAS) 乱流モデルが
+Reynolds平均シミューレション (RAS) 乱流モデルが
 平均流れの挙動を解くのに用いられ，
 乱れの統計値が計算されています．
 壁関数を伴う標準$k$--$\varepsilon$モデルが
 本チュートリアルの上面が移動する
-キャビティケース（レイノルズ数$10^{4}$）を解くのに用いられています．
+キャビティケース（Reynolds数$10^{4}$）を解くのに用いられています．
 二つの追加変数が解かれています．
 それは，
 \index{らんりゅう@乱流!うんどうエネルギ@運動エネルギ}%
@@ -1601,7 +1601,7 @@ boundaryField
 $\varepsilon$については\OFkeyword{epsilonWallFunction}境界条件を，
 $k$については\OFkeyword{kqRWallFunction}を指定します．
 後者は乱流運動エネルギの表現$k$，$q$，
-あるいはレイノルズ応力$R$のいずれにも適用できる一般的な壁関数です．
+あるいはReynolds応力$R$のいずれにも適用できる一般的な壁関数です．
 $k$，$\varepsilon$の初期条件には，
 速度変動$\bm{U}'$と
 \index{らんりゅう@乱流!ながさスケール@長さスケール}%
@@ -1614,7 +1614,7 @@ $k$と$\varepsilon$は，これらのパラメタを用いて次式で表され�
  \varepsilon &= \frac{C_{\mu}^{0.75}k^{1.5}}{l}
 \end{align}
 ここで$C_{\mu}$は$k$--$\varepsilon$モデルの定数であり，
-その値は$0.09$です．デカルト座標系では$k$は，
+その値は$0.09$です．Cartesian座標系では$k$は，
 \begin{align}
  \label{eq:2.10}
  k = \frac{1}{2}({U_{x}'}^{2} + {U_{y}'}^{2} + {U_{z}'}^{2})
@@ -1691,8 +1691,8 @@ RASモデリングの選択は
 \OFdictionary{transportProperties}ディクショナリの層流
 \index{ねんせいけいすう@粘性係数!どう@動\jdash}%
 動粘性係数を設定します．
-レイノルズ数$10^{4}$を実現するために，
-\autoref{eq:2.1} のレイノルズ数の定義式に示されるように，
+Reynolds数$10^{4}$を実現するために，
+\autoref{eq:2.1} のReynolds数の定義式に示されるように，
 動粘性係数を$10^{-5}\unit{m^{2}s^{-1}}$にする必要があります．
 
 最後に，
@@ -1701,7 +1701,7 @@ RASモデリングの選択は
 \OFdictionary{controlDict}の\OFkeyword{startTime}，
 \OFkeyword{stopTime}，\OFkeyword{deltaT}，
 そして\OFkeyword{writeInterval}を設定します．
-クーラン数の制限を満たすために\OFkeyword{deltaT}を$0.005\unit{s}$に設定し，
+Courant数の制限を満たすために\OFkeyword{deltaT}を$0.005\unit{s}$に設定し，
 \OFkeyword{endTime}は$10\unit{s}$とします．
 
 \subsubsection{コードの実行}
@@ -1714,8 +1714,8 @@ RASモデリングの選択は
 上面速度よりもそれらセル中心の流体速度は極めて小さいです．
 事実，100時間ステップ後，上面に隣接したセルにおける速度は，
 上限である$0.2\unit{m\,s^{-1}}$程度です．
-したがって最大クーラン数は$0.2$以上にはなりません．
-クーラン数がより$1$に近接するように時間ステップを大きくし，
+したがって最大Courant数は$0.2$以上にはなりません．
+Courant数がより$1$に近接するように時間ステップを大きくし，
 解析時間を増やすことは理にかなっています．
 したがって，\OFkeyword{deltaT}を$0.02\unit{s}$にセットしなおし，
 これに伴い，\OFkeyword{startFrom}を\OFkeyword{latestTime}にセットします．
@@ -1952,7 +1952,7 @@ mapFields ../cavity
 
 本問題では，板の面内に応力が負荷されるため，
 2次元問題として近似することができます．
-デカルト座標系においては，
+Cartesian座標系においては，
 この構造の3番目の次元についての振る舞いを考察するにあたって，
 以下の二つの仮定をすることができます．
 (1) 平面応力条件：2次元平面内以外の方向にはたらく応力成分を無視できるものと仮定します．
@@ -2365,9 +2365,9 @@ runTimeModifiable true;
 変位の勾配を含む陽な項がいくつか存在します．
 この勾配を正確かつ滑らかに評価できれば，良い計算結果が得られます．
 通常，有限体積法における離散化は，
-\index{こうばい@勾配!ガウスのていり@ガウスの定理}%
-ガウスの定理に基づいています．
-ガウス法は大抵の目的においては十分に正確ですが，
+\index{こうばい@勾配!Gaussのていり@Gaussの定理}%
+Gaussの定理に基づいています．
+Gauss法は大抵の目的においては十分に正確ですが，
 本ケースにおいては
 \index{こうばい@勾配!さいしょうにじょうフィット@最小二乗フィット}%
 \index{こうばい@勾配!さいしょうにじょうほう@最小二乗法}%
@@ -3025,7 +3025,7 @@ simulationType  laminar;
 \label{ssec:2.3.5}
 自由界面の捕捉においては，時間ステップの制御は重要です．
 というのも，界面捕捉のアルゴリズムは，通常の流体計算に比べ，
-クーラン数$\nCo$に対してかなり鋭敏だからです．
+Courant数$\nCo$に対してかなり鋭敏だからです．
 理想的には，界面がある領域において，
 上限値として$\nCo \approx 0.5$を超えないようにすべきです．
 伝播速度の予測が容易であるようなケースでは，$\nCo$の制限を守るような
