@@ -887,7 +887,7 @@ default vanLeer01;
 それは，界面が接続している二つの格子の中心における値の勾配の，
 界面の法線方向の成分です．
 表面法線方向勾配は，それ自体を使うためにも指定されますが，
-Gauss積分を使ってLaplace演算子を評価する際にも必要となります．
+Gauss積分を使ってLaplacianを評価する際にも必要となります．
 
 利用可能なスキームを\autoref{tbl:4.7}に示しますが，
 これらは単にキーワードとエントリを記述することで指定できます．
@@ -959,10 +959,10 @@ grad(p) cellLimited Gauss linear 1;
 \end{OFverbatim}
 
 
-\subsection{Laplace演算子スキーム}
+\subsection{Laplacianスキーム}
 \label{ssec:4.4.4}
-\OFsubdictionary{laplacianSchemes}サブディクショナリにはLaplace演算子項を記述します．
-流体力学の中で見られる$\nabla \cdot (\rho\nabla\bm{U})$といった典型的なLaplace演算子項を
+\OFsubdictionary{laplacianSchemes}サブディクショナリにはLaplacian項を記述します．
+流体力学の中で見られる$\nabla \cdot (\rho\nabla\bm{U})$といった典型的なLaplacian項を
 どのようにエントリに記述するかというと，
 \OFkeyword{laplacian(nu, U)}といったword識別子で与えます．
 離散化手法として選べるのは\OFkeyword{Gauss}スキームだけですが，
@@ -978,7 +978,7 @@ Gauss <interpolationScheme> <snGradScheme>
 表面法線方向勾配スキームは\autoref{tbl:4.7}から選択し，
 \autoref{tbl:4.9}に書かれているように
 スキームの選択は数値的性質を決定します．
-先の例でのLaplace演算子項の典型的なエントリは以下のようになります．
+先の例でのLaplacian項の典型的なエントリは以下のようになります．
 \begin{OFverbatim}[file]
 laplacian(nu, U) Gauss linear corrected;
 \end{OFverbatim}

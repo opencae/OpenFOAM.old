@@ -171,9 +171,6 @@
 \index{autoPatch@\OFtool{autoPatch}!ユーティリティ}%
 \index{ユーティリティ!autoPatch@\OFtool{autoPatch}}%
  \OFtool{autoPatch} & ユーザが指定した角度に基づいて外部面をパッチに分割する \\
-% \index{cellSet@\OFtool{cellSet}!ユーティリティ}%
-% \index{ユーティリティ!cellSet@\OFtool{cellSet}}%
-%  \OFtool{cellSet} & ディクショナリでセルのセットを選択する \\
 \index{checkMesh@\OFtool{checkMesh}!ユーティリティ}%
 \index{ユーティリティ!checkMesh@\OFtool{checkMesh}}%
  \OFtool{checkMesh} & メッシュの妥当性をチェックする \\
@@ -190,9 +187,6 @@
 \index{ユーティリティ!deformedGeom@\OFtool{deformedGeom}}%
  \OFtool{deformedGeom} & \OFtool{polyMesh}を変位場\OFkeyword{U}と
  引数として与えられた尺度因子により変形させる \\
-% \index{faceSet@\OFtool{faceSet}!ユーティリティ}%
-% \index{ユーティリティ!faceSet@\OFtool{faceSet}}%
-%  \OFtool{faceSet} & ディクショナリで面のセットを選択する \\
 \index{flattenMesh@\OFtool{flattenMesh}!ユーティリティ}%
 \index{ユーティリティ!flattenMesh@\OFtool{flattenMesh}}%
  \OFtool{flattenMesh} & 2次元デカルトメッシュの前後の面を平らにする \\
@@ -206,7 +200,7 @@
 \index{mergeOrSplitBaffles@\OFtool{mergeOrSplitBaffles}!ユーティリティ}%
 \index{ユーティリティ!mergeOrSplitBaffles@\OFtool{mergeOrSplitBaffles}}%
  \OFtool{mergeOrSplitBaffles} &
- 同じ点を共有する面 (バッフル) を探索し，
+ 同じ点を共有する面（バッフル）を探索し，
  それらの面をマージ，もしくは点を複製する． \\
 \index{mirrorMesh@\OFtool{mirrorMesh}!ユーティリティ}%
 \index{ユーティリティ!mirrorMesh@\OFtool{mirrorMesh}}%
@@ -227,9 +221,6 @@
 \index{ユーティリティ!polyDualMesh@\OFtool{polyDualMesh}}%
  \OFtool{polyDualMesh} &
  polyMeshの双対を求め，特徴線やパッチの辺を忠実に再現する． \\
-% \index{pointSet@\OFtool{pointSet}!ユーティリティ}%
-% \index{ユーティリティ!pointSet@\OFtool{pointSet}}%
-%  \OFtool{pointSet} & ディクショナリで点のセットを選択する \\
 \index{refineMesh@\OFtool{refineMesh}!ユーティリティ}%
 \index{ユーティリティ!refineMesh@\OFtool{refineMesh}}%
  \OFtool{refineMesh} & 複数の方向にセルを細分化する． \\
@@ -503,7 +494,7 @@
  \OFtool{foamCalc} & 指定された時刻におけるフィールド計算の汎用ユーティリティ． \\
 \index{foamListTimes@\OFtool{foamListTimes}!ユーティリティ}%
 \index{ユーティリティ!foamListTimes@\OFtool{foamListTimes}}%
- \OFtool{foamListTimes} & timeSelectorを使って時刻をリスト化する． \\
+ \OFtool{foamListTimes} & \OFclass{timeSelector}を使って時刻をリスト化する． \\
 \index{pdfPlot@\OFtool{pdfPlot}!ユーティリティ}%
 \index{ユーティリティ!pdfPlot@\OFtool{pdfPlot}}%
  \OFtool{pdfPlot} & 確率密度関数のグラフを生成する． \\
@@ -512,14 +503,14 @@
  \OFtool{postChannel} & チャンネル流計算のポストプロセスデータ \\
 \index{ptot@\OFtool{ptot}!ユーティリティ}%
 \index{ユーティリティ!ptot@\OFtool{ptot}}%
- \OFtool{ptot} &  時刻毎に全圧を計算する \\
+ \OFtool{ptot} &  時刻ごとに全圧を計算する \\
 \index{wdot@\OFtool{wdot}!ユーティリティ}%
 \index{ユーティリティ!wdot@\OFtool{wdot}}%
- \OFtool{wdot} &  時刻毎にwdotを計算し，書き出す \\
+ \OFtool{wdot} &  時刻ごとにwdotを計算し，書き出す \\
 \index{writeCellCentres@\OFtool{writeCellCentres}!ユーティリティ}%
 \index{ユーティリティ!writeCellCentres@\OFtool{writeCellCentres}}%
  \OFtool{writeCellCentres} &  閾値制限してポストプロセスで使えるよう，
- 格子中心の三つの座標値をvolScalarFieldsとして書き出す \\
+ 格子中心の三つの座標値を\OFclass{volScalarField}として書き出す \\
  \\
  \multicolumn{2}{l}{面メッシュ (例えばSTL) ツール} \\
  \hline
@@ -546,7 +537,7 @@
  \OFtool{surfaceConvert} & ある面メッシュの書式を他のものに変換する． \\
 \index{surfaceFeatureConvert@\OFtool{surfaceFeatureConvert}!ユーティリティ}%
 \index{ユーティリティ!surfaceFeatureConvert@\OFtool{surfaceFeatureConvert}}%
- \OFtool{surfaceFeatureConvert} & edgeMeshの書式との変換を行う． \\
+ \OFtool{surfaceFeatureConvert} & \OFclass{edgeMesh}の書式との変換を行う． \\
 \index{surfaceFeatureExtract@\OFtool{surfaceFeatureExtract}!ユーティリティ}%
 \index{ユーティリティ!surfaceFeatureExtract@\OFtool{surfaceFeatureExtract}}%
  \OFtool{surfaceFeatureExtract} & 面要素を取り出し，ファイルに書き込む． \\
@@ -555,12 +546,12 @@
  \OFtool{surfaceFind} & 近くの面と頂点を見つける． \\
 \index{surfaceInertia@\OFtool{surfaceInertia}!ユーティリティ}%
 \index{ユーティリティ!surfaceInertia@\OFtool{surfaceInertia}}%
- \OFtool{surfaceInertia} & コマンドラインで指定されたtriSurfaceの
+ \OFtool{surfaceInertia} & コマンドラインで指定された\OFclass{triSurface}の
  慣性テンソル・慣性主軸・慣性モーメントを計算する．
  ソリッドもしくは薄い殻の慣性が算出可能．\\
 \index{surfaceMeshConvert@\OFtool{surfaceMeshConvert}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshConvert@\OFtool{surfaceMeshConvert}}%
- \OFtool{surfaceMeshConvert} & オプションでcoordinateSystem上での
+ \OFtool{surfaceMeshConvert} & オプションで\OFclass{coordinateSystem}上での
  スケーリングや変形（回転・移動）を伴って，面のフォーマットを変換する． \\
 \index{surfaceMeshConvertTesting@\OFtool{surfaceMeshConvertTesting}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshConvertTesting@\OFtool{surfaceMeshConvertTesting}}%
@@ -568,14 +559,14 @@
  ただし現時点では試験的な機能． \\
 \index{surfaceMeshExport@\OFtool{surfaceMeshExport}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshExport@\OFtool{surfaceMeshExport}}%
- \OFtool{surfaceMeshExport} & オプションでcoordinateSystem上での
+ \OFtool{surfaceMeshExport} & オプションで\OFclass{coordinateSystem}上での
  スケーリングや変形（回転・移動）を伴って，
- surfMeshをさまざまなサードパーティの面フォーマットにエクスポートする． \\
+ \OFclass{surfMesh}をさまざまなサードパーティの面フォーマットにエクスポートする． \\
 \index{surfaceMeshImport@\OFtool{surfaceMeshImport}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshImport@\OFtool{surfaceMeshImport}}%
- \OFtool{surfaceMeshImport} & オプションでcoordinateSystem上での
+ \OFtool{surfaceMeshImport} & オプションで\OFclass{coordinateSystem}上での
  スケーリングや変形（回転・移動）を伴って，
- さまざまなサードパーティの面フォーマットからsurfMeshにインポートする． \\
+ さまざまなサードパーティの面フォーマットから\OFclass{surfMesh}にインポートする． \\
 \index{surfaceMeshInfo@\OFtool{surfaceMeshInfo}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshInfo@\OFtool{surfaceMeshInfo}}%
  \OFtool{surfaceMeshInfo} & 面メッシュに関するさまざまな情報 \\
@@ -583,7 +574,7 @@
 \index{ユーティリティ!surfaceMeshTriangulate@\OFtool{surfaceMeshTriangulate}}%
  \OFtool{surfaceMeshTriangulate} & polyMeshからtriSurfaceを取り出す．
  アウトプットの面フォーマットに依存して，面を三角形にする．
- 三角形の領域番号はpolyMeshのパッチ番号になる．
+ 三角形の領域番号は\OFclass{polyMesh}のパッチ番号になる．
  オプションで名前のついたパッチのみを三角形にする． \\
 \index{surfaceOrient@\OFtool{surfaceOrient}!ユーティリティ}%
 \index{ユーティリティ!surfaceOrient@\OFtool{surfaceOrient}}%
@@ -595,7 +586,7 @@
  絶対距離であることに注意． \\
 \index{surfaceRedistributePar@\OFtool{surfaceRedistributePar}!ユーティリティ}%
 \index{ユーティリティ!surfaceRedistributePar@\OFtool{surfaceRedistributePar}}%
- \OFtool{surfaceRedistributePar} & triSurfaceを（再）配置する．
+ \OFtool{surfaceRedistributePar} & \OFclass{triSurface}を（再）配置する．
  分解されていない面またはすでに分解された面を，
  それぞれのプロセッサがそのメッシュにオーバラップする三角形全てをもつように再配置する． \\
 \index{surfaceRefineRedGreen@\OFtool{surfaceRefineRedGreen}!ユーティリティ}%
@@ -607,7 +598,7 @@
  adaptive mesh refinement techniques'', Wiley--Teubner, 1996) \\
 \index{surfaceSmooth@\OFtool{surfaceSmooth}!ユーティリティ}%
 \index{ユーティリティ!surfaceSmooth@\OFtool{surfaceSmooth}}%
- \OFtool{surfaceSmooth} & 単純なLaplace演算子スムーザの例 \\
+ \OFtool{surfaceSmooth} & 単純なLaplacianスムーザの例 \\
 \index{surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}!ユーティリティ}%
 \index{ユーティリティ!surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}}%
  \OFtool{surfaceSplitByPatch} & triSurfaceの領域を個別のファイルに書きだす． \\
@@ -627,7 +618,7 @@
 \index{surfaceToPatch@\OFtool{surfaceToPatch}!ユーティリティ}%
 \index{ユーティリティ!surfaceToPatch@\OFtool{surfaceToPatch}}%
  \OFtool{surfaceToPatch} & 面を読み込み，メッシュに面の領域を適用する．
- 難しい作業にはboundaryMeshを使う． \\
+ 難しい作業には\OFclass{boundaryMesh}を使う． \\
 \index{surfaceTransformPoints@\OFtool{surfaceTransformPoints}!ユーティリティ}%
 \index{ユーティリティ!surfaceTransformPoints@\OFtool{surfaceTransformPoints}}%
  \OFtool{surfaceTransformPoints} & 面を変形（拡大縮小・回転）する．
