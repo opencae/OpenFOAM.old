@@ -136,7 +136,7 @@ OpenFOAMで提供されるメッシュ・ジェネレータ\OFtool{blockMesh}は
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.2.0                                 |
+|  \\    /   O peration     | Version:  2.3.0                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -1215,7 +1215,7 @@ $20 \times 20$セルのメッシュを作り，
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.2.0                                 |
+|  \\    /   O peration     | Version:  2.3.0                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -1473,41 +1473,28 @@ cat log
 初期の圧力残差は小さくなります．
 \OFpath{log}において\verb|No Iterations 0|は，
 \OFkeyword{U}の計算が止まったことを示しています．
-\begin{OFverbatim}[file, linenum, weight=\footnotesize]
+\begin{OFverbatim}[file, linenum, weight=\scriptsize]
+Time = 1.43
 
-Time = 1.63
+Courant Number mean: 0.221921 max: 0.839902
+smoothSolver: Solving for Ux, Initial residual = 8.73381e-06, Final residual = 8.73381e-06, No Iterations 0
+smoothSolver: Solving for Uy, Initial residual = 9.89679e-06, Final residual = 9.89679e-06, No Iterations 0
+DICPCG: Solving for p, Initial residual = 3.67506e-06, Final residual = 8.62986e-07, No Iterations 4
+time step continuity errors : sum local = 6.57947e-09, global = -6.6679e-19, cumulative = -6.2539e-18
+DICPCG: Solving for p, Initial residual = 2.60898e-06, Final residual = 7.92532e-07, No Iterations 3
+time step continuity errors : sum local = 6.26199e-09, global = -1.02984e-18, cumulative = -7.28374e-18
+ExecutionTime = 0.37 s ClockTime = 0 s
 
-Courant Number mean: 0.108642 max: 0.818175
-DILUPBiCG:  Solving for Ux, Initial residual = 7.86044e-06, Final residual = 7.86044e-06,
-No Iterations 0
-DILUPBiCG:  Solving for Uy, Initial residual = 9.4171e-06, Final residual = 9.4171e-06,
-No Iterations 0
-DICPCG:  Solving for p, Initial residual = 3.54721e-06, Final residual = 7.13506e-07,
-No Iterations 4
-time step continuity errors : sum local = 6.46788e-09, global = -9.44516e-19,
-cumulative = 1.04595e-17
-DICPCG:  Solving for p, Initial residual = 2.15824e-06, Final residual = 9.95068e-07,
-No Iterations 3
-time step continuity errors : sum local = 8.67501e-09, global = 7.54182e-19,
-cumulative = 1.12136e-17
-ExecutionTime = 1.02 s  ClockTime = 1 s
+Time = 1.435
 
-Time = 1.635
-
-Courant Number mean: 0.108643 max: 0.818176
-DILUPBiCG:  Solving for Ux, Initial residual = 7.6728e-06, Final residual = 7.6728e-06,
-No Iterations 0
-DILUPBiCG:  Solving for Uy, Initial residual = 9.19442e-06, Final residual = 9.19442e-06,
-No Iterations 0
-DICPCG:  Solving for p, Initial residual = 3.13107e-06, Final residual = 8.60504e-07,
-No Iterations 4
-time step continuity errors : sum local = 8.15435e-09, global = -5.84817e-20,
-cumulative = 1.11552e-17
-DICPCG:  Solving for p, Initial residual = 2.16689e-06, Final residual = 5.27197e-07,
-No Iterations 14
-time step continuity errors : sum local = 3.45666e-09, global = -5.62297e-19,
-cumulative = 1.05929e-17
-ExecutionTime = 1.02 s  ClockTime = 1 s
+Courant Number mean: 0.221923 max: 0.839903
+smoothSolver: Solving for Ux, Initial residual = 8.53935e-06, Final residual = 8.53935e-06, No Iterations 0
+smoothSolver: Solving for Uy, Initial residual = 9.71405e-06, Final residual = 9.71405e-06, No Iterations 0
+DICPCG: Solving for p, Initial residual = 4.0223e-06, Final residual = 9.89693e-07, No Iterations 3
+time step continuity errors : sum local = 8.15199e-09, global = 5.33614e-19, cumulative = -6.75012e-18
+DICPCG: Solving for p, Initial residual = 2.38807e-06, Final residual = 8.44595e-07, No Iterations 3
+time step continuity errors : sum local = 7.48751e-09, global = -4.42707e-19, cumulative = -7.19283e-18
+ExecutionTime = 0.37 s ClockTime = 0 s
 \end{OFverbatim}
 
 
@@ -2588,14 +2575,14 @@ fields          ( sigmaxx );
 \index{writeFormat@\OFkeyword{writeFormat}!キーワード}%
 \index{キーワード!writeFormat@\OFkeyword{writeFormat}}%
 \OFkeyword{writeFormat}は\OFkeyword{raw}形式で2列のフォーマットとなっています．
-データは\OFpath{sets}ディレクトリの時刻サブディレクトリの中のファイルに書き込まれます．
+データは\OFpath{postProcessing/sets}ディレクトリの時刻サブディレクトリの中のファイルに書き込まれます．
 たとえば，時刻$t = 100\unit{s}$のデータは
-\OFpath{sets/100/leftPatch\_sigmaxx.xy}に書き込まれます．
+\OFpath{postProcessing/sets/100/leftPatch\_sigmaxx.xy}に書き込まれます．
 GnuPlotのようなアプリケーションでは，
 コマンドプロンプトで以下を入力することで，
 数値解および解析解の両方をプロットすることができます．
 \begin{OFverbatim}[terminal]
-plot [0.5:2] [0:] 'sets/100/leftPatch_sigmaxx.xy',
+plot [0.5:2] [0:] 'postProcessing/sets/100/leftPatch_sigmaxx.xy',
      1e4*(1+(0.125/(x**2))+(0.09375/(x**4)))
 \end{OFverbatim}
 プロット例を\autoref{fig:2.19}に示します．
@@ -2659,7 +2646,7 @@ $x$，$y$方向それぞれのメッシュ解像度を増やしてみましょ�
 Volume of fluid (VOF) 法によるものであり，
 ここでは特別な輸送方程式を解いて，
 計算格子における2相の体積分率，
-もしくは相比率$\alpha_{1}$を決定します．
+もしくは相比率$\alpha$を決定します．
 各物理量は，この相比率に（各流体の）密度をかけた
 平均的な値として算出されます．
 個々の物質の界面は，VOF法ではその性質上明示的には解かれず，
@@ -2811,7 +2798,7 @@ mergePatchPairs
 
 \OFtool{interFoam}のソルバが，界面と壁面との接点における
 表面張力に対するモデルを含んでいる，というのがよい例です．
-このモデルは\OFkeyword{alpha1} ($\alpha_{1}$) 場の
+このモデルは\OFkeyword{alpha} ($\alpha$) 場の
 \index{alphaContactAngle@\OFboundary{alphaContactAngle}!きょうかいじょうけん@境界条件}%
 \index{きょうかいじょうけん@境界条件!alphaContactAngle@\OFboundary{alphaContactAngle}}%
 \OFboundary{alphaContactAngle}の境界条件と関連付けられています．
@@ -2827,7 +2814,7 @@ mergePatchPairs
 速度比例係数を$0$と設定することで可能です．
 しかしながら，壁の境界条件として，
 通常の\OFkeyword{wall}タイプの境界条件を指定する別なやり方もあります．
-この場合，\OFkeyword{alpha1}に対して\OFkeyword{alphaContactAngle}の境界条件を設定する代わりに，
+この場合，\OFkeyword{alpha}に対して\OFkeyword{alphaContactAngle}の境界条件を設定する代わりに，
 \OFkeyword{zeroGradient}に設定します．
 
 \OFpatch{top}の境界は大気に対して開放されていることから，
@@ -2845,8 +2832,8 @@ mergePatchPairs
  \item \OFboundary{inletOutlet}は，流れが外向きならば\OFboundary{zeroGradient}であり，
        流れが内向きならば\OFboundary{fixedValue}です
 \end{itemize}
-すべての壁の境界においては，圧力場には\OFboundary{buoyantPressure}境界条件を適用しますが，
-これは局所的な密度勾配から法線方向勾配を計算します．
+すべての壁の境界においては，圧力場には\OFboundary{fixedFluxPressure}境界条件を適用しますが，
+これは境界のフラックスが速度の境界条件にマッチするように圧力勾配を調整するものです．
 
 2次元問題における前後の面を表している\OFpatch{defaultFaces}パッチは，
 通常通り\OFkeyword{empty}タイプにします．
@@ -2854,14 +2841,14 @@ mergePatchPairs
 
 \subsection{初期条件の設定}
 \label{ssec:2.3.3}
-これまでのケースと異なり，ここでは相比率$\alpha_{1}$に対して，
+これまでのケースと異なり，ここでは相比率$\alpha_{\mathrm{water}}$に対して，
 以下のような非一様な初期条件を与えます．
 \begin{align}
  \label{eq:2.15}
- \alpha_{1} =
+ \alpha_{\mathrm{water}} =
  \begin{cases}
-  1 & \text{液相} \\
-  0 & \text{気相}
+  1 & \text{水の相について} \\
+  0 & \text{空気の相について}
  \end{cases}
 \end{align}
 これは，
@@ -2874,7 +2861,7 @@ mergePatchPairs
 
 defaultFieldValues
 (
-    volScalarFieldValue alpha1 0
+    volScalarFieldValue alpha.water 0
 );
 
 regions
@@ -2884,7 +2871,7 @@ regions
         box (0 0 -1) (0.1461 0.292 1);
         fieldValues
         (
-            volScalarFieldValue alpha1 1
+            volScalarFieldValue alpha.water 1
         );
     }
 );
@@ -2914,8 +2901,8 @@ regions
 \index{キーワード!boxToCell@\OFkeyword{boxToCell}}%
 \OFkeyword{boxToCell}を使って，大きいほうと小さいほうの
 二つの座標点で定義されるバウンディング・ボックスを生成し，
-液体の領域となるセルの集合を定義しています．
-また，この領域における相比率$\alpha_{1}$を$1$と指定しています．
+水の領域となるセルの集合を定義しています．
+また，この領域における相比率$\alpha_{\mathrm{water}}$を$1$と指定しています．
 
 \index{setFields@\OFtool{setFields}!ユーティリティ}%
 \index{ユーティリティ!setFields@\OFtool{setFields}}%
@@ -2924,25 +2911,25 @@ regions
 そのファイルは上書きされてしまうので，
 \OFtool{setFields}を実行する前にバックアップをとることをお勧めします．
 この\OFcase{damBreak}チュートリアルには，
-\OFkeyword{alpha1}場は最初は\OFkeyword{alpha1.org}という名前の
+\OFkeyword{alpha.water}場は最初は\OFkeyword{alpha.water.org}という名前の
 バックアップしか置いてありません．\OFtool{setFields}を実行する前に，
-まず以下のようにタイプして\OFkeyword{alpha1.org}を\OFkeyword{alpha1}にコピーする必要があります．
+まず以下のようにタイプして\OFkeyword{alpha.water.org}を\OFkeyword{alpha.water}にコピーする必要があります．
 \begin{OFverbatim}[terminal]
-cp 0/alpha1.org 0/alpha1
+cp 0/alpha.water.org 0/alpha.water
 \end{OFverbatim}
 
 さて，それでは
 \index{setFields@\OFtool{setFields}!ユーティリティ}%
 \index{ユーティリティ!setFields@\OFtool{setFields}}%
 \OFtool{setFields}を他のプログラムと同様に起動してください．
-そうしたら，\OFtool{paraFoam}を用いて，初期の\OFkeyword{alpha1}場が
+そうしたら，\OFtool{paraFoam}を用いて，初期の\OFkeyword{alpha.water}場が
 \autoref{fig:2.21}のように望むような分布に
 なっているかどうか確かめてください．
 
 
 \begin{figure}[ht]
  \includegraphics{fig-2-21}
- \caption{相比率\OFkeyword{alpha1}の初期条件}
+ \caption{相比率\OFkeyword{alpha.water}の初期条件}
  \label{fig:2.21}
 \end{figure}
 
@@ -2954,8 +2941,8 @@ cp 0/alpha1.org 0/alpha1
 \index{ファイル!transportProperties@\OFpath{transportProperties}}%
 \OFpath{transportProperties}ファイルを確認しましょう．
 このディクショナリは各流体の物性値を含んでおり，
-二つのサブディクショナリ\OFsubdictionary{phase1}と
-\OFsubdictionary{phase2}に分かれています．
+二つのディクショナリ\OFsubdictionary{water}と
+\OFsubdictionary{air}に分かれています．
 各相の輸送モデルは，\OFkeyword{transportModel}によって選択されます．
 ここで，動粘性係数が\OFkeyword{nu}というキーワードで指定され，
 一定値である
@@ -3042,7 +3029,7 @@ $\nCo$の最大値 (相の場については
 \OFkeyword{maxAlphaCo}，その他の場については
 \index{maxCo@\OFkeyword{maxCo}!キーワード}%
 \index{キーワード!maxCo@\OFkeyword{maxCo}}%
-\OFkeyword{maxCo}) を$0.5$にしましょう．
+\OFkeyword{maxCo}) を$1.0$にしましょう．
 時間ステップの上限
 \index{maxDeltaT@\OFkeyword{maxDeltaT}!キーワード}%
 \index{キーワード!maxDeltaT@\OFkeyword{maxDeltaT}}%
@@ -3102,8 +3089,8 @@ runTimeModifiable yes;
 
 adjustTimeStep  yes;
 
-maxCo           0.5;
-maxAlphaCo      0.5;
+maxCo           1.0;
+maxAlphaCo      1.0;
 
 maxDeltaT       1;
 
@@ -3125,15 +3112,17 @@ Multidimensional Universal Limiter for Explicit Solution (MULES) 法を用いて
 \OFsubdictionary{divSchemes}サブディクショナリで設定します．
 この例題では，運動量方程式における対流項$\nabla \cdot (\rho\bm{U}\bm{U})$に対しては，
 \OFkeyword{div(rho*phi,U)}キーワードにて，
-\OFkeyword{Gauss limitedLinearV 1.0}を使えば良い精度が得られます．
+\OFkeyword{Gauss linearUpwind grad(U)}を使えば良い精度が得られます．
 リミッタ付きの線形なスキームでは，
 \autoref{ssec:4.4.1}に記述されるように係数$\phi$を必要とします．
-ここでは最も安定性が高くなるように$\phi = 1.0$とします．
-\OFkeyword{div(phi,alpha)}キーワードで表される$\nabla \cdot (\bm{U}\alpha_{1})$項には
+ここでは最も安定性が高くなるように$\phi = 1.0$とします%
+\footnote{訳注：旧バージョンで\OFkeyword{Gauss limitedLinearV 1.0}が使われていたときの説明が残っているが，
+バージョン2.3.0から\OFkeyword{Gauss linearUpwind grad(U)}に変更されたので$\phi = 1.0$は使われない．}%
+．
+\OFkeyword{div(phi,alpha)}キーワードで表される$\nabla \cdot (\bm{U}\alpha)$項には
 \OFkeyword{vanLeer}を使用します．
-\OFkeyword{div(phirb,alpha)}キーワードで表される$\nabla \cdot (\bm{U}_{\mathrm{rb}}\alpha_{1})$項にも
-同様に\OFkeyword{vanLeer}を使用してもよいですが，
-一般に\OFkeyword{interfaceCompression}スキームを用いたほうが，より滑らかな界面が得られます．
+\OFkeyword{div(phirb,alpha)}キーワードで表される$\nabla \cdot (\bm{U}_{\mathrm{rb}}\alpha)$項には
+2次精度の\OFkeyword{linear}（中心）差分を使うと，MULESアルゴリズムによって有界性が保証されます．
 
 その他の離散化項は一般に決ったスキームを使用します．
 以上から
@@ -3154,9 +3143,9 @@ gradSchemes
 
 divSchemes
 {
-    div(rho*phi,U)  Gauss limitedLinearV 1;
+    div(rhoPhi,U)  Gauss linearUpwind grad(U);
     div(phi,alpha)  Gauss vanLeer;
-    div(phirb,alpha) Gauss interfaceCompression;
+    div(phirb,alpha) Gauss linear;
     div((muEff*dev(T(grad(U))))) Gauss linear;
 }
 
@@ -3180,7 +3169,7 @@ fluxRequired
     default         no;
     p_rgh;
     pcorr;
-    alpha1;
+    alpha.water;
 }
 
 
@@ -3194,17 +3183,17 @@ fluxRequired
 \OFsubdictionary{PISO}サブディクショナリが
 \OFtool{interFoam}に特化した要素を含んでいます．
 ここには，通常と同じく運動量方程式に対する反復数だけでなく，
-$\alpha_{1}$相方程式のPISOループに対する反復数も指定します．
+$\alpha$相方程式のPISOループに対する反復数も指定します．
 特に重要なものは\OFkeyword{nAlphaSubCycles}と\OFkeyword{cAlpha}キーワードです．
 \index{nAlphaSubCycles@\OFkeyword{nAlphaSubCycles}!キーワード}%
 \index{キーワード!nAlphaSubCycles@\OFkeyword{nAlphaSubCycles}}%
-\OFkeyword{nAlphaSubCycles}は$\alpha_{1}$方程式内の内側反復の数を表してあり，
+\OFkeyword{nAlphaSubCycles}は$\alpha$方程式内の内側反復の数を表してあり，
 ここで，内側反復は与えられた時間ステップ内での方程式に対する
 付加的な解の点数です．
 それは，時間ステップや計算時間の莫大な増加なしで
 解を安定させることができるようにするものです．
 ここでは，二つのsub-cycleを指定しており，
-$\alpha_{1}$方程式は実際の各時間ステップ内で2分の1の幅の
+$\alpha$方程式は実際の各時間ステップ内で2分の1の幅の
 時間スッテプで2回解かれていることを意味します．
 
 \index{cAlpha@\OFkeyword{cAlpha}!キーワード}%
@@ -3233,7 +3222,7 @@ interFoam | tee log
 \subsection{後処理}
 \label{ssec:2.3.9}
 結果の後処理は，通常の方法で行えます．
-ユーザは参照時間の経過に伴う相比率\OFkeyword{alpha1}の発達を見ることができます．
+ユーザは参照時間の経過に伴う相比率\OFkeyword{alpha.water}の発達を見ることができます．
 例えば\autoref{fig:2.22}をみてください．
 
 
@@ -3243,7 +3232,7 @@ interFoam | tee log
  \medskip
  \includegraphics{fig-2-22-b}\par
  (b) $t = 0.50\unit{s}$のとき
- \caption{$\alpha_{1}$相のスナップショット}
+ \caption{$\alpha$相のスナップショット}
  \label{fig:2.22}
 \end{figure}
 
@@ -3286,24 +3275,24 @@ blocks
 正しく入力できたら，メッシュを生成します．
 
 ここで格子が\OFcase{damBreak}の例から変更されると，
-時刻\OFpath{0}のディレクトリ内の\OFpath{alpha1}という相の場を
+時刻\OFpath{0}のディレクトリ内の\OFpath{alpha.water}という相の場を
 再初期化しなければなりません．
-というのも\OFkeyword{alpha1}は新しい格子とは合致しない
+というのも\OFkeyword{alpha.water}は新しい格子とは合致しない
 いくつかの要素を含んでいるからです．
 ここで，\OFkeyword{U}や\OFkeyword{p\_rgh}という場は
 変更する必要がないことに注意しましょう．
 それらは\OFkeyword{uniform}として明記されており
 フィールド内の要素の数と独立だからです．
 フィールドの初期化はシャープな界面をもつように行いたいものです．
-つまり，その要素が$\alpha_{1} = 1$または$\alpha_{1} = 0$となるようにです．
+つまり，その要素が$\alpha = 1$または$\alpha = 0$となるようにです．
 \OFtool{mapFields}によりフィールドを更新すると，
-界面に補間された$0 < \alpha_{1} < 1$となる値が生成される可能性があるので，
+界面に補間された$0 < \alpha < 1$となる値が生成される可能性があるので，
 \OFtool{setFields}ユーティリティを再実行したほうがよいでしょう．
-その前に初期条件の一様な$\alpha_{1}$のバックアップファイル
-\OFpath{0/alpha1.org}を\OFpath{0/alpha1}にコピーします．
+その前に初期条件の一様な$\alpha$のバックアップファイル
+\OFpath{0/alpha.water.org}を\OFpath{0/alpha.water}にコピーします．
 \begin{OFverbatim}[terminal]
 cd $FOAM_RUN/tutorials/interFoam/laminar/damBreakFine
-cp -r 0/alpha1.org 0/alpha1
+cp -r 0/alpha.water.org 0/alpha.water
 setFields
 \end{OFverbatim}%$
 
@@ -3370,7 +3359,7 @@ mpirun -np 4 interFoam -parallel > log &
  \medskip
  \includegraphics{fig-2-24-b}\par
  (b) $t = 0.50\unit{s}$のとき
- \caption{正確なメッシュの$\alpha_{1}$相のスナップショット}
+ \caption{正確なメッシュの$\alpha$相のスナップショット}
  \label{fig:2.24}
 \end{figure}
 
