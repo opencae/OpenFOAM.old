@@ -55,11 +55,6 @@
 \index{ソルバ!porousSimpleFoam@\OFtool{porousSimpleFoam}}%
  \OFtool{porousSimpleFoam} &
  多孔性を陰的または陽的に扱う非圧縮性，乱流のための定常状態ソルバ \\
-\index{potentialFreeSurfaceFoam@\OFtool{potentialFreeSurfaceFoam}!ソルバ}%
-\index{ソルバ!potentialFreeSurfaceFoam@\OFtool{potentialFreeSurfaceFoam}}%
- \OFtool{potentialFreeSurfaceFoam} &
- 単相の自由表面近似を使えるように波高さのフィールドを含んだ，
- 非圧縮性のNavier--Stokes方程式ソルバ \\
 \index{shallowWaterFoam@\OFtool{shallowWaterFoam}!ソルバ}%
 \index{ソルバ!shallowWaterFoam@\OFtool{shallowWaterFoam}}%
  \OFtool{shallowWaterFoam} &
@@ -156,6 +151,11 @@
  \OFtool{compressibleInterFoam} &
  VOF (volume of fluid) 相比率に基づいた界面捕獲法による
  不混和流体の圧縮性・等温2相流用ソルバ \\
+\index{compressibleMultiphaseInterFoam@\OFtool{compressibleMultiphaseInterFoam}!ソルバ}%
+\index{ソルバ!compressibleMultiphaseInterFoam@\OFtool{compressibleMultiphaseInterFoam}}%
+ \OFtool{compressibleMultiphaseInterFoam} &
+ VOF (volume of fluid) 相比率に基づいた界面捕獲法による
+ 不混和流体の圧縮性・非等温$n$相流用ソルバ \\
 \index{interFoam@\OFtool{interFoam}!ソルバ}%
 \index{ソルバ!interFoam@\OFtool{interFoam}}%
  \OFtool{interFoam} &
@@ -177,6 +177,13 @@
  相変化（キャビテーションなど）を伴なう，
  不混和流体の非圧縮性・等温2相流用ソルバ．
  VOF (volume of fluid) 相比率に基づいた界面捕獲法を用いる． \\
+\index{interPhaseChangeDyMFoam@\OFtool{interPhaseChangeDyMFoam}!ソルバ}%
+\index{ソルバ!interPhaseChangeDyMFoam@\OFtool{interPhaseChangeDyMFoam}}%
+ \OFtool{interPhaseChangeDyMFoam} &
+ 相変化（キャビテーションなど）を伴なう，
+ 不混和流体の非圧縮性・等温2相流用ソルバ．
+ VOF (volume of fluid) 相比率に基づいた界面捕獲法を用いる．
+ メッシュ移動や，アダプティブ再メッシングを含むメッシュのトポロジ変化も扱える． \\
 \index{LTSInterFoam@\OFtool{LTSInterFoam}!ソルバ}%
 \index{ソルバ!LTSInterFoam@\OFtool{LTSInterFoam}}%
  \OFtool{LTSInterFoam} &
@@ -209,6 +216,11 @@
  多孔質領域の陽的な扱いを備えた，
  VOF (volume of fluid) 相比率に基づいた界面捕獲法による
  非圧縮性・等温・不混和な2相流用ソルバ \\
+\index{potentialFreeSurfaceFoam@\OFtool{potentialFreeSurfaceFoam}!ソルバ}%
+\index{ソルバ!potentialFreeSurfaceFoam@\OFtool{potentialFreeSurfaceFoam}}%
+ \OFtool{potentialFreeSurfaceFoam} &
+ 単相の自由表面近似を使えるように波高さのフィールドを含んだ，
+ 非圧縮性のNavier--Stokes方程式ソルバ \\
 \index{settlingFoam@\OFtool{settlingFoam}!ソルバ}%
 \index{ソルバ!settlingFoam@\OFtool{settlingFoam}}%
  \OFtool{settlingFoam} &
@@ -251,6 +263,11 @@
 \index{ソルバ!fireFoam@\OFtool{fireFoam}}%
  \OFtool{fireFoam} &
  火炎と乱流拡散炎のための非定常ソルバ \\
+\index{LTSReactingFoam@\OFtool{LTSReactingFoam}!ソルバ}%
+\index{ソルバ!LTSReactingFoam@\OFtool{LTSReactingFoam}}%
+ \OFtool{LTSReactingFoam} &
+ 圧縮性の層流・乱流，化学反応あり・なしを扱える
+ 定常問題用の局所時間ステップ (LTS) ソルバ \\
 \index{PDRFoam@\OFtool{PDRFoam}!ソルバ}%
 \index{ソルバ!PDRFoam@\OFtool{PDRFoam}}%
  \OFtool{PDRFoam} &
@@ -308,6 +325,10 @@
 \index{ソルバ!coalChemistryFoam@\OFtool{coalChemistryFoam}}%
  \OFtool{coalChemistryFoam} &
  石炭・石灰石パーセルの噴射，エネルギ源，および燃焼を伴う圧縮性乱流用非定常ソルバ \\
+\index{DPMFoam@\OFtool{DPMFoam}!ソルバ}%
+\index{ソルバ!DPMFoam@\OFtool{DPMFoam}}%
+ \OFtool{DPMFoam} &
+ 連続した相の体積率の影響を伴う単一の運動学的粒子群の練成した輸送の非定常ソルバ \\
 \index{icoUncoupledKinematicParcelDyMFoam@\OFtool{icoUncoupledKinematicParcelDyMFoam}!ソルバ}%
 \index{ソルバ!icoUncoupledKinematicParcelDyMFoam@\OFtool{icoUncoupledKinematicParcelDyMFoam}}%
  \OFtool{icoUncoupledKinematicParcelDyMFoam} &

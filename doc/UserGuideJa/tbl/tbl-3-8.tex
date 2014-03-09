@@ -5,57 +5,40 @@
 \index{ライブラリ!basicThermophysicalModels@\string\OFclass{basicThermophysicalModels}}%
  \OFclass{basicThermophysicalModels}} \\
  \hline
-\index{hPsiThermo@\OFclass{hPsiThermo}!モデル}%
-\index{モデル!hPsiThermo@\OFclass{hPsiThermo}}%
- \OFclass{hPsiThermo} &
-     エンタルピ$h$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{hsPsiThermo@\OFclass{hsPsiThermo}!モデル}%
-\index{モデル!hsPsiThermo@\OFclass{hsPsiThermo}}%
- \OFclass{hsPsiThermo} &
-\OFrevision*{sensible enthalpy?}%
-     顕在エンタルピ$h_{\mathrm{s}}$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{ePsiThermo@\OFclass{ePsiThermo}!モデル}%
-\index{モデル!ePsiThermo@\OFclass{ePsiThermo}}%
- \OFclass{ePsiThermo} &
-     内部エネルギ$e$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{hRhoThermo@\OFclass{hRhoThermo}!モデル}%
-\index{モデル!hRhoThermo@\OFclass{hRhoThermo}}%
- \OFclass{hRhoThermo} &
-     エンタルピ$h$に基づく一般熱物理モデル計算 \\
-\index{hsRhoThermo@\OFclass{hsRhoThermo}!モデル}%
-\index{モデル!hsRhoThermo@\OFclass{hsRhoThermo}}%
- \OFclass{hsRhoThermo} &
-     顕在エンタルピ$h_{\mathrm{s}}$に基づく一般熱物理モデル計算 \\
+\index{hePsiThermo@\OFclass{hePsiThermo}!モデル}%
+\index{モデル!hePsiThermo@\OFclass{hePsiThermo}}%
+ \OFclass{hePsiThermo} &
+     圧縮率$\psi$に基づく一般熱物理モデル計算 \\
+\index{heRhoThermo@\OFclass{heRhoThermo}!モデル}%
+\index{モデル!heRhoThermo@\OFclass{heRhoThermo}}%
+ \OFclass{heRhoThermo} &
+     密度$\rho$に基づく一般熱物理モデル計算 \\
 \index{pureMixture@\OFclass{pureMixture}!モデル}%
 \index{モデル!pureMixture@\OFclass{pureMixture}}%
  \OFclass{pureMixture} &
-     パッシブガス混合物の一般熱物理モデル計算 \\
+     不活性混合気体の一般熱物理モデル計算 \\
  \\
  \multicolumn{2}{l}{化学反応モデル ---
 \index{reactionThermophysicalModels@\string\OFclass{reactionThermophysicalModels}!ライブラリ}%
 \index{ライブラリ!reactionThermophysicalModels@\string\OFclass{reactionThermophysicalModels}}%
  \OFclass{reactionThermophysicalModels}} \\
  \hline
-\index{hPsiMixtureThermo@\OFclass{hPsiMixtureThermo}!モデル}%
-\index{モデル!hPsiMixtureThermo@\OFclass{hPsiMixtureThermo}}%
- \OFclass{hPsiMixtureThermo} &
- エンタルピ$h$と$\psi$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hsPsiMixtureThermo@\OFclass{hsPsiMixtureThermo}!モデル}%
-\index{モデル!hsPsiMixtureThermo@\OFclass{hsPsiMixtureThermo}}%
- \OFclass{hsPsiMixtureThermo} &
- 顕在エンタルピ$h_{\mathrm{s}}$と$\psi$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hRhoMixtureThermo@\OFclass{hRhoMixtureThermo}!モデル}%
-\index{モデル!hRhoMixtureThermo@\OFclass{hRhoMixtureThermo}}%
- \OFclass{hRhoMixtureThermo} &
- エンタルピ$h$と$\rho$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hsRhoMixtureThermo@\OFclass{hsRhoMixtureThermo}!モデル}%
-\index{モデル!hsRhoMixtureThermo@\OFclass{hsRhoMixtureThermo}}%
- \OFclass{hsRhoMixtureThermo} &
- 顕在エンタルピ$h_{\mathrm{s}}$と$\rho$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hhuMixtureThermo@\OFclass{hhuMixtureThermo}!モデル}%
-\index{モデル!hhuMixtureThermo@\OFclass{hhuMixtureThermo}}%
- \OFclass{hhuMixtureThermo} &
-     不燃気体と混合気のエンタルピ計算 \\
+\index{psiReactionThermo@\OFclass{psiReactionThermo}!モデル}%
+\index{モデル!psiReactionThermo@\OFclass{psiReactionThermo}}%
+ \OFclass{psiReactionThermo} &
+ $\psi$に基づいて燃焼混合気のエンタルピを計算する \\
+\index{psiuReactionThermo@\OFclass{psiuReactionThermo}!モデル}%
+\index{モデル!psiuReactionThermo@\OFclass{psiuReactionThermo}}%
+ \OFclass{psiuReactionThermo} &
+ $\psi_{\mathrm{u}}$に基づいて燃焼混合気のエンタルピを計算する \\
+\index{rhoReactionThermo@\OFclass{rhoReactionThermo}!モデル}%
+\index{モデル!rhoReactionThermo@\OFclass{rhoReactionThermo}}%
+ \OFclass{rhoReactionThermo} &
+ $\rho$に基づいて燃焼混合気のエンタルピを計算する \\
+\index{heheupsiReactionThermo@\OFclass{heheupsiReactionThermo}!モデル}%
+\index{モデル!heheupsiReactionThermo@\OFclass{heheupsiReactionThermo}}%
+ \OFclass{heheupsiReactionThermo} &
+ 未燃ガスおよび燃焼混合気のエンタルピを計算する \\
 \index{homogeneousMixture@\OFclass{homogeneousMixture}!モデル}%
 \index{モデル!homogeneousMixture@\OFclass{homogeneousMixture}}%
  \OFclass{homogeneousMixture} &
@@ -69,10 +52,6 @@
  \OFclass{veryInhomogeneousMixture} &
      $b$，$f_{\mathrm{t}}$と
      不燃燃料質量分率$f_{\mathrm{u}}$に基づく混合気燃焼 \\
-\index{dieselMixture@\OFclass{dieselMixture}!モデル}%
-\index{モデル!dieselMixture@\OFclass{dieselMixture}}%
- \OFclass{dieselMixture} &
-     $f_{\mathrm{t}}$と$f_{\mathrm{u}}$に基づく混合気燃焼 \\
 \index{basicMultiComponentMixture@\OFclass{basicMultiComponentMixture}!モデル}%
 \index{モデル!basicMultiComponentMixture@\OFclass{basicMultiComponentMixture}}%
  \OFclass{basicMultiComponentMixture} &
@@ -89,6 +68,10 @@
 \index{モデル!egrMixture@\OFclass{egrMixture}}%
  \OFclass{egrMixture} &
      排気再循環の混合気 \\
+\index{singleStepReactingMixture@\OFclass{singleStepReactingMixture}!モデル}%
+\index{モデル!singleStepReactingMixture@\OFclass{singleStepReactingMixture}}%
+ \OFclass{singleStepReactingMixture} &
+     素反応を伴う混合気 \\
  \\
  \multicolumn{2}{l}{輻射モデル ---
 \index{radiationModels@\string\OFclass{radiationModels}!ライブラリ}%
@@ -103,6 +86,12 @@
 \index{ライブラリ!fvDOM@\OFclass{fvDOM}}%
  \OFclass{fvDOM} &
      有限体積離散座標法 \\
+\index{opaqueSolid@\OFclass{opaqueSolid}!ライブラリ}%
+\index{ライブラリ!opaqueSolid@\OFclass{opaqueSolid}}%
+ \OFclass{opaqueSolid} &
+     不透明な固体の輻射．
+     エネルギ式のソース項には何も影響しない（ゼロを返す）が，
+     \OFclass{absorptionEmissionModel}および\OFclass{scatterModel}を作る． \\
 \index{viewFactor@\OFclass{viewFactor}!ライブラリ}%
 \index{ライブラリ!viewFactor@\OFclass{viewFactor}}%
  \OFclass{viewFactor} &
@@ -116,7 +105,7 @@
 \index{constLaminarFlameSpeed@\OFclass{constLaminarFlameSpeed}!モデル}%
 \index{モデル!constLaminarFlameSpeed@\OFclass{constLaminarFlameSpeed}}%
  \OFclass{constLaminarFlameSpeed} &
-     一定層流火炎速度 \\
+     一定の層流火炎速度 \\
 \index{GuldersLaminarFlameSpeed@\OFclass{GuldersLaminarFlameSpeed}!モデル}%
 \index{モデル!GuldersLaminarFlameSpeed@\OFclass{GuldersLaminarFlameSpeed}}%
  \OFclass{GuldersLaminarFlameSpeed} &
@@ -125,6 +114,10 @@
 \index{モデル!GuldersEGRLaminarFlameSpeed@\OFclass{GuldersEGRLaminarFlameSpeed}}%
  \OFclass{GuldersEGRLaminarFlameSpeed} &
      排気再循環モデルを伴うGulderの層流火炎速度モデル \\
+\index{RaviPetersen@\OFclass{RaviPetersen}!モデル}%
+\index{モデル!RaviPetersen@\OFclass{RaviPetersen}}%
+ \OFclass{RaviPetersen} &
+     RaviとPetersenの相互関係から層流火炎速度を得る． \\
  \\
  \multicolumn{2}{l}{バロトロピック圧縮性モデル ---
 \index{barotropicCompressibilityModels@\string\OFclass{barotropicCompressibilityModels}!ライブラリ}%
@@ -150,14 +143,27 @@
 \index{ライブラリ!specie@\string\OFclass{specie}}%
  \OFclass{specie}} \\
  \hline
+\index{adiabaticPerfectFluid@\OFclass{adiabaticPerfectFluid}!モデル}%
+\index{モデル!adiabaticPerfectFluid@\OFclass{adiabaticPerfectFluid}}%
+ \OFclass{adiabaticPerfectFluid} &
+     断熱完全気体の状態方程式 \\
 \index{icoPolynomial@\OFclass{icoPolynomial}!モデル}%
 \index{モデル!icoPolynomial@\OFclass{icoPolynomial}}%
  \OFclass{icoPolynomial} &
      液体などの非圧縮性流体に対する多項式の状態方程式 \\
-\index{perfectGas@\OFclass{perfectGas}!モデル}%
-\index{モデル!perfectGas@\OFclass{perfectGas}}%
- \OFclass{perfectGas} &
-     理想気体に対する状態方程式 \\
+\index{perfectFluid@\OFclass{perfectFluid}!モデル}%
+\index{モデル!perfectFluid@\OFclass{perfectFluid}}%
+ \OFclass{perfectFluid} &
+     完全気体の状態方程式 \\
+\index{incompressiblePerfectGas@\OFclass{incompressiblePerfectGas}!モデル}%
+\index{モデル!incompressiblePerfectGas@\OFclass{incompressiblePerfectGas}}%
+ \OFclass{incompressiblePerfectGas} &
+     一定の参照圧力を用いた非圧縮性気体の状態方程式．
+     密度は温度と組成によってのみ変化する． \\
+\index{rhoConst@\OFclass{rhoConst}!モデル}%
+\index{モデル!rhoConst@\OFclass{rhoConst}}%
+ \OFclass{rhoConst} &
+     密度を一定とした状態方程式 \\
 \index{eConstThermo@\OFclass{eConstThermo}!モデル}%
 \index{モデル!eConstThermo@\OFclass{eConstThermo}}%
  \OFclass{eConstThermo} &
@@ -205,36 +211,11 @@
  \OFclass{APIfunctions} &
      蒸気拡散のための米国石油協会 (API) の関数 \\
  \\
-%  \multicolumn{2}{l}{確率密度関数 ---
-% \index{pdf@\string\OFclass{pdf}!ライブラリ}%
-% \index{ライブラリ!pdf@\string\OFclass{pdf}}%
-%  \OFclass{pdf}} \\
-%  \hline
-% \index{RosinRammler@\OFclass{RosinRammler}!モデル}%
-% \index{モデル!RosinRammler@\OFclass{RosinRammler}}%
-%  \OFclass{RosinRammler} &
-%      ロジン・ラムラー分布 \\
-% \index{normal@\OFclass{normal}!モデル}%
-% \index{モデル!normal@\OFclass{normal}}%
-%  \OFclass{normal} &
-%      正規分布 \\
-% \index{uniform@\OFclass{uniform}!モデル}%
-% \index{モデル!uniform@\OFclass{uniform}}%
-%  \OFclass{uniform} &
-%      一様分布 \\
-% \index{exponential@\OFclass{exponential}!モデル}%
-% \index{モデル!exponential@\OFclass{exponential}}%
-%  \OFclass{exponential} &
-%      指数分布 \\
-% \index{general@\OFclass{general}!モデル}%
-% \index{モデル!general@\OFclass{general}}%
-%  \OFclass{general} &
-%      一般化分布 \\
-%  \\
  \multicolumn{2}{l}{化学モデル ---
 \index{chemistryModel@\string\OFclass{chemistryModel}!ライブラリ}%
 \index{ライブラリ!chemistryModel@\string\OFclass{chemistryModel}}%
  \OFclass{chemistryModel}} \\
+ \hline
 \index{chemistryModel@\OFclass{chemistryModel}!モデル}%
 \index{モデル!chemistryModel@\OFclass{chemistryModel}}%
  \OFclass{chemistryModel} &
@@ -242,9 +223,10 @@
 \index{chemistrySolver@\OFclass{chemistrySolver}!モデル}%
 \index{モデル!chemistrySolver@\OFclass{chemistrySolver}}%
  \OFclass{chemistrySolver} &
-     化学反応ソルバ
+     化学反応ソルバ \\
  \\
  \multicolumn{2}{l}{その他のライブラリ} \\
+ \hline
 \index{liquidProperties@\OFclass{liquidProperties}!ライブラリ}%
 \index{ライブラリ!liquidProperties@\OFclass{liquidProperties}}%
  \OFclass{liquidProperties} &
@@ -257,14 +239,18 @@
 \index{ライブラリ!basicSolidThermo@\OFclass{basicSolidThermo}}%
  \OFclass{basicSolidThermo} &
      固体の熱物理モデル \\
-\index{solid@\OFclass{solid}!ライブラリ}%
-\index{ライブラリ!solid@\OFclass{solid}}%
- \OFclass{solid} &
-     固体の熱力学モデル \\
+\index{hExponentialThermo@\OFclass{hExponentialThermo}!ライブラリ}%
+\index{ライブラリ!hExponentialThermo@\OFclass{hExponentialThermo}}%
+ \OFclass{hExponentialThermo} &
+     \OFclass{equationOfState}用にテンプレート化された指数関数物性の熱力学パッケージ \\
 \index{SLGThermo@\OFclass{SLGThermo}!ライブラリ}%
 \index{ライブラリ!SLGThermo@\OFclass{SLGThermo}}%
  \OFclass{SLGThermo} &
      固体・液体・気体の熱力学モデルのパッケージ \\
+\index{solidChemistryModel@\OFclass{solidChemistryModel}!ライブラリ}%
+\index{ライブラリ!solidChemistryModel@\OFclass{solidChemistryModel}}%
+ \OFclass{solidChemistryModel} &
+     熱分解を含む固体化学の熱力学モデル \\
 \index{solidProperties@\OFclass{solidProperties}!ライブラリ}%
 \index{ライブラリ!solidProperties@\OFclass{solidProperties}}%
  \OFclass{solidProperties} &
@@ -273,8 +259,12 @@
 \index{ライブラリ!solidMixtureProperties@\OFclass{solidMixtureProperties}}%
  \OFclass{solidMixtureProperties} &
      混合固体の熱物性 \\
-\index{thermalPorousZone@\OFclass{thermalPorousZone}!ライブラリ}%
-\index{ライブラリ!thermalPorousZone@\OFclass{thermalPorousZone}}%
- \OFclass{thermalPorousZone} &
-     エネルギ式の項を含んだセル領域に基づく多孔質領域の定義
+\index{solidSpecie@\OFclass{solidSpecie}!ライブラリ}%
+\index{ライブラリ!solidSpecie@\OFclass{solidSpecie}}%
+ \OFclass{solidSpecie} &
+     固体の反応速度と輸送のモデル \\
+\index{solidThermo@\OFclass{solidThermo}!ライブラリ}%
+\index{ライブラリ!solidThermo@\OFclass{solidThermo}}%
+ \OFclass{solidThermo} &
+     固体エネルギのモデリング
 \end{longtable}

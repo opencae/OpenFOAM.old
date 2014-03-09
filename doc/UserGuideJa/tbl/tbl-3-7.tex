@@ -99,6 +99,10 @@
  \\
  \multicolumn{2}{l}{後処理ライブラリ} \\
  \hline
+\index{cloudFunctionObjects@\OFclass{cloudFunctionObjects}!ライブラリ}%
+\index{ライブラリ!cloudFunctionObjects@\OFclass{cloudFunctionObjects}}%
+ \OFclass{cloudFunctionObjects} &
+     ラグランジアン雲の情報をファイルに書き出す関数オブジェクト \\
 \index{fieldFunctionObjects@\OFclass{fieldFunctionObjects}!ライブラリ}%
 \index{ライブラリ!fieldFunctionObjects@\OFclass{fieldFunctionObjects}}%
  \OFclass{fieldFunctionObjects} &
@@ -111,6 +115,10 @@
 \index{ライブラリ!forces@\OFclass{forces}}%
  \OFclass{forces} &
      関数オブジェクトによる，力・揚力・抗力の後処理ツール \\
+\index{FVFunctionObjects@\OFclass{FVFunctionObjects}!ライブラリ}%
+\index{ライブラリ!FVFunctionObjects@\OFclass{FVFunctionObjects}}%
+ \OFclass{FVFunctionObjects} &
+     関数オブジェクトを用いてfvcDivやfvcGradなどを計算するツール \\
 \index{jobControl@\OFclass{jobControl}!ライブラリ}%
 \index{ライブラリ!jobControl@\OFclass{jobControl}}%
  \OFclass{jobControl} &
@@ -189,10 +197,6 @@
 \index{ライブラリ!coalCombustion@\OFclass{coalCombustion}}%
  \OFclass{coalCombustion} &
      炭塵燃焼のモデリング \\
-\index{dieselSpray@\OFclass{dieselSpray}!ライブラリ}%
-\index{ライブラリ!dieselSpray@\OFclass{dieselSpray}}%
- \OFclass{dieselSpray} &
-     ディーゼル噴霧・噴射のモデリング \\
 \index{distributionModels@\OFclass{distributionModels}!ライブラリ}%
 \index{ライブラリ!distributionModels@\OFclass{distributionModels}}%
  \OFclass{distributionModels} &
@@ -225,6 +229,14 @@
 \index{ライブラリ!solidParticle@\OFclass{solidParticle}}%
  \OFclass{solidParticle} &
      個体粒子の実装 \\
+\index{spray@\OFclass{spray}!ライブラリ}%
+\index{ライブラリ!spray@\OFclass{spray}}%
+ \OFclass{spray} &
+     噴霧・噴射のモデリング \\
+\index{turbulence@\OFclass{turbulence}!ライブラリ}%
+\index{ライブラリ!turbulence@\OFclass{turbulence}}%
+ \OFclass{turbulence} &
+     乱流に基づく粒子の分散とブラウン運動 \\
  \\
  \multicolumn{2}{l}{さまざまなライブラリ} \\
  \hline
@@ -266,12 +278,20 @@
  \OFclass{randomProcesses} &
      分析と生成のランダムプロセスのツール \\
  \\
- \multicolumn{2}{l}{さまざまなライブラリ} \\
+ \multicolumn{2}{l}{並列ライブラリ} \\
  \hline
+\index{decompose@\OFclass{decompose}!ライブラリ}%
+\index{ライブラリ!decompose@\OFclass{decompose}}%
+ \OFclass{decompose} &
+     一般的なメッシュ・フィールド分解のライブラリ \\
 \index{distributed@\OFclass{distributed}!ライブラリ}%
 \index{ライブラリ!distributed@\OFclass{distributed}}%
  \OFclass{distributed} &
      分散した面の探索と入出力のツール \\
+\index{metisDecomp@\OFclass{metisDecomp}!ライブラリ}%
+\index{ライブラリ!metisDecomp@\OFclass{metisDecomp}}%
+ \OFclass{metisDecomp} &
+     Metis領域分解のライブラリ \\
 \index{reconstruct@\OFclass{reconstruct}!ライブラリ}%
 \index{ライブラリ!reconstruct@\OFclass{reconstruct}}%
  \OFclass{reconstruct} &

@@ -37,6 +37,10 @@
 \index{モデル!qZeta@\OFclass{qZeta}}%
  \OFclass{qZeta} &
      $q$--$\zeta$モデル \\
+\index{kkLOmega@\OFclass{kkLOmega}!モデル}%
+\index{モデル!kkLOmega@\OFclass{kkLOmega}}%
+ \OFclass{kkLOmega} &
+     非圧縮性流れ用の低レイノルズ数$k$--$k_{\mathrm{l}}$--$\omega$乱流モデル \\
 \index{LaunderSharmaKE@\OFclass{LaunderSharmaKE}!モデル}%
 \index{モデル!LaunderSharmaKE@\OFclass{LaunderSharmaKE}}%
  \OFclass{LaunderSharmaKE} &
@@ -69,6 +73,10 @@
 \index{モデル!SpalartAllmaras@\OFclass{SpalartAllmaras}}%
  \OFclass{SpalartAllmaras} &
      Spalart--Allmaras 1方程式混合距離モデル \\
+\index{v2f@\OFclass{v2f}!モデル}%
+\index{モデル!v2f@\OFclass{v2f}}%
+ \OFclass{v2f} &
+     LienとKalitzinの非圧縮性流れ用$v_{2}$--$f$乱流モデル \\
  \\
  \multicolumn{2}{l}{圧縮性流れ用RAS乱流モデル ---
 \index{compressibleRASModels@\string\OFclass{compressibleRASModels}!ライブラリ}%
@@ -111,6 +119,10 @@
 \index{モデル!SpalartAllmaras@\OFclass{SpalartAllmaras}}%
  \OFclass{SpalartAllmaras} &
      Spalart--Allmaras 1方程式混合距離モデル \\
+\index{v2f@\OFclass{v2f}!モデル}%
+\index{モデル!v2f@\OFclass{v2f}}%
+ \OFclass{v2f} &
+     LienとKalitzinの圧縮性流れ用$v_{2}$--$f$乱流モデル \\
  \\
  \multicolumn{2}{l}{Large-eddyシミュレーション (LES) フィルタ ---
 \index{LESfilters@\string\OFclass{LESfilters}!ライブラリ}%
@@ -165,10 +177,6 @@
 \index{モデル!Smagorinsky2@\OFclass{Smagorinsky2}}%
  \OFclass{Smagorinsky2} &
      3次元フィルタ付きSmagorinskyモデル \\
-\index{dynSmagorinsky@\OFclass{dynSmagorinsky}!モデル}%
-\index{モデル!dynSmagorinsky@\OFclass{dynSmagorinsky}}%
- \OFclass{dynSmagorinsky} &
-     ダイナミックSmagorinsky \\
 \index{homogenousDynSmagorinsky@\OFclass{homogenousDynSmagorinsky}!モデル}%
 \index{モデル!homogenousDynSmagorinsky@\OFclass{homogenousDynSmagorinsky}}%
  \OFclass{homogenousDynSmagorinsky} &
@@ -185,10 +193,14 @@
 \index{モデル!mixedSmagorinsky@\OFclass{mixedSmagorinsky}}%
  \OFclass{mixedSmagorinsky} &
      Smagorinskyとスケール相似の混合モデル \\
-\index{dynMixedSmagorinsky@\OFclass{dynMixedSmagorinsky}!モデル}%
-\index{モデル!dynMixedSmagorinsky@\OFclass{dynMixedSmagorinsky}}%
- \OFclass{dynMixedSmagorinsky} &
-     ダイナミックSmagorinskyとスケール相似の混合モデル \\
+\index{homogenousDynOneEqEddy@\OFclass{homogenousDynOneEqEddy}!モデル}%
+\index{モデル!homogenousDynOneEqEddy@\OFclass{homogenousDynOneEqEddy}}%
+ \OFclass{homogenousDynOneEqEddy} &
+     非圧縮性流れ用の1方程式渦粘性モデル \\
+\index{laminar@\OFclass{laminar}!モデル}%
+\index{モデル!laminar@\OFclass{laminar}}%
+ \OFclass{laminar} &
+     単純に層流の物理量を返す \\
 \index{kOmegaSSTSAS@\OFclass{kOmegaSSTSAS}!モデル}%
 \index{モデル!kOmegaSSTSAS@\OFclass{kOmegaSSTSAS}}%
  \OFclass{kOmegaSSTSAS} &
@@ -201,10 +213,6 @@
 \index{モデル!dynOneEqEddy@\OFclass{dynOneEqEddy}}%
  \OFclass{dynOneEqEddy} &
      ダイナミック$k$方程式渦粘性モデル \\
-\index{locDynOneEqEddy@\OFclass{locDynOneEqEddy}!モデル}%
-\index{モデル!locDynOneEqEddy@\OFclass{locDynOneEqEddy}}%
- \OFclass{locDynOneEqEddy} &
-     局所ダイナミック$k$方程式渦粘性モデル \\
 \index{spectEddyVisc@\OFclass{spectEddyVisc}!モデル}%
 \index{モデル!spectEddyVisc@\OFclass{spectEddyVisc}}%
  \OFclass{spectEddyVisc} &
@@ -229,6 +237,10 @@
 \index{モデル!SpalartAllmarasIDDES@\OFclass{SpalartAllmarasIDDES}}%
  \OFclass{SpalartAllmarasIDDES} &
      Spalart--Allmaras改良DDESモデル \\
+\index{vanDriestDelta@\OFclass{vanDriestDelta}!モデル}%
+\index{モデル!vanDriestDelta@\OFclass{vanDriestDelta}}%
+ \OFclass{vanDriestDelta} &
+     非圧縮LESモデルで使われる$\Delta$としてセル体積の単純な立方根が使われる． \\
  \\
  \multicolumn{2}{l}{圧縮性LESモデル ---
 \index{compressibleLESmodels@\string\OFclass{compressibleLESmodels}!ライブラリ}%
@@ -243,14 +255,14 @@
 \index{モデル!oneEqEddy@\OFclass{oneEqEddy}}%
  \OFclass{oneEqEddy} &
      $k$方程式渦粘性モデル \\
-\index{dynOneEqEddy@\OFclass{dynOneEqEddy}!モデル}%
-\index{モデル!dynOneEqEddy@\OFclass{dynOneEqEddy}}%
- \OFclass{dynOneEqEddy} &
-     ダイナミック$k$方程式渦粘性モデル \\
 \index{lowReOneEqEddy@\OFclass{lowReOneEqEddy}!モデル}%
 \index{モデル!lowReOneEqEddy@\OFclass{lowReOneEqEddy}}%
  \OFclass{lowReOneEqEddy} &
      低$\nRe$ $k$方程式渦粘性モデル \\
+\index{homogenousDynOneEqEddy@\OFclass{homogenousDynOneEqEddy}!モデル}%
+\index{モデル!homogenousDynOneEqEddy@\OFclass{homogenousDynOneEqEddy}}%
+ \OFclass{homogenousDynOneEqEddy} &
+     非圧縮性流れ用の1方程式渦粘性モデル \\
 \index{DeardorffDiffStress@\OFclass{DeardorffDiffStress}!モデル}%
 \index{モデル!DeardorffDiffStress@\OFclass{DeardorffDiffStress}}%
  \OFclass{DeardorffDiffStress} &
@@ -258,5 +270,9 @@
 \index{SpalartAllmaras@\OFclass{SpalartAllmaras}!モデル}%
 \index{モデル!SpalartAllmaras@\OFclass{SpalartAllmaras}}%
  \OFclass{SpalartAllmaras} &
-     Spalart--Allmaras 1方程式混合距離モデル
+     Spalart--Allmaras 1方程式混合距離モデル \\
+\index{vanDriestDelta@\OFclass{vanDriestDelta}!モデル}%
+\index{モデル!vanDriestDelta@\OFclass{vanDriestDelta}}%
+ \OFclass{vanDriestDelta} &
+     圧縮LESモデルで使われる$\Delta$としてセル体積の単純な立方根が使われる．
 \end{longtable}

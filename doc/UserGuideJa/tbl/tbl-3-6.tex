@@ -20,6 +20,10 @@
  ディクショナリのエントリを変更するユーティリティ．
  たとえば，フィールドと\OFpath{polyMesh/boundary}ファイルの
  パッチタイプを変更するときなどに使える． \\
+\index{createExternalCoupledPatchGeometry@\OFtool{createExternalCoupledPatchGeometry}!ユーティリティ}%
+\index{ユーティリティ!createExternalCoupledPatchGeometry@\OFtool{createExternalCoupledPatchGeometry}}%
+ \OFtool{createExternalCoupledPatchGeometry} &
+ \OFboundary{externalCoupled}境界条件で使うためのパッチ形状（点および面）を生成する． \\
 \index{dsmcInitialise@\OFtool{dsmcInitialise}!ユーティリティ}%
 \index{ユーティリティ!dsmcInitialise@\OFtool{dsmcInitialise}}%
  \OFtool{dsmcInitialise} &
@@ -82,6 +86,23 @@
  \OFtool{extrudeToRegionMesh} &
  \OFkeyword{faceZones}を個別のメッシュに（別の領域として）押し出す．
  例えば，液体の膜領域を作るために \\
+\index{foamyHexMesh@\OFtool{foamyHexMesh}!ユーティリティ}%
+\index{ユーティリティ!foamyHexMesh@\OFtool{foamyHexMesh}}%
+ \OFtool{foamyHexMesh} &
+ 等角ボロノイ自動メッシュ生成ツール \\
+\index{foamyHexMeshBackgroundMesh@\OFtool{foamyHexMeshBackgroundMesh}!ユーティリティ}%
+\index{ユーティリティ!foamyHexMeshBackgroundMesh@\OFtool{foamyHexMeshBackgroundMesh}}%
+ \OFtool{foamyHexMeshBackgroundMesh} &
+ \OFtool{foamyHexMesh}で構成されたように背景メッシュを書き出し，
+ \OFclass{distanceSurface}を構成する． \\
+\index{foamyHexMeshSurfaceSimplify@\OFtool{foamyHexMeshSurfaceSimplify}!ユーティリティ}%
+\index{ユーティリティ!foamyHexMeshSurfaceSimplify@\OFtool{foamyHexMeshSurfaceSimplify}}%
+ \OFtool{foamyHexMeshSurfaceSimplify} &
+ 再抽出により面を単純化する． \\
+\index{foamyQuadMesh@\OFtool{foamyQuadMesh}!ユーティリティ}%
+\index{ユーティリティ!foamyQuadMesh@\OFtool{foamyQuadMesh}}%
+ \OFtool{foamyQuadMesh} &
+ 等角ボロノイ2次元押し出しによる自動メッシャ \\
 \index{snappyHexMesh@\OFtool{snappyHexMesh}!ユーティリティ}%
 \index{ユーティリティ!snappyHexMesh@\OFtool{snappyHexMesh}}%
  \OFtool{snappyHexMesh} &
@@ -155,8 +176,12 @@
  \OFtool{star4ToFoam} & STAR-CD (v4) PROSTARメッシュをOpenFOAM形式へ変換する \\
 \index{tetgenToFoam@\OFtool{tetgenToFoam}!ユーティリティ}%
 \index{ユーティリティ!tetgenToFoam@\OFtool{tetgenToFoam}}%
- \OFtool{tetgenToFoam} & tetgenにより書かれた.ele，
+ \OFtool{tetgenToFoam} & tetgenにより書かれた .ele，
  .node，.faceファイルを変換する \\
+\index{vtkUnstructuredToFoam@\OFtool{vtkUnstructuredToFoam}!ユーティリティ}%
+\index{ユーティリティ!vtkUnstructuredToFoam@\OFtool{vtkUnstructuredToFoam}}%
+ \OFtool{vtkUnstructuredToFoam} & VTK/ParaViewにより作られた
+ アスキーの .vtk（旧形式）ファイルを変換する \\
 \index{writeMeshObj@\OFtool{writeMeshObj}!ユーティリティ}%
 \index{ユーティリティ!writeMeshObj@\OFtool{writeMeshObj}}%
  \OFtool{writeMeshObj} & メッシュのデバッグのため：
@@ -217,6 +242,9 @@
 \index{objToVTK@\OFtool{objToVTK}!ユーティリティ}%
 \index{ユーティリティ!objToVTK@\OFtool{objToVTK}}%
  \OFtool{objToVTK} & obj線（面ではない）のファイルを読み込み，vtkに変換する \\
+\index{orientFaceZone@\OFtool{orientFaceZone}!ユーティリティ}%
+\index{ユーティリティ!orientFaceZone@\OFtool{orientFaceZone}}%
+ \OFtool{orientFaceZone} & \OFkeyword{faceZone}の方向を修正する． \\
 \index{polyDualMesh@\OFtool{polyDualMesh}!ユーティリティ}%
 \index{ユーティリティ!polyDualMesh@\OFtool{polyDualMesh}}%
  \OFtool{polyDualMesh} &
@@ -522,6 +550,10 @@
 \index{ユーティリティ!surfaceAutoPatch@\OFtool{surfaceAutoPatch}}%
  \OFtool{surfaceAutoPatch} & 特性角度によって面をパッチにする．
  \OFtool{autoPatch}と同様． \\
+\index{surfaceBooleanFeatures@\OFtool{surfaceBooleanFeatures}!ユーティリティ}%
+\index{ユーティリティ!surfaceBooleanFeatures@\OFtool{surfaceBooleanFeatures}}%
+ \OFtool{surfaceBooleanFeatures} & 二つの面についてのブーリアン演算のインタフェースのための
+ \OFkeyword{extendedFeatureEdgeMesh}を生成する． \\
 \index{surfaceCheck@\OFtool{surfaceCheck}!ユーティリティ}%
 \index{ユーティリティ!surfaceCheck@\OFtool{surfaceCheck}}%
  \OFtool{surfaceCheck} & 幾何的・トポロジ的な面の品質をチェックする． \\
@@ -544,11 +576,20 @@
 \index{surfaceFind@\OFtool{surfaceFind}!ユーティリティ}%
 \index{ユーティリティ!surfaceFind@\OFtool{surfaceFind}}%
  \OFtool{surfaceFind} & 近くの面と頂点を見つける． \\
+\index{surfaceHookUp@\OFtool{surfaceHookUp}!ユーティリティ}%
+\index{ユーティリティ!surfaceHookUp@\OFtool{surfaceHookUp}}%
+ \OFtool{surfaceHookUp} & 近接した開いたエッジを見つけて，
+ それらに沿った面を縫い合わせる． \\
 \index{surfaceInertia@\OFtool{surfaceInertia}!ユーティリティ}%
 \index{ユーティリティ!surfaceInertia@\OFtool{surfaceInertia}}%
  \OFtool{surfaceInertia} & コマンドラインで指定された\OFclass{triSurface}の
  慣性テンソル・慣性主軸・慣性モーメントを計算する．
  ソリッドもしくは薄い殻の慣性が算出可能．\\
+\index{surfaceLambdaMuSmooth@\OFtool{surfaceLambdaMuSmooth}!ユーティリティ}%
+\index{ユーティリティ!surfaceLambdaMuSmooth@\OFtool{surfaceLambdaMuSmooth}}%
+ \OFtool{surfaceLambdaMuSmooth} & lambda/muスムージングを用いて面を滑らかにする．
+ ラプラシアンスムージングを取得 (以前の\OFtool{surfaceSmooth}の挙動) する際に，
+ lambdaを緩和係数に，muをゼロにセットする． \\
 \index{surfaceMeshConvert@\OFtool{surfaceMeshConvert}!ユーティリティ}%
 \index{ユーティリティ!surfaceMeshConvert@\OFtool{surfaceMeshConvert}}%
  \OFtool{surfaceMeshConvert} & オプションで\OFclass{coordinateSystem}上での
@@ -596,12 +637,12 @@
  （精密化するようマークされていない）隣り合う三角形は半分にする (`green' 精密化)．
  (R. Verfuerth, ``A review of a posteriori error estimation and
  adaptive mesh refinement techniques'', Wiley--Teubner, 1996) \\
-\index{surfaceSmooth@\OFtool{surfaceSmooth}!ユーティリティ}%
-\index{ユーティリティ!surfaceSmooth@\OFtool{surfaceSmooth}}%
- \OFtool{surfaceSmooth} & 単純なLaplacianスムーザの例 \\
 \index{surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}!ユーティリティ}%
 \index{ユーティリティ!surfaceSplitByPatch@\OFtool{surfaceSplitByPatch}}%
  \OFtool{surfaceSplitByPatch} & triSurfaceの領域を個別のファイルに書きだす． \\
+\index{surfaceSplitByTopology@\OFtool{surfaceSplitByTopology}!ユーティリティ}%
+\index{ユーティリティ!surfaceSplitByTopology@\OFtool{surfaceSplitByTopology}}%
+ \OFtool{surfaceSplitByTopology} & 面の邪魔板部分を全てはぎ取る． \\
 \index{surfaceSplitNonManifolds@\OFtool{surfaceSplitNonManifolds}!ユーティリティ}%
 \index{ユーティリティ!surfaceSplitNonManifolds@\OFtool{surfaceSplitNonManifolds}}%
  \OFtool{surfaceSplitNonManifolds} & 複雑に接続された面を，
@@ -630,10 +671,10 @@
 \index{ユーティリティ!decomposePar@\OFtool{decomposePar}}%
  \OFtool{decomposePar} & OpenFOAMの並列計算用に
  ケースのメッシュと計算領域を自動的に分割する \\
-\index{reconstructPar@\OFtool{reconstructPar}!ユーティリティ}%
-\index{ユーティリティ!reconstructPar@\OFtool{reconstructPar}}%
- \OFtool{reconstructPar} & OpenFOAMの並列計算用に
- 分割したメッシュと計算領域を再構築する \\
+\index{redistributePar@\OFtool{redistributePar}!ユーティリティ}%
+\index{ユーティリティ!redistributePar@\OFtool{redistributePar}}%
+ \OFtool{redistributePar} & \OFpath{decomposeParDict}ファイルの設定に従って
+分割されたメッシュとフィールドを再分配する． \\
 \index{reconstructParMesh@\OFtool{reconstructParMesh}!ユーティリティ}%
 \index{ユーティリティ!reconstructParMesh@\OFtool{reconstructParMesh}}%
  \OFtool{reconstructParMesh} & 幾何情報のみを使ってメッシュを再構築する \\
@@ -675,6 +716,10 @@
  \OFtool{foamFormatConvert} &
  \OFdictionary{controlDict}に指定された書式に従って，
  ケースに関わる\OFkeyword{IOobject}をすべて変換する \\
+\index{foamHelp@\OFtool{foamHelp}!ユーティリティ}%
+\index{ユーティリティ!foamHelp@\OFtool{foamHelp}}%
+ \OFtool{foamHelp} & OpenFOAMのヘルプユーティリティまわりの
+ トップレベルのラッパユーティリティ \\
 \index{foamInfoExec@\OFtool{foamInfoExec}!ユーティリティ}%
 \index{ユーティリティ!foamInfoExec@\OFtool{foamInfoExec}}%
  \OFtool{foamInfoExec} & ケースを調べ，標準出力に情報を書きだす． \\

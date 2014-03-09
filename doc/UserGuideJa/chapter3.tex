@@ -484,7 +484,7 @@ wclean <optionalArguments> <optionalDirectory>
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2011-2012 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2013 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -569,7 +569,7 @@ int main(int argc, char *argv[])
                 (
                     "phiHbyA",
                     (fvc::interpolate(HbyA) & mesh.Sf())
-                  + fvc::ddtPhiCorr(rAU, U, phi)
+                  + fvc::interpolate(rAU)*fvc::ddtCorr(U, phi)
                 );
 
                 adjustPhi(phiHbyA, U, p);
@@ -691,12 +691,12 @@ SOURCE DIR=.
 SOURCE=pisoFoam.C ;
 g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 -DscalarMachine -DoptSolvers -DPARALLEL -DUSEMPI -Wall -O2 -DNoRepository
--ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-2.2.0/src/OpenFOAM/lnInclude
+-ftemplate-depth-17 -I.../OpenFOAM/OpenFOAM-2.3.0/src/OpenFOAM/lnInclude
 -IlnInclude
 -I.
 ......
 -lmpich -L/usr/X11/lib -lm
--o .../OpenFOAM/OpenFOAM-2.2.0/applications/bin/linuxOptMPICH/pisoFoam
+-o .../OpenFOAM/OpenFOAM-2.3.0/applications/bin/linuxOptMPICH/pisoFoam
 \end{OFverbatim}
 再コンパイルすることも可能ですが，
 実行ファイルが最新でコンパイルする必要がないというときには
@@ -704,7 +704,7 @@ g++ -DFOAM EXCEPTION -Dlinux -DlinuxOptMPICH
 \begin{OFverbatim}[file]
 make: Nothing to be done for `allFiles'.
 make: `Make/linuxOptMPICH/dependencies' is up to date.
-make: `.../OpenFOAM/OpenFOAM-2.2.0/applications/bin/linuxOptMPICH/pisoFoam'
+make: `.../OpenFOAM/OpenFOAM-2.3.0/applications/bin/linuxOptMPICH/pisoFoam'
 is up to date.
 \end{OFverbatim}
 
@@ -881,7 +881,7 @@ openMPIというパブリックドメインを使用しています．
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.2.0                                 |
+|  \\    /   O peration     | Version:  2.3.0                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -1133,7 +1133,7 @@ reconstructPar
 \label{sec:3.5}
 OpenFOAMのディストリビューションのソルバは
 \OFpath{\$FOAM\_SOLVERS}ディレクトリの中にあり，
-コマンドラインから\texttt{app}と入力すれば素早く到達できます．
+コマンドラインから\texttt{sol}と入力すれば素早く到達できます．
 このディレクトリはさらに，非圧縮流体のような連続体力学，
 対流および固体応力解析等のカテゴリにより，
 いくつかのディレクトリに再分割されています．
