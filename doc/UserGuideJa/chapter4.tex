@@ -41,7 +41,7 @@ OpenFOAMケースの基本的なディレクトリ構造を
 \begin{figure}[ht]
  \begin{minipage}{.6\textwidth}
   \includegraphics{fig-4-1}
-  \hskip5pt
+  \hskip10pt
   \begin{minipage}[b]{7zw}
    \def\baselinestretch{1.2}\selectfont
    \autoref{sec:4.3}を参照\par
@@ -51,9 +51,9 @@ OpenFOAMケースの基本的なディレクトリ構造を
    \autoref{chap:7}を参照\par
    \vskip4pt
    \autoref{ssec:5.1.2}を参照\par
-   \vskip68pt
+   \vskip81pt
    \autoref{ssec:4.2.8}を参照\par
-   \vskip-12pt\null
+   \vskip-10pt\null
   \end{minipage}
  \end{minipage}
  \caption{ケースディレクトリの構造}
@@ -231,8 +231,8 @@ solvers
 
     U
     {
-        solver           PBiCG;
-        preconditioner   DILU;
+        solver           smoothSolver;
+        smoother         symGaussSeidel;
         tolerance        1e-05;
         relTol           0;
     }
@@ -714,15 +714,12 @@ divSchemes
 
 laplacianSchemes
 {
-    default         none;
-    laplacian(nu,U) Gauss linear orthogonal;
-    laplacian((1|A(U)),p) Gauss linear orthogonal;
+    default         Gauss linear orthogonal;
 }
 
 interpolationSchemes
 {
     default         linear;
-    interpolate(HbyA) linear;
 }
 
 snGradSchemes
@@ -733,7 +730,7 @@ snGradSchemes
 fluxRequired
 {
     default         no;
-    p;
+    p               ;
 }
 
 
@@ -1101,8 +1098,8 @@ solvers
 
     U
     {
-        solver           PBiCG;
-        preconditioner   DILU;
+        solver           smoothSolver;
+        smoother         symGaussSeidel;
         tolerance        1e-05;
         relTol           0;
     }
@@ -1172,7 +1169,7 @@ PISO
 
 ソルバは対称行列と非対称行列を区別します．
 行列の対称性は解かれている方程式の構造に依存し，
-ユーザがこれを決定するこも可能ですが，
+ユーザがこれを決定することも可能ですが，
 例えばOpenFOAMが不適当なソルバが選ばれているかどうかを
 ユーザにアドバイスするためにエラーメッセージを出すので，
 それは必須ではありません．
@@ -1365,48 +1362,22 @@ solvers
 {
     p
     {
-        solver          PCG;
-        preconditioner  DIC;
+        solver          GAMG;
         tolerance       1e-06;
-        relTol          0.01;
-    }
-
-    U
-    {
-        solver          PBiCG;
-        preconditioner  DILU;
-        tolerance       1e-05;
         relTol          0.1;
+        smoother        GaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration on;
+        agglomerator    faceAreaPair;
+        nCellsInCoarsestLevel 10;
+        mergeLevels     1;
     }
 
-    k
+    "(U|k|epsilon|R|nuTilda)"
     {
-        solver          PBiCG;
-        preconditioner  DILU;
-        tolerance       1e-05;
-        relTol          0.1;
-    }
-
-    epsilon
-    {
-        solver          PBiCG;
-        preconditioner  DILU;
-        tolerance       1e-05;
-        relTol          0.1;
-    }
-
-    R
-    {
-        solver          PBiCG;
-        preconditioner  DILU;
-        tolerance       1e-05;
-        relTol          0.1;
-    }
-
-    nuTilda
-    {
-        solver          PBiCG;
-        preconditioner  DILU;
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
         tolerance       1e-05;
         relTol          0.1;
     }
