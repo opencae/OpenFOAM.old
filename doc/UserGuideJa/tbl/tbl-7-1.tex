@@ -1,17 +1,36 @@
 %#! platex UserGuideJa
 \begin{longtable}{lX}
- \multicolumn{2}{l}{状態方程式 --- equationOfState} \\
+ \multicolumn{2}{l}{状態方程式 ---
+\index{equationOfState@\string\OFclass{equationOfState}!ライブラリ}%
+\index{ライブラリ!equationOfState@\string\OFclass{equationOfState}}%
+ \OFclass{equationOfState}} \\
  \hline
+\index{adiabaticPerfectFluid@\OFclass{adiabaticPerfectFluid}!モデル}%
+\index{モデル!adiabaticPerfectFluid@\OFclass{adiabaticPerfectFluid}}%
+ \OFclass{adiabaticPerfectFluid} &
+ 断熱完全気体の状態方程式 \\
 \index{icoPolynomial@\OFclass{icoPolynomial}!モデル}%
 \index{モデル!icoPolynomial@\OFclass{icoPolynomial}}%
  \OFclass{icoPolynomial} &
  液体などの非圧縮性流体に対する多項式の状態方程式 \\
-\index{perfectGas@\OFclass{perfectGas}!モデル}%
-\index{モデル!perfectGas@\OFclass{perfectGas}}%
- \OFclass{perfectGas} &
- 理想気体状態方程式 \\
+\index{perfectFluid@\OFclass{perfectFluid}!モデル}%
+\index{モデル!perfectFluid@\OFclass{perfectFluid}}%
+ \OFclass{perfectFluid} &
+ 完全気体の状態方程式 \\
+\index{incompressiblePerfectGas@\OFclass{incompressiblePerfectGas}!モデル}%
+\index{モデル!incompressiblePerfectGas@\OFclass{incompressiblePerfectGas}}%
+ \OFclass{incompressiblePerfectGas} &
+ 一定の参照圧力を用いた非圧縮性気体の状態方程式．
+ 密度は温度と組成によってのみ変化する． \\
+\index{rhoConst@\OFclass{rhoConst}!モデル}%
+\index{モデル!rhoConst@\OFclass{rhoConst}}%
+ \OFclass{rhoConst} &
+ 密度を一定とした状態方程式 \\
  \\
- \multicolumn{2}{l}{標準熱特性 --- thermo} \\
+ \multicolumn{2}{l}{標準熱特性 ---
+\index{thermo@\string\OFclass{thermo}!ライブラリ}%
+\index{ライブラリ!thermo@\string\OFclass{thermo}}%
+ \OFclass{thermo}} \\
  \hline
 \index{eConstThermo@\OFclass{eConstThermo}!モデル}%
 \index{モデル!eConstThermo@\OFclass{eConstThermo}}%
@@ -31,14 +50,20 @@
  JANAFの熱物性表の係数から$c_{\mathrm{p}}$が評価され，
  それにより$h$，$s$が評価される． \\
  \\
- \multicolumn{2}{l}{派生熱特性 --- specieThermo} \\
+ \multicolumn{2}{l}{派生熱特性 ---
+\index{specieThermo@\string\OFclass{specieThermo}!ライブラリ}%
+\index{ライブラリ!specieThermo@\string\OFclass{specieThermo}}%
+ \OFclass{specieThermo}} \\
  \hline
 \index{specieThermo@\OFclass{specieThermo}!モデル}%
 \index{モデル!specieThermo@\OFclass{specieThermo}}%
  \OFclass{specieThermo} &
  $c_{\mathrm{p}}$，$h$，そして/または，$s$から得られた特殊な熱特性 \\
  \\
- \multicolumn{2}{l}{輸送特性 --- transport} \\
+ \multicolumn{2}{l}{輸送特性 ---
+\index{transport@\string\OFclass{transport}!ライブラリ}%
+\index{ライブラリ!transport@\string\OFclass{transport}}%
+ \OFclass{transport}} \\
  \hline
 \index{constTransport@\OFclass{constTransport}!モデル}%
 \index{モデル!constTransport@\OFclass{constTransport}}%
@@ -53,12 +78,15 @@
  \OFclass{sutherlandTransport} &
  温度依存する輸送輸送のためのSutherlandの公式 \\
  \\
- \multicolumn{2}{l}{混合特性 --- mixture} \\
+ \multicolumn{2}{l}{混合特性 ---
+\index{mixture@\string\OFclass{mixture}!ライブラリ}%
+\index{ライブラリ!mixture@\string\OFclass{mixture}}%
+ \OFclass{mixture}} \\
  \hline
 \index{pureMixture@\OFclass{pureMixture}!モデル}%
 \index{モデル!pureMixture@\OFclass{pureMixture}}%
  \OFclass{pureMixture} &
- 不活性ガス混合の一般熱モデル計算 \\
+ 不活性混合気体の一般熱物理モデル計算 \\
 \index{homogeneousMixture@\OFclass{homogeneousMixture}!モデル}%
 \index{モデル!homogeneousMixture@\OFclass{homogeneousMixture}}%
  \OFclass{homogeneousMixture} &
@@ -71,10 +99,6 @@
 \index{モデル!veryInhomogeneousMixture@\OFclass{veryInhomogeneousMixture}}%
  \OFclass{veryInhomogeneousMixture} &
  $b$と$f_{\mathrm{t}}$と未燃燃料質量分率$f_{\mathrm{u}}$に基づく混合気燃焼 \\
-\index{dieselMixture@\OFclass{dieselMixture}!モデル}%
-\index{モデル!dieselMixture@\OFclass{dieselMixture}}%
- \OFclass{dieselMixture} &
- $f_{\mathrm{t}}$と$f_{\mathrm{u}}$に基づく混合気燃焼 \\
 \index{basicMultiComponentMixture@\OFclass{basicMultiComponentMixture}!モデル}%
 \index{モデル!basicMultiComponentMixture@\OFclass{basicMultiComponentMixture}}%
  \OFclass{basicMultiComponentMixture} &
@@ -91,48 +115,38 @@
 \index{モデル!egrMixture@\OFclass{egrMixture}}%
  \OFclass{egrMixture} &
  排気ガス再循環の混合気 \\
+\index{singleStepReactingMixture@\OFclass{singleStepReactingMixture}!モデル}%
+\index{モデル!singleStepReactingMixture@\OFclass{singleStepReactingMixture}}%
+ \OFclass{singleStepReactingMixture} &
+ 素反応を伴う混合気 \\
  \\
- \multicolumn{2}{l}{熱モデル --- thermoModel} \\
+ \multicolumn{2}{l}{熱モデル ---
+\index{thermoModel@\string\OFclass{thermoModel}!ライブラリ}%
+\index{ライブラリ!thermoModel@\string\OFclass{thermoModel}}%
+ \OFclass{thermoModel}} \\
  \hline
-\index{hPsiThermo@\OFclass{hPsiThermo}!モデル}%
-\index{モデル!hPsiThermo@\OFclass{hPsiThermo}}%
- \OFclass{hPsiThermo} &
-     エンタルピ$h$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{hsPsiThermo@\OFclass{hsPsiThermo}!モデル}%
-\index{モデル!hsPsiThermo@\OFclass{hsPsiThermo}}%
- \OFclass{hsPsiThermo} &
-\OFrevision*{sensible enthalpy?}%
-     顕在エンタルピ$h_{\mathrm{s}}$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{ePsiThermo@\OFclass{ePsiThermo}!モデル}%
-\index{モデル!ePsiThermo@\OFclass{ePsiThermo}}%
- \OFclass{ePsiThermo} &
-     内部エネルギ$e$と圧縮率$\psi$に基づく一般熱物理モデル計算 \\
-\index{hRhoThermo@\OFclass{hRhoThermo}!モデル}%
-\index{モデル!hRhoThermo@\OFclass{hRhoThermo}}%
- \OFclass{hRhoThermo} &
-     エンタルピ$h$に基づく一般熱物理モデル計算 \\
-\index{hsRhoThermo@\OFclass{hsRhoThermo}!モデル}%
-\index{モデル!hsRhoThermo@\OFclass{hsRhoThermo}}%
- \OFclass{hsRhoThermo} &
-     顕在エンタルピ$h_{\mathrm{s}}$に基づく一般熱物理モデル計算 \\
-\index{hPsiMixtureThermo@\OFclass{hPsiMixtureThermo}!モデル}%
-\index{モデル!hPsiMixtureThermo@\OFclass{hPsiMixtureThermo}}%
- \OFclass{hPsiMixtureThermo} &
- エンタルピ$h$と$\psi$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hsPsiMixtureThermo@\OFclass{hsPsiMixtureThermo}!モデル}%
-\index{モデル!hsPsiMixtureThermo@\OFclass{hsPsiMixtureThermo}}%
- \OFclass{hsPsiMixtureThermo} &
- 顕在エンタルピ$h_{\mathrm{s}}$と$\psi$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hRhoMixtureThermo@\OFclass{hRhoMixtureThermo}!モデル}%
-\index{モデル!hRhoMixtureThermo@\OFclass{hRhoMixtureThermo}}%
- \OFclass{hRhoMixtureThermo} &
- エンタルピ$h$と$\rho$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hsRhoMixtureThermo@\OFclass{hsRhoMixtureThermo}!モデル}%
-\index{モデル!hsRhoMixtureThermo@\OFclass{hsRhoMixtureThermo}}%
- \OFclass{hsRhoMixtureThermo} &
- 顕在エンタルピ$h_{\mathrm{s}}$と$\rho$に基づいて混合気燃焼のエンタルピを計算する \\
-\index{hhuMixtureThermo@\OFclass{hhuMixtureThermo}!モデル}%
-\index{モデル!hhuMixtureThermo@\OFclass{hhuMixtureThermo}}%
- \OFclass{hhuMixtureThermo} &
- 未燃ガスと混合気燃焼のエンタルピ計算
+\index{hePsiThermo@\OFclass{hePsiThermo}!モデル}%
+\index{モデル!hePsiThermo@\OFclass{hePsiThermo}}%
+ \OFclass{hePsiThermo} &
+ 圧縮率$\psi$に基づく一般熱物理モデル計算 \\
+\index{heRhoThermo@\OFclass{heRhoThermo}!モデル}%
+\index{モデル!heRhoThermo@\OFclass{heRhoThermo}}%
+ \OFclass{heRhoThermo} &
+ 密度$\rho$に基づく一般熱物理モデル計算 \\
+\index{psiReactionThermo@\OFclass{psiReactionThermo}!モデル}%
+\index{モデル!psiReactionThermo@\OFclass{psiReactionThermo}}%
+ \OFclass{psiReactionThermo} &
+ $\psi$に基づいて燃焼混合気のエンタルピを計算する \\
+\index{psiuReactionThermo@\OFclass{psiuReactionThermo}!モデル}%
+\index{モデル!psiuReactionThermo@\OFclass{psiuReactionThermo}}%
+ \OFclass{psiuReactionThermo} &
+ $\psi_{\mathrm{u}}$に基づいて燃焼混合気のエンタルピを計算する \\
+\index{rhoReactionThermo@\OFclass{rhoReactionThermo}!モデル}%
+\index{モデル!rhoReactionThermo@\OFclass{rhoReactionThermo}}%
+ \OFclass{rhoReactionThermo} &
+ $\rho$に基づいて燃焼混合気のエンタルピを計算する \\
+\index{heheupsiReactionThermo@\OFclass{heheupsiReactionThermo}!モデル}%
+\index{モデル!heheupsiReactionThermo@\OFclass{heheupsiReactionThermo}}%
+ \OFclass{heheupsiReactionThermo} &
+ 未燃ガスおよび燃焼混合気のエンタルピを計算する \\
 \end{longtable}
