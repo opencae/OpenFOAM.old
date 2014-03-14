@@ -78,7 +78,7 @@ $\bm{a}$の発散は以下のスカラ場となります．
 （見やすいように列ベクトルに展開して表示しています）．
 \begin{align}
  \label{eq:2.5}
- \nabla \inProd \bm{T} = \partial_{i}T_{ij} =
+ \nabla \inProd \bm{T} = \partial_{j}T_{ji} =
  \begin{pmatrix}
   \partial T_{11}/\partial x_{1} + \partial T_{21}/\partial x_{2} + \partial T_{31}/\partial x_{3} \\
   \partial T_{12}/\partial x_{1} + \partial T_{22}/\partial x_{2} + \partial T_{32}/\partial x_{3} \\
@@ -733,13 +733,13 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
 勾配の項は様々な方法で評価できる陽的な項です．
 そのスキームは，例えば\OFkeyword{fvc::gGrad}，\OFkeyword{fvc::lsGrad}などのような
 離散化スキームに対して適切な特定の勾配関数を選ぶか，
-または入力ファイルの中の適切な\OFkeyword{timeScheme}キーワードに
+または入力ファイルの中の適切な\OFkeyword{gradScheme}キーワードに
 連動した\OFkeyword{fvc::grad}関数を使うか，
 いずれの方法でも評価できます．
 \begin{description}
 \index{こうばい@勾配!ガウススキーム}%
  \item[ガウス積分] は，\OFkeyword{fvc::grad}関数を
-            \OFkeyword{timeScheme Gauss}と合わせて使うことで動作します．
+            \OFkeyword{gradScheme Gauss}と合わせて使うことで動作します．
             この離散化は体積分に対してガウスの定理を適用する標準的な手法を使います．
             \begin{align}
              \label{eq:2.25}
@@ -787,7 +787,6 @@ OpenFOAMでは，いくつかの項は常に同じスキームで離散化され
             また同じように非直交メッシュの場合には，
             この面の勾配の精度を高めるために補正が加えられます．
             この補正は\OFkeyword{fvc::snGradCorrection}関数を使って呼び出されます．
-            [Check**]
 \end{description}
 
 
@@ -1054,5 +1053,5 @@ solve
 その面の境界条件は以下に従って指定しなければなりません．
 \begin{description}
 \index{きょうかいじょうけん@境界条件!たいしょうめん@対称面}%
- \item[対称面] 対称面条件は，その面に垂直な勾配成分をゼロと指定します．[Check**]
+ \item[対称面] 対称面条件は，その面に垂直な勾配成分をゼロと指定します．
 \end{description}
