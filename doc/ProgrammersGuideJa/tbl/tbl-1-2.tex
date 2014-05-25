@@ -2,6 +2,7 @@
 \begin{longtable}{Xlll}
  演算 & 備考 & 数学表記 & OpenFOAMでの表記 \\
  \hline
+ \tblstrut
 \index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!+@\verb'+'}%
 \index{+@\verb'+'!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  加算 &  & $\bm{a} + \bm{b}$ & \verb|a + b| \\
@@ -54,6 +55,7 @@
  \\
  \multicolumn{4}{l}{\sffamily\gtfamily 2階テンソル特有の演算} \\
  \hline
+ \tblstrut
 \index{tensorのメンバかんすう@\OFclass{tensor}のメンバ関数!T()@\verb+T()+}%
 \index{T()@\verb+T()+!tensorのメンバかんすう@\OFclass{tensor}のメンバ関数}%
  転置 &  & $\bm{T}^{\mathrm{T}}$ & \verb|T.T()| \\
@@ -89,6 +91,7 @@
  \\
  \multicolumn{4}{l}{\sffamily\gtfamily スカラ特有の演算} \\
  \hline
+ \tblstrut
  符号（真偽値） &  & $\mathop{\mathrm{sgn}}(s)$ & \verb|sgn(s)| \\
  正数（真偽値） &  & $s \ge 0$ & \verb|pos(s)| \\
  負数（真偽値） &  & $s < 0$ & \verb|neg(s)| \\
@@ -118,7 +121,7 @@
  0次の第2種ベッセル関数 &  & $\mathop{Y_{0}}s$ & \verb|y0(s)| \\
  1次の第2種ベッセル関数 &  & $\mathop{Y_{1}}s$ & \verb|y1(s)| \\
  \hline
- \multicolumn{4}{l}{別途記載がないかぎり$\bm{a}$，$\bm{b}$は任意ランクのテンソル} \\
+ \multicolumn{4}{l}{\tblstrut 別途記載がないかぎり$\bm{a}$，$\bm{b}$は任意ランクのテンソル} \\
  \multicolumn{4}{l}{$s$はスカラ，$N$はテンソル成分の数} \\
 \end{longtable}
 

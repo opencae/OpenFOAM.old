@@ -1,36 +1,46 @@
 %#! platex ProgrammersGuideJa
 \begin{tabular}{|cccc|}
  \hline
+ \tblstrut
  項の記述 & 陰的・陽的 & 記述 & \OFclass{fvm::}または\OFclass{fvc::}の関数 \\
  \hline\hline
+ \tblstrut
  ラプラシアン & 陰的・陽的 & $\nabla^{2}\phi$ & \texttt{laplacian(phi)} \\
  &  & $\nabla \inProd \varGamma \nabla \phi$ & \texttt{laplacian(Gamma, phi)} \\
  \hline
+ \tblstrut
  時間微分 & 陰的・陽的 & $\frac{\partial\phi}{\partial t}$ & \texttt{ddt(phi)} \\
  &  & $\frac{\partial\rho\phi}{\partial t}$ & \texttt{ddt(rho, phi)} \\
  \hline
+ \tblstrut
  時間の2階微分 & 陰的・陽的 & $\frac{\partial}{\partial t}\left(\rho\frac{\partial\phi}{\partial t}\right)$ & \texttt{d2dt2(rho, phi)} \\
  \hline
+ \tblstrut
  移流 & 陰的・陽的 & $\nabla \inProd (\psi)$ & \verb|div(psi, scheme)*| \\
  &  & $\nabla \inProd (\psi\phi)$ & \verb|div(psi, phi, word)*| \\
  &  &  & \verb|div(psi, phi)| \\
  \hline
+ \tblstrut
  発散 & 陽的 & $\nabla \inProd \chi$ & \texttt{div(chi)} \\
  \hline
+ \tblstrut
  勾配 & 陽的 & $\nabla \chi$ & \texttt{grad(chi)} \\
  &  & $\nabla \phi$ & \texttt{gGrad(phi)} \\
  &  &  & \texttt{lsGrad(phi)} \\
  &  &  & \texttt{snGrad(phi)} \\
  &  &  & \texttt{snGradCorrection(phi)} \\
  \hline
+ \tblstrut
  勾配の勾配の二乗 & 陽的 & $|\nabla\nabla\phi|^{2}$ & \texttt{sqrGradGrad(phi)} \\
  \hline
+ \tblstrut
  回転 & 陽的 & $\nabla \times \phi$ & \texttt{curl(phi)} \\
  \hline
+ \tblstrut
  湧き出し & 陰的 & $\rho\phi$ & \texttt{Sp(rho, phi)} \\
  & 陰的・陽的\textsuperscript{\dag} &  & \texttt{SuSp(rho, phi)} \\
  \hline
- \multicolumn{4}{l}{\dag\ 湧き出し\OFkeyword{fvm::SuSp}は
+ \multicolumn{4}{l}{\tblstrut\dag\ 湧き出し\OFkeyword{fvm::SuSp}は
  \OFkeyword{rho}の符号に依存して，陰的または陽的に離散化されます．} \\
  \multicolumn{4}{l}{\dag\ 陽的な湧き出しは単純に
  \OFclass{vol<Type>Field}で指定されます．例：\texttt{rho*phi}} \\
