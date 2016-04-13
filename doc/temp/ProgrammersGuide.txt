@@ -1,12 +1,13 @@
-Open∇FOAM
+OpenFOAM
 The Open Source CFD Toolbox
 Programmer’s Guide
-Version 2.3.1
-3rd December 2014
+Version 2.4.0
+21st May 2015
 P-2
-Copyright c 2011-2014 OpenFOAM Foundation.
-This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs
-3.0 Unported License.
+Copyright c 2011-2015 OpenFOAM Foundation Ltd.
+Author: Christopher J. Greenshields, CFD Direct Ltd.
+This work is licensed under a
+Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
 Typeset in L
 A
 TEX.
@@ -45,9 +46,9 @@ d. “Licensor” means the individual, individuals, entity or entities that o�
 the terms of this License.
 e. “Original Author” means, in the case of a literary or artistic work, the individual, individuals,
 entity or entities who created the Work or if no individual or entity can be identiﬁed, the
-publisher; and in addition (i) in the case of a performance the actors, singers, musicians,
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-3
+publisher; and in addition (i) in the case of a performance the actors, singers, musicians,
 dancers, and other persons who act, sing, deliver, declaim, play in, interpret or otherwise
 perform literary or artistic works or expressions of folklore; (ii) in the case of a phonogram
 the producer being the person or legal entity who ﬁrst ﬁxes the sounds of a performance
@@ -92,7 +93,7 @@ royalty-free, non-exclusive, perpetual (for the duration of the applicable copyr
 ercise the rights in the Work as stated below:
 a. to Reproduce the Work, to incorporate the Work into one or more Collections, and to
 Reproduce the Work as incorporated in the Collections;
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-4
 b. and, to Distribute and Publicly Perform the Work including as incorporated in Collections.
 The above rights may be exercised in all media and formats whether now known or hereafter
@@ -140,7 +141,7 @@ for the other contributing authors. For the avoidance of doubt, You may only use
 required by this Section for the purpose of attribution in the manner set out above and, by
 exercising Your rights under this License, You may not implicitly or explicitly assert or imply
 any connection with, sponsorship or endorsement by the Original Author, Licensor and/or
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-5
 Attribution Parties, as appropriate, of You or Your use of the Work, without the separate,
 express prior written permission of the Original Author, Licensor and/or Attribution Parties.
@@ -185,7 +186,7 @@ THE POSSIBILITY OF SUCH DAMAGES.
 7. Termination
 a. This License and the rights granted hereunder will terminate automatically upon any breach
 by You of the terms of this License. Individuals or entities who have received Collections
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-6
 from You under this License, however, will not have their licenses terminated provided such
 individuals or entities remain in full compliance with those licenses. Sections 1, 2, 5, 6, 7,
@@ -224,7 +225,7 @@ those treaty provisions in the applicable national law. If the standard suite of
 under applicable copyright law includes additional rights not granted under this License,
 such additional rights are deemed to be included in the License; this License is not intended
 to restrict the license of any rights under applicable law.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-7
 Trademarks
 ANSYS is a registered trademark of ANSYS Inc.
@@ -238,13 +239,13 @@ Icem-CFD is a registered trademark of Ansys Inc.
 I-DEAS is a registered trademark of Structural Dynamics Research Corporation
 JAVA is a registered trademark of Sun Microsystems Inc.
 Linux is a registered trademark of Linus Torvalds
-OpenFOAM is a registered trademark of SGI Corp.
+OpenFOAM is a registered trademark of ESI Group
 ParaView is a registered trademark of Kitware
 STAR-CD is a registered trademark of Computational Dynamics Ltd.
 UNIX is a registered trademark of The Open Group
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-8
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Contents
 Copyright Notice P-2
 1. Deﬁnitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-2
@@ -328,15 +329,15 @@ P-10 Contents
 3.4.4 Running the case . . . . . . . . . . . . . . . . . . . . . . . . . . P-66
 3.4.5 Improving the solution by reﬁning the mesh . . . . . . . . . . . P-67
 3.5 Magnetohydrodynamic ﬂow of a liquid . . . . . . . . . . . . . . . . . . P-67
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Contents P-11
 3.5.1 Problem speciﬁcation . . . . . . . . . . . . . . . . . . . . . . . . P-67
 3.5.2 Mesh generation . . . . . . . . . . . . . . . . . . . . . . . . . . P-69
 3.5.3 Running the case . . . . . . . . . . . . . . . . . . . . . . . . . . P-70
 Index P-73
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-12 Contents
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Chapter 1
 Tensor mathematics
 This Chapter describes tensors and their algebraic operations and how they are represented
@@ -369,11 +370,11 @@ are therefore orthogonal, i.e. at right-angles to one another. Every tensor has 
 attributes:
 Dimension d of the particular space to which they belong, i.e. d = 3 in OpenFOAM;
 Rank An integer r ≥ 0, such that the number of component values = dr.
-While OpenFOAM 1.x is set to 3 dimensions, it oﬀers tensors of ranks 0 to 3 as standard
+While OpenFOAM is set to 3 dimensions, it oﬀers tensors of ranks 0 to 3 as standard
 while being written in such a way to allow this basic set of ranks to be extended indeﬁnitely.
 Tensors of rank 0 and 1, better known as scalars and vectors, should be familiar to readers;
 tensors of rank 2 and 3 may not be so familiar. For completeness all ranks of tensor oﬀered
-as standard in OpenFOAM 1.x are reviewed below.
+as standard in OpenFOAM are reviewed below.
 Rank 0 ‘scalar’ Any property which can be represented by a single real number, denoted
 by characters in italics, e.g. mass m, volume V , pressure p and viscosity µ.
 Rank 1 ‘vector’ An entity which can be represented physically by both magnitude and
@@ -439,7 +440,7 @@ and T23
 and non-symmetric tensors to save memory by storing 6 components rather than 9
 if the tensor is symmetric. Most tensors encountered in continuum mechanics are
 symmetric.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 1.2 Tensors P-15
 Rank 3 has 27 components and is represented in index notation as Pijk
 which is too long
@@ -500,7 +501,7 @@ b3
 (1.3)
 In the remainder of the book the symbol is omitted since the repeated subscript
 indicates the summation.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-16 Tensor mathematics
 1.3 Algebraic tensor operations
 This section describes all the algebraic operations for tensors that are available in Open-
@@ -614,8 +615,8 @@ T33
 
  (1.9)
 • The inner product of two tensors T and S produces a tensor P = T •
-S whose compo-
-nents are evaluated as:
+S whose com-
+ponents are evaluated as:
 Pij
 = Tik
 Skj
@@ -624,7 +625,7 @@ It is non-commutative such that T •
 S = ST
 •
 TT T
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 1.3 Algebraic tensor operations P-17
 • The inner product of a vector a and third rank tensor P produces a second rank tensor
 T = a •
@@ -733,7 +734,7 @@ a3
 b3
 
  (1.19)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-18 Tensor mathematics
 • An outer product of a vector a and second rank tensor T produces a third rank tensor
 P = aT whose components are
@@ -813,7 +814,7 @@ b2
 , a3
 b3
 ) (1.24)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 1.3 Algebraic tensor operations P-19
 1.3.7 Geometric transformation and the identity tensor
 A second rank tensor T is strictly deﬁned as a linear vector function, i.e. it is a function
@@ -885,7 +886,7 @@ eirs
 − δjs
 δkr
 (1.30)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-20 Tensor mathematics
 1.3.9 Operations exclusive to tensors of rank 2
 There are several operations that manipulate the components of tensors of rank 2 that are
@@ -999,7 +1000,7 @@ T33
 − T23
 T31
 (1.36)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 1.4 OpenFOAM tensor classes P-21
 The cofactors are signed minors where each minor is component is given a sign based
 on the rule
@@ -1059,7 +1060,7 @@ T =
 
  (1.44)
 in OpenFOAM by the line:
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-22 Tensor mathematics
 Rank Common name Basic class Access functions
 0 Scalar scalar
@@ -1106,7 +1107,7 @@ Scale scale(a,b) scale(a,b)
 Geometric transformation transforms a using tensor T transform(T,a)
 Operations exclusive to tensors of rank 2
 Continued on next page
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 1.4 OpenFOAM tensor classes P-23
 Continued from previous page
 Operation Comment Mathematical Description
@@ -1160,7 +1161,7 @@ s y1(s)
 a, b are tensors of arbitrary rank unless otherwise stated
 s is a scalar, N is the number of tensor components
 Table 1.2: Algebraic tensor operations in OpenFOAM
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-24 Tensor mathematics
 1.5 Dimensional units
 In continuum mechanics, properties are represented in some chosen units, e.g. mass in
@@ -1202,7 +1203,7 @@ creates a tensor with correct dimensions of pressure, or stress
 0 0 106
 
  (1.45)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Chapter 2
 Discretisation procedures
 So far we have dealt with algebra of tensors at a point. The PDEs we wish to solve involve
@@ -1390,7 +1391,7 @@ For example, the Laplacian of a scalar ﬁeld s is the scalar ﬁeld
 There is more than one deﬁnition of temporal, or time, derivative of a tensor. To describe
 the temporal derivatives we must ﬁrst recall that the tensor relates to a property of a volume
 of material that may be moving. If we track an inﬁnitesimally small volume of material, or
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.2 Overview of discretisation P-27
 particle, as it moves and observe the change in the tensorial property φ in time, we have
 the total, or material time derivative denoted by
@@ -1437,7 +1438,7 @@ tensorThirdField and symmTensorThirdField. Algebraic operations can be performed
 Fields subject to obvious restrictions such as the ﬁelds having the same number of elements.
 OpenFOAM also supports operations between a ﬁeld and single tensor, e.g. all values of a
 Field U can be multiplied by the scalar 2 with the operation U = 2.0 * U.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-28 Discretisation procedures
 2.3 Discretisation of the solution domain
 Discretisation of the solution domain is shown in Figure 2.1. The space domain is discretised
@@ -1463,7 +1464,7 @@ On a more detailed level, discretisation of space requires the subdivision of th
 into a number of cells, or control volumes. The cells are contiguous, i.e. they do not overlap
 one another and completely ﬁll the domain. A typical cell is shown in Figure 2.2. Dependent
 variables and other properties are principally stored at the cell centroid P although they
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.3 Discretisation of the solution domain P-29
 may be stored on faces or vertices. The cell is bounded by a set of ﬂat faces, given the
 generic label f. In OpenFOAM there is no limitation on the number of faces bounding
@@ -1503,7 +1504,7 @@ polyMesh. OpenFOAM therefore extends the polyMesh class to fvMesh which stores t
 additional data needed for FV discretisation. fvMesh is constructed from polyMesh and
 stores the data in Table 2.1 which can be updated during runtime in cases where the mesh
 moves, is reﬁned etc..
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-30 Discretisation procedures
 Patch 3
 Patch 2
@@ -1545,7 +1546,7 @@ Mesh A reference to an fvMesh, with some additional detail as to the whether the
 deﬁned at cell centres, faces, etc..
 Dimensions A dimensionSet, described in Section 4.2.6.
 Old values Discretisation of time derivatives requires ﬁeld data from previous time steps.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.4 Equation discretisation P-31
 Class Description Symbol Access function
 volScalarField Cell volumes V V()
@@ -1587,7 +1588,7 @@ locations in the geometry, i.e. a geometricField<Type>, or more speciﬁcally a 
 when using FV discretisation.
 1The diagram is not an exact description of the class hierarchy, rather a representation of the general
 structure leading from some primitive classes to geometric<Type>Field.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-32 Discretisation procedures
 Internal ﬁeld
 Boundary ﬁeld
@@ -1612,7 +1613,7 @@ Patch 2
 (c) A pointField<Type>
 Figure 2.4: Types of geometricField<Type> deﬁned on a mesh with 2 boundary patches (in
 2 dimensions for simplicity)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.4 Equation discretisation P-33
 polyMesh
 labelList
@@ -1646,7 +1647,7 @@ fvPatchField
 dimensionSet
 geometricBoundaryField<Type>
 Figure 2.5: Basic class structure leading to geometricField<Type>
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-34 Discretisation procedures
 [A] is a list of coeﬃcients of a set of algebraic equations, and cannot be described as a
 geometricField<Type>. It is therefore given a class of its own: fvMatrix. fvMatrix<Type> is
@@ -1690,7 +1691,7 @@ S
 dS ⋆ φ (2.13)
 where S is the surface area vector, φ can represent any tensor ﬁeld and the star notation
 ⋆ is used to represent any tensor product, i.e. inner, outer and cross and the respective
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.4 Equation discretisation P-35
 Term description Implicit / Text fvm::/fvc:: functions
 Explicit expression
@@ -1736,7 +1737,7 @@ rho: scalar, volScalarField
 psi: surfaceScalarField.
 chi: surface<Type>Field, vol<Type>Field.
 Table 2.2: Discretisation of PDE terms in OpenFOAM
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-36 Discretisation procedures
 derivatives: divergence ∇ •
 φ, gradient ∇φ and ∇ × φ. Volume and surface integrals are
@@ -1824,7 +1825,7 @@ CD
 OpenFOAM has several implementations of the Gamma diﬀerencing scheme to select
 the blending coeﬃcient γ but it oﬀers other well-known schemes such as van Leer,
 SUPERBEE, MINMOD etc..
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.4 Equation discretisation P-37
 2.4.3 First time derivative
 The ﬁrst time derivative ∂/∂t is integrated over a control volume as follows:
@@ -1900,7 +1901,7 @@ The fvc::div function can take as its argument either a surface<Type>Field, in w
 φf
 is speciﬁed directly, or a vol<Type>Field which is interpolated to the face by central
 diﬀerencing as described in Section 2.4.10:
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-38 Discretisation procedures
 2.4.6 Gradient
 The gradient term is an explicit term that can be evaluated in a variety of ways. The scheme
@@ -1967,7 +1968,7 @@ The scheme is directly analogous to that evaluated for the Laplacian discretisat
 scheme in Section 2.4.1, and in the same manner, a correction can be introduced to
 improve the accuracy of this face gradient in the case of non-orthogonal meshes. This
 correction is called using the function fvc::snGradCorrection.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.4 Equation discretisation P-39
 2.4.7 Grad-grad squared
 The grad-grad squared term is evaluated by: taking the gradient of the ﬁeld; taking the
@@ -2019,7 +2020,7 @@ bounding each cell, i.e.
 f
 φf
 returning a volField<Type>.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-40 Discretisation procedures
 Average fvc::average produces an area weighted average of surface<Type>Field face val-
 ues, i.e. (
@@ -2097,7 +2098,7 @@ d
 (2.35)
 where Uf
 is a characteristic velocity, e.g. velocity of a wave front, velocity of ﬂow.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 2.6 Boundary Conditions P-41
 Crank Nicolson uses the trapezoid rule to discretise the spatial terms, thereby taking a
 mean of current values φn and old values φo.
@@ -2137,7 +2138,7 @@ Dirichlet prescribes the value of the dependent variable on the boundary and is 
 termed ‘ﬁxed value’ in this guide;
 Neumann prescribes the gradient of the variable normal to the boundary and is therefore
 termed ‘ﬁxed gradient’ in this guide.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-42 Discretisation procedures
 When we perform discretisation of terms that include the sum over faces
 f
@@ -2205,7 +2206,7 @@ plane, we only need to model half the domain to one side of the symmetry plane. 
 boundary condition on the plane must be speciﬁed according to
 Symmetry plane The symmetry plane condition speciﬁes the component of the gradient
 normal to the plane should be zero.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Chapter 3
 Examples of the use of OpenFOAM
 In this section we shall describe several test cases supplied with the OpenFOAM distribu-
@@ -2267,7 +2268,7 @@ necessary for the solution since the problem is steady-state.
 Solver name potentialFoam: a potential ﬂow code, i.e. assumes the ﬂow is incompressible,
 steady, irrotational, inviscid and it ignores gravity.
 Case name cylinder case located in the $FOAM TUTORIALS/potentialFoam directory.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.1 Flow around a cylinder P-45
 3.1.2 Note on potentialFoam
 potentialFoam is a useful solver to validate OpenFOAM since the assumptions of potential
@@ -2324,7 +2325,7 @@ mesh description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
-4 | \\ / O peration | Version: 2.3.1 |
+4 | \\ / O peration | Version: 2.4.0 |
 5 | \\ / A nd | Web: www.OpenFOAM.org |
 6 | \\/ M anipulation | |
 7 \*---------------------------------------------------------------------------*/
@@ -2333,7 +2334,7 @@ mesh description ﬁle below:
 10 version 2.0;
 11 format ascii;
 12 class dictionary;
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-46 Examples of the use of OpenFOAM
 13 object blockMeshDict;
 14 }
@@ -2408,7 +2409,7 @@ P-46 Examples of the use of OpenFOAM
 83 arc 19 24 (0.469846 0.17101 0.5)
 84 arc 24 29 (0.17101 0.469846 0.5)
 85 arc 20 23 (0.939693 0.34202 0.5)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.1 Flow around a cylinder P-47
 86 arc 23 28 (0.34202 0.939693 0.5)
 87 arc 11 16 (-0.469846 0.17101 -0.5)
@@ -2484,7 +2485,7 @@ Open∇FOAM-2.3.1
 3.1.4 Boundary conditions and initial ﬁelds
 Using FoamX or editing case ﬁles by hand, set the boundary conditions in accordance with
 the problem description in Figure 3.1, i.e. the left boundary should be an Inlet, the right
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-48 Examples of the use of OpenFOAM
 boundary should be an Outlet and the down and cylinder boundaries should be symme-
 tryPlane. The top boundary conditions is chosen so that we can make the most genuine
@@ -2500,7 +2501,7 @@ parameters for the run. Note that since we assume steady ﬂow, we only run for 
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
-4 | \\ / O peration | Version: 2.3.1 |
+4 | \\ / O peration | Version: 2.4.0 |
 5 | \\ / A nd | Web: www.OpenFOAM.org |
 6 | \\/ M anipulation | |
 7 \*---------------------------------------------------------------------------*/
@@ -2554,7 +2555,7 @@ parameters for the run. Note that since we assume steady ﬂow, we only run for 
 55 // Name of on-the-fly generated functionObject
 56 redirectType error;
 57 code
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.1 Flow around a cylinder P-49
 58 #{
 59 // Lookup U
@@ -2634,7 +2635,7 @@ Open∇FOAM-2.3.1
 133 volScalarField error("error", mag(U-UA)/mag(UA));
 134
 135 Info<<"Writing relative error in U to " << error.objectPath()
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-50 Examples of the use of OpenFOAM
 136 << endl;
 137
@@ -2682,13 +2683,13 @@ where p is kinematic pressure and (in slightly over-simplistic terms) R = νeff
 is the viscous stress term with an eﬀective kinematic viscosity νeff
 , calculated
 from selected transport and turbulence models.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.2 Steady turbulent ﬂow over a backward-facing step P-51
 (a) With no non-orthogonal correction
 (b) With non-orthogonal correction
 (c) Analytical solution
 Figure 3.3: Streamlines of potential ﬂow
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-52 Examples of the use of OpenFOAM
 84.0
 20.6 206.0
@@ -2699,7 +2700,7 @@ y
 x
 Dimensions in mm
 Figure 3.4: Geometry of backward-facing step
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.2 Steady turbulent ﬂow over a backward-facing step P-53
 Initial conditions U = 0 m/s, p = 0 Pa — required in OpenFOAM input ﬁles but not
 necessary for the solution since the problem is steady-state.
@@ -2739,7 +2740,7 @@ description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
-4 | \\ / O peration | Version: 2.3.1 |
+4 | \\ / O peration | Version: 2.4.0 |
 5 | \\ / A nd | Web: www.OpenFOAM.org |
 6 | \\/ M anipulation | |
 7 \*---------------------------------------------------------------------------*/
@@ -2749,7 +2750,7 @@ description ﬁle below:
 11 format ascii;
 12 class dictionary;
 13 object blockMeshDict;
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-54 Examples of the use of OpenFOAM
 1
 14
@@ -2842,7 +2843,7 @@ Figure 3.5: Blocks in backward-facing step
 66
 67 blocks
 68 (
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.2 Steady turbulent ﬂow over a backward-facing step P-55
 69 hex (0 6 7 1 22 28 29 23) (18 7 1) simpleGrading (0.5 1.8 1)
 70 hex (1 7 8 2 23 29 30 24) (18 10 1) simpleGrading (0.5 4 1)
@@ -2922,7 +2923,7 @@ Open∇FOAM-2.3.1
 144 (28 34 35 29)
 145 (29 35 36 30)
 146 (30 36 37 31)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-56 Examples of the use of OpenFOAM
 147 (32 38 39 33)
 148 (33 39 40 34)
@@ -2996,7 +2997,7 @@ k =
 3
 2
 (0.5)2 = 0.375 m2/s2 (3.6)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.2 Steady turbulent ﬂow over a backward-facing step P-57
 If we estimate the turbulent length scale l to be 10% of the width of the inlet then
 ε =
@@ -3030,7 +3031,7 @@ hard disk with data during run time.
 (b) Velocity vectors at 1000 iterations
 (c) Streamlines at 1000 iterations
 Figure 3.6: Development of a vortex in the backward-facing step.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-58 Examples of the use of OpenFOAM
 Run the case and post-process the results. After a few iterations, e.g. 50, a vortex
 develops beneath the corner of the step that is the height of the step but narrow in the
@@ -3065,7 +3066,7 @@ Governing equations
 (ρU) = 0 (3.8)
 • Ideal gas
 p = ρRT (3.9)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.3 Supersonic ﬂow over a forward-facing step P-59
 • Momentum equation for Newtonian ﬂuid
 ∂ρU
@@ -3120,12 +3121,12 @@ length 0.06 m in the x direction and 0.05 m in the y direction. The geometry can
 be divided into 3 blocks, one below the top of the step, and two above the step, one either
 side of the step front. The full set of vertices and blocks are given in the mesh description
 ﬁle below:
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-60 Examples of the use of OpenFOAM
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
-4 | \\ / O peration | Version: 2.3.1 |
+4 | \\ / O peration | Version: 2.4.0 |
 5 | \\ / A nd | Web: www.OpenFOAM.org |
 6 | \\/ M anipulation | |
 7 \*---------------------------------------------------------------------------*/
@@ -3201,7 +3202,7 @@ P-60 Examples of the use of OpenFOAM
 77 top
 78 {
 79 type symmetryPlane;
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.4 Decompression of a tank internally pressurised with water P-61
 80 faces
 81 (
@@ -3248,7 +3249,7 @@ a pressurised liquid-ﬁlled tank. The prominent feature of the result in such c
 propagation of pressure waves which must therefore be modelled as a compressible liquid.
 This tutorial introduces the following OpenFOAM features for the ﬁrst time:
 • Mesh reﬁnement
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-62 Examples of the use of OpenFOAM
 • Pressure waves in liquids
 3.4.1 Problem speciﬁcation
@@ -3301,7 +3302,7 @@ are the reference density and pressure respectively such that
 µ∇U = −∇p (3.16)
 Boundary conditions Using FoamX the following physical boundary conditions can be
 set:
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.4 Decompression of a tank internally pressurised with water P-63
 • outerWall is speciﬁed the wall condition;
 • axis is speciﬁed as the symmetryPlane;
@@ -3324,7 +3325,7 @@ mesh description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
-4 | \\ / O peration | Version: 2.3.1 |
+4 | \\ / O peration | Version: 2.4.0 |
 5 | \\ / A nd | Web: www.OpenFOAM.org |
 6 | \\/ M anipulation | |
 7 \*---------------------------------------------------------------------------*/
@@ -3357,7 +3358,7 @@ mesh description ﬁle below:
 34 (1 0.5 0.1)
 35 (1.5 0.5 0.1)
 36 (0 0.6 0.1)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-64 Examples of the use of OpenFOAM
 37 (1 0.6 0.1)
 38 (1.5 0.6 0.1)
@@ -3439,7 +3440,7 @@ P-64 Examples of the use of OpenFOAM
 114 );
 115
 116 // ************************************************************************* //
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.4 Decompression of a tank internally pressurised with water P-65
 In order to improve the numerical accuracy, we shall use the reference level of 1 bar for the
 pressure ﬁeld. Note that both the internal ﬁeld level and the boundary conditions are oﬀset
@@ -3470,7 +3471,7 @@ the controlDict ﬁle is quoted below.
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
-4 | \\ / O peration | Version: 2.3.1 |
+4 | \\ / O peration | Version: 2.4.0 |
 5 | \\ / A nd | Web: www.OpenFOAM.org |
 6 | \\/ M anipulation | |
 7 \*---------------------------------------------------------------------------*/
@@ -3506,7 +3507,7 @@ the controlDict ﬁle is quoted below.
 37
 38 writePrecision 6;
 39
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-66 Examples of the use of OpenFOAM
 40 writeCompression off;
 41
@@ -3547,7 +3548,7 @@ however, impurities or dissolved gases in liquids act as sites for cavitation, o
 tion/boiling, of the liquid due to the low pressure. Therefore in practical situations, we
 generally do not observe pressures falling below the vapourisation pressure of the liquid; not
 at least for longer than it takes for the cavitation process to occur.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.5 Magnetohydrodynamic ﬂow of a liquid P-67
 0
 10
@@ -3584,7 +3585,7 @@ with which mhdFoam can be validated. It is deﬁned as follows:
 Solution domain The domain is 2 dimensional and consists of ﬂow along two parallel
 plates as shown in Fig. 3.12.
 Governing equations
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-68 Examples of the use of OpenFOAM
 y
 x
@@ -3602,11 +3603,11 @@ U = 0 (3.19)
 • Momentum equation for incompressible ﬂuid
 ∂U
 ∂t
-+ ∇ •
-(UU) + ∇ •
++∇ •
+(UU)+∇ •
 (2BΓBU
-B) + ∇ •
-(νU) + ∇ (ΓBU
+B)+∇ •
+(νU)+∇ (ΓBU
 B •
 •
 B) = −∇p (3.20)
@@ -3642,7 +3643,7 @@ J = σ (E + U × B) (3.26)
 U) − ∇ •
 (ΓB
 B) = 0 (3.27)
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.5 Magnetohydrodynamic ﬂow of a liquid P-69
 Boundary conditions
 • inlet is speciﬁed the inlet condition with ﬁxed velocity U = (1, 0, 0) m/s;
@@ -3664,7 +3665,7 @@ direction; the set of vertices and blocks are given in the mesh description ﬁl
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
-4 | \\ / O peration | Version: 2.3.1 |
+4 | \\ / O peration | Version: 2.4.0 |
 5 | \\ / A nd | Web: www.OpenFOAM.org |
 6 | \\/ M anipulation | |
 7 \*---------------------------------------------------------------------------*/
@@ -3697,7 +3698,7 @@ direction; the set of vertices and blocks are given in the mesh description ﬁl
 34 );
 35
 36 edges
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-70 Examples of the use of OpenFOAM
 37 (
 38 );
@@ -3769,7 +3770,7 @@ along the domain x = 10 m. The user can plot a graph of the proﬁle of Ux
 in dxFoam.
 Now the user should reduce the magnetic ﬂux density B to 1 Tand re-run the code and
 Ucomponents. In this case, M = 1 and the electromagnetic body forces no longer dominate.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 3.5 Magnetohydrodynamic ﬂow of a liquid P-71
 0.0 1.0
 -1.0
@@ -3799,9 +3800,9 @@ cosh M − cosh M(y/L)
 cosh M − 1
 (3.29)
 where the characteristic length L is half the width of the domain, i.e. 1 m.
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-72 Examples of the use of OpenFOAM
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Index P-73
 Index
 Symbols Numbers A B C D E F G H I J K L M N O P Q R S T U V W X Z
@@ -3827,9 +3828,9 @@ tensor member function, P-23
 tensor member function, P-23
 ^
 tensor member function, P-23
-<LESModel>Coeffs keyword, U-192
-<RASModel>Coeffs keyword, U-192
-<delta>Coeffs keyword, U-192
+<LESModel>Coeffs keyword, U-198
+<RASModel>Coeffs keyword, U-198
+<delta>Coeffs keyword, U-198
 0.000000e+00 directory, U-108
 1-dimensional mesh, U-135
 1D mesh, U-135
@@ -3839,10 +3840,10 @@ Numbers
 0 directory, U-108
 A
 access functions, P-21
-addLayersControls keyword, U-151
-adiabaticFlameT utility, U-98
-adiabaticPerfectFluid model, U-102, U-187
-adjointShapeOptimizationFoam solver, U-86
+addLayersControls keyword, U-153
+adiabaticFlameT utility, U-99
+adiabaticPerfectFluid model, U-103, U-193
+adjointShapeOptimizationFoam solver, U-87
 adjustableRunTime
 keyword entry, U-62, U-116
 adjustTimeStep keyword, U-61, U-117
@@ -3851,25 +3852,25 @@ algorithms tools, U-99
 alphaContactAngle
 boundary condition, U-59
 analytical solution, P-43
-Animations window panel, U-174
-anisotropicFilter model, U-104
-Annotation window panel, U-25, U-174
-ansysToFoam utility, U-92
+Animations window panel, U-176
+anisotropicFilter model, U-105
+Annotation window panel, U-25, U-176
+ansysToFoam utility, U-93
 APIfunctions model, U-103
 applications, U-69
-Apply button, U-170, U-174
-applyBoundaryLayer utility, U-91
+Apply button, U-172, U-176
+applyBoundaryLayer utility, U-92
 applyWallFunctionBoundaryConditions utility,
-U-91
+U-92
 arbitrarily unstructured, P-29
 arc
 keyword entry, U-145
 arc keyword, U-144
-As keyword, U-190
+As keyword, U-196
 ascii
 keyword entry, U-116
 attachMesh utility, U-93
-Auto Accept button, U-174
+Auto Accept button, U-176
 autoMesh
 library, U-100
 autoPatch utility, U-93
@@ -3878,9 +3879,9 @@ axes
 right-handed, U-143
 right-handed rectangular Cartesian, P-13,
 U-18
-axi-symmetric cases, U-140, U-149
+axi-symmetric cases, U-140, U-151
 axi-symmetric mesh, U-135
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-74 Index
 B
 background
@@ -3889,16 +3890,16 @@ backward
 keyword entry, U-124
 Backward diﬀerencing, P-37
 barotropicCompressibilityModels
-library, U-102
-basicMultiComponentMixture model, U-102,
-U-188
-basicSolidThermo
 library, U-103
+basicMultiComponentMixture model, U-102,
+U-194
+basicSolidThermo
+library, U-104
 basicThermophysicalModels
-library, U-101
+library, U-102
 binary
 keyword entry, U-116
-BirdCarreau model, U-105
+BirdCarreau model, U-106
 blended diﬀerencing, P-36
 block
 expansion ratio, U-145
@@ -3913,18 +3914,18 @@ blockMesh executable
 vertex numbering, U-145
 blockMeshDict
 dictionary, U-18, U-20, U-36, U-49, U-141,
-U-150
+U-151
 blocks keyword, U-20, U-31, U-145
 boundaries, U-135
 boundary, U-135
 boundary
 dictionary, U-134, U-141
-boundary keyword, U-146
+boundary keyword, U-147, U-148
 boundary condition
 alphaContactAngle, U-59
 buoyantPressure, U-142
 calculated, U-141
-cyclic, U-140, U-147
+cyclic, U-140, U-149
 directionMixed, U-141
 empty, P-63, P-69, U-18, U-135, U-140
 ﬁxedGradient, U-141
@@ -3952,7 +3953,7 @@ totalPressure, U-142
 turbulentInlet, U-142
 wall, U-40
 wall, P-63, P-69, U-58, U-139, U-140
-wedge, U-135, U-140, U-149
+wedge, U-135, U-140, U-151
 zeroGradient, U-141
 boundary conditions, P-41
 Dirichlet, P-41
@@ -3963,35 +3964,35 @@ outlet, P-42
 physical, P-42
 symmetry plane, P-42
 boundaryField keyword, U-21, U-112
-boundaryFoam solver, U-86
+boundaryFoam solver, U-87
 bounded
 keyword entry, U-122, U-123
 boxToCell keyword, U-60
-boxTurb utility, U-91
+boxTurb utility, U-92
 breaking of a dam, U-56
-buoyantBoussinesqPimpleFoam solver, U-89
-buoyantBoussinesqSimpleFoam solver, U-89
-buoyantPimpleFoam solver, U-89
+buoyantBoussinesqPimpleFoam solver, U-90
+buoyantBoussinesqSimpleFoam solver, U-90
+buoyantPimpleFoam solver, U-90
 buoyantPressure
 boundary condition, U-142
-buoyantSimpleFoam solver, U-89
+buoyantSimpleFoam solver, U-90
 button
-Apply, U-170, U-174
-Auto Accept, U-174
-Choose Preset, U-172
-Delete, U-170
-Edit Color Map, U-172
+Apply, U-172, U-176
+Auto Accept, U-176
+Choose Preset, U-174
+Delete, U-172
+Edit Color Map, U-174
 Enable Line Series, U-35
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Index P-75
-Orientation Axes, U-25, U-174
+Orientation Axes, U-25, U-176
 Refresh Times, U-25
 Rescale to Data Range, U-25
-Reset, U-170
-Set Ambient Color, U-173
-Update GUI, U-171
+Reset, U-172
+Set Ambient Color, U-175
+Update GUI, U-173
 Use Parallel Projection, U-25
-Use parallel projection, U-173
+Use parallel projection, U-175
 C
 C++ syntax
 /*...*/, U-79
@@ -4002,48 +4003,48 @@ calculated
 boundary condition, U-141
 cAlpha keyword, U-63
 cases, U-107
-castellatedMesh keyword, U-151
+castellatedMesh keyword, U-153
 castellatedMeshControls
-dictionary, U-153–U-155
-castellatedMeshControls keyword, U-151
-cavitatingDyMFoam solver, U-87
-cavitatingFoam solver, U-87
+dictionary, U-154–U-156
+castellatedMeshControls keyword, U-153
+cavitatingDyMFoam solver, U-88
+cavitatingFoam solver, U-88
 cavity ﬂow, U-17
-ccm26ToFoam utility, U-92
+ccm26ToFoam utility, U-93
 CEI ARCH
-environment variable, U-179
+environment variable, U-186
 CEI HOME
-environment variable, U-179
+environment variable, U-186
 cell
 expansion ratio, U-145
 cell class, P-29
 cell
-keyword entry, U-181
+keyword entry, U-187
 cellLimited
 keyword entry, U-122
 cellPoint
-keyword entry, U-181
+keyword entry, U-187
 cellPointFace
-keyword entry, U-181
+keyword entry, U-187
 cells
 dictionary, U-141
 central diﬀerencing, P-36
-cfdTools tools, U-99
-cfx4ToFoam utility, U-92, U-159
-changeDictionary utility, U-91
-Charts window panel, U-174
-checkMesh utility, U-93, U-161
+cfdTools tools, U-100
+cfx4ToFoam utility, U-93, U-160
+changeDictionary utility, U-92
+Charts window panel, U-176
+checkMesh utility, U-93, U-162
 chemFoam solver, U-89
 chemistryModel
 library, U-103
 chemistryModel model, U-103
 chemistrySolver model, U-103
-chemkinToFoam utility, U-98
-Choose Preset button, U-172
-chtMultiRegionSimpleFoam solver, U-89
-chtMultiRegionFoam solver, U-89
+chemkinToFoam utility, U-99
+Choose Preset button, U-174
+chtMultiRegionSimpleFoam solver, U-90
+chtMultiRegionFoam solver, U-90
 Chung
-library, U-102
+library, U-103
 class
 cell, P-29
 dimensionSet, P-24, P-30, P-31
@@ -4073,7 +4074,7 @@ word, P-24, P-29
 class keyword, U-109
 clockTime
 keyword entry, U-116
-cloud keyword, U-182
+cloud keyword, U-189
 cloudFunctionObjects
 library, U-100
 cmptAv
@@ -4081,22 +4082,22 @@ tensor member function, P-23
 Co utility, U-95
 coalChemistryFoam solver, U-90
 coalCombustion
-library, U-100
+library, U-101
 cofactors
 tensor member function, P-23
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-76 Index
 coldEngineFoam solver, U-89
 collapseEdges utility, U-94
-Color By menu, U-173
+Color By menu, U-175
 Color Legend window, U-27
-Color Legend window panel, U-172
-Color Scale window panel, U-172
-Colors window panel, U-174
+Color Legend window panel, U-174
+Color Scale window panel, U-174
+Colors window panel, U-176
 compressibleInterDyMFoam solver, U-88
 compressibleInterFoam solver, U-88
 compressibleMultiphaseInterFoam solver, U-88
-combinePatchFaces utility, U-94
+combinePatchFaces utility, U-95
 comments, U-79
 commsType keyword, U-81
 compressed
@@ -4105,9 +4106,9 @@ compressibleLESModels
 library, U-105
 compressibleRASModels
 library, U-104
-constant directory, U-107, U-187
+constant directory, U-107, U-193
 constant model, U-102
-constTransport model, U-103, U-188
+constTransport model, U-103, U-194
 containers tools, U-99
 continuum
 mechanics, P-13
@@ -4115,7 +4116,7 @@ control
 of time, U-115
 controlDict
 dictionary, P-65, U-22, U-31, U-42, U-51,
-U-62, U-107, U-166
+U-62, U-107, U-168
 controlDict ﬁle, P-48
 convection, see divergence, P-36
 convergence, U-39
@@ -4128,7 +4129,7 @@ coordinate system, U-18
 corrected
 keyword entry, U-122, U-123
 Courant number, P-40, U-22
-Cp keyword, U-190
+Cp keyword, U-196
 cpuTime
 keyword entry, U-116
 Crank Nicolson
@@ -4136,15 +4137,15 @@ temporal discretisation, P-41
 CrankNicolson
 keyword entry, U-124
 createExternalCoupledPatchGeometry utility,
-U-91
+U-92
 createBaﬄes utility, U-93
 createPatch utility, U-93
 createTurbulenceFields utility, U-96
 cross product, see tensor, vector cross product
 CrossPowerLaw
 keyword entry, U-60
-CrossPowerLaw model, U-105
-cubeRootVolDelta model, U-104
+CrossPowerLaw model, U-106
+cubeRootVolDelta model, U-105
 cubicCorrected
 keyword entry, U-124
 cubicCorrection
@@ -4152,11 +4153,11 @@ keyword entry, U-121
 curl, P-35
 curl
 fvc member function, P-35
-Current Time Controls menu, U-25, U-171
-curve keyword, U-182
-Cv keyword, U-190
+Current Time Controls menu, U-25, U-173
+curve keyword, U-189
+Cv keyword, U-196
 cyclic
-boundary condition, U-140, U-147
+boundary condition, U-140, U-149
 cyclic
 keyword entry, U-140
 cylinder
@@ -4167,13 +4168,13 @@ fvc member function, P-35
 fvm member function, P-35
 dam
 breaking of a, U-56
-datToFoam utility, U-92
+datToFoam utility, U-93
 db tools, U-99
 ddt
 fvc member function, P-35
 fvm member function, P-35
-DeardorﬀDiﬀStress model, U-105
-debug keyword, U-151
+DeardorﬀDiﬀStress model, U-105, U-106
+debug keyword, U-153
 decompose model, U-101
 decomposePar utility, U-82, U-83, U-98
 decomposeParDict
@@ -4185,11 +4186,11 @@ decompositionMethods
 library, U-101
 decompression of a tank, P-61
 defaultFieldValues keyword, U-60
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Index P-77
-deformedGeom utility, U-93
-Delete button, U-170
-delta keyword, U-84, U-192
+deformedGeom utility, U-94
+Delete button, U-172
+delta keyword, U-84, U-198
 deltaT keyword, U-116
 dependencies, U-72
 dependency lists, U-72
@@ -4207,15 +4208,15 @@ keyword entry, U-127
 DICGaussSeidel
 keyword entry, U-127
 dictionary
-LESProperties, U-192
+LESProperties, U-198
 PISO, U-23
 blockMeshDict, U-18, U-20, U-36, U-49,
-U-141, U-150
+U-141, U-151
 boundary, U-134, U-141
-castellatedMeshControls, U-153–U-155
+castellatedMeshControls, U-154–U-156
 cells, U-141
 controlDict, P-65, U-22, U-31, U-42, U-51,
-U-62, U-107, U-166
+U-62, U-107, U-168
 decomposeParDict, U-82
 faces, U-133, U-141
 fvSchemes, U-62, U-63, U-107, U-118
@@ -4225,9 +4226,9 @@ neighbour, U-134
 owner, U-133
 points, U-133, U-141
 thermalProperties, U-51
-thermophysicalProperties, U-187
+thermophysicalProperties, U-193
 transportProperties, U-21, U-38, U-42
-turbulenceProperties, U-41, U-61, U-192
+turbulenceProperties, U-41, U-61, U-198
 diﬀerencing
 Backward, P-37
 blended, P-36
@@ -4244,18 +4245,18 @@ dimension
 checking in OpenFOAM, P-24, U-111
 dimensional units, U-111
 dimensioned<Type> template class, P-24
-dimensionedTypes tools, U-99
+dimensionedTypes tools, U-100
 dimensions keyword, U-21, U-112
 dimensionSet class, P-24, P-30, P-31
-dimensionSet tools, U-99
+dimensionSet tools, U-100
 directionMixed
 boundary condition, U-141
 directory
 0.000000e+00, U-108
 0, U-108
 Make, U-73
-constant, U-107, U-187
-ﬂuentInterface, U-176
+constant, U-107, U-193
+ﬂuentInterface, U-183
 polyMesh, U-107, U-133
 processorN, U-83
 run, U-107
@@ -4263,48 +4264,48 @@ system, P-48, U-107
 tutorials, P-43, U-17
 discretisation
 equation, P-31
-Display window panel, U-24, U-25, U-170, U-171
+Display window panel, U-24, U-25, U-172, U-173
 distance
-keyword entry, U-155, U-182
+keyword entry, U-156, U-189
 distributed model, U-101
 distributed keyword, U-84, U-85
 distributionModels
-library, U-100
+library, U-101
 div
 fvc member function, P-35
 fvm member function, P-35
 divergence, P-35, P-37
 divSchemes keyword, U-118
 dnsFoam solver, U-89
-doLayers keyword, U-151
+doLayers keyword, U-153
 double inner product, see tensor,double inner
 product
 DPMFoam solver, U-90
 dsmc
-library, U-100
-dsmcFieldsCalc utility, U-96
-dsmcFoam solver, U-90
-dsmcInitialise utility, U-91
+library, U-101
+dsmcFieldsCalc utility, U-97
+dsmcFoam solver, U-91
+dsmcInitialise utility, U-92
 dx
-keyword entry, U-181
-Open∇FOAM-2.3.1
+keyword entry, U-187
+OpenFOAM-2.4.0
 P-78 Index
 dynamicFvMesh
 library, U-100
 dynamicMesh
 library, U-100
-dynLagrangian model, U-104
+dynLagrangian model, U-105
 dynOneEqEddy model, U-105
 E
-eConstThermo model, U-102, U-187
+eConstThermo model, U-103, U-193
 edgeGrading keyword, U-146
 edgeMesh
-library, U-100
+library, U-101
 edges keyword, U-144
-Edit menu, U-173, U-174
-Edit Color Map button, U-172
-egrMixture model, U-102, U-188
-electrostaticFoam solver, U-90
+Edit menu, U-175, U-176
+Edit Color Map button, U-174
+egrMixture model, U-102, U-194
+electrostaticFoam solver, U-91
 empty
 boundary condition, P-63, P-69, U-18,
 U-135, U-140
@@ -4312,24 +4313,24 @@ empty
 keyword entry, U-140
 Enable Line Series button, U-35
 endTime keyword, U-22, U-115, U-116
-energy keyword, U-189
+energy keyword, U-195
 engine
 library, U-101
-engineCompRatio utility, U-96
+engineCompRatio utility, U-97
 engineFoam solver, U-89
-engineSwirl utility, U-91
-ensight74FoamExec utility, U-179
+engineSwirl utility, U-92
+ensight74FoamExec utility, U-185
 ENSIGHT7 INPUT
-environment variable, U-179
+environment variable, U-186
 ENSIGHT7 READER
-environment variable, U-179
-ensightFoamReader utility, U-94
+environment variable, U-186
+ensightFoamReader utility, U-95
 enstrophy utility, U-95
 environment variable
-CEI ARCH, U-179
-CEI HOME, U-179
-ENSIGHT7 INPUT, U-179
-ENSIGHT7 READER, U-179
+CEI ARCH, U-186
+CEI HOME, U-186
+ENSIGHT7 INPUT, U-186
+ENSIGHT7 READER, U-186
 FOAM RUN, U-107
 WM ARCH OPTION, U-76
 WM ARCH, U-76
@@ -4348,10 +4349,10 @@ WM PROJECT USER DIR, U-76
 WM PROJECT VERSION, U-76
 WM PROJECT, U-76
 wmake, U-76
-equationOfState keyword, U-189
-equilibriumCO utility, U-98
-equilibriumFlameT utility, U-98
-errorReduction keyword, U-159
+equationOfState keyword, U-195
+equilibriumCO utility, U-99
+equilibriumFlameT utility, U-99
+errorReduction keyword, U-161
 Euler
 keyword entry, U-124
 Euler implicit
@@ -4363,9 +4364,9 @@ decompression of a tank, P-61
 ﬂow over backward step, P-50
 Hartmann problem, P-67
 supersonic ﬂow over forward step, P-58
-execFlowFunctionObjects utility, U-96
-expandDictionary utility, U-98
-expansionRatio keyword, U-158
+execFlowFunctionObjects utility, U-97
+expandDictionary utility, U-99
+expansionRatio keyword, U-160
 explicit
 temporal discretisation, P-40
 extrude2DMesh utility, U-92
@@ -4373,8 +4374,8 @@ extrudeMesh utility, U-92
 extrudeToRegionMesh utility, U-92
 F
 face class, P-29
-face keyword, U-182
-faceAgglomerate utility, U-91
+face keyword, U-189
+faceAgglomerate utility, U-92
 faceAreaPair
 keyword entry, U-128
 faceLimited
@@ -4383,21 +4384,21 @@ faces
 dictionary, U-133, U-141
 FDIC
 keyword entry, U-127
-featureAngle keyword, U-158
-features keyword, U-153
+featureAngle keyword, U-160
+features keyword, U-154, U-155
 ﬁeld
 U, U-23
 p, U-23
 decomposition, U-82
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Index P-79
 FieldField<Type> template class, P-30
 ﬁeldFunctionObjects
 library, U-100
 ﬁelds, P-27
-mapping, U-166
-ﬁelds tools, U-99
-fields keyword, U-181
+mapping, U-168
+ﬁelds tools, U-100
+fields keyword, U-187
 Field<Type> template class, P-27
 fieldValues keyword, U-60
 ﬁle
@@ -4406,7 +4407,7 @@ controlDict, P-48
 ﬁles, U-73
 g, U-61
 options, U-73
-snappyHexMeshDict, U-151
+snappyHexMeshDict, U-152
 transportProperties, U-60
 ﬁle format, U-108
 ﬁleFormats
@@ -4416,14 +4417,15 @@ fileModificationSkew keyword, U-81
 ﬁles ﬁle, U-73
 filteredLinear2
 keyword entry, U-121
-finalLayerThickness keyword, U-158
+finalLayerThickness keyword, U-160
 ﬁnancialFoam solver, U-91
+ﬁnd script/alias, U-181
 ﬁnite volume
 discretisation, P-25
 mesh, P-29
 ﬁniteVolume
-library, U-99
-ﬁniteVolume tools, U-99
+library, U-100
+ﬁniteVolume tools, U-100
 ﬁniteVolumeCalculus class, P-34
 ﬁniteVolumeMethod class, P-34
 ﬁreFoam solver, U-89
@@ -4434,7 +4436,7 @@ keyword entry, U-116
 boundary condition, U-141
 ﬁxedValue
 boundary condition, U-141
-ﬂattenMesh utility, U-93
+ﬂattenMesh utility, U-94
 floatTransfer keyword, U-81
 ﬂow
 free surface, U-56
@@ -4445,9 +4447,9 @@ turbulent, U-17
 ﬂow around a cylinder, P-43
 ﬂow over backward step, P-50
 ﬂowType utility, U-95
-ﬂuent3DMeshToFoam utility, U-92
-ﬂuentInterface directory, U-176
-ﬂuentMeshToFoam utility, U-92, U-159
+ﬂuent3DMeshToFoam utility, U-93
+ﬂuentInterface directory, U-183
+ﬂuentMeshToFoam utility, U-93, U-160
 ﬂuxCorrectedVelocity
 boundary condition, U-142
 fluxRequired keyword, U-118
@@ -4455,45 +4457,46 @@ OpenFOAM
 cases, U-107
 FOAM RUN
 environment variable, U-107
-foamCalc utility, U-33, U-96
+foamCalc utility, U-33, U-97
 foamCalcFunctions
 library, U-100
-foamCorrectVrt script/alias, U-164
-foamDataToFluent utility, U-94, U-176
-foamDebugSwitches utility, U-98
+foamCorrectVrt script/alias, U-166
+foamDataToFluent utility, U-95, U-183
+foamDebugSwitches utility, U-99
 FoamFile keyword, U-109
 foamFile
-keyword entry, U-181
-foamFormatConvert utility, U-98
-foamHelp utility, U-98
-foamInfoExec utility, U-98
-foamJob script/alias, U-184
-foamListTimes utility, U-96
-foamLog script/alias, U-184
-foamMeshToFluent utility, U-92, U-176
-foamToEnsight utility, U-94
-foamToEnsightParts utility, U-94
-foamToGMV utility, U-94
-foamToStarMesh utility, U-92
-foamToSurface utility, U-92
+keyword entry, U-187
+foamFormatConvert utility, U-99
+foamHelp utility, U-99
+foamInfoExec utility, U-99
+foamJob script/alias, U-190
+foamListTimes utility, U-97
+foamLog script/alias, U-190
+foamMeshToFluent utility, U-93, U-183
+foamToEnsight utility, U-95
+foamToEnsightParts utility, U-95
+foamToGMV utility, U-95
+foamToStarMesh utility, U-93
+foamToSurface utility, U-93
 foamToTecplot360 utility, U-95
 foamToVTK utility, U-95
-foamUpgradeCyclics utility, U-91
-foamUpgradeFvSolution utility, U-91
+foamUpgradeCyclics utility, U-92
+foamUpgradeFvSolution utility, U-92
 foamyHexMeshBackgroundMesh utility, U-92
 foamyHexMeshSurfaceSimplify utility, U-92
 foamyHexMesh utility, U-92
-foamyQuadMesh utility, U-92
+foamyQuadMesh utility, U-93
 forces
 library, U-100
 foreground
 process, U-25
 format keyword, U-109
 fourth
-keyword entry, U-122, U-123
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-80 Index
-functions keyword, U-117
+keyword entry, U-122, U-123
+functionObjectLibs keyword, U-181
+functions keyword, U-117, U-180
 fvc class, P-34
 fvc member function
 curl, P-35
@@ -4519,12 +4522,12 @@ div, P-35
 laplacian, P-35
 Su, P-35
 SuSp, P-35
-fvMatrices tools, U-99
+fvMatrices tools, U-100
 fvMatrix template class, P-34
 fvMesh class, P-29
-fvMesh tools, U-99
+fvMesh tools, U-100
 fvMotionSolvers
-library, U-100
+library, U-101
 fvSchemes
 dictionary, U-62, U-63, U-107, U-118
 fvSchemes class, P-36
@@ -4534,7 +4537,7 @@ fvSolution
 dictionary, U-107, U-125
 G
 g ﬁle, U-61
-gambitToFoam utility, U-92, U-159
+gambitToFoam utility, U-93, U-160
 GAMG
 keyword entry, U-53, U-126, U-127
 Gamma
@@ -4545,7 +4548,7 @@ keyword entry, U-122
 Gauss’s theorem, P-34
 GaussSeidel
 keyword entry, U-127
-General window panel, U-173, U-174
+General window panel, U-175, U-176
 general
 keyword entry, U-116
 genericFvPatchField
@@ -4553,13 +4556,13 @@ library, U-101
 geometric-algebraic multi-grid, U-127
 GeometricBoundaryField template class, P-30
 geometricField<Type> template class, P-30
-geometry keyword, U-151
+geometry keyword, U-153
 gGrad
 fvc member function, P-35
-global tools, U-99
-gmshToFoam utility, U-92
+global tools, U-100
+gmshToFoam utility, U-93
 gnuplot
-keyword entry, U-117, U-181
+keyword entry, U-117, U-187
 grad
 fvc member function, P-35
 (Grad Grad) squared, P-35
@@ -4570,54 +4573,54 @@ least square ﬁt, U-52
 least squares method, P-38, U-52
 surface normal, P-38
 gradSchemes keyword, U-118
-graph tools, U-99
+graph tools, U-100
 graphFormat keyword, U-117
-GuldersEGRLaminarFlameSpeed model, U-102
+GuldersEGRLaminarFlameSpeed model, U-103
 GuldersLaminarFlameSpeed model, U-102
 H
-hConstThermo model, U-102, U-188
-heheupsiReactionThermo model, U-101, U-188
-Help menu, U-173
-hePsiThermo model, U-101, U-188
-heRhoThermo model, U-101, U-188
-HerschelBulkley model, U-105
+hConstThermo model, U-103, U-194
+heheupsiReactionThermo model, U-102, U-194
+Help menu, U-175
+hePsiThermo model, U-102, U-194
+heRhoThermo model, U-102, U-194
+HerschelBulkley model, U-106
 hExponentialThermo
-library, U-103
-Hf keyword, U-190
+library, U-104
+Hf keyword, U-196
 hierarchical
 keyword entry, U-83, U-84
-highCpCoeffs keyword, U-190
-homogenousDynOneEqEddy model, U-105
-homogenousDynSmagorinsky model, U-104
-homogeneousMixture model, U-101, U-188
-hPolynomialThermo model, U-102, U-188
-Open∇FOAM-2.3.1
+highCpCoeffs keyword, U-196
+homogenousDynOneEqEddy model, U-105, U-106
+homogenousDynSmagorinsky model, U-105
+homogeneousMixture model, U-102, U-194
+hPolynomialThermo model, U-103, U-194
+OpenFOAM-2.4.0
 Index P-81
 I
 I
 tensor member function, P-23
-icoFoam solver, U-17, U-21, U-22, U-25, U-86
-icoPolynomial model, U-102, U-187
+icoFoam solver, U-17, U-21, U-22, U-25, U-87
+icoPolynomial model, U-103, U-193
 icoUncoupledKinematicParcelDyMFoam solver,
 U-90
 icoUncoupledKinematicParcelFoam solver, U-90
-ideasToFoam utility, U-159
-ideasUnvToFoam utility, U-92
+ideasToFoam utility, U-160
+ideasUnvToFoam utility, U-93
 identities, see tensor, identities
 identity, see tensor, identity
 incompressibleLESModels
-library, U-104
-incompressiblePerfectGas model, U-102, U-187
+library, U-105
+incompressiblePerfectGas model, U-103, U-193
 incompressibleRASModels
-library, U-103
+library, U-104
 incompressibleTransportModels
-library, P-53, U-105
+library, P-53, U-106
 incompressibleTurbulenceModels
 library, P-53
 index
 notation, P-14, P-15
-Information window panel, U-170
-inhomogeneousMixture model, U-101, U-188
+Information window panel, U-172
+inhomogeneousMixture model, U-102, U-194
 inlet
 boundary condition, P-69
 inletOutlet
@@ -4628,224 +4631,226 @@ keyword entry, U-81
 inotifyMaster
 keyword entry, U-81
 inside
-keyword entry, U-155
-insideCells utility, U-93
+keyword entry, U-156
+insideCells utility, U-94
 interPhaseChangeDyMFoam solver, U-88
 interPhaseChangeFoam solver, U-88
 interDyMFoam solver, U-88
 interfaceProperties
-library, U-105
-interfaceProperties model, U-105
+library, U-106
+interfaceProperties model, U-106
 interFoam solver, U-88
 interMixingFoam solver, U-88
 internalField keyword, U-21, U-112
-interpolation tools, U-99
-interpolationScheme keyword, U-181
-interpolations tools, U-99
+interpolation tools, U-100
+interpolationScheme keyword, U-187
+interpolations tools, U-100
 interpolationSchemes keyword, U-118
 inv
 tensor member function, P-23
 iterations
 maximum, U-127
 J
-janafThermo model, U-103, U-188
+janafThermo model, U-103, U-194
 jobControl
 library, U-100
 jplot
-keyword entry, U-117, U-181
+keyword entry, U-117, U-187
 K
-kEpsilon model, U-103, U-104
+kEpsilon model, U-104
 keyword
-As, U-190
-Cp, U-190
-Cv, U-190
+As, U-196
+Cp, U-196
+Cv, U-196
 FoamFile, U-109
-Hf, U-190
-LESModel, U-192
-Pr, U-190
-RASModel, U-192
-Tcommon, U-190
-Thigh, U-190
-Tlow, U-190
-Ts, U-190
-addLayersControls, U-151
+Hf, U-196
+LESModel, U-198
+Pr, U-196
+RASModel, U-198
+Tcommon, U-196
+Thigh, U-196
+Tlow, U-196
+Ts, U-196
+addLayersControls, U-153
 adjustTimeStep, U-61, U-117
 agglomerator, U-128
 arc, U-144
 blocks, U-20, U-31, U-145
 block, U-144
 boundaryField, U-21, U-112
-boundary, U-146
+boundary, U-147, U-148
 boxToCell, U-60
 cAlpha, U-63
 cacheAgglomeration, U-128
-castellatedMeshControls, U-151
-castellatedMesh, U-151
+castellatedMeshControls, U-153
+castellatedMesh, U-153
 class, U-109
-cloud, U-182
+cloud, U-189
 commsType, U-81
 convertToMeters, U-143, U-144
-curve, U-182
-debug, U-151
+curve, U-189
+debug, U-153
 defaultFieldValues, U-60
 deltaT, U-116
-delta, U-84, U-192
+delta, U-84, U-198
 dimensions, U-21, U-112
 distributed, U-84, U-85
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 P-82 Index
 divSchemes, U-118
-doLayers, U-151
+doLayers, U-153
 edgeGrading, U-146
 edges, U-144
 endTime, U-22, U-115, U-116
-energy, U-189
-equationOfState, U-189
-errorReduction, U-159
-expansionRatio, U-158
-face, U-182
-featureAngle, U-158
-features, U-153
+energy, U-195
+equationOfState, U-195
+errorReduction, U-161
+expansionRatio, U-160
+face, U-189
+featureAngle, U-160
+features, U-154, U-155
 fieldValues, U-60
-fields, U-181
+fields, U-187
 fileModificationChecking, U-81
 fileModificationSkew, U-81
-finalLayerThickness, U-158
+finalLayerThickness, U-160
 firstTime, U-115
 floatTransfer, U-81
 fluxRequired, U-118
 format, U-109
-functions, U-117
-geometry, U-151
+functionObjectLibs, U-181
+functions, U-117, U-180
+geometry, U-153
 gradSchemes, U-118
 graphFormat, U-117
-highCpCoeffs, U-190
+highCpCoeffs, U-196
 internalField, U-21, U-112
 interpolationSchemes, U-118
-interpolationScheme, U-181
+interpolationScheme, U-187
 laplacianSchemes, U-118
 latestTime, U-38
-layers, U-158
+layers, U-160
 leastSquares, U-52
-levels, U-155
-libs, U-80, U-117
-locationInMesh, U-153, U-155
+levels, U-156
+libs, U-81, U-117
+locationInMesh, U-155, U-156
 location, U-109
-lowCpCoeffs, U-190
+lowCpCoeffs, U-196
 manualCoeffs, U-84
 maxAlphaCo, U-61
-maxBoundarySkewness, U-159
-maxConcave, U-159
+maxBoundarySkewness, U-161
+maxConcave, U-161
 maxCo, U-61, U-117
 maxDeltaT, U-62
-maxFaceThicknessRatio, U-158
-maxGlobalCells, U-153
-maxInternalSkewness, U-159
+maxFaceThicknessRatio, U-160
+maxGlobalCells, U-155
+maxInternalSkewness, U-161
 maxIter, U-127
-maxLocalCells, U-153
-maxNonOrtho, U-159
-maxThicknessToMedialRatio, U-158
+maxLocalCells, U-155
+maxNonOrtho, U-161
+maxThicknessToMedialRatio, U-160
 mergeLevels, U-128
 mergePatchPairs, U-144
-mergeTolerance, U-151
-meshQualityControls, U-151
+mergeTolerance, U-153
+meshQualityControls, U-153
 method, U-84
-midPointAndFace, U-182
-midPoint, U-182
-minArea, U-159
-minDeterminant, U-159
-minFaceWeight, U-159
-minFlatness, U-159
-minMedianAxisAngle, U-158
-minRefinementCells, U-153
-minThickness, U-158
-minTriangleTwist, U-159
-minTwist, U-159
-minVolRatio, U-159
-minVol, U-159
-mode, U-155
-molWeight, U-189
-mu, U-190
+midPointAndFace, U-189
+midPoint, U-189
+minArea, U-161
+minDeterminant, U-161
+minFaceWeight, U-161
+minFlatness, U-161
+minMedianAxisAngle, U-160
+minRefinementCells, U-155
+minThickness, U-160
+minTriangleTwist, U-161
+minTwist, U-161
+minVolRatio, U-161
+minVol, U-161
+mode, U-156
+molWeight, U-195
+mu, U-196
 nAlphaSubCycles, U-63
-nBufferCellsNoExtrude, U-158
-nCellsBetweenLevels, U-153
+nBufferCellsNoExtrude, U-160
+nCellsBetweenLevels, U-155
 nFaces, U-134
 nFinestSweeps, U-128
-nGrow, U-158
-nLayerIter, U-158
-nMoles, U-189
+nGrow, U-160
+nLayerIter, U-160
+nMoles, U-195
 nPostSweeps, U-128
 nPreSweeps, U-128
-nRelaxIter, U-156, U-158
-nRelaxedIter, U-158
-nSmoothNormals, U-158
-nSmoothPatch, U-156
-nSmoothScale, U-159
-nSmoothSurfaceNormals, U-158
-nSmoothThickness, U-158
-nSolveIter, U-156
-neighbourPatch, U-147
+nRelaxIter, U-159, U-160
+nRelaxedIter, U-160
+nSmoothNormals, U-160
+nSmoothPatch, U-159
+nSmoothScale, U-161
+nSmoothSurfaceNormals, U-160
+nSmoothThickness, U-160
+nSolveIter, U-159
+neighbourPatch, U-149
 numberOfSubdomains, U-84
 n, U-84
 object, U-109
 order, U-84
+outputControl, U-181
 pRefCell, U-23, U-130
 pRefValue, U-23, U-130
 p rhgRefCell, U-130
-p rhgRefValue, U-130
-patchMap, U-166
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
 Index P-83
+p rhgRefValue, U-130
+patchMap, U-168
 patches, U-144
 preconditioner, U-126, U-127
 pressure, U-51
-printCoeffs, U-41, U-192
+printCoeffs, U-41, U-198
 processorWeights, U-83
 processorWeights, U-84
 purgeWrite, U-116
 refGradient, U-141
-refinementRegions, U-153, U-155
-refinementSurfaces, U-153, U-154
-refinementRegions, U-155
+refinementRegions, U-155, U-156
+refinementSurfaces, U-155
+refinementRegions, U-156
 regions, U-60
 relTol, U-53, U-126
-relativeSizes, U-158
-relaxed, U-159
-resolveFeatureAngle, U-153, U-154
+relativeSizes, U-160
+relaxed, U-161
+resolveFeatureAngle, U-155
 roots, U-84, U-85
 runTimeModifiable, U-117
 scotchCoeffs, U-84
-setFormat, U-181
-sets, U-181
+setFormat, U-187
+sets, U-187
 simpleGrading, U-145
-simulationType, U-41, U-61, U-192
+simulationType, U-41, U-61, U-198
 smoother, U-128
 snGradSchemes, U-118
-snapControls, U-151
-snap, U-151
+snapControls, U-153
+snap, U-153
 solvers, U-125
 solver, U-53, U-126
-specie, U-189
+specie, U-195
 spline, U-144
 startFace, U-134
 startFrom, U-22, U-115
 startTime, U-22, U-115
 stopAt, U-115
 strategy, U-83, U-84
-surfaceFormat, U-181
-surfaces, U-181
-thermoType, U-187
-thermodynamics, U-189
+surfaceFormat, U-187
+surfaces, U-187
+thermoType, U-193
+thermodynamics, U-195
 timeFormat, U-116
 timePrecision, U-117
 timeScheme, U-118
-tolerance, U-53, U-126, U-156
+tolerance, U-53, U-126, U-159
 topoSetSource, U-60
 traction, U-51
-transport, U-189
-turbulence, U-192
+transport, U-195
+turbulence, U-198
 type, U-135, U-138
-uniform, U-182
+uniform, U-189
 valueFraction, U-141
 value, U-21, U-141
 version, U-109
@@ -4855,9 +4860,9 @@ writeControl, U-22, U-62, U-116
 writeFormat, U-55, U-116
 writeInterval, U-22, U-32, U-116
 writePrecision, U-116
-<LESModel>Coeffs, U-192
-<RASModel>Coeffs, U-192
-<delta>Coeffs, U-192
+<LESModel>Coeffs, U-198
+<RASModel>Coeffs, U-198
+<delta>Coeffs, U-198
 keyword entry
 CrankNicolson, U-124
 CrossPowerLaw, U-60
@@ -4870,14 +4875,14 @@ GAMG, U-53, U-126, U-127
 Gamma, U-121
 GaussSeidel, U-127
 Gauss, U-122
-LESModel, U-41, U-192
+LESModel, U-41, U-198
 MGridGen, U-128
 MUSCL, U-121
 Newtonian, U-60
 PBiCG, U-126
 PCG, U-126
 QUICK, U-124
-RASModel, U-41, U-192
+RASModel, U-41, U-198
 SFCD, U-121, U-124
 UMIST, U-120
 adjustableRunTime, U-62, U-116
@@ -4888,36 +4893,36 @@ binary, U-116
 blocking, U-81
 bounded, U-122, U-123
 cellLimited, U-122
-cellPointFace, U-181
-cellPoint, U-181
-cell, U-181
+cellPointFace, U-187
+cellPoint, U-187
+cell, U-187
 clockTime, U-116
 compressed, U-116
 corrected, U-122, U-123
+OpenFOAM-2.4.0
+P-84 Index
 cpuTime, U-116
 cubicCorrected, U-124
-Open∇FOAM-2.3.1
-P-84 Index
 cubicCorrection, U-121
 cyclic, U-140
 diagonal, U-126, U-127
-distance, U-155, U-182
-dx, U-181
+distance, U-156, U-189
+dx, U-187
 empty, U-140
 faceAreaPair, U-128
 faceLimited, U-122
 filteredLinear2, U-121
 fixed, U-116
-foamFile, U-181
+foamFile, U-187
 fourth, U-122, U-123
 general, U-116
-gnuplot, U-117, U-181
+gnuplot, U-117, U-187
 hierarchical, U-83, U-84
 inotifyMaster, U-81
 inotify, U-81
-inside, U-155
-jplot, U-117, U-181
-laminar, U-41, U-192
+inside, U-156
+jplot, U-117, U-187
+laminar, U-41, U-198
 latestTime, U-115
 leastSquares, U-122
 limitedCubic, U-121
@@ -4934,13 +4939,14 @@ nextWrite, U-116
 noWriteNow, U-116
 nonBlocking, U-81
 none, U-119, U-127
-null, U-181
-outside, U-155
-patch, U-140, U-182
+null, U-187
+outputTime, U-181
+outside, U-156
+patch, U-140, U-188
 polyLine, U-145
 polySpline, U-145
 processor, U-140
-raw, U-117, U-181
+raw, U-117, U-187
 runTime, U-32, U-116
 scheduled, U-81
 scientific, U-116
@@ -4951,167 +4957,168 @@ skewLinear, U-121, U-124
 smoothSolver, U-126
 startTime, U-22, U-115
 steadyState, U-124
-stl, U-181
+stl, U-187
 symmetryPlane, U-140
 timeStampMaster, U-81
 timeStamp, U-81
-timeStep, U-22, U-32, U-116
+timeStep, U-22, U-32, U-116, U-181
 uncompressed, U-116
 uncorrected, U-122, U-123
 upwind, U-121, U-124
 vanLeer, U-121
-vtk, U-181
+vtk, U-187
 wall, U-140
 wedge, U-140
 writeControl, U-116
+writeInterval, U-181
 writeNow, U-115
-xmgr, U-117, U-181
-xyz, U-182
-x, U-182
-y, U-182
-z, U-182
+xmgr, U-117, U-187
+xyz, U-189
+x, U-189
+y, U-189
+z, U-189
 kivaToFoam utility, U-93
 kkLOmega model, U-104
-kOmega model, U-103
-kOmegaSST model, U-103, U-104
+kOmega model, U-104
+kOmegaSST model, U-104
 kOmegaSSTSAS model, U-105
 Kronecker delta, P-19
 L
 lagrangian
-library, U-100
+library, U-101
 lagrangianIntermediate
-library, U-100
+library, U-101
 Lambda2 utility, U-95
 LamBremhorstKE model, U-104
-laminar model, U-103–U-105
+laminar model, U-104, U-105
 laminar
-keyword entry, U-41, U-192
+keyword entry, U-41, U-198
 laminarFlameSpeedModels
 library, U-102
-laplaceFilter model, U-104
+laplaceFilter model, U-105
 Laplacian, P-36
 laplacian, P-35
 laplacian
 fvc member function, P-35
 fvm member function, P-35
+OpenFOAM-2.4.0
+Index P-85
 laplacianFoam solver, U-86
 laplacianSchemes keyword, U-118
 latestTime
 keyword entry, U-115
-Open∇FOAM-2.3.1
-Index P-85
 latestTime keyword, U-38
-LaunderGibsonRSTM model, U-104
+LaunderGibsonRSTM model, U-104, U-105
 LaunderSharmaKE model, U-104
-layers keyword, U-158
+layers keyword, U-160
 leastSquares
 keyword entry, U-122
 leastSquares keyword, U-52
 LESdeltas
-library, U-104
+library, U-105
 LESﬁlters
-library, U-104
+library, U-105
 LESModel
-keyword entry, U-41, U-192
-LESModel keyword, U-192
+keyword entry, U-41, U-198
+LESModel keyword, U-198
 LESProperties
-dictionary, U-192
-levels keyword, U-155
+dictionary, U-198
+levels keyword, U-156
 libraries, U-69
 library
-Chung, U-102
+Chung, U-103
 FVFunctionObjects, U-100
-LESdeltas, U-104
-LESﬁlters, U-104
+LESdeltas, U-105
+LESﬁlters, U-105
 MGridGenGAMGAgglomeration, U-101
-ODE, U-100
+ODE, U-101
 OSspeciﬁc, U-101
 OpenFOAM, U-99
 P1, U-102
-PV3FoamReader, U-169
-PVFoamReader, U-169
-SLGThermo, U-103
-Wallis, U-102
+PV3FoamReader, U-171
+PVFoamReader, U-171
+SLGThermo, U-104
+Wallis, U-103
 autoMesh, U-100
-barotropicCompressibilityModels, U-102
-basicSolidThermo, U-103
-basicThermophysicalModels, U-101
+barotropicCompressibilityModels, U-103
+basicSolidThermo, U-104
+basicThermophysicalModels, U-102
 blockMesh, U-100
 chemistryModel, U-103
 cloudFunctionObjects, U-100
-coalCombustion, U-100
+coalCombustion, U-101
 compressibleLESModels, U-105
 compressibleRASModels, U-104
 conversion, U-101
 decompositionMethods, U-101
-distributionModels, U-100
-dsmc, U-100
+distributionModels, U-101
+dsmc, U-101
 dynamicFvMesh, U-100
 dynamicMesh, U-100
-edgeMesh, U-100
+edgeMesh, U-101
 engine, U-101
 ﬁeldFunctionObjects, U-100
 ﬁleFormats, U-101
-ﬁniteVolume, U-99
+ﬁniteVolume, U-100
 foamCalcFunctions, U-100
 forces, U-100
 fvDOM, U-102
-fvMotionSolvers, U-100
+fvMotionSolvers, U-101
 genericFvPatchField, U-101
-hExponentialThermo, U-103
-incompressibleLESModels, U-104
-incompressibleRASModels, U-103
-incompressibleTransportModels, P-53, U-105
+hExponentialThermo, U-104
+incompressibleLESModels, U-105
+incompressibleRASModels, U-104
+incompressibleTransportModels, P-53, U-106
 incompressibleTurbulenceModels, P-53
-interfaceProperties, U-105
+interfaceProperties, U-106
 jobControl, U-100
-lagrangianIntermediate, U-100
-lagrangian, U-100
+lagrangianIntermediate, U-101
+lagrangian, U-101
 laminarFlameSpeedModels, U-102
-linear, U-102
-liquidMixtureProperties, U-103
-liquidProperties, U-103
-meshTools, U-100
-molecularMeasurements, U-100
-molecule, U-100
+linear, U-103
+liquidMixtureProperties, U-104
+liquidProperties, U-104
+meshTools, U-101
+molecularMeasurements, U-101
+molecule, U-101
 opaqueSolid, U-102
 pairPatchAgglomeration, U-101
 postCalc, U-100
-potential, U-100
+potential, U-101
 primitive, P-21
 radiationModels, U-102
 randomProcesses, U-101
-reactionThermophysicalModels, U-101
+reactionThermophysicalModels, U-102
 sampling, U-100
-solidChemistryModel, U-103
-solidMixtureProperties, U-103
-solidParticle, U-100
-solidProperties, U-103
-solidSpecie, U-103
-solidThermo, U-103
-specie, U-102
-spray, U-100
-surfMesh, U-100
-surfaceFilmModels, U-105
+solidChemistryModel, U-104
+solidMixtureProperties, U-104
+solidParticle, U-101
+solidProperties, U-104
+solidSpecie, U-104
+solidThermo, U-104
+specie, U-103
+spray, U-101
+surfMesh, U-101
+surfaceFilmModels, U-106
 systemCall, U-100
 thermophysicalFunctions, U-103
-thermophysical, U-187
-topoChangerFvMesh, U-100
-triSurface, U-100
-turbulence, U-100
-twoPhaseProperties, U-105
-Open∇FOAM-2.3.1
+thermophysical, U-193
+OpenFOAM-2.4.0
 P-86 Index
+topoChangerFvMesh, U-101
+triSurface, U-101
+turbulence, U-101
+twoPhaseProperties, U-106
 utilityFunctionObjects, U-100
 viewFactor, U-102
-vtkFoam, U-169
-vtkPV3Foam, U-169
-libs keyword, U-80, U-117
+vtkFoam, U-171
+vtkPV3Foam, U-171
+libs keyword, U-81, U-117
 lid-driven cavity ﬂow, U-17
-LienCubicKE model, U-103
+LienCubicKE model, U-104
 LienCubicKELowRe model, U-104
 LienLeschzinerLowRe model, U-104
-Lights window panel, U-174
+Lights window panel, U-176
 limited
 keyword entry, U-122, U-123
 limitedCubic
@@ -5122,7 +5129,7 @@ line
 keyword entry, U-145
 Line Style menu, U-35
 linear
-library, U-102
+library, U-103
 linear
 keyword entry, U-121, U-124
 linearUpwind
@@ -5130,29 +5137,29 @@ keyword entry, U-121, U-124
 liquid
 electrically-conducting, P-67
 liquidMixtureProperties
-library, U-103
+library, U-104
 liquidProperties
-library, U-103
+library, U-104
 lists, P-27
 List<Type> template class, P-27
 localEuler
 keyword entry, U-124
 location keyword, U-109
-locationInMesh keyword, U-153, U-155
-lowCpCoeffs keyword, U-190
+locationInMesh keyword, U-155, U-156
+lowCpCoeffs keyword, U-196
 lowReOneEqEddy model, U-105
 LRDDiﬀStress model, U-105
 LRR model, U-104
 lsGrad
 fvc member function, P-35
-LTSInterFoam solver, U-88
+LTSInterFoam solver, U-89
 LTSReactingFoam solver, U-89
 LTSReactingParcelFoam solver, U-90
 M
 Mach utility, U-95
 mag
 tensor member function, P-23
-magneticFoam solver, U-90
+magneticFoam solver, U-91
 magnetohydrodynamics, P-67
 magSqr
 tensor member function, P-23
@@ -5163,61 +5170,61 @@ manual
 keyword entry, U-83, U-84
 manualCoeffs keyword, U-84
 mapFields utility, U-31, U-38, U-42, U-55, U-92,
-U-166
+U-168
 mapping
-ﬁelds, U-166
+ﬁelds, U-168
 Marker Style menu, U-35
-matrices tools, U-99
+matrices tools, U-100
 max
 tensor member function, P-23
 maxAlphaCo keyword, U-61
-maxBoundarySkewness keyword, U-159
+maxBoundarySkewness keyword, U-161
 maxCo keyword, U-61, U-117
-maxConcave keyword, U-159
+maxConcave keyword, U-161
 maxDeltaT keyword, U-62
-maxDeltaxyz model, U-104
-maxFaceThicknessRatio keyword, U-158
-maxGlobalCells keyword, U-153
+maxDeltaxyz model, U-105
+maxFaceThicknessRatio keyword, U-160
+maxGlobalCells keyword, U-155
 maximum iterations, U-127
-maxInternalSkewness keyword, U-159
+maxInternalSkewness keyword, U-161
 maxIter keyword, U-127
-maxLocalCells keyword, U-153
-maxNonOrtho keyword, U-159
-maxThicknessToMedialRatio keyword, U-158
-mdEquilibrationFoam solver, U-90
-mdFoam solver, U-90
+maxLocalCells keyword, U-155
+maxNonOrtho keyword, U-161
+maxThicknessToMedialRatio keyword, U-160
+mdEquilibrationFoam solver, U-91
+mdFoam solver, U-91
 mdInitialise utility, U-92
 mechanicalProperties
 dictionary, U-51
-memory tools, U-99
+memory tools, U-100
 menu
-Color By, U-173
-Current Time Controls, U-25, U-171
-Edit, U-173, U-174
-Help, U-173
+Color By, U-175
+Current Time Controls, U-25, U-173
+Edit, U-175, U-176
+Help, U-175
 Line Style, U-35
 Marker Style, U-35
-VCR Controls, U-25, U-171
-View, U-173
+VCR Controls, U-25, U-173
+OpenFOAM-2.4.0
+Index P-87
+View, U-175
 menu entry
 Plot Over Line, U-34
-Save Animation, U-175
-Open∇FOAM-2.3.1
-Index P-87
-Save Screenshot, U-175
-Settings, U-174
+Save Animation, U-177
+Save Screenshot, U-177
+Settings, U-176
 Show Color Legend, U-27
-Solid Color, U-173
-Toolbars, U-173
+Solid Color, U-175
+Toolbars, U-175
 View Settings..., U-24
-View Settings, U-25, U-173
-Wireframe, U-173
+View Settings, U-25, U-175
+Wireframe, U-175
 fvSchemes, U-52
 mergeLevels keyword, U-128
-mergeMeshes utility, U-93
-mergeOrSplitBaﬄes utility, U-93
+mergeMeshes utility, U-94
+mergeOrSplitBaﬄes utility, U-94
 mergePatchPairs keyword, U-144
-mergeTolerance keyword, U-151
+mergeTolerance keyword, U-153
 mesh
 1-dimensional, U-135
 1D, U-135
@@ -5229,24 +5236,24 @@ block structured, U-141
 decomposition, U-82
 description, U-131
 ﬁnite volume, P-29
-generation, U-141, U-150
+generation, U-141, U-151
 grading, U-141, U-145
 grading, example of, P-50
 non-orthogonal, P-43
 reﬁnement, P-61
 resolution, U-29
 speciﬁcation, U-131
-split-hex, U-150
-Stereolithography (STL), U-150
-surface, U-150
+split-hex, U-152
+Stereolithography (STL), U-152
+surface, U-152
 validity constraints, U-131
 Mesh Parts window panel, U-24
-meshes tools, U-99
-meshQualityControls keyword, U-151
+meshes tools, U-100
+meshQualityControls keyword, U-153
 meshTools
-library, U-100
+library, U-101
 message passing interface
-openMPI, U-83
+openMPI, U-84
 method keyword, U-84
 metis
 keyword entry, U-84
@@ -5258,143 +5265,143 @@ keyword entry, U-128
 mhdFoam solver, P-69, U-91
 midPoint
 keyword entry, U-121
-midPoint keyword, U-182
-midPointAndFace keyword, U-182
+midPoint keyword, U-189
+midPointAndFace keyword, U-189
 min
 tensor member function, P-23
-minArea keyword, U-159
-minDeterminant keyword, U-159
-minFaceWeight keyword, U-159
-minFlatness keyword, U-159
-minMedianAxisAngle keyword, U-158
+minArea keyword, U-161
+minDeterminant keyword, U-161
+minFaceWeight keyword, U-161
+minFlatness keyword, U-161
+minMedianAxisAngle keyword, U-160
 MINMOD diﬀerencing, P-36
-minRefinementCells keyword, U-153
-minThickness keyword, U-158
-minTriangleTwist keyword, U-159
-minTwist keyword, U-159
-minVol keyword, U-159
-minVolRatio keyword, U-159
-mirrorMesh utility, U-93
+minRefinementCells keyword, U-155
+minThickness keyword, U-160
+minTriangleTwist keyword, U-161
+minTwist keyword, U-161
+minVol keyword, U-161
+minVolRatio keyword, U-161
+mirrorMesh utility, U-94
 mixed
 boundary condition, U-141
-mixedSmagorinsky model, U-104
-mixtureAdiabaticFlameT utility, U-98
-mode keyword, U-155
+mixedSmagorinsky model, U-105
+mixtureAdiabaticFlameT utility, U-99
+mode keyword, U-156
 model
 APIfunctions, U-103
-BirdCarreau, U-105
-CrossPowerLaw, U-105
-DeardorﬀDiﬀStress, U-105
-GuldersEGRLaminarFlameSpeed, U-102
+BirdCarreau, U-106
+CrossPowerLaw, U-106
+DeardorﬀDiﬀStress, U-105, U-106
+GuldersEGRLaminarFlameSpeed, U-103
 GuldersLaminarFlameSpeed, U-102
-HerschelBulkley, U-105
+HerschelBulkley, U-106
 LRDDiﬀStress, U-105
 LRR, U-104
 LamBremhorstKE, U-104
-LaunderGibsonRSTM, U-104
+LaunderGibsonRSTM, U-104, U-105
 LaunderSharmaKE, U-104
 LienCubicKELowRe, U-104
-LienCubicKE, U-103
+LienCubicKE, U-104
 LienLeschzinerLowRe, U-104
 NSRDSfunctions, U-103
-Newtonian, U-105
-NonlinearKEShih, U-103
-PrandtlDelta, U-104
-RNGkEpsilon, U-103, U-104
-RaviPetersen, U-102
-Smagorinsky2, U-104
-Smagorinsky, U-104, U-105
-Open∇FOAM-2.3.1
+Newtonian, U-106
+NonlinearKEShih, U-104
+PrandtlDelta, U-105
+OpenFOAM-2.4.0
 P-88 Index
+RNGkEpsilon, U-104
+RaviPetersen, U-103
+Smagorinsky2, U-105
+Smagorinsky, U-105
 SpalartAllmarasDDES, U-105
 SpalartAllmarasIDDES, U-105
-SpalartAllmaras, U-104, U-105
-adiabaticPerfectFluid, U-102, U-187
-anisotropicFilter, U-104
-basicMultiComponentMixture, U-102, U-188
+SpalartAllmaras, U-104–U-106
+adiabaticPerfectFluid, U-103, U-193
+anisotropicFilter, U-105
+basicMultiComponentMixture, U-102, U-194
 chemistryModel, U-103
 chemistrySolver, U-103
-constTransport, U-103, U-188
+constTransport, U-103, U-194
 constant, U-102
-cubeRootVolDelta, U-104
+cubeRootVolDelta, U-105
 decompose, U-101
 distributed, U-101
-dynLagrangian, U-104
+dynLagrangian, U-105
 dynOneEqEddy, U-105
-eConstThermo, U-102, U-187
-egrMixture, U-102, U-188
-hConstThermo, U-102, U-188
-hPolynomialThermo, U-102, U-188
-hePsiThermo, U-101, U-188
-heRhoThermo, U-101, U-188
-heheupsiReactionThermo, U-101, U-188
-homogenousDynOneEqEddy, U-105
-homogenousDynSmagorinsky, U-104
-homogeneousMixture, U-101, U-188
-icoPolynomial, U-102, U-187
-incompressiblePerfectGas, U-102, U-187
-inhomogeneousMixture, U-101, U-188
-interfaceProperties, U-105
-janafThermo, U-103, U-188
-kEpsilon, U-103, U-104
+eConstThermo, U-103, U-193
+egrMixture, U-102, U-194
+hConstThermo, U-103, U-194
+hPolynomialThermo, U-103, U-194
+hePsiThermo, U-102, U-194
+heRhoThermo, U-102, U-194
+heheupsiReactionThermo, U-102, U-194
+homogenousDynOneEqEddy, U-105, U-106
+homogenousDynSmagorinsky, U-105
+homogeneousMixture, U-102, U-194
+icoPolynomial, U-103, U-193
+incompressiblePerfectGas, U-103, U-193
+inhomogeneousMixture, U-102, U-194
+interfaceProperties, U-106
+janafThermo, U-103, U-194
+kEpsilon, U-104
 kOmegaSSTSAS, U-105
-kOmegaSST, U-103, U-104
-kOmega, U-103
+kOmegaSST, U-104
+kOmega, U-104
 kkLOmega, U-104
-laminar, U-103–U-105
-laplaceFilter, U-104
+laminar, U-104, U-105
+laplaceFilter, U-105
 lowReOneEqEddy, U-105
-maxDeltaxyz, U-104
+maxDeltaxyz, U-105
 metisDecomp, U-101
-mixedSmagorinsky, U-104
-multiComponentMixture, U-102, U-188
+mixedSmagorinsky, U-105
+multiComponentMixture, U-102, U-194
 oneEqEddy, U-105
-perfectFluid, U-102, U-187
-polynomialTransport, U-103, U-188
-powerLaw, U-105
-psiReactionThermo, U-101, U-188
-psiuReactionThermo, U-101, U-188
+perfectFluid, U-103, U-193
+polynomialTransport, U-103, U-194
+powerLaw, U-106
+psiReactionThermo, U-102, U-194
+psiuReactionThermo, U-102, U-194
 ptsotchDecomp, U-101
-pureMixture, U-101, U-188
+pureMixture, U-102, U-194
 qZeta, U-104
-reactingMixture, U-102, U-188
-realizableKE, U-104
+reactingMixture, U-102, U-194
+realizableKE, U-104, U-105
 reconstruct, U-101
-rhoConst, U-102, U-187
-rhoReactionThermo, U-101, U-188
-scaleSimilarity, U-104
+rhoConst, U-103, U-193
+rhoReactionThermo, U-102, U-194
+scaleSimilarity, U-105
 scotchDecomp, U-101
-simpleFilter, U-104
-singleStepReactingMixture, U-102, U-188
-smoothDelta, U-104
-specieThermo, U-103, U-188
+simpleFilter, U-105
+singleStepReactingMixture, U-102, U-194
+smoothDelta, U-105
+specieThermo, U-103, U-194
 spectEddyVisc, U-105
-sutherlandTransport, U-103, U-188
-v2f, U-104
-vanDriestDelta, U-105
-veryInhomogeneousMixture, U-102, U-188
-modifyMesh utility, U-94
+sutherlandTransport, U-103, U-194
+v2f, U-104, U-105
+vanDriestDelta, U-105, U-106
+veryInhomogeneousMixture, U-102, U-194
+modifyMesh utility, U-95
 molecularMeasurements
-library, U-100
+library, U-101
 molecule
-library, U-100
-molWeight keyword, U-189
-moveDynamicMesh utility, U-93
-moveEngineMesh utility, U-93
-moveMesh utility, U-93
+library, U-101
+molWeight keyword, U-195
+moveDynamicMesh utility, U-94
+moveEngineMesh utility, U-94
+moveMesh utility, U-94
 movingWallVelocity
 boundary condition, U-142
 MPI
-openMPI, U-83
-MRFInterFoam solver, U-88
-MRFMultiphaseInterFoam solver, U-88
+openMPI, U-84
+MRFInterFoam solver, U-89
+MRFMultiphaseInterFoam solver, U-89
 mshToFoam utility, U-93
-mu keyword, U-190
-multiComponentMixture model, U-102, U-188
+mu keyword, U-196
+multiComponentMixture model, U-102, U-194
 multigrid
 geometric-algebraic, U-127
-multiphaseEulerFoam solver, U-88
-multiphaseInterFoam solver, U-88
+multiphaseEulerFoam solver, U-89
+multiphaseInterFoam solver, U-89
 MUSCL
 keyword entry, U-121
 N
@@ -5402,54 +5409,54 @@ n keyword, U-84
 nabla
 operator, P-25
 nAlphaSubCycles keyword, U-63
-nBufferCellsNoExtrude keyword, U-158
-nCellsBetweenLevels keyword, U-153
+OpenFOAM-2.4.0
+Index P-89
+nBufferCellsNoExtrude keyword, U-160
+nCellsBetweenLevels keyword, U-155
 neighbour
 dictionary, U-134
-Open∇FOAM-2.3.1
-Index P-89
-neighbourPatch keyword, U-147
+neighbourPatch keyword, U-149
 netgenNeutralToFoam utility, U-93
 Newtonian
 keyword entry, U-60
-Newtonian model, U-105
+Newtonian model, U-106
 nextWrite
 keyword entry, U-116
 nFaces keyword, U-134
 nFinestSweeps keyword, U-128
-nGrow keyword, U-158
-nLayerIter keyword, U-158
-nMoles keyword, U-189
+nGrow keyword, U-160
+nLayerIter keyword, U-160
+nMoles keyword, U-195
 non-orthogonal mesh, P-43
 nonBlocking
 keyword entry, U-81
 none
 keyword entry, U-119, U-127
-NonlinearKEShih model, U-103
-nonNewtonianIcoFoam solver, U-86
+NonlinearKEShih model, U-104
+nonNewtonianIcoFoam solver, U-87
 noWriteNow
 keyword entry, U-116
 nPostSweeps keyword, U-128
 nPreSweeps keyword, U-128
-nRelaxedIter keyword, U-158
-nRelaxIter keyword, U-156, U-158
-nSmoothNormals keyword, U-158
-nSmoothPatch keyword, U-156
-nSmoothScale keyword, U-159
-nSmoothSurfaceNormals keyword, U-158
-nSmoothThickness keyword, U-158
-nSolveIter keyword, U-156
+nRelaxedIter keyword, U-160
+nRelaxIter keyword, U-159, U-160
+nSmoothNormals keyword, U-160
+nSmoothPatch keyword, U-159
+nSmoothScale keyword, U-161
+nSmoothSurfaceNormals keyword, U-160
+nSmoothThickness keyword, U-160
+nSolveIter keyword, U-159
 NSRDSfunctions model, U-103
 null
-keyword entry, U-181
+keyword entry, U-187
 numberOfSubdomains keyword, U-84
 O
 object keyword, U-109
-objToVTK utility, U-93
+objToVTK utility, U-94
 ODE
-library, U-100
+library, U-101
 oneEqEddy model, U-105
-Opacity text box, U-173
+Opacity text box, U-175
 opaqueSolid
 library, U-102
 OpenFOAM
@@ -5461,16 +5468,16 @@ library, U-99
 OpenFOAM ﬁle syntax
 //, U-108
 openMPI
-message passing interface, U-83
-MPI, U-83
+message passing interface, U-84
+MPI, U-84
 operator
 scalar, P-26
 vector, P-25
-Options window, U-174
+Options window, U-176
 options ﬁle, U-73
 order keyword, U-84
-Orientation Axes button, U-25, U-174
-orientFaceZone utility, U-93
+Orientation Axes button, U-25, U-176
+orientFaceZone utility, U-94
 OSspeciﬁc
 library, U-101
 outer product, see tensor, outer product
@@ -5478,8 +5485,11 @@ outlet
 boundary condition, P-69
 outletInlet
 boundary condition, U-142
+outputControl keyword, U-181
+outputTime
+keyword entry, U-181
 outside
-keyword entry, U-155
+keyword entry, U-156
 owner
 dictionary, U-133
 P
@@ -5490,7 +5500,7 @@ p rhgRefCell keyword, U-130
 p rhgRefValue keyword, U-130
 pairPatchAgglomeration
 library, U-101
-paraFoam, U-23, U-169
+paraFoam, U-23, U-171
 parallel
 running, U-82
 partialSlip
@@ -5499,30 +5509,30 @@ particleTracks utility, U-96
 patch
 boundary condition, U-139
 patch
-keyword entry, U-140, U-182
+keyword entry, U-140, U-188
 patchAverage utility, U-96
+OpenFOAM-2.4.0
+P-90 Index
 patches keyword, U-144
 patchIntegrate utility, U-96
-patchMap keyword, U-166
-patchSummary utility, U-98
+patchMap keyword, U-168
+patchSummary utility, U-99
 PBiCG
 keyword entry, U-126
 PCG
-Open∇FOAM-2.3.1
-P-90 Index
 keyword entry, U-126
-pdfPlot utility, U-96
+pdfPlot utility, U-97
 PDRFoam solver, U-89
-PDRMesh utility, U-94
+PDRMesh utility, U-95
 Pe utility, U-95
-perfectFluid model, U-102, U-187
+perfectFluid model, U-103, U-193
 permutation symbol, P-18
-pimpleDyMFoam solver, U-86
-pimpleFoam solver, U-86
-Pipeline Browser window, U-24, U-170
+pimpleDyMFoam solver, U-87
+pimpleFoam solver, U-87
+Pipeline Browser window, U-24, U-172
 PISO
 dictionary, U-23
-pisoFoam solver, U-17, U-86
+pisoFoam solver, U-17, U-87
 Plot Over Line
 menu entry, U-34
 plot3dToFoam utility, U-93
@@ -5531,34 +5541,34 @@ pointField<Type> template class, P-31
 points
 dictionary, U-133, U-141
 polyBoundaryMesh class, P-29
-polyDualMesh utility, U-93
+polyDualMesh utility, U-94
 polyLine
 keyword entry, U-145
 polyMesh directory, U-107, U-133
 polyMesh class, P-29, U-131, U-133
-polynomialTransport model, U-103, U-188
+polynomialTransport model, U-103, U-194
 polyPatch class, P-29
 polyPatchList class, P-29
 polySpline
 keyword entry, U-145
-porousInterFoam solver, U-88
-porousSimpleFoam solver, U-86
-post-processing, U-169
+porousInterFoam solver, U-89
+porousSimpleFoam solver, U-87
+post-processing, U-171
 post-processing
-paraFoam, U-169
+paraFoam, U-171
 postCalc
 library, U-100
-postChannel utility, U-96
-potentialFreeSurfaceFoam solver, U-88
+postChannel utility, U-97
+potentialFreeSurfaceFoam solver, U-89
 potential
-library, U-100
+library, U-101
 potentialFoam solver, P-44, U-86
 pow
 tensor member function, P-23
-powerLaw model, U-105
-pPrime2 utility, U-95
-Pr keyword, U-190
-PrandtlDelta model, U-104
+powerLaw model, U-106
+pPrime2 utility, U-96
+Pr keyword, U-196
+PrandtlDelta model, U-105
 preconditioner keyword, U-126, U-127
 pRefCell keyword, U-23, U-130
 pRefValue keyword, U-23, U-130
@@ -5575,8 +5585,8 @@ pressureTransmissive
 boundary condition, U-142
 primitive
 library, P-21
-primitives tools, U-99
-printCoeffs keyword, U-41, U-192
+primitives tools, U-100
+printCoeffs keyword, U-41, U-198
 processorWeights keyword, U-83
 probeLocations utility, U-96
 process
@@ -5588,86 +5598,86 @@ processor
 keyword entry, U-140
 processorN directory, U-83
 processorWeights keyword, U-84
-Properties window panel, U-25, U-170, U-171
-psiReactionThermo model, U-101, U-188
-psiuReactionThermo model, U-101, U-188
-ptot utility, U-96
+Properties window panel, U-25, U-172, U-173
+psiReactionThermo model, U-102, U-194
+psiuReactionThermo model, U-102, U-194
+ptot utility, U-97
 ptsotchDecomp model, U-101
-pureMixture model, U-101, U-188
+pureMixture model, U-102, U-194
 purgeWrite keyword, U-116
 PV3FoamReader
-library, U-169
+library, U-171
 PVFoamReader
-library, U-169
+library, U-171
 Q
 Q utility, U-95
 QUICK
 keyword entry, U-124
+OpenFOAM-2.4.0
+Index P-91
 qZeta model, U-104
 R
 R utility, U-96
 radiationModels
 library, U-102
 randomProcesses
-Open∇FOAM-2.3.1
-Index P-91
 library, U-101
 RASModel
-keyword entry, U-41, U-192
-RASModel keyword, U-192
-RaviPetersen model, U-102
+keyword entry, U-41, U-198
+RASModel keyword, U-198
+RaviPetersen model, U-103
 raw
-keyword entry, U-117, U-181
+keyword entry, U-117, U-187
 reactingFoam solver, U-89
-reactingMixture model, U-102, U-188
+reactingMixture model, U-102, U-194
 reactingParcelFilmFoam solver, U-90
 reactingParcelFoam solver, U-90
 reactionThermophysicalModels
-library, U-101
-realizableKE model, U-104
+library, U-102
+realizableKE model, U-104, U-105
 reconstruct model, U-101
-reconstructPar utility, U-85
+reconstructPar utility, U-86
 reconstructParMesh utility, U-98
 redistributePar utility, U-98
 refGradient keyword, U-141
-reﬁneHexMesh utility, U-94
-refinementRegions keyword, U-155
-reﬁnementLevel utility, U-94
-refinementRegions keyword, U-153, U-155
-refinementSurfaces keyword, U-153, U-154
-reﬁneMesh utility, U-93
-reﬁneWallLayer utility, U-94
+reﬁneHexMesh utility, U-95
+refinementRegions keyword, U-156
+reﬁnementLevel utility, U-95
+refinementRegions keyword, U-155, U-156
+refinementSurfaces keyword, U-155
+reﬁneMesh utility, U-94
+reﬁneWallLayer utility, U-95
 Refresh Times button, U-25
 regions keyword, U-60
 relative tolerance, U-126
-relativeSizes keyword, U-158
-relaxed keyword, U-159
+relativeSizes keyword, U-160
+relaxed keyword, U-161
 relTol keyword, U-53, U-126
-removeFaces utility, U-94
-Render View window, U-174
-Render View window panel, U-174
-renumberMesh utility, U-93
+removeFaces utility, U-95
+Render View window, U-176
+Render View window panel, U-176
+renumberMesh utility, U-94
 Rescale to Data Range button, U-25
-Reset button, U-170
-resolveFeatureAngle keyword, U-153, U-154
+Reset button, U-172
+resolveFeatureAngle keyword, U-155
 restart, U-38
 Reynolds number, U-17, U-21
 rhoPorousSimpleFoam solver, U-87
 rhoReactingBuoyantFoam solver, U-89
 rhoCentralDyMFoam solver, U-87
 rhoCentralFoam solver, U-87
-rhoConst model, U-102, U-187
+rhoConst model, U-103, U-193
 rhoLTSPimpleFoam solver, U-87
 rhoPimpleFoam solver, U-87
 rhoPimplecFoam solver, U-87
-rhoReactingFoam solver, U-89
-rhoReactionThermo model, U-101, U-188
-rhoSimpleFoam solver, U-87
+rhoReactingFoam solver, U-90
+rhoReactionThermo model, U-102, U-194
+rhoSimpleFoam solver, U-88
 rhoSimplecFoam solver, U-87
 rmdepall script/alias, U-77
-RNGkEpsilon model, U-103, U-104
+RNGkEpsilon model, U-104
 roots keyword, U-84, U-85
-rotateMesh utility, U-93
+rotateMesh utility, U-94
 run
 parallel, U-82
 run directory, U-107
@@ -5676,13 +5686,13 @@ keyword entry, U-32, U-116
 runTimeModifiable keyword, U-117
 S
 sammToFoam utility, U-93
-sample utility, U-96, U-180
+sample utility, U-96, U-186
 sampling
 library, U-100
 Save Animation
-menu entry, U-175
+menu entry, U-177
 Save Screenshot
-menu entry, U-175
+menu entry, U-177
 scalar, P-14
 operator, P-26
 scalar class, P-22
@@ -5690,8 +5700,8 @@ scalarField class, P-27
 scalarTransportFoam solver, U-86
 scale
 tensor member function, P-23
-scalePoints utility, U-163
-scaleSimilarity model, U-104
+scalePoints utility, U-165
+scaleSimilarity model, U-105
 scheduled
 keyword entry, U-81
 scientific
@@ -5701,26 +5711,27 @@ keyword entry, U-83, U-84
 scotchCoeffs keyword, U-84
 scotchDecomp model, U-101
 script/alias
-foamCorrectVrt, U-164
-foamJob, U-184
-foamLog, U-184
+ﬁnd, U-181
+foamCorrectVrt, U-166
+foamJob, U-190
+foamLog, U-190
+OpenFOAM-2.4.0
+P-92 Index
 make, U-71
 rmdepall, U-77
 wclean, U-76
 wmake, U-71
 second time derivative, P-35
-Seed window, U-175
-selectCells utility, U-94
-Open∇FOAM-2.3.1
-P-92 Index
-Set Ambient Color button, U-173
+Seed window, U-177
+selectCells utility, U-95
+Set Ambient Color button, U-175
 setFields utility, U-59, U-60, U-92
-setFormat keyword, U-181
-sets keyword, U-181
+setFormat keyword, U-187
+sets keyword, U-187
 setSet utility, U-94
 setsToZones utility, U-94
 Settings
-menu entry, U-174
+menu entry, U-176
 settlingFoam solver, U-89
 SFCD
 keyword entry, U-121, U-124
@@ -5729,103 +5740,103 @@ shape, U-145
 Show Color Legend
 menu entry, U-27
 SI units, U-112
-simpleReactingParcelFoam solver, U-90
+simpleReactingParcelFoam solver, U-91
 simple
 keyword entry, U-83, U-84
-simpleFilter model, U-104
+simpleFilter model, U-105
 simpleFoam solver, P-53, U-87
 simpleGrading keyword, U-145
 simpleSpline
 keyword entry, U-145
-simulationType keyword, U-41, U-61, U-192
+simulationType keyword, U-41, U-61, U-198
 singleCellMesh utility, U-94
-singleStepReactingMixture model, U-102, U-188
+singleStepReactingMixture model, U-102, U-194
 skew
 tensor member function, P-23
 skewLinear
 keyword entry, U-121, U-124
 SLGThermo
-library, U-103
+library, U-104
 slice class, P-29
 slip
 boundary condition, U-142
-Smagorinsky model, U-104, U-105
-Smagorinsky2 model, U-104
+Smagorinsky model, U-105
+Smagorinsky2 model, U-105
 smapToFoam utility, U-95
-smoothDelta model, U-104
+smoothDelta model, U-105
 smoother keyword, U-128
 smoothSolver
 keyword entry, U-126
-snap keyword, U-151
-snapControls keyword, U-151
+snap keyword, U-153
+snapControls keyword, U-153
 snappyHexMesh utility
-background mesh, U-152
-cell removal, U-154
-cell splitting, U-153
-mesh layers, U-156
-meshing process, U-151
-snapping to surfaces, U-156
-snappyHexMesh utility, U-92, U-150
-snappyHexMeshDict ﬁle, U-151
+background mesh, U-153
+cell removal, U-156
+cell splitting, U-154
+mesh layers, U-157
+meshing process, U-152
+snapping to surfaces, U-157
+snappyHexMesh utility, U-93, U-151
+snappyHexMeshDict ﬁle, U-152
 snGrad
 fvc member function, P-35
 snGradCorrection
 fvc member function, P-35
 snGradSchemes keyword, U-118
 Solid Color
-menu entry, U-173
+menu entry, U-175
 solidChemistryModel
-library, U-103
+library, U-104
 solidDisplacementFoam solver, U-91
 solidDisplacementFoam solver, U-51
 solidEquilibriumDisplacementFoam solver, U-91
 solidMixtureProperties
-library, U-103
+library, U-104
 solidParticle
-library, U-100
+library, U-101
 solidProperties
-library, U-103
+library, U-104
 solidSpecie
-library, U-103
+library, U-104
 solidThermo
-library, U-103
+library, U-104
 solver
 DPMFoam, U-90
-LTSInterFoam, U-88
+LTSInterFoam, U-89
 LTSReactingFoam, U-89
 LTSReactingParcelFoam, U-90
-MRFInterFoam, U-88
-MRFMultiphaseInterFoam, U-88
+MRFInterFoam, U-89
+MRFMultiphaseInterFoam, U-89
 PDRFoam, U-89
 SRFPimpleFoam, U-87
 SRFSimpleFoam, U-87
-XiFoam, U-89
-adjointShapeOptimizationFoam, U-86
+XiFoam, U-90
+adjointShapeOptimizationFoam, U-87
 blockMesh, P-45
-boundaryFoam, U-86
-buoyantBoussinesqPimpleFoam, U-89
-buoyantBoussinesqSimpleFoam, U-89
-buoyantPimpleFoam, U-89
-buoyantSimpleFoam, U-89
-cavitatingDyMFoam, U-87
-cavitatingFoam, U-87
-chemFoam, U-89
-chtMultiRegionFoam, U-89
-chtMultiRegionSimpleFoam, U-89
-coalChemistryFoam, U-90
-Open∇FOAM-2.3.1
+boundaryFoam, U-87
+buoyantBoussinesqPimpleFoam, U-90
+buoyantBoussinesqSimpleFoam, U-90
+buoyantPimpleFoam, U-90
+OpenFOAM-2.4.0
 Index P-93
+buoyantSimpleFoam, U-90
+cavitatingDyMFoam, U-88
+cavitatingFoam, U-88
+chemFoam, U-89
+chtMultiRegionFoam, U-90
+chtMultiRegionSimpleFoam, U-90
+coalChemistryFoam, U-90
 coldEngineFoam, U-89
 compressibleInterDyMFoam, U-88
 compressibleInterFoam, U-88
 compressibleMultiphaseInterFoam, U-88
 dnsFoam, U-89
-dsmcFoam, U-90
-electrostaticFoam, U-90
+dsmcFoam, U-91
+electrostaticFoam, U-91
 engineFoam, U-89
 ﬁnancialFoam, U-91
 ﬁreFoam, U-89
-icoFoam, U-17, U-21, U-22, U-25, U-86
+icoFoam, U-17, U-21, U-22, U-25, U-87
 icoUncoupledKinematicParcelDyMFoam,
 U-90
 icoUncoupledKinematicParcelFoam, U-90
@@ -5835,19 +5846,19 @@ interMixingFoam, U-88
 interPhaseChangeDyMFoam, U-88
 interPhaseChangeFoam, U-88
 laplacianFoam, U-86
-magneticFoam, U-90
-mdEquilibrationFoam, U-90
-mdFoam, U-90
+magneticFoam, U-91
+mdEquilibrationFoam, U-91
+mdFoam, U-91
 mhdFoam, P-69, U-91
-multiphaseEulerFoam, U-88
-multiphaseInterFoam, U-88
-nonNewtonianIcoFoam, U-86
-pimpleDyMFoam, U-86
-pimpleFoam, U-86
-pisoFoam, U-17, U-86
-porousInterFoam, U-88
-porousSimpleFoam, U-86
-potentialFreeSurfaceFoam, U-88
+multiphaseEulerFoam, U-89
+multiphaseInterFoam, U-89
+nonNewtonianIcoFoam, U-87
+pimpleDyMFoam, U-87
+pimpleFoam, U-87
+pisoFoam, U-17, U-87
+porousInterFoam, U-89
+porousSimpleFoam, U-87
+potentialFreeSurfaceFoam, U-89
 potentialFoam, P-44, U-86
 reactingFoam, U-89
 reactingParcelFilmFoam, U-90
@@ -5857,66 +5868,66 @@ rhoCentralFoam, U-87
 rhoLTSPimpleFoam, U-87
 rhoPimpleFoam, U-87
 rhoPimplecFoam, U-87
-rhoReactingFoam, U-89
-rhoSimpleFoam, U-87
+rhoReactingFoam, U-90
+rhoSimpleFoam, U-88
 rhoSimplecFoam, U-87
 rhoPorousSimpleFoam, U-87
 rhoReactingBuoyantFoam, U-89
 scalarTransportFoam, U-86
 settlingFoam, U-89
 shallowWaterFoam, U-87
-simpleReactingParcelFoam, U-90
+simpleReactingParcelFoam, U-91
 simpleFoam, P-53, U-87
 solidDisplacementFoam, U-91
 solidDisplacementFoam, U-51
 solidEquilibriumDisplacementFoam, U-91
-sonicDyMFoam, U-87
-sonicFoam, P-59, U-87
-sonicLiquidFoam, P-63, U-87
-sprayEngineFoam, U-90
-sprayFoam, U-90
-thermoFoam, U-89
+sonicDyMFoam, U-88
+sonicFoam, P-59, U-88
+sonicLiquidFoam, P-63, U-88
+sprayEngineFoam, U-91
+sprayFoam, U-91
+thermoFoam, U-90
 twoLiquidMixingFoam, U-89
 twoPhaseEulerFoam, U-89
-uncoupledKinematicParcelFoam, U-90
+uncoupledKinematicParcelFoam, U-91
 solver keyword, U-53, U-126
 solver relative tolerance, U-126
 solver tolerance, U-126
 solvers keyword, U-125
-sonicDyMFoam solver, U-87
-sonicFoam solver, P-59, U-87
-sonicLiquidFoam solver, P-63, U-87
+sonicDyMFoam solver, U-88
+sonicFoam solver, P-59, U-88
+sonicLiquidFoam solver, P-63, U-88
 source, P-35
-SpalartAllmaras model, U-104, U-105
+SpalartAllmaras model, U-104–U-106
 SpalartAllmarasDDES model, U-105
 SpalartAllmarasIDDES model, U-105
 specie
-library, U-102
-specie keyword, U-189
-specieThermo model, U-103, U-188
+library, U-103
+specie keyword, U-195
+specieThermo model, U-103, U-194
 spectEddyVisc model, U-105
 spline keyword, U-144
-splitCells utility, U-94
+splitCells utility, U-95
 splitMesh utility, U-94
 splitMeshRegions utility, U-94
 spray
-library, U-100
-sprayEngineFoam solver, U-90
-sprayFoam solver, U-90
+library, U-101
+sprayEngineFoam solver, U-91
+sprayFoam solver, U-91
 sqr
 tensor member function, P-23
 sqrGradGrad
 fvc member function, P-35
 SRFPimpleFoam solver, U-87
+OpenFOAM-2.4.0
+P-94 Index
 SRFSimpleFoam solver, U-87
 star3ToFoam utility, U-93
 star4ToFoam utility, U-93
 startFace keyword, U-134
 startFrom keyword, U-22, U-115
-starToFoam utility, U-159
+starToFoam utility, U-160
 startTime
-Open∇FOAM-2.3.1
-P-94 Index
 keyword entry, U-22, U-115
 startTime keyword, U-22, U-115
 steady ﬂow
@@ -5924,16 +5935,16 @@ turbulent, P-50
 steadyParticleTracks utility, U-96
 steadyState
 keyword entry, U-124
-Stereolithography (STL), U-150
+Stereolithography (STL), U-152
 stitchMesh utility, U-94
 stl
-keyword entry, U-181
+keyword entry, U-187
 stopAt keyword, U-115
 strategy keyword, U-83, U-84
 streamFunction utility, U-95
 stress analysis of plate with hole, U-44
-stressComponents utility, U-95
-Style window panel, U-24, U-173
+stressComponents utility, U-96
+Style window panel, U-24, U-175
 Su
 fvm member function, P-35
 subsetMesh utility, U-94
@@ -5944,48 +5955,48 @@ supersonic ﬂow over forward step, P-58
 supersonicFreeStream
 boundary condition, U-142
 surfaceLambdaMuSmooth utility, U-97
-surface mesh, U-150
-surfaceAdd utility, U-96
-surfaceAutoPatch utility, U-96
+surface mesh, U-152
+surfaceAdd utility, U-97
+surfaceAutoPatch utility, U-97
 surfaceBooleanFeatures utility, U-97
 surfaceCheck utility, U-97
 surfaceClean utility, U-97
 surfaceCoarsen utility, U-97
 surfaceConvert utility, U-97
 surfaceFeatureConvert utility, U-97
-surfaceFeatureExtract utility, U-97, U-154
+surfaceFeatureExtract utility, U-97, U-155
 surfaceField<Type> template class, P-31
 surfaceFilmModels
-library, U-105
+library, U-106
 surfaceFind utility, U-97
-surfaceFormat keyword, U-181
+surfaceFormat keyword, U-187
 surfaceHookUp utility, U-97
 surfaceInertia utility, U-97
-surfaceMesh tools, U-99
+surfaceMesh tools, U-100
 surfaceMeshConvert utility, U-97
 surfaceMeshConvertTesting utility, U-97
-surfaceMeshExport utility, U-97
-surfaceMeshImport utility, U-97
-surfaceMeshInfo utility, U-97
-surfaceMeshTriangulate utility, U-97
+surfaceMeshExport utility, U-98
+surfaceMeshImport utility, U-98
+surfaceMeshInfo utility, U-98
+surfaceMeshTriangulate utility, U-98
 surfaceNormalFixedValue
 boundary condition, U-142
-surfaceOrient utility, U-97
-surfacePointMerge utility, U-97
-surfaceRedistributePar utility, U-97
-surfaceReﬁneRedGreen utility, U-97
-surfaces keyword, U-181
-surfaceSplitByPatch utility, U-97
+surfaceOrient utility, U-98
+surfacePointMerge utility, U-98
+surfaceRedistributePar utility, U-98
+surfaceReﬁneRedGreen utility, U-98
+surfaces keyword, U-187
+surfaceSplitByPatch utility, U-98
 surfaceSplitByTopology utility, U-98
 surfaceSplitNonManifolds utility, U-98
 surfaceSubset utility, U-98
 surfaceToPatch utility, U-98
 surfaceTransformPoints utility, U-98
 surfMesh
-library, U-100
+library, U-101
 SuSp
 fvm member function, P-35
-sutherlandTransport model, U-103, U-188
+sutherlandTransport model, U-103, U-194
 symm
 tensor member function, P-23
 symmetryPlane
@@ -6000,7 +6011,7 @@ library, U-100
 T
 T()
 tensor member function, P-23
-Tcommon keyword, U-190
+Tcommon keyword, U-196
 template class
 GeometricBoundaryField, P-30
 fvMatrix, P-34
@@ -6010,6 +6021,8 @@ Field<Type>, P-27
 geometricField<Type>, P-30
 List<Type>, P-27
 pointField<Type>, P-31
+OpenFOAM-2.4.0
+Index P-95
 surfaceField<Type>, P-31
 volField<Type>, P-31
 temporal discretisation, P-40
@@ -6017,9 +6030,7 @@ Crank Nicolson, P-41
 Euler implicit, P-40
 explicit, P-40
 in OpenFOAM, P-41
-Open∇FOAM-2.3.1
-Index P-95
-temporalInterpolate utility, U-96
+temporalInterpolate utility, U-97
 tensor, P-13
 addition, P-16
 algebraic operations, P-16
@@ -6098,20 +6109,22 @@ tensorField class, P-27
 tensorThirdField class, P-27
 tetgenToFoam utility, U-93
 text box
-Opacity, U-173
+Opacity, U-175
 thermalProperties
 dictionary, U-51
-thermodynamics keyword, U-189
-thermoFoam solver, U-89
+thermodynamics keyword, U-195
+thermoFoam solver, U-90
 thermophysical
-library, U-187
+library, U-193
 thermophysicalFunctions
 library, U-103
 thermophysicalProperties
-dictionary, U-187
-thermoType keyword, U-187
-Thigh keyword, U-190
+dictionary, U-193
+thermoType keyword, U-193
+Thigh keyword, U-196
 time
+OpenFOAM-2.4.0
+P-96 Index
 control, U-115
 time derivative, P-35
 ﬁrst, P-37
@@ -6119,45 +6132,43 @@ second, P-35, P-37
 time step, U-22
 timeFormat keyword, U-116
 timePrecision keyword, U-117
-Open∇FOAM-2.3.1
-P-96 Index
 timeScheme keyword, U-118
 timeStamp
 keyword entry, U-81
 timeStampMaster
 keyword entry, U-81
 timeStep
-keyword entry, U-22, U-32, U-116
-Tlow keyword, U-190
+keyword entry, U-22, U-32, U-116, U-181
+Tlow keyword, U-196
 tolerance
 solver, U-126
 solver relative, U-126
-tolerance keyword, U-53, U-126, U-156
+tolerance keyword, U-53, U-126, U-159
 Toolbars
-menu entry, U-173
+menu entry, U-175
 tools
 algorithms, U-99
-cfdTools, U-99
+cfdTools, U-100
 containers, U-99
 db, U-99
-dimensionSet, U-99
-dimensionedTypes, U-99
-ﬁelds, U-99
-ﬁniteVolume, U-99
-fvMatrices, U-99
-fvMesh, U-99
-global, U-99
-graph, U-99
-interpolations, U-99
-interpolation, U-99
-matrices, U-99
-memory, U-99
-meshes, U-99
-primitives, U-99
-surfaceMesh, U-99
-volMesh, U-99
+dimensionSet, U-100
+dimensionedTypes, U-100
+ﬁelds, U-100
+ﬁniteVolume, U-100
+fvMatrices, U-100
+fvMesh, U-100
+global, U-100
+graph, U-100
+interpolations, U-100
+interpolation, U-100
+matrices, U-100
+memory, U-100
+meshes, U-100
+primitives, U-100
+surfaceMesh, U-100
+volMesh, U-100
 topoChangerFvMesh
-library, U-100
+library, U-101
 topoSet utility, U-94
 topoSetSource keyword, U-60
 totalPressure
@@ -6169,25 +6180,25 @@ traction keyword, U-51
 transform
 tensor member function, P-23
 transformPoints utility, U-94
-transport keyword, U-189
+transport keyword, U-195
 transportProperties
 dictionary, U-21, U-38, U-42
 transportProperties ﬁle, U-60
 triple inner product, P-17
 triSurface
-library, U-100
-Ts keyword, U-190
+library, U-101
+Ts keyword, U-196
 turbulence
 dissipation, U-40
 kinetic energy, U-40
 length scale, U-41
 turbulence
-library, U-100
-turbulence keyword, U-192
+library, U-101
+turbulence keyword, U-198
 turbulence model
 RAS, U-40
 turbulenceProperties
-dictionary, U-41, U-61, U-192
+dictionary, U-41, U-61, U-198
 turbulent ﬂow
 steady, P-50
 turbulentInlet
@@ -6200,7 +6211,7 @@ tutorials directory, P-43, U-17
 twoLiquidMixingFoam solver, U-89
 twoPhaseEulerFoam solver, U-89
 twoPhaseProperties
-library, U-105
+library, U-106
 type keyword, U-135, U-138
 U
 U ﬁeld, U-23
@@ -6211,9 +6222,11 @@ uncompressed
 keyword entry, U-116
 uncorrected
 keyword entry, U-122, U-123
-uncoupledKinematicParcelFoam solver, U-90
-uniform keyword, U-182
+uncoupledKinematicParcelFoam solver, U-91
+uniform keyword, U-189
 units
+OpenFOAM-2.4.0
+Index P-97
 base, U-112
 of measurement, P-24, U-111
 S.I. base, P-24
@@ -6222,213 +6235,211 @@ Syst`
 eme International, U-112
 United States Customary System, U-112
 USCS, U-112
-Open∇FOAM-2.3.1
-Index P-97
-Update GUI button, U-171
+Update GUI button, U-173
 uprime utility, U-95
 upwind
 keyword entry, U-121, U-124
 upwind diﬀerencing, P-36, U-62
 USCS units, U-112
 Use Parallel Projection button, U-25
-Use parallel projection button, U-173
+Use parallel projection button, U-175
 utility
 Co, U-95
 Lambda2, U-95
 Mach, U-95
-PDRMesh, U-94
+PDRMesh, U-95
 Pe, U-95
 Q, U-95
 R, U-96
 Ucomponents, P-70
-adiabaticFlameT, U-98
-ansysToFoam, U-92
-applyBoundaryLayer, U-91
-applyWallFunctionBoundaryConditions, U-91
+adiabaticFlameT, U-99
+ansysToFoam, U-93
+applyBoundaryLayer, U-92
+applyWallFunctionBoundaryConditions, U-92
 attachMesh, U-93
 autoPatch, U-93
 autoReﬁneMesh, U-94
 blockMesh, U-37, U-92, U-141
-boxTurb, U-91
-ccm26ToFoam, U-92
-cfx4ToFoam, U-92, U-159
-changeDictionary, U-91
-checkMesh, U-93, U-161
-chemkinToFoam, U-98
+boxTurb, U-92
+ccm26ToFoam, U-93
+cfx4ToFoam, U-93, U-160
+changeDictionary, U-92
+checkMesh, U-93, U-162
+chemkinToFoam, U-99
 collapseEdges, U-94
-combinePatchFaces, U-94
+combinePatchFaces, U-95
 createBaﬄes, U-93
 createPatch, U-93
 createTurbulenceFields, U-96
-createExternalCoupledPatchGeometry, U-91
-datToFoam, U-92
+createExternalCoupledPatchGeometry, U-92
+datToFoam, U-93
 decomposePar, U-82, U-83, U-98
-deformedGeom, U-93
-dsmcFieldsCalc, U-96
-dsmcInitialise, U-91
-engineCompRatio, U-96
-engineSwirl, U-91
-ensight74FoamExec, U-179
-ensightFoamReader, U-94
+deformedGeom, U-94
+dsmcFieldsCalc, U-97
+dsmcInitialise, U-92
+engineCompRatio, U-97
+engineSwirl, U-92
+ensight74FoamExec, U-185
+ensightFoamReader, U-95
 enstrophy, U-95
-equilibriumCO, U-98
-equilibriumFlameT, U-98
-execFlowFunctionObjects, U-96
-expandDictionary, U-98
+equilibriumCO, U-99
+equilibriumFlameT, U-99
+execFlowFunctionObjects, U-97
+expandDictionary, U-99
 extrude2DMesh, U-92
 extrudeMesh, U-92
 extrudeToRegionMesh, U-92
-faceAgglomerate, U-91
-ﬂattenMesh, U-93
+faceAgglomerate, U-92
+ﬂattenMesh, U-94
 ﬂowType, U-95
-ﬂuent3DMeshToFoam, U-92
-ﬂuentMeshToFoam, U-92, U-159
-foamCalc, U-33, U-96
-foamDataToFluent, U-94, U-176
-foamDebugSwitches, U-98
-foamFormatConvert, U-98
-foamHelp, U-98
-foamInfoExec, U-98
-foamListTimes, U-96
-foamMeshToFluent, U-92, U-176
-foamToEnsightParts, U-94
-foamToEnsight, U-94
-foamToGMV, U-94
-foamToStarMesh, U-92
-foamToSurface, U-92
+ﬂuent3DMeshToFoam, U-93
+ﬂuentMeshToFoam, U-93, U-160
+foamCalc, U-33, U-97
+foamDataToFluent, U-95, U-183
+foamDebugSwitches, U-99
+foamFormatConvert, U-99
+foamHelp, U-99
+foamInfoExec, U-99
+foamListTimes, U-97
+foamMeshToFluent, U-93, U-183
+foamToEnsightParts, U-95
+foamToEnsight, U-95
+foamToGMV, U-95
+foamToStarMesh, U-93
+foamToSurface, U-93
 foamToTecplot360, U-95
 foamToVTK, U-95
-foamUpgradeCyclics, U-91
-foamUpgradeFvSolution, U-91
+foamUpgradeCyclics, U-92
+foamUpgradeFvSolution, U-92
 foamyHexMesh, U-92
-foamyQuadMesh, U-92
+foamyQuadMesh, U-93
 foamyHexMeshBackgroundMesh, U-92
 foamyHexMeshSurfaceSimplify, U-92
-gambitToFoam, U-92, U-159
-gmshToFoam, U-92
-ideasToFoam, U-159
-ideasUnvToFoam, U-92
-insideCells, U-93
+gambitToFoam, U-93, U-160
+gmshToFoam, U-93
+ideasToFoam, U-160
+ideasUnvToFoam, U-93
+insideCells, U-94
 kivaToFoam, U-93
 mapFields, U-31, U-38, U-42, U-55, U-92,
-U-166
+U-168
 mdInitialise, U-92
-mergeMeshes, U-93
-mergeOrSplitBaﬄes, U-93
-mirrorMesh, U-93
-mixtureAdiabaticFlameT, U-98
-modifyMesh, U-94
-moveDynamicMesh, U-93
-moveEngineMesh, U-93
-moveMesh, U-93
+mergeMeshes, U-94
+mergeOrSplitBaﬄes, U-94
+mirrorMesh, U-94
+mixtureAdiabaticFlameT, U-99
+OpenFOAM-2.4.0
+P-98 Index
+modifyMesh, U-95
+moveDynamicMesh, U-94
+moveEngineMesh, U-94
+moveMesh, U-94
 mshToFoam, U-93
 netgenNeutralToFoam, U-93
-objToVTK, U-93
-Open∇FOAM-2.3.1
-P-98 Index
-orientFaceZone, U-93
-pPrime2, U-95
+objToVTK, U-94
+orientFaceZone, U-94
+pPrime2, U-96
 particleTracks, U-96
 patchAverage, U-96
 patchIntegrate, U-96
-patchSummary, U-98
-pdfPlot, U-96
+patchSummary, U-99
+pdfPlot, U-97
 plot3dToFoam, U-93
-polyDualMesh, U-93
-postChannel, U-96
+polyDualMesh, U-94
+postChannel, U-97
 probeLocations, U-96
-ptot, U-96
+ptot, U-97
 reconstructParMesh, U-98
-reconstructPar, U-85
+reconstructPar, U-86
 redistributePar, U-98
-reﬁneHexMesh, U-94
-reﬁneMesh, U-93
-reﬁneWallLayer, U-94
-reﬁnementLevel, U-94
-removeFaces, U-94
-renumberMesh, U-93
-rotateMesh, U-93
+reﬁneHexMesh, U-95
+reﬁneMesh, U-94
+reﬁneWallLayer, U-95
+reﬁnementLevel, U-95
+removeFaces, U-95
+renumberMesh, U-94
+rotateMesh, U-94
 sammToFoam, U-93
-sample, U-96, U-180
-scalePoints, U-163
-selectCells, U-94
+sample, U-96, U-186
+scalePoints, U-165
+selectCells, U-95
 setFields, U-59, U-60, U-92
 setSet, U-94
 setsToZones, U-94
 singleCellMesh, U-94
 smapToFoam, U-95
-snappyHexMesh, U-92, U-150
-splitCells, U-94
+snappyHexMesh, U-93, U-151
+splitCells, U-95
 splitMeshRegions, U-94
 splitMesh, U-94
 star3ToFoam, U-93
 star4ToFoam, U-93
-starToFoam, U-159
+starToFoam, U-160
 steadyParticleTracks, U-96
 stitchMesh, U-94
 streamFunction, U-95
-stressComponents, U-95
+stressComponents, U-96
 subsetMesh, U-94
 surfaceLambdaMuSmooth, U-97
-surfaceAdd, U-96
-surfaceAutoPatch, U-96
+surfaceAdd, U-97
+surfaceAutoPatch, U-97
 surfaceBooleanFeatures, U-97
 surfaceCheck, U-97
 surfaceClean, U-97
 surfaceCoarsen, U-97
 surfaceConvert, U-97
 surfaceFeatureConvert, U-97
-surfaceFeatureExtract, U-97, U-154
+surfaceFeatureExtract, U-97, U-155
 surfaceFind, U-97
 surfaceHookUp, U-97
 surfaceInertia, U-97
 surfaceMeshConvertTesting, U-97
 surfaceMeshConvert, U-97
-surfaceMeshExport, U-97
-surfaceMeshImport, U-97
-surfaceMeshInfo, U-97
-surfaceMeshTriangulate, U-97
-surfaceOrient, U-97
-surfacePointMerge, U-97
-surfaceRedistributePar, U-97
-surfaceReﬁneRedGreen, U-97
-surfaceSplitByPatch, U-97
+surfaceMeshExport, U-98
+surfaceMeshImport, U-98
+surfaceMeshInfo, U-98
+surfaceMeshTriangulate, U-98
+surfaceOrient, U-98
+surfacePointMerge, U-98
+surfaceRedistributePar, U-98
+surfaceReﬁneRedGreen, U-98
+surfaceSplitByPatch, U-98
 surfaceSplitByTopology, U-98
 surfaceSplitNonManifolds, U-98
 surfaceSubset, U-98
 surfaceToPatch, U-98
 surfaceTransformPoints, U-98
-temporalInterpolate, U-96
+temporalInterpolate, U-97
 tetgenToFoam, U-93
 topoSet, U-94
 transformPoints, U-94
 uprime, U-95
 viewFactorsGen, U-92
-vorticity, U-95
+vorticity, U-96
 vtkUnstructuredToFoam, U-93
 wallFunctionTable, U-92
-wallGradU, U-95
-wallHeatFlux, U-95
-wallShearStress, U-95
-wdot, U-96
-writeCellCentres, U-96
+wallGradU, U-96
+wallHeatFlux, U-96
+wallShearStress, U-96
+wdot, U-97
+writeCellCentres, U-97
 writeMeshObj, U-93
-yPlusLES, U-95
-yPlusRAS, U-95
+yPlusLES, U-96
+yPlusRAS, U-96
 zipUpMesh, U-94
 utilityFunctionObjects
 library, U-100
+OpenFOAM-2.4.0
+Index P-99
 V
-v2f model, U-104
+v2f model, U-104, U-105
 value keyword, U-21, U-141
 valueFraction keyword, U-141
 van Leer diﬀerencing, P-36
-vanDriestDelta model, U-105
+vanDriestDelta model, U-105, U-106
 vanLeer
 keyword entry, U-121
-Open∇FOAM-2.3.1
-Index P-99
-VCR Controls menu, U-25, U-171
+VCR Controls menu, U-25, U-173
 vector, P-14
 operator, P-25
 unit, P-18
@@ -6437,11 +6448,11 @@ vector product, see tensor, vector cross product
 vectorField class, P-27
 version keyword, U-109
 vertices keyword, U-20, U-144
-veryInhomogeneousMixture model, U-102, U-188
-View menu, U-173
+veryInhomogeneousMixture model, U-102, U-194
+View menu, U-175
 View Settings
-menu entry, U-25, U-173
-View Settings (Render View) window, U-173
+menu entry, U-25, U-175
+View Settings (Render View) window, U-175
 View Settings...
 menu entry, U-24
 viewFactor
@@ -6450,14 +6461,14 @@ viewFactorsGen utility, U-92
 viscosity
 kinematic, U-21, U-42
 volField<Type> template class, P-31
-volMesh tools, U-99
-vorticity utility, U-95
+volMesh tools, U-100
+vorticity utility, U-96
 vtk
-keyword entry, U-181
+keyword entry, U-187
 vtkFoam
-library, U-169
+library, U-171
 vtkPV3Foam
-library, U-169
+library, U-171
 vtkUnstructuredToFoam utility, U-93
 W
 wall
@@ -6466,41 +6477,41 @@ U-139, U-140
 wall
 keyword entry, U-140
 wallFunctionTable utility, U-92
-wallGradU utility, U-95
-wallHeatFlux utility, U-95
+wallGradU utility, U-96
+wallHeatFlux utility, U-96
 Wallis
-library, U-102
-wallShearStress utility, U-95
+library, U-103
+wallShearStress utility, U-96
 wclean script/alias, U-76
-wdot utility, U-96
+wdot utility, U-97
 wedge
-boundary condition, U-135, U-140, U-149
+boundary condition, U-135, U-140, U-151
 wedge
 keyword entry, U-140
 window
 Color Legend, U-27
-Options, U-174
-Pipeline Browser, U-24, U-170
-Render View, U-174
-Seed, U-175
-View Settings (Render View), U-173
+Options, U-176
+Pipeline Browser, U-24, U-172
+Render View, U-176
+Seed, U-177
+View Settings (Render View), U-175
 window panel
-Animations, U-174
-Annotation, U-25, U-174
-Charts, U-174
-Color Legend, U-172
-Color Scale, U-172
-Colors, U-174
-Display, U-24, U-25, U-170, U-171
-General, U-173, U-174
-Information, U-170
-Lights, U-174
+Animations, U-176
+Annotation, U-25, U-176
+Charts, U-176
+Color Legend, U-174
+Color Scale, U-174
+Colors, U-176
+Display, U-24, U-25, U-172, U-173
+General, U-175, U-176
+Information, U-172
+Lights, U-176
 Mesh Parts, U-24
-Properties, U-25, U-170, U-171
-Render View, U-174
-Style, U-24, U-173
+Properties, U-25, U-172, U-173
+Render View, U-176
+Style, U-24, U-175
 Wireframe
-menu entry, U-173
+menu entry, U-175
 WM ARCH
 environment variable, U-76
 WM ARCH OPTION
@@ -6520,6 +6531,8 @@ environment variable, U-76
 WM MPLIB
 environment variable, U-76
 WM OPTIONS
+OpenFOAM-2.4.0
+P-100 Index
 environment variable, U-76
 WM PRECISION OPTION
 environment variable, U-76
@@ -6528,8 +6541,6 @@ environment variable, U-76
 WM PROJECT DIR
 environment variable, U-76
 WM PROJECT INST DIR
-Open∇FOAM-2.3.1
-P-100 Index
 environment variable, U-76
 WM PROJECT USER DIR
 environment variable, U-76
@@ -6539,12 +6550,14 @@ wmake
 platforms, U-73
 wmake script/alias, U-71
 word class, P-24, P-29
-writeCellCentres utility, U-96
+writeCellCentres utility, U-97
 writeCompression keyword, U-116
 writeControl
 keyword entry, U-116
 writeControl keyword, U-22, U-62, U-116
 writeFormat keyword, U-55, U-116
+writeInterval
+keyword entry, U-181
 writeInterval keyword, U-22, U-32, U-116
 writeMeshObj utility, U-93
 writeNow
@@ -6552,21 +6565,21 @@ keyword entry, U-115
 writePrecision keyword, U-116
 X
 x
-keyword entry, U-182
-XiFoam solver, U-89
+keyword entry, U-189
+XiFoam solver, U-90
 xmgr
-keyword entry, U-117, U-181
+keyword entry, U-117, U-187
 xyz
-keyword entry, U-182
+keyword entry, U-189
 Y
 y
-keyword entry, U-182
-yPlusLES utility, U-95
-yPlusRAS utility, U-95
+keyword entry, U-189
+yPlusLES utility, U-96
+yPlusRAS utility, U-96
 Z
 z
-keyword entry, U-182
+keyword entry, U-189
 zeroGradient
 boundary condition, U-141
 zipUpMesh utility, U-94
-Open∇FOAM-2.3.1
+OpenFOAM-2.4.0
