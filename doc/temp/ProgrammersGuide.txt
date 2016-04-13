@@ -21,7 +21,7 @@ AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS
 LICENSE MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU
 THE RIGHTS CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF
 SUCH TERMS AND CONDITIONS.
-1. Definitions
+1. Deﬁnitions
 a. “Adaptation” means a work based upon the Work, or upon the Work and other pre-
 existing works, such as a translation, adaptation, derivative work, arrangement of music
 or other alterations of a literary or artistic work, or phonogram or performance and
@@ -36,26 +36,26 @@ b. “Collection” means a collection of literary or artistic works, such as en
 anthologies, or performances, phonograms or broadcasts, or other works or subject mat-
 ter other than works listed in Section 1(f) below, which, by reason of the selection and
 arrangement of their contents, constitute intellectual creations, in which the Work is in-
-cluded in its entirety in unmodified form along with one or more other contributions, each
+cluded in its entirety in unmodiﬁed form along with one or more other contributions, each
 constituting separate and independent works in themselves, which together are assembled
 into a collective whole. A work that constitutes a Collection will not be considered an
-Adaptation (as defined above) for the purposes of this License.
+Adaptation (as deﬁned above) for the purposes of this License.
 c. “Distribute” means to make available to the public the original and copies of the Work
 through sale or other transfer of ownership.
-d. “Licensor” means the individual, individuals, entity or entities that offer(s) the Work
+d. “Licensor” means the individual, individuals, entity or entities that oﬀer(s) the Work
 under the terms of this License.
 e. “Original Author” means, in the case of a literary or artistic work, the individual, individ-
-uals, entity or entities who created the Work or if no individual or entity can be identified,
+uals, entity or entities who created the Work or if no individual or entity can be identiﬁed,
 the publisher; and in addition (i) in the case of a performance the actors, singers, mu-
 sicians, dancers, and other persons who act, sing, deliver, declaim, play in, interpret or
 otherwise perform literary or artistic works or expressions of folklore; (ii) in the case of
-a phonogram the producer being the person or legal entity who first fixes the sounds of
+a phonogram the producer being the person or legal entity who ﬁrst ﬁxes the sounds of
 Open∇FOAM-2.3.0
 P-3
 a performance or other sounds; and, (iii) in the case of broadcasts, the organization that
 transmits the broadcast.
-f. “Work” means the literary and/or artistic work offered under the terms of this License
-including without limitation any production in the literary, scientific and artistic domain,
+f. “Work” means the literary and/or artistic work oﬀered under the terms of this License
+including without limitation any production in the literary, scientiﬁc and artistic domain,
 whatever may be the mode or form of its expression including digital form, such as a
 book, pamphlet and other writing; a lecture, address, sermon or other work of the same
 nature; a dramatic or dramatico-musical work; a choreographic work or entertainment in
@@ -81,7 +81,7 @@ process and the communication to the public of the performances of the Work, inc
 by public digital performance; to broadcast and rebroadcast the Work by any means
 including signs, sounds or images.
 i. “Reproduce” means to make copies of the Work by any means including without limitation
-by sound or visual recordings and the right of fixation and reproducing fixations of the
+by sound or visual recordings and the right of ﬁxation and reproducing ﬁxations of the
 Work, including storage of a protected performance or phonogram in digital form or other
 electronic medium.
 2. Fair Dealing Rights.
@@ -96,7 +96,7 @@ a. to Reproduce the Work, to incorporate the Work into one or more Collections, 
 Reproduce the Work as incorporated in the Collections;
 b. and, to Distribute and Publicly Perform the Work including as incorporated in Collections.
 The above rights may be exercised in all media and formats whether now known or hereafter
-devised. The above rights include the right to make such modifications as are technically
+devised. The above rights include the right to make such modiﬁcations as are technically
 necessary to exercise the rights in other media and formats, but otherwise you have no rights
 Open∇FOAM-2.3.0
 P-4
@@ -106,14 +106,14 @@ reserved, including but not limited to the rights set forth in Section 4(d).
 The license granted in Section 3 above is expressly made subject to and limited by the following
 restrictions:
 a. You may Distribute or Publicly Perform the Work only under the terms of this License.
-You must include a copy of, or the Uniform Resource Identifier (URI) for, this License
-with every copy of the Work You Distribute or Publicly Perform. You may not offer or
+You must include a copy of, or the Uniform Resource Identiﬁer (URI) for, this License
+with every copy of the Work You Distribute or Publicly Perform. You may not oﬀer or
 impose any terms on the Work that restrict the terms of this License or the ability of the
 recipient of the Work to exercise the rights granted to that recipient under the terms of
 the License. You may not sublicense the Work. You must keep intact all notices that
 refer to this License and to the disclaimer of warranties with every copy of the Work You
 Distribute or Publicly Perform. When You Distribute or Publicly Perform the Work,
-You may not impose any effective technological measures on the Work that restrict the
+You may not impose any eﬀective technological measures on the Work that restrict the
 ability of a recipient of the Work from You to exercise the rights granted to that recipient
 under the terms of the License. This Section 4(a) applies to the Work as incorporated
 in a Collection, but this does not require the Collection apart from the Work itself to be
@@ -123,7 +123,7 @@ as required by Section 4(c), as requested.
 b. You may not exercise any of the rights granted to You in Section 3 above in any manner
 that is primarily intended for or directed toward commercial advantage or private mon-
 etary compensation. The exchange of the Work for other copyrighted works by means
-of digital file-sharing or otherwise shall not be considered to be intended for or directed
+of digital ﬁle-sharing or otherwise shall not be considered to be intended for or directed
 toward commercial advantage or private monetary compensation, provided there is no
 payment of any monetary compensation in connection with the exchange of copyrighted
 works.
@@ -135,7 +135,7 @@ Licensor designate another party or parties (e.g., a sponsor institute, publishi
 journal) for attribution (“Attribution Parties”) in Licensor’s copyright notice, terms of
 service or by other reasonable means, the name of such party or parties; (ii) the title of the
 Work if supplied; (iii) to the extent reasonably practicable, the URI, if any, that Licensor
-specifies to be associated with the Work, unless such URI does not refer to the copyright
+speciﬁes to be associated with the Work, unless such URI does not refer to the copyright
 notice or licensing information for the Work. The credit required by this Section 4(c)
 may be implemented in any reasonable manner; provided, however, that in the case of a
 Collection, at a minimum such credit will appear, if a credit for all contributing authors
@@ -195,19 +195,19 @@ provided such individuals or entities remain in full compliance with those licen
 1, 2, 5, 6, 7, and 8 will survive any termination of this License.
 b. Subject to the above terms and conditions, the license granted here is perpetual (for the
 duration of the applicable copyright in the Work). Notwithstanding the above, Licensor
-reserves the right to release the Work under different license terms or to stop distributing
+reserves the right to release the Work under diﬀerent license terms or to stop distributing
 the Work at any time; provided, however that any such election will not serve to withdraw
 Open∇FOAM-2.3.0
 P-6
 this License (or any other license that has been, or is required to be, granted under
-the terms of this License), and this License will continue in full force and effect unless
+the terms of this License), and this License will continue in full force and eﬀect unless
 terminated as stated above.
 8. Miscellaneous
 a. Each time You Distribute or Publicly Perform the Work or a Collection, the Licensor
-offers to the recipient a license to the Work on the same terms and conditions as the
+oﬀers to the recipient a license to the Work on the same terms and conditions as the
 license granted to You under this License.
 b. If any provision of this License is invalid or unenforceable under applicable law, it shall
-not affect the validity or enforceability of the remainder of the terms of this License, and
+not aﬀect the validity or enforceability of the remainder of the terms of this License, and
 without further action by the parties to this agreement, such provision shall be reformed
 to the minimum extent necessary to make such provision valid and enforceable.
 c. No term or provision of this License shall be deemed waived and no breach consented to
@@ -215,15 +215,15 @@ unless such waiver or consent shall be in writing and signed by the party to be 
 with such waiver or consent.
 d. This License constitutes the entire agreement between the parties with respect to the
 Work licensed here. There are no understandings, agreements or representations with
-respect to the Work not specified here. Licensor shall not be bound by any additional
+respect to the Work not speciﬁed here. Licensor shall not be bound by any additional
 provisions that may appear in any communication from You.
-e. This License may not be modified without the mutual written agreement of the Licensor
+e. This License may not be modiﬁed without the mutual written agreement of the Licensor
 and You. The rights granted under, and the subject matter referenced, in this License were
 drafted utilizing the terminology of the Berne Convention for the Protection of Literary
 and Artistic Works (as amended on September 28, 1979), the Rome Convention of 1961,
 the WIPO Copyright Treaty of 1996, the WIPO Performances and Phonograms Treaty of
 1996 and the Universal Copyright Convention (as revised on July 24, 1971). These rights
-and subject matter take effect in the relevant jurisdiction in which the License terms are
+and subject matter take eﬀect in the relevant jurisdiction in which the License terms are
 sought to be enforced according to the corresponding provisions of the implementation
 of those treaty provisions in the applicable national law. If the standard suite of rights
 granted under applicable copyright law includes additional rights not granted under this
@@ -252,7 +252,7 @@ P-8
 Open∇FOAM-2.3.0
 Contents
 Copyright Notice P-2
-1. Definitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-2
+1. Deﬁnitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-2
 2. Fair Dealing Rights. . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-3
 3. License Grant. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-3
 4. Restrictions. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-4
@@ -281,7 +281,7 @@ Contents P-9
 1.4.1 Algebraic tensor operations in OpenFOAM . . . . . . . . . . P-19
 1.5 Dimensional units . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-21
 2 Discretisation procedures P-23
-2.1 Differential operators . . . . . . . . . . . . . . . . . . . . . . . . . . P-23
+2.1 Diﬀerential operators . . . . . . . . . . . . . . . . . . . . . . . . . . P-23
 2.1.1 Gradient . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-23
 2.1.2 Divergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-24
 2.1.3 Curl . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-24
@@ -289,10 +289,10 @@ Contents P-9
 2.1.5 Temporal derivative . . . . . . . . . . . . . . . . . . . . . . . P-24
 2.2 Overview of discretisation . . . . . . . . . . . . . . . . . . . . . . . P-25
 P-10 Contents
-2.2.1 OpenFOAM lists and fields . . . . . . . . . . . . . . . . . . P-25
+2.2.1 OpenFOAM lists and ﬁelds . . . . . . . . . . . . . . . . . . P-25
 2.3 Discretisation of the solution domain . . . . . . . . . . . . . . . . . P-25
-2.3.1 Defining a mesh in OpenFOAM . . . . . . . . . . . . . . . . P-27
-2.3.2 Defining a geometricField in OpenFOAM . . . . . . . . . . . P-28
+2.3.1 Deﬁning a mesh in OpenFOAM . . . . . . . . . . . . . . . . P-27
+2.3.2 Deﬁning a geometricField in OpenFOAM . . . . . . . . . . . P-28
 2.4 Equation discretisation . . . . . . . . . . . . . . . . . . . . . . . . . P-29
 2.4.1 The Laplacian term . . . . . . . . . . . . . . . . . . . . . . . P-34
 2.4.2 The convection term . . . . . . . . . . . . . . . . . . . . . . P-34
@@ -310,30 +310,30 @@ P-10 Contents
 2.6.1 Physical boundary conditions . . . . . . . . . . . . . . . . . P-40
 3 Examples of the use of OpenFOAM P-41
 3.1 Flow around a cylinder . . . . . . . . . . . . . . . . . . . . . . . . . P-41
-3.1.1 Problem specification . . . . . . . . . . . . . . . . . . . . . . P-42
+3.1.1 Problem speciﬁcation . . . . . . . . . . . . . . . . . . . . . . P-42
 3.1.2 Note on potentialFoam . . . . . . . . . . . . . . . . . . . . . P-43
 3.1.3 Mesh generation . . . . . . . . . . . . . . . . . . . . . . . . P-43
-3.1.4 Boundary conditions and initial fields . . . . . . . . . . . . . P-45
+3.1.4 Boundary conditions and initial ﬁelds . . . . . . . . . . . . . P-45
 3.1.5 Running the case . . . . . . . . . . . . . . . . . . . . . . . . P-46
-3.2 Steady turbulent flow over a backward-facing step . . . . . . . . . . P-49
-3.2.1 Problem specification . . . . . . . . . . . . . . . . . . . . . . P-49
+3.2 Steady turbulent ﬂow over a backward-facing step . . . . . . . . . . P-49
+3.2.1 Problem speciﬁcation . . . . . . . . . . . . . . . . . . . . . . P-49
 3.2.2 Mesh generation . . . . . . . . . . . . . . . . . . . . . . . . P-50
-3.2.3 Boundary conditions and initial fields . . . . . . . . . . . . . P-53
+3.2.3 Boundary conditions and initial ﬁelds . . . . . . . . . . . . . P-53
 3.2.4 Case control . . . . . . . . . . . . . . . . . . . . . . . . . . . P-53
 3.2.5 Running the case and post-processing . . . . . . . . . . . . . P-54
-3.3 Supersonic flow over a forward-facing step . . . . . . . . . . . . . . P-54
-3.3.1 Problem specification . . . . . . . . . . . . . . . . . . . . . . P-55
+3.3 Supersonic ﬂow over a forward-facing step . . . . . . . . . . . . . . P-54
+3.3.1 Problem speciﬁcation . . . . . . . . . . . . . . . . . . . . . . P-55
 3.3.2 Mesh generation . . . . . . . . . . . . . . . . . . . . . . . . P-56
 3.3.3 Running the case . . . . . . . . . . . . . . . . . . . . . . . . P-57
 3.3.4 Exercise . . . . . . . . . . . . . . . . . . . . . . . . . . . . . P-57
 3.4 Decompression of a tank internally pressurised with water . . . . . P-58
-3.4.1 Problem specification . . . . . . . . . . . . . . . . . . . . . . P-58
+3.4.1 Problem speciﬁcation . . . . . . . . . . . . . . . . . . . . . . P-58
 3.4.2 Mesh Generation . . . . . . . . . . . . . . . . . . . . . . . . P-59
 3.4.3 Preparing the Run . . . . . . . . . . . . . . . . . . . . . . . P-61
 3.4.4 Running the case . . . . . . . . . . . . . . . . . . . . . . . . P-62
-3.4.5 Improving the solution by refining the mesh . . . . . . . . . P-63
-3.5 Magnetohydrodynamic flow of a liquid . . . . . . . . . . . . . . . . P-63
-3.5.1 Problem specification . . . . . . . . . . . . . . . . . . . . . . P-64
+3.4.5 Improving the solution by reﬁning the mesh . . . . . . . . . P-63
+3.5 Magnetohydrodynamic ﬂow of a liquid . . . . . . . . . . . . . . . . P-63
+3.5.1 Problem speciﬁcation . . . . . . . . . . . . . . . . . . . . . . P-64
 3.5.2 Mesh generation . . . . . . . . . . . . . . . . . . . . . . . . P-65
 3.5.3 Running the case . . . . . . . . . . . . . . . . . . . . . . . . P-66
 Index P-69
@@ -346,12 +346,12 @@ are programmed in OpenFOAM.
 1.1 Coordinate system
 OpenFOAM is primarily designed to solve problems in continuum mechanics, i.e. the
 branch of mechanics concerned with the stresses in solids, liquids and gases and the
-deformation or flow of these materials. OpenFOAM is therefore based in 3 dimensional
+deformation or ﬂow of these materials. OpenFOAM is therefore based in 3 dimensional
 space and time and deals with physical entities described by tensors. The coordinate
 system used by OpenFOAM is the right-handed rectangular Cartesian axes as shown in
-Figure 1.1. This system of axes is constructed by defining an origin O from which three
+Figure 1.1. This system of axes is constructed by deﬁning an origin O from which three
 lines are drawn at right angles to each other, termed the Ox, Oy, Oz axes. A right-handed
-set of axes is defined such that to an observer looking down the Oz axis (with O nearest
+set of axes is deﬁned such that to an observer looking down the Oz axis (with O nearest
 them), the arc from a point on the Ox axis to a point on the Oy axis is in a clockwise
 sense.
 y
@@ -360,65 +360,100 @@ x
 Figure 1.1: Right handed axes
 1.2 Tensors
 The term tensor describes an entity that belongs to a particular space and obeys certain
-mathematical rules. Briefly, tensors are represented by a set of component values relating
-to a set of unit base vectors; in OpenFOAM the unit base vectors ix, iy and iz are
+mathematical rules. Brieﬂy, tensors are represented by a set of component values relating
+to a set of unit base vectors; in OpenFOAM the unit base vectors ix
+, iy
+and iz
+are
 P-12 Tensor mathematics
 aligned with the right-handed rectangular Cartesian axes x, y and z respectively. The
 base vectors are therefore orthogonal, i.e. at right-angles to one another. Every tensor
 has the following attributes:
 Dimension d of the particular space to which they belong, i.e. d = 3 in OpenFOAM;
-Rank An integer r ≥ 0, such that the number of component values = dr
-.
-While OpenFOAM 1.x is set to 3 dimensions, it offers tensors of ranks 0 to 3 as
+Rank An integer r ≥ 0, such that the number of component values = dr.
+While OpenFOAM 1.x is set to 3 dimensions, it oﬀers tensors of ranks 0 to 3 as
 standard while being written in such a way to allow this basic set of ranks to be extended
-indefinitely. Tensors of rank 0 and 1, better known as scalars and vectors, should be
+indeﬁnitely. Tensors of rank 0 and 1, better known as scalars and vectors, should be
 familiar to readers; tensors of rank 2 and 3 may not be so familiar. For completeness all
-ranks of tensor offered as standard in OpenFOAM 1.x are reviewed below.
+ranks of tensor oﬀered as standard in OpenFOAM 1.x are reviewed below.
 Rank 0 ‘scalar’ Any property which can be represented by a single real number, de-
 noted by characters in italics, e.g. mass m, volume V , pressure p and viscosity
 µ.
 Rank 1 ‘vector’ An entity which can be represented physically by both magnitude and
-direction. In component form, the vector a = (a1, a2, a3) relates to a set of Cartesian
-axes x, y, z respectively. The index notation presents the same vector as ai, i =
+direction. In component form, the vector a = (a1
+, a2
+, a3
+) relates to a set of Cartesian
+axes x, y, z respectively. The index notation presents the same vector as ai
+, i =
 1, 2, 3, although the list of indices i = 1, 2, 3 will be omitted in this book, as it is
 intuitive since we are always dealing with 3 dimensions.
 Rank 2 ‘tensor’ or second rank tensor, T has 9 components which can be expressed in
 array notation as:
-T = Tij =
+T = Tij
+=
 
 
-T11 T12 T13
-T21 T22 T23
-T31 T32 T33
+T11
+T12
+T13
+T21
+T22
+T23
+T31
+T32
+T33
 
  (1.1)
-The components Tij are now represented using 2 indices since r = 2 and the list
+The components Tij
+are now represented using 2 indices since r = 2 and the list
 of indices i, j = 1, 2, 3 is omitted as before. The components for which i = j are
 referred to as the diagonal components, and those for which i = j are referred to
-as the off-diagonal components. The transpose of T is produced by exchanging
+as the oﬀ-diagonal components. The transpose of T is produced by exchanging
 components across the diagonal such that
-TT
-= Tji =
+TT = Tji
+=
 
 
-T11 T21 T31
-T12 T22 T32
-T13 T23 T33
+T11
+T21
+T31
+T12
+T22
+T32
+T13
+T23
+T33
 
  (1.2)
 Note: a rank 2 tensor is often colloquially termed ‘tensor’ since the occurrence of
 higher order tensors is fairly rare.
 Symmetric rank 2 The term ‘symmetric’ refers to components being symmetric about
-the diagonal, i.e. Tij = Tji. In this case, there are only 6 independent components
-since T12 = T21, T13 = T31 and T23 = T32. OpenFOAM distinguishes between
+the diagonal, i.e. Tij
+= Tji
+. In this case, there are only 6 independent components
+since T12
+= T21
+, T13
+= T31
+and T23
+= T32
+. OpenFOAM distinguishes between
 symmetric and non-symmetric tensors to save memory by storing 6 components
 rather than 9 if the tensor is symmetric. Most tensors encountered in continuum
 mechanics are symmetric.
-Rank 3 has 27 components and is represented in index notation as Pijk which is too long
+Rank 3 has 27 components and is represented in index notation as Pijk
+which is too long
 to represent in array notation as in Equation 1.1.
-Symmetric rank 3 Symmetry of a rank 3 tensor is defined in OpenFOAM to mean
-that Pijk = Pikj = Pjik = Pjki = Pkij = Pkji and therefore has 10 independent
-components. More specifically, it is formed by the outer product of 3 identical
+Symmetric rank 3 Symmetry of a rank 3 tensor is deﬁned in OpenFOAM to mean
+that Pijk
+= Pikj
+= Pjik
+= Pjki
+= Pkij
+= Pkji
+and therefore has 10 independent
+components. More speciﬁcally, it is formed by the outer product of 3 identical
 vectors, where the outer product operation is described in Section 1.3.4.
 Open∇FOAM-2.3.0
 1.3 Algebraic tensor operations P-13
@@ -442,7 +477,8 @@ A further, more fundamental idea regarding the choice of notation is that the ma
 matical representation of a tensor should not change depending on our coordinate system,
 i.e. the vector ais the same vector irrespective of where we view it from. The tensor no-
 tation supports this concept as it implies nothing about the coordinate system. However,
-other notations, e.g. ai, expose the individual components of the tensor which naturally
+other notations, e.g. ai
+, expose the individual components of the tensor which naturally
 implies the choice of coordinate system. The unsatisfactory consequence of this is that
 the tensor is then represented by a set of values which are not unique — they depend on
 the coordinate system.
@@ -451,116 +487,289 @@ time in this book mainly to expand tensor operations into the constituent compon
 When using the index notation, we adopt the summation convention which states that
 whenever the same letter subscript occurs twice in a term, the that subscript is to be
 given all values, i.e. 1, 2, 3, and the results added together, e.g.
-aibi =
+ai
+bi
+=
 3
 i=1
-aibi = a1b1 + a2b2 + a3b3 (1.3)
+ai
+bi
+= a1
+b1
++ a2
+b2
++ a3
+b3
+(1.3)
 In the remainder of the book the symbol is omitted since the repeated subscript
 indicates the summation.
 1.3 Algebraic tensor operations
 This section describes all the algebraic operations for tensors that are available in Open-
-FOAM. Let us first review the most simple tensor operations: addition, subtraction,
+FOAM. Let us ﬁrst review the most simple tensor operations: addition, subtraction,
 and scalar multiplication and division. Addition and subtraction are both commutative
 and associative and are only valid between tensors of the same rank. The operations
 are performed by addition/subtraction of respective components of the tensors, e.g. the
 subtraction of two vectors a and b is
-a − b = ai − bi = (a1 − b1, a2 − b2, a3 − b3) (1.4)
+a − b = ai
+− bi
+= (a1
+− b1
+, a2
+− b2
+, a3
+− b3
+) (1.4)
 Multiplication of any tensor a by a scalar s is also commutative and associative and is
 performed by multiplying all the tensor components by the scalar. For example,
-sa = sai = (sa1, sa2, sa3) (1.5)
+sa = sai
+= (sa1
+, sa2
+, sa3
+) (1.5)
 Open∇FOAM-2.3.0
 P-14 Tensor mathematics
 Division between a tensor a and a scalar is only relevant when the scalar is the second
 argument of the operation, i.e.
-a/s = ai/s = (a1/s, a2/s, a3/s) (1.6)
+a/s = ai
+/s = (a1
+/s, a2
+/s, a3
+/s) (1.6)
 Following these operations are a set of more complex products between tensors of rank 1
 and above, described in the following Sections.
 1.3.1 The inner product
-The inner product operates on any two tensors of rank r1 and r2 such that the rank of the
-result r = r1 + r2 − 2. Inner product operations with tensors up to rank 3 are described
+The inner product operates on any two tensors of rank r1
+and r2
+such that the rank of the
+result r = r1
++ r2
+− 2. Inner product operations with tensors up to rank 3 are described
 below:
 • The inner product of two vectors a and b is commutative and produces a scalar
-s = a • b where
-s = aibi = a1b1 + a2b2 + a3b3 (1.7)
-• The inner product of a tensor T and vector a produces a vector b = T • a, repre-
+s = a •
+b where
+s = ai
+bi
+= a1
+b1
++ a2
+b2
++ a3
+b3
+(1.7)
+• The inner product of a tensor T and vector a produces a vector b = T •
+a, repre-
 sented below as a column array for convenience
-bi = Tijaj =
+bi
+= Tij
+aj
+=
 
 
-T11a1 + T12a2 + T13a3
-T21a1 + T22a2 + T23a3
-T31a1 + T32a2 + T33a3
+T11
+a1
++ T12
+a2
++ T13
+a3
+T21
+a1
++ T22
+a2
++ T23
+a3
+T31
+a1
++ T32
+a2
++ T33
+a3
 
  (1.8)
-It is non-commutative if T is non-symmetric such that b = a • T = TT • a is
-bi = ajTji =
+It is non-commutative if T is non-symmetric such that b = a •
+T = TT
+•
+a is
+bi
+= aj
+Tji
+=
 
 
-a1T11 + a2T21 + a3T31
-a1T12 + a2T22 + a3T32
-a1T13 + a2T23 + a3T33
+a1
+T11
++ a2
+T21
++ a3
+T31
+a1
+T12
++ a2
+T22
++ a3
+T32
+a1
+T13
++ a2
+T23
++ a3
+T33
 
  (1.9)
-• The inner product of two tensors T and S produces a tensor P = T • S whose
+• The inner product of two tensors T and S produces a tensor P = T •
+S whose
 components are evaluated as:
-Pij = TikSkj (1.10)
-It is non-commutative such that T • S = ST • TT T
+Pij
+= Tik
+Skj
+(1.10)
+It is non-commutative such that T •
+S = ST
+•
+TT T
 • The inner product of a vector a and third rank tensor P produces a second rank
-tensor T = a • P whose components are
-Tij = akPkij (1.11)
-Again this is non-commutative so that T = P • a is
-Tij = Pijkak (1.12)
+tensor T = a •
+P whose components are
+Tij
+= ak
+Pkij
+(1.11)
+Again this is non-commutative so that T = P •
+a is
+Tij
+= Pijk
+ak
+(1.12)
 • The inner product of a second rank tensor T and third rank tensor P produces a
-third rank tensor Q = T • P whose components are
-Qijk = TilPljk (1.13)
-Again this is non-commutative so that Q = P • T is
-Qijk = PijlTlk (1.14)
+third rank tensor Q = T •
+P whose components are
+Qijk
+= Til
+Pljk
+(1.13)
+Again this is non-commutative so that Q = P •
+T is
+Qijk
+= Pijl
+Tlk
+(1.14)
 Open∇FOAM-2.3.0
 1.3 Algebraic tensor operations P-15
 1.3.2 The double inner product of two tensors
 The double inner product of two second-rank tensors T and S produces a scalar s = T •
-• S
+•
+S
 which can be evaluated as the sum of the 9 products of the tensor components
-s = TijSij = T11S11 + T12S12 + T13S13 +
-T21S21 + T22S22 + T23S23 +
-T31S31 + T32S32 + T33S33
+s = Tij
+Sij
+= T11
+S11
++ T12
+S12
++ T13
+S13
++
+T21
+S21
++ T22
+S22
++ T23
+S23
++
+T31
+S31
++ T32
+S32
++ T33
+S33
 (1.15)
 The double inner product between a second rank tensor T and third rank tensor P
 produces a vector a = T •
-• P with components
-ai = TjkPjki (1.16)
+•
+P with components
+ai
+= Tjk
+Pjki
+(1.16)
 This is non-commutative so that a = P •
-• T is
-ai = PijkTjk (1.17)
+•
+T is
+ai
+= Pijk
+Tjk
+(1.17)
 1.3.3 The triple inner product of two third rank tensors
 The triple inner product of two third rank tensors P and Q produces a scalar s = P 3
-• Q
+•
+Q
 which can be evaluated as the sum of the 27 products of the tensor components
-s = PijkQijk (1.18)
+s = Pijk
+Qijk
+(1.18)
 1.3.4 The outer product
 The outer product operates between vectors and tensors as follows:
 • The outer product of two vectors a and b is non-commutative and produces a tensor
-T = ab = (ba)T
-whose components are evaluated as:
-Tij = aibj =
+T = ab = (ba)T whose components are evaluated as:
+Tij
+= ai
+bj
+=
 
 
-a1b1 a1b2 a1b3
-a2b1 a2b2 a2b3
-a3b1 a3b2 a3b3
+a1
+b1
+a1
+b2
+a1
+b3
+a2
+b1
+a2
+b2
+a2
+b3
+a3
+b1
+a3
+b2
+a3
+b3
 
  (1.19)
 • An outer product of a vector a and second rank tensor T produces a third rank
 tensor P = aT whose components are
-Pijk = aiTjk (1.20)
+Pijk
+= ai
+Tjk
+(1.20)
 This is non-commutative so that P = T a produces
-Pijk = Tijak (1.21)
+Pijk
+= Tij
+ak
+(1.21)
 1.3.5 The cross product of two vectors
 The cross product operation is exclusive to vectors only. For two vectors a with b, it
 produces a vector c = a × b whose components are
-ci = eijkajbk = (a2b3 − a3b2, a3b1 − a1b3, a1b2 − a2b1) (1.22)
-where the permutation symbol is defined by
-eijk =
+ci
+= eijk
+aj
+bk
+= (a2
+b3
+− a3
+b2
+, a3
+b1
+− a1
+b3
+, a1
+b2
+− a2
+b1
+) (1.22)
+where the permutation symbol is deﬁned by
+eijk
+=
 
 
 
@@ -577,20 +786,19 @@ P-16 Tensor mathematics
 1.3.6 Other general tensor operations
 Some less common tensor operations and terminology used by OpenFOAM are described
 below.
-Square of a tensor is defined as the outer product of the tensor with itself, e.g. for a
-vector a, the square a2
-= aa.
+Square of a tensor is deﬁned as the outer product of the tensor with itself, e.g. for a
+vector a, the square a2 = aa.
 nth power of a tensor is evaluated by n outer products of the tensor, e.g. for a vector
-a, the 3rd power a3
-= aaa.
+a, the 3rd power a3 = aaa.
 Magnitude squared of a tensor is the rth inner product of the tensor of rank r with
-itself, to produce a scalar. For example, for a second rank tensor T, |T|2
-= T •
-• T.
+itself, to produce a scalar. For example, for a second rank tensor T, |T|2 = T •
+•
+T.
 Magnitude is the square root of the magnitude squared, e.g. for a tensor T, |T| =
 √
 T •
-• T. Vectors of unit magnitude are referred to as unit vectors.
+•
+T. Vectors of unit magnitude are referred to as unit vectors.
 Component maximum is the component of the tensor with greatest value, inclusive
 of sign, i.e. not the largest magnitude.
 Component minimum is the component of the tensor with smallest value.
@@ -599,30 +807,35 @@ Scale As the name suggests, the scale function is a tool for scaling the compone
 one tensor by the components of another tensor of the same rank. It is evaluated
 as the product of corresponding components of 2 tensors, e.g., scaling vector a by
 vector b would produce vector c whose components are
-ci = scale(a, b) = (a1b1, a2b2, a3b3) (1.24)
+ci
+= scale(a, b) = (a1
+b1
+, a2
+b2
+, a3
+b3
+) (1.24)
 1.3.7 Geometric transformation and the identity tensor
-A second rank tensor T is strictly defined as a linear vector function, i.e. it is a function
-which associates an argument vector a to another vector b by the inner product b = T • a.
-The components of T can be chosen to perform a specific geometric transformation of
-a tensor from the x, y, z coordinate system to a new coordinate system x∗
-, y∗
-, z∗
-; T is
+A second rank tensor T is strictly deﬁned as a linear vector function, i.e. it is a function
+which associates an argument vector a to another vector b by the inner product b = T •
+a.
+The components of T can be chosen to perform a speciﬁc geometric transformation of
+a tensor from the x, y, z coordinate system to a new coordinate system x∗, y∗, z∗; T is
 then referred to as the transformation tensor. While a scalar remains unchanged under
-a transformation, the vector a is transformed to a∗
-by
-a∗
-= T • a (1.25)
-A second rank tensor S is transformed to S∗
-according to
-S∗
-= T • S • TT
-(1.26)
-The identity tensor I is defined by the requirement that it transforms another tensor
+a transformation, the vector a is transformed to a∗ by
+a∗ = T •
+a (1.25)
+A second rank tensor S is transformed to S∗ according to
+S∗ = T •
+S •
+TT (1.26)
+The identity tensor I is deﬁned by the requirement that it transforms another tensor
 onto itself. For all vectors a
-a = I • a (1.27)
+a = I •
+a (1.27)
 and therefore
-I = δij =
+I = δij
+=
 
 
 1 0 0
@@ -630,57 +843,86 @@ I = δij =
 0 0 1
 
  (1.28)
-where δij is known as the Kronecker delta symbol.
+where δij
+is known as the Kronecker delta symbol.
 Open∇FOAM-2.3.0
 1.3 Algebraic tensor operations P-17
 1.3.8 Useful tensor identities
-Several identities are listed below which can be verified by under the assumption that all
+Several identities are listed below which can be veriﬁed by under the assumption that all
 the relevant derivatives exist and are continuous. The identities are expressed for scalar
 s and vector a.
-∇ • (∇ × a) ≡ 0
+∇ •
+(∇ × a) ≡ 0
 ∇ × (∇s) ≡ 0
-∇ • (sa) ≡ s∇ • a + a • ∇s
+∇ •
+(sa) ≡ s∇ •
+a + a •
+∇s
 ∇ × (sa) ≡ s∇ × a + ∇s × a
-∇(a • b) ≡ a × (∇ × b) + b × (∇ × a) + (a • ∇)b + (b • ∇)a
-∇ • (a × b) ≡ b • (∇ × a) − a • (∇ × b)
-∇ × (a × b) ≡ a(∇ • b) − b(∇ • a) + (b • ∇)a − (a • ∇)b
-∇ × (∇ × a) ≡ ∇(∇ • a) − ∇2
-a
-(∇ × a) × a ≡ a • (∇a) − ∇(a • a)
+∇(a •
+b) ≡ a × (∇ × b) + b × (∇ × a) + (a •
+∇)b + (b •
+∇)a
+∇ •
+(a × b) ≡ b •
+(∇ × a) − a •
+(∇ × b)
+∇ × (a × b) ≡ a(∇ •
+b) − b(∇ •
+a) + (b •
+∇)a − (a •
+∇)b
+∇ × (∇ × a) ≡ ∇(∇ •
+a) − ∇2a
+(∇ × a) × a ≡ a •
+(∇a) − ∇(a •
+a)
 (1.29)
 It is sometimes useful to know the e−δ identity to help to manipulate equations in index
 notation:
-eijkeirs = δjrδks − δjsδkr (1.30)
+eijk
+eirs
+= δjr
+δks
+− δjs
+δkr
+(1.30)
 1.3.9 Operations exclusive to tensors of rank 2
 There are several operations that manipulate the components of tensors of rank 2 that
 are listed below:
-Transpose of a tensor T = Tij is TT
-= Tji as described in Equation 1.2.
+Transpose of a tensor T = Tij
+is TT = Tji
+as described in Equation 1.2.
 Symmetric and skew (antisymmetric) tensors As discussed in section 1.2, a tensor
 is said to be symmetric if its components are symmetric about the diagonal, i.e.
-T = TT
-. A skew or antisymmetric tensor has T = −TT
-which intuitively implies
-that T11 = T22 = T33 = 0. Every second order tensor can be decomposed into
+T = TT. A skew or antisymmetric tensor has T = −TT which intuitively implies
+that T11
+= T22
+= T33
+= 0. Every second order tensor can be decomposed into
 symmetric and skew parts by
 T =
 1
 2
-(T + TT
-)
+(T + TT)
 symmetric
 +
 1
 2
-(T − TT
-)
+(T − TT)
 skew
 = symm T + skew T (1.31)
 Trace The trace of a tensor T is a scalar, evaluated by summing the diagonal components
-tr T = T11 + T22 + T33 (1.32)
+tr T = T11
++ T22
++ T33
+(1.32)
 Diagonal returns a vector whose components are the diagonal components of the second
 rank tensor T
-diag T = (T11, T22, T33) (1.33)
+diag T = (T11
+, T22
+, T33
+) (1.33)
 Deviatoric and hydrostatic tensors Every second rank tensor T can be decomposed
 into a deviatoric component, for which tr T = 0 and a hydrostatic component of
 the form T = sI where s is a scalar. Every second rank tensor can be decomposed
@@ -700,27 +942,65 @@ Open∇FOAM-2.3.0
 P-18 Tensor mathematics
 Determinant The determinant of a second rank tensor is evaluated by
 det T =
-T11 T12 T13
-T21 T22 T23
-T31 T32 T33
-= T11(T22T33 − T23T32) −
-T12(T21T33 − T23T31) +
-T13(T21T32 − T22T31)
+T11
+T12
+T13
+T21
+T22
+T23
+T31
+T32
+T33
+= T11
+(T22
+T33
+− T23
+T32
+) −
+T12
+(T21
+T33
+− T23
+T31
+) +
+T13
+(T21
+T32
+− T22
+T31
+)
 =
 1
 6
-eijkepqrTipTjqTkr
+eijk
+epqr
+Tip
+Tjq
+Tkr
 (1.35)
 Cofactors The minors of a tensor are evaluated for each component by deleting the row
 and column in which the component is situated and evaluating the resulting entries
-as a 2 × 2 determinant. For example, the minor of T12 is
-T11 T12 T13
-T21 T22 T23
-T31 T32 T33
+as a 2 × 2 determinant. For example, the minor of T12
+is
+T11
+T12
+T13
+T21
+T22
+T23
+T31
+T32
+T33
 =
-T21 T23
-T31 T33
-= T21T33 − T23T31 (1.36)
+T21
+T23
+T31
+T33
+= T21
+T33
+− T23
+T31
+(1.36)
 The cofactors are signed minors where each minor is component is given a sign
 based on the rule
 +ve if i + j is even
@@ -730,18 +1010,25 @@ The cofactors of T can be evaluated as
 cof T =
 1
 2
-ejkreistTskTtr (1.38)
+ejkr
+eist
+Tsk
+Ttr
+(1.38)
 Inverse The inverse of a tensor can be evaluated as
 inv T =
 cof TT
 det T
 (1.39)
 Hodge dual of a tensor is a vector whose components are
-∗ T = (T23, −T13, T12) (1.40)
+∗ T = (T23
+, −T13
+, T12
+) (1.40)
 1.3.10 Operations exclusive to scalars
 OpenFOAM supports most of the well known functions that operate on scalars, e.g. square
 root, exponential, logarithm, sine, cosine etc.., a list of which can be found in Table 1.2.
-There are 3 additional functions defined within OpenFOAM that are described below:
+There are 3 additional functions deﬁned within OpenFOAM that are described below:
 Sign of a scalar s is
 sgn(s) =
 1 if s ≥ 0,
@@ -780,7 +1067,9 @@ T =
  (1.44)
 in OpenFOAM by the line:
 tensor T(1, 2, 3, 4, 5, 6, 7, 8, 9);
-We can then access the component T13, or Txz using the xz() access function. For
+We can then access the component T13
+, or Txz
+using the xz() access function. For
 instance the code
 Info << ``Txz = '' << T.xz() << endl;
 outputs to the screen:
@@ -797,31 +1086,32 @@ Subtraction a − b a - b
 Scalar multiplication sa s * a
 Scalar division a/s a / s
 Outer product rank a, b >= 1 ab a * b
-Inner product rank a, b >= 1 a • b a & b
+Inner product rank a, b >= 1 a •
+b a & b
 Double inner product rank a, b >= 2 a •
-• b a && b
+•
+b a && b
 Cross product rank a, b = 1 a × b a ^ b
-Square a2
-sqr(a)
+Square a2 sqr(a)
 Continued on next page
 Open∇FOAM-2.3.0
 P-20 Tensor mathematics
 Continued from previous page
 Operation Comment Mathematical Description
 Description in OpenFOAM
-Magnitude squared |a|2
-magSqr(a)
+Magnitude squared |a|2 magSqr(a)
 Magnitude |a| mag(a)
-Power n = 0, 1, ..., 4 an
-pow(a,n)
-Component average i = 1, ..., N ai cmptAv(a)
-Component maximum i = 1, ..., N max(ai) max(a)
-Component minimum i = 1, ..., N min(ai) min(a)
+Power n = 0, 1, ..., 4 an pow(a,n)
+Component average i = 1, ..., N ai
+cmptAv(a)
+Component maximum i = 1, ..., N max(ai
+) max(a)
+Component minimum i = 1, ..., N min(ai
+) min(a)
 Scale scale(a,b) scale(a,b)
 Geometric transformation transforms a using tensor T transform(T,a)
 Operations exclusive to tensors of rank 2
-Transpose TT
-T.T()
+Transpose TT T.T()
 Diagonal diag T diag(T)
 Trace tr T tr(T)
 Deviatoric component dev T dev(T)
@@ -841,7 +1131,9 @@ Square root
 s sqrt(s)
 Exponential exp s exp(s)
 Natural logarithm ln s log(s)
-Base 10 logarithm log10 s log10(s)
+Base 10 logarithm log
+10
+s log10(s)
 Sine sin s sin(s)
 Cosine cos s cos(s)
 Tangent tan s tan(s)
@@ -857,30 +1149,32 @@ Hyperbolic arc tangent atanh s atanh(s)
 Error function erf s erf(s)
 Complement error function erfc s erfc(s)
 Logarithm gamma function ln Γs lgamma(s)
-Type 1 Bessel function of order 0 J0 s j0(s)
-Type 1 Bessel function of order 1 J1 s j1(s)
+Type 1 Bessel function of order 0 J0
+s j0(s)
+Type 1 Bessel function of order 1 J1
+s j1(s)
 Continued on next page
 Open∇FOAM-2.3.0
 1.5 Dimensional units P-21
 Continued from previous page
 Operation Comment Mathematical Description
 Description in OpenFOAM
-Type 2 Bessel function of order 0 Y0 s y0(s)
-Type 2 Bessel function of order 1 Y1 s y1(s)
+Type 2 Bessel function of order 0 Y0
+s y0(s)
+Type 2 Bessel function of order 1 Y1
+s y1(s)
 a, b are tensors of arbitrary rank unless otherwise stated
 s is a scalar, N is the number of tensor components
 Table 1.2: Algebraic tensor operations in OpenFOAM
 1.5 Dimensional units
 In continuum mechanics, properties are represented in some chosen units, e.g. mass in
-kilograms (kg), volume in cubic metres (m3
-), pressure in Pascals (kg m s−2
-). Algebraic
+kilograms (kg), volume in cubic metres (m3), pressure in Pascals (kg m s−2). Algebraic
 operations must be performed on these properties using consistent units of measurement;
 in particular, addition, subtraction and equality are only physically meaningful for prop-
 erties of the same dimensional units. As a safeguard against implementing a meaningless
 operation, OpenFOAM encourages the user to attach dimensional units to any tensor and
 will then perform dimension checking of any tensor operation.
-Units are defined using the dimensionSet class, e.g.
+Units are deﬁned using the dimensionSet class, e.g.
 dimensionSet pressureDims(1, -1, -2, 0, 0, 0, 0);
 No. Property Unit Symbol
 1 Mass kilogram k
@@ -893,12 +1187,9 @@ No. Property Unit Symbol
 Table 1.3: S.I. base units of measurement
 where each of the values corresponds to the power of each of the S.I. base units of
 measurement listed in Table 1.3. The line of code declares pressureDims to be the
-dimensionSet for pressure kg m s−2
-since the first entry in the pressureDims array, 1,
-corresponds to k1
-, the second entry, -1, corresponds to m−1
-etc.. A tensor with units
-is defined using the dimensioned<Type> template class, the <Type> being scalar, vector,
+dimensionSet for pressure kg m s−2 since the ﬁrst entry in the pressureDims array, 1,
+corresponds to k1, the second entry, -1, corresponds to m−1 etc.. A tensor with units
+is deﬁned using the dimensioned<Type> template class, the <Type> being scalar, vector,
 tensor, etc.. The dimensioned<Type> stores a variable name of class word,the value <Type>
 and a dimensionSet
 dimensionedTensor sigma
@@ -913,10 +1204,8 @@ creates a tensor with correct dimensions of pressure, or stress
 σ =
 
 
-106
-0 0
-0 106
-0
+106 0 0
+0 106 0
 0 0 106
 
  (1.45)
@@ -925,15 +1214,17 @@ Chapter 2
 Discretisation procedures
 So far we have dealt with algebra of tensors at a point. The PDEs we wish to solve involve
 derivatives of tensors with respect to time and space. We therefore need to extend our
-description to a tensor field, i.e. a tensor that varies across time and spatial domains.
-In this Chapter we will first present a mathematical description of all the differential
-operators we may encounter. We will then show how a tensor field is constructed in
-OpenFOAM and how the derivatives of these fields are discretised into a set of algebraic
+description to a tensor ﬁeld, i.e. a tensor that varies across time and spatial domains.
+In this Chapter we will ﬁrst present a mathematical description of all the diﬀerential
+operators we may encounter. We will then show how a tensor ﬁeld is constructed in
+OpenFOAM and how the derivatives of these ﬁelds are discretised into a set of algebraic
 equations.
-2.1 Differential operators
-Before defining the spatial derivatives we first introduce the nabla vector operator ∇,
-represented in index notation as ∂i:
-∇ ≡ ∂i ≡
+2.1 Diﬀerential operators
+Before deﬁning the spatial derivatives we ﬁrst introduce the nabla vector operator ∇,
+represented in index notation as ∂i
+:
+∇ ≡ ∂i
+≡
 ∂
 ∂xi
 ≡
@@ -948,12 +1239,16 @@ represented in index notation as ∂i:
 (2.1)
 The nabla operator is a useful notation that obeys the following rules:
 • it operates on the tensors to its right and the conventional rules of a derivative of
-a product, e.g. ∂iab = (∂ia) b + a (∂ib);
+a product, e.g. ∂i
+ab = (∂i
+a) b + a (∂i
+b);
 • otherwise the nabla operator behaves like any other vector in an algebraic operation.
 2.1.1 Gradient
-If a scalar field s is defined and continuously differentiable then the gradient of s, ∇s is
-a vector field
-∇s = ∂is =
+If a scalar ﬁeld s is deﬁned and continuously diﬀerentiable then the gradient of s, ∇s is
+a vector ﬁeld
+∇s = ∂i
+s =
 ∂s
 ∂x1
 ,
@@ -963,21 +1258,41 @@ a vector field
 ∂s
 ∂x3
 (2.2)
-The gradient can operate on any tensor field to produce a tensor field that is one rank
-higher. For example, the gradient of a vector field a is a second rank tensor field
-∇a = ∂iaj =
+The gradient can operate on any tensor ﬁeld to produce a tensor ﬁeld that is one rank
+higher. For example, the gradient of a vector ﬁeld a is a second rank tensor ﬁeld
+∇a = ∂i
+aj
+=
 
 
-∂a1/∂x1 ∂a2/∂x1 ∂a3/∂x1
-∂a1/∂x2 ∂a2/∂x2 ∂a3/∂x2
-∂a1/∂x3 ∂a2/∂x3 ∂a3/∂x3
+∂a1
+/∂x1
+∂a2
+/∂x1
+∂a3
+/∂x1
+∂a1
+/∂x2
+∂a2
+/∂x2
+∂a3
+/∂x2
+∂a1
+/∂x3
+∂a2
+/∂x3
+∂a3
+/∂x3
 
  (2.3)
 P-24 Discretisation procedures
 2.1.2 Divergence
-If a vector field a is defined and continuously differentiable then the divergence of a is a
-scalar field
-∇ • a = ∂iai =
+If a vector ﬁeld a is deﬁned and continuously diﬀerentiable then the divergence of a is a
+scalar ﬁeld
+∇ •
+a = ∂i
+ai
+=
 ∂a1
 ∂x1
 +
@@ -987,21 +1302,42 @@ scalar field
 ∂a3
 ∂x3
 (2.4)
-The divergence can operate on any tensor field of rank 1 and above to produce a
-tensor that is one rank lower. For example the divergence of a second rank tensor field
-T is a vector field (expanding the vector as a column array for convenience)
-∇ • T = ∂jTji =
+The divergence can operate on any tensor ﬁeld of rank 1 and above to produce a
+tensor that is one rank lower. For example the divergence of a second rank tensor ﬁeld
+T is a vector ﬁeld (expanding the vector as a column array for convenience)
+∇ •
+T = ∂j
+Tji
+=
 
 
-∂T11/∂x1 + ∂T21/∂x2 + ∂T31/∂x3
-∂T12/∂x1 + ∂T22/∂x2 + ∂T32/∂x3
-∂T13/∂x1 + ∂T23/∂x2 + ∂T33/∂x3
+∂T11
+/∂x1
++ ∂T21
+/∂x2
++ ∂T31
+/∂x3
+∂T12
+/∂x1
++ ∂T22
+/∂x2
++ ∂T32
+/∂x3
+∂T13
+/∂x1
++ ∂T23
+/∂x2
++ ∂T33
+/∂x3
 
  (2.5)
 2.1.3 Curl
-If a vector field a is defined and continuously differentiable then the curl of a, ∇ × a is a
-vector field
-∇ × a = eijk∂jak =
+If a vector ﬁeld a is deﬁned and continuously diﬀerentiable then the curl of a, ∇ × a is a
+vector ﬁeld
+∇ × a = eijk
+∂j
+ak
+=
 ∂a3
 ∂x2
 −
@@ -1023,17 +1359,15 @@ vector field
 The curl is related to the gradient by
 ∇ × a = 2 (∗ skew ∇a) (2.7)
 2.1.4 Laplacian
-The Laplacian is an operation that can be defined mathematically by a combination of
-the divergence and gradient operators by ∇2
-≡ ∇ • ∇. However, the Laplacian should be
-considered as a single operation that transforms a tensor field into another tensor field of
+The Laplacian is an operation that can be deﬁned mathematically by a combination of
+the divergence and gradient operators by ∇2 ≡ ∇ •
+∇. However, the Laplacian should be
+considered as a single operation that transforms a tensor ﬁeld into another tensor ﬁeld of
 the same rank, rather than a combination of two operations, one which raises the rank
 by 1 and one which reduces the rank by 1.
-In fact, the Laplacian is best defined as a scalar operator, just as we defined nabla as
+In fact, the Laplacian is best deﬁned as a scalar operator, just as we deﬁned nabla as
 a vector operator, by
-∇2
-≡ ∂2
-≡
+∇2 ≡ ∂2 ≡
 ∂2
 ∂x2
 1
@@ -1046,29 +1380,24 @@ a vector operator, by
 ∂x2
 3
 (2.8)
-For example, the Laplacian of a scalar field s is the scalar field
-∇2
-s = ∂2
-s =
-∂2
-s
+For example, the Laplacian of a scalar ﬁeld s is the scalar ﬁeld
+∇2s = ∂2s =
+∂2s
 ∂x2
 1
 +
-∂2
-s
+∂2s
 ∂x2
 2
 +
-∂2
-s
+∂2s
 ∂x2
 3
 (2.9)
 2.1.5 Temporal derivative
-There is more than one definition of temporal, or time, derivative of a tensor. To describe
-the temporal derivatives we must first recall that the tensor relates to a property of a
-volume of material that may be moving. If we track an infinitesimally small volume of
+There is more than one deﬁnition of temporal, or time, derivative of a tensor. To describe
+the temporal derivatives we must ﬁrst recall that the tensor relates to a property of a
+volume of material that may be moving. If we track an inﬁnitesimally small volume of
 material, or particle, as it moves and observe the change in the tensorial property φ in
 time, we have the total, or material time derivative denoted by
 Dφ
@@ -1080,8 +1409,8 @@ Dt
 (2.10)
 Open∇FOAM-2.3.0
 2.2 Overview of discretisation P-25
-However in continuum mechanics, particularly fluid mechanics, we often observe the
-change of a φ in time at a fixed point in space as different particles move across that
+However in continuum mechanics, particularly ﬂuid mechanics, we often observe the
+change of a φ in time at a ﬁxed point in space as diﬀerent particles move across that
 point. This change at a point in space is termed the spatial time derivative which is
 denoted by ∂/∂t and is related to the material derivative by:
 Dφ
@@ -1089,31 +1418,32 @@ Dt
 =
 ∂φ
 ∂t
-+ U • ∇φ (2.11)
-where U is the velocity field of property φ. The second term on the right is known as the
++ U •
+∇φ (2.11)
+where U is the velocity ﬁeld of property φ. The second term on the right is known as the
 convective rate of change of φ.
 2.2 Overview of discretisation
 The term discretisation means approximation of a problem into discrete quantities. The
-FV method and others, such as the finite element and finite difference methods, all
+FV method and others, such as the ﬁnite element and ﬁnite diﬀerence methods, all
 discretise the problem as follows:
-Spatial discretisation Defining the solution domain by a set of points that fill and
+Spatial discretisation Deﬁning the solution domain by a set of points that ﬁll and
 bound a region of space when connected;
 Temporal discretisation (For transient problems) dividing the time domain into into
-a finite number of time intervals, or steps;
+a ﬁnite number of time intervals, or steps;
 Equation discretisation Generating a system of algebraic equations in terms of dis-
-crete quantities defined at specific locations in the domain, from the PDEs that
+crete quantities deﬁned at speciﬁc locations in the domain, from the PDEs that
 characterise the problem.
-2.2.1 OpenFOAM lists and fields
+2.2.1 OpenFOAM lists and ﬁelds
 OpenFOAM frequently needs to store sets of data and perform functions, such as mathe-
 matical operations, on the data. OpenFOAM therefore provides an array template class
 List<Type>, making it possible to create a list of any object of class Type that inherits
 the functions of the Type. For example a List of vector is List<vector>.
-Lists of the tensor classes are defined as standard in OpenFOAM by the template class
+Lists of the tensor classes are deﬁned as standard in OpenFOAM by the template class
 Field<Type>. For better code legibility, all instances of Field<Type>, e.g.Field<vector>, are
 renamed using typedef declarations as scalarField, vectorField, tensorField, symmTensor-
 Field, tensorThirdField and symmTensorThirdField. Algebraic operations can be performed
-between Fields subject to obvious restrictions such as the fields having the same number
-of elements. OpenFOAM also supports operations between a field and single tensor, e.g.
+between Fields subject to obvious restrictions such as the ﬁelds having the same number
+of elements. OpenFOAM also supports operations between a ﬁeld and single tensor, e.g.
 all values of a Field U can be multiplied by the scalar 2 with the operation U = 2.0 * U.
 2.3 Discretisation of the solution domain
 Discretisation of the solution domain is shown in Figure 2.1. The space domain is discre-
@@ -1123,7 +1453,7 @@ change during a numerical simulation, perhaps depending on some condition calcul
 during the simulation.
 On a more detailed level, discretisation of space requires the subdivision of the domain
 into a number of cells, or control volumes. The cells are contiguous, i.e. they do not
-overlap one another and completely fill the domain. A typical cell is shown in Figure 2.2.
+overlap one another and completely ﬁll the domain. A typical cell is shown in Figure 2.2.
 Open∇FOAM-2.3.0
 P-26 Discretisation procedures
 z
@@ -1139,50 +1469,50 @@ Sf
 P
 f
 d
-Figure 2.2: Parameters in finite volume discretisation
+Figure 2.2: Parameters in ﬁnite volume discretisation
 Open∇FOAM-2.3.0
 2.3 Discretisation of the solution domain P-27
 Dependent variables and other properties are principally stored at the cell centroid P
-although they may be stored on faces or vertices. The cell is bounded by a set of flat
+although they may be stored on faces or vertices. The cell is bounded by a set of ﬂat
 faces, given the generic label f. In OpenFOAM there is no limitation on the number of
 faces bounding each cell, nor any restriction on the alignment of each face. This kind
-of mesh is often referred to as “arbitrarily unstructured” to differentiate it from meshes
+of mesh is often referred to as “arbitrarily unstructured” to diﬀerentiate it from meshes
 in which the cell faces have a prescribed alignment, typically with the coordinate axes.
-Codes with arbitrarily unstructured meshes offer greater freedom in mesh generation and
+Codes with arbitrarily unstructured meshes oﬀer greater freedom in mesh generation and
 manipulation in particular when the geometry of the domain is complex or changes over
 time.
-Whilst most properties are defined at the cell centroids, some are defined at cell faces.
+Whilst most properties are deﬁned at the cell centroids, some are deﬁned at cell faces.
 There are two types of cell face.
 Internal faces Those faces that connect two cells (and it can never be more than two).
 For each internal face, OpenFOAM designates one adjoining cell to be the face
 owner and the other to be the neighbour;
 Boundary faces Those belonging to one cell since they coincide with the boundary of
 the domain. These faces simply have an owner cell.
-2.3.1 Defining a mesh in OpenFOAM
-There are different levels of mesh description in OpenFOAM, beginning with the most
+2.3.1 Deﬁning a mesh in OpenFOAM
+There are diﬀerent levels of mesh description in OpenFOAM, beginning with the most
 basic mesh class, named polyMesh since it is based on polyhedra. A polyMesh is con-
-structed using the minimum information required to define the mesh geometry described
+structed using the minimum information required to deﬁne the mesh geometry described
 below and presented in Figure 2.3:
 Points A list of cell vertex point coordinate vectors, i.e. a vectorField, that is renamed
 pointField using a typedef declaration;
-Faces A list of cell faces List<face>, or faceList, where the face class is defined by a list
+Faces A list of cell faces List<face>, or faceList, where the face class is deﬁned by a list
 of vertex numbers, corresponding to the pointField;
-Cells a list of cells List<cell>, or cellList, where the cell class is defined by a list of face
+Cells a list of cells List<cell>, or cellList, where the cell class is deﬁned by a list of face
 numbers, corresponding to the faceList described previously.
 Boundary a polyBoundaryMesh decomposed into a list of patches, polyPatchList rep-
-resenting different regions of the boundary. The boundary is subdivided in this
-manner to allow different boundary conditions to be specified on different patches
+resenting diﬀerent regions of the boundary. The boundary is subdivided in this
+manner to allow diﬀerent boundary conditions to be speciﬁed on diﬀerent patches
 during a solution. All the faces of any polyPatch are stored as a single block of the
 faceList, so that its faces can be easily accessed using the slice class which stores
-references to the first and last face of the block. Each polyPatch is then constructed
+references to the ﬁrst and last face of the block. Each polyPatch is then constructed
 from
 • a slice;
 • a word to assign it a name.
-FV discretisation uses specific data that is derived from the mesh geometry stored in
+FV discretisation uses speciﬁc data that is derived from the mesh geometry stored in
 polyMesh. OpenFOAM therefore extends the polyMesh class to fvMesh which stores the
 additional data needed for FV discretisation. fvMesh is constructed from polyMesh and
 stores the data in Table 2.1 which can be updated during runtime in cases where the
-mesh moves, is refined etc..
+mesh moves, is reﬁned etc..
 Open∇FOAM-2.3.0
 P-28 Discretisation procedures
 Patch 3
@@ -1209,50 +1539,53 @@ Patch 1
 ...
 cellList
 Figure 2.3: Schematic of the basic mesh description used in OpenFOAM
-2.3.2 Defining a geometricField in OpenFOAM
-So far we can define a field, i.e. a list of tensors, and a mesh. These can be combined to
-define a tensor field relating to discrete points in our domain, specified in OpenFOAM
+2.3.2 Deﬁning a geometricField in OpenFOAM
+So far we can deﬁne a ﬁeld, i.e. a list of tensors, and a mesh. These can be combined to
+deﬁne a tensor ﬁeld relating to discrete points in our domain, speciﬁed in OpenFOAM
 by the template class geometricField<Type>. The Field values are separated into those
-defined within the internal region of the domain, e.g. at the cell centres, and those defined
+deﬁned within the internal region of the domain, e.g. at the cell centres, and those deﬁned
 on the domain boundary, e.g. on the boundary faces. The geometricField<Type> stores
 the following information:
-Internal field This is simply a Field<Type>, described in Section 2.2.1;
-BoundaryField This is a GeometricBoundaryField, in which a Field is defined for the
-faces of each patch and a Field is defined for the patches of the boundary. This
-is then a field of fields, stored within an object of the FieldField<Type> class. A
+Internal ﬁeld This is simply a Field<Type>, described in Section 2.2.1;
+BoundaryField This is a GeometricBoundaryField, in which a Field is deﬁned for the
+faces of each patch and a Field is deﬁned for the patches of the boundary. This
+is then a ﬁeld of ﬁelds, stored within an object of the FieldField<Type> class. A
 reference to the fvBoundaryMesh is also stored [**].
-Mesh A reference to an fvMesh, with some additional detail as to the whether the field
-is defined at cell centres, faces, etc..
+Mesh A reference to an fvMesh, with some additional detail as to the whether the ﬁeld
+is deﬁned at cell centres, faces, etc..
 Dimensions A dimensionSet, described in Section 4.2.6.
-Old values Discretisation of time derivatives requires field data from previous time steps.
-The geometricField<Type> will store references to stored fields from the previous,
+Old values Discretisation of time derivatives requires ﬁeld data from previous time steps.
+The geometricField<Type> will store references to stored ﬁelds from the previous,
 or old, time step and its previous, or old-old, time step where necessary.
 Open∇FOAM-2.3.0
 2.4 Equation discretisation P-29
 Class Description Symbol Access function
 volScalarField Cell volumes V V()
-surfaceVectorField Face area vectors Sf Sf()
-surfaceScalarField Face area magnitudes |Sf | magSf()
+surfaceVectorField Face area vectors Sf
+Sf()
+surfaceScalarField Face area magnitudes |Sf
+| magSf()
 volVectorField Cell centres C C()
-surfaceVectorField Face centres Cf Cf()
-surfaceScalarField Face motion fluxes ** φg phi()
+surfaceVectorField Face centres Cf
+Cf()
+surfaceScalarField Face motion ﬂuxes ** φg
+phi()
 Table 2.1: fvMesh stored data.
 Previous iteration values The iterative solution procedures can use under-relaxation
 which requires access to data from the previous iteration. Again, if required, geo-
 metricField<Type> stores a reference to the data from the previous iteration.
-As discussed in Section 2.3, we principally define a property at the cell centres but quite
-often it is stored at the cell faces and on occasion it is defined on cell vertices. The
-geometricField<Type> is renamed using typedef declarations to indicate where the field
-variable is defined as follows:
-volField<Type> A field defined at cell centres;
-surfaceField<Type> A field defined on cell faces;
-pointField<Type> A field defined on cell vertices.
-These typedef field classes of geometricField<Type>are illustrated in Figure 2.4. A
+As discussed in Section 2.3, we principally deﬁne a property at the cell centres but quite
+often it is stored at the cell faces and on occasion it is deﬁned on cell vertices. The
+geometricField<Type> is renamed using typedef declarations to indicate where the ﬁeld
+variable is deﬁned as follows:
+volField<Type> A ﬁeld deﬁned at cell centres;
+surfaceField<Type> A ﬁeld deﬁned on cell faces;
+pointField<Type> A ﬁeld deﬁned on cell vertices.
+These typedef ﬁeld classes of geometricField<Type>are illustrated in Figure 2.4. A
 geometricField<Type> inherits all the tensor algebra of Field<Type> and has all operations
 subjected to dimension checking using the dimensionSet. It can also be subjected to the
 FV discretisation procedures described in the following Section. The class structure used
-to build geometricField<Type> is shown in Figure 2.51
-.
+to build geometricField<Type> is shown in Figure 2.51.
 2.4 Equation discretisation
 Equation discretisation converts the PDEs into a set of algebraic equations that are
 commonly expressed in matrix form as:
@@ -1260,42 +1593,41 @@ commonly expressed in matrix form as:
 where [A] is a square matrix, [x] is the column vector of dependent variable and [b] is
 the source vector. The description of [x] and [b] as ‘vectors’ comes from matrix termi-
 nology rather than being a precise description of what they truly are: a list of values
-defined at locations in the geometry, i.e. a geometricField<Type>, or more specifically a
+deﬁned at locations in the geometry, i.e. a geometricField<Type>, or more speciﬁcally a
 volField<Type> when using FV discretisation.
-[A] is a list of coefficients of a set of algebraic equations, and cannot be described as a
+[A] is a list of coeﬃcients of a set of algebraic equations, and cannot be described as a
 geometricField<Type>. It is therefore given a class of its own: fvMatrix. fvMatrix<Type>
 is created through discretisation of a geometric<Type>Field and therefore inherits the
 <Type>. It supports many of the standard algebraic matrix operations of addition +,
 subtraction - and multiplication *.
 Each term in a PDE is represented individually in OpenFOAM code using the classes
-of static functions finiteVolumeMethod and finiteVolumeCalculus, abbreviated by a typedef
-1
-The diagram is not an exact description of the class hierarchy, rather a representation of the general
+of static functions ﬁniteVolumeMethod and ﬁniteVolumeCalculus, abbreviated by a typedef
+1The diagram is not an exact description of the class hierarchy, rather a representation of the general
 structure leading from some primitive classes to geometric<Type>Field.
 Open∇FOAM-2.3.0
 P-30 Discretisation procedures
-Internal field
-Boundary field
+Internal ﬁeld
+Boundary ﬁeld
 Patch 1
 Patch 2
 Patch 1
 Patch 2
 (a) A volField<Type>
-Internal field
-Boundary field
+Internal ﬁeld
+Boundary ﬁeld
 Patch 1
 Patch 2
 Patch 1
 Patch 2
 (b) A surfaceField<Type>
-Internal field
-Boundary field
+Internal ﬁeld
+Boundary ﬁeld
 Patch 1
 Patch 2
 Patch 1
 Patch 2
 (c) A pointField<Type>
-Figure 2.4: Types of geometricField<Type> defined on a mesh with 2 boundary patches
+Figure 2.4: Types of geometricField<Type> deﬁned on a mesh with 2 boundary patches
 (in 2 dimensions for simplicity)
 Open∇FOAM-2.3.0
 2.4 Equation discretisation P-31
@@ -1333,15 +1665,15 @@ geometricBoundaryField<Type>
 Figure 2.5: Basic class structure leading to geometricField<Type>
 Open∇FOAM-2.3.0
 P-32 Discretisation procedures
-to fvm and fvc respectively. fvm and fvc contain static functions, representing differential
-operators, e.g. ∇2
-, ∇ • and ∂/∂t, that discretise geometricField<Type>s. The purpose of
-defining these functions within two classes, fvm and fvc, rather than one, is to distinguish:
+to fvm and fvc respectively. fvm and fvc contain static functions, representing diﬀerential
+operators, e.g. ∇2, ∇ •
+and ∂/∂t, that discretise geometricField<Type>s. The purpose of
+deﬁning these functions within two classes, fvm and fvc, rather than one, is to distinguish:
 • functions of fvm that calculate implicit derivatives of and return an fvMatrix<Type>
 • some functions of fvc that calculate explicit derivatives and other explicit calcula-
 tions, returning a geometricField<Type>.
-Figure 2.6 shows a geometricField<Type> defined on a mesh with 2 boundary patches and
-illustrates the explicit operations merely transform one field to another and drawn in 2D
+Figure 2.6 shows a geometricField<Type> deﬁned on a mesh with 2 boundary patches and
+illustrates the explicit operations merely transform one ﬁeld to another and drawn in 2D
 for simplicity.
 geometricField<Type>
 volField<Type>
@@ -1352,35 +1684,36 @@ volField<Type>
 surfaceField<Type>
 pointField<Type>
 fvMatrix<Type>
-finiteVolumeMethod (fvm)
+ﬁniteVolumeMethod (fvm)
 (Implicit)
-finiteVolumeCalculus (fvc)
+ﬁniteVolumeCalculus (fvc)
 Other explicit operations
 (Explict)
 Figure 2.6: A geometricField<Type> and its operators
 Table 2.2 lists the main functions that are available in fvm and fvc to discretise terms
-that may be found in a PDE. FV discretisation of each term is formulated by first inte-
+that may be found in a PDE. FV discretisation of each term is formulated by ﬁrst inte-
 grating the term over a cell volume V . Most spatial derivative terms are then converted
 to integrals over the cell surface S bounding the volume using Gauss’s theorem
 V
 ∇ ⋆ φ dV =
 S
 dS ⋆ φ (2.13)
-where S is the surface area vector, φ can represent any tensor field and the star notation
+where S is the surface area vector, φ can represent any tensor ﬁeld and the star notation
 ⋆ is used to represent any tensor product, i.e. inner, outer and cross and the respective
-derivatives: divergence ∇ • φ, gradient ∇φ and ∇ × φ. Volume and surface integrals
+derivatives: divergence ∇ •
+φ, gradient ∇φ and ∇ × φ. Volume and surface integrals
 are then linearised using appropriate schemes which are described for each term in the
 following Sections. Some terms are always discretised using one scheme, a selection of
-schemes is offered in OpenFOAM for the discretisation of other terms. The choice of
-scheme is either made by a direct specification within the code or it can be read from an
-input file at job run-time and stored within an fvSchemes class object.
+schemes is oﬀered in OpenFOAM for the discretisation of other terms. The choice of
+scheme is either made by a direct speciﬁcation within the code or it can be read from an
+input ﬁle at job run-time and stored within an fvSchemes class object.
 Open∇FOAM-2.3.0
 2.4 Equation discretisation P-33
 Term description Implicit / Text fvm::/fvc:: functions
 Explicit expression
-Laplacian Imp/Exp ∇2
-φ laplacian(phi)
-∇ • Γ∇φ laplacian(Gamma, phi)
+Laplacian Imp/Exp ∇2φ laplacian(phi)
+∇ •
+Γ∇φ laplacian(Gamma, phi)
 Time derivative Imp/Exp
 ∂φ
 ∂t
@@ -1395,17 +1728,19 @@ Second time derivative Imp/Exp
 ∂φ
 ∂t
 d2dt2(rho, phi)
-Convection Imp/Exp ∇ • (ψ) div(psi,scheme)*
-∇ • (ψφ) div(psi, phi, word)*
+Convection Imp/Exp ∇ •
+(ψ) div(psi,scheme)*
+∇ •
+(ψφ) div(psi, phi, word)*
 div(psi, phi)
-Divergence Exp ∇ • χ div(chi)
+Divergence Exp ∇ •
+χ div(chi)
 Gradient Exp ∇χ grad(chi)
 ∇φ gGrad(phi)
 lsGrad(phi)
 snGrad(phi)
 snGradCorrection(phi)
-Grad-grad squared Exp |∇∇φ|2
-sqrGradGrad(phi)
+Grad-grad squared Exp |∇∇φ|2 sqrGradGrad(phi)
 Curl Exp ∇ × φ curl(phi)
 Source Imp ρφ Sp(rho,phi)
 Imp/Exp† SuSp(rho,phi)
@@ -1423,81 +1758,119 @@ P-34 Discretisation procedures
 2.4.1 The Laplacian term
 The Laplacian term is integrated over a control volume and linearised as follows:
 V
-∇ • (Γ∇φ) dV =
+∇ •
+(Γ∇φ) dV =
 S
-dS • (Γ∇φ) =
+dS •
+(Γ∇φ) =
 f
-Γf Sf • (∇φ)f (2.14)
+Γf
+Sf •
+(∇φ)f
+(2.14)
 The face gradient discretisation is implicit when the length vector d between the centre
 of the cell of interest P and the centre of a neighbouring cell N is orthogonal to the face
-plane, i.e. parallel to Sf :
-Sf • (∇φ)f = |Sf |
-φN − φP
+plane, i.e. parallel to Sf
+:
+Sf •
+(∇φ)f
+= |Sf
+|
+φN
+− φP
 |d|
 (2.15)
 In the case of non-orthogonal meshes, an additional explicit term is introduced which is
-evaluated by interpolating cell centre gradients, themselves calculated by central differ-
+evaluated by interpolating cell centre gradients, themselves calculated by central diﬀer-
 encing cell centre values.
 2.4.2 The convection term
 The convection term is integrated over a control volume and linearised as follows:
 V
-∇ • (ρUφ) dV =
+∇ •
+(ρUφ) dV =
 S
-dS • (ρUφ) =
+dS •
+(ρUφ) =
 f
-Sf • (ρU)f φf =
+Sf •
+(ρU)f
+φf
+=
 f
-Fφf (2.16)
-The face field φf can be evaluated using a variety of schemes:
-Central differencing (CD) is second-order accurate but unbounded
-φf = fxφP + (1 − fx)φN (2.17)
-where fx ≡ fN/PN where fN is the distance between f and cell centre N and
+Fφf
+(2.16)
+The face ﬁeld φf
+can be evaluated using a variety of schemes:
+Central diﬀerencing (CD) is second-order accurate but unbounded
+φf
+= fx
+φP
++ (1 − fx
+)φN
+(2.17)
+where fx
+≡ fN/PN where fN is the distance between f and cell centre N and
 PN is the distance between cell centres P and N.
-Upwind differencing (UD) determines φf from the direction of flow and is bounded
+Upwind diﬀerencing (UD) determines φf
+from the direction of ﬂow and is bounded
 at the expense of accuracy
-φf =
-φP for F ≥ 0
-φN for F < 0
+φf
+=
+φP
+for F ≥ 0
+φN
+for F < 0
 (2.18)
-Blended differencing (BD) schemes combine UD and CD in an attempt to preserve
+Blended diﬀerencing (BD) schemes combine UD and CD in an attempt to preserve
 boundedness with reasonable accuracy,
-φf = (1 − γ) (φf )UD + γ (φf )CD (2.19)
-OpenFOAM has several implementations of the Gamma differencing scheme to
-select the blending coefficient γ but it offers other well-known schemes such as van
+φf
+= (1 − γ) (φf
+)
+UD
++ γ (φf
+)
+CD
+(2.19)
+OpenFOAM has several implementations of the Gamma diﬀerencing scheme to
+select the blending coeﬃcient γ but it oﬀers other well-known schemes such as van
 Leer, SUPERBEE, MINMOD etc..
 Open∇FOAM-2.3.0
 2.4 Equation discretisation P-35
 2.4.3 First time derivative
-The first time derivative ∂/∂t is integrated over a control volume as follows:
+The ﬁrst time derivative ∂/∂t is integrated over a control volume as follows:
 ∂
 ∂t V
 ρφ dV (2.20)
-The term is discretised by simple differencing in time using:
-new values φn
-≡ φ(t + ∆t) at the time step we are solving for;
-old values φo
-≡ φ(t) that were stored from the previous time step;
-old-old values φoo
-≡ φ(t − ∆t) stored from a time step previous to the last.
+The term is discretised by simple diﬀerencing in time using:
+new values φn ≡ φ(t + ∆t) at the time step we are solving for;
+old values φo ≡ φ(t) that were stored from the previous time step;
+old-old values φoo ≡ φ(t − ∆t) stored from a time step previous to the last.
 One of two discretisation schemes can be declared using the timeScheme keyword in the
-appropriate input file, described in detail in section 4.4 of the User Guide.
-Euler implicit scheme, timeScheme EulerImplicit, that is first order accurate in time:
+appropriate input ﬁle, described in detail in section 4.4 of the User Guide.
+Euler implicit scheme, timeScheme EulerImplicit, that is ﬁrst order accurate in time:
 ∂
 ∂t V
 ρφ dV =
-(ρP φP V )n
-− (ρP φP V )o
+(ρP
+φP
+V )n − (ρP
+φP
+V )o
 ∆t
 (2.21)
-Backward differencing scheme, timeScheme BackwardDifferencing, that is second
+Backward diﬀerencing scheme, timeScheme BackwardDifferencing, that is second
 order accurate in time by storing the old-old values and therefore with a larger
 overhead in data storage than EulerImplicit:
 ∂
 ∂t V
 ρφ dV =
-3 (ρP φP V )n
-− 4 (ρP φP V )o
-+ (ρP φP V )oo
+3 (ρP
+φP
+V )n − 4 (ρP
+φP
+V )o + (ρP
+φP
+V )oo
 2∆t
 (2.22)
 2.4.4 Second time derivative
@@ -1508,33 +1881,42 @@ The second time derivative is integrated over a control volume and linearised as
 ∂φ
 ∂t
 dV =
-(ρP φP V )n
-− 2 (ρP φP V )o
-+ (ρP φP V )oo
+(ρP
+φP
+V )n − 2 (ρP
+φP
+V )o + (ρP
+φP
+V )oo
 ∆t2
 (2.23)
-It is first order accurate in time.
+It is ﬁrst order accurate in time.
 2.4.5 Divergence
 The divergence term described in this Section is strictly an explicit term that is distin-
 guished from the convection term of Section 2.4.2, i.e. in that it is not the divergence of
 the product of a velocity and dependent variable. The term is integrated over a control
 volume and linearised as follows:
 V
-∇ • φ dV =
+∇ •
+φ dV =
 S
-dS • φ =
+dS •
+φ =
 f
-Sf • φf (2.24)
+Sf •
+φf
+(2.24)
 The fvc::div function can take as its argument either a surface<Type>Field, in which
-case φf is specified directly, or a vol<Type>Field which is interpolated to the face by
-central differencing as described in Section 2.4.10:
+case φf
+is speciﬁed directly, or a vol<Type>Field which is interpolated to the face by
+central diﬀerencing as described in Section 2.4.10:
 Open∇FOAM-2.3.0
 P-36 Discretisation procedures
 2.4.6 Gradient
 The gradient term is an explicit term that can be evaluated in a variety of ways. The
 scheme can be evaluated either by selecting the particular grad function relevant to the
 discretisation scheme, e.g.fvc::gGrad, fvc::lsGrad etc., or by using the fvc::grad
-function combined with the appropriate gradScheme keyword in an input file
+function combined with the appropriate gradScheme keyword in an input ﬁle
 Gauss integration is invoked using the fvc::grad function with gradScheme Gauss
 or directly using the fvc::gGrad function. The discretisation is performed using
 the standard method of applying Gauss’s theorem to the volume integral:
@@ -1543,34 +1925,51 @@ V
 S
 dS φ =
 f
-Sf φf (2.25)
+Sf
+φf
+(2.25)
 As with the fvc::div function, the Gaussian integration fvc::grad function can
 take either a surfaceField<Type> or a volField<Type> as an argument.
 Least squares method is based on the following idea:
 1. a value at point P can be extrapolated to neighbouring point N using the
 gradient at P;
 2. the extrapolated value at N can be compared to the actual value at N, the
-difference being the error;
+diﬀerence being the error;
 3. if we now minimise the sum of the square of weighted errors at all neighbours
 of P with the respect to the gradient, then the gradient should be a good
 approximation.
 Least squares is invoked using the fvc::grad function with timeScheme leastSquares
 or directly using the fvc::lsGrad function. The discretisation is performed as by
-first calculating the tensor G at every point P by summing over neighbours N:
+ﬁrst calculating the tensor G at every point P by summing over neighbours N:
 G =
 N
 w2
-N dd (2.26)
-where d is the vector from P to N and the weighting function wN = 1/|d|. The
+N
+dd (2.26)
+where d is the vector from P to N and the weighting function wN
+= 1/|d|. The
 gradient is then evaluated as:
-(∇φ)P =
+(∇φ)
+P
+=
 N
 w2
-N G−1 • d (φN − φP ) (2.27)
-Surface normal gradient The gradient normal to a surface nf • (∇φ)f can be evalu-
+N
+G−1
+•
+d (φN
+− φP
+) (2.27)
+Surface normal gradient The gradient normal to a surface nf •
+(∇φ)
+f
+can be evalu-
 ated at cell faces using the scheme
-(∇φ)f =
-φN − φP
+(∇φ)
+f
+=
+φN
+− φP
 |d|
 (2.28)
 This gradient is called by the function fvc::snGrad and returns a surfaceField<Type>.
@@ -1581,49 +1980,69 @@ This correction is called using the function fvc::snGradCorrection.
 Open∇FOAM-2.3.0
 2.4 Equation discretisation P-37
 2.4.7 Grad-grad squared
-The grad-grad squared term is evaluated by: taking the gradient of the field; taking the
-gradient of the resulting gradient field; and then calculating the magnitude squared of
-the result. The mathematical expression for grad-grad squared of φ is |∇ (∇φ)|2
-.
+The grad-grad squared term is evaluated by: taking the gradient of the ﬁeld; taking the
+gradient of the resulting gradient ﬁeld; and then calculating the magnitude squared of
+the result. The mathematical expression for grad-grad squared of φ is |∇ (∇φ)|2.
 2.4.8 Curl
 The curl is evaluated from the gradient term described in Section 2.4.6. First, the gradient
 is discretised and then the curl is evaluated using the relationship from Equation 2.7,
 repeated here for convenience
 ∇ × φ = 2 ∗(skew ∇φ)
 2.4.9 Source terms
-Source terms can be specified in 3 ways
+Source terms can be speciﬁed in 3 ways
 Explicit Every explicit term is a volField<Type>. Hence, an explicit source term can be
-incorporated into an equation simply as a field of values. For example if we wished
-to solve Poisson’s equation ∇2
-φ = f, we would define phi and f as volScalarField
+incorporated into an equation simply as a ﬁeld of values. For example if we wished
+to solve Poisson’s equation ∇2φ = f, we would deﬁne phi and f as volScalarField
 and then do
 solve(fvm::laplacian(phi) == f)
 Implicit An implicit source term is integrated over a control volume and linearised by
 V
-ρφ dV = ρP VP φP (2.29)
-Implicit/Explicit The implicit source term changes the coefficient of the diagonal of
-the matrix. Depending on the sign of the coefficient and matrix terms, this will
+ρφ dV = ρP
+VP
+φP
+(2.29)
+Implicit/Explicit The implicit source term changes the coeﬃcient of the diagonal of
+the matrix. Depending on the sign of the coeﬃcient and matrix terms, this will
 either increase or decrease diagonal dominance of the matrix. Decreasing the di-
 agonal dominance could cause instability during iterative solution of the matrix
 equation. Therefore OpenFOAM provides a mixed source discretisation procedure
-that is implicit when the coefficients that are greater than zero, and explicit for the
-coefficients less than zero. In mathematical terms the matrix coefficient for node P
-is VP max(ρP , 0) and the source term is VP φP min(ρP , 0).
+that is implicit when the coeﬃcients that are greater than zero, and explicit for the
+coeﬃcients less than zero. In mathematical terms the matrix coeﬃcient for node P
+is VP
+max(ρP
+, 0) and the source term is VP
+φP
+min(ρP
+, 0).
 2.4.10 Other explicit discretisation schemes
 There are some other discretisation procedures that convert volField<Type>s into sur-
 face<Type>Fields and visa versa.
 Surface integral fvc::surfaceIntegrate performs a summation of surface<Type>Field
-face values bounding each cell and dividing by the cell volume, i.e. ( f φf )/VP . It
+face values bounding each cell and dividing by the cell volume, i.e. (
+f
+φf
+)/VP
+. It
 returns a volField<Type>.
 Surface sum fvc::surfaceSum performs a summation of surface<Type>Field face val-
-ues bounding each cell, i.e. f φf returning a volField<Type>.
+ues bounding each cell, i.e.
+f
+φf
+returning a volField<Type>.
 Average fvc::average produces an area weighted average of surface<Type>Field face
-values, i.e. ( f Sf φf )/ f Sf , and returns a volField<Type>.
+values, i.e. (
+f
+Sf
+φf
+)/
+f
+Sf
+, and returns a volField<Type>.
 Open∇FOAM-2.3.0
 P-38 Discretisation procedures
 Reconstruct
 Face interpolate The geometric<Type>Field function faceInterpolate() interpolates
-volField<Type> cell centre values to cell faces using central differencing, returning a
+volField<Type> cell centre values to cell faces using central diﬀerencing, returning a
 surface<Type>Field.
 2.5 Temporal discretisation
 Although we have described the discretisation of temporal derivatives in Sections 2.4.3
@@ -1637,7 +2056,7 @@ t
 ρφ dV +
 V
 Aφ dV dt = 0 (2.30)
-Using the Euler implicit method of Equation 2.21, the first term can be expressed as
+Using the Euler implicit method of Equation 2.21, the ﬁrst term can be expressed as
 t+∆t
 t
 ∂
@@ -1645,13 +2064,19 @@ t
 ρφ dV dt =
 t+∆t
 t
-(ρP φP V )n
-− (ρP φP V )o
+(ρP
+φP
+V )n − (ρP
+φP
+V )o
 ∆t
 dt
 =
-(ρP φP V )n
-− (ρP φP V )o
+(ρP
+φP
+V )n − (ρP
+φP
+V )o
 ∆t
 ∆t
 (2.31)
@@ -1661,46 +2086,35 @@ t V
 Aφ dV dt =
 t+∆t
 t
-A∗
-φ dt (2.32)
-where A∗
-represents the spatial discretisation of A. The time integral can be discretised
+A∗φ dt (2.32)
+where A∗ represents the spatial discretisation of A. The time integral can be discretised
 in three ways:
 Euler implicit uses implicit discretisation of the spatial terms, thereby taking current
-values φn
-.
+values φn.
 t+∆t
 t
-A∗
-φ dt = A∗
-φn
-∆t (2.33)
-It is first order accurate in time, guarantees boundedness and is unconditionally
+A∗φ dt = A∗φn∆t (2.33)
+It is ﬁrst order accurate in time, guarantees boundedness and is unconditionally
 stable.
-Explicit uses explicit discretisation of the spatial terms, thereby taking old values φo
-.
+Explicit uses explicit discretisation of the spatial terms, thereby taking old values φo.
 t+∆t
 t
-A∗
-φ dt = A∗
-φo
-∆t (2.34)
-It is first order accurate in time and is unstable if the Courant number Co is greater
-than 1. The Courant number is defined as
+A∗φ dt = A∗φo∆t (2.34)
+It is ﬁrst order accurate in time and is unstable if the Courant number Co is greater
+than 1. The Courant number is deﬁned as
 Co =
-Uf • d
+Uf •
+d
 |d|2∆t
 (2.35)
-where Uf is a characteristic velocity, e.g. velocity of a wave front, velocity of flow.
+where Uf
+is a characteristic velocity, e.g. velocity of a wave front, velocity of ﬂow.
 Crank Nicholson uses the trapezoid rule to discretise the spatial terms, thereby taking
-a mean of current values φn
-and old values φo
-.
+a mean of current values φn and old values φo.
 t+∆t
 t
-A∗
-φ dt = A∗ φn
-+ φo
+A∗φ dt = A∗
+φn + φo
 2
 ∆t (2.36)
 It is second order accurate in time, is unconditionally stable but does not guarantee
@@ -1710,11 +2124,10 @@ Open∇FOAM-2.3.0
 2.5.1 Treatment of temporal discretisation in OpenFOAM
 At present the treatment of the temporal discretisation is controlled by the implementa-
 tion of the spatial derivatives in the PDE we wish to solve. For example, let us say we
-wish to solve a transient diffusion equation
+wish to solve a transient diﬀusion equation
 ∂φ
 ∂t
-= κ∇2
-φ (2.37)
+= κ∇2φ (2.37)
 An Euler implicit implementation of this would read
 solve(fvm::ddt(phi) == kappa*fvm::laplacian(phi))
 where we use the fvm class to discretise the Laplacian term implicitly. An explicit
@@ -1733,54 +2146,76 @@ Boundary conditions are required to complete the problem we wish to solve. We th
 need to specify boundary conditions on all our boundary faces. Boundary conditions can
 be divided into 2 types:
 Dirichlet prescribes the value of the dependent variable on the boundary and is therefore
-termed ‘fixed value’ in this guide;
+termed ‘ﬁxed value’ in this guide;
 Neumann prescribes the gradient of the variable normal to the boundary and is therefore
-termed ‘fixed gradient’ in this guide.
-When we perform discretisation of terms that include the sum over faces f , we need
+termed ‘ﬁxed gradient’ in this guide.
+When we perform discretisation of terms that include the sum over faces
+f
+, we need
 to consider what happens when one of the faces is a boundary face.
-Fixed value We specify a fixed value at the boundary φb
-• We can simply substitute φb in cases where the discretisation requires the value
-on a boundary face φf , e.g. in the convection term in Equation 2.16.
-• In terms where the face gradient (∇φ)f is required, e.g. Laplacian, it is calcu-
+Fixed value We specify a ﬁxed value at the boundary φb
+• We can simply substitute φb
+in cases where the discretisation requires the value
+on a boundary face φf
+, e.g. in the convection term in Equation 2.16.
+• In terms where the face gradient (∇φ)
+f
+is required, e.g. Laplacian, it is calcu-
 lated using the boundary face value and cell centre value,
-Sf • (∇φ)f = |Sf |
-φb − φP
+Sf •
+(∇φ)f
+= |Sf
+|
+φb
+− φP
 |d|
 (2.38)
 Open∇FOAM-2.3.0
 P-40 Discretisation procedures
-Fixed gradient The fixed gradient boundary condition gb is a specification on inner
+Fixed gradient The ﬁxed gradient boundary condition gb
+is a speciﬁcation on inner
 product of the gradient and unit normal to the boundary, or
-gb =
+gb
+=
 S
-|S|
-• ∇φ
+|S| •
+∇φ
 f
 (2.39)
-• When discretisation requires the value on a boundary face φf we must inter-
+• When discretisation requires the value on a boundary face φf
+we must inter-
 polate the cell centre value to the boundary by
-φf = φP + d • (∇φ)f
-= φP + |d| gb
+φf
+= φP
++ d •
+(∇φ)f
+= φP
++ |d| gb
 (2.40)
-• φb can be directly substituted in cases where the discretisation requires the
+• φb
+can be directly substituted in cases where the discretisation requires the
 face gradient to be evaluated,
-Sf • (∇φ)f = |Sf | gb (2.41)
+Sf •
+(∇φ)f
+= |Sf
+| gb
+(2.41)
 2.6.1 Physical boundary conditions
-The specification of boundary conditions is usually an engineer’s interpretation of the
-true behaviour. Real boundary conditions are generally defined by some physical at-
+The speciﬁcation of boundary conditions is usually an engineer’s interpretation of the
+true behaviour. Real boundary conditions are generally deﬁned by some physical at-
 tributes rather than the numerical description as described of the previous Section. In
-incompressible fluid flow there are the following physical boundaries
-Inlet The velocity field at the inlet is supplied and, for consistency, the boundary con-
+incompressible ﬂuid ﬂow there are the following physical boundaries
+Inlet The velocity ﬁeld at the inlet is supplied and, for consistency, the boundary con-
 dition on pressure is zero gradient.
-Outlet The pressure field at the outlet is supplied and a zero gradient boundary condition
-on velocity is specified.
-No-slip impermeable wall The velocity of the fluid is equal to that of the wall itself,
-i.e. a fixed value condition can be specified. The pressure is specified zero gradient
-since the flux through the wall is zero.
+Outlet The pressure ﬁeld at the outlet is supplied and a zero gradient boundary condition
+on velocity is speciﬁed.
+No-slip impermeable wall The velocity of the ﬂuid is equal to that of the wall itself,
+i.e. a ﬁxed value condition can be speciﬁed. The pressure is speciﬁed zero gradient
+since the ﬂux through the wall is zero.
 In a problem whose solution domain and boundary conditions are symmetric about a
 plane, we only need to model half the domain to one side of the symmetry plane. The
-boundary condition on the plane must be specified according to
-Symmetry plane The symmetry plane condition specifies the component of the gradi-
+boundary condition on the plane must be speciﬁed according to
+Symmetry plane The symmetry plane condition speciﬁes the component of the gradi-
 ent normal to the plane should be zero.
 Open∇FOAM-2.3.0
 Chapter 3
@@ -1795,8 +2230,8 @@ Each example contains a description of the problem: the geometry, initial and bo
 ary conditions, a brief description of the equations being solved, models used, and physical
 properties required. The solution domain is selected which may be a portion of the orig-
 inal geometry, e.g. if we introduce symmetry planes. The method of meshing, usually
-blockMesh, is specified; of course the user can simply view the mesh since every exam-
-ple is distributed with the polyMesh directory containing the data files that describe the
+blockMesh, is speciﬁed; of course the user can simply view the mesh since every exam-
+ple is distributed with the polyMesh directory containing the data ﬁles that describe the
 mesh.
 The examples coexist with the tutorials in the tutorials subdirectory of the OpenFOAM
 installation. They are organised into a set of subdirectories by solver, e.g. all the icoFoam
@@ -1809,16 +2244,17 @@ mkdir -p $FOAM RUN
 The tutorials can then be copied into this directory with
 cp -r $FOAM TUTORIALS/* $FOAM RUN
 3.1 Flow around a cylinder
-In this example we shall investigate potential flow around a cylinder using potentialFoam.
+In this example we shall investigate potential ﬂow around a cylinder using potentialFoam.
 This example introduces the following OpenFOAM features:
 • non-orthogonal meshes;
 • generating an analytical solution to a problem in OpenFOAM.
 P-42 Examples of the use of OpenFOAM
-3.1.1 Problem specification
-The problem is defined as follows:
+3.1.1 Problem speciﬁcation
+The problem is deﬁned as follows:
 Solution domain The domain is 2 dimensional and consists of a square domain with
 a cylinder collocated with the centre of the square as shown in Figure 3.1.
-Ux = 1.0 m/s p = 0 bar
+Ux
+= 1.0 m/s p = 0 bar
 symmetry
 0.5 m
 4.0 m
@@ -1826,34 +2262,34 @@ symmetry
 x
 y
 0
-Figure 3.1: Geometry of flow round a cylinder
+Figure 3.1: Geometry of ﬂow round a cylinder
 Governing equations
-• Mass continuity for an incompressible fluid
-∇ • U = 0 (3.1)
-• Pressure equation for an incompressible, irrotational fluid assuming steady-
+• Mass continuity for an incompressible ﬂuid
+∇ •
+U = 0 (3.1)
+• Pressure equation for an incompressible, irrotational ﬂuid assuming steady-
 state conditions
-∇2
-p = 0 (3.2)
+∇2p = 0 (3.2)
 Boundary conditions
-• Inlet (left) with fixed velocity U = (1, 0, 0) m/s.
-• Outlet (right) with a fixed pressure p = 0 Pa.
+• Inlet (left) with ﬁxed velocity U = (1, 0, 0) m/s.
+• Outlet (right) with a ﬁxed pressure p = 0 Pa.
 • No-slip wall (bottom);
 • Symmetry plane (top).
-Initial conditions U = 0 m/s, p = 0 Pa — required in OpenFOAM input files but not
+Initial conditions U = 0 m/s, p = 0 Pa — required in OpenFOAM input ﬁles but not
 necessary for the solution since the problem is steady-state.
-Solver name potentialFoam: a potential flow code, i.e. assumes the flow is incompress-
+Solver name potentialFoam: a potential ﬂow code, i.e. assumes the ﬂow is incompress-
 ible, steady, irrotational, inviscid and it ignores gravity.
 Case name cylinder case located in the $FOAM TUTORIALS/potentialFoam directory.
 Open∇FOAM-2.3.0
 3.1 Flow around a cylinder P-43
 3.1.2 Note on potentialFoam
 potentialFoam is a useful solver to validate OpenFOAM since the assumptions of potential
-flow are such that an analytical solution exists for cases whose geometries are relatively
-simple. In this example of flow around a cylinder an analytical solution exists with which
+ﬂow are such that an analytical solution exists for cases whose geometries are relatively
+simple. In this example of ﬂow around a cylinder an analytical solution exists with which
 we can compare our numerical solution. potentialFoam can also be run more like a utility
-to provide a (reasonably) conservative initial U field for a problem. When running certain
-cases, this can useful for avoiding instabilities due to the initial field being unstable.
-In short, potentialFoam creates a conservative field from a non-conservative initial field
+to provide a (reasonably) conservative initial U ﬁeld for a problem. When running certain
+cases, this can useful for avoiding instabilities due to the initial ﬁeld being unstable.
+In short, potentialFoam creates a conservative ﬁeld from a non-conservative initial ﬁeld
 supplied by the user.
 3.1.3 Mesh generation
 Mesh generation using blockMesh has been described in tutorials in the User Guide. In
@@ -1897,7 +2333,7 @@ problem, we must describe a 3 dimensional mesh that is only one cell thick in th
 direction that is not solved. In Figure 3.2 we show only the back plane of the geometry,
 along z = −0.5, in which the vertex numbers are numbered 0-18. The other 19 vertices
 in the front plane, z = +0.5, are numbered in the same order as the back plane, as shown
-in the mesh description file below:
+in the mesh description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
@@ -2058,22 +2494,22 @@ Open∇FOAM-2.3.0
 154 );
 155
 156 // ************************************************************************* //
-3.1.4 Boundary conditions and initial fields
-Using FoamX or editing case files by hand, set the boundary conditions in accordance
+3.1.4 Boundary conditions and initial ﬁelds
+Using FoamX or editing case ﬁles by hand, set the boundary conditions in accordance
 with the problem description in Figure 3.1, i.e. the left boundary should be an Inlet,
 the right boundary should be an Outlet and the down and cylinder boundaries should
 be symmetryPlane. The top boundary conditions is chosen so that we can make the
 most genuine comparison with our analytical solution which uses the assumption that
-the domain is infinite in the y direction. The result is that the normal gradient of U is
+the domain is inﬁnite in the y direction. The result is that the normal gradient of U is
 small along a plane coinciding with our boundary. We therefore impose the condition
 that the normal component is zero, i.e. specify the boundary as a symmetryPlane, thereby
 ensuring that the comparison with the analytical is reasonable.
 Open∇FOAM-2.3.0
 P-46 Examples of the use of OpenFOAM
 3.1.5 Running the case
-No fluid properties need be specified in this problem since the flow is assumed to be
-incompressible and inviscid. In the system subdirectory, the controlDict specifies the
-control parameters for the run. Note that since we assume steady flow, we only run for
+No ﬂuid properties need be speciﬁed in this problem since the ﬂow is assumed to be
+incompressible and inviscid. In the system subdirectory, the controlDict speciﬁes the
+control parameters for the run. Note that since we assume steady ﬂow, we only run for
 1 time step:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
@@ -2224,7 +2660,7 @@ Open∇FOAM-2.3.0
 potentialFoam executes an iterative loop around the pressure equation which it solves in
 order that explicit terms relating to non-orthogonal correction in the Laplacian term may
 be updated in successive iterations. The number of iterations around the pressure equa-
-tion is controlled by the nNonOrthogonalCorrectors keyword in controlDict. In the first
+tion is controlled by the nNonOrthogonalCorrectors keyword in controlDict. In the ﬁrst
 instance we can set nNonOrthogonalCorrectors to 0 so that no loops are performed,
 i.e. the pressure equation is solved once, and there is no non-orthogonal correction. The
 solution is shown in Figure 3.3(a) (at t = 1, when the steady-state simulation is com-
@@ -2234,75 +2670,84 @@ P-48 Examples of the use of OpenFOAM
 (a) With no non-orthogonal correction
 (b) With non-orthogonal correction
 (c) Analytical solution
-Figure 3.3: Streamlines of potential flow
+Figure 3.3: Streamlines of potential ﬂow
 Open∇FOAM-2.3.0
-3.2 Steady turbulent flow over a backward-facing step P-49
+3.2 Steady turbulent ﬂow over a backward-facing step P-49
 as in the analytical solution in Figure 3.3(c), yet there is clearly some error in the re-
 gions where there is high non-orthogonality in the mesh, e.g. at the join of blocks 0, 1
 and 3. The case can be run a second time with some non-orthogonal correction by set-
 ting nNonOrthogonalCorrectors to 3. The solution shows smooth streamlines with no
-significant error due to non-orthogonality as shown in Figure 3.3(b).
-3.2 Steady turbulent flow over a backward-facing step
-In this example we shall investigate steady turbulent flow over a backward-facing step.
+signiﬁcant error due to non-orthogonality as shown in Figure 3.3(b).
+3.2 Steady turbulent ﬂow over a backward-facing step
+In this example we shall investigate steady turbulent ﬂow over a backward-facing step.
 The problem description is taken from one used by Pitz and Daily in an experimental
 investigation [**] against which the computed solution can be compared. This example
-introduces the following OpenFOAM features for the first time:
+introduces the following OpenFOAM features for the ﬁrst time:
 • generation of a mesh using blockMesh using full mesh grading capability;
-• steady turbulent flow.
-3.2.1 Problem specification
-The problem is defined as follows:
+• steady turbulent ﬂow.
+3.2.1 Problem speciﬁcation
+The problem is deﬁned as follows:
 Solution domain The domain is 2 dimensional, consisting of a short inlet, a backward-
 facing step and converging nozzle at outlet as shown in Figure 3.4.
 84.0
 20.6 206.0
-Inlet: Ux = 10.0 m/s Outlet: p = 0 Pa
+Inlet: Ux
+= 10.0 m/s Outlet: p = 0 Pa
 50.8 33.2
 y
 x
 Dimensions in mm
 Figure 3.4: Geometry of backward-facing step
 Governing equations
-• Mass continuity for incompressible flow
-∇ • U = 0 (3.3)
-• Steady flow momentum equation
-∇ • (UU) + ∇ • R = −∇p (3.4)
+• Mass continuity for incompressible ﬂow
+∇ •
+U = 0 (3.3)
+• Steady ﬂow momentum equation
+∇ •
+(UU) + ∇ •
+R = −∇p (3.4)
 where p is kinematic pressure and (in slightly over-simplistic terms) R =
-νeff ∇U is the viscous stress term with an effective kinematic viscosity νeff ,
+νeff
+∇U is the viscous stress term with an eﬀective kinematic viscosity νeff
+,
 calculated from selected transport and turbulence models.
 Open∇FOAM-2.3.0
 P-50 Examples of the use of OpenFOAM
-Initial conditions U = 0 m/s, p = 0 Pa — required in OpenFOAM input files but not
+Initial conditions U = 0 m/s, p = 0 Pa — required in OpenFOAM input ﬁles but not
 necessary for the solution since the problem is steady-state.
 Boundary conditions
-• Inlet (left) with fixed velocity U = (10, 0, 0) m/s;
-• Outlet (right) with fixed pressure p = 0 Pa;
+• Inlet (left) with ﬁxed velocity U = (10, 0, 0) m/s;
+• Outlet (right) with ﬁxed pressure p = 0 Pa;
 • No-slip walls on other boundaries.
 Transport properties
-• Kinematic viscosity of air ν = µ/ρ = 18.1 × 10−6
-/1.293 = 14.0 µm2
-/s
+• Kinematic viscosity of air ν = µ/ρ = 18.1 × 10−6/1.293 = 14.0 µm2/s
 Turbulence model
 • Standard k − ǫ;
-• Coefficients: Cµ = 0.09; C1 = 1.44; C2 = 1.92; αk = 1; αǫ = 0.76923.
-Solver name simpleFoam: an implementation for steady incompressible flow.
+• Coeﬃcients: Cµ
+= 0.09; C1
+= 1.44; C2
+= 1.92; αk
+= 1; αǫ
+= 0.76923.
+Solver name simpleFoam: an implementation for steady incompressible ﬂow.
 Case name pitzDaily, located in the $FOAM TUTORIALS/simpleFoam directory.
 The problem is solved using simpleFoam, so-called as it is an implementation for steady
-flow using the SIMPLE algorithm [**]. The solver has full access to all the turbulence
+ﬂow using the SIMPLE algorithm [**]. The solver has full access to all the turbulence
 models in the incompressibleTurbulenceModels library and the non-Newtonian models in-
 compressibleTransportModels library of the standard OpenFOAM release.
 3.2.2 Mesh generation
-We expect that the flow in this problem is reasonably complex and an optimum solution
+We expect that the ﬂow in this problem is reasonably complex and an optimum solution
 will require grading of the mesh. In general, the regions of highest shear are particularly
-critical, requiring a finer mesh than in the regions of low shear. We can anticipate
+critical, requiring a ﬁner mesh than in the regions of low shear. We can anticipate
 where high shear will occur by considering what the solution might be in advance of any
-calculation. At the inlet we have strong uniform flow in the x direction and, as it passes
-over the step, it generates shear on the fluid below, generating a vortex in the bottom
+calculation. At the inlet we have strong uniform ﬂow in the x direction and, as it passes
+over the step, it generates shear on the ﬂuid below, generating a vortex in the bottom
 half of the domain. The regions of high shear will therefore be close to the centreline of
 the domain and close to the walls.
 The domain is subdivided into 12 blocks as shown in Figure 3.5.
 The mesh is 3 dimensional, as always in OpenFOAM, so in Figure 3.5 we are viewing
 the back plane along z = −0.5. The full set of vertices and blocks are given in the mesh
-description file below:
+description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
@@ -2322,7 +2767,7 @@ description file below:
 17 convertToMeters 0.001;
 18
 Open∇FOAM-2.3.0
-3.2 Steady turbulent flow over a backward-facing step P-51
+3.2 Steady turbulent ﬂow over a backward-facing step P-51
 1
 14
 13
@@ -2506,7 +2951,7 @@ P-52 Examples of the use of OpenFOAM
 161 (11 12 18 17)
 162 (12 13 19 18)
 Open∇FOAM-2.3.0
-3.2 Steady turbulent flow over a backward-facing step P-53
+3.2 Steady turbulent ﬂow over a backward-facing step P-53
 163 (13 14 20 19)
 164 (14 15 21 20)
 165 );
@@ -2521,31 +2966,38 @@ Open∇FOAM-2.3.0
 A major feature of this problem is the use of the full mesh grading capability of
 blockMesh that is described in section 5.3.1 of the User Guide. The user can see that
 blocks 4,5 and 6 use the full list of 12 expansion ratios. The expansion ratios correspond
-to each edge of the block, the first 4 to the edges aligned in the local x1 direction, the
-second 4 to the edges in the local x2 direction and the last 4 to the edges in the local x3
-direction. In blocks 4, 5, and 6, the ratios are equal for all edges in the local x1 and x3
-directions but not for the edges in the x2 direction that corresponds in all blocks to the
-global y. If we consider the ratios used in relation to the block definition in section 5.3.1
-of the User Guide, we realize that different gradings have been prescribed along the left
-and right edges in blocks 4,5 and 6 in Figure 3.5. The purpose of this differential grading
-is to generate a fine mesh close to the most critical region of flow, the corner of the step,
+to each edge of the block, the ﬁrst 4 to the edges aligned in the local x1
+direction, the
+second 4 to the edges in the local x2
+direction and the last 4 to the edges in the local x3
+direction. In blocks 4, 5, and 6, the ratios are equal for all edges in the local x1
+and x3
+directions but not for the edges in the x2
+direction that corresponds in all blocks to the
+global y. If we consider the ratios used in relation to the block deﬁnition in section 5.3.1
+of the User Guide, we realize that diﬀerent gradings have been prescribed along the left
+and right edges in blocks 4,5 and 6 in Figure 3.5. The purpose of this diﬀerential grading
+is to generate a ﬁne mesh close to the most critical region of ﬂow, the corner of the step,
 and allow it to expand into the rest of the domain.
 The mesh can be generated using blockMesh from the command line or from within
 FoamX and viewed as described in previous examples.
-3.2.3 Boundary conditions and initial fields
-The case files can be viewed, or edited from within FoamX or by hand. In this case, we
-are required to set the initial and boundary fields for velocity U, pressure p, turbulent
-kinetic energy k and dissipation rate ε. The boundary conditions can be specified by
+3.2.3 Boundary conditions and initial ﬁelds
+The case ﬁles can be viewed, or edited from within FoamX or by hand. In this case, we
+are required to set the initial and boundary ﬁelds for velocity U, pressure p, turbulent
+kinetic energy k and dissipation rate ε. The boundary conditions can be speciﬁed by
 setting the physical patch types in FoamX: the upper and lower walls are set to Wall, the
 left patch to Inlet and the right patch to Outlet. These physical boundary conditions
-require us to specify a fixedValue at the inlet on U, k and ε. U is given in the problem
-specification, but the values of k and ǫ must be chosen by the user in a similar manner to
+require us to specify a ﬁxedValue at the inlet on U, k and ε. U is given in the problem
+speciﬁcation, but the values of k and ǫ must be chosen by the user in a similar manner to
 that described in section 2.1.8.1 of the User Guide. We assume that the inlet turbulence
-is isotropic and estimate the fluctuations to be 5% of U at the inlet. We have
+is isotropic and estimate the ﬂuctuations to be 5% of U at the inlet. We have
 U′
-x = U′
-y = U′
-z =
+x
+= U′
+y
+= U′
+z
+=
 5
 100
 10 = 0.5 m/s (3.5)
@@ -2553,22 +3005,17 @@ and
 k =
 3
 2
-(0.5)2
-= 0.375 m2
-/s2
-(3.6)
+(0.5)2 = 0.375 m2/s2 (3.6)
 If we estimate the turbulent length scale l to be 10% of the width of the inlet then
 ε =
 C0.75
-µ k1.5
+µ
+k1.5
 l
 =
-0.090.75
-0.3751.5
+0.090.750.3751.5
 0.1 × 25.4 × 10−3
-= 14.855 m2
-/s3
-(3.7)
+= 14.855 m2/s3 (3.7)
 At the outlet we need only specify the pressure p = 0Pa.
 3.2.4 Case control
 The choices of fvSchemes are as follows: the timeScheme should be SteadyState; the
@@ -2579,17 +3026,15 @@ P-54 Examples of the use of OpenFOAM
 Special attention should be paid to the settings of fvTolerances. Although the top
 level simpleFoam code contains only equations for p and U, the turbulent model solves
 equations for k, ε and R, and tolerance settings are required for all 5 equations. A
-solverTolerance of 10−5
-and solverRelativeTolerance of 0.1 are acceptable for all
-variables with the exception of p when 10−6
-and 0.01 are recommended. Under-relaxation
+solverTolerance of 10−5 and solverRelativeTolerance of 0.1 are acceptable for all
+variables with the exception of p when 10−6 and 0.01 are recommended. Under-relaxation
 of the solution is required since the problem is steady. A relaxationFactor of 0.7 is
 acceptable for U, k, ε and R but 0.3 is required for p to avoid numerical instability.
 Finally, in controlDict, the time step deltaT should be set to 1 since in steady state
-cases such as this is effectively an iteration counter. With benefit of hindsight we know
+cases such as this is eﬀectively an iteration counter. With beneﬁt of hindsight we know
 that the solution requires 1000 iterations reach reasonable convergence, hence endTime is
-set to 1000. Ensure that the writeFrequency is sufficiently high, e.g. 50, that you will
-not fill the hard disk with data during run time.
+set to 1000. Ensure that the writeFrequency is suﬃciently high, e.g. 50, that you will
+not ﬁll the hard disk with data during run time.
 3.2.5 Running the case and post-processing
 (a) Velocity vectors after 50 iterations
 (b) Velocity vectors at 1000 iterations
@@ -2601,22 +3046,23 @@ x-direction as shown by the vector plot of velocities is shown Figure 3.6(a). Ov
 iterations the vortex stretches in the x-direction from the step to the outlet until at 1000
 iterations the system reaches a steady-state in which the vortex is fully developed as
 shown in Figure 3.6(b-c).
-3.3 Supersonic flow over a forward-facing step
-In this example we shall investigate supersonic flow over a forward-facing step. The
-problem description involves a flow of Mach 3 at an inlet to a rectangular geometry with
+3.3 Supersonic ﬂow over a forward-facing step
+In this example we shall investigate supersonic ﬂow over a forward-facing step. The
+problem description involves a ﬂow of Mach 3 at an inlet to a rectangular geometry with
 a step near the inlet region that generates shock waves.
-This example introduces the following OpenFOAM features for the first time:
+This example introduces the following OpenFOAM features for the ﬁrst time:
 Open∇FOAM-2.3.0
-3.3 Supersonic flow over a forward-facing step P-55
-• supersonic flow;
-3.3.1 Problem specification
-The problem is defined as follows:
+3.3 Supersonic ﬂow over a forward-facing step P-55
+• supersonic ﬂow;
+3.3.1 Problem speciﬁcation
+The problem is deﬁned as follows:
 Solution domain The domain is 2 dimensional and consists of a short inlet section
 followed by a forward-facing step of 20% the height of the section as shown in
 Figure 3.7
 y
 0.2
-Inlet: Ux = Mach 3, p = 1 N/m2
+Inlet: Ux
+= Mach 3, p = 1 N/m2
 x
 1.0
 0.6 2.4
@@ -2626,24 +3072,30 @@ Governing equations
 • Mass continuity
 ∂ρ
 ∂t
-+ ∇ • (ρU) = 0 (3.8)
++ ∇ •
+(ρU) = 0 (3.8)
 • Ideal gas
 p = ρRT (3.9)
-• Momentum equation for Newtonian fluid
+• Momentum equation for Newtonian ﬂuid
 ∂ρU
 ∂t
-+ ∇ • (ρUU) − ∇ • µ∇U = −∇p (3.10)
-• Energy equation for fluid (ignoring some viscous terms), e = CvT, with Fourier’s
++ ∇ •
+(ρUU) − ∇ •
+µ∇U = −∇p (3.10)
+• Energy equation for ﬂuid (ignoring some viscous terms), e = Cv
+T, with Fourier’s
 Law q = −k∇T
 ∂ρe
 ∂t
-+ ∇ • (ρUe) − ∇ •
++ ∇ •
+(ρUe) − ∇ •
 k
 Cv
-∇e = p∇ • U (3.11)
+∇e = p∇ •
+U (3.11)
 Initial conditions U = 0 m/s, p = 1 Pa, T = 1 K.
 Boundary conditions
-• Inlet (left) with fixedValue for velocity U = 3 m/s = Mach 3, pressure p = 1 Pa
+• Inlet (left) with ﬁxedValue for velocity U = 3 m/s = Mach 3, pressure p = 1 Pa
 and temperature T = 1 K;
 • Outlet (right) with zeroGradient on U, p and T;
 • No-slip adiabatic wall (bottom);
@@ -2653,29 +3105,33 @@ P-56 Examples of the use of OpenFOAM
 Transport properties
 • Dynamic viscosity of air µ = 18.1µPa s
 Thermodynamic properties
-• Specific heat at constant volume Cv = 1.78571 J/kg K
+• Speciﬁc heat at constant volume Cv
+= 1.78571 J/kg K
 • Gas constant R = 0.714286 J/kg K
 • Conductivity k = 32.3 µW/m K
 Case name forwardStep case located in the $FOAM TUTORIALS/sonicFoam directory.
 Solver name sonicFoam: an implementation for compressible trans-sonic/supersonic
-laminar gas flow.
+laminar gas ﬂow.
 The case is designed such that the speed of sound of the gas c =
 √
 γRT = 1 m/s, the
 consequence being that the velocities are directly equivalent to the Mach number, e.g.
 the inlet velocity of 3 m/s is equivalent to Mach 3. This speed of sound calculation can
-be verified using the relationship for a perfect gas, Cp − Cv = R, i.e. the ratio of specific
+be veriﬁed using the relationship for a perfect gas, Cp
+− Cv = R, i.e. the ratio of speciﬁc
 heats
-γ = Cp/Cv =
+γ = Cp
+/Cv
+=
 R
 Cv
 + 1 (3.12)
 3.3.2 Mesh generation
-The mesh used in this case is relatively simple, specified with uniform rectangular cells
+The mesh used in this case is relatively simple, speciﬁed with uniform rectangular cells
 of length 0.06 m in the x direction and 0.05 m in the y direction. The geometry can
 simply be divided into 3 blocks, one below the top of the step, and two above the step,
 one either side of the step front. The full set of vertices and blocks are given in the mesh
-description file below:
+description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
@@ -2710,7 +3166,7 @@ description file below:
 32 (0.6 0.2 0.05)
 33 (3 0.2 0.05)
 Open∇FOAM-2.3.0
-3.3 Supersonic flow over a forward-facing step P-57
+3.3 Supersonic ﬂow over a forward-facing step P-57
 34 (0 1 0.05)
 35 (0.6 1 0.05)
 36 (3 1 0.05)
@@ -2784,7 +3240,7 @@ The case approaches a steady-state at some time after 5 s. The results for press
 10 s are shown in Figure 3.8. The results clearly show discontinuities in pressure, i.e.
 shock waves, emanating from ahead of the base of the step.
 3.3.4 Exercise
-The user can examine the effect on the solution of increasing the inlet velocity.
+The user can examine the eﬀect on the solution of increasing the inlet velocity.
 Open∇FOAM-2.3.0
 P-58 Examples of the use of OpenFOAM
 6
@@ -2800,14 +3256,14 @@ Figure 3.8: Shock fronts in the forward step problem
 3.4 Decompression of a tank internally pressurised
 with water
 In this example we shall investigate a problem of rapid opening of a pipe valve close to
-a pressurised liquid-filled tank. The prominent feature of the result in such cases is the
+a pressurised liquid-ﬁlled tank. The prominent feature of the result in such cases is the
 propagation of pressure waves which must therefore be modelled as a compressible liquid.
-This tutorial introduces the following OpenFOAM features for the first time:
-• Mesh refinement
+This tutorial introduces the following OpenFOAM features for the ﬁrst time:
+• Mesh reﬁnement
 • Pressure waves in liquids
-3.4.1 Problem specification
+3.4.1 Problem speciﬁcation
 Solution domain The domain is 2 dimensional and consists of a tank with a small
-outflow pipe as shown in Figure 3.9
+outﬂow pipe as shown in Figure 3.9
 x
 y
 Outlet: p = 0 bar
@@ -2819,16 +3275,16 @@ Outlet: p = 0 bar
 orientation of horizontal x-axis
 Note:
 Dimensions in mm
-image is rotated through -90◦
-from normal
-Figure 3.9: Geometry of a tank with outflow pipe
-Governing equations This problem requires a model for compressibility ψ in the fluid
-in order to be able to resolve waves propagating at a finite speed. A barotropic
+image is rotated through -90◦ from normal
+Figure 3.9: Geometry of a tank with outﬂow pipe
+Governing equations This problem requires a model for compressibility ψ in the ﬂuid
+in order to be able to resolve waves propagating at a ﬁnite speed. A barotropic
 relationship is used to relate density ρ and pressure p are related to ψ.
 • Mass continuity
 ∂ρ
 ∂t
-+ ∇ • (ρU) = 0 (3.13)
++ ∇ •
+(ρU) = 0 (3.13)
 Open∇FOAM-2.3.0
 3.4 Decompression of a tank internally pressurised with water P-59
 • The barotropic relationship
@@ -2840,34 +3296,41 @@ K
 = ψ (3.14)
 where K is the bulk modulus
 • Equation 3.14 is linearised as
-ρ ≈ ρ0 + ψ (p − p0) (3.15)
-where ρ0 and p0 are the reference density and pressure respectively such that
-ρ(p0) = ρ0.
-• Momentum equation for Newtonian fluid
+ρ ≈ ρ0
++ ψ (p − p0
+) (3.15)
+where ρ0
+and p0
+are the reference density and pressure respectively such that
+ρ(p0
+) = ρ0
+.
+• Momentum equation for Newtonian ﬂuid
 ∂ρU
 ∂t
-+ ∇ • (ρUU) − ∇ • µ∇U = −∇p (3.16)
++ ∇ •
+(ρUU) − ∇ •
+µ∇U = −∇p (3.16)
 Boundary conditions Using FoamX the following physical boundary conditions can
 be set:
-• outerWall is specified the wall condition;
-• axis is specified as the symmetryPlane;
-• nozzle is specified as a pressureOutlet where p = 0 bar.
-• front and back boundaries are specified as empty.
+• outerWall is speciﬁed the wall condition;
+• axis is speciﬁed as the symmetryPlane;
+• nozzle is speciﬁed as a pressureOutlet where p = 0 bar.
+• front and back boundaries are speciﬁed as empty.
 Initial conditions U = 0 m/s, p = 100 bar.
 Transport properties
 • Dynamic viscosity of water µ = 1.0 mPa s
 Thermodynamic properties
 • Density of water ρ = 1000 kg/m3
-• Reference pressure p0 = 1 bar
-• Compressibility of water ψ = 4.54 × 10−7
-s2
-/m2
-Solver name sonicLiquidFoam: a compressible sonic laminar liquid flow code.
+• Reference pressure p0
+= 1 bar
+• Compressibility of water ψ = 4.54 × 10−7 s2/m2
+Solver name sonicLiquidFoam: a compressible sonic laminar liquid ﬂow code.
 Case name decompressionTank case located in the $FOAM TUTORIALS/sonicLiquidFoam
 directory.
 3.4.2 Mesh Generation
 The full geometry is modelled in this case; the set of vertices and blocks are given in the
-mesh description file below:
+mesh description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
@@ -2989,12 +3452,12 @@ Open∇FOAM-2.3.0
 115
 116 // ************************************************************************* //
 In order to improve the numerical accuracy, we shall use the reference level of 1 bar for
-the pressure field. Note that both the internal field level and the boundary conditions are
-offset by the reference level.
+the pressure ﬁeld. Note that both the internal ﬁeld level and the boundary conditions are
+oﬀset by the reference level.
 3.4.3 Preparing the Run
 Before we commence the setup of the calculation, we need to consider the characteristic
 velocity of the phenomenon we are trying to capture. In the case under consideration,
-the fluid velocity will be very small, but the pressure wave will propagate with the speed
+the ﬂuid velocity will be very small, but the pressure wave will propagate with the speed
 of sound in water. The speed of sound is calculated as:
 c =
 1
@@ -3004,17 +3467,16 @@ c =
 4.54 × 10−7
 = 1483.2m/s. (3.17)
 For the mesh described above, the characteristic mesh size is approximately 2 mm (note
-the scaling factor of 0.1 in the blockMeshDict file). Using
+the scaling factor of 0.1 in the blockMeshDict ﬁle). Using
 Co =
 U ∆t
 ∆x
 (3.18)
-a reasonable time step is around ∆t = 5 × 10−7
-s, giving the Co number of 0.35, based on
+a reasonable time step is around ∆t = 5 × 10−7s, giving the Co number of 0.35, based on
 the speed of sound. Also, note that the reported Co number by the code (associated with
 the convective velocity) will be two orders of magnitude smaller. As we are interested in
 the pressure wave propagation, we shall set the simulation time to 0.25 ms. For reference,
-the controlDict file is quoted below.
+the controlDict ﬁle is quoted below.
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
@@ -3082,22 +3544,22 @@ P-62 Examples of the use of OpenFOAM
 Pressure, p
 (bar)
 Figure 3.10: Propagation of pressure waves
-The user can run the case and view results in dxFoam. The liquid flows out through
+The user can run the case and view results in dxFoam. The liquid ﬂows out through
 the nozzle causing a wave to move along the nozzle. As it reaches the inlet to the tank,
-some of the wave is transmitted into the tank and some of it is reflected. While a wave
-is reflected up and down the inlet pipe, the waves transmitted into the tank expand and
+some of the wave is transmitted into the tank and some of it is reﬂected. While a wave
+is reﬂected up and down the inlet pipe, the waves transmitted into the tank expand and
 propagate through the tank. In Figure 3.10, the pressures are shown as contours so that
-the wave fronts are more clearly defined than if plotted as a normal isoline plot.
-If the simulation is run for a long enough time for the reflected wave to return to
+the wave fronts are more clearly deﬁned than if plotted as a normal isoline plot.
+If the simulation is run for a long enough time for the reﬂected wave to return to
 the pipe, we can see that negative absolute pressure is detected. The modelling permits
 Open∇FOAM-2.3.0
-3.5 Magnetohydrodynamic flow of a liquid P-63
+3.5 Magnetohydrodynamic ﬂow of a liquid P-63
 this and has some physical basis since liquids can support tension, i.e. negative pressures.
 In reality, however, impurities or dissolved gases in liquids act as sites for cavitation,
 or vapourisation/boiling, of the liquid due to the low pressure. Therefore in practical
 situations, we generally do not observe pressures falling below the vapourisation pressure
 of the liquid; not at least for longer than it takes for the cavitation process to occur.
-3.4.5 Improving the solution by refining the mesh
+3.4.5 Improving the solution by reﬁning the mesh
 0
 10
 20
@@ -3112,77 +3574,92 @@ of the liquid; not at least for longer than it takes for the cavitation process 
 (a) At t = 50 µs (b) At t = 100 µs (c) At t = 150 µs
 Pressure, p
 (bar)
-Figure 3.11: Propagation of pressure waves with refined mesh
-Looking at the evolution of the resulting pressure field in time, we can clearly see the
-propagation of the pressure wave into the tank and numerous reflections from the inside
+Figure 3.11: Propagation of pressure waves with reﬁned mesh
+Looking at the evolution of the resulting pressure ﬁeld in time, we can clearly see the
+propagation of the pressure wave into the tank and numerous reﬂections from the inside
 walls. It is also obvious that the pressure wave is smeared over a number of cells. We shall
-now refine the mesh and reduce the time step to obtain a sharper front resolution. Simply
+now reﬁne the mesh and reduce the time step to obtain a sharper front resolution. Simply
 edit the blockMeshDict and increase the number of cells by a factor of 4 in the x and y
 directions, i.e. block 0 becomes (120 80 1) from (30 20 1) and so on. Run blockMesh
-on this file. In addition, in order to maintain a Courant number below 1, the time step
-must be reduced accordingly to ∆t = 10−7
-s. The second simulation gives considerably
+on this ﬁle. In addition, in order to maintain a Courant number below 1, the time step
+must be reduced accordingly to ∆t = 10−7 s. The second simulation gives considerably
 better resolution of the pressure waves as shown in Figure 3.11.
-3.5 Magnetohydrodynamic flow of a liquid
-In this example we shall investigate an flow of an electrically-conducting liquid through
-a magnetic field. The problem is one belonging to the branch of fluid dynamics known
+3.5 Magnetohydrodynamic ﬂow of a liquid
+In this example we shall investigate an ﬂow of an electrically-conducting liquid through
+a magnetic ﬁeld. The problem is one belonging to the branch of ﬂuid dynamics known
 as magnetohydrodynamics (MHD) that uses mhdFoam.
 Open∇FOAM-2.3.0
 P-64 Examples of the use of OpenFOAM
-3.5.1 Problem specification
+3.5.1 Problem speciﬁcation
 The problem is known as the Hartmann problem, chosen as it contains an analytical
-solution with which mhdFoam can be validated. It is defined as follows:
-Solution domain The domain is 2 dimensional and consists of flow along two parallel
+solution with which mhdFoam can be validated. It is deﬁned as follows:
+Solution domain The domain is 2 dimensional and consists of ﬂow along two parallel
 plates as shown in Fig. 3.12.
 y
 x
 2
 20
 Outlet: p = 0 bar
-Inlet: Ux = 1 m/s
-By = 20 T
+Inlet: Ux
+= 1 m/s
+By
+= 20 T
 Figure 3.12: Geometry of the Hartmann problem
 Governing equations
-• Mass continuity for incompressible fluid
-∇ • U = 0 (3.19)
-• Momentum equation for incompressible fluid
+• Mass continuity for incompressible ﬂuid
+∇ •
+U = 0 (3.19)
+• Momentum equation for incompressible ﬂuid
 ∂U
 ∂t
-+∇ • (UU)+∇ • (2BΓBUB)+∇ • (νU)+∇ (ΓBUB •
-• B) = −∇p (3.20)
-where B is the magnetic flux density, ΓBU = (2µρ)−1
-.
++∇ •
+(UU)+∇ •
+(2BΓBU
+B)+∇ •
+(νU)+∇ (ΓBU
+B •
+•
+B) = −∇p (3.20)
+where B is the magnetic ﬂux density, ΓBU
+= (2µρ)−1.
 • Maxwell’s equations
 ∇ × E = −
 ∂B
 ∂t
 (3.21)
-where E is the electric field strength.
-∇ • B = 0 (3.22)
+where E is the electric ﬁeld strength.
+∇ •
+B = 0 (3.22)
 ∇ × H = J +
 ∂D
 ∂t
 = J (3.23)
-assuming ∂D/∂t ≪ J. Here, H is the magnetic field strength, J is the current
-density and D is the electric flux density.
+assuming ∂D/∂t ≪ J. Here, H is the magnetic ﬁeld strength, J is the current
+density and D is the electric ﬂux density.
 • Charge continuity
-∇ • J = 0 (3.24)
+∇ •
+J = 0 (3.24)
 • Constitutive law
 B = µH (3.25)
 • Ohm’s law
 J = σ (E + U × B) (3.26)
 Open∇FOAM-2.3.0
-3.5 Magnetohydrodynamic flow of a liquid P-65
+3.5 Magnetohydrodynamic ﬂow of a liquid P-65
 • Combining Equation 3.21, Equation 3.23, Equation 3.26, and taking the curl
 ∂B
 ∂t
-+ ∇ • (UB) − ∇ • (φBU) − ∇ • (ΓBB) = 0 (3.27)
++ ∇ •
+(UB) − ∇ •
+(φB
+U) − ∇ •
+(ΓB
+B) = 0 (3.27)
 Boundary conditions
-• inlet is specified the inlet condition with fixed velocity U = (1, 0, 0) m/s;
-• outlet is specified as the outlet with with fixed pressure p = 0 Pa;
-• upperWall is specified as a wall where B = (0, 20, 0) T.
-• lowerWall is specified as a wall where B = (0, 20, 0) T.
-• front and back boundaries are specified as empty.
+• inlet is speciﬁed the inlet condition with ﬁxed velocity U = (1, 0, 0) m/s;
+• outlet is speciﬁed as the outlet with with ﬁxed pressure p = 0 Pa;
+• upperWall is speciﬁed as a wall where B = (0, 20, 0) T.
+• lowerWall is speciﬁed as a wall where B = (0, 20, 0) T.
+• front and back boundaries are speciﬁed as empty.
 Initial conditions U = 0 m/s, p = 100 Pa, B = (0, 20, 0) T.
 Transport properties
 • Kinematic viscosity ν = 1 Pa s
@@ -3193,7 +3670,7 @@ Solver name mhdFoam: an incompressible laminar magneto-hydrodynamics code.
 Case name hartmann case located in the $FOAM TUTORIALS/mhdFoam directory.
 3.5.2 Mesh generation
 The geometry is simply modelled with 100 cells in the x-direction and 40 cells in the
-y-direction; the set of vertices and blocks are given in the mesh description file below:
+y-direction; the set of vertices and blocks are given in the mesh description ﬁle below:
 1 /*--------------------------------*- C++ -*----------------------------------*\
 2 | ========= | |
 3 | \\ / F ield | OpenFOAM: The Open Source CFD Toolbox |
@@ -3287,36 +3764,46 @@ P-66 Examples of the use of OpenFOAM
 89 // ************************************************************************* //
 3.5.3 Running the case
 The user can run the case and view results in dxFoam. It is also useful at this stage to run
-the Ucomponents utility to convert the U vector field into individual scalar components.
-MHD flow is governed by, amongst other things, the Hartmann number which is a measure
+the Ucomponents utility to convert the U vector ﬁeld into individual scalar components.
+MHD ﬂow is governed by, amongst other things, the Hartmann number which is a measure
 of the ratio of electromagnetic body force to viscous force
 M = BL
 σ
 ρν
 (3.28)
-where L is the characteristic length scale. In this case with By = 20 T, M = 20 and
-the electromagnetic body forces dominate the viscous forces. Consequently with the flow
-fairly steady at t = 2 s the velocity profile is almost planar, viewed at a cross section
-midway along the domain x = 10 m. The user can plot a graph of the profile of Ux in
-dxFoam. Now the user should reduce the magnetic flux density B to 1 Tand re-run the
+where L is the characteristic length scale. In this case with By
+= 20 T, M = 20 and
+the electromagnetic body forces dominate the viscous forces. Consequently with the ﬂow
+fairly steady at t = 2 s the velocity proﬁle is almost planar, viewed at a cross section
+midway along the domain x = 10 m. The user can plot a graph of the proﬁle of Ux
+in
+dxFoam. Now the user should reduce the magnetic ﬂux density B to 1 Tand re-run the
 code and Ucomponents. In this case, M = 1 and the electromagnetic body forces no longer
-dominate. The velocity profile consequently takes on the parabolic form, characteristic
+dominate. The velocity proﬁle consequently takes on the parabolic form, characteristic
 Open∇FOAM-2.3.0
-3.5 Magnetohydrodynamic flow of a liquid P-67
+3.5 Magnetohydrodynamic ﬂow of a liquid P-67
 0.0 1.0
 -1.0
 0.0
 +1.0
 y (m)
 0.5 1.5
-By = 20 T
-Ux (m/s)
-By = 1 T
-Figure 3.13: Velocity profile in the Hartmann problem for By = 1 T and By = 20 T.
-of Poiseuille flow as shown in Figure 3.13. To validate the code the analytical solution
-for the velocity profile Ux is superimposed in Figure 3.13, given by:
-Ux(y)
-Ux(0)
+By
+= 20 T
+Ux
+(m/s)
+By
+= 1 T
+Figure 3.13: Velocity proﬁle in the Hartmann problem for By
+= 1 T and By
+= 20 T.
+of Poiseuille ﬂow as shown in Figure 3.13. To validate the code the analytical solution
+for the velocity proﬁle Ux
+is superimposed in Figure 3.13, given by:
+Ux
+(y)
+Ux
+(0)
 =
 cosh M − cosh M(y/L)
 cosh M − 1
@@ -3341,7 +3828,7 @@ tensor member function, P-21
 C++ syntax, U-76
 //
 C++ syntax, U-76
-OpenFOAM file syntax, U-104
+OpenFOAM ﬁle syntax, U-104
 # include
 C++ syntax, U-70, U-76
 &
@@ -3396,7 +3883,7 @@ Auto Accept button, U-168
 autoMesh
 library, U-96
 autoPatch utility, U-90
-autoRefineMesh utility, U-91
+autoReﬁneMesh utility, U-91
 axes
 right-handed, U-136
 right-handed rectangular Cartesian, P-11,
@@ -3408,7 +3895,7 @@ background
 process, U-24, U-79
 backward
 keyword entry, U-119
-Backward differencing, P-35
+Backward diﬀerencing, P-35
 barotropicCompressibilityModels
 Open∇FOAM-2.3.0
 P-70 Index
@@ -3422,7 +3909,7 @@ library, U-98
 binary
 keyword entry, U-112
 BirdCarreau model, U-101
-blended differencing, P-34
+blended diﬀerencing, P-34
 block
 expansion ratio, U-140
 block keyword, U-138
@@ -3450,9 +3937,9 @@ calculated, U-136
 cyclic, U-135, U-142
 directionMixed, U-136
 empty, P-59, P-65, U-18, U-130, U-135
-fixedGradient, U-136
-fixedValue, U-136
-fluxCorrectedVelocity, U-137
+ﬁxedGradient, U-136
+ﬁxedValue, U-136
+ﬂuxCorrectedVelocity, U-137
 inlet, P-65
 inletOutlet, U-137
 mixed, U-136
@@ -3531,7 +4018,7 @@ dictionary, U-147–U-149
 castellatedMeshControls keyword, U-146
 cavitatingDyMFoam solver, U-85
 cavitatingFoam solver, U-85
-cavity flow, U-17
+cavity ﬂow, U-17
 ccm26ToFoam utility, U-89
 CEI ARCH
 environment variable, U-173
@@ -3550,7 +4037,7 @@ cellPointFace
 keyword entry, U-174
 cells
 dictionary, U-136
-central differencing, P-34
+central diﬀerencing, P-34
 cfdTools tools, U-96
 cfx4ToFoam utility, U-89, U-154
 changeDictionary utility, U-88
@@ -3571,8 +4058,8 @@ class
 cell, P-27
 dimensionSet, P-21, P-28, P-29
 face, P-27
-finiteVolumeCalculus, P-29
-finiteVolumeMethod, P-29
+ﬁniteVolumeCalculus, P-29
+ﬁniteVolumeMethod, P-29
 fvMesh, P-27
 fvSchemes, P-32
 fvc, P-32
@@ -3639,7 +4126,7 @@ of time, U-111
 controlDict
 dictionary, P-61, U-21, U-30, U-41, U-50,
 U-60, U-104, U-160
-controlDict file, P-46
+controlDict ﬁle, P-46
 convection, see divergence, P-34
 convergence, U-38
 conversion
@@ -3660,7 +4147,7 @@ CrankNicholson
 keyword entry, U-119
 createExternalCoupledPatchGeometry utility,
 U-88
-createBaffles utility, U-90
+createBaﬄes utility, U-90
 createPatch utility, U-90
 createTurbulenceFields utility, U-92
 cross product, see tensor, vector cross product
@@ -3683,7 +4170,7 @@ boundary condition, U-135, U-142
 cyclic
 keyword entry, U-135
 cylinder
-flow around a, P-41
+ﬂow around a, P-41
 D
 d2dt2
 fvc member function, P-33
@@ -3695,14 +4182,14 @@ db tools, U-96
 ddt
 fvc member function, P-33
 fvm member function, P-33
-DeardorffDiffStress model, U-101
+DeardorﬀDiﬀStress model, U-101
 debug keyword, U-146
 decompose model, U-97
 decomposePar utility, U-79, U-80, U-95
 decomposeParDict
 dictionary, U-79
 decomposition
-of field, U-79
+of ﬁeld, U-79
 of mesh, U-79
 decompositionMethods
 library, U-97
@@ -3751,7 +4238,7 @@ thermalProperties, U-50
 thermophysicalProperties, U-179
 transportProperties, U-21, U-38, U-41
 turbulenceProperties, U-40, U-59, U-183
-differencing
+diﬀerencing
 Backward, P-35
 blended, P-34
 central, P-34
@@ -3778,7 +4265,7 @@ directory
 0, U-104
 Make, U-71
 constant, U-104, U-179
-fluentInterface, U-170
+ﬂuentInterface, U-170
 polyMesh, U-104, U-129
 processorN, U-80
 run, U-103
@@ -3879,14 +4366,14 @@ errorReduction keyword, U-153
 Euler
 keyword entry, U-119
 Euler implicit
-differencing, P-35
+diﬀerencing, P-35
 temporal discretisation, P-38
 examples
 decompression of a tank, P-58
-flow around a cylinder, P-41
-flow over backward step, P-49
+ﬂow around a cylinder, P-41
+ﬂow over backward step, P-49
 Hartmann problem, P-63
-supersonic flow over forward step, P-54
+supersonic ﬂow over forward step, P-54
 execFlowFunctionObjects utility, U-93
 expandDictionary utility, U-95
 expansionRatio keyword, U-152
@@ -3909,70 +4396,70 @@ FDIC
 keyword entry, U-122
 featureAngle keyword, U-152
 features keyword, U-147, U-148
-field
+ﬁeld
 U, U-22
 p, U-22
 decomposition, U-79
 FieldField<Type> template class, P-28
-fieldFunctionObjects
+ﬁeldFunctionObjects
 library, U-96
-fields, P-25
+ﬁelds, P-25
 mapping, U-160
-fields tools, U-96
+ﬁelds tools, U-96
 fields keyword, U-174
 Field<Type> template class, P-25
 fieldValues keyword, U-58
-file
-Make/files, U-72
+ﬁle
+Make/ﬁles, U-72
 controlDict, P-46
-files, U-71
+ﬁles, U-71
 g, U-59
 options, U-71
 snappyHexMeshDict, U-145
 transportProperties, U-58
-file format, U-104
-fileFormats
+ﬁle format, U-104
+ﬁleFormats
 library, U-97
 fileModificationChecking keyword, U-78
 fileModificationSkew keyword, U-78
-files file, U-71
+ﬁles ﬁle, U-71
 filteredLinear2
 keyword entry, U-116
 finalLayerThickness keyword, U-152
-financialFoam solver, U-88
-finite volume
+ﬁnancialFoam solver, U-88
+ﬁnite volume
 discretisation, P-23
 mesh, P-27
-finiteVolume
+ﬁniteVolume
 library, U-96
-finiteVolume tools, U-96
-finiteVolumeCalculus class, P-29
-finiteVolumeMethod class, P-29
-fireFoam solver, U-86
+ﬁniteVolume tools, U-96
+ﬁniteVolumeCalculus class, P-29
+ﬁniteVolumeMethod class, P-29
+ﬁreFoam solver, U-86
 firstTime keyword, U-111
 fixed
 keyword entry, U-112
-fixedGradient
+ﬁxedGradient
 boundary condition, U-136
-fixedValue
+ﬁxedValue
 boundary condition, U-136
 Open∇FOAM-2.3.0
 Index P-75
-flattenMesh utility, U-90
+ﬂattenMesh utility, U-90
 floatTransfer keyword, U-78
-flow
+ﬂow
 free surface, U-55
 laminar, U-17
 steady, turbulent, P-49
 supersonic, P-55
 turbulent, U-17
-flow around a cylinder, P-41
-flow over backward step, P-49
-flowType utility, U-92
-fluent3DMeshToFoam utility, U-89
-fluentInterface directory, U-170
-fluentMeshToFoam utility, U-89, U-154
-fluxCorrectedVelocity
+ﬂow around a cylinder, P-41
+ﬂow over backward step, P-49
+ﬂowType utility, U-92
+ﬂuent3DMeshToFoam utility, U-89
+ﬂuentInterface directory, U-170
+ﬂuentMeshToFoam utility, U-89, U-154
+ﬂuxCorrectedVelocity
 boundary condition, U-137
 fluxRequired keyword, U-114
 OpenFOAM
@@ -4055,13 +4542,13 @@ menu entry, U-51
 fvSolution
 dictionary, U-104, U-120
 G
-g file, U-59
+g ﬁle, U-59
 gambitToFoam utility, U-89, U-154
 GAMG
 keyword entry, U-52, U-121, U-122
 Gamma
 keyword entry, U-116
-Gamma differencing, P-34
+Gamma diﬀerencing, P-34
 Gauss
 keyword entry, U-117
 Gauss’s theorem, P-32
@@ -4090,7 +4577,7 @@ fvc member function, P-33
 gradient, P-33, P-36
 Gauss scheme, P-36
 Gauss’s theorem, U-51
-least square fit, U-51
+least square ﬁt, U-51
 least squares method, P-36, U-51
 surface normal, P-36
 gradSchemes keyword, U-114
@@ -4531,7 +5018,7 @@ keyword entry, U-117
 leastSquares keyword, U-51
 LESdeltas
 library, U-100
-LESfilters
+LESﬁlters
 library, U-100
 LESModel
 keyword entry, U-40, U-183
@@ -4544,10 +5031,10 @@ library
 Chung, U-99
 FVFunctionObjects, U-96
 LESdeltas, U-100
-LESfilters, U-100
+LESﬁlters, U-100
 MGridGenGAMGAgglomeration, U-97
 ODE, U-97
-OSspecific, U-97
+OSspeciﬁc, U-97
 OpenFOAM, U-96
 P1, U-98
 PV3FoamReader, U-163
@@ -4572,9 +5059,9 @@ dynamicFvMesh, U-97
 dynamicMesh, U-96
 edgeMesh, U-97
 engine, U-97
-fieldFunctionObjects, U-96
-fileFormats, U-97
-finiteVolume, U-96
+ﬁeldFunctionObjects, U-96
+ﬁleFormats, U-97
+ﬁniteVolume, U-96
 foamCalcFunctions, U-96
 forces, U-96
 fvDOM, U-98
@@ -4629,7 +5116,7 @@ viewFactor, U-98
 vtkFoam, U-163
 vtkPV3Foam, U-163
 libs keyword, U-78, U-112
-lid-driven cavity flow, U-17
+lid-driven cavity ﬂow, U-17
 LienCubicKE model, U-100
 LienCubicKELowRe model, U-100
 LienLeschzinerLowRe model, U-100
@@ -4663,7 +5150,7 @@ location keyword, U-105
 locationInMesh keyword, U-148, U-149
 lowCpCoeffs keyword, U-182
 lowReOneEqEddy model, U-101
-LRDDiffStress model, U-101
+LRDDiﬀStress model, U-101
 LRR model, U-100
 lsGrad
 fvc member function, P-33
@@ -4680,14 +5167,14 @@ magSqr
 tensor member function, P-21
 Make directory, U-71
 make script/alias, U-69
-Make/files file, U-72
+Make/ﬁles ﬁle, U-72
 manual
 keyword entry, U-80, U-81
 manualCoeffs keyword, U-81
 mapFields utility, U-30, U-37, U-41, U-54, U-89,
 U-160
 mapping
-fields, U-160
+ﬁelds, U-160
 Marker Style menu, U-34
 matrices tools, U-96
 max
@@ -4737,7 +5224,7 @@ Wireframe, U-166
 fvSchemes, U-51
 mergeLevels keyword, U-123
 mergeMeshes utility, U-90
-mergeOrSplitBaffles utility, U-90
+mergeOrSplitBaﬄes utility, U-90
 mergePatchPairs keyword, U-138
 mergeTolerance keyword, U-146
 mesh
@@ -4750,14 +5237,14 @@ basic, P-27
 block structured, U-136
 decomposition, U-79
 description, U-127
-finite volume, P-27
+ﬁnite volume, P-27
 generation, U-136, U-145
 grading, U-136, U-140
 grading, example of, P-49
 non-orthogonal, P-41
-refinement, P-58
+reﬁnement, P-58
 resolution, U-30
-specification, U-127
+speciﬁcation, U-127
 split-hex, U-145
 Stereolithography (STL), U-145
 surface, U-145
@@ -4789,7 +5276,7 @@ minDeterminant keyword, U-153
 minFaceWeight keyword, U-153
 minFlatness keyword, U-153
 minMedianAxisAngle keyword, U-152
-MINMOD differencing, P-34
+MINMOD diﬀerencing, P-34
 minRefinementCells keyword, U-148
 minThickness keyword, U-152
 minTriangleTwist keyword, U-153
@@ -4806,11 +5293,11 @@ model
 APIfunctions, U-99
 BirdCarreau, U-101
 CrossPowerLaw, U-101
-DeardorffDiffStress, U-101
+DeardorﬀDiﬀStress, U-101
 GuldersEGRLaminarFlameSpeed, U-98
 GuldersLaminarFlameSpeed, U-98
 HerschelBulkley, U-101
-LRDDiffStress, U-101
+LRDDiﬀStress, U-101
 LRR, U-100
 LamBremhorstKE, U-100
 LaunderGibsonRSTM, U-100
@@ -4976,11 +5463,11 @@ opaqueSolid
 library, U-98
 OpenFOAM
 applications, U-67
-file format, U-104
+ﬁle format, U-104
 libraries, U-67
 OpenFOAM
 library, U-96
-OpenFOAM file syntax
+OpenFOAM ﬁle syntax
 //, U-104
 openMPI
 message passing interface, U-81
@@ -4989,11 +5476,11 @@ operator
 scalar, P-24
 vector, P-23
 Options window, U-168
-options file, U-71
+options ﬁle, U-71
 order keyword, U-81
 Orientation Axes button, U-24, U-167
 orientFaceZone utility, U-90
-OSspecific
+OSspeciﬁc
 library, U-97
 outer product, see tensor, outer product
 outlet
@@ -5005,7 +5492,7 @@ keyword entry, U-149
 owner
 dictionary, U-129
 P
-p field, U-22
+p ﬁeld, U-22
 P1
 library, U-98
 p rhgRefCell keyword, U-124
@@ -5150,15 +5637,15 @@ reconstructPar utility, U-83
 reconstructParMesh utility, U-95
 redistributePar utility, U-95
 refGradient keyword, U-136
-refineHexMesh utility, U-91
+reﬁneHexMesh utility, U-91
 refinementRegions keyword, U-149
-refinementLevel utility, U-91
+reﬁnementLevel utility, U-91
 refinementRegions keyword, U-148, U-150
 Open∇FOAM-2.3.0
 P-86 Index
 refinementSurfaces keyword, U-148
-refineMesh utility, U-90
-refineWallLayer utility, U-91
+reﬁneMesh utility, U-90
+reﬁneWallLayer utility, U-91
 Refresh Times button, U-25
 regions keyword, U-58
 relative tolerance, U-121
@@ -5288,7 +5775,7 @@ mesh layers, U-150
 meshing process, U-145
 snapping to surfaces, U-150
 snappyHexMesh utility, U-89, U-145
-snappyHexMeshDict file, U-145
+snappyHexMeshDict ﬁle, U-145
 snGrad
 fvc member function, P-33
 snGradCorrection
@@ -5343,8 +5830,8 @@ dnsFoam, U-86
 dsmcFoam, U-87
 electrostaticFoam, U-88
 engineFoam, U-86
-financialFoam, U-88
-fireFoam, U-86
+ﬁnancialFoam, U-88
+ﬁreFoam, U-86
 icoFoam, U-17, U-21, U-22, U-24, U-84
 icoUncoupledKinematicParcelDyMFoam,
 U-87
@@ -5439,7 +5926,7 @@ starToFoam utility, U-154
 startTime
 keyword entry, U-22, U-111
 startTime keyword, U-22, U-111
-steady flow
+steady ﬂow
 turbulent, P-49
 steadyParticleTracks utility, U-93
 steadyState
@@ -5458,9 +5945,9 @@ Su
 fvm member function, P-33
 subsetMesh utility, U-91
 summation convention, P-13
-SUPERBEE differencing, P-34
-supersonic flow, P-55
-supersonic flow over forward step, P-54
+SUPERBEE diﬀerencing, P-34
+supersonic ﬂow, P-55
+supersonic ﬂow over forward step, P-54
 supersonicFreeStream
 boundary condition, U-137
 surfaceLambdaMuSmooth utility, U-94
@@ -5495,7 +5982,7 @@ boundary condition, U-137
 surfaceOrient utility, U-94
 surfacePointMerge utility, U-94
 surfaceRedistributePar utility, U-94
-surfaceRefineRedGreen utility, U-94
+surfaceReﬁneRedGreen utility, U-94
 surfaces keyword, U-174
 surfaceSplitByPatch utility, U-94
 surfaceSplitByTopology utility, U-94
@@ -5636,7 +6123,7 @@ Thigh keyword, U-182
 time
 control, U-111
 time derivative, P-33
-first, P-35
+ﬁrst, P-35
 second, P-33, P-35
 time step, U-22
 timeFormat keyword, U-112
@@ -5662,8 +6149,8 @@ containers, U-96
 db, U-96
 dimensionSet, U-96
 dimensionedTypes, U-96
-fields, U-96
-finiteVolume, U-96
+ﬁelds, U-96
+ﬁniteVolume, U-96
 fvMatrices, U-96
 fvMesh, U-96
 global, U-96
@@ -5692,7 +6179,7 @@ transformPoints utility, U-91
 transport keyword, U-181
 transportProperties
 dictionary, U-21, U-38, U-41
-transportProperties file, U-58
+transportProperties ﬁle, U-58
 triple inner product, P-15
 triSurface
 library, U-97
@@ -5710,13 +6197,13 @@ turbulence model
 RAS, U-39
 turbulenceProperties
 dictionary, U-40, U-59, U-183
-turbulent flow
+turbulent ﬂow
 steady, P-49
 turbulentInlet
 boundary condition, U-137
 tutorials
 breaking of a dam, U-55
-lid-driven cavity flow, U-17
+lid-driven cavity ﬂow, U-17
 stress analysis of plate with hole, U-45
 tutorials directory, P-41, U-17
 twoLiquidMixingFoam solver, U-86
@@ -5725,7 +6212,7 @@ twoPhaseProperties
 library, U-102
 type keyword, U-132, U-133
 U
-U field, U-22
+U ﬁeld, U-22
 Ucomponents utility, P-66
 UMIST
 keyword entry, U-115
@@ -5748,7 +6235,7 @@ Update GUI button, U-165
 uprime utility, U-92
 upwind
 keyword entry, U-116, U-119
-upwind differencing, P-34, U-61
+upwind diﬀerencing, P-34, U-61
 USCS units, U-107
 Use Parallel Projection button, U-24
 Use parallel projection button, U-167
@@ -5768,7 +6255,7 @@ applyWallFunctionBoundaryConditions,
 U-88
 attachMesh, U-90
 autoPatch, U-90
-autoRefineMesh, U-91
+autoReﬁneMesh, U-91
 blockMesh, U-37, U-89, U-136
 boxTurb, U-88
 ccm26ToFoam, U-89
@@ -5778,7 +6265,7 @@ checkMesh, U-90, U-155
 chemkinToFoam, U-95
 collapseEdges, U-91
 combinePatchFaces, U-91
-createBaffles, U-90
+createBaﬄes, U-90
 createPatch, U-90
 createTurbulenceFields, U-92
 createExternalCoupledPatchGeometry, U-88
@@ -5800,10 +6287,10 @@ extrude2DMesh, U-89
 extrudeMesh, U-89
 extrudeToRegionMesh, U-89
 faceAgglomerate, U-88
-flattenMesh, U-90
-flowType, U-92
-fluent3DMeshToFoam, U-89
-fluentMeshToFoam, U-89, U-154
+ﬂattenMesh, U-90
+ﬂowType, U-92
+ﬂuent3DMeshToFoam, U-89
+ﬂuentMeshToFoam, U-89, U-154
 foamCalc, U-33, U-93
 foamDataToFluent, U-91, U-170
 foamDebugSwitches, U-95
@@ -5837,7 +6324,7 @@ mapFields, U-30, U-37, U-41, U-54, U-89,
 U-160
 mdInitialise, U-89
 mergeMeshes, U-90
-mergeOrSplitBaffles, U-90
+mergeOrSplitBaﬄes, U-90
 mirrorMesh, U-90
 mixtureAdiabaticFlameT, U-95
 modifyMesh, U-91
@@ -5862,10 +6349,10 @@ ptot, U-93
 reconstructParMesh, U-95
 reconstructPar, U-83
 redistributePar, U-95
-refineHexMesh, U-91
-refineMesh, U-90
-refineWallLayer, U-91
-refinementLevel, U-91
+reﬁneHexMesh, U-91
+reﬁneMesh, U-90
+reﬁneWallLayer, U-91
+reﬁnementLevel, U-91
 removeFaces, U-91
 renumberMesh, U-90
 rotateMesh, U-90
@@ -5912,7 +6399,7 @@ surfaceMeshTriangulate, U-94
 surfaceOrient, U-94
 surfacePointMerge, U-94
 surfaceRedistributePar, U-94
-surfaceRefineRedGreen, U-94
+surfaceReﬁneRedGreen, U-94
 surfaceSplitByPatch, U-94
 surfaceSplitByTopology, U-94
 surfaceSplitNonManifolds, U-94
@@ -5945,7 +6432,7 @@ V
 v2f model, U-100
 value keyword, U-21, U-136
 valueFraction keyword, U-136
-van Leer differencing, P-34
+van Leer diﬀerencing, P-34
 vanDriestDelta model, U-101
 vanLeer
 keyword entry, U-116
