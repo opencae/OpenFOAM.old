@@ -126,7 +126,7 @@ $x$--$y$平面上の一辺の長さの正方形からなるキャビティの領
 
 
 OpenFOAMで提供されるメッシュ・ジェネレータ\OFtool{blockMesh}は
-\OFpath{constant/polyMesh}ディレクトリにある入力ディクショナリ
+\OFpath{system} (または\OFpath{constant/polyMesh}) ディレクトリにある入力ディクショナリ
 \index{blockMeshDict@\OFdictionary{blockMeshDict}!ディクショナリ}%
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
 \OFdictionary{blockMeshDict}で指定された
@@ -136,7 +136,7 @@ OpenFOAMで提供されるメッシュ・ジェネレータ\OFtool{blockMesh}は
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.3.0                                 |
+|  \\    /   O peration     | Version:  3.0.1                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -357,7 +357,7 @@ $\nRe = 10$とすると，$\nu = 0.01\unit{m^{2}s^{-1}}$となります．
 動粘性係数の適切な設定は以下のようになります．
 \begin{OFverbatim}[file, linenum=17]
 
-nu              nu [0 2 -1 0 0 0 0] 0.01;
+nu              [0 2 -1 0 0 0 0] 0.01;
 
 
 // ************************************************************************* //
@@ -562,23 +562,28 @@ paraFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 
 \index{Display@\PVpanel{Display}!ウィンドウパネル}%
 \index{ウィンドウパネル!Display@\PVpanel{Display}}%
-\PVpanel{Display}パネルを開き選択したモジュールの表示形式を調整します．
+\PVpanel{Display}パネルまでスクロールし，選択したモジュールの表示形式を調整します．
 \autoref{fig:2.3}に示すように，
-(1) \PVkeyword{Color by}を\PVkeyword{Solid Color}に設定し，
+(1) \PVkeyword{Coloring}を\PVkeyword{Solid Color}に設定し，
 (2) \PVbutton{Set Solid Color}をクリックし適当な色（背景が白の場合は黒など）を選択，
 (3)\ 
-\index{Style@\PVpanel{Style}!ウィンドウパネル}%
-\index{ウィンドウパネル!Style@\PVpanel{Style}}%
-\PVpanel{Style}パネルでは\PVkeyword{Representation}メニューから
+\PVkeyword{Representation}メニューから
 \PVkeyword{Wireframe}を選択します．
-背景色はトップメニューパネルで\PVkeyword{Edit}から
-\index{View Settings...@\PVkeyword{View Settings...}!メニューエントリ}%
-\index{メニューエントリ!View Settings...@\PVkeyword{View Settings...}}%
-\PVkeyword{View Settings...}を選択して設定します．
+背景色は
+\index{Propeties@\PVwindow{Propeties}!ウィンドウ}%
+\index{ウィンドウ!Properties@\PVwindow{Properties}}%
+\PVwindow{Properties}ウィンドウで
+\index{Display@\PVpanel{Display}!ウィンドウパネル}%
+\index{ウィンドウパネル!Display@\PVpanel{Display}}%
+\PVpanel{Display}パネルの下にある
+\index{View Render@\PVpanel{View Render}!ウィンドウパネル}%
+\index{ウィンドウパネル!View Render@\PVpanel{View Render}}%
+\PVpanel{View Render}パネルで設定することができます．
 
 
 \begin{figure}[ht]
  \includegraphics{fig-2-3}
+\OFrevision{変更あり}%
  \caption{paraFoamでのメッシュの表示}
  \label{fig:2.3}
 \end{figure}
@@ -586,14 +591,21 @@ paraFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 
 \OFthirdparty{ParaView}を使うのがはじめてならば，
 \autoref{ssec:6.1.5}で述べるように視点操作を試してみることをお勧めします．
-特に本ケースは2次元なので\PVkeyword{Edit}メニューの
-\index{View Settings@\PVkeyword{View Settings}!メニューエントリ}%
-\index{メニューエントリ!View Settings@\PVkeyword{View Settings}}%
-\PVkeyword{View Settings}のGeneralパネルで
+特に本ケースは2次元なので，
+\index{View Render@\PVpanel{View Render}!ウィンドウパネル}%
+\index{ウィンドウパネル!View Render@\PVpanel{View Render}}%
+\PVpanel{View Render}パネルの一番下付近にある
 \index{Use Parallel Projection@\PVbutton{Use Parallel Projection}!ボタン}%
 \index{ボタン!Use Parallel Projection@\PVbutton{Use Parallel Projection}}%
 \PVbutton{Use Parallel Projection}を
 選択するのがよいでしょう．
+これは
+\index{Propeties@\PVwindow{Propeties}!ウィンドウ}%
+\index{ウィンドウ!Properties@\PVwindow{Properties}}%
+\PVwindow{Properties}ウィンドウ最上部の検索窓の隣にある歯車のような
+\index{Advanced Properties@\PVbutton{Advanced Properties}!ボタン}%
+\index{ボタン!Advanced Properties@\PVbutton{Advanced Properties}}%
+\PVbutton{Advanced Properties}ボタンが押されているときだけ現れます．
 軸の方向は，
 \index{Annotation@\PVpanel{Annotation}!ウィンドウパネル}%
 \index{ウィンドウパネル!Annotation@\PVpanel{Annotation}}%
@@ -668,57 +680,47 @@ icoFoam -case $FOAM_RUN/tutorials/incompressible/icoFoam/cavity
 圧力を見るには
 \index{Display@\PVpanel{Display}!ウィンドウパネル}%
 \index{ウィンドウパネル!Display@\PVpanel{Display}}%
-\PVpanel{Display}パネルを開き，
+\PVpanel{Display}パネルに移動し，
 選択したモジュールの表示形式を調整します．
-圧力分布を見るには\autoref{fig:2.4}に示すように
-\PVpanel{Style}パネルのRepresentationメニューをsurfaceにして
-ColorPanelのSet Color byを \includegraphics{icon-point-p}，
-そして
+単純な圧力分布を見るには\autoref{fig:2.4}に示すように
+\PVkeyword{Representation}メニューで\PVkeyword{Surface}を選択し，
+\PVkeyword{Coloring}で \includegraphics{icon-point-p} を選択して
 \index{Rescale to Data Range@\PVbutton{Rescale to Data Range}!ボタン}%
 \index{ボタン!Rescale to Data Range@\PVbutton{Rescale to Data Range}}%
-\PVbutton{Rescale to Data Range}ボタンをクリックし，
-メニューバーの下のツールバーにある
+\PVbutton{Rescale to Data Range}ボタンをクリックします．
+$t = 0.5\unit{s}$における解析結果を表示するには，
 \index{VCR Controls@\PVkeyword{VCR Controls}!メニュー}%
 \index{メニュー!VCR Controls@\PVkeyword{VCR Controls}}%
 \PVkeyword{VCR Controls}または
 \index{Current Time Controls@\PVkeyword{Current Time Controls}!メニュー}%
 \index{メニュー!Current Time Controls@\PVkeyword{Current Time Controls}}%
-\PVkeyword{Current Time Controls}で現在時刻を0.5にして$t = 0.5\unit{s}$における解析結果を表示します．
-それらのパネルは\autoref{fig:6.4}に示すように
-\OFthirdparty{ParaView}ウィンドウのトップメニューの下にあります．
-圧力場の解析結果は\autoref{fig:2.5}のように左上が低く，
+\PVkeyword{Current Time Controls}で現在時刻を0.5にします．
+これらは\autoref{fig:6.4}に示すように
+\OFthirdparty{ParaView}ウィンドウのトップメニューの下のツールバーの中に配置されています．
+圧力場の解析結果は\autoref{fig:2.5}のようにキャビティの左上が低く，
 右上が高い圧力分布になるはずです．
 
-圧力分布を作成するには\autoref{fig:2.4}に示すように
-StylePanelでRepresentationメニューからSurfaceを選択し，
-Colorパネルで \includegraphics{icon-point-p}，
-そしてRescale to Data RangeボタンによってColorを選択します．
-メニューバーの下のツールバーにあるVCR Controlsまたは
-Current timeを0.5にして$t = 0.5\unit{s}$における解析結果を表示します．
+点アイコン (\includegraphics{icon-point-p}) では，圧力分布はセル間で補完された連続な分布として表示されます．
+かわりに\OFkeyword{Coloring}でセルアイコン (\includegraphics{icon-cell-p}) を選択した場合，
+各々のセルが単一の圧力値をもつものとして扱われ，各セルがグラデーションなしの単色で表示されます．
 
-\includegraphics{icon-point-p} のアイコンで圧力分布をセル間を補完した連続分布を表示します．
-もしColor byメニューからセルアイコン \includegraphics{icon-cell-p} を選択しなければ
-各々のセルが等級づけなしで一つの色によって意味されるように，
-圧力のための一つの値は各々のセルに起因しています．
-
-Active Variable Controlsツールバーの
-Toggle Color Legend Visibilityボタンをクリックするか
-\PVkeyword{View}メニューから
-\index{Show Color Legend@\PVkeyword{Show Color Legend}!メニューエントリ}%
-\index{メニューエントリ!Show Color Legend@\PVkeyword{Show Color Legend}}%
-\PVkeyword{Show Color Legend}を選択することで，
+\PVkeyword{Active Variable Controls}ツールバー，
+もしくは\PVpanel{Display}パネルの\OFkeyword{Coloring}にある
+\PVbutton{Toggle Color Legend Visibility}ボタンをクリックすることで，
 カラーバーを表示させることができます．
-Active Variable Controls toolbarか\PVpanel{Display}ウィンドウの
-Color panelにあるEdit Color Map buttonをクリックすると
+\PVkeyword{Active Variable Controls}ツールバーか
+\PVpanel{Display}パネルの\PVpanel{Color}パネルにある
+\PVkeyword{Edit Color Map}ボタンをクリックすると
 フォントの大きさや種類，スケールの番号付けの形式など，
 カラーバーの設定を変更することができます．
 カラーバーはドラッグアンドドロップによりimageウィンドウに置くことも可能です．
 
-最近のバージョンの\OFthirdparty{ParaView}では，
+\OFthirdparty{ParaView}では，
 よく使われる青・緑・赤という（虹色の）カラースケールではなく，
 青から白そして赤へと変化するカラースケールがデフォルトになっています．
-そこで，はじめて\OFthirdparty{ParaView}を使うユーザはこのカラースケールを変えたいと思うでしょう．
-これは，\PVwindow{Color Scale Editor}で\PVbutton{Choose Preset}を選び，
+そこで，はじめて\OFthirdparty{ParaView}を使うユーザは，
+このカラースケールを変えたいと思うかもしれません．
+これは，\PVwindow{Color Scale Editor}で\PVbutton{Choose Preset}ボタン（ハートが付いたアイコン）を選び，
 \PVentry{Blue to Red Rainbow}を選択することで変更できます．
 \PVbutton{OK}ボタンで確定したあとに，\PVbutton{Make Default}を押せば
 \OFthirdparty{ParaView}はいつもこのタイプのカラーバーを使うようになります．
@@ -734,6 +736,7 @@ Color panelにあるEdit Color Map buttonをクリックすると
 
 \begin{figure}[ht]
  \includegraphics{fig-2-4}
+\OFrevision{変更あり}%
  \caption{キャビティケースでの圧力等圧線の描画}
  \label{fig:2.4}
 \end{figure}
@@ -762,14 +765,18 @@ Properties PanelのDeleteをクリックして削除するか，
 cavity.OpenFOAMのモジュールを選択し，
 Filter $\rightarrow$ AlphabeticalメニューからCell Centersを選択してApplyをクリックします．
 
-\PVwindow{Pipeline Browser}でCentersが強調表示された状態で，
-Filter $\rightarrow$ AlphabeticalメニューからGlyphを選択します．
+\PVwindow{Pipeline Browser}で\PVkeyword{Centers}が強調表示された状態で，
+Filter $\rightarrow$ CommonメニューからGlyphを選択します．
 \autoref{fig:2.6}のような\PVpanel{Properties}ウィンドウが表示されます．
+新たに選択したフィルタはFilter $\rightarrow$ Recentメニューに追加されることを覚えておきましょう
+\footnote{訳注：原文ではFilter $\rightarrow$ Recentに\OFemph{移動}され，
+元の場所には表示されなくなると書かれているが，そのような現象は確認できなかった．}%
+．
 この\PVpanel{Properties}パネルの\PVkeyword{vectors}メニューでは，
 ベクトル場は速度のみなので，速度場\OFkeyword{U}が自動的に選択されています．
 \PVkeyword{Scale Mode}は速度の\PVkeyword{Vector Magnitude}が初期値として選択されていますが，
 領域全体を通る速度の様子を見るために，\PVkeyword{off}を選択し，
-\PVentry{Set Scale Factor}に0.005をにします．
+\PVentry{Set Scale Factor}を0.005にします．
 \PVbutton{Apply}をクリックするとベクトルが表示されますが，単色，例えば白になっているでしょう．
 通常は\PVpanel{Display}パネルで\PVkeyword{Color by U}を選択して速度に応じた色付けをします．
 \PVkeyword{Edit Color Map}の中で\PVentry{Show Color Legend}を選択し，
@@ -790,6 +797,7 @@ Filter $\rightarrow$ AlphabeticalメニューからGlyphを選択します．
 
 \begin{figure}[ht]
  \includegraphics{fig-2-6}
+\OFrevision{変更あり}%
  \caption{Glyphフィルタのパラメータパネル}
  \label{fig:2.6}
 \end{figure}
@@ -813,13 +821,13 @@ Filter $\rightarrow$ AlphabeticalメニューからGlyphを選択します．
 そうすると，\autoref{fig:2.8}に示すように
 \PVpanel{Propaties}ウィンドウが現れます．
 \PVentry{Seed}の点は，ジオメトリの中心を垂直に通って，
-\PVkeyword{Line Sourse}に沿うように (例えば$(0.05, 0, 0.005)$から
+\PVkeyword{High Resolutino Line Sourse}に沿うように (例えば$(0.05, 0, 0.005)$から
 $(0.05, 0.1, 0.005)$まで) 指定しましょう．
 このガイドに掲載した図では\PVentry{Point Resolution}を21に，
-\PVentry{Max Propagation}を\PVkeyword{Length}で0.5に，
-\PVentry{Initial Step Length}を\PVkeyword{Cell Length}で0.01に，
+\PVentry{Maximum Step Length}を0.5に，
+\PVentry{Initial Step Length}を0.2に，
 \PVentry{Integration Direction}を\PVkeyword{BOTH}という設定を行いました．
-また，\PVkeyword{Runge--Kutta 2} \PVentry{Integrator Type}は
+また，\PVkeyword{Runge--Kutta 4/5} \PVentry{Integrator Type}は
 デフォルトパラメータで使いました．
 
 \PVbutton{Apply}をクリックすると，トレーサが生成されます．
@@ -832,6 +840,7 @@ $(0.05, 0.1, 0.005)$まで) 指定しましょう．
 
 \begin{figure}[ht]
  \includegraphics{fig-2-8}
+\OFrevision{変更あり}%
  \caption{Stream Tracerフィルタのパラメータパネル}
  \label{fig:2.8}
 \end{figure}
@@ -899,12 +908,12 @@ cd cavityFine
 この例で\OFtool{mapFields}を実行するとき，
 \texttt{-consistent}コマンドラインオプションを使います．
 
-mapFields mapsのフィールドデータは，
-目的ケース（すなわち結果が図にされている）の
+\OFtool{mapFields}がマッピングするフィールドデータは，
+目的ケース（そのケースに結果がマッピングされる）の
 \index{controlDict@\OFdictionary{controlDict}!ディクショナリ}%
 \index{ディクショナリ!controlDict@\OFdictionary{controlDict}}%
 \OFdictionary{controlDict}内の
-startFrom/startTimeで指定される時間ディレクトリから読まれます．
+\OFkeyword{startFrom}および\OFkeyword{startTime}で指定される時刻ディレクトリから読まれます．
 この例では，\OFcase{cavityFine}ケースの細かいメッシュ上に\OFcase{cavity}ケースから
 粗いメッシュの最終結果をマッピングしましょう．
 これらの結果が\OFpath{cavity}の\OFpath{0.5}のディレクトリに格納されているので，
@@ -1012,6 +1021,7 @@ cavityFineケースを\OFthirdparty{ParaView}に読み込めるようになり�
 
 \begin{figure}[ht]
  \includegraphics{fig-2-10}
+\OFrevision{変更あり}%
  \caption{グラフ作図のためのフィールド選択}
  \label{fig:2.10}
 \end{figure}
@@ -1115,10 +1125,11 @@ Resolutionは100まで設定できます．
 
 \PVpanel{Display}ウィンドウの\PVpanel{Line Series}パネルから
 表示するデータを選択することができます．
-表示されているスカラ場のリストから，
-ベクトルの大きさや成分を初期値とすることもできます．
+表示すべきスカラ場のリストからは，
+ベクトルの大きさや成分が最初から利用可能であり，
+例えば\OFkeyword{U\_X}と表示されています．
 つまり，\OFkeyword{Ux}を\OFtool{foamCalc}から計算する必要はありません．
-それでも，\OFkeyword{Ux}以外の系列の選択はすべて解除しましょう．
+ここでは，\OFkeyword{Ux} (または\OFkeyword{U\_x}) 以外の系列の選択はすべて解除しましょう．
 選択した系列の上の四角形の色が線の色です．
 この上でダブルクリックをすれば簡単に変更することができます．
 
@@ -1206,7 +1217,7 @@ $20 \times 20$セルのメッシュを作り，
 \end{figure}
 
 
-\OFpath{cavityGrade}の\OFpath{constant/polyMesh}サブディレクトリで
+\OFpath{cavityGrade}の\OFpath{system} (または\OFpath{constant/polyMesh}) サブディレクトリで
 \OFdictionary{blockMeshDict}ファイルを見ることができます．
 念のため\OFdictionary{blockMeshDict}の重要な要素を以下に述べます．
 それぞれのブロックは$x$方向，$y$方向に10セルを有し，
@@ -1611,7 +1622,7 @@ $k$と$\varepsilon$は，これらのパラメタを用いて次式で表され�
 例えば，${U_{x}'}^{2} = {U_{y}'}^{2} = {U_{z}'}^{2}$となり，
 これら速度は上面速度の$5\unit{\%}$に等しく，
 また，乱流長さスケール$l$はボックス幅$0.1\unit{m}$の
-$20\unit{\%}$に等しいとすると，次のように表されます．
+$5\unit{\%}$に等しいとすると，次のように表されます．
 \begin{align}
  \label{eq:2.11}
  U_{x}' &= U_{y}' = U_{z}' = \frac{5}{100}1\unit{m\,s^{-1}} \\
@@ -1620,7 +1631,7 @@ $20\unit{\%}$に等しいとすると，次のように表されます．
  = 3.75 \times 10^{-3}\unit{m^{2}s^{-2}} \\
  \label{eq:2.13}
  \varepsilon &= \frac{C_{\mu}^{0.75}k^{1.5}}{l}
- \approx 7.65 \times 10^{-4}\unit{m^{2}s^{-3}}
+ \approx 7.54 \times 10^{-3}\unit{m^{2}s^{-3}}
 \end{align}
 上記のとおり$k$，$\varepsilon$を設定してください．
 $U$と$p$に対する初期条件は前と同じように，
@@ -1629,14 +1640,22 @@ $U$と$p$に対する初期条件は前と同じように，
 OpenFOAMで提供されている乱流モデルには，
 例えばRASやlarge-edy simulation (LES) のような，
 さまざまな手法があります．
-ほとんどの非定常ソルバでは，乱流のモデリング手法は
+乱流のモデリング手法は
 実行時に\OFdictionary{turbulenceProperties}ディクショナリの
 \OFkeyword{simulationType}キーワードで選択できます．
 このファイルは\OFpath{constant}ディレクトリの中に見つかります．
 \begin{OFverbatim}[file, linenum=17]
 
-simulationType  RASModel;
+simulationType  RAS;
 
+RAS
+{
+    RASModel        kOmega;
+
+    turbulence      on;
+
+    printCoeffs     on;
+}
 
 // ************************************************************************* //
 \end{OFverbatim}
@@ -1644,18 +1663,27 @@ simulationType  RASModel;
 \index{laminar@\OFkeyword{laminar}!キーワードエントリ}%
 \index{キーワードエントリ!laminar@\OFkeyword{laminar}}%
 \OFkeyword{laminar}，
+\index{RAS@\OFkeyword{RAS}!キーワードエントリ}%
+\index{キーワードエントリ!RAS@\OFkeyword{RAS}}%
+\OFkeyword{RAS}，そして
+\index{LES@\OFkeyword{LES}!キーワードエントリ}%
+\index{キーワードエントリ!LES@\OFkeyword{LES}}%
+\OFkeyword{LES}です (OpenFOAMバージョン3.0.0以前では
 \index{RASModel@\OFkeyword{RASModel}!キーワードエントリ}%
 \index{キーワードエントリ!RASModel@\OFkeyword{RASModel}}%
-\OFkeyword{RASModel}，そして
+\OFkeyword{RASModel}と
 \index{LESModel@\OFkeyword{LESModel}!キーワードエントリ}%
 \index{キーワードエントリ!LESModel@\OFkeyword{LESModel}}%
-\OFkeyword{LESModel}です．
-このケースで選択されている\OFkeyword{RASModel}の場合，
+\OFkeyword{LESModel})．
+このケースで選択されている\OFkeyword{RAS}の場合，
 RASモデリングの選択は
+\index{RAS@\OFsubdictionary{RAS}!ディクショナリ}%
+\index{ディクショナリ!RAS@\OFsubdictionary{RAS}}%
+\OFsubdictionary{RAS}サブディクショナリ
+(もしくは，OpenFOAMバージョン3.0.0以前では
 \index{RASProperties@\OFdictionary{RASProperties}!ディクショナリ}%
 \index{ディクショナリ!RASProperties@\OFdictionary{RASProperties}}%
-\OFpath{RASProperties}ファイルに記述します．
-このファイルも同じく\OFpath{constant}ディレクトリにあります．
+\OFpath{RASProperties}という別ファイル) に記述します．
 乱流モデルは\autoref{tbl:3.9}に示されている多くの使用可能なモデルから，
 \OFkeyword{RASModel}エントリで選択します．
 ここでは，標準$k$--$\varepsilon$モデルである\OFkeyword{kEpsilon}を選択します．
@@ -1669,7 +1697,7 @@ RASモデリングの選択は
 これらの係数は，モデル名に\OFkeyword{Coeffs}をつけた名前
 （たとえば\OFkeyword{kEpsilon}モデルなら\OFkeyword{kEpsilonCoeffs}）
 のサブディクショナリとして表示されます．
-モデルの係数は，必要に応じて\OFdictionary{RASProperties}ディクショナリに
+モデルの係数は，必要に応じて\OFsubdictionary{RAS}サブディクショナリに
 サブディクショナリを追加（コピー\&ペースト）し，値を適宜調整することで変更することができます．
 
 次いで，
@@ -1992,7 +2020,7 @@ OpenFOAMでは全てのジオメトリが3次元で生成されます．
 
 \OFpath{\$FOAM\_RUN/tutorials/stressAnalysis/solidDisplacementFoam}ディレクトリの
 \OFpath{plateHole}ケースに移動し，\OFpath{plateHole}ケースの
-\OFpath{constant/polyMesh/blockMeshDict}をエディタで開きます．
+\OFpath{blockMeshDict}をエディタで開きます．
 \OFdictionary{block\-MeshDict}ディクショナリのエントリを以下に示します．
 \begin{OFverbatim}[file, linenum=17]
 convertToMeters 1;
@@ -2185,7 +2213,7 @@ boundaryField
     right
     {
         type            tractionDisplacement;
-        traction        uniform ( 10000 0 0 );
+        traction        uniform (10000 0 0);
         pressure        uniform 0;
         value           uniform (0 0 0);
     }
@@ -2196,14 +2224,14 @@ boundaryField
     up
     {
         type            tractionDisplacement;
-        traction        uniform ( 0 0 0 );
+        traction        uniform (0 0 0);
         pressure        uniform 0;
         value           uniform (0 0 0);
     }
     hole
     {
         type            tractionDisplacement;
-        traction        uniform ( 0 0 0 );
+        traction        uniform (0 0 0);
         pressure        uniform 0;
         value           uniform (0 0 0);
     }
@@ -2409,14 +2437,6 @@ snGradSchemes
     default         none;
 }
 
-fluxRequired
-{
-    default         no;
-    D               yes;
-    T               no;
-}
-
-
 // ************************************************************************* //
 \end{OFverbatim}
 \OFpath{system}ディレクトリにある
@@ -2560,13 +2580,13 @@ sets
     {
         type    uniform;
         axis    y;
-        start   ( 0 0.5 0.25 );
-        end     ( 0 2 0.25 );
+        start   (0 0.5 0.25);
+        end     (0 2 0.25);
         nPoints 100;
     }
 );
 
-fields          ( sigmaxx );
+fields          (sigmaEq);
 
 
 // ************************************************************************* //
@@ -2982,7 +3002,7 @@ cp 0/alpha.water.org 0/alpha.water
 \begin{OFverbatim}[file, linenum=17]
 
 dimensions      [0 1 -2 0 0 0 0];
-value           ( 0 -9.81 0 );
+value           (0 -9.81 0);
 
 
 // ************************************************************************* //
@@ -3143,10 +3163,12 @@ gradSchemes
 
 divSchemes
 {
-    div(rhoPhi,U)  Gauss linearUpwind grad(U);
+    div(rhoPhi,U)   Gauss linearUpwind grad(U);
     div(phi,alpha)  Gauss vanLeer;
     div(phirb,alpha) Gauss linear;
-    div((muEff*dev(T(grad(U))))) Gauss linear;
+    div(phi,k)      Gauss upwind;
+    div(phi,epsilon) Gauss upwind;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
 }
 
 laplacianSchemes
@@ -3164,14 +3186,6 @@ snGradSchemes
     default         corrected;
 }
 
-fluxRequired
-{
-    default         no;
-    p_rgh;
-    pcorr;
-    alpha.water;
-}
-
 
 // ************************************************************************* //
 \end{OFverbatim}
@@ -3180,7 +3194,7 @@ fluxRequired
 \subsection{線形ソルバの制御}
 \label{ssec:2.3.7}
 \OFdictionary{fvSolution}では，
-\OFsubdictionary{PISO}サブディクショナリが
+\OFsubdictionary{PIMPLE}サブディクショナリが
 \OFtool{interFoam}に特化した要素を含んでいます．
 ここには，通常と同じく運動量方程式に対する反復数だけでなく，
 $\alpha$相方程式のPISOループに対する反復数も指定します．
