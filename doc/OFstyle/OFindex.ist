@@ -1,18 +1,18 @@
 # mendex -U -g -s OFindex UserGuideJa
 
 
-¸«½Ğ¤·¤òÉ½¼¨
+è¦‹å‡ºã—ã‚’è¡¨ç¤º
 lethead_flag 1
 letter_head 2
 
-¸«½Ğ¤·¸ì¤òÃæ±û´ó¤»
+è¦‹å‡ºã—èªã‚’ä¸­å¤®å¯„ã›
 lethead_prefix "\n\\centerline{\\large\\sffamily\\gtfamily "
 lethead_suffix "}"
 
-µ­¹æ¤È¿ô»ú¤Î¸«½Ğ¤·
-symhead_positive "µ­¹æ¡¦¿ô»ú"
+è¨˜å·ã¨æ•°å­—ã®è¦‹å‡ºã—
+symhead_positive "è¨˜å·ãƒ»æ•°å­—"
 
-¥Ú¡¼¥¸¿ô¤ò±¦´ó¤»
+ãƒšãƒ¼ã‚¸æ•°ã‚’å³å¯„ã›
 delim_0 "\\quad\\hfill "
 delim_1 "\\quad\\hfill "
 delim_2 "\\quad\\hfill "
