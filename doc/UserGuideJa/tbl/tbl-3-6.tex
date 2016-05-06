@@ -51,6 +51,11 @@
  \OFtool{mapFields} & 両ケースの時刻ディレクトリの全ての場を読み込み，
  補間し，体積場を一つのメッシュから他のメッシュにマップする．
  並列・非並列のどちらのケースでも再構築せずに実行可能 \\
+\index{mapFieldsPar@\OFtool{mapFieldsPar}!ユーティリティ}%
+\index{ユーティリティ!mapFieldsPar@\OFtool{mapFieldsPar}}%
+ \OFtool{mapFieldsPar} & 両ケースの時刻ディレクトリの全ての場を読み込み，
+ 補間し，体積場を一つのメッシュから他のメッシュにマップする．
+ \OFrevision*{こちらは並列版？} \\
 \index{mdInitialise@\OFtool{mdInitialise}!ユーティリティ}%
 \index{ユーティリティ!mdInitialise@\OFtool{mdInitialise}}%
  \OFtool{mdInitialise} &
@@ -123,7 +128,7 @@
 \index{datToFoam@\OFtool{datToFoam}!ユーティリティ}%
 \index{ユーティリティ!datToFoam@\OFtool{datToFoam}}%
  \OFtool{datToFoam} &
- \OFtool{datToFoam} (.dat) メッシュファイル内を読み，
+ datToFoamメッシュファイル内を読み，
  \OFpath{points}ファイルを出力する．
  \OFtool{blockMesh}との結合に使われる． \\
 \index{fluent3DMeshToFoam@\OFtool{fluent3DMeshToFoam}!ユーティリティ}%
@@ -274,10 +279,8 @@
 \index{singleCellMesh@\OFtool{singleCellMesh}!ユーティリティ}%
 \index{ユーティリティ!singleCellMesh@\OFtool{singleCellMesh}}%
  \OFtool{singleCellMesh} &
- 全てのフィールドを読み込み，内側の面が全て取り除かれたメッシュ (\OFclass{singleCellFvMesh})
- に変換して\OFregion{singleMesh}領域に書き出す．
- 境界のみのデータとして使えるメッシュとフィールドを生成するのに使う．
- しかし不正なメッシュになりやすいので，ParaViewで境界を見ることにのみ使う． \\
+ 全てのフィールドを読み込み，内側の面が全て取り除かれたメッシュ (singleCellFvMesh)
+ に変換して\OFregion{singleMesh}領域に書き出す． \\
 \index{splitMesh@\OFtool{splitMesh}!ユーティリティ}%
 \index{ユーティリティ!splitMesh@\OFtool{splitMesh}}%
  \OFtool{splitMesh} & 内部の面の外面を作ることでメッシュを分割する．\OFtool{attachDetach}を用いる \\
@@ -375,6 +378,9 @@
 \index{foamToTecplot360@\OFtool{foamToTecplot360}!ユーティリティ}%
 \index{ユーティリティ!foamToTecplot360@\OFtool{foamToTecplot360}}%
  \OFtool{foamToTecplot360} & Tecplotバイナリファイル形式のライタ． \\
+\index{foamToTetDualMesh@\OFtool{foamToTetDualMesh}!ユーティリティ}%
+\index{ユーティリティ!foamToTetDualMesh@\OFtool{foamToTetDualMesh}}%
+ \OFtool{foamToTetDualMesh} & polyMeshをtetDualMeshに変換する \\
 \index{foamToVTK@\OFtool{foamToVTK}!ユーティリティ}%
 \index{ユーティリティ!foamToVTK@\OFtool{foamToVTK}}%
  \OFtool{foamToVTK} & レガシーなVTKファイル形式のライタ． \\
@@ -405,8 +411,8 @@
  \OFtool{Mach} & 各時刻の速度場\OFkeyword{U}から局所Mach数を計算し，オプション指定により書き出す \\
 \index{Pe@\OFtool{Pe}!ユーティリティ}%
 \index{ユーティリティ!Pe@\OFtool{Pe}}%
- \OFtool{Pe} & \OFkeyword{phi}場からPeclet数$\nPe$を計算し，
- \OFclass{surfaceScalarField}として書き出す \\
+ \OFtool{Pe} & 流束\OFkeyword{phi}からペクレ数$\nPe$を計算し，
+ その最大値，\OFclass{surfaceScalarField} \OFkeyword{Pef}，および\OFclass{volScalarField} \OFkeyword{Pe}を書き出す \\
 \index{Q@\OFtool{Q}!ユーティリティ}%
 \index{ユーティリティ!Q@\OFtool{Q}}%
  \OFtool{Q} & 速度勾配テンソルの第2不変量を計算し，書き出す \\
@@ -453,18 +459,12 @@
 \index{wallShearStress@\OFtool{wallShearStress}!ユーティリティ}%
 \index{ユーティリティ!wallShearStress@\OFtool{wallShearStress}}%
  \OFtool{wallShearStress} &
- RAS乱流モデルを使用しているとき，
- 指定した時刻における壁面せん断応力を計算して書き出す \\
-\index{yPlusLES@\OFtool{yPlusLES}!ユーティリティ}%
-\index{ユーティリティ!yPlusLES@\OFtool{yPlusLES}}%
- \OFtool{yPlusLES} &
- LES乱流モデルを使用しているとき，
- 指定した時刻について，各壁面における\OFkeyword{yPlus}を計算する \\
-\index{yPlusRAS@\OFtool{yPlusRAS}!ユーティリティ}%
-\index{ユーティリティ!yPlusRAS@\OFtool{yPlusRAS}}%
- \OFtool{yPlusRAS} &
- RAS乱流モデルを使用しているとき，
- 指定した時刻について，各壁面における\OFkeyword{yPlus}を計算する \\
+ 指定した時刻の全てのパッチに対し，乱流壁面せん断応力を計算して書き出す \\
+\index{yPlus@\OFtool{yPlus}!ユーティリティ}%
+\index{ユーティリティ!yPlus@\OFtool{yPlus}}%
+ \OFtool{yPlus} &
+ 指定した時刻の全てのパッチについて，壁近傍セルの\OFkeyword{yPlus}を計算して書き出す．
+ 層流，LES，RAS，いずれにも使用可 \\
  \\
  \multicolumn{2}{l}{乱流の後処理} \\
  \hline
@@ -532,10 +532,10 @@
  \OFtool{execFlowFunctionObjects} & 選択された時間セットに対して，
  選択されたディクショナリ (デフォルトでは\OFdictionary{system/controlDict}) で
  指定された関数オブジェクトのセットを実行する．
- 代わりのディクショナリは\OFdictionary{system/}フォルダ以下に置く． \\
-\index{foamCalc@\OFtool{foamCalc}!ユーティリティ}%
-\index{ユーティリティ!foamCalc@\OFtool{foamCalc}}%
- \OFtool{foamCalc} & 指定された時刻におけるフィールド計算の汎用ユーティリティ． \\
+ 代わりのディクショナリは\OFdictionary{system/}ディレクトリ内に置く． \\
+% \index{foamCalc@\OFtool{foamCalc}!ユーティリティ}%
+% \index{ユーティリティ!foamCalc@\OFtool{foamCalc}}%
+%  \OFtool{foamCalc} & 指定された時刻におけるフィールド計算の汎用ユーティリティ． \\
 \index{foamListTimes@\OFtool{foamListTimes}!ユーティリティ}%
 \index{ユーティリティ!foamListTimes@\OFtool{foamListTimes}}%
  \OFtool{foamListTimes} & \OFclass{timeSelector}を使って時刻をリスト化する． \\
@@ -689,13 +689,17 @@
 \index{ユーティリティ!decomposePar@\OFtool{decomposePar}}%
  \OFtool{decomposePar} & OpenFOAMの並列計算用に
  ケースのメッシュと計算領域を自動的に分割する \\
+\index{reconstructPar@\OFtool{reconstructPar}!ユーティリティ}%
+\index{ユーティリティ!reconstructPar@\OFtool{reconstructPar}}%
+ \OFtool{reconstructPar} & OpenFOAMの並列計算用に
+ 分割されたケースのフィールドを再構築する \\
+\index{reconstructParMesh@\OFtool{reconstructParMesh}!ユーティリティ}%
+\index{ユーティリティ!reconstructParMesh@\OFtool{reconstructParMesh}}%
+ \OFtool{reconstructParMesh} & 幾何情報のみを使ってメッシュを再構築する \\
 \index{redistributePar@\OFtool{redistributePar}!ユーティリティ}%
 \index{ユーティリティ!redistributePar@\OFtool{redistributePar}}%
  \OFtool{redistributePar} & \OFpath{decomposeParDict}ファイルの設定に従って
 分割されたメッシュとフィールドを再分配する． \\
-\index{reconstructParMesh@\OFtool{reconstructParMesh}!ユーティリティ}%
-\index{ユーティリティ!reconstructParMesh@\OFtool{reconstructParMesh}}%
- \OFtool{reconstructParMesh} & 幾何情報のみを使ってメッシュを再構築する \\
  \\
  \multicolumn{2}{l}{熱物理に関連したユーティリティ} \\
  \hline

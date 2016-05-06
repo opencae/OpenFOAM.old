@@ -10,8 +10,8 @@
 \index{potentialFoam@\OFtool{potentialFoam}!ソルバ}%
 \index{ソルバ!potentialFoam@\OFtool{potentialFoam}}%
  \OFtool{potentialFoam} &
- 単純なポテンシャル流のソルバ．
- 完全なNavier--Stokes用コードを解く際の初期値の生成にも使用できる \\
+ ポテンシャル流のソルバです．
+ 速度ポテンシャルを解いて得られた流束場を再構成することで速度場を得ます． \\
 \index{scalarTransportFoam@\OFtool{scalarTransportFoam}!ソルバ}%
 \index{ソルバ!scalarTransportFoam@\OFtool{scalarTransportFoam}}%
  \OFtool{scalarTransportFoam} &
@@ -39,11 +39,6 @@
 \index{ソルバ!nonNewtonianIcoFoam@\OFtool{nonNewtonianIcoFoam}}%
  \OFtool{nonNewtonianIcoFoam} &
  非ニュートン流体の非圧縮性，層流の非定常ソルバ \\
-\index{pimpleDyMFoam@\OFtool{pimpleDyMFoam}!ソルバ}%
-\index{ソルバ!pimpleDyMFoam@\OFtool{pimpleDyMFoam}}%
- \OFtool{pimpleDyMFoam} &
- 移動メッシュでのニュートン流体の非圧縮性・乱流の
- PIMPLE (SIMPLEとPISOの融合) アルゴリズムによる非定常ソルバ \\
 \index{pimpleFoam@\OFtool{pimpleFoam}!ソルバ}%
 \index{ソルバ!pimpleFoam@\OFtool{pimpleFoam}}%
  \OFtool{pimpleFoam} &
@@ -53,10 +48,6 @@
 \index{ソルバ!pisoFoam@\OFtool{pisoFoam}}%
  \OFtool{pisoFoam} &
  非圧縮性流れの非定常ソルバ \\
-\index{porousSimpleFoam@\OFtool{porousSimpleFoam}!ソルバ}%
-\index{ソルバ!porousSimpleFoam@\OFtool{porousSimpleFoam}}%
- \OFtool{porousSimpleFoam} &
- 多孔性を陰的または陽的に扱う非圧縮性，乱流のための定常状態ソルバ \\
 \index{shallowWaterFoam@\OFtool{shallowWaterFoam}!ソルバ}%
 \index{ソルバ!shallowWaterFoam@\OFtool{shallowWaterFoam}}%
  \OFtool{shallowWaterFoam} &
@@ -65,17 +56,6 @@
 \index{ソルバ!simpleFoam@\OFtool{simpleFoam}}%
  \OFtool{simpleFoam} &
  非圧縮性・乱流の定常状態ソルバ \\
-\index{SRFSimpleFoam@\OFtool{SRFSimpleFoam}!ソルバ}%
-\index{ソルバ!SRFSimpleFoam@\OFtool{SRFSimpleFoam}}%
- \OFtool{SRFSimpleFoam} &
- 一つの回転フレームにおける非ニュートン流体の，
- 非圧縮性・乱流の定常状態ソルバ \\
-\index{SRFPimpleFoam@\OFtool{SRFPimpleFoam}!ソルバ}%
-\index{ソルバ!SRFPimpleFoam@\OFtool{SRFPimpleFoam}}%
- \OFtool{SRFPimpleFoam} &
- 一つの回転フレームにおける非圧縮性流体に対する，
- PIMPLE (PISOとSIMPLEの融合) アルゴリズムを用いた
- 大きな時間ステップの非定常ソルバ \\
  \\
  \multicolumn{2}{l}{圧縮性流れ} \\
  \hline
@@ -89,15 +69,6 @@
 \index{ソルバ!rhoCentralFoam@\OFtool{rhoCentralFoam}}%
  \OFtool{rhoCentralFoam} &
  KurganovとTadmorの中央風上スキームに基づいた密度ベースの圧縮性流ソルバ \\
-\index{rhoLTSPimpleFoam@\OFtool{rhoLTSPimpleFoam}!ソルバ}%
-\index{ソルバ!rhoLTSPimpleFoam@\OFtool{rhoLTSPimpleFoam}}%
- \OFtool{rhoLTSPimpleFoam} &
- 実行時にMRFや多孔性などの有限体積法オプションを選択できる，
- 圧縮性の層流および乱流用の定常状態ソルバ \\
-\index{rhoPimplecFoam@\OFtool{rhoPimplecFoam}!ソルバ}%
-\index{ソルバ!rhoPimplecFoam@\OFtool{rhoPimplecFoam}}%
- \OFtool{rhoPimplecFoam} &
- 冷暖房やそれに似た問題のための圧縮性の層流および乱流用の非定常ソルバ \\
 \index{rhoPimpleFoam@\OFtool{rhoPimpleFoam}!ソルバ}%
 \index{ソルバ!rhoPimpleFoam@\OFtool{rhoPimpleFoam}}%
  \OFtool{rhoPimpleFoam} &
@@ -154,21 +125,20 @@
 \index{ソルバ!compressibleInterFoam@\OFtool{compressibleInterFoam}}%
  \OFtool{compressibleInterFoam} &
  VOF (volume of fluid) 相比率に基づいた界面捕獲法による
- 不混和流体の圧縮性・等温2相流用ソルバ \\
+ 不混和流体の圧縮性・非等温2相流用ソルバ \\
 \index{compressibleMultiphaseInterFoam@\OFtool{compressibleMultiphaseInterFoam}!ソルバ}%
 \index{ソルバ!compressibleMultiphaseInterFoam@\OFtool{compressibleMultiphaseInterFoam}}%
  \OFtool{compressibleMultiphaseInterFoam} &
  VOF (volume of fluid) 相比率に基づいた界面捕獲法による
  不混和流体の圧縮性・非等温$n$相流用ソルバ \\
+\index{driftFluxFoam@\OFtool{driftFluxFoam}!ソルバ}%
+\index{ソルバ!driftFluxFoam@\OFtool{driftFluxFoam}}%
+ \OFtool{driftFluxFoam} &
+ 相同士の相対運動に対するドリフトフラックス近似による混合アプローチを用いた
+ 非圧縮性2相流用ソルバ \\
 \index{interFoam@\OFtool{interFoam}!ソルバ}%
 \index{ソルバ!interFoam@\OFtool{interFoam}}%
  \OFtool{interFoam} &
- VOF (volume of fluid) 相比率に基づいた界面捕獲法による
- 不混和流体の非圧縮性・等温2相流用ソルバ \\
-\index{interDyMFoam@\OFtool{interDyMFoam}!ソルバ}%
-\index{ソルバ!interDyMFoam@\OFtool{interDyMFoam}}%
- \OFtool{interDyMFoam} &
- 任意でメッシュ移動や，アダプティブ再メッシングを含むメッシュのトポロジ変化を伴う，
  VOF (volume of fluid) 相比率に基づいた界面捕獲法による
  不混和流体の非圧縮性・等温2相流用ソルバ \\
 \index{interMixingFoam@\OFtool{interMixingFoam}!ソルバ}%
@@ -188,23 +158,6 @@
  不混和流体の非圧縮性・等温2相流用ソルバ．
  VOF (volume of fluid) 相比率に基づいた界面捕獲法を用いる．
  メッシュ移動や，アダプティブ再メッシングを含むメッシュのトポロジ変化も扱える． \\
-\index{LTSInterFoam@\OFtool{LTSInterFoam}!ソルバ}%
-\index{ソルバ!LTSInterFoam@\OFtool{LTSInterFoam}}%
- \OFtool{LTSInterFoam} &
- VOF (volume of fluid) 相比率に基づいた界面捕獲法による
- 非圧縮性・等温・不混和な2相流の
- 局所時間ステップ (LTS，定常状態) ソルバ \\
-\index{MRFInterFoam@\OFtool{MRFInterFoam}!ソルバ}%
-\index{ソルバ!MRFInterFoam@\OFtool{MRFInterFoam}}%
- \OFtool{MRFInterFoam} &
- VOF (volume of fluid) 相比率に基づいた界面捕獲法による
- 非圧縮性・等温・不混和な2相流の
- 複合参照フレーム (MRF) ソルバ \\
-\index{MRFMultiphaseInterFoam@\OFtool{MRFMultiphaseInterFoam}!ソルバ}%
-\index{ソルバ!MRFMultiphaseInterFoam@\OFtool{MRFMultiphaseInterFoam}}%
- \OFtool{MRFMultiphaseInterFoam} &
- 界面捕獲と，それぞれの相での接触角効果を考慮した
- 非圧縮性$n$相流用の複合参照フレーム (MRF) ソルバ \\
 \index{multiphaseEulerFoam@\OFtool{multiphaseEulerFoam}!ソルバ}%
 \index{ソルバ!multiphaseEulerFoam@\OFtool{multiphaseEulerFoam}}%
  \OFtool{multiphaseEulerFoam} &
@@ -214,21 +167,15 @@
  \OFtool{multiphaseInterFoam} &
  界面捕獲と，それぞれの相での接触角効果を考慮した
  非圧縮性$n$相流ソルバ \\
-\index{porousInterFoam@\OFtool{porousInterFoam}!ソルバ}%
-\index{ソルバ!porousInterFoam@\OFtool{porousInterFoam}}%
- \OFtool{porousInterFoam} &
- 多孔質領域の陽的な扱いを備えた，
- VOF (volume of fluid) 相比率に基づいた界面捕獲法による
- 非圧縮性・等温・不混和な2相流用ソルバ \\
 \index{potentialFreeSurfaceFoam@\OFtool{potentialFreeSurfaceFoam}!ソルバ}%
 \index{ソルバ!potentialFreeSurfaceFoam@\OFtool{potentialFreeSurfaceFoam}}%
  \OFtool{potentialFreeSurfaceFoam} &
  単相の自由表面近似を使えるように波高さのフィールドを含んだ，
  非圧縮性のNavier--Stokes方程式ソルバ \\
-\index{settlingFoam@\OFtool{settlingFoam}!ソルバ}%
-\index{ソルバ!settlingFoam@\OFtool{settlingFoam}}%
- \OFtool{settlingFoam} &
- 分散相の設定シミュレーション用の非圧縮2相流コード \\
+\index{reactingEulerFoam@\OFtool{reactingEulerFoam}!ソルバ}%
+\index{ソルバ!reactingEulerFoam@\OFtool{reactingEulerFoam}}%
+ \OFtool{reactingEulerFoam} &
+ （解説なし） \\
 \index{twoLiquidMixingFoam@\OFtool{twoLiquidMixingFoam}!ソルバ}%
 \index{ソルバ!twoLiquidMixingFoam@\OFtool{twoLiquidMixingFoam}}%
  \OFtool{twoLiquidMixingFoam} &
@@ -236,8 +183,8 @@
 \index{twoPhaseEulerFoam@\OFtool{twoPhaseEulerFoam}!ソルバ}%
 \index{ソルバ!twoPhaseEulerFoam@\OFtool{twoPhaseEulerFoam}}%
  \OFtool{twoPhaseEulerFoam} &
- 液体の中の気体の泡のように分散した状態の
- 2層の非圧縮性流れのシステム \\
+ 熱輸送を伴う液体の中の気体の泡のように分散した状態の
+ 2層の圧縮性流れ系のソルバ \\
  \\
  \multicolumn{2}{l}{直接数値シミュレーション (DNS)} \\
  \hline
@@ -269,11 +216,6 @@
 \index{ソルバ!fireFoam@\OFtool{fireFoam}}%
  \OFtool{fireFoam} &
  火炎と乱流拡散炎のための非定常ソルバ \\
-\index{LTSReactingFoam@\OFtool{LTSReactingFoam}!ソルバ}%
-\index{ソルバ!LTSReactingFoam@\OFtool{LTSReactingFoam}}%
- \OFtool{LTSReactingFoam} &
- 圧縮性の層流・乱流，化学反応あり・なしを扱える
- 定常問題用の局所時間ステップ (LTS) ソルバ \\
 \index{PDRFoam@\OFtool{PDRFoam}!ソルバ}%
 \index{ソルバ!PDRFoam@\OFtool{PDRFoam}}%
  \OFtool{PDRFoam} &
@@ -315,7 +257,7 @@
 \index{buoyantSimpleFoam@\OFtool{buoyantSimpleFoam}!ソルバ}%
 \index{ソルバ!buoyantSimpleFoam@\OFtool{buoyantSimpleFoam}}%
  \OFtool{buoyantSimpleFoam} &
- 浮力を伴う圧縮性乱流用定常状態ソルバ \\
+ 換気・熱輸送のための，浮力および輻射を伴う圧縮性乱流用定常状態ソルバ \\
 \index{chtMultiRegionFoam@\OFtool{chtMultiRegionFoam}!ソルバ}%
 \index{ソルバ!chtMultiRegionFoam@\OFtool{chtMultiRegionFoam}}%
  \OFtool{chtMultiRegionFoam} &
@@ -337,42 +279,21 @@
 \index{ソルバ!DPMFoam@\OFtool{DPMFoam}}%
  \OFtool{DPMFoam} &
  連続した相の体積率の影響を伴う単一の運動学的粒子群の練成した輸送の非定常ソルバ \\
-\index{icoUncoupledKinematicParcelDyMFoam@\OFtool{icoUncoupledKinematicParcelDyMFoam}!ソルバ}%
-\index{ソルバ!icoUncoupledKinematicParcelDyMFoam@\OFtool{icoUncoupledKinematicParcelDyMFoam}}%
- \OFtool{icoUncoupledKinematicParcelDyMFoam} &
- 単一の運動学的粒子群の受動的輸送用の非定常ソルバ \\
 \index{icoUncoupledKinematicParcelFoam@\OFtool{icoUncoupledKinematicParcelFoam}!ソルバ}%
 \index{ソルバ!icoUncoupledKinematicParcelFoam@\OFtool{icoUncoupledKinematicParcelFoam}}%
  \OFtool{icoUncoupledKinematicParcelFoam} &
  単一の運動学的粒子群の受動的輸送用の非定常ソルバ \\
-\index{LTSReactingParcelFoam@\OFtool{LTSReactingParcelFoam}!ソルバ}%
-\index{ソルバ!LTSReactingParcelFoam@\OFtool{LTSReactingParcelFoam}}%
- \OFtool{LTSReactingParcelFoam} &
- 質量，運動量，エネルギの陽的なソースを含む，
- 多孔質媒体の多相Lagrange型パーセルの反応の有無を扱える
- 圧縮性の層流または乱流で
- 定常問題用の局所時間ステップ (LTS) ソルバ \\
 \index{reactingParcelFilmFoam@\OFtool{reactingParcelFilmFoam}!ソルバ}%
 \index{ソルバ!reactingParcelFilmFoam@\OFtool{reactingParcelFilmFoam}}%
  \OFtool{reactingParcelFilmFoam} &
  Lagrange型パーセルの反応と表面膜のモデリングを伴う
- 圧縮性層流・乱流用非定常PISOソルバ \\
+ 圧縮性層流・乱流用非定常PIMPLEソルバ \\
 \index{reactingParcelFoam@\OFtool{reactingParcelFoam}!ソルバ}%
 \index{ソルバ!reactingParcelFoam@\OFtool{reactingParcelFoam}}%
  \OFtool{reactingParcelFoam} &
  Lagrange型パーセルの反応を伴う
  圧縮性層流・乱流用非定常PIMPLEソルバ．
  実行時にソース項や制約条件といった有限体積法オプションを選択できる． \\
-\index{simpleReactingParcelFoam@\OFtool{simpleReactingParcelFoam}!ソルバ}%
-\index{ソルバ!simpleReactingParcelFoam@\OFtool{simpleReactingParcelFoam}}%
- \OFtool{simpleReactingParcelFoam} &
- Lagrange型パーセルの反応を伴う
- 圧縮性層流・乱流用定常状態SIMPLEソルバ．
- 実行時にソース項や制約条件といった有限体積法オプションを選択できる． \\
-\index{sprayEngineFoam@\OFtool{sprayEngineFoam}!ソルバ}%
-\index{ソルバ!sprayEngineFoam@\OFtool{sprayEngineFoam}}%
- \OFtool{sprayEngineFoam} &
- 噴霧パーセルを伴うエンジン流の，圧縮性層流・乱流の非定常PIMPLEソルバ \\
 \index{sprayFoam@\OFtool{sprayFoam}!ソルバ}%
 \index{ソルバ!sprayFoam@\OFtool{sprayFoam}}%
  \OFtool{sprayFoam} &
