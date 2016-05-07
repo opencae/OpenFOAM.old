@@ -379,8 +379,6 @@ USCSもしくはその他の単位系を使用したい場合は，
  \caption{SIとUSCSの基本単位}
  \label{tbl:4.2}
 \end{table}
-\footnotetext{訳注：原文では$\unit*{kgmol}$とされているが，これは誤り．
-SIにおける物質量の基本単位は$\unit*{mol}$である．}%
 
 
 \subsection{次元付きの型}
@@ -524,9 +522,9 @@ boundaryField
 あくまでもこれは，この機能がどのように働くかを示しただけの単純な例です．
 しかしこの機能は，ケースデータをユーザのニーズに合わせて一般化する手段として，
 より便利な使い方で多く用いることができます．
-例えば同一のRAS乱流モデルの設定を用いるケースがいくつかある場合，
+例えば同一の乱流モデルの設定を用いるケースがいくつかある場合，
 その設定を記述したファイルを一つ作成し，
-各ケースの\OFpath{RSAProperties}ファイルに\texttt{include}によって
+各ケースの\OFpath{turbulenceProperties}ファイルに\texttt{include}によって
 組み込めばよいのです．代替マクロは単独の値にとどまりません．
 例えば，単独のマクロで境界条件のまとまりを事前に定義して，それをよびだすことができます．
 この機能はほぼどこでも使えます．
@@ -727,12 +725,6 @@ snGradSchemes
     default         orthogonal;
 }
 
-fluxRequired
-{
-    default         no;
-    p               ;
-}
-
 
 // ************************************************************************* //
 \end{OFverbatim}
@@ -829,7 +821,7 @@ $\psi = 0$は最も良い精度を与えます．通常$\psi = 1$での実行が
 流束\OFkeyword{phi}に基づく$\psi = 1.0$での\OFkeyword{limitedLinear}スキームを，
 \OFkeyword{default}として指定するには以下のようにします．
 \begin{OFverbatim}[file]
-default limitedLinear 1.0 phi;
+default limitedLinear phi 1.0;
 \end{OFverbatim}
 
 \subsubsection{厳密に範囲が限定されるスカラ量に対するスキーム}
@@ -1029,11 +1021,11 @@ div(phi, U) Gauss upwind;
 \OFsubdictionary{ddtSchemes}サブディクショナリで指定します．
 各項に対する離散化スキームは\autoref{tbl:4.11}から選ぶことができます．
 
-\OFkeyword{CrankNicholson}スキームでは，
+\OFkeyword{CrankNicolson}スキームでは，
 \OFkeyword{Eular}スキームと混合させる割合を決める係数$\psi$を用います．
-$\psi = 1$の場合には純粋な\OFkeyword{CrankNicholson}，
+$\psi = 1$の場合には純粋な\OFkeyword{CrankNicolson}，
 $\psi = 0$の場合は純粋な\OFkeyword{Eular}に対応します．
-純粋な\OFkeyword{CrankNicholson}では不安定なケースにおいては，
+純粋な\OFkeyword{CrankNicolson}では不安定なケースにおいては，
 混合係数をいじることで計算を安定化させることができることがあります．
 
 
@@ -1343,10 +1335,15 @@ OpenFOAMでよく使われる\OFdictionary{fvSolution}の2番目のサブディ�
 緩和は，領域の解析の前に解のマトリックスとソースを変更するか，
 または直接領域を変更することによって，
 反復計算時の変数の変化を制限することで行われます．
-緩和係数$\alpha$ ($0 < \alpha \le 1$) は緩和の量を指定し，
-$0$から$\alpha = 1$まで変化し，強さは$\alpha \to 0$に従って増加します．
-$\alpha = 0$は連続した反復計算で変数を全く変化させない場合の解であり，
-極端なケースです．最適な$\alpha$の選択は
+以下に示すように，緩和係数$\alpha$ ($0 < \alpha \le 1$) で緩和の程度を指定します．
+\begin{itemize}
+ \item $\alpha$指定なし： 不足緩和を適用しない
+ \item $\alpha = 1$: 行列の対角成分の等価性・優位性が保証される\OFrevision{意味不明}
+ \item $\alpha$の減少に伴い，不足緩和は強くなる
+ \item $\alpha = 0$: 反復計算をしても解は変化しない
+\end{itemize}
+
+最適な$\alpha$の選択は
 安定した計算を確実にすることができるくらい小さく，
 また反復計算をスムーズに進められる程度大きくしなければなりません．
 $\alpha$の値が$0.9$程度であれば安定性を確保できることがありますが，
@@ -1374,7 +1371,7 @@ solvers
         mergeLevels     1;
     }
 
-    "(U|k|epsilon|R|nuTilda)"
+    "(U|k|epsilon|omega|f|v2)"
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
@@ -1386,28 +1383,22 @@ solvers
 SIMPLE
 {
     nNonOrthogonalCorrectors 0;
+    consistent      yes;
 
     residualControl
     {
         p               1e-2;
         U               1e-3;
-        "(k|epsilon|omega)" 1e-3;
+        "(k|epsilon|omega|f|v2)" 1e-3;
     }
 }
 
 relaxationFactors
 {
-    fields
-    {
-        p               0.3;
-    }
     equations
     {
-        U               0.7;
-        k               0.7;
-        epsilon         0.7;
-        R               0.7;
-        nuTilda         0.7;
+        U               0.9; // 0.9 is more stable but 0.95 more convergent
+        ".*"            0.9; // 0.9 is more stable but 0.95 more convergent
     }
 }
 
