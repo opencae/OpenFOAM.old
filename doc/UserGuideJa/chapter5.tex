@@ -606,7 +606,7 @@ find $FOAM_SOLVERS -name "*fvPatch*"
 \index{メッシュ!こうばいづけ@勾配付け}%
 勾配付けや曲がった辺を使ったパラメトリックなメッシュを作成します．
 
-メッシュはケースの\OFpath{constant/polyMesh}ディレクトリに位置する
+メッシュはケースの\OFpath{system} (または\OFpath{constant/polyMesh}) ディレクトリに位置する
 \index{blockMeshDict@\OFdictionary{blockMeshDict}!ディクショナリ}%
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
 \OFdictionary{blockMeshDict}というディクショナリファイルから生成します．
@@ -740,8 +740,8 @@ vertices
 そして，キーワードの後には辺が接続する二つの頂点のラベルが続きます．
 それに続いて，辺が通り過ぎる内挿点を指定しなければなりません．
 \OFkeyword{arc}には，円弧が横切ることになる一つの内挿点が必要です．
-\OFkeyword{simpleSpline}，\OFkeyword{polyLine}，
-および\OFkeyword{polySpline}に関しては，内挿点のリストが必要です．
+\OFkeyword{spline}，\OFkeyword{polyLine}，
+および\OFkeyword{BSpline}に関しては，内挿点のリストが必要です．
 \OFkeyword{line}辺は，デフォルトとして実行されるオプションと
 全く同等であり，内挿点を全く必要としません．
 \OFkeyword{line}辺を使用する必要は全くありませんが，
@@ -755,6 +755,7 @@ edges
     arc 1 5 (1.1 0.0 0.5)
 );
 \end{OFverbatim}
+
 
 \subsubsection{ブロック}
 \label{sssec:5.3.1.3}
@@ -780,7 +781,7 @@ blocks
 \begin{description}
  \item[Vertex numbering]
 \index{blockMesh@\OFtool{blockMesh}!じっこうかのう@実行可能な頂点の番号付け}%
-            \OFpath{OpenFOAM-2.0.0/cellModels}ファイルに
+            \OFpath{OpenFOAM-\OFversion/cellModels}ファイルに
             定義されているように，最初の入力がブロックの
 \index{けいじょう@形状}%
             形状識別子です．
@@ -839,6 +840,69 @@ edgeGrading (1 1 1 1 2 2 2 2 3 3 3 3)
  \caption{ブロックの辺に沿って段階わけされたメッシュ}
  \label{fig:5.6}
 \end{figure}
+
+
+\subsubsection{ブロックの複雑な勾配付け}
+\label{sssec:5.3.1.4@3.0.1}
+一つの拡大率だけを使った場合，一つのメッシュブロックにつき一方向の勾配付けしかできません．
+これに対して，一つのブロックを複数の部分に分けて勾配付けできたほうが，
+複数のブロックを定義してブロックごとに勾配付けするよりも複雑さと労力を抑えられる場合があります．
+たとえば，二つの対向する壁の間の流路の場合，壁に向かって勾配付けしたメッシュを作成するには，
+壁近傍の勾配付けに2ブロック，真ん中の均一部分に1ブロックと，3ブロック必要になります．
+OpenFOAM 2.4以降では，一つのブロックを分割して各部分に異なる勾配付けを適用する機能が搭載されています．
+複数の勾配付けは，以下の ``\texttt{1}''， ``\texttt{2}''， ``\texttt{3}'' のような
+一つの拡大率による勾配付け指定部分を書き換えることにより指定します．
+\begin{OFverbatim}[file]
+blocks (
+    hex (0 1 2 3 4 5 6 7) (100 300 100)
+    simpleGrading (1 2 3);
+);
+\end{OFverbatim}
+
+複数の勾配付けを以下の例で示します．
+\begin{itemize}
+ \item ブロックを$y$方向の長さで$20\unit{\%}$，$60\unit{\%}$，$20\unit{\%}$となるように3分割します．
+ \item $y$方向の合計セル数 (300) のうち$30\unit{\%}$ずつを部分1と3に割り当て，
+       残り$40\unit{\%}$を部分2に割り当てます．
+ \item 部分1と3には$1 : 4$の拡大率を適用し，部分2は拡大率ゼロとします．
+\end{itemize}
+\begin{OFverbatim}[file]
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (100 300 100)
+    simpleGrading
+    (
+        1                  // x-direction expansion ratio
+        (
+            (0.2 0.3 4)    // 20% y-dir, 30% cells, expansion = 4
+            (0.6 0.4 1)    // 60% y-dir, 40% cells, expansion = 1
+            (0.2 0.3 0.25) // 20% y-dir, 30% cells, expansion = 0.25 (1/4)
+        )
+        3                  // z-direction expansion ratio
+    )
+);
+\end{OFverbatim}
+
+ブロック長の比率とセル数の比率は，いずれも自動的に正規化されます．
+パーセンテージ，比率，絶対長さなど，どのように指定しても構わず，
+総和を100や1にする必要はありません．
+上記の例は以下のようにパーセンテージで指定することもできます．
+\begin{OFverbatim}[file]
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (100 300 100)
+    simpleGrading
+    (
+        1
+        (
+            (20 30 4)   // 20%, 30%...
+            (60 40 1)
+            (20 30 0.25)
+        )
+        3
+    )
+);
+\end{OFverbatim}
 
 
 \subsubsection{境界}
@@ -1070,7 +1134,8 @@ blockMesh -case <case>
 \index{blockMeshDict@\OFdictionary{blockMeshDict}!ディクショナリ}%
 \index{ディクショナリ!blockMeshDict@\OFdictionary{blockMeshDict}}%
 \OFdictionary{blockMeshDict}ファイルは，
-サブディレクトリ\OFpath{constant/polyMesh}に存在しなければなりません．
+\OFpath{system} (または\OFpath{constant/polyMesh}) ディレクトリ
+に存在しなければなりません．
 
 
 
@@ -1083,7 +1148,8 @@ OpenFOAMのメッシュ生成ユーティリティ
 \OFtool{snappyHexMesh}について解説します．
 \OFtool{snappyHexMesh}は
 \index{Stereolithography (STL)}%
-STL形式の三角の表面形状から
+STLまたはWavefront OBJフォーマットの
+三角形に分割された表面形状または三角形面から，
 六面体と
 \index{メッシュ!ぶんかつろくめんたい@分割六面体}%
 分割六面体の3次元メッシュを自動的に生成します．
@@ -1108,11 +1174,7 @@ STL形式の三角の表面形状から
 \label{ssec:5.4.1}
 \autoref{fig:5.9}に示す概略図を用いて
 メッシュを\OFtool{snappyHexMesh}によって生成する流れを説明します．
-\index{メッシュ!Stereolithography (STL)}%
-Stereolithography (STL) 形式の
-\index{メッシュ!ひょうめん@表面}%
-\index{ひょうめん@表面!メッシュ}%
-表面形状で描かれた対象を囲む長方形の部分
+三角形表面形状で記述された対象を囲む長方形の部分
 （図中のグレーの部分）にメッシュを作成することを目的とします．
 これは外部の空気力学のシミュレーションにおいて典型的な手法です．
 あくまでも\OFtool{snappyHexMesh}は3次元メッシュの生成ツールですが，
@@ -1195,7 +1257,7 @@ geometry
  \item セルのアスペクト比がほぼ$1$であること．
        少なくとも連続したスナップが行われる表面近傍で
        そうでなければスナップの収束に時間がかかり，不良の原因となる．
- \item STLの表面とセルのエッジが最低でも一箇所は交差すること．
+ \item 三角形表面とセルのエッジが最低でも一箇所は交差すること．
        つまり，一つのセルだけのメッシュでは機能しない．
 \end{itemize}
 
@@ -1249,12 +1311,16 @@ features
 );
 \end{OFverbatim}
 \OFclass{edgeMesh}に含まれる輪郭データは，
-以下のように\OFtool{surfaceFeatureExtract}を使って
 \index{surfaceFeatureExtract@\OFtool{surfaceFeatureExtract}!ユーティリティ}%
 \index{ユーティリティ!surfaceFeatureExtract@\OFtool{surfaceFeatureExtract}}%
-STL形状ファイルから取り出すことができます．
+\OFtool{surfaceFeatureExtract}を使って
+三角形表面形状ファイルから取り出すことができます．
+三角形表面の指定および含まれる角度などの制御には\OFpath{surfaceFeatureExtractDict}設定ファイルを使います．
+この設定ファイルの例は，インストールしたOpenFOAMの中のいくつかのチュートリアルおよび
+\OFpath{\$FOAM\_UTILITIES/surface/surfaceFeatureExtract}ディレクトリにあります．
+単純に以下のようにターミナルで実行します．
 \begin{OFverbatim}[terminal]
-surfaceFeatureExtract -includeAngle 150 surface.stl features
+surfaceFeatureExtract
 \end{OFverbatim}
 
 
