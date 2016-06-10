@@ -33,8 +33,8 @@
 \DeclareOption{twoside}{\@twosidetrue}
 \ExecuteOptions{final,notombow,twoside}
 \ProcessOptions\relax
-\DeclareFontShape{JY1}{mc}{m}{n}{<-> jis}{}
-\DeclareFontShape{JY1}{gt}{m}{n}{<-> jisg}{}
+\DeclareFontShape{JY2}{mc}{m}{n}{<-> jis}{}
+\DeclareFontShape{JY2}{gt}{m}{n}{<-> jisg}{}
 \prebreakpenalty\jis"2147=10000      % 5000   ’
 \postbreakpenalty\jis"2148=10000     % 5000   “
 \prebreakpenalty\jis"2149=10000      % 5000   ”

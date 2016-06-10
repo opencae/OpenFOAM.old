@@ -1,14 +1,13 @@
-\documentclass{OFbook}
+\documentclass[dvipdfmx]{OFbook}
 \setcounter{secnumdepth}{4}
-% \nofiles
+\nofiles
 
-\usepackage[dvipdfmx]{color}
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{mediabb}
+\usepackage{color}
+\usepackage{graphicx}
 \graphicspath{{./fig/pdf/}{./fig/png/}}
 \usepackage{ltxtable}
 
-\usepackage[deluxe]{otf}
+\usepackage[deluxe,uplatex,jis2004]{otf}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
@@ -16,7 +15,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
 
-\usepackage[dvipdfm,
+\usepackage[
  bookmarks=true,
  bookmarksnumbered=true,
  pdftitle={OpenFOAM Programmer's Guide},
@@ -28,8 +27,7 @@
  filecolor=blue,
  urlcolor=blue
  ]{hyperref}[2007/12/08]
-\usepackage{atbegshi}
-\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\usepackage{pxjahyper}
 
 \usepackage{OFmacros}
 

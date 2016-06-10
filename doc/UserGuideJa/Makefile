@@ -1,6 +1,6 @@
-TEX = platex
+TEX = uplatex
 DVIPDF = dvipdfmx -V 5
-MAKEINDEX = mendex -U -g
+MAKEINDEX = upmendex -g
 SED = gsed
 
 TITLE = UserGuideJa
