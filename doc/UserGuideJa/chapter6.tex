@@ -28,20 +28,17 @@ OpenFOAMで提供されているメインの後処理用のツールは，
 オープンソースの可視化アプリケーション\OFthirdparty{ParaView}から
 OpenFOAMのデータを読み込めるようにするモジュールです．
 このモジュールは，OpenFOAMにより提供されている\OFthirdparty{ParaView}の
-バージョン4.1.0を用いている二つのライブラリである
-\index{PV3FoamReader@\OFclass{PV3FoamReader}!ライブラリ}%
-\index{ライブラリ!PV3FoamReader@\OFclass{PV3FoamReader}}%
-\OFclass{PV3FoamReader}と
-\index{vtkPV3Foam@\OFclass{vtkPV3Foam}!ライブラリ}%
-\index{ライブラリ!vtkPV3Foam@\OFclass{vtkPV3Foam}}%
-\OFclass{vtkPV3Foam}にコンパイルされています (バージョン
-2.xの\OFthirdparty{ParaView}に対しては
-\OFclass{PVFoamReader}および\OFclass{vtkFoam}です)．
+バージョン4.4.0を用いている二つのライブラリである
+\index{PV4FoamReader@\OFclass{PV4FoamReader}!ライブラリ}%
+\index{ライブラリ!PV4FoamReader@\OFclass{PV4FoamReader}}%
+\OFclass{PV4FoamReader}と
+\index{vtkPV4Foam@\OFclass{vtkPV4Foam}!ライブラリ}%
+\index{ライブラリ!vtkPV4Foam@\OFclass{vtkPV4Foam}}%
+\OFclass{vtkPV4Foam}にコンパイルされています．
 最新のバイナリでリリースされているソフトウエアについても適切に動作するはずですが，
 このバージョンの\OFthirdparty{ParaView}をお使いになることを推奨します．
 \OFthirdparty{ParaView}に関する詳細な内容およびドキュメントについては
-\url{http://www.paraview.org}や
-\url{http://www.kitware.com/products/paraviewguide.html}の
+\url{http://www.paraview.org}の
 サイトから入手することができます．
 
 \OFthirdparty{ParaView}はそのデータ処理とレンダリングのエンジンとして
@@ -51,9 +48,6 @@ OpenFOAMには\OFtool{foamToVTK}ユーティリティがあり，
 ネイティブな書式のデータを\OFthirdparty{VTK}の書式に変換することができ，
 つまりVTKベースの画像ツールであれば，OpenFOAMのケースの後処理として使うことができます．
 これは，OpenFOAMで\OFthirdparty{ParaView}を使用する代替の手段となります．
-ユーザには高度な使い方，並列処理における可視化を経験してほしいことから，
-フリーのVisItを推奨します．
-これは，\url{http://llnl.gov/visit/}から入手できます．
 
 要約すると，OpenFoamの後処理用のツールとしては，
 \OFthirdparty{ParaView}の読み込みモジュールを推奨します．
@@ -91,19 +85,23 @@ paraFoam -case <caseDir>
 \index{ウィンドウパネル!Properties@\PVpanel{Properties}}%
             には，時間や領域，およびフィールドなどのケースに関する
             入力条件の選択項目があります．
- \item[\PVpanel{Display}パネル]
+            この中には，色など，選択されたモジュールの可視化の表現をコントロールする\PVpanel{Display}パネル
 \index{Display@\PVpanel{Display}!ウィンドウパネル}%
 \index{ウィンドウパネル!Display@\PVpanel{Display}}%
-            は，色など，選択されたモジュールの可視化の表現をコントロールします．
- \item[\PVpanel{Information}パネル]
+            も含まれます．
+ \item[その他のパネル]
+            は，\PVmenu{View}メニューから選択することができます．
+            この中には，メッシュのジオメトリとサイズのようなケースの統計値を表示する
+            \PVpanel{Information}パネル
 \index{Information@\PVpanel{Information}!ウィンドウパネル}%
 \index{ウィンドウパネル!Information@\PVpanel{Information}}%
-            はメッシュのジオメトリとサイズのようなケースの統計値を表示します．
+            も含まれます．
 \end{description}
 
 
 \begin{figure}[ht]
  \includegraphics{fig-6-1}
+\OFrevision{変更あり}%
  \caption{\OFtool{paraFoam}の画面}
  \label{fig:6.1}
 \end{figure}
@@ -136,40 +134,44 @@ paraFoam -case <caseDir>
 \PVbutton{Delete}ボタンがあります．
 
 
-\subsection{\PVpanel{Properties}パネル}
+\subsection{\PVpanel{Parameters}パネル}
 \label{ssec:6.1.2}
-ケースモジュールの\PVpanel{Properties}パネルにはタイムステップや領域，
-およびフィールドの設定の機能があります．
+ケースモジュールの\PVwindow{Properties}ウィンドウに含まれる\PVpanel{Parameters}パネルには，
+メッシュやフィールド，および全般的な設定の機能があります．
 コントロール方法については，\autoref{fig:6.2}に説明を記載しています．
-現在の読み込みモジュールにおいて，
-ディレクトリ内のデータを\OFthirdparty{ParaView}に書き込むことは，特に価値はありません．
-\autoref{ssec:6.1.4}節に書いてあるように，
-現在の読み込みモジュールにおいて，
+\OFthirdparty{ParaView}に読み込まれた全ての時刻ディレクトリについて，
+メッシュやフィールドを選択することができます．
+\autoref{ssec:6.1.4}節に示すように，
+表示すべき時刻データは
 \index{Current Time Controls@\PVmenu{Current Time Controls}!メニュー}%
 \index{メニュー!Current Time Controls@\PVmenu{Current Time Controls}}%
 \PVmenu{Current Time Controls}あるいは
 \index{VCR Controls@\PVmenu{VCR Controls}!メニュー}%
 \index{メニュー!VCR Controls@\PVmenu{VCR Controls}}%
-\PVmenu{VCR Controls}ツールバー内のボタンで，
-表示のための時間データを選択することができます．
-paraFoamの操作においては，
+\PVmenu{VCR Controls}ツールバー内のボタンで選択します．
+
+\OFtool{paraFoam}の操作においては，
 何らかの変更を行ったときには\PVbutton{Apply}をクリックする必要があります．
 この\PVbutton{Apply}ボタンは，ユーザが変更するつもりがなかった場合を考慮して，
 警告を与えるために緑色にハイライトされます．
 この操作方法は，承諾する前に多くの選択ができるという長所をもっており，
 特に，大きなケースでは，データ処理が最小限で行えるという便利さがあります．
-しばしばファイルのケースデータが変更され，
-（たとえばフィールドデータが新しい時間ディレクトリに書き込まれたりしたために）
-\OFthirdparty{ParaView}を書き換える必要がある場合があります．
-変更を書き込む際には，Propertiesパネル一番上の
+
+\OFthirdparty{ParaView}を実行中に，時刻ディレクトリに新しいデータが書き込まれた場合，
+\index{Refresh Times@\PVbutton{Refresh Times}!ボタン}%
+\index{ボタン!Refresh Times@\PVbutton{Refresh Times}}%
+\PVbutton{Refresh Times}ボタンを押して追加された時刻ディレクトリを読み込む必要があります．
+ファイルのケースデータが変更され，
+\OFthirdparty{ParaView}がその変更を読み込む必要がある場合には，
+\PVpanel{Parameters}パネルの
 \index{Update GUI@\PVbutton{Update GUI}!ボタン}%
 \index{ボタン!Update GUI@\PVbutton{Update GUI}}%
-\PVbutton{Update GUI}ボタンを
-チェックすることによって変更します．
+\PVbutton{Update GUI}ボタンを押して変更を適用することもできます．
 
 
 \begin{figure}[ht]
  \includegraphics{fig-6-2}
+\OFrevision{変更あり}%
  \caption{ケースモジュールのプロパティパネル}
  \label{fig:6.2}
 \end{figure}
@@ -177,26 +179,17 @@ paraFoamの操作においては，
 
 \subsection{\PVpanel{Display}パネル}
 \label{ssec:6.1.3}
+\PVwindow{Properties}ウィンドウに含まれる
 \index{Display@\PVpanel{Display}!ウィンドウパネル}%
 \index{ウィンドウパネル!Display@\PVpanel{Display}}%
 \PVpanel{Display}パネルには，与えられたケースモジュールのデータの
 可視化に関する機能があります．
-
-
-\begin{figure}[ht]
- \includegraphics{fig-6-3}
- \caption{Displayパネル}
- \label{fig:6.3}
-\end{figure}
-
-
 以下が特に重要な点です．
 \begin{itemize}
  \item データのレンジは，フィールドの最大値・最小値に対して
        自動的に更新はされませんので，
-       特に，初期のケースモジュールをロードしたときには，
-       適切なインターバルをRescale to Data Rangeで
-       選択するように注意する必要があります．
+       特に初期のケースモジュールをロードしたときなど，
+       適宜\PVbutton{Rescale}を選択するように注意する必要があります．
  \item
 \index{Edit Color Map@\PVbutton{Edit Color Map}!ボタン}%
 \index{ボタン!Edit Color Map@\PVbutton{Edit Color Map}}%
@@ -241,6 +234,14 @@ paraFoamの操作においては，
 \end{itemize}
 
 
+\begin{figure}[ht]
+ \includegraphics{fig-6-3}
+\OFrevision{変更あり}%
+ \caption{Displayパネル}
+ \label{fig:6.3}
+\end{figure}
+
+
 \subsection{ボタンツールバー}
 \label{ssec:6.1.4}
 \OFthirdparty{ParaView}の各機能はメインウインドウ上部の
@@ -264,6 +265,7 @@ paraFoamの操作においては，
 
 \begin{figure}[ht]
  \includegraphics{fig-6-4}
+\OFrevision{変更あり}%
  \caption{\OFthirdparty{ParaView}のツールバー}
  \label{fig:6.4}
 \end{figure}
@@ -278,45 +280,26 @@ paraFoamの操作においては，
 \label{sssec:6.1.5.1}
 \index{View Settings@\PVmenu{View Settings}!メニューエントリ}%
 \index{メニューエントリ!View Settings@\PVmenu{View Settings}}%
-\PVmenu{View Settings}を
-\index{Edit@\PVmenu{Edit}!メニュー}%
-\index{メニュー!Edit@\PVmenu{Edit}}%
-\PVmenu{Edit}メニューから選択すると，
-\index{General@\PVpanel{General}!ウィンドウパネル}%
-\index{ウィンドウパネル!General@\PVpanel{General}}%
-\PVpanel{General}，
-\index{Lights@\PVpanel{Lights}!ウィンドウパネル}%
-\index{ウィンドウパネル!Lights@\PVpanel{Lights}}%
-\PVpanel{Lights}，
-\index{Annotation@\PVpanel{Annotation}!ウィンドウパネル}%
-\index{ウィンドウパネル!Annotation@\PVpanel{Annotation}}%
-\PVpanel{Annotation}の3項目からなる
-\index{View Settings (Render View)@\PVwindow{View Settings (Render View)}!ウィンドウ}%
-\index{ウィンドウ!View Settings (Render View)@\PVwindow{View Settings (Render View)}}%
-\PVwindow{View Settings (Render View)}ウインドウが表示されます．
-\PVpanel{General}には以下のような項目がありますので，
-開始時に設定するとよいでしょう．
-\begin{itemize}
- \item 背景色としては，印刷物には白が望ましいでしょう．
-       そのためには\PVbutton{Choose Color}ボタンの横の下向き矢印から
-       \PVbutton{background}を選択した後で，
-       \PVbutton{Choose Color}ボタンをクリックして色を選択します．
- \item CFD，特に2次元のケースでは
-\index{Use Parallel Projection@\PVbutton{Use Parallel Projection}!ボタン}%
-\index{ボタン!Use Parallel Projection@\PVbutton{Use Parallel Projection}}%
-       \PVbutton{Use Parallel Projection}（平行投影）がよく用いられます．
-\end{itemize}
+\PVmenu{View Settings}は，
+\PVwindow{Properties}ウィンドウの中の\PVpanel{Display}パネルの下の
+\PVpanel{Render View}パネルの中にあります．
+一般的に重要な設定項目は，\PVwindow{Properties}ウィンドウの
+一番上の検索窓の隣の歯車ボタンを押したときだけ表示されます．
+これらの\emph{詳細プロパティ}には背景色の設定も含まれており，
+印刷用の画像やWeb用の素材を作る際には，しばしば白を選ぶことが好まれます．
 
-\PVpanel{Lights}パネルに含まれる\PVpanel{Light Kit}パネルでは光源の詳細設定ができます．
+\PVbutton{Lights}ボタンを押すと，光源の詳細設定ができる\PVpanel{Light Kit}パネルが開きます．
 \PVpanel{Headlight}パネルでは直接光をコントロールします．
 \PVbutton{Headlight}ボタンを白色光の強度1にすれば，
 等値面などの鮮明な色の画像を得られるでしょう．
 
-\PVpanel{Annotation}では，表示ウィンドウにおける
-軸や原点などの注釈の表示の有無を設定します．
-\index{Orientation Axes@\PVbutton{Orientation Axes}!ボタン}%
-\index{ボタン!Orientation Axes@\PVbutton{Orientation Axes}}%
-\PVbutton{Orientation Axes}で$x$，$y$，$z$軸の色など，軸の表示設定をします．
+CFD，特に2次元のケースでは
+\index{Use Parallel Projection@\PVbutton{Use Parallel Projection}!ボタン}%
+\index{ボタン!Use Parallel Projection@\PVbutton{Use Parallel Projection}}%
+\PVbutton{Use Parallel Projection}（平行投影）がよく用いられますので，
+通常はチェックしておくべきでしょう．
+そのほかの設定項目には\PVbutton{Cube Axes}も含まれており，
+方向と寸法を示すために，選択したオブジェクト上に座標軸を表示できます．
 
 \subsubsection{一般的な設定}
 \label{sssec:6.1.5.2}
@@ -495,14 +478,207 @@ OKを押すと，``\verb|<ファイル名>_<画像番号>.<拡張子>|'' とい�
 
 一連の画像が保存されると，
 適当なソフトを使って動画に変換することができます．
-ImageMagickパッケージに含まれる変換ユーティリティは，
-以下のようにコマンドラインから実行できます．
-\begin{OFverbatim}[terminal]
-convert animation*jpg movie.mpg
+一つの選択肢は，標準搭載の\OFtool{foamCreateVideo}スクリプトをコマンドラインから使う方法です．
+使用方法は \verb|-help| オプションで見ることができます．
+
+
+
+\section{関数オブジェクト}
+\label{sec:6.2@3.0.1}
+OpenFOAMには，ユーザが\OFdictionary{controlDict}ファイルで設定した処理を
+解析実行中に行わせる機能があります．
+例えば，ユーザが車両まわりの空力について定常・非圧縮・乱流の解析を実施しようとする場合，
+その解析から抗力係数を計算したくなるでしょう．
+この解析は\OFtool{simpleFoam}で実施しながら，
+抗力係数を求めるために追加する力の計算は，
+\emph{関数オブジェクト}と呼ばれるツールに含まれており，
+解析中の指定した時刻にそれを実行するようにユーザが指定することができます．
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-6-1@3.0.1}
+ \caption{モニタやプロットのために時刻歴データを書き出す関数オブジェクト}
+ \label{tbl:6.1@3.0.1}
+\end{table}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-6-2@3.0.1}
+ \caption{フィールドを読み書きする関数オブジェクト（主として時刻ディレクトリに書き出す）}
+ \label{tbl:6.2@3.0.1}
+\end{table}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-6-3@3.0.1}
+ \caption{壁近傍フィールドを扱う関数オブジェクト}
+ \label{tbl:6.3@3.0.1}
+\end{table}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-6-4@3.0.1}
+ \caption{後処理で画像を生成するための関数オブジェクト}
+ \label{tbl:6.4@3.0.1}
+\end{table}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-6-5@3.0.1}
+ \caption{その他の関数オブジェクト}
+ \label{tbl:6.5@3.0.1}
+\end{table}
+
+
+OpenFOAMには多数の関数オブジェクトが搭載されており，
+主として様々な後処理計算と，いくつかのジョブ制御を実行することができます．
+関数オブジェクトは以下のようなカテゴリに分類できます．
+\begin{itemize}
+ \item \autoref{tbl:6.1@3.0.1}: 例えば力係数などをグラフにプロットしたりモニタするための
+       時刻歴データなどを表形式で書き出します．
+       通常は，標準の時間間隔です．
+ \item \autoref{tbl:6.2@3.0.1}: フィールドのデータを書き出します．
+       通常は，時刻ディレクトリにフィールドを書き出す標準の時間間隔です．
+ \item \autoref{tbl:6.3@3.0.1}: 例えば，壁面せん断応力など，
+       境界パッチ上のフィードデータを書き出します．
+       通常は，時刻ディレクトリにフィールドを書き出す標準の時間間隔です．
+ \item \autoref{tbl:6.4@3.0.1}: 例えば，等値面の可視化など，
+       画像ファイルを書き出します．
+ \item \autoref{tbl:6.5@3.0.1}: 補助的な解析などの，
+       ジョブ制御を管理する関数オブジェクトです．
+\end{itemize}
+
+
+\subsection{関数オブジェクトの使用}
+\label{ssec:6.2.1@3.0.1}
+関数オブジェクトは，ケースの\OFdictionary{controlDict}ファイルにおいて
+\OFdictionary{function}というディクショナリとして指定します．
+一つあるいは複数の関数オブジェクトを，それぞれは一つのサブディクショナリとして指定します．
+以下に二つの関数オブジェクトを指定する例を示します．
+
+\begin{OFverbatim}[file]
+functions
+{
+    pressureProbes
+    {
+        type            probes;
+        functionObjectLibs ("libsampling.so");
+        outputControl   timeStep;
+        outputInterval  1;
+        probeLocations
+        (
+            ( 1 0 0 )
+            ( 2 0 0 )
+        );
+        fields
+        (
+            p
+        );
+    }
+
+    meanVelocity
+    {
+        type            fieldAverage;
+        functionObjectLibs ( "libfieldFunctionObjects.so" );
+        outputControl   outputTime;
+        fields
+        (
+            U
+            {
+                mean        on;
+                prime2Mean  off;
+                base        time;
+            }
+        );
+    }
+}
 \end{OFverbatim}
-mpg動画を作成する際に初期設定の \verb|-quality 90%|から
-動画のクオリティを上げるといいでしょう．
-これによって粒状ノイズを削減することができます．
+
+それぞれの関数オブジェクトには，いくつかの必須キーワードエントリがあります．
+\begin{description}
+ \item[\OFkeyword{name}]
+            あらゆる関数オブジェクトには固有の名前が必要です．
+            ここでは\OFkeyword{pressureProbes}と\OFkeyword{meanVelocity}が使われています．
+            この名前は出力ファイルやディレクトリを名付けるのに使用できます．
+ \item[\OFkeyword{type}]
+            関数オブジェクトのタイプです．例えば\OFkeyword{probes}．
+ \item[\OFkeyword{functionObjectLibs}]
+            実行時に動的にリンクされ，関連する機能にアクセスする必要のある追加ライブラリのリストです．
+            例えば\OFkeyword{forceCoeffs}関数オブジェクトは\OFpath{libforces.so}にコンパイルされているため，
+            このライブラリにリンクせずに力係数を計算することはできません．
+ \item[\OFkeyword{outputControl}]
+            データを計算して出力すべき場合に指定します．
+            選択肢として，\OFkeyword{timeStep}を選べば\OFkeyword{writeInterval}で指定した
+            時間ステップごとにデータが出力され，
+            \OFkeyword{outputTime}を選べば予定どおりの時刻に，すなわち時刻ディレクトリにデータが出力されます．
+\end{description}
+
+上記の例にあるその他のエントリは，個々の関数オブジェクトに特有のものです．
+例えば\OFkeyword{probeLocations}は圧力を調べる位置を示します．
+その他の関数オブジェクトについて，必要な特有のキーワードエントリを調べるにはどうすればよいでしょうか？
+ひとつの選択肢は，\url{http://openfoam.org/docs/cpp}または
+\url{http://openfoam.github.io/Documentation-dev/html}にあるC++ドキュメンテーションにアクセスし，
+\OFemph{post-processing}リンクをクリックすることです．
+これにより，関数オブジェクトのリストや，
+それぞれの関数オブジェクトの使い方を示すクラスの説明にたどり着くことができます．
+
+それ以外に，\OFpath{\$FOAM\_TUTORIALS}ディレクトリの中から関数オブジェクトが使われているケースを探すこともできます．
+関係のある例題を見つけるには\OFthirdparty{find}や\OFthirdparty{grep}コマンドが助けになります．
+例えば，
+\begin{OFverbatim}[terminal]
+find $FOAM_TUTORIALS -name controlDict | xargs grep -l functions
+\end{OFverbatim}%$
+
+
+\subsection{パッケージ化された関数オブジェクト}
+\label{ssec:6.2.2@3.0.1}
+OpenFOAM 2.4以降では，よく使われる関数オブジェクトは「パッケージ化」されており，
+\OFpath{\$FOAM\_ETC/caseDicts/postProcessing}の中にあります．
+これらのツールは，非常に一般的なもの (例えばフィールドの最小値と最大値をモニタする\OFpath{minMax}) から，
+特定用途向きのもの (例えば流量をモニタする\OFpath{flowRate}) まで揃っています．
+
+関数オブジェクトの設定には，必要なインプットデータと制御パラメータの両方が含まれます．
+これにより入力情報が多くなり，混乱を招くことになります．
+パッケージ化された関数オブジェクトにより，入力情報から制御パラメータを分離することができます．
+制御パラメータは，あらかじめ\OFpath{.cfg}という拡張子のファイルに記述されています．
+それぞれのツールごとに一つのファイルの中に必要な入力情報が用意されており，
+ユーザは自分のケースにコピーして状況に応じてセットします．
+
+これらのツールの使用方法を，以下の
+\OFpatch{outlet}と名付けられた出口パッチにおける流量をモニタする例で示します．
+\begin{enumerate}
+ \item \OFpath{flowRate}ディレクトリの中にある\OFpath{flowRatePatch}ツールを見つけます：\par
+       \OFpath{\$FOAM\_ETC/caseDicts/postProcessing/flowRate}
+ \item \OFpath{flowRatePatch}ファイルを，ケースの\OFpath{system}ディレクトリにコピーします
+       (\OFpath{flowRatePatch.cfg}ではありません)．
+ \item \OFpath{system/flowRatePatch}を編集してパッチ名を設定します．
+       ここでは ``\verb|patch <patchName>;|'' を ``\verb|patch outlet;|'' に書き換えます．
+ \item ケースの\OFpath{controlDict}ファイル内の\OFsubdictionary{functions}サブディクショナリにて
+       \OFpath{flowRatePatch}ファイルをインクルードすることにより，関数オブジェクトを有効化します．
+       例えば，
+\begin{OFverbatim}[file]
+functions
+{
+    #include "flowRatePatch"
+    ... その他の関数オブジェクトはここに書く ...
+}
+\end{OFverbatim}
+\end{enumerate}
+
+現在パッケージ化されている関数オブジェクトは，以下のディレクトリに見つかります．
+\begin{itemize}
+ \item \OFpath{fields}: 指定したフィールドを計算します．例えばQ
+ \item \OFpath{flowRate}: 流量を計算するツール
+ \item \OFpath{forces}: 非圧縮性・圧縮性流れ用の力と力係数
+ \item \OFpath{graphs}: グラフプロットのための簡易的なサンプリング，例えばsingleGraph
+ \item \OFpath{minMax}: フィールドの最小値や最大値のモニタリング，例えばcellMax
+ \item \OFpath{numerical}: 数値計算に関する出力情報，例えばresiduals
+ \item \OFpath{pressure}: 異なる種類の圧力や圧力低下などを計算します．
+ \item \OFpath{probes}: データを抽出するオプション
+ \item \OFpath{scalarTransport}: スカラ輸送計算のプラグイン
+ \item \OFpath{visualization}: 切断面や流線などの後処理VTKファイル
+ \item \OFpath{faceSource}: 上記のいくつかのツールのための設定
+\end{itemize}
 
 
 
@@ -779,13 +955,13 @@ sets
     {
         type    uniform;
         axis    y;
-        start   ( 0 0.5 0.25 );
-        end     ( 0 2 0.25 );
+        start   (0 0.5 0.25);
+        end     (0 2 0.25);
         nPoints 100;
     }
 );
 
-fields          ( sigmaxx );
+fields          (sigmaEq);
 
 
 // ************************************************************************* //
@@ -881,7 +1057,7 @@ Grace/xmgr，jPlotフォーマットがあります．
 \begin{table}[ht]
  \input{tbl/tbl-6-5}
  \caption{\OFsubdictionary{surfaces}サブディクショナリにおける
- \OFkeyword{surfaces用}のエントリ}
+ \OFkeyword{surfaces}用のエントリ}
  \label{tbl:6.5}
 \end{table}
 
