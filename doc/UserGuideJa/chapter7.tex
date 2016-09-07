@@ -15,50 +15,33 @@ OpenFOAMには，各々が特定の問題に特化して設計されたソルバ
 \index{ディレクトリ!constant@\OFpath{constant}}%
 \OFpath{constant}ディレクトリの中のディクショナリに
 登録されている中から実行時に指定することができます．
-本章では，一般的なモデルと，実行時に指定される
-関連したプロパティについて詳しく説明します．
+本章では，一般的なモデルと，実行時に指定すべき
+関連プロパティについて詳しく説明します．
 
 
 
 \section{熱物理モデル}
 \label{sec:7.1}
 熱物性モデルは，エネルギ，熱および物理的な特性が関与しています．
-
-\index{thermophysicalProperties@\OFdictionary{thermophysicalProperties}!ディクショナリ}%
-\index{ディクショナリ!thermophysicalProperties@\OFdictionary{thermophysicalProperties}}%
-\OFdictionary{thermophysicalProperties}ディレクトリは，
 \index{thermophysical@\OFemph{thermophysical}!ライブラリ}%
 \index{ライブラリ!thermophysical@\OFemph{thermophysical}}%
-\OFemph{thermophysical}モデルのライブラリを使用する
-すべてのソルバにより読み込まれます．
-熱物性モデルは，OpenFOAMの中では，
-その他のプロパティについても計算される
-圧力温度 ($p$--$T$) システムとして構築されます．
-これは，シミュレーションの中で使用される完全な熱物性モデルを指定する
+\OFemph{thermophysical}モデルライブラリを使用するあらゆるソルバは
+\index{thermophysicalProperties@\OFdictionary{thermophysicalProperties}!ディクショナリ}%
+\index{ディクショナリ!thermophysicalProperties@\OFdictionary{thermophysicalProperties}}%
+\OFdictionary{thermophysicalProperties}ディクショナリを読み込みます．
+OpenFOAMの熱物性モデルは圧力・温度 ($p$--$T$) システムとして構築され，
+その他の物理量はそこから計算されます．
+シミュレーションの中で使用する熱物性モデリングのパッケージを指定するために，
 \index{thermoType@\OFkeyword{thermoType}!キーワード}%
 \index{キーワード!thermoType@\OFkeyword{thermoType}}%
-\OFkeyword{thermoType}と呼ばれる必須のディクショナリ登録です．
-熱物性のモデリングは，状態の基礎方程式を定義している
-レイヤからスタートし，
-前のレイヤからプロパティを読込んだモデリングのレイヤを追加します．
-\OFkeyword{thermoType}の名称は，
-\autoref{tbl:7.1}にリストアップしている
-モデリングのマルチレイヤを意味しています．
-
-
-\vskip\floatsep
-\begingroup
- \small
-% \begin{table}[ht]
- \LTXtable{\textwidth}{tbl/tbl-7-1}
- \addtocounter{table}{-1}%
- \tblcaption{熱物性モデリングの階層}
- \label{tbl:7.1}
-% \end{table}
-\endgroup
-\vskip\floatsep
-
-
+\OFkeyword{thermoType}と呼ばれる必須のディクショナリエントリがあります．
+OpenFOAMには，C++テンプレートを用いたコンパイル済みの
+モデリングの組み合わせが多く含まれています．
+このコーディング方針では，状態方程式から始まり，
+前のレイヤから物性を導き出す熱物理モデリングのレイヤを加えていくことにより，
+熱物理モデリングのパッケージを組み立てます．
+\OFkeyword{thermoType}内のキーワードエントリは，
+それら複数のモデリングのレイヤと，それらを組み合わせる基礎をなす枠組みを表しています．
 以下は\OFkeyword{thermoType}のエントリの一例です．
 \begin{OFverbatim}[file]
 thermoType
@@ -72,6 +55,7 @@ thermoType
     energy          sensibleEnthalpy;
 }
 \end{OFverbatim}
+
 このキーワード・エントリは，
 例えば輸送 (\OFkeyword{transport}) を定数（粘性と熱拡散を定数）として，
 理想気体の状態方程式 (%
@@ -84,11 +68,281 @@ thermoType
 \index{キーワード!energy@\OFkeyword{energy}}%
 \OFkeyword{energy}というキーワード・エントリがあり，
 解析におけるエネルギの扱い方を指定することができます．
-エネルギとしては，内部エネルギかエンタルピ，
-そして生成熱$\Delta h_{\mathrm{f}}$を含めるかどうかを選択できます．
+以下の項では，\OFkeyword{thermoType}パッケージにおける
+エントリと選択肢について説明します．
+
+
+\subsection{熱物理モデルと混合気モデル}
+\label{ssec:7.1.1@3.0.1}
+熱物理モデリングを使用しているソルバは，
+それぞれ特定の熱物理モデルクラスのオブジェクトを使用します．
+モデルクラスを以下にまとめます．
+\begin{description}
+ \item[\OFclass{psiThermo}]
+            圧縮率$\psi = (RT)^{-1}$に基づく，組成不変の熱物理モデルです．
+            ここで$R$はガス定数，$T$は温度です．
+            \OFclass{psiThermo}を使用するソルバには，
+            \OFpath{compressible}ファミリのソルバ (\OFtool{sonicFoam}，
+            \OFtool{rhoSimpleFoam}%
+\footnote{訳注：原文では\OFtool{simpleFoam}となっているが，おそらく誤記．}%
+            など，\OFtool{rhoPorousSimpleFoam}は除く)，
+            \OFtool{uncoupledKinematicParcelFoam}，\OFtool{coldEngineFoam}があります．
+ \item[\OFclass{rhoThermo}]
+            密度$\rho$に基づく，組成不変の熱物理モデルです．
+            \OFclass{rhoThermo}を使用するソルバには，
+            \OFpath{heatTransfer}ファミリのソルバ (\OFtool{buoyantSimpleFoam}，
+            CHTソルバなど，Boussinesqソルバは除く)，
+            \OFtool{rhoPorousSimpleFoam}，\OFtool{twoPhaseEulerFoam}，
+            および\OFtool{thermoFoam}があります．
+ \item[\OFclass{psiReactionThermo}]
+            $\psi$に基づく，化学反応を伴う混合気の熱物理モデルです．
+            \OFclass{psiReactionThermo}を使用するソルバには，
+            \OFpath{combustion}ソルバの多く，例えば\OFtool{sprayFoam}，
+            \OFtool{chemFoam}，\OFtool{fireFoam}，\OFtool{reactingFoam}，
+            そして\OFpath{lagrangian}ソルバのいくつか，例えば\OFtool{coalChemistryFoam}や
+            \OFtool{reactingParcelFilmFoam}があります．
+ \item[\OFclass{psiuReactionThermo}]
+            未燃ガスの圧縮率$\psi_{\mathrm{u}}$に基づく，燃焼の熱物理モデルです．
+            \OFclass{psiuReactionThermo}を使用するソルバには，
+            層流火炎速度と反応進行度変数
+\OFrevision{regress variableの訳として適切？}%
+            に基づいて燃焼をモデル化する\OFpath{combustion}ソルバ，
+            例えば\OFtool{XiFoame}，\OFtool{PDRFoam}，および\OFtool{engineFoam}があります．
+ \item[\OFclass{rhoReactionThermo}]
+            $\rho$に基づく，化学反応を伴う混合気の熱物理モデルです．
+            \OFclass{rhoReactionThermo}を使用するソルバは，
+            \OFpath{combustion}ソルバのいくつか，例えば\OFtool{rhoReactingFoam}や
+            \OFtool{rhoReactingBuoyantFoam}，
+            そして\OFpath{lagrangian}ソルバのいくつか，例えば\OFtool{reactingParcelFoam}，
+            \OFtool{simpleReactingParselFoam}
+ \item[\OFclass{multiphaseMixtureThermo}]
+            多層流の熱物理モデルです．
+            \OFclass{multiphaseMixtureThermo}を使用するソルバには，
+            圧縮性の\OFpath{multiphase}界面捕獲ソルバ，
+            例えば\OFtool{compressibleInterFoam}や\OFtool{compressibleMultiphaseInterFoam}があります．
+\end{description}
+
+\OFkeyword{type}キーワードは，基礎となる熱物理モデルを指定します．
+選択肢は以下のとおりです．
+\begin{description}
+ \item[\OFkeyword{hePsiThermo}]
+            \OFclass{psiThermo}や\OFclass{psiReactionThermo}に基づくソルバで使用します．
+ \item[\OFkeyword{heRhoThermo}]
+            \OFclass{rhoThermo}，\OFclass{rhoReactionThermo}，
+            および\OFclass{multiphaseMixtureThermo}に基づくソルバで使用します．
+ \item[\OFkeyword{heheuPsiThermo}]
+            \OFclass{psiuReactionThermo}に基づくソルバで使用します．
+\end{description}
+
+\OFkeyword{mixture}は混合気の組成を指定します．
+化学反応を伴わない熱物理モデルに通常使われる選択肢は，
+組成の固定された混合気を表す\OFkeyword{pureMixture}です．
+\OFkeyword{pureMixture}が指定された場合，
+\OFsubdictionary{mixture}というサブディクショナリの中で熱物理モデルの係数を指定します．
+
+化学反応を伴う熱物理モデルで必要となる，組成が変化する混合気の場合に対しては，
+\OFkeyword{reacting\-Mixture}という選択肢が使われます．
+\OFkeyword{foamChemistryFile}キーワードで指定したファイル内に，
+化学種と化学反応を列挙します．
+それから\OFkeyword{reactingMixture}モデルに必要となる熱物理モデルの係数は，
+それぞれの化学種の名前がつけられたサブディクショナリ (例えば\OFsubdictionary{O2}や\OFsubdictionary{N2})
+の中で指定します．
+
+層流火炎速度と反応進行度変数
+\OFrevision{regress variableの訳として適切？}%
+に基づいた燃焼に対しては，
+\OFkeyword{fuel}，\OFkeyword{oxidant}，および\OFkeyword{burnt\-Prod\-ucts}といった混合気の
+組み合わせが構成成分となります．
+この燃焼モデルに使用できる混合気モデルは，
+\OFkeyword{homogeneousMixture}，\OFkeyword{inhomogeneousMixture}および
+\OFkeyword{very\-In\-ho\-mo\-ge\-ne\-ous\-Mix\-ture}です．
+
+組成の変化するその他のモデルには，
+\OFkeyword{egrMixture}，\OFkeyword{multiComponentMixture}および
+\OFkeyword{sin\-gle\-Step\-Reacting\-Mixture}があります．
+
+
+\subsection{輸送モデル}
+\label{ssec:7.1.2@3.0.1}
+輸送モデリングは，粘性係数%
+\footnote{訳注：原文にはdynamic viscosityとあるが，文脈からして動粘性係数ではない．}%
+$\mu$，熱伝導率$\kappa$，熱拡散率$\alpha$（内部エネルギとエンタルピの方程式に用いられる）の
+評価に関係します．
+現在の\OFclass{transport}モデルは，以下に説明するとおりです．
+\begin{description}
+ \item[\OFclass{const}]
+            $\mu$とPrandtl数$\nPr = c_{\mathrm{p}}\mu/\kappa$が一定であると仮定します．
+            それぞれ単純にキーワード
+\index{mu@\OFkeyword{mu}!キーワード}%
+\index{キーワード!mu@\OFkeyword{mu}}%
+            \OFkeyword{mu}および
+\index{Pr@\OFkeyword{Pr}!キーワード}%
+\index{キーワード!Pr@\OFkeyword{Pr}}%
+            \OFkeyword{Pr}によって指定します．
+ \item[\OFclass{sutherland}]
+            $\mu$を温度$T$の関数として計算します．
+            これには，Sutherland係数$A_{\mathrm{S}}$とSutherland温度$T_{\mathrm{S}}$が用いられ，
+            キーワード
+\index{As@\OFkeyword{As}!キーワード}%
+\index{キーワード!As@\OFkeyword{As}}%
+            \OFkeyword{As}および
+\index{Ts@\OFkeyword{Ts}!キーワード}%
+\index{キーワード!Ts@\OFkeyword{Ts}}%
+            \OFkeyword{Ts}によって指定します．
+            $\mu$は，次のように計算されます．
+\begin{align}
+ \label{eq:7.2}
+ \mu = \frac{A_{\mathrm{S}}\sqrt{T}}{1 + T_{\mathrm{S}}/T}
+\end{align}
+ \item[\OFclass{polynomial}]
+            $\mu$と$\kappa$を温度$T$の関数として，任意次数$N$の多項式から計算します．
+            例えば，
+\begin{align}
+ \label{eq:7.2@3.0.1}
+ \mu = \sum^{N-1}_{i=0}a_{1}T^{i}
+\end{align}
+\end{description}
+
+
+\subsection{熱力学モデル}
+\label{ssec:7.1.3@3.0.1}
+熱力学モデルは，比熱$c_{\mathrm{p}}$の評価に関わるものであり，
+そこから他の物性値が導出されます．
+現在の\OFclass{thermo}モデルは，以下に示すとおりです．
+\begin{description}
+ \item[\OFclass{hConst}]
+            $c_{\mathrm{p}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
+            単純に
+\index{Cp@\OFkeyword{Cp}!キーワード}%
+\index{キーワード!Cp@\OFkeyword{Cp}}%
+            \OFkeyword{Cp}および
+\index{Hf@\OFkeyword{Hf}!キーワード}%
+\index{キーワード!Hf@\OFkeyword{Hf}}%
+            \OFkeyword{Hf}というキーワードで
+            二つの値$c_{\mathrm{p}}$と$H_{\mathrm{f}}$を指定します．
+ \item[\OFclass{eConst}]
+            $c_{\mathrm{v}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
+            単純に
+\index{Cv@\OFkeyword{Cv}!キーワード}%
+\index{キーワード!Cv@\OFkeyword{Cv}}%
+            \OFkeyword{Cv}および
+\index{Hf@\OFkeyword{Hf}!キーワード}%
+\index{キーワード!Hf@\OFkeyword{Hf}}%
+            \OFkeyword{Hf}というキーワードで
+            二つの値$c_{\mathrm{v}}$と$H_{\mathrm{f}}$を指定します．
+ \item[\OFclass{janaf}]
+            熱力学の\OFemph{JANAF}表から得られた一連の係数により，
+            $c_{\mathrm{p}}$を温度の関数として計算します．
+            順に並べた係数のリストを\autoref{tbl:7.3}に示します．
+            関数は，温度の下限$T_{\mathrm{l}}$と上限$T_{\mathrm{h}}$の間で妥当性が確認されています．
+            係数は二組示されています．
+            最初の組は常温$T_{\mathrm{c}}$以上 (そして$T_{\mathrm{h}}$以下) の温度についてのものであり，
+            二組目は$T_{\mathrm{c}}$以下 (そして$T_{\mathrm{l}}$以上) の範囲のものです．
+            $c_{\mathrm{p}}$を温度の関数として表すと，
+\begin{align}
+ \label{eq:7.1}
+ c_{\mathrm{p}} = R((((a_{4}T + a_{3})T + a_{2})T + a_{1})T + a_{0})
+\end{align}
+            これに加えて，高温と低温の両方に$a_{5}$，$a_{6}$という積分定数があります．
+            これらは，それぞれ$h$と$s$を評価するために使われます．
+ \item[\OFclass{hPolynomial}]
+            $c_{\mathrm{p}}$を温度の関数として，任意次数$N$の多項式によって計算します．
+\begin{align}
+ \label{eq:7.4@3.0.1}
+ c_{\mathrm{p}} = \sum^{N-1}_{i=0}a_{1}T^{i}
+\end{align}
+            次のケースにその使用例があります：\\
+            \hfil\OFpath{\$FOAM\_TUTORIALS/lagrangian/porousExplicitSourceReactingParcelFoam/filter}
+\end{description}
+
+
+\begin{table}[ht]
+ \input{tbl/tbl-7-3}
+ \caption{JANAFの熱力学係数}
+ \label{tbl:7.3}
+\end{table}
+
+
+\subsection{各成分の組成}
+\label{ssec:7.1.4@3.0.1}
+現在のところ，各成分の組成を指定する\OFkeyword{specie}モデルに対する選択肢は一つだけです．
+それ自身が\OFkeyword{specie}という名前であり，以下のエントリを指定します．
+\begin{description}
+ \item[\OFkeyword{nMoles}]
+            成分のモル数を指定します．
+            このエントリは，反応物質の均質な混合気と
+            反応進行度変数に基づいた燃焼モデリングにのみ使用されます．
+            それ以外の場合には1を指定します．
+ \item[\OFkeyword{molWeight}]
+            化学種のモルあたりグラム数を指定します．
+\end{description}
+
+
+\subsection{状態方程式}
+\label{ssec:7.1.5@3.0.1}
+熱物理モデリングにおいては以下のような状態方程式が使用できます．
+\begin{description}
+ \item[\OFclass{rhoConst}] 密度一定：
+\begin{align}
+ \label{eq:7.5@3.0.1}
+ \rho = \text{constant.}
+\end{align}
+ \item[\OFclass{perfectGas}] 完全気体：
+\begin{align}
+ \label{eq:7.6@3.0.1}
+ \rho = \frac{1}{RT}p
+\end{align}
+ \item[\OFclass{incompressiblePerfectGas}] 非圧縮性の完全気体：
+\begin{align}
+ \label{eq:7.7@3.0.1}
+ \rho = \frac{1}{RT}p_{\mathrm{ref}}
+\end{align}
+            ここで$p_{\mathrm{ref}}$は参照圧力です．
+ \item[\OFclass{perfectFluid}] 完全流体：
+\begin{align}
+ \label{eq:7.8@3.0.1}
+ \rho = \frac{1}{RT}p + \rho_{0}
+\end{align}
+            ここで$\rho_{0}$は$T = 0$のときの密度です．．
+ \item[\OFclass{linear}] 線形の状態方程式：
+\begin{align}
+ \label{eq:7.9@3.0.1}
+ \rho = \psi p + \rho_{0}
+\end{align}
+            ここで$\psi$は圧縮率です ($(RT)^{-1}$とはかぎりません)．
+ \item[\OFclass{adiabaticPerfectFluid}] 断熱の完全流体：
+\begin{align}
+ \label{eq:7.10@3.0.1}
+ \rho = \rho_{0}\left(\frac{p + B}{p_{0} + B}\right)^{1/\gamma}
+\end{align}
+            ここで$\rho_{0}$，$p_{0}$はそれぞれ参照密度，圧力であり，
+            $B$はモデル定数です．
+ \item[\OFclass{PengRobinsonGas}] Peng Robinsonの状態方程式：
+\begin{align}
+ \label{eq:7.11@3.0.1}
+ \rho = \frac{1}{zRT}p
+\end{align}
+            ここで複雑な関数$z = z(p,\ T)$は，
+            \OFpath{\$FOAM\_SRC/thermophysicalModels/specie/equation\-Of\-State/}
+            ディレクトリにある\OFpath{PengRobinsonI.H}ソースファイルで参照できます．
+ \item[\OFclass{icoPolynomial}] 非圧縮性の多項式による状態方程式：
+\begin{align}
+ \label{eq:7.12@3.0.1}
+ \rho = \sum^{N-1}_{i=1}a_{i}T^{i}
+\end{align}
+            ここで$a_{i}$は任意次数$N$の多項式に対する係数です．
+\end{description}
+
+
+\subsection{エネルギ変数の選択}
+\label{ssec:7.1.6@3.0.1}
+ユーザは，解析に使用するエネルギの形態を内部エネルギ$e$，エンタルピ$h$のいずれとするか，
+そして生成熱$\Delta h_{\mathrm{f}}$を含めるかどうかを指定する必要があります．
+この選択は\OFkeyword{energy}キーワードで指定します．
+
 生成熱を含める場合は\emph{絶対}エネルギを使いますが，
 そうでない場合は\emph{顕在}エネルギを使います．
-例えば，絶対エネルギ$h$と顕在エネルギ$h_{\mathrm{s}}$の関係は以下のようになります．
+例えば，絶対エンタルピ$h$と顕在エンタルピ$h_{\mathrm{s}}$の関係は以下のようになります．
 \begin{align}
  \label{eq:7.1@2.2.0}
  h = h_{\mathrm{s}} + \sum_{i}c_{i}\Delta h_{\mathrm{f}}^{i}
@@ -130,95 +384,8 @@ thermoType
  \item[\OFkeyword{transport}] 選択した輸送モデル（後述）に対する係数を入力します．
 \end{description}
 
-
-熱力学係数は見かけ上，比熱$c_{\mathrm{p}}$の評価に関与し，
-そこから他の物性値が導出されます．
-現在の\OFkeyword{thermo}モデルは，以下に示すとおりです．
-\begin{description}
- \item[hConstThermo]
-            $c_{\mathrm{p}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
-            単純に
-\index{Cp@\OFkeyword{Cp}!キーワード}%
-\index{キーワード!Cp@\OFkeyword{Cp}}%
-            \OFkeyword{Cp}および
-\index{Hf@\OFkeyword{Hf}!キーワード}%
-\index{キーワード!Hf@\OFkeyword{Hf}}%
-            \OFkeyword{Hf}というキーワードで
-            二つの値$c_{\mathrm{p}}$と$H_{\mathrm{f}}$を指定します．
- \item[eConstThermo]
-            $c_{\mathrm{v}}$と融解熱$H_{\mathrm{f}}$を定数と仮定します．
-            単純に
-\index{Cv@\OFkeyword{Cv}!キーワード}%
-\index{キーワード!Cv@\OFkeyword{Cv}}%
-            \OFkeyword{Cv}および
-\index{Hf@\OFkeyword{Hf}!キーワード}%
-\index{キーワード!Hf@\OFkeyword{Hf}}%
-            \OFkeyword{Hf}というキーワードで
-            二つの値$c_{\mathrm{v}}$と$H_{\mathrm{f}}$を指定します．
- \item[janafThermo]
-            熱力学の\OFemph{JANAF}表から得られた一連の係数により，
-            $c_{\mathrm{p}}$を温度の関数として計算します．
-            順に並べた係数のリストを\autoref{tbl:7.3}に示します．
-            関数は，温度の下限$T_{\mathrm{l}}$と上限$T_{\mathrm{h}}$の間で妥当性が確認されています．
-            係数は二組示されています．
-            最初の組は常温$T_{\mathrm{c}}$以上 (そして$T_{\mathrm{h}}$以下) の温度についてのものであり，
-            二組目は$T_{\mathrm{c}}$より以下 (そして$T_{\mathrm{l}}$以上) の範囲のものです．
-            $c_{\mathrm{p}}$を温度の関数として表すと，
-\begin{align}
- \label{eq:7.1}
- c_{\mathrm{p}} = R((((a_{4}T + a_{3})T + a_{2})T + a_{1})T + a_{0})
-\end{align}
-            これに加えて，高温と低温の両方に$a_{5}$，$a_{6}$という積分定数があります．
-            これらは，それぞれ$h$と$s$を評価するために使われます．
- \item[hPolynomialThermo]
-            $c_{\mathrm{p}}$を温度の関数として，任意次数の多項式によって計算します．
-            次のケースにその使用例があります：\\
-            \hfil\OFpath{\$FOAM\_TUTORIALS/lagrangian/porousExplicitSourceReactingParcelFoam/filter}
-\end{description}
-
-
-\begin{table}[ht]
- \input{tbl/tbl-7-3}
- \caption{JANAFの熱力学係数}
- \label{tbl:7.3}
-\end{table}
-
-
-輸送係数は，粘性係数%
-\footnote{訳注：原文にはdynamic viscosityとあるが，文脈からして動粘性係数ではない．}%
-$\mu$，熱伝導率$\kappa$，層流熱伝導率（エンタルピ方程式のため）$\alpha$を
-評価するために使われます．
-現在の\OFclass{transport}モデルは，以下に説明するとおりです．
-\begin{description}
- \item[\OFclass{constTransport}]
-            $\mu$とPrandtl数$\nPr = c_{\mathrm{p}}\mu/\kappa$が一定であると仮定します．
-            それぞれキーワード
-\index{mu@\OFkeyword{mu}!キーワード}%
-\index{キーワード!mu@\OFkeyword{mu}}%
-            \OFkeyword{mu}および
-\index{Pr@\OFkeyword{Pr}!キーワード}%
-\index{キーワード!Pr@\OFkeyword{Pr}}%
-            \OFkeyword{Pr}によって指定します．
- \item[\OFclass{sutherlandTransport}]
-            $\mu$を温度$T$の関数として計算します．
-            これには，Sutherland係数$A_{\mathrm{S}}$とSutherland温度$T_{\mathrm{S}}$が用いられ，
-            キーワード
-\index{As@\OFkeyword{As}!キーワード}%
-\index{キーワード!As@\OFkeyword{As}}%
-            \OFkeyword{As}および
-\index{Ts@\OFkeyword{Ts}!キーワード}%
-\index{キーワード!Ts@\OFkeyword{Ts}}%
-            \OFkeyword{Ts}によって指定します．
-            $\mu$は，次のように計算されます．
-\begin{align}
- \label{eq:7.2}
- \mu = \frac{A_{\mathrm{S}}\sqrt{T}}{1 + T_{\mathrm{S}}/T}
-\end{align}
- \item[polynomialTransport]
-            $\mu$と$\kappa$を温度$T$の関数として，任意次数の多項式から計算します．
-\end{description}
-次は，\OFkeyword{fuel}という名前の種についてのエントリの例です．
-これは，\OFclass{sutherlandTransport}と\OFclass{janaf\-Thermo}を使ってモデル化されています．
+以下は，\OFclass{sutherland}輸送モデルと\OFclass{janaf}熱力学モデルを用いた
+\OFkeyword{fuel}という名前の種についての入力例です．
 \index{Tlow@\OFkeyword{Tlow}!キーワード}%
 \index{キーワード!Tlow@\OFkeyword{Tlow}}%
 \index{Thigh@\OFkeyword{Thigh}!キーワード}%
@@ -254,8 +421,8 @@ fuel
     }
 }
 \end{OFverbatim}
-次に示すのは，\OFkeyword{air}という名前の物質についての，エントリの例です．
-これは，\OFclass{constTransport}と\OFclass{hConstThermo}でモデル化されています．
+次に示すのは，\OFclass{const}輸送モデルと\OFclass{hConst}熱力学モデルを用いた
+\OFkeyword{air}という名前の物質についての入力例です．
 \begin{OFverbatim}[file]
 air
 {
@@ -295,40 +462,47 @@ air
 \index{laminar@\OFkeyword{laminar}!キーワードエントリ}%
 \index{キーワードエントリ!laminar@\OFkeyword{laminar}}%
             乱流モデルを使用しない
- \item[RASModel]
-\index{RASModel@\OFkeyword{RASModel}!キーワードエントリ}%
-\index{キーワードエントリ!RASModel@\OFkeyword{RASModel}}%
+ \item[RAS]
+\index{RAS@\OFkeyword{RAS}!キーワードエントリ}%
+\index{キーワードエントリ!RAS@\OFkeyword{RAS}}%
             Reynolds平均応力 (RAS) モデル
- \item[LESModel]
-\index{LESModel@\OFkeyword{LESModel}!キーワードエントリ}%
-\index{キーワードエントリ!LESModel@\OFkeyword{LESModel}}%
+ \item[LES]
+\index{LES@\OFkeyword{LES}!キーワードエントリ}%
+\index{キーワードエントリ!LES@\OFkeyword{LES}}%
             ラージ・エディ・シミュレーション (LES) モデル
 \end{description}
 
-\OFkeyword{RASModel}が選択されているとき，
-RASモデリングの選択は，同じく\OFpath{constant}ディレクトリにある
-\OFdictionary{RASProperties}ファイルで設定します．
+バージョン3.0.0以前のOpenFOAMに対する注記：
+キーワードの選択肢は上記のかわりに\OFkeyword{RASModel}および\OFkeyword{LESModel}です．
+
+\OFkeyword{RAS}が選択されているとき，
+RASモデリングの選択は，同じく\OFpath{constant}ディレクトリにある\OFrevision{原文が誤記？}%
+\OFsubdictionary{RAS}サブディクショナリで設定します．
 RAS乱流モデルは，\autoref{tbl:3.9}に示した利用可能なモデルの長いリストから，
 \OFkeyword{RASModel}エントリで選択します．
-同様に，\OFkeyword{LESModel}が選択された場合，
-LESモデリングの詳細は\OFdictionary{LESProperties}ディクショナリで記述し，
+同様に，\OFkeyword{LES}が選択された場合，
+LESモデリングの詳細は\OFsubdictionary{LES}ディクショナリで記述し，
 LES乱流モデルは\OFkeyword{LESModel}エントリで選択します．
-\OFdictionary{RASProperties}に必要なエントリは，
-\autoref{tbl:7.4}に，
-また\OFdictionary{LESProperties}ディクショナリについては
-\autoref{tbl:7.5}に示します．
+
+バージョン3.0.0以前のOpenFOAMに対する注記：
+RASモデリングは\OFdictionary{turbulenceProperties}内の\OFsubdictionary{RAS}サブディクショナリではなく
+独立した\OFdictionary{RASProperties}ファイルに，
+同様にLESモデリングも独立した\OFdictionary{LESProperties}ファイルにて指定されます．
+
+\OFsubdictionary{RAS}サブディクショナリに必要なエントリは\autoref{tbl:7.4}に，
+また\OFsubdictionary{LES}サブディクショナリについては\autoref{tbl:7.5}に示します．
 
 
 \begin{table}[ht]
  \input{tbl/tbl-7-4}
- \caption{\OFdictionary{RASProperties}ディクショナリにおけるキーワードエントリ}
+ \caption{\OFsubdictionary{RAS}サブディクショナリにおけるキーワードエントリ}
  \label{tbl:7.4}
 \end{table}
 
 
 \begin{table}[ht]
  \input{tbl/tbl-7-5}
- \caption{\OFdictionary{LESProperties}ディクショナリにおけるキーワードエントリ}
+ \caption{\OFsubdictionary{LES}サブディクショナリにおけるキーワードエントリ}
  \label{tbl:7.5}
 \end{table}
 
@@ -359,9 +533,9 @@ RASモデルの係数には，それぞれのソースコードの中でデフ�
 OpenFOAMでは，個別のパッチの境界条件として適用する，
 様々な壁関数が利用可能になっています．
 これにより，異なる壁領域に異なる壁関数モデルを適用することが可能になります．
-壁関数モデルの選択は，
-非圧縮性RASにおいては\OFpath{0/nut}ファイルの$\nu_{\mathrm{t}}$，
-圧縮性RASにおいては\OFpath{0/mut}ファイルの$\mu_{\mathrm{t}}$，
+壁関数モデルの選択は，\OFpath{0/nut}ファイル内の乱流粘性係数$\nu_{\mathrm{t}}$によって指定します．
+バージョン3.0.0以前のOpenFOAMに対する注記：
+圧縮性RASにおける壁関数は\OFpath{0/mut}ファイルの$\mu_{\mathrm{t}}$，
 非圧縮性LESにおいては\OFpath{0/nuSgs}ファイルの$\nu_{\mathrm{sgs}}$，
 圧縮性LESにおいては\OFpath{0/muSgs}ファイルの$\mu_{\mathrm{sgs}}$
 によって指定します．
@@ -394,12 +568,12 @@ boundaryField
 // ************************************************************************* //
 \end{OFverbatim}
 本リリースでは様々な壁関数モデルが利用できます．
-たとえば，\OFkeyword{nutWallFunction}，\break
-\OFkeyword{nutRoughWallFunction}，
-\OFkeyword{nutSpalartAllmarasStandardRoughWallFunction}，\break
-\OFkeyword{nutSpalartAllmarasStandardWallFunction}，
-そして\OFkeyword{nutSpalartAllmarasWallFunction}．
-ユーザは，当該ディレクトリから，すべての壁関数モデルのリストを参照できます．
+例えば，\OFkeyword{nut\-Wall\-Function}，
+\OFkeyword{nut\-Rough\-Wall\-Function}，\hskip.3em
+\OFkeyword{nut\-U\-Spalding\-Wall\-Function}，\hskip.3em
+\OFkeyword{nutk\-Wall\-Function}，\hskip.3em
+そして\OFkeyword{nutk\-Atm\-Wall\-Function}などです．
+関連するディレクトリを探すことにより，すべての壁関数モデルのリストを得ることができます．
 \begin{OFverbatim}[terminal]
 find $FOAM_SRC/turbulenceModels -name wallFunctions
 \end{OFverbatim}%$
@@ -411,4 +585,116 @@ find $FOAM_SRC/turbulenceModels -name wallFunctions
 \OFpath{epsilon}フィールドの対応するパッチでは\OFkeyword{epsilonWallFunction}を，
 乱流場\OFpath{k}，\OFpath{q}，\OFpath{R}の対応するパッチには
 \OFkeyword{kqRwallFunction}を選択する必要があります．
+
+
+
+\section{輸送・流動モデル}
+\label{sec:7.3@3.0.1}
+OpenFOAMにおいて，エネルギや熱を含まないソルバは，粘性係数$\nu$のモデルライブラリを含みます．
+これらのモデルは通常，粘性係数をひずみ速度$\dot{\gamma}$に関連付けるものであり，
+\OFdictionary{transportProperties}ディクショナリで指定します．
+以下の項に使用できるモデルを記載します．
+
+
+\subsection{ニュートン流体モデル}
+\label{ssec:7.3.1@3.0.1}
+ニュートン流体モデルでは$\nu$は一定とみなします．
+粘性係数は\OFdictionary{transportProperties}の中で\OFclass{dimensionedScalar}として指定します．
+例えば，
+\begin{OFverbatim}[file]
+transportModel Newtonian;
+
+nu             nu [ 0 2 -1 0 0 0 0 ] 1.5e-05;
+\end{OFverbatim}
+動粘性係数の次元は$\mathsf{L}^{2}/\mathsf{T}$であることに注意．
+
+
+\subsection{Bird--Carreauモデル}
+\label{ssec:7.3.2@3.0.1}
+Bird--Carreauモデルは以下のとおりです．
+\begin{align}
+ \label{eq:7.14@3.0.1}
+ \nu = \nu_{\infty} + (\nu_{0} - \nu_{\infty})[1 + (k\dot{\gamma})^{a}]^{(n-1)/a}
+\end{align}
+ここで，係数のデフォルト値は2です．
+\OFdictionary{transportProperties}において，このモデルを指定する例を以下に示します．
+\begin{OFverbatim}[file]
+transportModel BirdCarreau;
+BirdCarreauCoeffs
+{
+    nu0             nu0   [ 0 2 -1 0 0 0 0 ] 1e-03;
+    nuInf           nuInf [ 0 2 -1 0 0 0 0 ] 1e-05;
+    k               k     [ 0 0  1 0 0 0 0 ] 1;
+    n               n     [ 0 0  0 0 0 0 0 ] 0.5;
+}
+\end{OFverbatim}
+
+
+\subsection{Crossべき乗則モデル}
+\label{ssec:7.3.3@3.0.1}
+Crossのべき乗則モデルは以下のとおりです．
+\begin{align}
+ \label{eq:7.15@3.0.1}
+ \nu = \nu_{\infty} + \frac{\nu_{0} - \nu_{\infty}}{1 + (m\dot{\gamma})^{n}}
+\end{align}
+\OFdictionary{transportProperties}において，このモデルを指定する例を以下に示します．
+\begin{OFverbatim}[file]
+transportModel CrossPowerLaw;
+CrossPowerLawCoeffs
+{
+    nu0             nu0   [ 0 2 -1 0 0 0 0 ] 1e-03;
+    nuInf           nuInf [ 0 2 -1 0 0 0 0 ] 1e-05;
+    m               m     [ 0 0  1 0 0 0 0 ] 1;
+    n               n     [ 0 0  0 0 0 0 0 ] 0.5;
+}
+\end{OFverbatim}
+
+
+\subsection{べき乗則モデル}
+\label{ssec:7.3.4@3.0.1}
+べき乗則モデルは，最小値と最大値，
+それぞれ$\nu_{\mathrm{min}}$および$\nu_{\mathrm{max}}$により制限された
+粘性係数の関数を提供します．
+この関数は以下のとおりです．
+\begin{align}
+ \label{eq:7.16@3.0.1}
+ \nu &= k\dot{\gamma}^{n-1} &
+ \nu_{\mathrm{min}} &\le \nu \le \nu_{\mathrm{max}}
+\end{align}
+\OFdictionary{transportProperties}において，このモデルを指定する例を以下に示します．
+\begin{OFverbatim}[file]
+transportModel powerLaw;
+powerLawCoeffs
+{
+    nuMax           nuMax [ 0 2 -1 0 0 0 0 ] 1e-03;
+    nuMin           nuMin [ 0 2 -1 0 0 0 0 ] 1e-05;
+    k               k     [ 0 2 -1 0 0 0 0 ] 1e-05;
+    n               n     [ 0 0  0 0 0 0 0 ] 1;
+}
+\end{OFverbatim}
+
+
+\subsection{Herschel--Bulkleyモデル}
+\label{ssec:7.3.5@3.0.1}
+Herschel--Bulkleyモデルは，Bingham塑性体の効果と
+流体のべき乗則の振る舞いを組み合わせます．
+低ひずみ速度に対しては，材料は粘性係数$\nu_{0}$の高粘性流体としてモデル化されます．
+限界応力$\tau_{0}$に対応する，ある閾値を超えるひずみ速度では，
+粘性係数はべき乗則で記述されます．
+このモデルは以下のとおりです．
+\begin{align}
+ \label{eq:7.17@3.0.1}
+ \nu = \min\left(\nu_{0},\ \tau_{0}/\dot{\gamma} + k\dot{\gamma}^{n-1}\right)
+\end{align}
+\OFdictionary{transportProperties}において，このモデルを指定する例を以下に示します．
+\begin{OFverbatim}[file]
+transportModel HerschelBulkley;
+HerschelBulkleyCoeffs
+{
+    nu0             nu0  [ 0 2 -1 0 0 0 0 ] 1e-03;
+    tau0            tau0 [ 0 2 -2 0 0 0 0 ] 1;
+    k               k    [ 0 2 -1 0 0 0 0 ] 1e-05;
+    n               n    [ 0 0  0 0 0 0 0 ] 1;
+}
+\end{OFverbatim}
 
