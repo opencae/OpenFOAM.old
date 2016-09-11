@@ -203,11 +203,11 @@
         \def\@oddhead{\small
                 \underline{\hbox to \textwidth{\autoxspacing
                 \rightmark\hfil\thepage}}}%
-        \def\@oddfoot{\vbox{\hrulefill\vskip.1\baselineskip\small\hfill\OpenFOAM-\@version}}%
+        \def\@oddfoot{\vbox{\hrulefill\vskip.1\baselineskip\small\hfill OpenFOAM-\@version}}%
         \def\@evenhead{\small
                 \underline{\hbox to \textwidth{\autoxspacing
                 \thepage\hfil\leftmark}}}%
-        \def\@evenfoot{\vbox{\hrulefill\vskip.1\baselineskip\small\OpenFOAM-\@version\hfill}}%
+        \def\@evenfoot{\vbox{\hrulefill\vskip.1\baselineskip\small OpenFOAM-\@version\hfill}}%
         \def\chaptermark##1{\markboth{%
                 \@chapapp\thechapter\@chappos\hskip1zw##1}{}}%
         \def\sectionmark##1{%
@@ -224,7 +224,7 @@
         \setcounter{page}{1}%
         \null\vfill
         \begin{center}%
-         {\fontsize{42.5\p@}{\cvs}\selectfont\sffamily\OpenFOAM\par}%
+         {\fontsize{42.5\p@}{\cvs}\selectfont\OFFlogo\ \OpenFOAM\par}%
          \vskip1.5\Cvs
          {\LARGE\gtfamily\sffamily オープンソースCFDツールボックス\par}%
          \vfill
